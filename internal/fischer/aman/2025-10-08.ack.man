@@ -1,0 +1,44 @@
+---- 2025-10-08 20:15:44
+---- 2025-10-08 21:01:46
+---- 2025-10-08 21:40:33
+A116376	rpt	1	kMin(0).gl(k -> (k%9 == 6) ? 1L : 0L).skip(1)	G.f.: Product_{j>=0} 1/(1 - x^(6+9*j)). - _Robert Israel_, Apr 13 2015
+A121663	rpt	0	kMin(0).f(-1).gl(k -> (Long.bitCount(k) == 1) ? -(2L + Long.numberOfTrailingZeros(k)): 0L)	Product_{k&gt;=0} ((1+(k+2)*x^(2^k)))
+A238498	trilambn	0	0	0	(n,k) -> PR(1, n, i -> PSI(i))./(PR(1, k, i -> PSI(i)).*(PR(1, n - k, i -> PSI(i))))	prod_{i=1..n} F001615(i)/(prod_{i=1..k} F001615(i)*prod_{i=1..n-k} F001615(i)).
+A253629	lambdan	1	n -> (n & 1) == 1 ? PSI(n) : PSI(n)./(3)	a(n) = F001615(n) if n is odd and a(n) = F001615(n)/3 if n is even.
+A280151	rpt	0	gl(k -> ((k&1) == 1 && k >= 3) ?  1L/Functions.OMEGA.l(k) : 0L)	G.f.: Product_{k>=1} 1/(1 - floor(1/omega(2*k+1))*x^(2*k+1)).
+A280152	rpt	0	gl(k -> ((k&1) == 1 && k >= 3) ? -1L/Functions.OMEGA.l(k) : 0L).f(-1)	G.f.: Product_{k>=1} (1 + floor(1/omega(2*k+1))*x^(2*k+1)).
+A280169	rpt	0	g(k -> (k >= 3 && (k&1) == 1) ? Functions.MOEBIUS.z(k).^(2) : ZV(0))	G.f.: Product_{k>=2} 1/(1 - mu(2*k-1)^2*x^(2*k-1)).
+A285242	rpt	0	gl(k -> Predicates.SQUARE.is(k) ? -Functions.SQRT.l(k) : 0L).fl(k -> -Functions.SQRT.l(k))	Expansion of Product_{k>=1} (1 + k*x^(k^2))^k.
+A291549	filnum	1	1	k -> Predicates.SQUARE.is(PHI(k)) && Predicates.SQUARE.is(PSI(k))	Numbers n such that both phi(n) and psi(n) are perfect squares.
+A291638	filnum	0	1	k -> Predicates.SQUARE.is(PSI(k)) && Predicates.SQUARE.is(SIGMA(k)) && !Predicates.SQUARE_FREE.is(k)	Numbers n such that psi(n) and sigma(n) both are perfect squares and n is not a squarefree number.   
+A291696	rpt	0	gl(k -> Predicates.SQUARE.is(k) ? 1L : 0L).fl(k -> -k)	Expansion of Product_{k>=1} (1-x^(k^2))^(k^2).
+A292005	filnum	1	4	k -> !PP(k) && PSI(ZV(k).-(PHI(k))).equals(PHI(PSI(k).-(k)))	Composite numbers k such that psi(k - phi(k)) = phi(psi(k) - k).
+A292390	filnum	1	1	k -> PSI(k).equals(PHI(k).*(2))	Numbers n such that psi(n) = 2*phi(n).
+A300521	rpt	0	gl(k -> PP(k) ? 1L : 0L).fl(k -> -k)	Expansion of Product_{k>=1} (1 - x^prime(k))^prime(k).
+A303907	rpt	0	gl(k -> (k>= 3 && Predicates.TRIANGULAR.is(k)) ? -1L : 0L).f(-1)	Expansion of Product_{k>=2} (1 + x^(k*(k+1)/2)).
+A306528	filnum	1	1	k ->  GCD(ZV(k), PHI(k)).equals(GCD(ZV(k), PSI(k)))	Numbers k such that gcd(k, phi(k)) = gcd(k, psi(k)).
+A306711	filnum	1	1	k -> !GCD(ZV(k), PHI(k)).equals(GCD(ZV(k), PSI(k)))	Numbers k such that gcd(k, phi(k)) <> gcd(k, psi(k)).
+A306947	rpt	0	egf().kMin(0).gq(k -> (Long.bitCount(k) == 1) ? new Q(1, k) : Q.ZERO)	Expansion of e.g.f. Product_{k>=0} 1/(1 - x^(2^k)/2^k).
+A309840	rpt	0	g(k -> (Long.bitCount(k) == 1) ? FI(Long.numberOfTrailingZeros(k) + 3).negate() : Z.ZERO).f(-1)	G.f.: Product_{k>=0} (1 + Fibonacci(k + 3) * x^(2^k)).
+A309841	rpt	0	g(k -> (Long.bitCount(k) == 1) ? FA(Long.numberOfTrailingZeros(k) + 2).negate() : Z.ZERO).f(-1)	G.f.: Product_{k>=0} (1 + (k + 2)! * x^(2^k)).
+A327340	rambdan	1	n -> new Q(SU(1, n, k -> PSI(k)), ZV(n).*(n))	Numerator of the rationals r(n) = (1/n^2)*Phi_1(n), with Phi_1(n) = Sum{k=1..n} psi(k), with Dedekinds psi function.
+A327341	rambdad	1	A327340
+A389277	filter	1	new A000040()	p -> SIGMA(p.+(1)).equals(SIGMA(p.+(2)))	Primes p such that sigma(p+1) = sigma(p+2).	nonn,new	1..29	nyi	_S. I. Dimitrov_
+A389278	filter	1	new A000040()	p -> Functions.DEDEKIND_PSI.z(p.+(1)).equals(Functions.DEDEKIND_PSI.z(p.+(2)))	Primes p such that psi(p+1) = psi(p+2).	nonn,new	1..41	nyi	_S. I. Dimitrov_
+A389279	filter	1	new A000040()	p -> PHI(p.+(1)).equals(PHI(p.+(2)))	Primes p such that phi(p+1) = phi(p+2).	nonn,new	1..33	nyi	_S. I. Dimitrov_
+A389318	lambdan	0	n -> new Q(ZV(n - 1).*(n), ZV(8)).ceiling()	a(n) = ceiling((n^2 - n)/8).
+A389409	polyx	0	"[1]"	"x,sinh,x,cosh,1,-,*,exp"	0	1
+A389423	lambdan	0	n -> (n&1) == 0 ? BI(n, n/2).*(n) : BI(n - 1, (n - 1)/2).*(Z2(n - 1))	a(n) = n*binomial(n, n/2) if n is even otherwise 2^(n-1)*binomial(n-1, (n-1)/2)).	nonn,new	0..29	nyi	_Peter Luschny_
+A389442	decexp	1	() -> CV(new Q(307, 655360)).*(CR.PI.^(7)./(CR.SQRT2))	Decimal expansion of (307/655360) * (Pi^7/sqrt(2)).
+A389447	sintrif	1	(term, n) -> new Q(SIGMA(n), term).num()	""	new A057723()	Numerator of ratio sigma(n) / J057723(n), where J057723 is sum of positive divisors of n that are divisible by every prime that divides n and sigma is the sum of divisors function.	nonn,frac,new	1..20000	nyi	_Antti Karttunen_
+A389448	sintrif	1	(term, n) -> new Q(SIGMA(n), term).den()	""	new A057723()	Denominator of ratio sigma(n) / J057723(n), where J057723 is sum of positive divisors of n that are divisible by every prime that divides n and sigma is the sum of divisors function.	nonn,frac,new	1..20000	nyi	_Antti Karttunen_
+A389458	filtpos	1	1	new A048146()	v -> v.mod(4) == 2
+A389459	filtpos	1	1	new A162296()	v -> v.mod(4) == 2
+A389476	polyx	1	"[0,1]"	"x,A,^2,1,A,-,^2,/,-,rev"	1	0
+---- 2025-10-08 22:07:23
+A127071	sintrif	1	(term, n) -> ZV(3).^(term).-(ZV(2).^(term)).-(1)./(term)	""	new A000040()	Quotients (3^p - 2^p - 1)/p, where p = prime(n).
+A127072	filnum	1	1	k -> ZV(3).^(k).-(Z2(k)).-(1).mod(k) == 0	Numbers k that divide 3^k - 2^k - 1.	nonn,changed	1..10000	nyi	_Alexander Adamchuk_
+A127074	filnum	1	1	k -> ZV(3).^(k).-(Z2(k)).-(1).mod(k*k) == 0	Numbers k such that k^2 divides 3^k - 2^k - 1.	nonn,hard,more,changed	1..9	nyi	_Alexander Adamchuk_
+A330701	filnum	1	1	k -> PSI(PHI(k)).equals(PHI(PSI(k)).*(2))	, where PSI(k) is the Dedekind PSI function (F001615) and PHI(k) is the Euler totient function (F000010).
+A330702	filnum	1	1	k -> PSI(k).equals(PSI(k + 2)) && PHI(k).equals(PHI(k + 2))	, where PSI(k) is the Dedekind PSI function (F001615) and PHI(k) is the Euler totient function (F000010).
+A330703	filnum	1	1	k -> PSI(k).equals(PSI(k + 2))	where PSI(k) is the Dedekind PSI function (F001615).

@@ -1,0 +1,61 @@
+---- 2025-10-07 23:30:03
+A088994	rpt	0	egf().f(-1).gq(k -> ((k&1) == 1) ? new Q(-1, k) : Q.ZERO)	E.g.f.: Product_{m >= 1} (1+x^(2*m-1)/(2*m-1)). - _Vladeta Jovovic_, Nov 05 2003
+A111900	rpt	0	f(-1).g(-1).h(k -> PM(k).^(2))
+A116357	rpt	1	h(k -> PM(k).*(PM(k + 1))).skip(1)	G.f.: Product_{k >= 1} 1/(1 - x^(prime(k)*prime(k+1))). - _Robert Israel_, Dec 09 2016
+A164066	rpt	1	h(new A005384()).skip(1)	G.f.: Product_{k>=1} 1/(1 - x^J005384(k)). - _Andrew Howroyd_, Dec 28 2017
+A164067	rpt	1	h(new A005384()).g(-1).f(-1).skip(1)	G.f.: Product_{k>=1} (1 + x^J005384(k)). - _Andrew Howroyd_, Dec 28 2017
+A206244	rpt	0	g(k -> k.toString().matches("1*") ? Z.ONE : Z.ZERO)	G.f.: Product_{k>=1} 1/(1 - x^((10^k-1)/9)). - _Ilya Gutkovskiy_, Jul 26 2017
+A217861	rpt	0	f((k, t) -> t.negate(), new A002861()).g(-1)	O.g.f.: Product_{n>=1} (1 + x^n)^J002861(n).
+A265820	rpt	0	gl(k -> k%3 == 2 ? k : 0L)	Product_{k>=1} 1/(1 - (3*k-1)*x^(3*k-1)).	nonn	0..5000	genetgh	_Vaclav Kotesovec_
+A265821	rpt	0	gl(k -> k%3 == 1 ? k : 0L)	Product_{k>=1} 1/(1 - (3*k-2)*x^(3*k-2)).	nonn	0..5000	genetgh	_Vaclav Kotesovec_
+A265822	multia	0	"0,1"	(self, n) -> PP(n) ? ZV(n) : self.a(n - 1).+(self.a(n - 2))	If n is 0, 1, or prime, a(n) = n; else a(n) = a(n-1) + a(n-2).	nonn,easy	0..56	nyi	_Nicholas Drozd_
+A265826	multia	0	"1"	(self, n) -> SU(1, n, k -> self.a(n - k).*(CV(k).sin().ceil()))	a(0) = 1, a(n) = Sum_{k=1..n} a(n-k)*ceiling(sin(k)).	nonn,easy	0..999	nyi	_Griffin N. Macris_
+A265828	rpt	0	gl(k -> k%4 == 3 ? k : 0L)	Product_{k>=1} 1/(1 - (4*k-1)*x^(4*k-1)).	nonn	0..5000	genetgh	_Vaclav Kotesovec_
+A265829	rpt	0	gl(k -> k%4 == 2 ? k : 0L)	Product_{k>=1} 1/(1 - (4*k-2)*x^(4*k-2)).	nonn	0..5000	genetgh	_Vaclav Kotesovec_
+A265830	rpt	0	gl(k -> k%4 == 1 ? k : 0L)	Product_{k>=1} 1/(1 - (4*k-3)*x^(4*k-3)).	nonn	0..5000	genetgh	_Vaclav Kotesovec_
+A265831	rpt	0	gl(k -> k%5 == 4 ? k : 0L)	Product_{k>=1} 1/(1 - (5*k-1)*x^(5*k-1)).	nonn	0..5000	genetgh	_Vaclav Kotesovec_
+A265832	rpt	0	gl(k -> k%5 == 3 ? k : 0L)	Product_{k>=1} 1/(1 - (5*k-2)*x^(5*k-2)).	nonn	0..5000	genetgh	_Vaclav Kotesovec_
+A265833	rpt	0	gl(k -> k%5 == 2 ? k : 0L)	Product_{k>=1} 1/(1 - (5*k-3)*x^(5*k-3)).	nonn	0..5000	genetgh	_Vaclav Kotesovec_
+A265834	rpt	0	gl(k -> k%5 == 1 ? k : 0L)	Product_{k>=1} 1/(1 - (5*k-4)*x^(5*k-4)).	nonn	0..5000	genetgh	_Vaclav Kotesovec_
+A265835	filtpos	1	0	new A015128()	v -> !v.testBit(0) && PP(v./(2))	Numbers n such that J015128(n)/2 is prime.	nonn,more,hard	1..8	nyi	_Vaclav Kotesovec_
+A266137	rpt	0	gl(k -> ((k&1) == 1) ? (k + 1L)/2L : 0L)	.hl(k -> 2 * k - 1)
+A266138	rpt	0	gl(k -> ((k&1) == 1 && k > 1) ? k/2L : 0L)	.hl(k -> 2 * k + 1)
+A281790	rpt	0	gl(k -> Predicates.SQUARE.is(k) ? -1L : 0L).fl(k -> -Functions.SQRT.l(k))	Expansion of Product_{k>=1} (1+x^(k^2))^k.
+A282207	rpt	0	kMin(0).f(-1).gl(k -> ((k&1) == 1) ? -k : 0L)	Product_{k>=0} (1 + (2*k + 1)*x^(2*k+1)).
+A282209	rpt	0	gl(k -> Predicates.SQUARE.is(k) ? k : 0L)	Product_{k>=1} 1/(1 - k^2*x^(k^2)).
+A282866	rpt	0	f(-1).gl(k -> Predicates.SQUARE.is(k) ? -k : 0L)	Product_{k>=1} (1 + k^2*x^(k^2)).
+A285047	rpt	0	gl(k -> Predicates.SQUARE.is(k) ? 1L : 0L).fl(k -> Functions.SQRT.l(k))	Expansion of Product_{k>=1} 1/(1-x^(k^2))^k.
+A285242	rpt	0	fl(k -> -Functions.SQRT.l(k)).gl(k -> Predicates.SQUARE.is(k) ? -Functions.SQRT.l(k) : 0L)	Expansion of Product_{k>=1} (1 + k*x^(k^2))^k.
+A285243	rpt	0	fl(k -> Functions.SQRT.l(k)).gl(k -> Predicates.SQUARE.is(k) ? Functions.SQRT.l(k) : 0L)	.hl(k -> k * k)
+A285244	rpt	0	f(-1).gl(k -> Predicates.SQUARE.is(k) ? -Functions.SQRT.l(k) : 0L)	.hl(k -> k * k)	Product_{k&gt;=1} ((1+k*x^(k*k)))
+A285245	rpt	0	gl(k -> Predicates.SQUARE.is(k) ? Functions.SQRT.l(k) : 0L)	.hl(k -> k * k)	Product_{k&gt;=1} (1/(1-k*x^(k*k)))
+A291647	rpt	0	gl(k -> PP(k) ? -1L : 0L).fl(k -> -k)	Expansion of Product_{k>=1} (1 + x^prime(k))^prime(k).
+A291650	rpt	0	gl(k -> Predicates.FIBONACCI.is(k) ? -1L : 0L).fl(k -> -k)	Expansion of Product_{k>=2} (1 + x^Fibonacci(k))^Fibonacci(k).
+A291655	rpt	0	gl(k -> Predicates.SQUARE.is(k) ? 1L : 0L).fl(k -> k)	Expansion of Product_{k>=1} 1/(1-x^(k^2))^(k^2).
+A291692	rpt	0	gl(k -> Predicates.CUBE.is(k) ? -1L : 0L).fl(k -> -k)	Expansion of Product_{k>=1} (1+x^(k^3))^(k^3).
+A291720	rpt	0	gl(k -> Predicates.CUBE.is(k) ? 1L : 0L).fl(k -> k)	Expansion of Product_{k>=1} 1/(1 - x^(k^3))^(k^3).
+A294506	rpt	0	egf().gq(k -> ((k&1) == 1) ? new Q(1, k) : Q.ZERO)	E.g.f.: 1/Product_{k>0} (1-x^(2*k-1)/(2*k-1)).
+A294531	rpt	0	egf().gq(k -> ((k&1) == 1) ? new Q(ZV(1), FA(k)) : Q.ZERO)	E.g.f.: 1/Product_{k>0} (1-x^(2*k-1)/(2*k-1)!).
+A294777	rpt	0	gl(k -> ((k&1) == 1) ? -1L : 0L).fl(k -> {final long k2 = (k + 1L)/2L; return -k2*(k2 - 1L)/2l;})	Expansion of Product_{k>=1} (1 + x^(2*k-1))^(k*(k-1)/2).
+A294778	rpt	0	gl(k -> ((k&1) == 1) ? 1L : 0L).fl(k -> {final long k2 = (k + 1L)/2L; return k2*(k2 - 1L)/2l;})	Expansion of Product_{k>=1} 1/(1 - x^(2*k-1))^(k*(k-1)/2).
+A298160	rpt	0	gl(k -> PP(k) ? -k : 0L)	G.f.: Product_{k>=1} 1/(1+prime(k)*x^prime(k)).
+A298730	rpt	0	gl(k -> Predicates.TRIANGULAR.is(k) ? 1L : 0L).fl(k -> k)	G.f.: Product_{k>=1} 1/(1 - x^F000217(k))^F000217(k).
+A298850	rpt	0	gl(k -> Predicates.TRIANGULAR.is(k) ? -1L : 0L).fl(k -> -k)	G.f.: Product_{k>=1} (1 + x^F000217(k))^F000217(k).
+A300574	rpt	0	g(k -> ((k&1) == 1) ? Z_1(k/2) : ZV(0))	O.g.f.: Product_{n >= 0} 1/(1 - (-1)^n x^(2n+1)).
+A300575	rpt	0	g(k -> ((k&1) == 1) ? Z_1(k/2).negate() : ZV(0)).f(-1)	O.g.f.: Product_{n >= 0} (1 + (-1)^n x^(2n+1)).
+A303168	rpt	0	gl(k -> Predicates.CUBE.is(k) ? 1L : 0L).fl(k -> Functions.CBRT.l(k))	Expansion of Product_{k>=1} 1/(1 - x^(k^3))^k.
+A306946	rpt	0	egf().gq(k -> Predicates.SQUARE.is(k) ? new Q(1, k) : Q.ZERO)	Expansion of e.g.f. Product_{k>=1} 1/(1 - x^(k^2)/k^2).
+A326755	rpt	0	egf().gq(k -> (k%3 == 2) ? new Q(1, k) : Q.ZERO)	E.g.f.: Product_{k>=1} 1/(1 - x^(3*k-1)/(3*k-1)).
+A326756	rpt	0	egf().gq(k -> (k%3 == 1) ? new Q(1, k) : Q.ZERO)	E.g.f.: Product_{k>=1} 1/(1 - x^(3*k-2)/(3*k-2)).
+A326779	rpt	0	egf().gq(k -> (k%4 == 3) ? new Q(1, k) : Q.ZERO)	E.g.f.: Product_{k>=1} 1/(1 - x^(4*k-1)/(4*k-1)).
+A326780	rpt	0	egf().gq(k -> (k%4 == 1) ? new Q(1, k) : Q.ZERO)	E.g.f.: Product_{k>=1} 1/(1 - x^(4*k-3)/(4*k-3)).
+A326855	rpt	0	egf().f(-1).gq(k -> (k%4 == 3) ? new Q(-1, k) : Q.ZERO)	E.g.f.: Product_{k>=1} (1 + x^(4*k-1) / (4*k-1)).
+A326856	rpt	0	egf().f(-1).gq(k -> (k%4 == 1) ? new Q(-1, k) : Q.ZERO)	E.g.f.: Product_{k>=1} (1 + x^(4*k-3) / (4*k-3)).
+A326857	rpt	0	egf().f(-1).gq(k -> (k%3 == 2) ? new Q(-1, k) : Q.ZERO)	E.g.f.: Product_{k>=1} (1 + x^(3*k-1) / (3*k-1)).
+A326858	rpt	0	egf().f(-1).gq(k -> (k%3 == 1) ? new Q(-1, k) : Q.ZERO)	E.g.f.: Product_{k>=1} (1 + x^(3*k-2) / (3*k-2)).
+A374064	rpt	0	gl(k -> (k%3 == 2) ? -1L : 0L)	Expansion of Product_{k>=1} 1 / (1 + x^(3*k-1)).
+A374065	rpt	0	gl(k -> (k%3 == 1) ? -1L : 0L)	Expansion of Product_{k>=1} 1 / (1 + x^(3*k-2)).
+A374076	rpt	0	gl(k -> (k%5 == 4) ? -1L : 0L)	Expansion of Product_{k>=1} 1 / (1 + x^(5*k-1)).
+A374077	rpt	0	gl(k -> (k%5 == 3) ? -1L : 0L)	Expansion of Product_{k>=1} 1 / (1 + x^(5*k-2)).
+A374078	rpt	0	gl(k -> (k%5 == 2) ? -1L : 0L)	Expansion of Product_{k>=1} 1 / (1 + x^(5*k-3)).
+A374079	rpt	0	gl(k -> (k%5 == 1) ? -1L : 0L)	Expansion of Product_{k>=1} 1 / (1 + x^(5*k-4)).

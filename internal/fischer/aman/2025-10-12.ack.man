@@ -1,0 +1,113 @@
+---- 2025-10-12 22:34:24
+A092130	rpt	1	f(-1).gl(k -> (k >= 4 && k%3 == 1) ? -1L : 0L)	G.f.: x*Product_{k>=1} (1+x^(1+3k)). - _Emeric Deutsch_, Apr 18 2006
+A104274	convprod	0	1,1	new A167700(), new A167661()	Convolution of A167700 and A167661. - _Vaclav Kotesovec_, Sep 19 2017
+A112021	rpt	1	gl(k -> Predicates.CHEN_PRIME.is(k) ? 1L : 0L).skip(1)	G.f.: Product_{k>=1} 1/(1 - x^J109611(k)). - _Andrew Howroyd_, Dec 28 2017
+A200044	multia	1	"1"	(self, n) -> ZV(n).compareTo(self.a(n - 1)) >= 0 ? self.a(n - 1).*(n) : self.a(n - 1).-(n)	Starting with a(1)=1, a(n) = n*a(n-1) if n>= a(n-1), otherwise a(n) = a(n-1)-n.	nonn,easy	1..9119	nyi	_Rodolfo Kurchan_
+A200050	sintrif	2	(p, n) -> n == 2 ? ZV(1) : p.-(1).*(p.-(4))./(2)	""	new A000040()	a(2) = 1, then (p-1)*(p-4)/2, with p = prime(n), n > 2.	nonn	2..10000	nyi	_Arkadiusz Wesolowski_
+A200063	filtpos	1	1	new A079878()	(k, t) -> t.equals(ZV(k))	Indices n where J079878(n) = n
+A200259	filtpos	1	1	new A000040()	k -> (Functions.DIGIT_SUM.i(k) & 1) == 0	Numbers k such that k-th prime has an even digit sum.	nonn,base	1..10000	nyi	_N. J. A. Sloane_
+A200260	filtpos	1	1	new A000040()	k -> (Functions.DIGIT_SUM.i(k) & 1) == 1	Numbers k such that k-th prime has an odd digit sum.	nonn,base	1..10000	nyi	_N. J. A. Sloane_
+A200261	sintrif	1	(term, n) -> (Functions.DIGIT_SUM.i(term) & 1) == 0 ? ZV(1) : ZV(0)	""	new A000040()	a(n) = 1 iff n-th prime has an even digit sum.	nonn,base	1..1000	nyi	_N. J. A. Sloane_
+A200262	partsun	1	new A200261()	nonn,base	1..1000	nyi	_N. J. A. Sloane_
+A200263	sintrif	1	(term, n) -> (Functions.DIGIT_SUM.i(term) & 1) == 1 ? ZV(1) : ZV(0)	""	new A000040()	a(n) = 1 iff n-th prime has an odd digit sum.	nonn,base	1..1000	nyi	_N. J. A. Sloane_
+A200264	partsun	1	new A200263()	nonn,base	1..1000	nyi	_N. J. A. Sloane_
+A232442	lambdan	1	n -> CNT(1, n - 1, k -> { final Z m = SIGMA(k).+(PHI(n - k)); final Z p = PM(m).*(m); return PP(p.-(1)) && PP(p.+(1)); })
+A233296	lambdan	1	n -> CNT(1, n - 1, k -> PP(PM(n - k).*(k).+(1)))
+A233307	lambdan	1	n -> CNT(1, n - 1, k -> PP(PT(k).^(2).+(F000009(n - k).^(2))))	is prime}	where p(.) is the partition function (F000041) && q(.) is the strict partition function (F000009).
+A236241	lambdan	1	n -> CNT(1, n -1, k -> { final Q mq = new Q(PHI(k)).+(new Q(PHI(n - k), 8 )); final int m = mq.num().intValueExact(); return mq.isInteger() && PP(BI(2*m, m).+(PM(m))); })	C(2*m, m) + PM(m) prime}	where C(2*m, m) = (2*m)!/(m!)^2, && PHI(.) is Eulers totient function.
+A236256	lambdan	1	n -> CNT(1, n -1, k -> { final Q mq = new Q(PHI(k)).+(new Q(PHI(n - k), 4 )); final int m = mq.num().intValueExact(); return mq.isInteger() && PP(BI(2*m, m).-(PM(m))); })	C(2*m, m) - PM(m) prime}	where C(2*m, m) = (2*m)!/(m!)^2.
+A236263	lambdan	1	n -> CNT(1, n -1, k -> { final Q mq = new Q(PHI(k), 2).+(new Q(PHI(n - k), 8 )); final int m = mq.num().intValueExact(); return mq.isInteger() && PP(FA(m).+(PM(m))); })	m! + PM(m) prime}	where PHI(.) is Eulers totient function.
+A236265	lambdan	1	n -> CNT(1, n -1, k -> { final Q mq = new Q(PHI(k), 2).+(new Q(PHI(n - k), 8 )); final int m = mq.num().intValueExact(); return mq.isInteger() && PP(FA(m).-(PM(m))); })	m! - PM(m) prime}	where PHI(.) is Eulers totient function.
+A236325	lambdan	1	n -> CNT(1, n -1, k -> { final Q mq = new Q(PHI(k), 2).+(new Q(PHI(n - k), 12)); final int m = mq.num().intValueExact(); return mq.isInteger() && PP(FA(m).+(PM(m))); })	m! + PM(m) prime}	where PHI(.) is Eulers totient function.
+A236344	lambdan	1	n -> CNT(1, n -1, k -> { final Q mq = new Q(PHI(k), 2).+(new Q(PHI(n - k), 12)); final int m = mq.num().intValueExact(); return mq.isInteger() && PP(Z2(m).+(PM(m))); })	2^m + PM(m) prime}	where PHI(.) is Eulers totient function.
+A236358	lambdan	1	n -> CNT(1, n - 1, k -> { final Q mq = new Q(PHI(k), 2).+(new Q(PHI(n - k), 12)); final int m = mq.num().intValueExact(); return mq.isInteger() && PP(ZV(3).^(m).*(2).+(1)); })	2*3^m + 1 prime}	where PHI(.) is Eulers totient function.
+A236374	lambdan	1	n -> CNT(1, n -1, k -> { final Q mq = new Q(PHI(k), 2).+(new Q(PHI(n - k), 8 )); final int m = mq.num().intValueExact(); return mq.isInteger() && PP(Z2(m - 1).*(PHI(m)).-(1)); })	2^(m-1)*PHI(m) - 1 prime}	where PHI(.) is Eulers totient function.
+A236389	lambdan	1	n -> CNT(1, n - 1, k -> { final Q mq = new Q(PHI(k), 2).+(new Q(PHI(n - k), 12)); final int m = mq.num().intValueExact(); return mq.isInteger() && PP(Z2(m).*(PT(m)).+(1)); })	2^m*p(m) + 1 prime}	where p(.) is the partition function (F000041).
+A236412	lambdan	1	n -> CNT(1, n -1, k -> { final Q mq = new Q(PHI(k), 2).+(new Q(PHI(n - k), 8 )); final int m = mq.num().intValueExact(); return mq.isInteger() && PP(PT(m).^(2).+(F000009(m).^(2))); })	p(m)^2 + q(m)^2 prime}	where PHI(.) is Eulers totient, p(.) is the partition function (F000041) && q(.) is the strict partition function (F000009).
+A236470	lambdan	1	n -> CNT(1, n - 1, k -> { final Z p = PM(k).+(PHI(n - k)); return PP(p) && PP(p.+(2)) && PP(PM(p).+(2)); })	p + 2 && PM(p) + 2 are all prime})	where PHI(.) is Eulers totient function.
+A236472	lambdan	1	n -> CNT(1, n - 1, k -> { final Z p = PM(k).+(PHI(n - k)); return PP(p) && PP(PM(p).+(2)) &&  PP(PM(p).+(6)); })
+A237578	lambdan	1	n -> CNT(1, n - 1, k -> PP(PI(k*n)))
+A237597	lambdan	1	n -> CNT(1, PMi(n) - 1, k -> PI(k*n).mod(n) == 0)
+A237598	lambdan	1	n -> CNT(1, PMi(n) - 1, k -> Predicates.SQUARE.is(PI(k*n)))
+A237615	lambdan	1	n -> CNT(1, n - 1, k -> PP(ZV(k + 1).*(k).-(1)) && PP(PI(k*n)))
+A237657	lambdan	1	n -> CNT(n + 1, 2*n - 1, k -> PP(PI(k)) && PP(PI(k*k)))
+A237712	lambdan	1	n -> CNT(1, n - 1, k -> PP(ZV(k).*(n).+(PI(k*n))))
+A238405	lambdan	1	n -> CNT(1, n - 1, k -> Predicates.TRIANGULAR.is(PM(k).+(PI(n - k))))
+A238509	lambdan	1	n -> CNT(1, n - 1, k -> PP(PT(n).+(PT(k)).-(1)))
+A238516	lambdan	1	n -> CNT(1, n - 1, k -> PP(PT(k).+(1).*(PT(n)).+(1)))
+A238568	lambdan	1	n -> CNT(1, n - 1, k -> PP(ZV(n).*(n).-(PI(k*n))))
+A238573	lambdan	1	n -> CNT(1, n, k -> PP(PM(k*n).+(2)))
+A238703	lambdan	1	n -> CNT(1, n - 1, k -> PP(k*n/3))
+A239579	lambdan	1	n -> CNT(1, n, k -> PP(PM(PM(PM(k*n))).-(2)))
+A289683	rambdan	0	n -> n == 0 ? QV(1) : RU(0, n - 1, k -> QV(1, 2).^(k).*(F000108(k)).*(BI(n - 1 + k, n - 1 - k))).*(FA(n))	a(n) = n!*b(n) where b(0)=1 and b(n) = Sum_{k=0..n-1}*binomial(n-1+k, n-1-k) *F000108(k) *(1/2)^k
+A291667	convprod	0	1,1	new A285047(), new A281790()	Convolution of A285047 and A281790.
+A291721	convprod	0	1,1	new A291692(), new A291720()	Convolution of A291692 and A291720.
+A294779	convprod	0	1,1	new A294777(), new A294778()	Convolution of A294777 and A294778.
+A331459	filnum	1	1	n -> ZV(n).^(2).mod(PHI(n).*(TAU(n).^(2))).isZero()	Integers m such that phi(m) * tau(m)^2 divides m^2.	nonn	1..42	nyi	_Bernard Schott_
+A338505	lambdan	1	n -> CNT(1, n - 1, k -> { final Z fn = F007954(n); return fn.equals(F007954(k)); })
+A348618	lambdan	0	n -> BI(new Q(3*n, 2), n).*(ZV(4).^(n))./(3).ceiling()	a:= n-> ceil(4^n*binomial(3*n/2, n)/3):
+A352068	rpt	0	f(new A079566()).skip(1)	Euler transform of J079566.
+A357526	lambdan	0	n -> CNT(0, n - 1, k -> { final Z fn = F051801(n); return fn.equals(F051801(k)); })	j < n : F051801(j) = F051801(n)}
+A361079	lambdan	0	n -> CNT(n, 2*n - 1, k -> { final Z fn = F000120(n); return fn.equals(F000120(k)); })
+A368984	rpt	0	f(new A368983())	Euler transform of J368983.
+A369145	rpt	0	f(new A369289())	Euler transform of J369289. - _Andrew Howroyd_, Feb 02 2024
+A369200	rpt	0	f(new A369289().adjust(2, 1,1))	Euler transform of J369289 with J369289(1) = 1. - _Andrew Howroyd_, Feb 02 2024
+A372123	rpt	0	f(new A000105()).skip(1)	This is the Euler transform of J000105, almost by definition. - _Andrey Zabolotskiy_ , Jul 12 2024
+A380584	lambdan	1	n -> CNT(1, n, k -> { final Z fn = D000593(n); return fn.equals(D000593(k)); })	D000593(j) = D000593(n)}
+A387417	sintrif	1	(term, n) -> D032742(term)	""	new A006039()
+A387496	lambdan	0	n -> SU(0, n/2, k -> BI(n + 1, k).*(BI(2*n + k+2,n-2*k)))./(n + 1)
+A387497	lambdan	0	n -> SU(0, n/2, k -> BI(n + 1, k).*(BI(2*n + 2*k+2,n-2*k)))./(n + 1)
+A387498	lambdan	0	n -> SU(0, n/2, k -> BI(n + 1, k).*(BI(2*n + 3*k+2,n-2*k)))./(n + 1)
+A387547	multia	0	"1"	(self, n) -> SU(2, n, k -> BI(2*n - 1, 2*k - 1).*(self.a(n - k)))
+A387548	lambdan	0	n -> SU(0, n/2, k -> BI(n + 1, k).*(BI(3*n + 1,n-2*k)))./(n + 1)
+A387573	holos	1	[0,-1,0,2,-4,1,4,-6,4,-1]	0,0,1,3,6,10,17,31,58,106	0	0
+A387599	holos	0	[[0],[10,-4],[0],[0],[-1,1],[1,-2],[0,1]]	1,1,1,1,1,3	0	0
+A387611	rambdan	0	n -> new Q(ZV(n).^(5).*(8), 15)	a(n) = numerator(8*n^5/15).
+A387612	rambdad	0	A387611	a(n) = denominator(8*n^5/15).
+A387635	sintrif	0	(term, n) -> term.-(D002894(n))	""	new A036910()
+A387644	lambdan	1	n -> { final int m = CV(n)./(3).sqrt().floor().intValueExact(); return n > m*(3*m + 1) ? ZV(n + m) : ZV(n + m  - 1); }	a(n) = n+m if n > m*(3*m+1) and a(n) = n+m-1 otherwise where m = floor(sqrt(n/3)).
+A387667	lambdan	0	n -> SU(0, n/2, k -> BI(n + k, k).*(BI(2*n + k+2,n-2*k)))./(n + 1)
+A387668	lambdan	0	n -> SU(0, n/2, k -> BI(n + k, k).*(BI(2*n + 3*k+2,n-2*k)))./(n + 1)
+A387669	lambdan	0	n -> SU(0, n/3, k -> BI(n + k, k).*(BI(2*n + k+2,n-3*k)))./(n + 1)
+A387671	lambdan	0	n -> SU(0, n/3, k -> BI(n + k, k).*(BI(2*n + 3*k+2,n-3*k)))./(n + 1)
+A387734	lambdan	0	n -> SU(0, n/3, k -> BI(n + 1, k).*(BI(2*n + k+2,n-3*k)))./(n + 1)
+A387774	lambdan	0	n -> SU(0, n/3, k -> BI(n + 1, k).*(BI(2*n + 2*k+2,n-3*k)))./(n + 1)
+A387777	lambdan	0	n -> SU(0, n/3, k -> BI(n + 1, k).*(BI(2*n + 3*k+2,n-3*k)))./(n + 1)
+A389122	holos	0	[0,-1,-1,1,0,0,0,0,0,1,1,-1]	2,2,3,4,7,11,18,28,46,74	0	0
+A389197	filnum	1	1	k -> F034448(k).mod(4) == 2	Numbers whose sum of unitary divisors (usigma, F034448) is congruent to 2 modulo 4.	nonn,new	1..10000	nyi	_Antti Karttunen_
+A389197	filnum	1	1	k -> F034448(k).mod(4) == 2	Numbers whose sum of unitary divisors (usigma, F034448) is congruent to 2 modulo 4.	nonn,new	1..10000	nyi	_Antti Karttunen_
+A389317	holos	0	[0,1,-2,1,-1,2,-1]	0,2,5,10,18,27	0	0
+A389318	holos	0	[0,1,-3,4,-4,4,-4,4,-4,3,-1]	0,0,1,1,2,3,4,6,7,9,12	0	0
+A389319	holos	0	[0,1,-3,4,-4,4,-4,4,-4,3,-1]	0,0,0,2,4,7,11,15,21,27,33,41	0	0
+A389460	lambdan	1	n -> SIGMA(n).-(E075423(n))	nyi	_Antti Karttunen_
+A389461	lambdan	1	n -> SIGMA(n).-(E075423(n)).-(n)	nyi	_Antti Karttunen_
+A389462	filnum	1	1	k -> F001065(k).compareTo(F007947(k)) >= 0	Numbers whose sum of proper divisors (F001065) is equal to or greater than their squarefree kernel (F007947).	nonn,new	1..10000	nyi	_Antti Karttunen_
+A389462	filnum	1	1	k -> F001065(k).compareTo(F007947(k)) >= 0	Numbers whose sum of proper divisors (F001065) is equal to or greater than their squarefree kernel (F007947).	nonn,new	1..10000	nyi	_Antti Karttunen_
+A389464	lambdan	1	n -> CNT(n, Functions.SIGMA.i(n) - 1, k -> GCDi(k, n) == 1)	Number of natural numbers in range [n .. sigma(n)-1] that are coprime to n.	nonn,new	1..20000	nyi	_Antti Karttunen_
+A389464	lambdan	1	n -> CNT(n, Functions.SIGMA.i(n) - 1, k -> GCDi(k, n) == 1)	Number of natural numbers in range [n .. sigma(n)-1] that are coprime to n.	nonn,new	1..20000	nyi	_Antti Karttunen_
+A389465	lambdan	1	n -> CNT(n, Functions.SIGMA.i(n), k -> GCDi(k, n) == 1)	Number of natural numbers in range [n .. sigma(n)] that are coprime to n.	nonn,new	1..65537	nyi	_Antti Karttunen_
+A389465	lambdan	1	n -> CNT(n, Functions.SIGMA.i(n), k -> GCDi(k, n) == 1)	Number of natural numbers in range [n .. sigma(n)] that are coprime to n.	nonn,new	1..65537	nyi	_Antti Karttunen_
+A389547	lambdan	0	n -> SU(0, n, k ->   BI(n + 1, k).*(BI(3*n + 2*k + 1, n - k)))./(n + 1)	(1/x) * Series_Reversion( x * (1 - x)^2 / (1 + x / (1 - x)^3) ).	nonn,new	0..21	nyi	_Seiichi Manyama_
+A389548	lambdan	0	n -> SU(0, n/2, k -> BI(n + 1, k).*(BI(3*n + k + 1, n - 2*k)))./(n + 1)	(1/x) * Series_Reversion( x * (1 - x)^2 / (1 + x^2 / (1 - x)^3) ).	nonn,new	0..22	nyi	_Seiichi Manyama_
+A389549	lambdan	0	n -> SU(0, n/3, k -> BI(n + 1, k).*(BI(3*n - k + 1, n - 3*k)))./(n + 1)	(1/x) * Series_Reversion( x * (1 - x)^2 / (1 + x^3 / (1 - x)^2) ).	nonn,new	0..23	nyi	_Seiichi Manyama_
+A389550	lambdan	0	n -> SU(0, n/3, k -> BI(n + 1, k).*(BI(3*n + 1, n - 3*k)))./(n + 1)	(1/x) * Series_Reversion( x * (1 - x)^2 / (1 + x^3 / (1 - x)^3) ).	nonn,new	0..23	nyi	_Seiichi Manyama_
+A389608	lambdan	0	n -> ZV(n).*(7*n).-(5*n - 2)./(2)	a(n) = (7*n^2-5*n+2)/2.	nonn,easy,new	0..10000	nyi	_N. J. A. Sloane_
+A389628	lambdan	0	n -> SU(0, n, k -> BI(n+k,k).*(BI(3*n+2*k+1,n-k)))./(n + 1)
+A389629	lambdan	0	n -> SU(0, n/2, k -> BI(n+k,k).*(BI(3*n+k+1,n-2*k)))./(n + 1)
+A389630	lambdan	0	n -> SU(0, n/3, k -> BI(n+k,k).*(BI(3*n+1,n-3*k)))./(n + 1)
+A389631	lambdan	0	n -> SU(0, n/2, k -> BI(2*(n+1),k).*(BI(k,n-2*k)))./(n + 1)
+A389632	lambdan	0	n -> SU(0, n/2, k -> BI(2*(n+1),k).*(BI(2*k,n-2*k)))./(n + 1)
+A389633	filnum	1	1	k -> new Q(SIGMA(k), k).compareTo(new Q(4, 3)) < 0	Numbers k whose abundancy (sigma(k)/k) is less than 4/3, where sigma(k) = F000203(k).
+A389633	filnum	1	1	k -> new Q(SIGMA(k), k).compareTo(new Q(4, 3)) < 0	Numbers k whose abundancy (sigma(k)/k) is less than 4/3, where sigma(k) = F000203(k).
+A389634	filnum	1	1	k -> new Q(SIGMA(k), k).compareTo(new Q(4, 3)) >= 0	Numbers k whose abundancy (sigma(k)/k) is at least 4/3, where sigma(k) = F000203(k).
+A389634	filnum	1	1	k -> new Q(SIGMA(k), k).compareTo(new Q(4, 3)) >= 0	Numbers k whose abundancy (sigma(k)/k) is at least 4/3, where sigma(k) = F000203(k).
+A389642	holos	1	[[0],[-4],[4],[0],[0],[0],[1],[-1]]	1,1,2,3,4,5,7,10,13,17,22,31,41,53,69,94,125,165,213,283,377	0	0
+A389658	lambdan	0	n -> SU(0, n/2, k -> BI(2*n+2,k).*(BI(n-1,n-2*k)))./(n + 1)
+A389659	lambdan	0	n -> SU(0, n/2, k -> BI(2*n+2,k).*(BI(n+k-1,n-2*k)))./(n + 1)
+A389660	lambdan	0	n -> SU(0, n, k -> BI(2*n+k+1,k).*(BI(2*k,n-k)))./(n + 1)
+A389661	lambdan	0	n -> SU(0, n/2, k -> BI(2*n+k+1,k).*(BI(k,n-2*k)))./(n + 1)
+A389662	lambdan	0	n -> SU(0, n/2, k -> BI(2*n+k+1,k).*(BI(2*k,n-2*k)))./(n + 1)
+A389691	lambdan	0	n -> SU(0, n, k -> BI(2*n+k+1,k).*(BI(n+k-1,n-k)))./(n + 1)
+A389692	lambdan	0	n -> SU(0, n, k -> BI(2*n+k+1,k).*(BI(n+2*k-1,n-k)))./(n + 1)
+A389693	lambdan	0	n -> SU(0, n/2, k -> BI(2*n+k+1,k).*(BI(n-1,n-2*k)))./(n + 1)
+A389694	lambdan	0	n -> SU(0, n/2, k -> BI(2*n+k+1,k).*(BI(n+k-1,n-2*k)))./(n + 1)

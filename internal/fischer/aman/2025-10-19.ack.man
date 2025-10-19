@@ -1,0 +1,147 @@
+---- 2025-10-19 15:24:10
+A001290	dead	2	A028368	erro	BriefSequence	Erroneous version of A028368.					Erroneous version of A028368.
+A003154	lambdan	1	n -> ZV(n - 1).*(n*12).+(2)./(2)	numbers, or centered dodecagonal numbers: numbers of the form 6*k*(k-1) + 1.  nonn,easy,nice,changed  1..1000 unkn    _N. J. A. Sloane_
+A024880	dead	2	A024317	dupl	HalfConvolutionSequence	Duplicate of A024317.					Duplicate of A024317.
+A025069	dead	1	A024377	dupl	HalfConvolutionSequence	Duplicate of A024377.					Duplicate of A024377.
+A025090	dead	1	A024478	dupl	HalfConvolutionSequence	Duplicate of A024478.					Duplicate of A024478.
+A027983	dead	0	A027974	dupl	GeneratingFunctionSequence Conjectural	Duplicate of A027974.					Duplicate of A027974.
+A030321	dead	1	A030305	dupl	RunLengthTransform	Duplicate of A030305.					Duplicate of A030305.
+A062786	lambdan	1	n -> ZV(n - 1).*(n*10).+(2)./(2)	10-gonal numbers.      easy,nonn,changed       1..1000 unkn    _Jason Earls_
+A069126	lambdan	1	n -> ZV(n - 1).*(n*13).+(2)./(2)	13-gonal numbers.      easy,nice,nonn,changed  1..1000 unkn    _Terrel Trotter, Jr._
+A069127	lambdan	1	n -> ZV(n - 1).*(n*14).+(2)./(2)	14-gonal numbers.      nonn,easy,nice,changed  1..1000 unkn    _Terrel Trotter, Jr._
+A069128	lambdan	1	n -> ZV(n - 1).*(n*15).+(2)./(2)	15-gonal numbers: a(n) = (15*n^2 - 15*n + 2)/2.        nonn,easy,nice,changed  1..1000 unkn    _Terrel Trotter, Jr._
+A069129	lambdan	1	n -> ZV(n - 1).*(n*16).+(2)./(2)	16-gonal numbers.      easy,nice,nonn,changed  1..1000 unkn    _Terrel Trotter, Jr._
+A069130	lambdan	1	n -> ZV(n - 1).*(n*17).+(2)./(2)	17-gonal numbers: (17*n^2 - 17*n + 2)/2.       easy,nice,nonn,changed  1..1000 unkn    _Terrel Trotter, Jr._
+A069131	lambdan	1	n -> ZV(n - 1).*(n*18).+(2)./(2)	18-gonal numbers.      easy,nice,nonn,changed  1..1000 unkn    _Terrel Trotter, Jr._
+A069132	lambdan	1	n -> ZV(n - 1).*(n*19).+(2)./(2)	19-gonal numbers.      easy,nice,nonn,changed  1..1000 unkn    _Terrel Trotter, Jr._
+A069173	lambdan	1	n -> ZV(n - 1).*(n*22).+(2)./(2)	22-gonal numbers.      easy,nonn,changed       1..1000 unkn    _Terrel Trotter, Jr._
+A069174	lambdan	1	n -> ZV(n - 1).*(n*23).+(2)./(2)	23-gonal numbers.      nonn,easy,changed       1..1000 unkn    _Terrel Trotter, Jr._
+A069178	lambdan	1	n -> ZV(n - 1).*(n*21).+(2)./(2)	21-gonal numbers.      easy,nonn,changed       1..1000 unkn    _Terrel Trotter, Jr._
+A069190	lambdan	1	n -> ZV(n - 1).*(n*24).+(2)./(2)	24-gonal numbers.      nonn,easy,changed       1..1000 unkn    _Terrel Trotter, Jr._
+A082531	polyx	0	"[1]"	"1,x,eta,-,x,-,x,x,eta,<1,-,/,abs"	2	0
+A088114	dead	1	A071277	near	NotYetImplemented	Near duplicate of A071277.					Near duplicate of A071277.
+A097061	filter	1	new A002997()	v -> !Predicates.NIVEN.is(v.-(1))	Carmichael numbers A002997 C such that C-1 is not a Niven/Harshad number.
+A100117	lambdan	1	n -> Z2(Functions.BELL.i(n))	a(n) = 2^(Bell_Number(n)).	nonn	1..6	nyi	_Jorge Coveiro_
+A100306	filnum	1	1	k -> MU(k).equals(F002321(k))	Numbers for which the values of the Moebius function (F008683) and the Mertens function (F002321) agree
+A100317	filnum	1	1	k -> PP(k - 1) ^ PP(k + 1)	Numbers k such that exactly one of k - 1 and k + 1 is prime.
+A100318	filnum	1	3	k -> !PP(k - 1) || !PP(k + 1)	Numbers n such that at least one of n-1 and n+1 is composite.
+A100482	multia	1	"1"	(self, n) -> SU(1, n - 1, k -> new Q(self.a(n - k), k).ceiling())	Sum_{k=1..n-1} ceiling(a(n-k)/k).	easy,nonn	1..1000	nyi	_Leroy Quet_
+A100483	multia	1	"2"	(self, n) -> SU(1, n - 1, k -> self.a(n - k)./(k))	Sum_{k=1..n-1} floor(a(n-k)/k).	easy,nonn	1..1000	nyi	_Leroy Quet_
+A100620	rambdan	0	n -> A100640.cotesian(n, 0)	Numerator of Cotesian number C(n,0).
+A100621	rambdad	0	A100620
+A100641	trilambn	0	0	0	(n, k) -> A100640.cotesian(n, k).den()	Triangle read by rows: denominators of Cotesian numbers C(n,k) (0 <= k <= k).
+A100642	trilambn	0	0	0	(n, k) -> A100640.cotesian(n, k).num().*(D002176(n))./(A100640.cotesian(n, k).den())	Triangle read by rows: numerators of Cotesian numbers C(n,k) (0 <= k <= n) if the denominators are set to the lcm s of the rows (A002176).
+A100643	rambdan	1	n -> A100640.cotesian(n, 1)	Numerator of Cotesian number C(n,1).
+A100644	rambdad	1	A100643
+A100645	rambdan	2	n -> A100640.cotesian(n, 2)	Numerator of Cotesian number C(n,2).
+A100646	rambdad	2	A100645
+A100647	rambdan	3	n -> A100640.cotesian(n, 3)	Numerator of Cotesian number C(n,3).
+A100648	rambdad	3	A100647
+A100674	multia	1	"1"	(self, n) -> SU(1, n - 1, k -> self.a(GCD(ZV(k), self.a(n - 1)).intValueExact()))	a(n+1) = Sum_{k=1..n} a(gcd(k, a(n))).	nonn	1..10000	nyi	_Leroy Quet_
+A100675	multia	1	"1"	(self, n) -> SU(1, n - 1, k -> GCD(self.a(n - 1), ZV(k)))
+A100676	multia	1	"1"	(self, n) -> SU(1, n - 1, k -> self.a(GCD(ZV(n - 1), self.a(k)).intValueExact()))	a(n+1) = Sum_{k=1..n} a(gcd(a(k),n)).	nonn	1..10000	nyi	_Leroy Quet_
+A100677	multia	1	"1"	(self, n) -> SU(1, n/2, k -> GCDi(k, n) != 1 ? ZV(0) : self.a(k))	a(n) = sum{1<=k<=n/2, GCD(k,n)=1} a(k).	nonn	1..70	nyi	_Leroy Quet_
+A100686	multia	1	"1,2"	(self, n) -> (n&1) == 1 ? self.a(n - 1).^(2).-(self.a(n - 2).^(2)).abs() : self.a(n - 2).*(2).*(self.a(n - 3))	a(1) = 1, a(2) = 2; thereafter a(2n+1) = |a(2n)^2-a(2n-1)^2|, a(2n+2) = 2*a(2n-1)*a(2n).	nonn,easy	1..16	nyi	_Pahikkala Jussi_
+A101357	dead	0	A004255	dupl	LinearRecurrence	Duplicate of A004255.					Duplicate of A004255.
+A101813	filnum	1	1	k -> (k & 1) == 1 && Predicates.NIVEN.is(k)		Odd Niven (or Harshad) numbers: odd numbers that are divisible by the sum of their digits.
+A101814	filnum	1	1	k -> (k & 1) == 0 && Predicates.NIVEN.is(k)		Even Niven (or Harshad) numbers: even numbers that are divisible by the sum of their digits.
+A102526	dead	0	A001224	dupl	LinearRecurrence	Duplicate of A001224.					Duplicate of A001224.
+A106336	polyx	0	"[1]"	"x,eta,<1,x,<1,eta,^2,/,rev,x,/"	2	0
+A107758	mulr	1	(p, e) -> SIGMA(p.^(e)).+(1)	1+sigma(p^e).
+A128702	filter	1	new A002093()	v -> !Predicates.NIVEN.is(v)	Highly abundant numbers (J002093) that are not Harshad numbers (J005349).
+A129428	lambdan	0	n -> ZV(n + 1).*(n*47).+(2)./(2)	47-gonal numbers.      nonn,easy       0..1000 unkn    _N. J. A. Sloane_, based on a suggestion from an unknown corresp
+A130876	lambdan	0	n -> ZV(n + 1).*(n*1729).+(2)./(2)	1729-gonal numbers.    nonn,easy       0..32   unkn    _N. J. A. Sloane_, based on a suggestion from Anton Mravcek in 2
+A138810	lambdan	1	n -> n == 0 ? ZV(0) : SD(n, d -> ZV(d).^(2).*(Functions.KRONECKER.z(-7, d)))	{a(n) = if( n<1, 0, sumdiv( n, d, d^2 * kronecker( -7, d)))};
+A145874	dead	1	A147681	dupl	A147681	Duplicate of A147681.					Duplicate of A147681.
+A154701	filnum	1	1	k -> Predicates.NIVEN.is(k) && Predicates.NIVEN.is(k + 1) && Predicates.NIVEN.is(k + 2)	Numbers k such that k, k + 1 and k + 2 are 3 consecutive Harshad numbers.
+A177061	dead	1	A124674	dupl	FiniteSequence	Duplicate of A124674.					Duplicate of A124674.
+A178718	dead	1	A104779	dupl	NotYetImplemented	Duplicate of A104779.					Duplicate of A104779.
+A195314	lambdan	1	n -> ZV(n - 1).*(n*28).+(2)./(2)	28-gonal numbers.      nonn,easy       1..10000        unkn    _Omar E. Pol_
+A195315	lambdan	1	n -> ZV(n - 1).*(n*32).+(2)./(2)	32-gonal numbers.      nonn,easy       1..10000        unkn    _Omar E. Pol_
+A195316	lambdan	1	n -> ZV(n - 1).*(n*36).+(2)./(2)	36-gonal numbers.      nonn,easy       1..10000        unkn    _Omar E. Pol_
+A195317	lambdan	1	n -> ZV(n - 1).*(n*40).+(2)./(2)	40-gonal numbers.      nonn,easy       1..10000        unkn    _Omar E. Pol_
+A195318	lambdan	1	n -> ZV(n - 1).*(n*44).+(2)./(2)	44-gonal numbers.
+A210768	dead	2	A210699	erro	NotYetImplemented	Erroneous version of A210699.					Erroneous version of A210699.
+A216816	dead	1	A122870	dupl	CongruenceForm	Duplicate of A122870.					Duplicate of A122870.
+A218172	filter	1	new A003154()	v -> Predicates.SEMIPRIME.is(v)	IntersectionSequence
+A221180	dead	0	A000079	erro	NotYetImplemented	Erroneous version of A000079.					Erroneous version of A000079.
+A221530	trilambn	1	1	1	(n,k) -> F000005(k).*(F000041(n - k))
+A221531	trilambn	1	1	1	(n,k) -> F000005(n - k + 1).*(F000041(k - 1))
+A221643	filnum	1	0	k -> Predicates.SQUARE.is(ZV(k).*(k).xor(ZV(k + 1).^(2)))	Numbers k such that k^2 XOR (k+1)^2 is a square, where XOR is the bitwise XOR operator.	nonn,base	1..53	nyi	_Alex Ratushnyak_
+A221865	filnum	1	0	k -> !PP(k) && (PP(k + 2) || Predicates.SEMIPRIME.is(k  + 2))	The nonprimes k such that k + 2 is either a prime or a semiprime.	nonn	1..69	nyi	_Gerasimov Sergey_
+A221918	trilambn	1	1	1	(n, m) -> new Q(1, n).+(new Q(1, m)).den()	denominators of sum of two unit fractions: 1/n + 1/m, n >= m >= 1.	nonn,easy,tabl,frac	1..78	nyi	_Wolfdieter Lang_
+A221919	trilambn	1	1	1	(n, m) -> new Q(1, n).+(new Q(1, m)).num()	numerators of sum of two unit fractions: 1/n + 1/m, n >= m >= 1.	nonn,easy,tabl,frac	1..78	nyi	_Wolfdieter Lang_
+A228483	dead	1	A129979	dupl	Sequence1	Duplicate of A129979.					Duplicate of A129979.
+A243080	dead	1	A030137	dupl	FiniteSequence	Duplicate of A030137.					Duplicate of A030137.
+A274984	dead	2	A272005	outd	NoncomputableSequence	Outdated duplicate of A272005.					Outdated duplicate of A272005.
+A305309	dead	1	A085643	dupl	NotYetImplemented	Duplicate of A085643.					Duplicate of A085643.
+A318436	dead	21	A255820	dupl	ZBaseExpansionSequence	Duplicate of A255820.					Duplicate of A255820.
+A320771	filter	1	new A000040()	v -> Predicates.NIVEN.is(v.-(1)) && Predicates.NIVEN.is(v.+(1))		Primes p for which p-1 and p+1 are Niven numbers.
+A330927	filnum	1	1	k -> Predicates.NIVEN.is(k) && Predicates.NIVEN.is(k + 1)	Numbers k such that both k and k + 1 are Niven numbers.
+A330928	filnum	1	1	k -> Predicates.NIVEN.is(k) && Predicates.NIVEN.is(k + 1) && Predicates.NIVEN.is(k + 2) && Predicates.NIVEN.is(k + 3) && Predicates.NIVEN.is(k + 4)	Starts of runs of 5 consecutive Niven (or harshad) numbers (J005349).
+A330929	filnum	1	1	k -> Predicates.NIVEN.is(k) && Predicates.NIVEN.is(k + 1) && Predicates.NIVEN.is(k + 2) && Predicates.NIVEN.is(k + 3) && Predicates.NIVEN.is(k + 4) && Predicates.NIVEN.is(k + 5)	Starts of runs of 6 consecutive Niven (or Harshad) numbers (J005349).
+A330930	filnum	1	1	k -> Predicates.NIVEN.is(k) && Predicates.NIVEN.is(k + 1) && Predicates.NIVEN.is(k + 2) && Predicates.NIVEN.is(k + 3) && Predicates.NIVEN.is(k + 4) && Predicates.NIVEN.is(k + 5) && Predicates.NIVEN.is(k + 6)	Starts of runs of 7 consecutive Niven (or Harshad) numbers (J005349).
+A331261	holos	1	[0,-1,-1,5,5,5,5,-1,-1]	0,1,4,5,24,25,144,145	0	0
+A337448	filnum	1	1	k -> Predicates.NIVEN.is(FI(k))	The numbers k for which Fibonacci(k) are Niven numbers.	nonn,base	1..1000	nyi	_Marius A. Burtea_
+A337449	filnum	1	0	k -> Predicates.NIVEN.is(LU(k))	The numbers k for which Lucas(k) are Niven numbers.	nonn,base	1..57	nyi	_Marius A. Burtea_
+A337829	filnum	1	3	k -> (k&1) == 1 && ZV(5).^((k - 1)/2).+(1).mod(k*(k - 1)/2) == 0	nonn	1..564	nyi	_Benoit Cloitre_
+A337837	filnum	1	1	k -> Functions.BIG_OMEGA.l(ZV(3).^(k).-(2)) == Functions.BIG_OMEGA.l(ZV(3).^(k).+(2))	Omega(3^k - 2) = Omega(3^k + 2)
+A337846	filnum	1	3	k -> (k&1) == 1 &&  Z2((k - 1)/2).mod(k*(k - 2)) == 1	nonn	1..31	nyi	_Benoit Cloitre_
+A337847	filnum	1	3	k -> (k&1) == 1 &&  ZV(3).^((k - 1)/2).mod(k*(k - 2)) == 1	nonn	1..32	nyi	_Benoit Cloitre_
+A338241	multia	0	"0"	(self, n) -> n%3 == 0 ? self.a(n/3).*(3) : (n%3 == 1 ? ZV(1).-(self.a(n/3).*(3)) : self.a(n/3).*(3).-(1))	For any m >= 0, a(3*m) = 3*a(m), a(3*m+1) = 1-3*a(m), a(3*m+2) = 3*a(m)-1.	sign	0..6560	nyi	_R‚ąö¬©my Sigrist_
+A338245	filter	0	new A117966()	v -> v.compareTo(ZV(0)) >= 0	Nonnegative values in J117966, in order of appearance.	nonn,base	0..9841	nyi	_R‚ąö¬©my Sigrist_
+A338246	sintrif	0	(term, n) -> term.negate()	""	new FilterSequence(0, new A117966(), v -> v.compareTo(ZV(0)) <= 0)	Nonpositive values in J117966, in order of appearance and negated.	nonn,base	0..9841	nyi	_R‚ąö¬©my Sigrist_
+A338410	filter	1	new A000040()	p -> PP(p.+(2)./(3)) && PP(p.+(3)./(2))	Primes p such that (p+2)/3 and (p+3)/2 are prime.
+A338452	filnum	1	1	k -> { final Z dk = D093653(k); return dk.equals(D093653(k + 1)); }	Numbers k such that k and k+1 have the same total binary weight of their divisors (A093653).
+A338453	filnum	1	0	k -> { final Z dk = D093653(k); return dk.equals(D093653(k + 1)) && dk.equals(D093653(k + 2)); }	Starts of runs of 3 consecutive numbers with the same total binary weight of their divisors (A093653).
+A338454	filnum	0	1	k -> { final Z dk = D093653(k); return dk.equals(D093653(k + 1)) && dk.equals(D093653(k + 2)) && dk.equals(D093653(k + 3)); }	 Starts of runs of 4 consecutive numbers with the same total binary weight of their divisors (A093653).
+A338514	filnum	1	1	k -> ZV(k).mod(D093653(k)).isZero() && ZV(k + 1).mod(D093653(k + 1)).isZero()	Numbers k such that k and k+1 are both divisible by the total binary weight of their divisors (A093653).
+A338515	filnum	0	1	k -> ZV(k).mod(D093653(k)).isZero() && ZV(k + 1).mod(D093653(k + 1)).isZero() && ZV(k + 2).mod(D093653(k + 2)).isZero()	Starts of runs of 3 consecutive numbers that are divisible by the total binary weight of their divisors (A093653).
+A338539	filtpos	1	1	new A056170()	v -> v.equals(ZV(2))	Numbers having exactly two non-unitary prime factors.	nonn	1..10000	nyi	_Amiram Eldar_
+A338540	filtpos	1	1	new A056170()	v -> v.equals(ZV(3))	Numbers having exactly three non-unitary prime factors.	nonn	1..10000	nyi	_Amiram Eldar_
+A338541	filtpos	1	1	new A056170()	v -> v.equals(ZV(4))	Numbers having exactly four non-unitary prime factors.	nonn	1..10000	nyi	_Amiram Eldar_
+A338542	filtpos	0	1	new A056170()	v -> v.equals(ZV(5))	Numbers having exactly five non-unitary prime factors.	nonn	1..10000	nyi	_Amiram Eldar_
+A338810	lambdan	1	n -> RU(1, n - 1, k -> new Q(TAU(k).*(TAU(n - k)), ZV(k).*(n - k))).*(FA(n))./(2).num()	(n!/2) * Sum_{k=1..n-1} d(k)*d(n-k)/(k*(n-k)), where d(n) is the number of divisors of n.	nonn	1..22	nyi	_Seiichi Manyama_
+A338888	multia	1	"0,0"	(self, n) -> self.a(n - 2).or(self.a(n - 1)).+(1)	a(n) = (a(n-2) bitwise-OR a(n-1)) + 1; a(1)=0, a(2)=0
+A338889	lambdan	0	n -> { final Z lu2 = LU(LU(n)); return LU(lu2).mod(lu2); }	a(n) = L(L(L(n))) mod L(L(n))
+A338917	multia	0	"1,2"	(self, n) -> Functions.DIGIT_SUM.z(self.a(n - 1).^(self.a(n - 2)))	a(n) = sum_of_digits(a(n-1)^a(n-2)) where a(1)=1 and a(2)=2
+A338976	filter	1	new A000040()	term -> PP(term.*(F007953(term)).+(1))	Primes p such that p*F007953(p)+1 is prime.	nonn,base	1..10000	nyi	_J. M. Bergot_ and _Robert Israel_
+A338977	sintrif	1	(term, n) -> term.*(F007953(term)).+(1)	""	new A338976()	Primes p*F007953(p)+1 for p in A338976.	nonn,look	1..10000	nyi	_J. M. Bergot_ and _Robert Israel_
+A349484	filter	1	new A005349().skip(1)	v -> Predicates.NIVEN.is(ARD(v))	Niven numbers whose arithmetic derivative is also a Niven number (J005349).
+A356349	filter	1	new A005349()	v -> v.mod(10) != 0 || !Predicates.NIVEN.is(v./(10))	Primitive Niven numbers: terms of A005349 that are not ten times another term of A005349.
+A358255	filter	1	new A356349()	v -> v.mod(10) == 0	Primitive Niven numbers ending with zero.
+A379239	filnum	1	1	k -> PP(D003961(k).-(SIGMA(k)))	sigma(k) is prime, where D003961 is fully multiplicative with a(prime(i)) = prime(i+1), and sigma is the sum of divisors function.
+A385300	filnum	1	1	k -> Long.toString(k).matches("[13579]*[02468]") && Long.toString((long) k * k).matches("[02468]+")	Integers k containing only odd digits, except the last digit, such that k^2 is composed of only even digits.
+A385640	filter	1	new A005349()	v -> Predicates.NIVEN.is(v.^(2))	{k | k in J005349 and k^2 in J005349}. - _Michael S. Branicky_, Jul 05 2025
+A386983	lambdan	0	n -> RU(0, n/2, k -> QV(k+1).^(k-1).*(BI(2*k, n-2*k))./(FA(k))).*(FA(n)).num()	""		a(n) = n!*sum(k=0, n\2, (k+1)^(k-1)*binomial(2*k, n-2*k)/k!)	_	_	_
+A387416	filnum	1	1	k -> D003961(k).-(SIGMA(k)).mod(k) == 0	sigma(k) is a multiple of k, where D003961 is fully multiplicative with a(prime(i)) = prime(i+1), and sigma is the sum of divisors function.
+A387429	holos	1	[0,-1,6,-15,20,-15,6,-1]	1,12,73,284,835,2036	0	0
+A387711	filnum	1	1	k -> E003959(k).compareTo(ZV(2*k)) > 0	2*k, where E003959 is multiplicative with a(p^e) = (p+1)^e.
+A387720	filnum	1	1	k -> E107758(k).compareTo(ZV(2*k)) < 0	2*k, where J107758 is sigma+, multiplicative function with a(p^e) = 1+sigma(p^e).
+A387721	filnum	1	1	k -> E107758(k).compareTo(ZV(2*k)) > 0	2*k, where J107758 is sigma+, multiplicative function with a(p^e) = 1+sigma(p^e).
+A387724	filnum	1	1	k -> SIGMA(k).^(2).compareTo(SIGMA(D003961(k)).*(k)) >= 0	Numbers k such that sigma(k)^2 >= k * sigma(D003961(k)), where D003961 is fully multiplicative with a(p) = nextprime(p).
+A387992	lambdan	0	n -> RU(0, n/2, k -> QV(n+1).^(k-1).*(BI(2*k, n-2*k))./(FA(k))).*(FA(n)).num()	""		a(n) = n!*sum(k=0, n\2, (n+1)^(k-1)*binomial(2*k, n-2*k)/k!)	_	_	_
+A387993	lambdan	0	n -> RU(0, n/2, k -> QV(n+1).^(k-1).*(BI(3*k, n-2*k))./(FA(k))).*(FA(n)).num()	""		a(n) = n!*sum(k=0, n\2, (n+1)^(k-1)*binomial(3*k, n-2*k)/k!)	_	_	_
+A387994	lambdan	0	n -> RU(0, n/3, k -> QV(n+1).^(k-1).*(BI(2*k, n-3*k))./(FA(k))).*(FA(n)).num()	""		a(n) = n!*sum(k=0, n\3, (n+1)^(k-1)*binomial(2*k, n-3*k)/k!)	_	_	_
+A387995	lambdan	0	n -> RU(0, n/3, k -> QV(n+1).^(k-1).*(BI(3*k, n-3*k))./(FA(k))).*(FA(n)).num()	""		a(n) = n!*sum(k=0, n\3, (n+1)^(k-1)*binomial(3*k, n-3*k)/k!)	_	_	_
+A389220	filter	1	new A005349()	v -> { final long ds = Functions.DIGIT_SUM.l(v); return v.mod(ds) == 0 && !Predicates.NIVEN.is(v./(ds)); }	Harshad numbers which when divided by sum of their digits, give an integer which is a non-Harshad number.
+A389545	holos	0	[0,1,-5,10,-10,5,-1]	1,3,9,27,81	0	0
+A389614	holos	0	[0,1,-2,1,-1,2,-1]	1,3,9,19,32	0	0
+A389782	lambdan	0	n -> RU(0, n, k -> QV(k+1).^(k-1).*(BI(k-1, n-k))./(FA(k))).*(FA(n)).num()	""		a(n) = n!*sum(k=0, n, (k+1)^(k-1)*binomial(k-1, n-k)/k!)	_	_	_
+A389783	lambdan	0	n -> RU(0, n, k -> QV(k+1).^(k-1).*(BI(2*k-1, n-k))./(FA(k))).*(FA(n)).num()	""		a(n) = n!*sum(k=0, n, (k+1)^(k-1)*binomial(2*k-1, n-k)/k!)	_	_	_
+A389786	lambdan	0	n -> RU(0, n/2, k -> QV(k+1).^(k-1).*(BI(3*k, n-2*k))./(FA(k))).*(FA(n)).num()	""		a(n) = n!*sum(k=0, n\2, (k+1)^(k-1)*binomial(3*k, n-2*k)/k!)	_	_	_
+A389787	lambdan	0	n -> RU(0, n/3, k -> QV(k+1).^(k-1).*(BI(2*k, n-3*k))./(FA(k))).*(FA(n)).num()	""		a(n) = n!*sum(k=0, n\3, (k+1)^(k-1)*binomial(2*k, n-3*k)/k!)	_	_	_
+A389788	lambdan	0	n -> RU(0, n/3, k -> QV(k+1).^(k-1).*(BI(3*k, n-3*k))./(FA(k))).*(FA(n)).num()	""		a(n) = n!*sum(k=0, n\3, (k+1)^(k-1)*binomial(3*k, n-3*k)/k!)	_	_	_
+A389797	lambdan	1	n -> ZV(n - 1).*(n*27).+(2)./(2)	Centered 27-gonal numbers.
+A389798	lambdan	1	n -> ZV(n - 1).*(n*29).+(2)./(2)	Centered 29-gonal numbers.
+A389799	lambdan	1	n -> ZV(n - 1).*(n*30).+(2)./(2)	Centered 30-gonal numbers.
+A389817	lambdan	0	n -> RU(0, n/2, k -> QV(k+1).^(k-1).*(BI(k+1, n-2*k))./(FA(k))).*(FA(n)).num()	""		a(n) = n!*sum(k=0, n\2, (k+1)^(k-1)*binomial(k+1, n-2*k)/k!)	_	_	_
+A389818	lambdan	0	n -> RU(0, n/2, k -> QV(k+1).^(k-1).*(BI(2*k+1, n-2*k))./(FA(k))).*(FA(n)).num()	""		a(n) = n!*sum(k=0, n\2, (k+1)^(k-1)*binomial(2*k+1, n-2*k)/k!)	_	_	_
+A389819	lambdan	0	n -> RU(0, n/2, k -> QV(k+1).^(k-1).*(BI(3*k+1, n-2*k))./(FA(k))).*(FA(n)).num()	""		a(n) = n!*sum(k=0, n\2, (k+1)^(k-1)*binomial(3*k+1, n-2*k)/k!)	_	_	_
+A389820	lambdan	0	n -> RU(0, n/3, k -> QV(k+1).^(k-1).*(BI(k+1, n-3*k))./(FA(k))).*(FA(n)).num()	""		a(n) = n!*sum(k=0, n\3, (k+1)^(k-1)*binomial(k+1, n-3*k)/k!)	_	_	_
+A389821	lambdan	0	n -> RU(0, n/3, k -> QV(k+1).^(k-1).*(BI(2*k+1, n-3*k))./(FA(k))).*(FA(n)).num()	""		a(n) = n!*sum(k=0, n\3, (k+1)^(k-1)*binomial(2*k+1, n-3*k)/k!)	_	_	_
+A389822	lambdan	0	n -> RU(0, n/3, k -> QV(k+1).^(k-1).*(BI(3*k+1, n-3*k))./(FA(k))).*(FA(n)).num()	""		a(n) = n!*sum(k=0, n\3, (k+1)^(k-1)*binomial(3*k+1, n-3*k)/k!)	_	_	_
+A389843	lambdan	0	n -> RU(0, n/2, k -> QV(k+1).^(k-1).*(BI(n-1, n-2*k))./(FA(k))).*(FA(n)).num()	""		a(n) = n!*sum(k=0, n\2, (k+1)^(k-1)*binomial(n-1, n-2*k)/k!)	_	_	_
+A389844	lambdan	0	n -> RU(0, n/2, k -> QV(k+1).^(k-1).*(BI(n+k-1, n-2*k))./(FA(k))).*(FA(n)).num()	""		a(n) = n!*sum(k=0, n\2, (k+1)^(k-1)*binomial(n+k-1, n-2*k)/k!)	_	_	_
+A389845	lambdan	0	n -> RU(0, n/3, k -> QV(k+1).^(k-1).*(BI(n-k-1, n-3*k))./(FA(k))).*(FA(n)).num()	""		a(n) = n!*sum(k=0, n\3, (k+1)^(k-1)*binomial(n-k-1, n-3*k)/k!)	_	_	_
+A389847	lambdan	0	n -> RU(0, n/3, k -> QV(k+1).^(k-1).*(BI(n-1, n-3*k))./(FA(k))).*(FA(n)).num()	""		a(n) = n!*sum(k=0, n\3, (k+1)^(k-1)*binomial(n-1, n-3*k)/k!)	_	_	_

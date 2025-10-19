@@ -1,0 +1,125 @@
+---- 2025-10-16 18:23:35
+A087059	lambdan	1	n -> { final Z n2 = ZV(n).*(n).*(2); return SQRT(n2).+(1).^(2).-(n2); }	a(n) = (1 + sqrtint(2*n^2))^2 - 2*n^2 \\ _Michel Marcus_, Jun 25 2013
+A089610	lambdan	1	n -> PI(ZV(n + 1).*(n)).-(PI(ZV(n).*(n)))
+A089616	lambdan	1	n -> PI(new Q(6*n + 1, 6).^(2).floor()).-(PI(ZV(n).*(n)))
+A092924	polya	0	"[1]"	"21,x,neg,B,*,16,x,<1,B,*,-,5,/"	new A004009()
+A094892	lambdan	0	n -> PI(210*(n + 1)).-(PI(210*n))
+A103181	lambdan	0	n -> new Z(StringUtils.translate(Integer.toString(n), "0123456789", "0101010101"))	In decimal representation of n: replace all even digits with 0 and all odd digits with 1.
+A105097	polya	1	"[1]"	"x,B,x,C,^2,/"	new A000594(), new A004009()
+A105314	lambdan	1	n -> SU(1, n*n - 1, k -> Functions.DIGIT_LENGTH.z(k)).+(1)	sum(k=1, n^2-1, #digits(k)); \\ _Michel Marcus_, Jul 27 2017
+A106149	lambdan	1	n -> Functions.BIG_OMEGA.z(PM(n + 1).-(PM(n)))
+A106647	lambdan	0	n -> new Z(StringUtils.translate(Integer.toString(n), "02468", "12345"))	Replace even digits d of n with 1+d/2.
+A106747	lambdan	0	n -> new Z(StringUtils.translate(Integer.toString(n), "0123456789", "0011223344"))	Replace each odd digit d of n with (d-1)/2 and each even digit d with d/2.
+A107128	lambdan	0	n -> new Z(StringUtils.translate(Integer.toString(n), "2468", "1234"))	Divide the even digits of n by 2!.
+A107130	lambdan	0	n -> new Z(StringUtils.translate(Integer.toString(n), "13579", "01234"))	Replace each odd digit d of n with (d-1)/2.
+A108772	multraf	0	(self, n) -> self.s(0).-(self.s(1))./(30)	""	new A108091(), new A108093()
+A117757	lambdan	0	n -> PI(ZV(4).^(n + 1)).-(PI(ZV(4).^(n)))
+A134844	filnum	1	1	k -> Integer.toString(k).indexOf('0') < 0 && Integer.toString(k*k).indexOf('0') >= 0	Numbers k such that k contains no zero but k^2 contains at least one zero.
+A141071	lambdan	1	n -> PM(n).mod(Functions.DIGIT_SUM.z(n))
+A145312	polyxa	0	"[1]"	"x,B,dif,dif"	2	0	new A004009()
+A160393	lambdan	1	n -> SQRT(ZV(3).^(n).-(3)./(2)).+(1)
+A167679	lambdan	0	n -> new Z(StringUtils.translate(Integer.toString(n), "1357902468", "2222211111"))	Replace odd digits with 2 and even digits with 1.
+A170991	polya	2	"[1]"	"5,x,B,^3,*,3,x,B,*,x,C,*,-,2,x,D,*,-,25920,/"	new A006352(), new A004009(), new A013973()
+A174663	lambdan	1	n -> FA(n - 1).*(SD(n, d -> Z_1(n + d).*(MU(n/d)).*(BI(2*d, d))))./(2)	a(n) = ((n-1)!/2) * sumdiv(n, d, ( -1)^(n+d) * moebius(n/d) * binomial(2*d,d) );
+A174668	lambdan	1	n -> FA(n - 1).*(SD(n, d -> Z_1(n + d).*(PHI(n/d)).*(BI(2*d, d))))./(2)	a(n) = ((n-1)!/2) * sumdiv(n, d, ( -1)^(n+d) * eulerphi(n/d) * binomial(2*d,d) );
+A176920	lambdan	1	n -> D007732(ZV(n).*(n))	Period of decimal representation of 1/n^2.
+A176921	lambdan	1	n -> D007732(ZV(n).*(n).*(n))	Period of decimal representation of 1/n^3.A231961	poly	0	"[1]"	"A5928"
+A176985	filter	1	new A000040()	p -> PP(Functions.DIGIT_SUM.i(p) + 5)	sum of digits + 5 is prime.	nonn,base	1..1000	nyi	_Vincenzo Librandi_
+A177005	filnum	0	1	k -> ZV(k).^(k).mod(PM(k)).equals(ZV(k))	Numbers k such that k^k = k (mod PM(k)).	nonn,more	1..24	nyi	_Farideh Firoozbakht_
+A177017	filter	1	new A000040()	p -> PP(p.+(Functions.NEXT_PRIME.z(p)).+(1))	Primes PM(n) such that PM(n) + PM(n+1) + 1 is also prime.	nonn,easy	1..1000	nyi	_Vincenzo Librandi_
+A177024	filnum	1	1	k -> Z2(k - 1).modZ(k).equals(TAU(k))	Numbers k such that 2^(k-1) mod k = number of divisors of k.	nonn	1..10000	nyi	_Juri-Stepan Gerasimov_
+A177041	lambdan	1	n -> SU(1, n, k -> new Q(k*k, n).round())	Sum(round(k^2/n),k=1..n).	nonn,easy	1..50	nyi	_Mircea Merca_
+A177089	filnum	1	0	k -> !PP(ZV(k).^(3).-(k + 1))	Numbers n >= 0 such that n^3-n-1 is not prime.	nonn	1..10000	nyi	_Vincenzo Librandi_
+A177091	filnum	1	2	k -> !PP(ZV(k).^(4).-(k + 1))	Numbers n such that n^4-n-1 is not prime.	nonn,easy	1..1000	nyi	_Vincenzo Librandi_
+A177106	filnum	1	2	k -> !PP(ZV(k).^(5).-(k + 1))	Numbers k for which k^5-k-1 is composite.	nonn	1..10000	nyi	_Vincenzo Librandi_
+A177207	trilambn	1	1	1	(n, k) -> Z2(n - k).modZ(n)	Triangle read by rows: R(n,k) = 2^(n-k) mod n.
+A177360	parmof2	1	A177359	1	a(n) contains the nonzero frequencies f(d) of digits d=0 .. 9 in all terms up to a(n-1) in concatenated form sorted with respect to d: f(0)//0//f(1)//1//...//f(9)//9. Initial term a(1)=1.	easy,nonn,base	1..50000	nyi	_Paolo P. Lava_ and _Giorgio Balzarotti_
+A177361	parmof2	1	A177359	2	a(n) contains the nonzero frequencies f(d) of digits d=0 .. 9 in all terms up to a(n-1) in concatenated form sorted with respect to d: f(0)//0//f(1)//1//...//f(9)//9. Initial term a(1)=2.	easy,nonn,base	1..25000	nyi	_Paolo P. Lava_ and _Giorgio Balzarotti_
+A177362	parmof2	1	A177359	3	a(n) contains the nonzero frequencies f(d) of digits d=0 .. 9 in all terms up to a(n-1) in concatenated form sorted with respect to d: f(0)//0//f(1)//1//...//f(9)//9. Initial term a(1)=3.	easy,nonn,base	1..25000	nyi	_Paolo P. Lava_ and _Giorgio Balzarotti_
+A177363	parmof2	1	A177359	4	a(n) contains the nonzero frequencies f(d) of digits d=0 .. 9 in all terms up to a(n-1) in concatenated form sorted with respect to d: f(0)//0//f(1)//1//...//f(9)//9. Initial term a(1)=4.	easy,nonn,base	1..25000	nyi	_Paolo P. Lava_ and _Giorgio Balzarotti_
+A177364	parmof2	1	A177359	5	a(n) contains the nonzero frequencies f(d) of digits d=0 .. 9 in all terms up to a(n-1) in concatenated form sorted with respect to d: f(0)//0//f(1)//1//...//f(9)//9. Initial term a(1)=5.	easy,nonn,base	1..25000	nyi	_Paolo P. Lava_ and _Giorgio Balzarotti_
+A177365	parmof2	1	A177359	6	a(n) contains the nonzero frequencies f(d) of digits d=0 .. 9 in all terms up to a(n-1) in concatenated form sorted with respect to d: f(0)//0//f(1)//1//...//f(9)//9. Initial term a(1)=6.	easy,nonn,base	1..25000	nyi	_Paolo P. Lava_ and _Giorgio Balzarotti_
+A177366	parmof2	1	A177359	7	a(n) contains the nonzero frequencies f(d) of digits d=0 .. 9 in all terms up to a(n-1) in concatenated form sorted with respect to d: f(0)//0//f(1)//1//...//f(9)//9. Initial term a(1)=7.	easy,nonn,base	1..25000	nyi	_Paolo P. Lava_ and _Giorgio Balzarotti_
+A177367	parmof2	1	A177359	8	a(n) contains the nonzero frequencies f(d) of digits d=0 .. 9 in all terms up to a(n-1) in concatenated form sorted with respect to d: f(0)//0//f(1)//1//...//f(9)//9. Initial term a(1)=8.	easy,nonn,base	1..25000	nyi	_Paolo P. Lava_ and _Giorgio Balzarotti_
+A177368	parmof2	1	A177359	9	Count the digits of the previous terms and describe nonzero counts, digits in ascending order, concatenating the count and the digit. Initial term is 9.	easy,nonn,base	1..25000	nyi	_Paolo P. Lava_ and _Giorgio Balzarotti_
+A177454	sintrif	1	(term, n) -> BI(term.*(2), term).-(2)./(term)	""	new A000040()	a(n) = (binomial(2*p,p) - 2)/p, where p = prime(n).	nonn	1..263	nyi	_Michel Lagneau_
+A177502	filter	0	new A000040()	p -> PP(FA(p.-(2)).+(1))	Prime numbers p such that (p-2)! + 1 is prime.	nonn,more	1..12	nyi	_Artur Jasinski_
+A182564	lambdan	0	n -> PI(FI(n).-(1))
+A185699	polya	0	"[1]"	"11,x,<10,B,*,x,B,-,2,/"	new A006352()
+A191111	lambdan	0	n -> n == 0 ? ZV(11) : new Z("11" + Long.toString(10L*n))	For n > 0, a(n) = 11 & 10n where & denotes decimal concatenation
+A192324	lambdan	1	n -> Z2(n).-(1).mod(PM(n))	a(n) = (2^n-1)%prime(n)
+A192515	lambdan	0	n -> { final Z dp = Z2(n).-(ZV(n).*(n)); return PI(Z2(n)).-(PI(dp)).+(PP(dp) ? 1 : 0); }
+A203411	lambdan	2	n -> PM(n).^(PM(n).-(3)./(2))
+A247485	lambdan	1	n -> SQRT(PM(n).*(4)).+(1)	1 + sqrtint(4*prime(n)); \\ _Michel Marcus_, Aug 26 2021
+A249010	polya	0	"[1]"	"x,B,3,x,<1,B,*,-,5,x,<4,B,*,-,15,x,<9,B,*,+,8,/"	new A006352()
+A263319	lambdan	1	n -> PI(ZV(n).*(n)).*(PHI(n))./(2)
+A281371	polya	0	"[1]"	"x,B,x,C,*,x,D,-,^2,518400,/"	new A006352(), new A004009(), new A013973()
+A281373	polyxa	0	"[1]"	"x,B,x,C,*,x,D,-,^2,300,x,D,^2,x,C,^3,-,*,/,neg"	1	0	new A006352(), new A004009(), new A013973()
+A282017	polya	0	"[1]"	"x,C,x,B,^2,+,2,/"	new A006352(), new A004009()
+A288472	polya	0	"[1]"	"x,B,x,C,/"	new A058550(), new A029828()
+A288485	polya	1	"[1]"	"x,B,28,x,<1,B,*,-,63,x,<2,B,*,+,36,x,<5,B,*,-,240,/"	new A004009()
+A290009	polya	0	"[1]"	"x,B,x,C,*,x,D,*"	new A004009(), new A008410(), new A029828()
+A290010	polya	0	"[1]"	"x,B,^2,x,C,*"	new A013973(), new A029828()
+A290049	polya	0	"[1]"	"x,B,x,C,*,x,D,*"	new A008410(), new A013974(), new A029828()
+A297616	lambdan	1	n -> PI(n).-(PI(n / 2)).+(1).+(n >= 4 ? 1 : 0)	1 + primepi(n) - primepi(n / 2) + (n >= 4); \\ _Michel Marcus_, Jan 09 2018
+A302097	lambdan	0	n -> Functions.BIG_OMEGA.z(ZV(13).^(Z2(n)).+(1)./(2))
+A306084	filter	1	new A000040()	p -> PP(new Z("0" + p.toString().replaceAll("[02468]", "")))	Primes which remain prime after all even digits are removed.
+A306085	filter	1	new A000040()	p -> { final Z q = new Z("0" + p.toString().replaceAll("[02468]", "")); return !p.equals(q) && PP(q); }	Primes which have an even decimal digit and remain prime after all even digits are removed.
+A306086	filter	1	new A000040()	p -> PP(new Z("0" + p.toString().replaceAll("[13579]", "")))	Primes which remain prime after all odd digits are deleted.
+A308495	lambdan	1	n -> SU(1, PMi(n), k -> Functions.OMEGA.z(k)).+(1)	sum(k=1, prime(n), omega(k)); \\ _Michel Marcus_, Jun 05 2019
+A308729	lambdan	1	n -> SA(n+1, 3).+(SA(n+1, 2)).-(FA(n))
+A330034	lambdan	0	n -> ZV(CV(n).cos().signum())	sign(cos(n))
+A330035	lambdan	0	n -> (n == 0) ? ZV(0) : (CV(n)./(CR.PI).frac().compareTo(CR.HALF) < 0 ? ZV(1) : ZV(-1))	sign(tan(n))
+A348836	lambdan	1	n -> PI(PM(n).^(2)./(2))
+A351650	filnum	1	1	k -> { final int sd = Functions.DIGIT_SUM.i(k); return Functions.DIGIT_SUM.z(k*k).mod(sd) == 0; }
+A351651	sintrif	1	(term, n) -> { final int sd = Functions.DIGIT_SUM.i(term); return Functions.DIGIT_SUM.z(term.^(2))./(sd); }	""	new A351650()
+A351744	lambdan	0	n -> new Z(StringUtils.translate(Integer.toString(n), "02468", "13579"))	Increment all even digits of n.	nonn,base	0..67	nyi	_Alex Ratushnyak_
+A351761	arrlamb	0	0	0	-1	(n, k) -> RU(0, n, j -> new Q(ZV(k).^(n - j).*(ZV(n - j).^(j)), FA(j))).*(FA(n)).num()	= n! * Sum_{j=0..n} k^(n-j) * (n-j)^j/j!.	nonn,tabl	0..54	nyi
+A351776	arrlamb	0	0	0	-1	(n, k) -> RU(0, n, j -> new Q(ZV(-k).^(n - j).*(ZV(n - j).^(j)), FA(j))).*(FA(n)).num()	= n! * Sum_{j=0..n} (-k)^(n-j) * (n-j)^j/j!.	sign,tabl	0..65	nyi
+A351790	arrlamb	0	0	0	-1	(n, k) -> RU(0, n, j -> new Q(ZV(k).*(n - j).^(j), FA(j))).*(FA(n)).num()	Square array T(n,k), n >= 0, k >= 0, read by antidiagonals downwards, where T(n,k) = n! * Sum_{j=0..n} (k * (n-j))^j/j!.	nonn,tabl	0..54	nyi
+A351791	arrlamb	0	0	0	-1	(n, k) -> RU(0, n, j -> new Q(ZV(-k).*(n - j).^(j), FA(j))).*(FA(n)).num()	Square array T(n,k), n >= 0, k >= 0, read by antidiagonals downwards, where T(n,k) = n! * Sum_{j=0..n} (-k * (n-j))^j/j!.	sign,tabl	0..65	nyi
+A351807	filnum	1	1	k -> { final int pd = Functions.DIGIT_PRODUCT.i(k); return pd != 0 && Functions.DIGIT_PRODUCT.z(k*k).mod(pd) == 0; }	Integers m such that pod(m) divides pod(m^2) where pod = product of digits = F007954.	nonn,base	1..65	nyi	_Bernard Schott_
+A351808	sintrif	1	(term, n) -> { final int pd = Functions.DIGIT_PRODUCT.i(term); return Functions.DIGIT_PRODUCT.z(term.^(2))./(pd); }	""	new A351807()	a(n) is the quotient obtained when pod(m) divides pod(m^2), with pod = product of digits = F007954 and m = A351807(n).	nonn,base	1..73	nyi	_Bernard Schott_
+A351871	multia	1	"1,2"	(self, n) -> { final Z g = GCD(self.a(n - 1), self.a(n - 2)); return g.+(self.a(n - 1).+(self.a(n - 2))./(g)); }
+A351890	filter	0	new A000040().skip(2)	p -> { final Z t = TAU(p.-(2)); return TAU(p.-(1)).-(1).equals(t) && t .equals(TAU(p.-(3))); }	Primes p such that tau(p - 1) - 1 = tau(p - 2) = tau(p - 3), where tau(k) is the number of divisors of k (F000005).	nonn	1..20	nyi	_Jaroslav Krizek_
+A365241	lambdan	1	n -> PM(PI(2*n).+(n))
+A372783	lambdan	0	n -> { final String sn = Integer.toString(n, 3); return new Z(sn.substring(0, 1) + StringUtils.translate(sn.substring(1), "01", "10"), 3); }	In the ternary expansion of n: keep the initial digit, and then replace 0's with 1's and 1's with 0's.
+A373329	lambdan	0	n -> SQRT(ZV(n).^(4).+(ZV(n).*(n))./(2))
+A377221	polyxa	0	"[1]"	"x,B,<1,rev,x,/,^1/8"	1	0	new A004009()
+A377222	polyxa	0	"[1]"	"x,B,<1,rev,x,/"	1	0	new A013973()
+A377223	polyxa	0	"[1]"	"x,B,<1,rev,x,/,^1/12"	1	0	new A013973()
+A384129	lambdan	0	n -> SA(3*n, 2*n)
+A384130	lambdan	0	n -> SA(4*n, 3*n)
+A387948	lambdan	0	n -> RU(0, n/2, k -> QV(n + 1).^(k - 1).*(BI(n-1, n-2*k))./(FA(k))).*(FA(n)).num()
+A387949	lambdan	0	n -> RU(0, n/2, k -> QV(n + 1).^(k - 1).*(BI(n+k-1, n-2*k))./(FA(k))).*(FA(n)).num()
+A387950	lambdan	0	n -> RU(0, n/3, k -> QV(n + 1).^(k - 1).*(BI(n-k-1, n-3*k))./(FA(k))).*(FA(n)).num()
+A387951	lambdan	0	n -> RU(0, n/3, k -> QV(n + 1).^(k - 1).*(BI(n-1, n-3*k))./(FA(k))).*(FA(n)).num()
+A387964	lambdan	0	n -> RU(0, n/2, k -> QV(n + 1).^(k - 1).*(BI(2*n-k, n-2*k))./(FA(k))).*(FA(n)).num()
+A387965	lambdan	0	n -> RU(0, n/2, k -> QV(n + 1).^(k - 1).*(BI(2*n, n-2*k))./(FA(k))).*(FA(n)).num()
+A387966	lambdan	0	n -> RU(0, n/2, k -> QV(n + 1).^(k - 1).*(BI(2*n+k, n-2*k))./(FA(k))).*(FA(n)).num()
+A387968	lambdan	0	n -> RU(0, n/2, k -> QV(BI(k+1, n-2*k))./(FA(k))).*(FA(n)).num()
+A387969	lambdan	0	n -> RU(0, n/2, k -> QV(BI(2*k+1, n-2*k))./(FA(k))).*(FA(n)).num()
+A387970	lambdan	0	n -> RU(0, n/2, k -> QV(BI(3*k+1, n-2*k))./(FA(k))).*(FA(n)).num()
+A387971	lambdan	0	n -> RU(0, n/2, k -> QV(n + 1).^(k - 1).*(BI(n+k+1, n-2*k))./(FA(k))).*(FA(n)).num()
+A387972	lambdan	0	n -> RU(0, n/2, k -> QV(n + 1).^(k - 1).*(BI(n+2*k+1, n-2*k))./(FA(k))).*(FA(n)).num()
+A387973	lambdan	0	n -> RU(0, n/2, k -> QV(n + 1).^(k - 1).*(BI(n+3*k+1, n-2*k))./(FA(k))).*(FA(n)).num()
+A387974	lambdan	0	n -> RU(0, n/2, k -> QV(n + 1).^(k - 1).*(BI(n+1, n-2*k))./(FA(k))).*(FA(n)).num()
+A387976	lambdan	0	n -> RU(0, n/2, k -> QV(n + 1).^(k - 1).*(BI(2*n-2*k, n-2*k))./(FA(k))).*(FA(n)).num()
+A388848	lambdan	1	n -> ZV(n).^(4).*(6).-(ZV(n).*(3*n)).+(n&1)./(4)
+A389593	filnum	1	1	k -> SIGMA(k).^(2).equals(PSI(k).^(2).+(PHI(k).^(2)))	k such that sigma(k)^2 = psi(k)^2 + phi(k)^2.	nonn,new	1..29	nyi	_S. I. Dimitrov_
+---- 2025-10-16 19:00:57
+A085586	filnum	1	0	k -> ZV(k).toString().matches("[02468]+") && ZV(k).^(2).toString().matches("[02468]+") && ZV(k).^(3).toString().matches("[02468]+")	n, n^2 and n^3 all use only even digits.
+A085597	filnum	1	0	k -> ZV(k).toString().matches("[13579]+") && ZV(k).^(3).toString().matches("[13579]+")	Numbers k such that k and k^3 use only odd digits.
+A117978	filter	1	new A000217()	v -> v.toString().matches("[02468]+")	Triangular numbers with only even digits.
+A118567	filter	1	new A000959()	v -> v.toString().matches("[13579]+")	Lucky numbers with only odd digits.
+A159471	filter	1	new A002385()	v -> v.toString().matches("[13579]+")
+A320062	filter	1	new A018252()	v -> v.toString().matches("[13579]+")	Nonprimes with odd digits only.
+A351893	filnum	1	0	k -> Functions.FACTORIAL_BASE.z(k).toString().matches("[02468]+")	Numbers that contain only even digits in their factorial-base representation.
+A351894	filnum	1	0	k -> Functions.FACTORIAL_BASE.z(k).toString().matches("[13579]+")	Numbers that contain only odd digits in their factorial-base representation.
+---- 2025-10-16 19:05:12
+A117996	filter	1	new A000931().skip(7)	v -> v.toString().matches("[13579]+")	Padovan numbers with only odd digits.
+A353342	filnum	1	0	k -> ZV(k).toString().matches("[02468]+") && ZV(k).^(3).toString().matches("[02468]+")	Numbers k such that k and k^3 use only even digits.
+A380874	filtpos	1	1	new A067044()	v -> v.testBit(0) && v.compareTo(ZV(1)) > 0	Indices of odd values > 1 in J067044
+A383939	filnum	1	0	k -> Long.toString(k).matches("[02468]+") && Long.toString((long) k * (k + 1L) / 2L).matches("[02468]+")	Numbers k such that k and the k-th triangular number T(k) = k*(k+1)/2 have only even digits.
+---- 2025-10-16 19:07:33
+A118568	filter	1	new A000959()	v -> v.toString().matches("[02468]+[13579]")	Lucky numbers with only even digits, except for the last one.

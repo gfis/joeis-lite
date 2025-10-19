@@ -1,0 +1,115 @@
+#lambdan A389001	polyx	2	"[1],[1,1],[1,-1]"	"p1,log,p2,/,^2,2,/"	0	1
+#lambdan A389002	polyx	3	"[1],[1,1],[1,-1]"	"p1,log,p2,/,^3,6,/"	0	1
+#lambdan A389003	polyx	4	"[1],[1,1],[1,-1]"	"p1,log,p2,/,^4,24,/"	0	1
+---- 2025-09-27 20:33:21
+A086543	poly	0	"[1]"	"1,x,eta,/,1,x,<1,eta,/,-"
+A093478	padding	0	1,1,-1,18,34	6
+A093479	padding	0	0,1,6,8,18	8
+A102688	lambdan	1	n -> D000079(n).+(D000031(n).*(n))./(2)
+A116603	polya	0	"[1],[0,-1]"	"1,p1,B,/"	new A084785()
+A127197	lambdan	2	n -> new Q(PI(n), Z2(n)).num()	pi(n)/2^n )
+A127234	lambdan	1	n -> FA(Functions.TRIANGULAR.i(n - 1)).*(FA(n))	Table[n!((n(n-1))/2)!, {n, 10}]
+A127235	lambdan	1	n -> FA(n*(n - 1)).*(FA(n))		Table[n! (2*Sum[x, {x, 1, n - 1}])!, {n, 1, 10}]
+A127267	lambdan	2	n -> ZV(n)./(F000720(n))
+A127395	lambdan	0	n -> PR(1, n, i -> FA(2*i)).-(FA(n + 1).^(n))	Product((2*i)!, i = 1..n) - ((n+1)!)^n.	nonn	0..28	nyi	_N. J. A. Sloane_
+A127413	lambdan	1	n -> SU(1, n, k -> GCDi(k, n) == 1 ? PM(k) : ZV(0))	, gcd(k,n)=1} prime(k).	nonn,easy,look	1..10000	nyi	_Gary W. Adamson_
+A127507	trilambn	1	1	1	(n, k) -> MU(n)	Triangle read by rows: T(n,k) = mu(n) where 1<=k<=n and mu=F008683.	tabl,easy,sign	1..55	nyi	_Gary W. Adamson_
+A127572	trilambn	1	1	1	(n, k) -> n%k == 0 ? SIGMA(k).*(n/k) : ZV(0)	if k|n, T(n,k) = 0 otherwise
+A127650	lambdan	1	n -> ZV(n).^(n).-(DF(2*n - 1))	n^n - (2n-1)!!.	nonn	1..19	nyi	_N. J. A. Sloane_
+A127971	lambdan	0	n -> D002487(n + 1).+((1 - ((n&1) == 0 ? 1 : -1))/2)	a(n) = fusc(n+1) + (1-(-1)^n)/2, fusc = D002487.	easy,nonn	0..10000	nyi	_Paul Barry_
+A128106	filter	1	new A001481().skip(1)	(k, v) -> k == 1 || !v.testBit(0)	Sizes of possible gaps around a Gaussian prime: 1 and the even numbers in A001481.
+A128215	multia	1	"1,1"	(self, n) -> self.a(n - 1).+(self.a(Functions.GPF.i(n - 1)))	a(1)=a(2)=1. a(n+1) = a(n) + a(largest prime dividing n).	nonn	1..10000	nyi	_Leroy Quet_
+A128216	multia	1	"1,1"	(self, n) -> self.a(n - 1).+(self.a(Functions.LPF.i(n - 1)))	a(1)=a(2)=1. a(n+1) = a(n) + a(smallest prime dividing n).	nonn	1..10000	nyi	_Leroy Quet_
+A128265	lambdan	1	n -> SU(1, n, m -> LCM(SA(n, m), S2(n, m)))	, where s(n,m) is an unsigned Stirling number of the first kind and S(n,m) is a Stirling number of the second kind. (a(n) = sum of terms in n-th row of triangle A128264.)	nonn	1..17	nyi	_Leroy Quet_
+A128266	lambdan	1	n -> SU(1, n, m -> GCD(SA(n, m), S2(n, m)))	, where s(n,m) is an unsigned Stirling number of the first kind and S(n,m) is a Stirling number of the second kind.	nonn	1..30	nyi	_Leroy Quet_
+A131337	holos	1	[0,-1,-3,-1,3,1,-1]	1,2,4,9,16	0	0
+A143103	holos	1	[0,-1,2,-1,2,-4,2,-1,2,-1]	1,5,17,29,54,96,138,202	0	0
+A158112	poly	0	"[1]"	"x,eta,2,n,^,^"
+A158113	poly	0	"[1]"	"x,eta,3,n,^,^"
+A158114	poly	0	"[1]"	"x,eta,4,n,^,^"
+A158115	poly	0	"[1]"	"x,eta,5,n,^,^"
+A159298	filnum	0	1	k -> { final Z k10 = ZV(10).^(k); return PP(k10.*(k).*(k10.-(1)./(9)).+(1)); }	Numbers k such that k * 10^k * (10^k - 1)/9 + 1 is prime.
+A179902	holos	1	[[0],[1],[-5],[10],[-10],[5],[-1]]	1,2,5,11,23	0	0
+A255526	polya	1	"[1]"	"x,B,n,^"	new A081362()
+A262232	lambdan	0	n -> n == 0 ? ZV(0) : D000031(n).-(2 + n/2)	a(n) = J000031(n) - 2 - floor(n/2), n>0.
+A262539	polya	0	"[1]"	"x,B,3,n,*,^"	new A010815()
+A270913	polya	0	"[1]"	"x,B,n,^"	new A000009()
+A270922	polya	0	"[1]"	"x,B,n,^"	new A026007()
+A297322	polya	0	"[1]"	"x,B,n,^"	new A022629()	a(n) = [x^n] Product_{k>=1} (1 + k*x^k)^n.
+A297324	polya	0	"[1]"	"x,B,n,^"	new A022661()	a(n) = [x^n] Product_{k>=1} (1 - k*x^k)^n.
+A297326	polya	0	"[1]"	"x,B,n,^"	new A022693()	a(n) = [x^n] Product_{k>=1} 1/(1 + k*x^k)^n.
+A297329	polya	0	"[1]"	"x,B,n,^"	new A006906()	a(n) = [x^n] Product_{k>=1} 1/(1 - k*x^k)^n.
+A301518	polya	0	"[1]"	"x,B,n,^"	new A033461()
+A303071	poly	0	"[1],[1,-1],A9"	"x,B,n,^,p1,/"
+A304443	polya	0	"[1]"	"x,B,n,2,*,^"	new A000009()	Coefficient of x^n in Product_{k>=1} (1+x^k)^(2*n).
+A304444	polya	0	"[1]"	"x,B,n,2,*,^"	new A000041()	Coefficient of x^n in Product_{k>=1} 1/(1-x^k)^(2*n).
+A304445	polya	0	"[1]"	"x,B,n,2,^,^"	new A000009()	Coefficient of x^n in Product_{k>=1} (1+x^k)^(n^2).
+A304446	polya	0	"[1]"	"x,B,n,2,^,^"	new A000041()	Coefficient of x^n in Product_{k>=1} 1/(1-x^k)^(n^2).
+A304459	polya	0	"[1]"	"x,B,n,3,^,^"	new A000009()	Coefficient of x^n in Product_{k>=1} (1+x^k)^(n^3).
+A304460	polya	0	"[1]"	"x,B,n,3,^,^"	new A000041()	Coefficient of x^n in Product_{k>=1} 1/(1-x^k)^(n^3).
+A322037	lambdan	0	n -> Z.TWO.pow(D000031(n))	a(n) = 2^b(n), where b(n) = J000031(n).
+A340223	polya	0	"[1]"	"x,B,x,<1,B,*,x,<3,B,*"	new A001156()
+A355075	rambdan	0	n -> RU(0, n, k -> new Q(D002487(k), D002487(k + 1)))	a(n) is the numerator of Sum_{k = 0..n} fusc(k)/fusc(k+1) (where fusc is Sterns diatomic series A002487).
+A355076	rambdad	0	A355075
+A385602	holos	1	[[0],[1],[-3],[3],[-1]]	21,50,95,149,215	0	0
+A385949	lambdan	0	n -> F055642(E220079(n))	""	
+A387018	holos	0	[0,-1,2,2,2,-1]	0,1,4,11,32	0	0
+A387288	lambdan	0	n -> SU(0, n/2, k -> BI(n, k).*(BI(2*k, n-2*k)))	""		a(n) = sum(k=0, n\2, binomial(n, k)*binomial(2*k, n-2*k))	_	_	_
+A387781	holos	0	[0,1,-3,1,-1,3,-1]	2,5,12,32,83	0	0
+A387782	holos	1	[[0],[1],[-3],[1],[0],[-1],[3],[-1]]	0,1,2,7,18,48	0	0
+A387783	holos	0	[[0],[1],[-3],[1],[0],[-1],[3],[-1]]	1,1,3,7,19,48	0	0
+A387784	holos	0	[[0],[1],[-3],[1],[0],[-1],[3],[-1]]	0,2,5,14,36,96,251	0	0
+A387785	holos	0	[[0],[1],[-3],[1],[0],[-1],[3],[-1]]	1,2,6,14,37,96	0	0
+A387858	holos	3	[0,-1,1,3,-3,-3,3,1,-1]	9,20,50,81,147,208,324	0	0
+A387883	holos	0	[[0],[1],[-3],[3],[-1]]	1,2,14,41,82	0	0
+A388140	holos	1	[0,64,-56,14,-1]	6,108,1176	0	0
+A388424	holos	0	[0,64,-56,14,-1]	1,42,532	0	0
+A388657	lambdan	0	n -> { final Z p = PM(n); return GPF(p.^(p).+(1)); }	a(n) is the greatest prime factor of prime(n)^prime(n) + 1.	nonn,new	1..34	nyi	_Hugo Pfoertner_
+A388734	poly	0	"[1],[1,-1]"	"1,A,^2,<1,+,p1,A,^3,*,<2,+"
+A388911	holos	0	[[0],[-112320,1006218,-3279231,4837221,-3509784,1219680,-161784],[1644480,-14729901,48021113,-72491120,54924388,-20245120,2876160],[-3905280,36534051,-124407306,201588507,-166130244,66647448,-10192392],[0,-448452,2887134,-6472464,6464466,-2931012,485352]]	1	0	0
+A388912	holos	0	[[0],[-46080,337152,-1064448,1579584,-1157760,405696,-54144],[103680,-788640,2525968,-3859648,2965040,-1104320,157920],[-23040,211536,-723672,1180224,-978768,395496,-60912],[0,-3456,22242,-49881,49959,-22815,3807]]	1	0	0
+A388913	lambdan	0	n -> SU(0, n, k -> Z2(n - k).*(BI(n + 1, k)).*(BI(4*n - 2*k + 4, n - k)))./(n + 1)	a(n) = (1/(n+1)) * Sum_{k=0..n} 2^(n-k) * binomial(n+1,k) * binomial(4*n-2*k+4,n-k).
+A388914	lambdan	0	n -> SU(0, n, k -> Z2(k).*(BI(n + 1, k)).*(BI(4*n - 2*k + 4, n - k)))./(n + 1)	a(n) = (1/(n+1)) * Sum_{k=0..n} 2^k * binomial(n+1,k) * binomial(4*n-2*k+4,n-k).
+A388915	holos	0	[[0],[-1067040,9638876,-31354154,46133282,-33408440,11593868,-1536392],[22826880,-205263410,666814198,-1003110248,758110180,-278969240,39591640],[-84408480,787239882,-2675652824,4329847158,-3564138656,1428161592,-218167664],[0,-6662574,42878133,-96067134,95859801,-43409520,7179678]]	1	0	0
+A388916	lambdan	0	n -> SU(0, n, k -> ZV(3).^(n - k).*(BI(n + 1, k)).*(BI(4*n - 2*k + 4, n - k)))./(n + 1)	a(n) = (1/(n+1)) * Sum_{k=0..n} 3^(n-k) * binomial(n+1,k) * binomial(4*n-2*k+4,n-k).
+A388975	lambdan	1	n -> D033885(D003961(n))
+A388976	lambdan	1	n -> D033885(n).*(D003961(n))
+A388977	lambdan	1	n -> D033885(D003961(n)).*(n)
+A388978	lambdan	1	n -> D326128(n).*(D389077(n))
+A388979	lambdan	1	n -> D326127(n).*(D389078(n))
+A388991	lambdan	1	n -> n == 6 ? ZV(0) : new Q(D326128(n), D326127(n)).num()	numerator of ratio J326128(n) / J326127(n), with a(6) = 0 by convention.	nonn,frac,new	1..65537	nyi	_Antti Karttunen_
+A388992	lambdan	1	n -> n == 6 ? ZV(0) : D326127(n)./(D326129(n))	signed denominator of ratio J326128(n) / J326127(n), with a(6) = 0 by convention.	sign,frac,new	1..65537	nyi	_Antti Karttunen_
+A389001	lambdan	2	n -> SU(0, n, k ->BI(n, k).*(S1(k, 2)).*(FA(n - k +1)))
+A389002	lambdan	3	n -> SU(0, n, k ->BI(n, k).*(S1(k, 3)).*(FA(n - k +2)))./(2)
+A389003	lambdan	4	n -> SU(0, n, k ->BI(n, k).*(S1(k, 4)).*(FA(n - k +3)))./(6)
+A389060	lambdan	0	n -> SU(0, n/2, k -> BI(n, k).*(BI(3*k, n - 2*k)))
+A389061	lambdan	0	n -> SU(0, n/3, k -> BI(n, k).*(BI(3*k, n - 3*k)))	a(n) = Sum_{k=0..floor(n/3)} binomial(n,k) * binomial(3*k,n-3*k).
+A389062	lambdan	0	n -> SU(0, n/2, k -> BI(n + 1, k).*(BI(2*k, n - 2*k)))./(n + 1)	a(n) = (1/(n+1)) * Sum_{k=0..floor(n/2)} binomial(n+1,k) * binomial(2*k,n-2*k).
+A389063	lambdan	0	n -> SU(0, n/2, k -> BI(n + 1, k).*(BI(3*k, n - 2*k)))./(n + 1)	a(n) = (1/(n+1)) * Sum_{k=0..floor(n/2)} binomial(n+1,k) * binomial(3*k,n-2*k).
+A389064	lambdan	0	n -> SU(0, n/3, k -> BI(n + 1, k).*(BI(3*k, n - 3*k)))./(n + 1)	a(n) = (1/(n+1)) * Sum_{k=0..floor(n/3)} binomial(n+1,k) * binomial(3*k,n-3*k).
+A389076	lambdan	1	n -> SIGMA(D003961(n)).-(CORE(D003961(n)))	nonn,new	1..10000	nyi	_Antti Karttunen_
+A389077	lambdan	1	n -> F001065(D003961(n)).-(CORE(D003961(n)))	sign,new	1..10000	nyi	_Antti Karttunen_
+A389078	lambdan	1	n -> D003961(n).-(CORE(D003961(n)))	nonn,new	1..10000	nyi	_Antti Karttunen_
+A389120	holos	0	[0,-1,2,2,2,-1]	0,1,2,7,20	0	0
+A389125	lambdan	0	n -> SU(0, n/3, k -> BI(n, k).*(BI(2*k, n-3*k)))	""		a(n) = sum(k=0, n\3, binomial(n, k)*binomial(2*k, n-3*k))	_	_	_
+A389126	lambdan	0	n -> SU(0, n/4, k -> BI(n, k).*(BI(2*k, n-4*k)))	""		a(n) = sum(k=0, n\4, binomial(n, k)*binomial(2*k, n-4*k))	_	_	_
+A389127	lambdan	0	n -> SU(0, n/3, k -> BI(n, k).*(BI(n+k, n-3*k)))	""		a(n) = sum(k=0, n\3, binomial(n, k)*binomial(n+k, n-3*k))	_	_	_
+A389128	lambdan	0	n -> SU(0, n/4, k -> BI(n, k).*(BI(n+k, n-4*k)))	""		a(n) = sum(k=0, n\4, binomial(n, k)*binomial(n+k, n-4*k))	_	_	_
+A389129	lambdan	0	n -> SU(0, n/3, k ->BI(n + 1, k).*(BI(2*k, n - 3*k)))./(n + 1)
+A389130	lambdan	0	n -> SU(0, n/4, k ->BI(n + 1, k).*(BI(2*k, n - 4*k)))./(n + 1)
+A389131	lambdan	0	n -> SU(0, n/3, k ->BI(n + 1, k).*(BI(n+k+1, n - 3*k)))./(n + 1)
+A389132	lambdan	0	n -> SU(0, n/4, k ->BI(n + 1, k).*(BI(n+k+1, n - 4*k)))./(n + 1)
+A389136	lambdan	1	n -> SQRT(ZV(4*n)./(D037449(n)))	a(n) = 2*sqrt(n/D037449(n)).	nonn,new	1..10000	nyi	_Hugo Pfoertner_
+A389151	lambdan	0	n -> SU(0, n/2, k -> BI(n, k).*(BI(4*k, n-2*k)))	""		a(n) = sum(k=0, n\2, binomial(n, k)*binomial(4*k, n-2*k))	_	_	_
+A389152	lambdan	0	n -> SU(0, n/3, k -> BI(n, k).*(BI(4*k, n-3*k)))	""		a(n) = sum(k=0, n\3, binomial(n, k)*binomial(4*k, n-3*k))	_	_	_
+A389153	lambdan	0	n -> SU(0, n/2, k -> BI(n, k).*(BI(n+3*k, n-2*k)))	""		a(n) = sum(k=0, n\2, binomial(n, k)*binomial(n+3*k, n-2*k))	_	_	_
+A389154	lambdan	0	n -> SU(0, n/3, k -> BI(n, k).*(BI(n+3*k, n-3*k)))	""		a(n) = sum(k=0, n\3, binomial(n, k)*binomial(n+3*k, n-3*k))	_	_	_
+A389155	lambdan	0	n -> SU(0, n/2, k ->BI(n + 1, k).*(BI(4*k, n - 2*k)))./(n + 1)
+A389156	lambdan	0	n -> SU(0, n/3, k ->BI(n + 1, k).*(BI(4*k, n - 3*k)))./(n + 1)
+A389157	lambdan	0	n -> SU(0, n/2, k ->BI(n + 1, k).*(BI(n+3*k+1, n - 2*k)))./(n + 1)
+A389158	lambdan	0	n -> SU(0, n/3, k ->BI(n + 1, k).*(BI(n+3*k+1, n - 3*k)))./(n + 1)
+A389172	holos	1	[0,8,-14,7,-1]	4,11,31	0	0
+A389173	holos	1	[0,1,-1,2,-6,5,-1]	4,13,42,135,448	0	0
+A389177	holos	1	[0,-1,1,3,-3,-3,3,1,-1]	2,4,8,15,21,36,43	0	0
+A389178	holos	0	[0,2,-5,4,-1]	4,10,19	0	0
+A389183	holos	1	[0,1,-5,10,-10,5,-1]	4,15,41,94,190	0	0

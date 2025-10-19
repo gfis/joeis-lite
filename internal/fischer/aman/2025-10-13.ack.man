@@ -1,0 +1,63 @@
+---- 2025-10-13 18:22:44
+A097096	polya	0	"[1],[1,-1,-1]"	"x,B,p1,/"	new A097095()
+A097097	polya	0	"[1],[1,-1,0,-1]"	"x,<1,B,p1,/"	new A097095()
+A101516	polya	0	"[1],[0,0,1],[1,-2,1]"	"p1,p2,/,B,p2,/"	new A101514()
+A109957	lambdan	0	n -> Z_1(n).*(SU(0, n/2, k -> BI(3*n - 3*k, n - 2*k).*(3*k + 1)./(2*n - k + 1)))	((3k+1)/(2n-k+1))*binomial(3n-3k, n-2k)}.
+A109963	lambdan	0	n -> Z_1(n).*(SU(0, n/2, k -> BI(4*n - 4*k, n - 2*k).*(4*k + 1)./(3*n - 2*k + 1)))	a(n)=(-1)^n*sum{k=0..floor(n/2), ((4k+1)/(3n-2k+1))*binomial(4n-4k, n-2k)}.
+A113974	polya	1	"[1],[0,0,0,1]"	"1,p1,B,^3,x,B,/,-,2,/"	new A000122()
+A119395	sintrif	0	(term, n) -> new Q(term, 4).ceiling()	""	new A033716()
+A128611	holos	0	[[0],[-3264,384],[7712,-992],[-6828,984],[3004,-490],[-704,131],[84,-18],[-4,1]]	0,0,1,2,7,28,116,484,2022,8448	0	0
+A134531	multia	0	"0,1"	(self, n) -> ZV(1).-(SU(1, n - 1, k -> Z2(k*(n - k)).*(BI(n - 1, k - 1)).*(self.a(k))))	a(n) = 1 - Sum_{k = 1..n-1} 2^(k*(n-k))*C(n-1,k-1)*a(k) with a(1) = 1. (End)
+A147664	polyxa	0	"[1]"	"1,x,B,^3,<1,+"	1	0	new A182953()
+A156384	polya	0	"[1]"	"1,x,B,+,^2,1,x,<1,B,+,*,8,/"	new A000122()
+A157143	lambdan	0	n -> SU(0, n, k -> Z.NEG_ONE.^(BI(n - k + 1, 2)).*(BI((n - k)/2, k)).*(D001006(k)))	a(n)=sum{k=0..n, (-1)^C(n-k+1,2)*C(floor((n-k)/2),k)*A001006(k)}.
+A193777	multia	0	"1,2,6"	(self, n) -> self.a(n - 1).*(2).+(self.a(n - 2).*(n)).-(SU(1, n - 3, j -> self.a(j).*(j).*(D000085(n - j - 2))))	a(n) = 2*a(n-1) + n*a(n-2) - Sum_{j=1..n-3} j*a(j)*D000085(n-j-2).
+A203647	arrlamb	1	1	1	-1	(n, k) -> SU(1, k + 1, j -> S2(n, j))	= Sum_{j = 1..k+1} Stirling2(n,j)
+A219570	trilambn	0	0	0	(n, k) -> n == 0 ? ZV(0) : FA(n - 1).*(BI(n, k))
+A253076	lambdan	1	n -> SD(n, d -> (d&1) == 0 ? ZV(0) : MU(d).*(ZV(3).^(2*n/d).-(1)))./(8*n)	a(n) = (1/8*n) * Sum_{d|n, d odd} mu(d)*(3^(2*n/d) - 1)
+A261590	polya	0	"[1]"	"1,1,x,B,<1,-,/"	new A036768()
+A262973	lambdan	1	n -> RU(0, n - 2, k -> QV(n).^(k).*(n - k).*(n - 1 - k)./(FA(k))).*(FA(n)./(2)).num()	proc(n) 1/2*n!*add(n^q*(n - q)*(n - 1 - q)/q!, q = 0 .. n - 2) end procA101922	polyx	0	"[1],[0,2]"	"1,3,p1,cos,^2,*,+,sqrt,1,-,sqrt,p1,cos,/"	0	1
+A279789	lambdan	0	n -> (n == 1) ? ZV(1) : SD(n, d -> TAU(n/d).^(d))	a(n) = Sum_{d|n} tau(n/d)^d for n > 0
+A289635	polya	1	"[0,24]"	"x,B,dif,neg,<1,x,B,/"	new A006352()
+A289636	polya	1	"[0,-240]"	"x,B,dif,neg,<1,x,B,/"	new A004009()
+A289637	polya	1	"[0,504]"	"x,B,dif,neg,<1,x,B,/"	new A013973()
+A289638	polya	1	"[0,-480]"	"x,B,dif,neg,<1,x,B,/"	new A008410()
+A289639	polya	1	"[0,264]"	"x,B,dif,neg,<1,x,B,/"	new A013974()
+A289640	polya	1	"[0,24]"	"x,B,dif,neg,<1,x,B,/"	new A058550()
+A301761	lambdan	1	n -> (n == 1) ? ZV(1) : SD(n - 1, d -> PT((n - 1)/d - 1).^(d))	a(n) = Sum_{d | n-1} F000041((n-1)/d-1)^d for n > 1
+A304623	trilambn	1	1	1	(n, k) -> SU(1, n, j -> SD(j, d -> SU(Functions.MAX.i(1, j + k - n), d, i -> MU(j/d).*(BI(k - 1, i - 1)).*(BI(d - 1, i - 1)))))
+A318618	holos	0	[[0],[0,1,-1],[0,4],[-2]	1,1,3	0	0
+A334056	trilambn	0	0	0	(n, k) -> RU(0, n - k, j -> new Q(Z_1(n - j - k).*(FA(n + 2*j)), ZV(6).^(j).*(FA(j)).*(FA(n - j - k)).*(FA(k)))).num()
+A334057	trilambn	0	0	0	(n, k) -> RU(0, n - k, j -> new Q(Z_1(n - j - k).*(FA(n + 3*j)), ZV(24).^(j).*(FA(j)).*(FA(n - j - k)).*(FA(k)))).num()
+A334058	trilambn	0	0	0	(n, k) -> RU(0, n - k, j -> new Q(Z_1(n - j - k).*(FA(n + 4*j)), ZV(120).^(j).*(FA(j)).*(FA(n - j - k)).*(FA(k)))).num()
+A343051	trilambn	0	0	0	(n, k) -> (k == 0) ? Z2(4*n) : BI(2*n + 1, 2*k + 1).*(ZV(2*n + 1).^(2*k - 1)).*(ZV(16).^(n - k))
+A368490	polya	0	"[1]"	"x,^5,neg,B,^5,x,neg,B,/"	new A000122()
+A368495	polya	0	"[1]"	"x,^5,neg,B,^5,x,neg,B,/"	new A010054()
+A378672	polya	1	"[1],[1,-1],[1,1],[0,0,1]"	"x,p1,x,B,^2,*,p2,p3,B,*,+,2,/,+,x,x,B,^3,3,x,B,*,p3,B,*,-,2,x,<2,B,*,+,6,/,*,+"	new A003238()
+A385949	lambdan	0	n -> F055642(E220079(n))
+A387022	decexp	1	() -> CR.valueOf(697).divide(CR.valueOf(5103)).multiply(X013661.pow(4))
+A387452	lambdan	0	n -> SU(0, n, k -> BI(n + 1, k).*(BI(6*n - 2*k + 6, n - k)))./(n + 1)
+A387533	sintrif	1	(term, n) -> PM(n).^(term.intValueExact())	""	new A000796()
+A387546	lambdan	0	n -> SU(0, n/5, k -> BI(n, k).*(BI(n - 4*k - 1, n - 5*k)))
+A387547	multia	0	"1"	(self, n) -> SU(2, n, k -> BI(2*n - 1, 2*k - 1).*(self.a(n - k)))
+A387548	lambdan	0	n -> SU(0, n/2, k -> BI(n + 1, k).*(BI(3*n + 1,n-2*k)))./(n + 1)
+A387573	lambdan	1	n -> SU(0, (n+1)/4, i -> BI(n + 1 - 2*i, 2*i).*(i))
+A387635	lambdan	0	n -> E071799(n)./(2)
+A387646	charfunc	0	new A000537()		a(n) = 1 if n is the sum of the first floor((4n)^(1/4)) cubes and a(n) = 0 otherwise.
+A387666	lambdan	0	n -> SU(0, n, k -> BI(n + k, k).*(BI(2*n + 3*k + 2, n - k)))./(n + 1)
+A387840	lambdan	0	n -> SU(0, n/2, k -> BI(n + 1, k).*(BI(5*n - k + 3, n - 2*k)))./(n+1)
+A389356	decexpr	0	() -> CR.TWO.multiply(CR.SQRT2).subtract(CR.ONE).multiply(CR.PI).divide(CR.FOUR).add(REALS.atan(REALS.tanh(CR.PI.divide(CR.SQRT2)).divide(REALS.tan(CR.PI.divide(CR.SQRT2)))))
+A389421	decexpr	1	() -> REALS.acos(CR.ZERO.subtract(CR.FIVE.add(CR.FOUR.multiply(CR.FIVE.sqrt())).divide(CR.valueOf(15))))
+A389490	decexp	1	() -> X019670.add(X156546)
+A389494	decexp	0	() -> X126598.log()
+A389519	decexp	1	() -> CR.THREE.pow(CR.ONE_THIRD).multiply(CR.valueOf(46653).sqrt().add(CR.valueOf(216)).pow(CR.ONE_THIRD)).add(CR.valueOf(648).subtract(CR.THREE.multiply(CR.valueOf(46653).sqrt())).pow(CR.ONE_THIRD)).subtract(CR.THREE).divide(CR.SIX)
+A389521	decexp	1	() -> CR.THREE.pow(CR.ONE_THIRD).multiply(CR.TWO.multiply(CR.valueOf(174885).sqrt()).add(CR.valueOf(837)).pow(CR.ONE_THIRD)).add(CR.valueOf(2511).subtract(CR.SIX.multiply(CR.valueOf(174885).sqrt())).pow(CR.ONE_THIRD)).subtract(CR.THREE).divide(CR.valueOf(12))
+A389607	holos	1	[0,1,-1,-14,14,1,-1]	12,24,192,360,2700	0	0
+---- 2025-10-13 18:58:56
+A006906	rpt	0	gl(k -> k)	1 / Product_{k>=1} (1-k*x^k)
+A297329	polya	0	"[1]"	"x,B,n,^"	new A006906()
+A299162	polya	0	"[1]"	"1,1,x,B,<1,-,/"	new A006906()
+A307494	polya	0	"[1]"	"x,B,1,-,B"	new A006906()
+A320652	polya	0	"[1]"	"1,2,x,B,-,/"	new A006906()
+A326885	polyxa	0	"[1]"	"x,exp,1,-,B"	0	1	new A006906()
+A356578	polyxa	0	"[1]"	"x,B,x,pow"	0	1	new A006906()
