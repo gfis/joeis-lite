@@ -219,8 +219,9 @@ joeis_pull:
 	cd $(JOEIS)/src/irvine/oeis ; pwd ; cp -upv $(SOURCES) ../../../../../gits/joeis-lite/src/irvine/oeis/
 #----
 from_joeis:
-	cp -v ../../../joeis/src/irvine/oeis/transform/GeneralizedEulerTransform.java     ../../src/irvine/oeis
-	e              ../../src/irvine/oeis/transform/GeneralizedEulerTransform.java
+	cp -v ../../../joeis/src/irvine/oeis/producer/GapSequence.java\
+	               ../../src/irvine/oeis/producer
+	e              ../../src/irvine/oeis/producer/GapSequence.java
 from_ramath:
 	cp -v ../../../ramath/src/main/java/irvine/oeis/HolonomicRecurrence.java     ../../src/irvine/oeis
 	cp -v ../../../ramath/src/main/java/irvine/test/HolonomicRecurrenceTest.java ../../src/irvine/test
@@ -2523,7 +2524,7 @@ dance_hol:
 	wc -l    $@.gen
 #--------------------------------
 dead_all: # a list of all dead sequences
-	$(DBAT) -x "SELECT i.aseqno, n.name, COALESCE(j.superclass, 'NotYetImplemented') \
+	$(DBAT) -x "SELECT i.aseqno, n.name, j.superclass \
 	    FROM asname n, asinfo i LEFT JOIN joeis j ON i.aseqno = j.aseqno  \
 	    WHERE i.aseqno = n.aseqno \
 	      AND i.keyword LIKE '%dead%' \
