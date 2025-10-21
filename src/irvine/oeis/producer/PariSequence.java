@@ -24,6 +24,7 @@ public class PariSequence extends AbstractSequence implements Closeable {
   private final Process mProc;
   private final PrintWriter mOut;
   private final BufferedReader mIn;
+  private String mTimeOut;
 
   /**
    * Construct a sequence backed by a PARI program with default offset = 0.
@@ -56,20 +57,19 @@ public class PariSequence extends AbstractSequence implements Closeable {
 //  setOffset(offset);
     final String programType = header.getType();
     mOut.println(pariProgram); // Send the program to PARI
-    // 1000 hours = almost never
-    final String timeout = System.getProperty("oeis.timeout", "3600000");
+    mTimeOut = System.getProperty("oeis.timeout", "3600000"); // 1000 hours = almost never
     switch (programType) {
       case "an0":
-        mOut.println("alarm(" + timeout + ",for(n=0,+oo,print(a(n))));"); // special for P.H.
+        mOut.println("alarm(" + mTimeOut + ",for(n=0,+oo,print(floor(a(n)))));"); // special for P.H.
         break;
       case "an":
-        mOut.println("alarm(" + timeout + ",for(n=" + offset + ",+oo,print(a(n))));");
+        mOut.println("alarm(" + mTimeOut + ",for(n=" + offset + ",+oo,print(floor(a(n)))));");
         break;
       case "isok0":
-        mOut.println("alarm(" + timeout + ",for(n=0,+oo,if(isok(n),print(n))));");
+        mOut.println("alarm(" + mTimeOut + ",for(n=0,+oo,if(isok(n),print(n))));");
         break;
       case "isok":
-        mOut.println("alarm(" + timeout + ",for(n=" + offset + ",+oo,if(isok(n),print(n))));");
+        mOut.println("alarm(" + mTimeOut + ",for(n=" + offset + ",+oo,if(isok(n),print(n))));");
         break;
       default:
         throw new RuntimeException("Unknown type of PARI program " + programType + "\n" + pariProgram);
@@ -85,15 +85,14 @@ public class PariSequence extends AbstractSequence implements Closeable {
       try {
         close();
       } catch (final IOException e) {
-        // too bad, we tried to clean up
+        throw new UnsupportedOperationException("PARI process no longer alive", e);// too bad, we tried to clean up
       }
-      return null;
     }
     try {
       final String line = mIn.readLine();
       if (line == null) {
         close();
-        return null;
+        throw new UnsupportedOperationException("PARI did not answer during " + mTimeOut + "s");
       }
       return new Z(line);
     } catch (final IOException e) {
