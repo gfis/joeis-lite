@@ -1,0 +1,108 @@
+---- 2025-10-26 22:56:05
+A082274	filnum	1	1	k -> Predicates.PALINDROME.is(k) && Predicates.PALINDROME.is(k + 2 )	Palindromes k such that k + 2 is also a palindrome.	base,nonn	1..24	nyi	_Amarnath Murthy_
+A082275	filnum	1	1	k -> Predicates.PALINDROME.is(k) && Predicates.PALINDROME.is(k + 11)	Palindromes k such that k + 11 is also a palindrome.	base,easy,nonn	1..48	nyi	_Amarnath Murthy_
+A082520	filter	0	new A002385()	p -> { final Z sp = p.*(2).+(1); return PP(sp) && Predicates.PALINDROME.is(sp); }	Palindromic Sophie Germain primes: both p and 2p+1 are palindromic primes.	base,nonn	1..804	nyi	_Lekraj Beedassy_
+A082666	multia	1	"0"	(self, n) -> PP(n) ? PI(n) : SD(n, d -> d.compareTo(n) < 0 ? self.a(d) : ZV(0))	a(1) = 0, for n > 1 if n = prime(k), then a(n) = k, otherwise a(n) = Sum_{d|n, d<n} a(d).	nonn	1..75	nyi	_Reinhard Zumkeller_
+A082924	lambdan	1	n -> PP(n) ? ZV(n + 1) : ((n&1) == 0 && n > 2 ? ZV(n/2) : ZV(3*n))	For n prime, a(n) = n+1; for n even and > 2, a(n) = n/2; otherwise a(n) = 3*n.	easy,nonn	1..71	nyi	_Cino Hilliard_
+A082930	filter	0	new A080435()	EVEN
+A082954	filnum	1	1	k -> PHI(SIGMA(k).*(k)).equals(PHI(k).^(2))	Numbers k such that phi(k*sigma(k)) = phi(k)^2.	nonn	1..10000	nyi	_Benoit Cloitre_
+A082955	filnum	1	1	k -> SIGMA(PHI(k).*(k)).equals(SIGMA(k).^(2))	Numbers k such that sigma(k*phi(k)) = sigma(k)^2.	nonn	1..1000	nyi	_Benoit Cloitre_
+A082957	filnum	1	1	k -> SIGMA(2*k).compareTo(SIGMA(2*k + 1)) < 0	Numbers n such that sigma(2n) < sigma(2n+1).	nonn	1..10000	nyi	_Benoit Cloitre_
+A082974	multia	1	"2"	(self, n) -> self.a(n - 1).+(PM(n)).mod(PM(n + 1))	a(n) = (a(n-1) + p(n)) mod p(n+1).	nonn,easy	1..1000	nyi	_Jon Perry_
+A083005	multia	1	"1"	(self, n) -> PP(self.a(n - 1)) ? self.a(n - 1).*(2).+(1) : self.a(n - 1).+(1)	a(1)=1, a(n)=2a(n-1)+1 if a(n-1) is prime, a(n)=a(n-1)+1 otherwise.	nonn	1..10197	nyi	_Benoit Cloitre_
+A083247	filnum	1	1	k -> { final Z s = D045763(k); return F000010(k).compareTo(s) > 0 && s.compareTo(F000005(k)) > 0; }
+A083248	filnum	1	1	k -> { final Z s = F000010(k); return D045763(k).compareTo(s) > 0 && s.compareTo(F000005(k)) > 0; }
+A083249	filnum	1	1	k -> { final Z t = TAU(k); return D045763(k).compareTo(t) < 0 && t.compareTo(PHI(k)) < 0; }
+A083250	filnum	1	1	k -> D045763(k).-(D073757(k)).abs().equals(ZV(3))
+A083251	filnum	1	1	k -> D045763(k).-(D073757(k)).abs().equals(ZV(2))
+A083252	filnum	1	1	k -> D045763(k).-(D073757(k)).abs().equals(ZV(5))
+A083393	filnum	1	1	k -> Predicates.PALINDROME.is(k) && PP(Functions.DIGIT_SUM.i(k))	Palindromes such that the sum of the digits is prime.	nonn,base	1..10000	nyi	Meenakshi Srikanth (menakan_s(AT)yahoo.com)
+A083447	lambdan	2	n -> { final Z r = Functions.REVERSE.z(n); return r.*(n)./(r.+(n)); }	a(n) = floor( n*R(n)/(n+R(n))), where R(n) is the digit reversal of n (F004086).	base,easy,nonn	2..1000	nyi	_Amarnath Murthy_ and Meenakshi Srikanth (menakan_s(AT)yahoo.com
+A083452	sintrif	1	(term, n) -> term./(n)	""	new A083451()	a(n) = (n times concatenation of n - n^n) divided by n, or a(n) = J083451(n) /n.	base,nonn	1..334	nyi	_Amarnath Murthy_ and Meenakshi Srikanth (menakan_s(AT)yahoo.com
+A083474	lambdan	1	n -> TRI(n).^(2).-(FA(n))	a(n) = T(n)^2-n!, where T(n) is the n-th triangular number.	sign,easy,less	1..200	nyi	_Jon Perry_
+A083812	filnum	1	1	k -> Functions.REVERSE.i(k - 1) == 4*k - 1	Numbers k such that 4*k-1 is the digit reversal of k-1.	nonn,base	1..27	nyi	_Amarnath Murthy_ and Meenakshi Srikanth (menakan_s(AT)yahoo.com
+A083822	lambdan	1	n -> Functions.REVERSE.z(3*n)./(3)	nyi to	a(n) = digit reversal of 3*n, divided by 3.	base,easy,nonn	1..1000	nyi	_Amarnath Murthy_ and Meenakshi Srikanth (menakan_s(AT)yahoo.com
+A083824	lambdan	0	n -> Functions.REVERSE.z(9*n)./(9)	nyi o	a(n) = digit reversal of 9*n, divided by 9.	base,easy,nonn	0..73	nyi	_Amarnath Murthy_ and Meenakshi Srikanth (menakan_s(AT)yahoo.com
+A083829	filnum	1	1	k -> Predicates.PALINDROME.is(k) && Predicates.PALINDROME.is(3*k + 1)	Palindromes k such that 3k + 1 is also a palindrome.	base,nonn	1..6576	nyi	_Amarnath Murthy_ and Meenakshi Srikanth (menakan_s(AT)yahoo.com
+A083830	filnum	1	2	k -> Predicates.PALINDROME.is(k) && k % 3 == 1 && Predicates.PALINDROME.is((k - 1) / 3)	Palindromes of the form 3n + 1 where n is also a palindrome: palindromes arising in A083829.	base,nonn	1..36	nyi	_Amarnath Murthy_ and Meenakshi Srikanth (menakan_s(AT)yahoo.com
+A083831	filnum	1	1	k -> Predicates.PALINDROME.is(k) && Predicates.PALINDROME.is(4*k + 1)	Palindromes n such that 4n + 1 is also a palindrome.	base,nonn	1..1000	nyi	_Amarnath Murthy_ and Meenakshi Srikanth (menakan_s(AT)yahoo.com
+A083832	filnum	1	2	k -> Predicates.PALINDROME.is(k) && k % 4 == 1 && Predicates.PALINDROME.is((k - 1) / 4)	Palindromes of the form 4n + 1 where n is also a palindrome. Palindromes arising in A083831.	base,nonn	1..33	nyi	_Amarnath Murthy_ and Meenakshi Srikanth (menakan_s(AT)yahoo.com
+A083833	filnum	1	1	k -> Predicates.PALINDROME.is(k) && Predicates.PALINDROME.is(5*k + 1)	Palindromes p such that 5p + 1 is also a palindrome.	base,nonn	1..8217	nyi	_Amarnath Murthy_ and Meenakshi Srikanth (menakan_s(AT)yahoo.com
+A083834	filnum	1	2	k -> Predicates.PALINDROME.is(k) && k % 5 == 1 && Predicates.PALINDROME.is((k - 1) / 5)	Palindromes of the form 5p + 1 where p is also a palindrome. Palindromes arising in A083833.	base,nonn	1..8217	nyi	_Amarnath Murthy_ and Meenakshi Srikanth (menakan_s(AT)yahoo.com
+A083835	filnum	1	1	k -> Predicates.PALINDROME.is(k) && Predicates.PALINDROME.is(6*k + 1)	Palindromes n such that 6n + 1 is also a palindrome.	base,nonn	1..29	nyi	_Amarnath Murthy_ and Meenakshi Srikanth (menakan_s(AT)yahoo.com
+A083836	filnum	1	2	k -> Predicates.PALINDROME.is(k) && k % 6 == 1 && Predicates.PALINDROME.is((k - 1) / 6)	Palindromes of the form 6n + 1 where n is also a palindrome. palindromes arising in A083835.	base,nonn	1..28	nyi	_Amarnath Murthy_ and Meenakshi Srikanth (menakan_s(AT)yahoo.com
+A083851	filnum	1	1	k -> Predicates.PALINDROME.is(k) && k % 11 != 0	Decimal palindromes that are not multiples of 11.	nonn,base	1..10000	nyi	_Reinhard Zumkeller_
+A083852	filnum	1	0	k -> Predicates.PALINDROME.is(k) && k % 11 == 0	Decimal palindromes that are multiples of 11.	nonn,base	1..1908	nyi	_Reinhard Zumkeller_
+A083874	filnum	1	1	k -> SIGMA(k).+(TAU(k)).equals(ZV(2*k))	Numbers k such that sigma(k) + tau(k) = 2k.	nonn	1..40	nyi	_Jason Earls_
+A083966	filnum	1	1	k -> PP(new Z("2" + k + "3" + k + "5" + k + "7"))	Numbers n such that the concatenation 2n3n5n7 is prime.	base,easy,nonn	1..10000	nyi	_Farideh Firoozbakht_, Jun 19 2003
+A083969	filnum	1	1	k -> PP(new Z("2" + k + "3" + k + "5" + k + "7" + k + "11"))	Numbers n such that 2.n.3.n.5.n.7.n.11 is prime (dot means concatenation).	base,easy,nonn	1..10000	nyi	_Farideh Firoozbakht_
+A083970	filnum	1	1	k -> new Z(Functions.REVERSE.z(k).toString() + Integer.toString(k)).mod(k) == 0	Numbers n such that concatenation (reverse of n) and n is divisible by n.	base,nonn	1..10000	nyi	_Amarnath Murthy_ and Meenakshi Srikanth (menakan_s(AT)yahoo.com
+A084194	filnum	1	1	k -> (k&1) == 0 && PP(Functions.DIGIT_SUM.i(k)) && PP(Functions.DIGIT_SUM.i(k/2))	Even numbers n such that the sum of the digits is prime and the sum of the digits of n/2 is also prime.	base,nonn	1..10000	nyi	_Patrick Capelle_
+A084195	filnum	1	1	k -> (k&1) == 0 && PP(Functions.DIGIT_SUM.i(k)) && PP(k/2) && PP(Functions.DIGIT_SUM.i(k/2))	Even numbers n such that the sum of the digits is prime, n/2 is prime and the sum of the digits of n/2 is also prime.	base,nonn	1..46	nyi	_Patrick Capelle_
+A084344	filtpos	1	0	new A077982()	v -> v.compareTo(ZV(5)) >= 0
+A084345	filnum	1	0	k -> !PP(Functions.DIGIT_SUM.i(2, k))	Numbers with a nonprime number of 1s in their binary expansion (complement of J052294).	easy,nonn,base	1..10000	nyi	_Zak Seidov_
+A085062	sintrif	0	(term, n) -> new Q(term.-(3), 9).num()	""	new A085060()	a(n) = J085060(n)/9 - 1/3.
+A105606	lambdan	1	n -> PELL(n)./(M008555(n))
+A107040	filtpos	1	0	new A000129()	v -> Predicates.SQUARE_FREE.is(v)	Indices of squarefree Pell numbers.
+A107041	diffs	1	new A107040()
+A110327	trilambn	0	0	0	(n,k) -> FA(n).*(PELL(n - k + 1))./(FA(k))
+A110329	lambdan	0	n -> RU(0, n/2, k -> new Q(FA(n - k).*(PELL(n - 2*k + 1)), FA(k))).num()	a(n)=sum{k=0..floor(n/2), (n-k)!*Pell(n-2k+1)/k!}
+A111415	lambdan	0	n -> PELL(PELL(n + 1)).-(PELL(PELL(n)))	f(f(n+1))-f(f(n)), where f(m) = Pell(m) = F000129(m).
+A126784	parmof2	1	A184984	32
+A131726	sintrif	0	(term, n) -> term./(10).*(10)	""	new A000129()	Pell numbers F000129 with 0 instead of last digit.
+A195065	filnum	1	0	k -> D036044(k).compareTo(ZV(k)) >  0	Numbers n such that BCR(n) is greater than n, where BCR = binary-complement-and-reverse = D036044.	nonn,base	1..10000	nyi	_Reinhard Zumkeller_
+A195066	filnum	1	0	k -> D036044(k).compareTo(ZV(k)) >= 0	Numbers n such that BCR(n) is not less than n, where BCR = binary-complement-and-reverse = D036044.	nonn,base,look	1..10000	nyi	_Reinhard Zumkeller_
+A195086	filnum	1	1	k -> Functions.BIG_OMEGA.i(k) - Functions.OMEGA.i(k) == 2	k such that (number of prime factors of k counted with multiplicity) less (number of distinct prime factors of k) = 2.	nonn	1..10000	nyi	_Harvey P. Dale_
+A195087	filnum	1	1	k -> Functions.BIG_OMEGA.i(k) - Functions.OMEGA.i(k) == 3	k such that (number of prime factors of k counted with multiplicity) less (number of distinct prime factors of k) = 3.	nonn	1..10000	nyi	_Harvey P. Dale_
+A195088	filnum	1	1	k -> Functions.BIG_OMEGA.i(k) - Functions.OMEGA.i(k) == 4	k such that (number of prime factors of k counted with multiplicity) less (number of distinct prime factors of k) = 4.	nonn,easy	1..10000	nyi	_Harvey P. Dale_
+A195089	filnum	1	1	k -> Functions.BIG_OMEGA.i(k) - Functions.OMEGA.i(k) == 5	k such that (number of prime factors of k counted with multiplicity) less (number of distinct prime factors of k) = 5.	nonn,easy	1..10000	nyi	_Harvey P. Dale_
+A195090	filnum	1	1	k -> Functions.BIG_OMEGA.i(k) - Functions.OMEGA.i(k) == 6	k such that (number of prime factors of k counted with multiplicity) less (number of distinct prime factors of k) = 6.	nonn,easy	1..10000	nyi	_Harvey P. Dale_
+A195091	filnum	1	1	k -> Functions.BIG_OMEGA.i(k) - Functions.OMEGA.i(k) == 7	k such that (number of prime factors of k counted with multiplicity) less (number of distinct prime factors of k) = 7.	nonn,easy	1..10000	nyi	_Harvey P. Dale_
+A195092	filnum	1	1	k -> Functions.BIG_OMEGA.i(k) - Functions.OMEGA.i(k) == 8	k such that (number of prime factors of k counted with multiplicity) less (number of distinct prime factors of k) = 8.	nonn,easy	1..10000	nyi	_Harvey P. Dale_
+A195093	filnum	1	1	k -> Functions.BIG_OMEGA.i(k) - Functions.OMEGA.i(k) == 9	k such that (number of prime factors of k counted with multiplicity) less (number of distinct prime factors of k) = 9.	nonn,easy	1..10000	nyi	_Harvey P. Dale_
+A196687	sintrif	1	(term, n) -> FA(n).*(term)	""	new A062868()	nyi	n!*J062868(n).
+A199302	filter	1	new A007500()	p -> p.toString().matches("[012]*[12]")	Palindromic primes in the sense of J007500 with digits '0', '1' and '2' only.	nonn,base	1..31	nyi	_M. F. Hasler_
+A199303	filter	1	new A007500()	p -> p.toString().matches("[013]*[13]")	Palindromic primes in the sense of J007500 with digits '0', '1' and '3' only.	nonn,base	1..6114	nyi	_M. F. Hasler_
+A199304	filter	1	new A007500()	p -> p.toString().matches("[014]*[1]")	Palindromic primes in the sense of J007500 with digits '0', '1' and '4' only.	nonn,base	1..10000	nyi	_M. F. Hasler_
+A199305	filter	1	new A007500()	p -> p.toString().matches("[015]*[15]")	Palindromic primes in the sense of J007500 with digits '0', '1' and '5' only.	nonn,base	1..35	nyi	_M. F. Hasler_
+A199306	filter	1	new A007500()	p -> p.toString().matches("[016]*[1]")	Palindromic primes in the sense of J007500 with digits '0', '1' and '6' only.	nonn,base	1..35	nyi	_M. F. Hasler_
+A201196	multia	0	"1"	(self, n) -> SU(1, n, k -> BI(n - k - 1, k - 1).*(self.a(k - 1)))
+A201197	polyx	0	"[1]"	"1,x,sinh,x,sinh,sub,*,+"	0	1
+A201362	filnum	1	1	k -> { final Z k2 = Z2(k); return PP(k2.-(k + 1).*(k2).+(1)); }	Numbers k such that (2^k - k - 1)*2^k + 1 is prime.	nonn,hard,more	1..24	nyi	_Michel Lagneau_
+A202706	filnum	1	1	k -> { final int ds = Functions.DIGIT_SUM.i(FA(k)); return ds % 9 == 0 && PP(ds/9); }	Numbers k such that (sum of digits of k!) / 9 is prime.	nonn
+A202707	filnum	1	1	k -> { final int ds = Functions.DIGIT_SUM.i(DF(k)); return ds % 9 == 0 && PP(ds/9); }	Numbers k such that (sum of digits of k!!) / 9 is prime.
+A203797	lambdan	1	n -> RD(n, d -> new Q(ZV(1), F000129(d))).*(F000129(n)).num()	Pell(n) * Sum_{d|n} 1/Pell(d), where Pell(n) = F000129(n).	nonn
+A203802	lambdan	1	n -> RD(n, d -> new Q(Z_1(n/d).negate(), F000045(d))).*(F000045(n)).num()	Fibonacci(n) * Sum_{d|n} -(-1)^(n/d) / Fibonacci(d).	sign	1..1000
+A204315	filnum	1	1	k -> ZV(k).mod(CV(k).^(new Q(1, 4)).floor()).isZero()	j such that floor(j^(1/4)) divides j.
+A204327	lambdan	1	n -> PELL(ZV(n).*(n))
+A204591	lambdan	0	n -> CV(new Q(11, 10)).^(n).round()	Nearest integer to 1.1^n
+A204670	parmof2	1	A184984	64
+A204672	parmof2	1	A184984	120	Primes followed by a gap of 120.	nonn	1..433	nyi	_M. F. Hasler_
+A204764	parmof2	1	A184984	90	Primes followed by a gap of 90.	nonn	1..1000	nyi	_M. F. Hasler_
+A204792	parmof2	1	A184984	70	Primes p followed by a gap of 70 = nextprime(p) - p.	nonn	1..8813	nyi	_M. F. Hasler_
+A204801	parmof2	1	A184984	110	Primes followed by a gap of 110.	nonn	1..24	nyi	_M. F. Hasler_
+A319040	filnum	1	2	k-> PELL(k).mod(k) == 1	Numbers k > 1 such that Pell(k) == 1 (mod k).
+A319041	filnum	1	2	k-> PELL(k).mod(k) == k - 1	Numbers k > 1 such that Pell(k) == -1 (mod k).
+A383742	arrlamb	0	0	0	-1	(n, k) -> k == 0 ? ZV(n) : PELL(k*n)./(PELL(k))
+A385065	lambdan	0	n -> RU(0, n/2, k -> BI(QV(2).*(n-2*k), k).*(BI(QV(3).*(n-2*k), n-2*k))./(QV(2).*(n-2*k).+(1))).num()	""		a(n) = sum(k=0, n\2, binomial(2*(n-2*k), k)*binomial(3*(n-2*k), n-2*k)/(2*(n-2*k)+1))	_	_	_
+A385317	lambdan	0	n -> RU(0, n/2, k -> BI(QV(3).*(n-2*k), k).*(BI(QV(3).*(n-2*k), n-2*k))./(QV(2).*(n-2*k).+(1))).num()	""		a(n) = sum(k=0, n\2, binomial(3*(n-2*k), k)*binomial(3*(n-2*k), n-2*k)/(2*(n-2*k)+1))	_	_	_
+A386496	lambdan	0	n -> RU(0, n/4, k -> QV(BI(n-3*k, k)).*(BI(QV(3).*(n-3*k), n-3*k))./(QV(2).*(n-3*k).+(1))).num()	""		a(n) = sum(k=0, n\4, binomial(n-3*k, k)*binomial(3*(n-3*k), n-3*k)/(2*(n-3*k)+1))	_	_	_
+A389866	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(k+1).^(k-1).*(BI(n+3*k, n-k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n, (k+1)^(k-1)*binomial(n+3*k, n-k)/k!)	_	_	_
+A389867	lambdan	0	n -> QV(FA(n)).*(RU(0, n/2, k -> QV(k+1).^(k-1).*(BI(n+k, n-2*k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n\2, (k+1)^(k-1)*binomial(n+k, n-2*k)/k!)	_	_	_
+A389868	lambdan	0	n -> QV(FA(n)).*(RU(0, n/2, k -> QV(k+1).^(k-1).*(BI(n+2*k, n-2*k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n\2, (k+1)^(k-1)*binomial(n+2*k, n-2*k)/k!)	_	_	_
+A389869	lambdan	0	n -> QV(FA(n)).*(RU(0, n/3, k -> QV(k+1).^(k-1).*(BI(n-k, n-3*k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n\3, (k+1)^(k-1)*binomial(n-k, n-3*k)/k!)	_	_	_
+A389870	lambdan	0	n -> QV(FA(n)).*(RU(0, n/3, k -> QV(k+1).^(k-1).*(BI(n+k, n-3*k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n\3, (k+1)^(k-1)*binomial(n+k, n-3*k)/k!)	_	_	_
+A389871	lambdan	0	n -> RU(0, n/2, k -> BI(QV(2).*(n-2*k), k).*(BI(QV(2).*(n-2*k), n-2*k))./(n-2*k+1)).num()	""		a(n) = sum(k=0, n\2, binomial(2*(n-2*k), k)*binomial(2*(n-2*k), n-2*k)/(n-2*k+1))	_	_	_
+A389872	lambdan	0	n -> RU(0, n/2, k -> BI(QV(3).*(n-2*k), k).*(BI(QV(2).*(n-2*k), n-2*k))./(n-2*k+1)).num()	""		a(n) = sum(k=0, n\2, binomial(3*(n-2*k), k)*binomial(2*(n-2*k), n-2*k)/(n-2*k+1))	_	_	_
+A389873	lambdan	0	n -> RU(0, n/3, k -> BI(QV(2).*(n-3*k), k).*(BI(QV(2).*(n-3*k), n-3*k))./(n-3*k+1)).num()	""		a(n) = sum(k=0, n\3, binomial(2*(n-3*k), k)*binomial(2*(n-3*k), n-3*k)/(n-3*k+1))	_	_	_
+A389874	lambdan	0	n -> RU(0, n/3, k -> BI(QV(3).*(n-3*k), k).*(BI(QV(2).*(n-3*k), n-3*k))./(n-3*k+1)).num()	""		a(n) = sum(k=0, n\3, binomial(3*(n-3*k), k)*binomial(2*(n-3*k), n-3*k)/(n-3*k+1))	_	_	_
+A389890	lambdan	0	n -> RU(0, n/3, k -> BI(QV(2).*(n-3*k), k).*(BI(QV(3).*(n-3*k), n-3*k))./(QV(2).*(n-3*k).+(1))).num()	""		a(n) = sum(k=0, n\3, binomial(2*(n-3*k), k)*binomial(3*(n-3*k), n-3*k)/(2*(n-3*k)+1))	_	_	_
+A389891	lambdan	0	n -> RU(0, n/3, k -> BI(QV(3).*(n-3*k), k).*(BI(QV(3).*(n-3*k), n-3*k))./(QV(2).*(n-3*k).+(1))).num()	""		a(n) = sum(k=0, n\3, binomial(3*(n-3*k), k)*binomial(3*(n-3*k), n-3*k)/(2*(n-3*k)+1))	_	_	_
+A389893	lambdan	0	n -> RU(0, n/2, k -> new Q(Z_1(k).*(BI(2*(n - 2*k), k)).*(BI(2*(n - 2*k), n - 2*k)), (n - 2*k + 1))).num()
+A389894	lambdan	0	n -> RU(0, n/3, k -> new Q(Z_1(k).*(BI(2*(n - 3*k), k)).*(BI(2*(n - 3*k), n - 3*k)), (n - 3*k + 1))).num()
+A389895	lambdan	0	n -> RU(0, n/3, k -> new Q(Z_1(k).*(BI(3*(n - 3*k), k)).*(BI(2*(n - 3*k), n - 3*k)), (n - 3*k + 1))).num()
+A389928	lambdan	1	n -> ZV(14*n - 22).*(n).+(9)	Truncated centered square numbers: a(n) = 14*n^2 - 22*n + 9.
+A389942	lambdan	0	n -> RU(0, n/2, k -> new Q(Z_1(k).*(BI(2*(n - 2*k), k)).*(BI(3*(n - 2*k), n - 2*k)), (2*(n - 2*k) + 1))).num()
+A389943	lambdan	0	n -> RU(0, n/2, k -> new Q(Z_1(k).*(BI(3*(n - 2*k), k)).*(BI(3*(n - 2*k), n - 2*k)), (2*(n - 2*k) + 1))).num()
+A389944	lambdan	0	n -> RU(0, n/3, k -> new Q(Z_1(k).*(BI(2*(n - 3*k), k)).*(BI(3*(n - 3*k), n - 3*k)), (2*(n - 3*k) + 1))).num()
+A389945	lambdan	0	n -> RU(0, n/3, k -> new Q(Z_1(k).*(BI(3*(n - 3*k), k)).*(BI(3*(n - 3*k), n - 3*k)), (2*(n - 3*k) + 1))).num()

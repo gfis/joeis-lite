@@ -1,0 +1,137 @@
+---- 2025-10-30 11:53:42
+---- 2025-10-30 12:19:50
+A085145	filtpos	1	0	new A085144()	ZERO	-> 0 in J085144.
+A085303	filtpos	1	1	new A085301()	v -> v.equals(ZV(2))	2 in E085301.
+A085600	holos	1	[0,1,-1]	0,0,1,3,4,5	0	0
+A099245	lambdan	0	n -> n == 0 ? ZV(0) : F000120(n)./(GCD(D070939(n), F000120(n)))	a(n) = if n=0 then 0 else A000120(n)/GCD(A070939(n), A000120(n)).
+A099246	lambdan	0	n -> n == 0 ? ZV(1) : D070939(n)./(GCD(D070939(n), F000120(n)))	a(n) = if n=0 then 1 else A070939(n)/GCD(A070939(n), A000120(n)).
+A100992	filnum	1	1	k -> FI(k).mod(k + 1) == 0	Indices k of Fibonacci numbers F(k) (A000045) that are divisible by k+1.
+A115082	lambdan	0	n -> n == 0 ? ZV(1) : E115081(n).+(E115081(n - 1).*(n))
+A117409	lambdan	1	n -> n <= 2 ? ZV(n).and(ZV(1)) : F000009(n - 2)	,n>(\d+)			2,2	F000009
+A123612	lambdan	0	n -> n == 0 ? ZV(1) : SD(n, d -> PHI(n/d).*(E167539(d)))./(n)	for n>(\d+)	1,0	E167539
+A158381	filtpos	1	1	new A002559()	v -> Predicates.FIBONACCI.is(v)	Fibonacci numbers in the sequence of Markoff numbers (J002559).
+A163049	holos	1	[0,-1,49,-99,-4461,34459,-115804,136350,612301,-2267390,331308,5525320,-2980202,-1716806,510459,-3414959,8663468,-1246016,-4174679,1438895,-101650,980592,-488756,-444090,507392,-161261,-29646,44032,-17927,4079,-547,39,-1]	1,17,293,5331,101950,1988608,39005563,765978583,15044778941,295502003013,5804078824664,114000099400204,2239117437370843,43979313642748723,863813545775995327,16966473035357220851,333244608914862669888,6545377413296547714370,128560115721002848505333,2525095546202425318951159,49596311279910937565309805,974139016749357358405807009,19133415358207665159232112022,375806303797694211290291398020,7381346995820084674239245081479,144979695449792935043254125689887,2847598426766472036437401911417417,55930706537668250144990215624919929,1098555155951176264578659629136655154,21577117568756992886132169897338197214,423803939250414273364863228524687976531	0	0
+A165461	filtpos	0	0	new A165460()	ZERO	zeros in E165460.
+A165602	filtpos	0	0	new A165601()	ZERO	zeros in E165601.
+A167035	filter	0	new A000290()	v -> Predicates.SQUARE.is(new Z("1" + v.toString()))	Squares that remain squares if prefixed with a 1.
+A167036	filter	0	new A000290()	v -> Predicates.SQUARE.is(new Z("2" + v.toString()))	Squares that remain squares prefixed with a 2.
+A182799	filtpos	1	1	new A167171()	PRIME	primes in J167171.
+A182800	filtpos	1	1	new A167171()	v -> !PP(v)	composites in J167171.
+A193714	filtpos	0	1	new A005214()	v -> Predicates.SQUARE.is(v)	squares (D000290) in the union of squares and triangular numbers (J005214).
+A193715	filtpos	1	1	new A005214()	v -> Predicates.TRIANGULAR.is(v)	triangular numbers (F000217) in the union of squares and triangular numbers (J005214).
+A221018	filnum	1	2	k -> { final Z fi = FI(k); return CNT(-1, 1, i -> fi.mod(k + i) != 0).isZero(); }	
+A224854	filnum	1	0	k -> PP(90*k + 11) && PP(90*k + 13)	are twin prime.	nonn,easy	1..57	nyi	_J. W. Helkenberg_
+A224855	filnum	1	0	k -> PP(90*k + 17) && PP(90*k + 19)	are twin primes.	nonn	1..1000	nyi	_J. W. Helkenberg_
+A224856	filnum	1	0	k -> PP(90*k + 29) && PP(90*k + 31)	are twin primes.	nonn,easy	1..57	nyi	_J. W. Helkenberg_
+A224857	filnum	1	0	k -> PP(90*k + 41) && PP(90*k + 43)	are twin primes.	nonn,easy	1..56	nyi	_J. W. Helkenberg_
+A224858	filnum	0	1	k -> PP(ZV(k).*(FA(Functions.REVERSE.z(k))).-(1))	n*reversal(n)! - 1 is prime.	nonn,base	1..30	nyi	_K. D. Bajpai_
+A224860	filnum	1	0	k -> PP(90*k + 59) && PP(90*k + 61)	are twin prime.	nonn,easy	1..58	nyi	_J. W. Helkenberg_
+A224862	filnum	1	0	k -> PP(90*k + 71) && PP(90*k + 73)	are twin primes.	nonn	1..57	nyi	_J. W. Helkenberg_
+A224863	filter	1	new A000040()	(k, p) -> Predicates.CUBE.is(PM(3*k).-(PM(2*k)).-(p))	Prime(n) such that prime(3n) - prime(2n) - prime(n) is a perfect cube.	nonn	1..1000	nyi	_Juri-Stepan Gerasimov_
+A224864	filnum	1	0	k -> PP(90*k + 77) && PP(90*k + 79)	are twin primes.	nonn	1..1000	nyi	_J. W. Helkenberg_
+A224865	filnum	1	0	k -> PP(90*k + 89) && PP(90*k + 91)	are twin primes.	nonn	1..57	nyi	_J. W. Helkenberg_
+A225219	filnum	1	2	k -> { final Z fi = FI(k); return CNT(0, 1, i -> fi.mod(k - 1 + 2*i) != 0).isZero(); }	Indices n of Fibonacci numbers Fib(n) (A000045) that are divisible by n-1 and n+1.
+A225505	multia	0	"0,1"	(self, n) -> Functions.TRIANGULAR.z(self.a(n - 1).+(self.a(n - 2)))	a(n) = triangular(a(n-1)+a(n-2)) if n > 1, else a(n) = n
+A225649	filtpos	1	0	new A225650()	v -> !v.equals(ZV(1))	non-ones in J225650, numbers n such that n and J000793(n) have at least one common divisor > 1.
+A225731	filnum	1	1	k -> ZV(k).^(10).compareTo(TAU(k).^(23)) < 0
+A225732	filnum	1	1	k -> ZV(k).^( 5).compareTo(TAU(k).^(12)) < 0
+A225733	filnum	1	1	k -> ZV(k).^( 2).compareTo(TAU(k).^( 5)) < 0
+A225734	filnum	1	1	k -> ZV(k).^( 5).compareTo(TAU(k).^(13)) < 0
+A225735	filnum	1	1	k -> ZV(k).^(10).compareTo(TAU(k).^(27)) < 0
+A225736	filnum	1	1	k -> ZV(k).^( 5).compareTo(TAU(k).^(14)) < 0
+A225737	filnum	1	1	k -> ZV(k).^(10).compareTo(TAU(k).^(29)) < 0
+A226354	filter	1	new A000290().skip(1)	v -> Predicates.CUBE.is(v./(10))	Squares that become cubes when their rightmost digit is removed
+A226471	filnum	1	0	k -> Predicates.TRIANGULAR.is(ZV(k).^(2).xor(Functions.TRIANGULAR.z(k)))	Numbers n such that n^2 XOR triangular(n) is a triangular number
+A226472	filnum	1	0	k -> Predicates.SQUARE.is(ZV(k).^(2).xor(Functions.TRIANGULAR.z(k)))	Numbers n such that n^2 XOR triangular(n) is a perfect square. X
+A226563	filnum	1	1	k -> SD(k, d -> SIGMA(d).^(2)).mod(k) == 0	Numbers k such that sum(d|k, sigma(d)^2) is a multiple of k.	nonn	1..71	nyi	_Paolo P. Lava_
+A226564	filnum	1	1	k -> RD(k, d -> new Q(SIGMA(d).^(2), d)).isInteger()	Numbers k such that sum(d|k, sigma(d)^2/d) is an integer, where d are the divisors of k.	nonn	1..34	nyi	_Paolo P. Lava_
+A226565	filnum	1	1	k -> SD(k, d -> SIGMA(d).^(3)).mod(k) == 0	Numbers k such that um_{d|k} sigma(d)^3 is a multiple of k.	nonn	1..5000	nyi	_Paolo P. Lava_
+A226566	filnum	1	1	k -> RD(k, d -> new Q(SIGMA(d).^(3), d)).isInteger()	Numbers k such that um_{d|k} sigma(d)^3/d is an integer, where d are the divisors of k.	nonn	1..510	nyi	_Paolo P. Lava_
+A226567	filnum	1	1	k -> !Predicates.SQUARE.is(2*k + 1) && !PP(2*k + 1)	Numbers k such that 2*k+1 is neither a square nor a prime.	nonn	1..10000	nyi	_C‚ąö¬©sar Aguilera_
+A226923	parmof2	1	A226922	3	Values of n such that L( 3) and N( 3) are both prime, where L(k) = (n^2+n+1)*2^(2*k) + (2*n+1)*2^k + 1, N(k) = (n^2+n+1)*2^k + n.
+A226924	parmof2	1	A226922	4	Values of n such that L( 4) and N( 4) are both prime, where L(k) = (n^2+n+1)*2^(2*k) + (2*n+1)*2^k + 1, N(k) = (n^2+n+1)*2^k + n.
+A226925	parmof2	1	A226922	5	Values of n such that L( 5) and N( 5) are both prime, where L(k) = (n^2+n+1)*2^(2*k) + (2*n+1)*2^k + 1, N(k) = (n^2+n+1)*2^k + n.
+A226926	parmof2	1	A226922	6	Values of n such that L( 6) and N( 6) are both prime, where L(k) = (n^2+n+1)*2^(2*k) + (2*n+1)*2^k + 1, N(k) = (n^2+n+1)*2^k + n.
+A226927	parmof2	1	A226922	7	Values of n such that L( 7) and N( 7) are both prime, where L(k) = (n^2+n+1)*2^(2*k) + (2*n+1)*2^k + 1, N(k) = (n^2+n+1)*2^k + n.
+A226928	parmof2	1	A226922	8	Values of n such that L( 8) and N( 8) are both prime, where L(k) = (n^2+n+1)*2^(2*k) + (2*n+1)*2^k + 1, N(k) = (n^2+n+1)*2^k + n.
+A226929	parmof2	1	A226922	9	Values of n such that L( 9) and N( 9) are both prime, where L(k) = (n^2+n+1)*2^(2*k) + (2*n+1)*2^k + 1, N(k) = (n^2+n+1)*2^k + n.
+A227448	parmof2	1	A226922	10	Values of n such that L(10) and N(10) are both prime, where L(k) = (n^2+n+1)*2^(2*k) + (2*n+1)*2^k + 1, N(k) = (n^2+n+1)*2^k + n.
+A227449	parmof2	1	A226922	11	Values of n such that L(11) and N(11) are both prime, where L(k) = (n^2+n+1)*2^(2*k) + (2*n+1)*2^k + 1, N(k) = (n^2+n+1)*2^k + n.
+A227515	parmof2	1	A226922	12	Values of n such that L(12) and N(12) are both prime, where L(k) = (n^2+n+1)*2^(2*k) + (2*n+1)*2^k + 1, N(k) = (n^2+n+1)*2^k + n.
+A227516	parmof2	1	A226922	13	Values of n such that L(13) and N(13) are both prime, where L(k) = (n^2+n+1)*2^(2*k) + (2*n+1)*2^k + 1, N(k) = (n^2+n+1)*2^k + n.
+A227517	parmof2	1	A226922	14	Values of n such that L(14) and N(14) are both prime, where L(k) = (n^2+n+1)*2^(2*k) + (2*n+1)*2^k + 1, N(k) = (n^2+n+1)*2^k + n.
+A227518	parmof2	1	A226922	15	Values of n such that L(15) and N(15) are both prime, where L(k) = (n^2+n+1)*2^(2*k) + (2*n+1)*2^k + 1, N(k) = (n^2+n+1)*2^k + n.
+A227519	parmof2	1	A226922	16	Values of n such that L(16) and N(16) are both prime, where L(k) = (n^2+n+1)*2^(2*k) + (2*n+1)*2^k + 1, N(k) = (n^2+n+1)*2^k + n.
+A227520	parmof2	1	A226922	17	Values of n such that L(17) and N(17) are both prime, where L(k) = (n^2+n+1)*2^(2*k) + (2*n+1)*2^k + 1, N(k) = (n^2+n+1)*2^k + n.
+A227521	parmof2	1	A226922	18	Values of n such that L(18) and N(18) are both prime, where L(k) = (n^2+n+1)*2^(2*k) + (2*n+1)*2^k + 1, N(k) = (n^2+n+1)*2^k + n.
+A227522	parmof2	1	A226922	19	Values of n such that L(19) and N(19) are both prime, where L(k) = (n^2+n+1)*2^(2*k) + (2*n+1)*2^k + 1, N(k) = (n^2+n+1)*2^k + n.
+A227523	parmof2	1	A226922	20	Values of n such that L(20) and N(20) are both prime, where L(k) = (n^2+n+1)*2^(2*k) + (2*n+1)*2^k + 1, N(k) = (n^2+n+1)*2^k + n
+A228035	trilambn	0	0	0	(n, k) -> new Q(ZV(1).-(Z2(n - k + 1)), ZV(1).-(Z2(k + 1))).den()	Triangle T(n,k), read by rows: T(n,k) is the denominator of (1-2^(n-k+1))/(1-2^(k+1)).
+A228776	filtpos	0	1	new A050376()	EVEN	v -> even terms of J050376.
+A229207	filnum	0	1	k -> SU(1, k, j -> TAU(j).^(j)).mod(k) == 0	k such that Sum_{j=1..k} tau(j)^j == 0 (mod k), where tau(j) = F000 
+A229208	filnum	0	1	k -> SU(1, k, j -> SIGMA(j).^(j)).mod(k) == 0	k such that Sum_{j=1..k} sigma(j)^j == 0 (mod k).	nonn,more	1.. 
+A229209	filnum	0	1	k -> SU(1, k, j -> PHI(j).^(j)).mod(k) == 0	k such that Sum_{j=1..k} phi(j)^j == 0 (mod k).	nonn,more	1..11	
+A229210	filnum	0	1	k -> SU(1, k, j -> ZV(j).-(TAU(j)).^(j)).mod(k) == 0	k such that Sum_{i=1..k} (i-tau(i))^i == 0 (mod k), where tau(i) =  
+A229269	filnum	1	1	k -> PP(ZV(k).-(ARD(k)))	k for which k - k' is prime, k' being the arithmeti
+A229270	filnum	1	1	k -> PP(ARD(k).-(ZV(k)))	k for which k' - k is prime, k' being the arithmeti
+A229271	filnum	1	1	k -> PP(ZV(k).-(ARD(k))) && PP(ZV(k).+(ARD(k)))	k for which k + k' and k - k' are both prime, k'' be
+A229272	filnum	1	1	k -> PP(ARD(k).-(ZV(k))) && PP(ZV(k).+(ARD(k)))	n for which n' + n and n' - n are both prime, n' be '
+A231564	filtpos	1	1	new A231563()	ZERO	=0.	nonn	1..66	nyi	_Jos‚ąö¬© Mar‚ąö‚Č†a Grau Ribas_
+A231565	filtpos	1	1	new A231563()	POSITIVE	>0.	nonn	1..57	nyi	_Jos‚ąö¬© Mar‚ąö‚Č†a Grau Ribas_
+A242268	filter	1	new A000290()	v -> v.mod(100) != 0 && Predicates.SQUARE.is(new Z("1" + v.toString()))	Squares not ending in 00 that remain squares if prefixed with the digit 1.
+A247261	filter	0	new A000290().skip(1)	v -> v.mod(100) != 0 && Predicates.SQUARE.is(new Z("10" + v.toString()))	Positive squares not ending in 00 that remain squares when prefixed with 10.
+A247263	filnum	0	1	k -> { final Z v = ZV(k).*(k); return v.mod(10) != 0 && Predicates.SQUARE.is(new Z("1000" + v.toString())); }	Positive numbers not divisible by 10 whose squares remain squares when prefixed with 1000.
+A249621	filter	0	new A000290()	v -> Predicates.SQUARE.is(new Z("1" + v.toString() + "25"))	Squares that remain squares when prepended with 1 and appended with 25 in base 10.
+A249633	filnum	0	1	k -> Predicates.SQUARE.is(new Z("1" + ZV(k).*(k).toString() + "25"))	Numbers whose squares remain squares when prepended with 1 and appended with 25 in base 10.
+A250435	filnum	1	1	k -> Predicates.SQUARE.is(new Z("9" + ZV(k).*(k).toString() + "25"))	Numbers whose squares remain squares when prepended with 9 and appended with 25 in base 10.
+A262051	filnum	1	2	k -> { if ((k&1) != 1 || PP(k)) { return false; } final Z a = ZV(3).modPow((k - 1)/2, ZV(k)); return a.equals(ZV(1)) || a.equals(ZV(k - 1)); }	(Euler pseudoprimes to base 3: composite integers such that abs(3^((n - 1)/2)) == 1 mod n.
+A262052	filnum	1	2	k -> { if ((k&1) != 1 || PP(k)) { return false; } final Z a = ZV(5).modPow((k - 1)/2, ZV(k)); return a.equals(ZV(1)) || a.equals(ZV(k - 1)); }	(Euler pseudoprimes to base 5: composite integers such that abs(5^((n - 1)/2)) == 1 mod n.
+A262053	filnum	1	2	k -> { if ((k&1) != 1 || PP(k)) { return false; } final Z a = ZV(6).modPow((k - 1)/2, ZV(k)); return a.equals(ZV(1)) || a.equals(ZV(k - 1)); }	(Euler pseudoprimes to base 6: composite integers such that abs(6^((n - 1)/2)) == 1 mod n.
+A262054	filnum	1	2	k -> { if ((k&1) != 1 || PP(k)) { return false; } final Z a = ZV(7).modPow((k - 1)/2, ZV(k)); return a.equals(ZV(1)) || a.equals(ZV(k - 1)); }	(Euler pseudoprimes to base 7: composite integers such that abs(7^((n - 1)/2)) == 1 mod n.
+A262055	filnum	1	2	k -> { if ((k&1) != 1 || PP(k)) { return false; } final Z a = ZV(8).modPow((k - 1)/2, ZV(k)); return a.equals(ZV(1)) || a.equals(ZV(k - 1)); }	(Euler pseudoprimes to base 8: composite integers such that abs(8^((n - 1)/2)) == 1 mod n.
+A267858	filtpos	1	1	new A002972()	v -> v.mod(4) == 1	entries of J002972 that are congruent to 1 modulo 4.
+A271043	filter	0	new A000040()	p -> p.mod(10) == PM(p).mod(10)	Primes p such that p and prime(p) end with the same digit.	nonn,easy,base	1..1000	nyi	_Colin Barker_
+A271044	filter	0	new A000040()	p -> p.mod(100) == PM(p).mod(100)	Primes p such that p and prime(p) end with the same two digits.	nonn,easy,base	1..1000	nyi	_Colin Barker_
+A271045	filter	0	new A000040()	p -> p.mod(1000) == PM(p).mod(1000)	Primes p such that p and prime(p) end with the same three digits.	nonn,easy,base	1..350	nyi	_Colin Barker_
+A271046	filter	0	new A000040()	p -> p.mod(10000) == PM(p).mod(10000)	Primes p such that p and prime(p) end with the same four digits.	nonn,easy,base	1..50	nyi	_Colin Barker_
+A273230	filter	0	new A000290()	v -> Predicates.SQUARE.is(v.-(ZV(10).^(Functions.DIGIT_LENGTH.i(v)).-(1)./(9).*(3)))	Squares that remain squares if you decrease them by 4 times a repunit with the same number of digits.	nonn,easy,base	1..10000	nyi	_Paolo P. Lava_
+A273231	filter	0	new A000290()	v -> Predicates.SQUARE.is(v.-(ZV(10).^(Functions.DIGIT_LENGTH.i(v)).-(1)./(9).*(4)))	Squares that remain squares if you decrease them by 4 times a repunit with the same number of digits.	nonn,easy,base	1..10000	nyi	_Paolo P. Lava_
+A273232	filter	0	new A000290()	v -> Predicates.SQUARE.is(v.-(ZV(10).^(Functions.DIGIT_LENGTH.i(v)).-(1)./(9).*(5)))	Squares that remain squares if you decrease them by 5 times a repunit with the same number of digits.	nonn,easy,base	1..10000	nyi	_Paolo P. Lava_
+A273233	filter	0	new A000290()	v -> Predicates.SQUARE.is(v.-(ZV(10).^(Functions.DIGIT_LENGTH.i(v)).-(1)./(9).*(7)))	Squares that remain squares if you decrease them by 7 times a repunit with the same number of digits.	nonn,easy,base	1..10000	nyi	_Paolo P. Lava_
+A273234	filter	0	new A000290()	v -> Predicates.SQUARE.is(v.-(ZV(10).^(Functions.DIGIT_LENGTH.i(v)).-(1)./(9).*(8)))	Squares that remain squares if you decrease them by 8 times a repunit with the same number of digits.	nonn,easy,base	1..10000	nyi	_Paolo P. Lava_
+A275852	filtpos	1	0	new A275851()	ZERO	v -> zeros in J275851.
+A277701	filtpos	1	0	new A264977()	ONE	v -> ones  in J264977; positions of twos in J277330.
+A277712	filtpos	1	0	new A264977()	v -> v.equals(ZV(2))	2's in J264977; positions of 3's in J277330.
+A277713	filtpos	1	0	new A264977()	v -> v.equals(ZV(3))	3's in J264977; positions of 6's in J277330.
+A279984	filtpos	1	1	new A007916()	PRIME	the prime numbers in the sequence of numbers that are not perfect powers (J007916).
+A281597	filnum	1	1	k -> F001221(k).equals(F001221(F000041(k)))	1..940	nyi	_Colin Barker_
+A281598	filnum	1	1	k -> F001222(k).equals(F001222(F000041(k)))	1..1000	nyi	_Colin Barker_
+A281599	filnum	1	1	k -> F000005(k).equals(F000005(F000041(k)))	1..500	nyi	_Colin Barker_
+late error A287107	filtpos	0	1	new A287104()	v -> v.equals(ZV(2))	2 in J287104.
+A298684	filnum	1	1	k -> { final Z fi = FI(k); return CNT(0, 2, i -> fi.mod(k + i) != 0).isZero(); }	nyi to	Numbers i such that Fibonacci(i) is divisible by i, i+1, and i+2.	nonn	1..1000	nyi	_Alex Ratushnyak_
+A298685	filnum	1	1	k -> { final Z fi = FI(k); return CNT(0, 3, i -> fi.mod(k + i) != 0).isZero(); }	nyi to	Numbers i such that Fibonacci(i) is divisible by i, i+1, i+2, and i+3.	nonn	1..1000	nyi	_Alex Ratushnyak_
+A298686	filnum	1	1	k -> { final Z fi = FI(k); return CNT(0, 4, i -> fi.mod(k + i) != 0).isZero(); }	nyi o	Numbers i such that Fibonacci(i) is divisible by i+k for k=0,1,2,3,4.	nonn	1..147	nyi	_Alex Ratushnyak_
+A298687	filnum	1	1	k -> { final Z fi = FI(k); return CNT(0, 5, i -> fi.mod(k + i) != 0).isZero(); }	nyi o	Numbers i such that Fibonacci(i) is divisible by i+k for k=0..5.	nonn	1..57	nyi	_Alex Ratushnyak_
+A318977	polyxa	0	"[1]"	"x,B,x,C,*"	0	1	egf(new A318696()), egf(new A318695())
+A333511	holos	1	[0,-1,-3,8,12,-41,19,61,-123,106,-48,11,-1]	1,16,95,426,1745,6838,25897,95292,342505,1208392,4201765	0	0
+A335598	filter	1	new A000290()	v -> Predicates.SQUARE.is(v.+(ZV(10).^(Functions.DIGIT_LENGTH.i(v)).-(1)./(9)))	Squares that remain squares when the repunit with the same number of digits is added.
+A340073	lambdan	1	n -> n == 1 ? ZV(0) : E160596(D003961(n))
+A366290	filtpos	1	1	new A365711()	ZERO	zeros in J365711, where J365711 is the Dirichlet inverse of balanced ternary enumeration of integers (J117966).
+A369644	filtpos	1	1	new A083345()	v -> v.mod(3) == 0	multiples of 3 in J083345.
+A369654	filtpos	1	0	new A327860()	v -> v.mod(3) == 0	multiples of 3 in E327860.
+A372564	filtpos	1	1	new A346242()	v -> v.equals(ZV(-4))	s in J346242.
+A387939	holos	0	[0,-8,4,14,-17,7,-1]	1,4,14,43,123	0	0
+A389205	filtpos	1	1	new A325973()	ODD	odd terms in J325973, where J325973 is the arithmetic mean of {sum of unitary divisors} and {sum of squarefree divisors}.
+A389210	filtpos	1	1	new A325974()	ODD	odd terms in J325974, where J325974 is the arithmetic mean of {sum of non-unitary divisors} and {sum of nonsquarefree divisors}.
+A389920	sintrif	0	(term, n) -> F000041(n).-(term)	""	new PrependSequence(1, new A007862(), 1)
+A390169	lambdan	0	n -> RU(0, n/2, k -> new Q(Z_1(k).*(BI(n - k - 1, k)).*(BI(3*(n - 2*k), n - 2*k)), ZV(2*(n - 2*k) + 1))).num()
+A390170	lambdan	0	n -> RU(0, n/2, k -> new Q(Z_1(k).*(BI(2*n - 3*k - 1, k)).*(BI(3*(n - 2*k), n - 2*k)), ZV(2*(n - 2*k) + 1))).num()
+A390171	lambdan	0	n -> RU(0, n/3, k -> new Q(Z_1(k).*(BI(  n - 2*k - 1, k)).*(BI(3*(n - 3*k), n - 3*k)), ZV(2*(n - 3*k) + 1))).num()
+A390172	lambdan	0	n -> RU(0, n/3, k -> new Q(Z_1(k).*(BI(2*n - 5*k - 1, k)).*(BI(3*(n - 3*k), n - 3*k)), ZV(2*(n - 3*k) + 1))).num()
+A390182	lambdan	0	n -> RU(0, n/2, k -> new Q(ZV(n - 2*k + 1).^(n - 2*k - 1).*(BI(2*n - 3*k - 1, k)), FA(n - 2*k))).*(FA(n)).num()
+A390183	lambdan	0	n -> RU(0, n/2, k -> new Q(ZV(n - 2*k + 1).^(n - 2*k - 1).*(BI(3*n - 5*k - 1, k)), FA(n - 2*k))).*(FA(n)).num()
+A390184	lambdan	0	n -> RU(0, n/3, k -> new Q(ZV(n - 3*k + 1).^(n - 3*k - 1).*(BI(2*n - 5*k - 1, k)), FA(n - 3*k))).*(FA(n)).num()
+A390185	lambdan	0	n -> RU(0, n/3, k -> new Q(ZV(n - 3*k + 1).^(n - 3*k - 1).*(BI(3*n - 8*k - 1, k)), FA(n - 3*k))).*(FA(n)).num()
+A390214	lambdan	0	n -> RU(0, n/2, k -> new Q(Z_1(k).*(ZV(n - 2*k + 1).^(n - 2*k - 1)).*(BI(n - k - 1, k)), FA(n - 2*k))).*(FA(n)).num()
+A390215	lambdan	0	n -> RU(0, n/3, k -> new Q(Z_1(k).*(ZV(n - 3*k + 1).^(n - 3*k - 1)).*(BI(n - 2*k - 1, k)), FA(n - 3*k))).*(FA(n)).num()
+A390216	lambdan	0	n -> RU(0, n/3, k -> new Q(Z_1(k).*(ZV(n - 3*k + 1).^(n - 3*k - 1)).*(BI(2*n - 5*k - 1, k)), FA(n - 3*k))).*(FA(n)).num()

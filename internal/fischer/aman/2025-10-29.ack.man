@@ -1,0 +1,137 @@
+---- 2025-10-29 15:08:24
+---- 2025-10-29 15:47:12
+---- 2025-10-29 15:50:21
+A082925	partsun	1	new A082924()			Partial sums of A082924.
+A091983	lambdan	0	n -> n ==  0 ? ZV(1) : F001158(n).*(20)	a(n)=(\d+)*Annn(n),n>=(\d+)	20,1	F001158
+A096792	sintrif	1	(term, n) -> F000009(n).-(Z_1(n).*(term))./(2)	""	new A010815()
+A110765	lambdan	0	n -> D019565(D030101(n))
+A113418	lambdan	1	n -> Z_1(n + 1).*(E117000(n))	1,1	E117000
+A119450	sintrif	1	(term, n) -> F000040(term)	""	new A200260()
+A121853	lambdan	0	n -> PR(1, n, k -> F000120(k))	1	F000120
+A122420	lambdan	0	n -> n == 0 ? ZV(1) : SU(1, n, k -> SA(n,k).*(E122418(k)))./(FA(n))	1,0,1	E122418
+A124419	lambdan	0	n -> F000110(n / 2).*(F000110((n&1) == 0 ? n/2 : (n + 1)/2))	Annn(floor(n/(\d+)))*Annn(ceiling(n/(\d+)))	2,2	F000110,F000110
+A128060	lambdan	0	n -> ZV(2*n).-(E128059(n))	2	E128059
+A143574	lambdan	0	n -> SU(1, n, k -> D010052(k).*(D010052(n - k)).*(k))	1	D010052,D010052
+A144676	sintrif	1	(term, n) -> E090831(term)	""	new A144675()
+A158295	filter	1	new A000040()	p -> PP(p.^(3).-(p).-(1)) && PP(p.^(3).-(p).+(1))
+A163004	lingf	1	0,1,0,-25,67,-43,-73,124,50,51,-157,-134,-76,-249,-211,-77,15,0,1	1,-20,141,-496,888,-284,-2212,4360,-1585,-5060,6422,828,-4409,564,804,992,816,-128,-99,12,1					0
+A163048	holos	1	[0,1,13,-71,7,-113,22,222,-210,-19,97,-59,15,-1]	1,7,58,540,5331,53431,536950,5398054,54271807,545661741,5486266966,55160922390	0	0
+A165195	lambdan	1	n -> F000110(D005811(n - 1))	1	F000110,D005811
+A173176	dead	1	A172057	dupl	NotYetImplemented	Duplicate of A172057.					Duplicate of A172057.
+A173867	lambdan	3	n -> F151799(F000108(n))
+A173868	lambdan	1	n -> F151800(F000108(n))
+A177291	holos	0	[0,-8,-4,36,28,-22,-9,7,-1]	1,1,20,92,506,2288,10010,41618,168284	0	0
+A177298	holos	0	[0,-729,729,4698,-6183,-3339,3960,1533,-357,-74,19,-1]	1,1,70,780,11482,135040,1543862,16699380,175280570,1792874048,17990831182,177773616180	0	0
+A177301	holos	0	[0,884736,958464,-7833600,-10742784,9936384,10044800,-6818464,-939536,611200,78336,-7186,-525,51,-1]	1,1,252,7002,284002,8956752,276285002,8039989002,226901044252,6232521421502,167765555015002,4441865811412752,116042171156004002,2998175631045512002,76751828260736962252	0	0
+A178182	lambdan	1	n -> ZV(4*n)./(GCD(n - 4, 16)).abs()	4,4,16
+A178353	lingf	0	0,35,-1335,16597,-67329	1,-57,1270,-13830,73609,-153153					0
+A185976	lambdan	1	n -> SU(1, n, k -> D007294(k))	,n>=(\d+)	1,1	D007294
+A235871	filter	1	new A000040()	p -> PP(p.+(2)) && PP(p.+(24)) && PP(p.+(246))
+A236073	filter	1	new A000040()	p -> PP(p.^(4).+(p).+(1)) && PP(p.^(4).-(p).-(1))
+A236075	filter	1	new A000040()	p -> PP(PM(p.*(2)).-(PM(p).*(2))) && PP(PM(p).-(PM((p.-(1))./(2)).*(2)))
+A236119	filter	1	new A000040()	p -> PP(PM(p).-(p).-(1)) && PP(PM(p).-(p).+(1))
+A236143	filter	1	new A000040()	p -> PP(PM(p.-(1)).-(p.-(1))) && PP(PM(p.-(1)).-(PM((p.-(1))./(2)).*(2)))
+A236173	filter	1	new A000040()	p -> PP(p.^(2).-(p).-(1)) && PP(p.^(3).-(p).-(1)) && PP(p.^(4).-(p).-(1))
+A236302	filter	1	new A000040()	p -> PP(p.+(8)) && PP(p.+(86)) && PP(p.+(864))
+A236304	filter	1	new A000040()	p -> PP(p.+(12)) && PP(p.+(1234)) && PP(p.+(123456))
+A236458	filter	1	new A000040()	p -> PP(p.+(2)) && PP(PM(p).+(2))
+A236462	filter	1	new A000040()	p -> PP(PM(p).+(4)) && PP(PM(p).+(6))
+A236476	filter	1	new A000040()	p -> PP(p.^(3).+(p).-(1))
+A236687	filter	1	new A000040()	p -> PP(PM(p.^(2)).-(2))
+A236688	filter	1	new A000040()	p -> PP(PM(p.^(2)).+(2))
+A236950	filter	1	new A000040()	p -> PP(p.^(4).+(p).-(1))
+A237366	filter	1	new A000040()	p -> PP(p.^(4).+(p.^(3).*(2)).+(p.^(2).*(4)).+(p.*(3)).+(3))	isprime(p^4+2*p^3+4*p^2+3*p+3)
+A238242	filter	1	new A000040()	p -> PP(p.^(2).+(p).+(41))
+A239955	sintrif	0	(term, n) -> F000041(n).-(term)	""	new A034296()
+A240084	filter	1	new A000040()	p -> PP(p.^(4).-(p.^(3)).-(p.^(2)).-(p).-(1))	p^4-p^3-p^2-p-1
+A240110	filter	1	new A000040()	p -> PP(p.+(2)) && PP(p.^(3).+(2))	isprime(p+2) && isprime(p^3+2
+A240126	filter	1	new A000040()	p -> PP(p.-(2)) && PP(p.^(3).-(2))
+A241486	filter	1	new A000040()	p -> PP(p.+(4)) && PP(p.+(444)) && PP(p.+(4444))
+A241487	filter	1	new A000040()	p -> PP(p.+(6)) && PP(p.+(666)) && PP(p.+(6666))
+A243583	filter	1	new A000040()	p -> PP(p.+(4)) && PP(p.^(3).+(4))
+A246370	sintrif	1	(term, n) -> F000120(term).-(1)	""	new A246377()
+A246541	lambdan	1	n -> E323739(n + 1)	1	E323739
+A248028	lambdan	0	n -> SU(0, n, k -> SA(n, k).*(FA(n - k)))	a(n) = Sum_{k=0..n} |Stirling1(n, k)|*(n-k)! for n>=0
+A253646	filter	0	new A000040()	p -> CNT(1, 6, j -> !Predicates.DIGIT_CONTAINS_ZERO.is(p.^(j))).equals(ZV(6))	Primes p such that p^k is zeroless for k=1,...,6.	nonn,base,hard,more	1..10	nyi	_Zak Seidov_ and _M. F. Hasler_
+A253646	filter	1	new A000040()	p -> CNT(1, 6, j -> !Predicates.DIGIT_CONTAINS_ZERO.is(p.^(j))).equals(ZV(6))	Primes p such that p^k is zeroless for k=1,...,6.	nonn,base,hard,more	1..10	nyi	_Zak Seidov_ and _M. F. Hasler_
+A262689	sintrif	0	(term, n) -> F000196(term)	""	new A262690()
+A265482	filnum	1	1	k -> PP(ZV(16).^(k).-(ZV(4).^(k)).-(1))	Numbers k such that 16^k - 4^k - 1 is prime.	nonn,more	1..30	nyi	_Vincenzo Librandi_
+A265483	filnum	1	1	k -> PP(ZV(25).^(k).-(ZV(5).^(k)).-(1))	Numbers k such that 25^k - 5^k - 1 is prime.	nonn,more	1..22	nyi	_Vincenzo Librandi_
+A265484	filnum	1	1	k -> PP(ZV(36).^(k).-(ZV(6).^(k)).-(1))	Numbers k such that 36^k - 6^k - 1 is prime.	nonn,more	1..21	nyi	_Vincenzo Librandi_
+A265485	filnum	1	1	k -> PP(ZV(49).^(k).-(ZV(7).^(k)).-(1))	Numbers k such that 49^k - 7^k - 1 is prime.	nonn,more	1..9	nyi	_Vincenzo Librandi_
+A265486	filnum	1	1	k -> PP(ZV(64).^(k).-(ZV(8).^(k)).-(1))	Numbers k such that 64^k - 8^k - 1 is prime.	nonn,more	1..23	nyi	_Vincenzo Librandi_
+A265487	filnum	1	1	k -> PP(ZV(81).^(k).-(ZV(9).^(k)).-(1))	Numbers k such that 81^k - 9^k - 1 is prime.	nonn,more	1..13	nyi	_Vincenzo Librandi_
+A265574	lambdan	1	n -> n == 1 ? ZV(1) : D014963(n + 1)	forn>(\d+)		1,1	D014963
+A267818	filter	0	new A000040()	p -> Predicates.SQUARE.is(new Z(p.toString(4)))	Primes whose base-4 representation is a square when read in base 10.	nonn,base	1..100	nyi	_Christopher Cormier_
+A268353	sintrif	1	(term, n) -> D007814(term.-(1))	""	new A080076()
+A274551	filnum	0	1	k -> SIGMA(k).mod(k + 3) == 0
+A274552	filnum	1	1	k -> k != 3 && SIGMA(k).mod(k - 3) == 0
+A274553	filnum	1	1	k -> SIGMA(k).mod(k + 4) == 0
+A274554	filnum	1	1	k -> k != 4 && SIGMA(k).mod(k - 4) == 0
+A274556	filnum	1	1	k -> k != 5 && SIGMA(k).mod(k - 5) == 0
+A274558	filnum	1	1	k -> k != 6 && SIGMA(k).mod(k - 6) == 0
+A274559	filnum	0	1	k -> SIGMA(k).mod(k + 7) == 0
+A274560	filnum	1	1	k -> k != 7 && SIGMA(k).mod(k - 7) == 0
+A274563	filnum	1	1	k -> SIGMA(k).mod(k + 9) == 0
+A274564	filnum	1	1	k -> k != 9 && SIGMA(k).mod(k - 9) == 0
+A274962	filnum	1	1	k -> { final Z sk = SIGMA(k); return PP(sk) && PP(sk.+(2)); }	Numbers n such that sigma(n) and sigma(n) + 2 are both primes.	nonn	1..10337	nyi	_Jaroslav Krizek_
+A274963	filnum	1	1	k -> { final Z sk = SIGMA(k); return PP(sk) && PP(sk.-(2)); }	Numbers n such that both sigma(n) and sigma(n) - 2 are primes.	nonn	1..10539	nyi	_Jaroslav Krizek_
+A275370	filnum	1	1	k -> (k&1) == 1 && SIGMA(k).equals(SIGMA(2*k - 1))	Odd numbers n such that sigma(n) = sigma(2*n-1).	nonn	1..164	nyi	_Altug Alkan_
+A287170	sintrif	1	(term, n) -> F069010(term)	""	new A087207()
+A289897	lambdan	1	n -> PR(1, n, k -> D000085(k))	1	D000085
+A296607	lambdan	0	n -> n == 0 ? ZV(0) : F000178(2*n - 2)	n>(\d+)	2,2,0	F000178
+A296608	lambdan	0	n -> n == 0 ? ZV(0) : F000178(3*n - 2)	3,2	F000178
+A307254	filnum	1	0	k -> Integer.toString(k, 3).startsWith(Integer.toString(k))	3
+A307256	filnum	1	0	k -> Integer.toString(k, 5).startsWith(Integer.toString(k))	3
+A307257	filnum	1	0	k -> Integer.toString(k, 6).startsWith(Integer.toString(k))	3
+A308070	filnum	1	0	k -> Integer.toString(k, 7).startsWith(Integer.toString(k))	Numbers k such that k is the substring identical to the most significant digits of its base-7 representation.	nonn,base	1..500	nyi	_Scott R. Shannon_
+A308071	filnum	1	0	k -> Integer.toString(k, 8).startsWith(Integer.toString(k))	Numbers k such that k is the substring identical to the most significant digits of its base-8 representation.	nonn,base	1..500	nyi	_Scott R. Shannon_
+A308072	filnum	1	0	k -> Integer.toString(k, 9).startsWith(Integer.toString(k))	Numbers k such that k is the substring identical to the most significant digits of its base-9 representation.	nonn,base	1..500	nyi	_Scott R. Shannon_
+A317169	lambdan	0	n -> SU(0, n, k -> SA(n, k).*(D001006(k)))	0,1	D001006
+A320589	lambdan	1	n -> SU(1, n, k -> Z_1(n - k).*(BI(n, k)).*(D000593(k)))	1,1	D000593
+A324542	lambdan	1	n -> SD(n, d -> F008683(n/d).*(E324118(d)))		F008683,E324118
+A330569	sintrif	1	(term, n) -> D006519(n).+(term)./(2)	""	new A040001()
+A339662	sintrif	1	(term, n) -> F000720(term)	""	new A079068()
+A340744	sintrif	1	(term, n) -> E316650(term)	""	new A340618()
+A355009	sintrif	1	(term, n) -> E354975(term)	""	new A354972()
+A359602	sintrif	1	(term, n) -> E244042(n).+(term)	""	new A359601()
+A363061	lambdan	0	n -> D010846(F002110(n))
+A363924	sintrif	1	(term, n) -> D010846(term)	""	new A005117()
+A364225	sintrif	1	(term, n) -> D010846(term)	""	new A025487()
+A368474	sintrif	1	(term, n) -> D005361(term)	""	new A197680()
+A369935	sintrif	1	(term, n) -> D051903(term)	""	new A197680()
+A373495	lambdan	1	n -> E078422(n - 1).modZ(10)	1,10	E078422
+A375782	sintrif	1	(term, n) -> D007814(term).+(1)	""	new A085062()
+A378535	lambdan	1	n -> SD(n, d -> F008683(d).*(E378542(n/d)))	F008683,E378542
+A378547	lambdan	1	n -> F000203(n).-(E378546(n))		F000203,E378546
+A382520	sintrif	1	(term, n) -> F000040(term)	""	new A177005()
+A382733	sintrif	0	(term, n) -> n == 0 ? ZV(1) : D005811(n).+(term)	""	new A038189()	Annn(n)			0	D005811,J038189
+A383159	lambdan	1	n -> SD(n, d -> GCDi(d, n/d) == 1 ? D051903(d) : ZV(0))	1	D051903
+A384955	sintrif	0	(term, n) -> E269221(n)./(term)	""	new A066459()
+A385248	sintrif	0	(term, n) -> F055642(term)	""	new A058635()
+A385663	sintrif	1	(term, n) -> D007088(term)	""	new A001969()
+A386220	sintrif	1	(term, n) -> F000265(n).+(term)	""	new A171977()
+A386758	lambdan	0	n -> F055642(F000032(n))
+A387001	lambdan	1	n -> F000203(n).+(D005408(n))		F000203,D005408
+A387012	sintrif	0	(term, n) -> D001019(n).-(term)	""	new A128418()
+A387063	lambdan	0	n -> RU(0, n/2, k -> QV(BI(2*n-3*k-1, k)).*(BI(QV(2).*(n-2*k), n-2*k))./(n-2*k+1)).num()	""		a(n) = sum(k=0, n\2, binomial(2*n-3*k-1, k)*binomial(2*(n-2*k), n-2*k)/(n-2*k+1))	_	_	_
+A387079	sintrif	1	(term, n) -> F020639(term)	""	new A386482()
+A387996	lingf	3	0,0,0,2,0,1	1,-1,-1,0,1,1,-1					0
+A387997	lingf	4	0,0,0,0,13,0,11,8,0,1	1,-1,-1,0,0,2,0,0,-1,-1,1					0
+A388031	lambdan	1	n -> F276086(F000203(n))
+A388270	lambdan	1	n -> F000005(n).*(D009194(n))		F000005,D009194
+A388278	lambdan	1	n -> D324198(F000203(n))
+A388282	lambdan	1	n -> F276086(n).*(E379493(n))		F276086,E379493
+A388283	lambdan	1	n -> D033885(n)./(D009194(n))		D033885,D009194
+A388428	lingf	0	1,1,-2,2,5,17,-4,4	1,0,-4,0,6,0,-4,0,1					0
+A388840	sintrif	1	(term, n) -> D049419(term)	""	new A182922()
+A388994	sintrif	1	(term, n) -> E048250(n).-(term)	""	new A162296()
+A389080	sintrif	1	(term, n) -> E048250(n)./(term)	""	new A389089()
+A389090	holos	0	[0,1,-5,10,-10,5,-1]	0,1,8,49,176,465	0	0
+A389196	lambdan	0	n -> RU(0, n/2, k -> QV(BI(n-k-1, k)).*(BI(QV(3).*(n-2*k), n-2*k))./(QV(2).*(n-2*k).+(1))).num()	""		a(n) = sum(k=0, n\2, binomial(n-k-1, k)*binomial(3*(n-2*k), n-2*k)/(2*(n-2*k)+1))	_	_	_
+A389204	lambdan	1	n -> F034448(n).+(E048250(n)).-(F000203(n))
+A389284	lambdan	0	n -> RU(0, n/2, k -> QV(BI(2*n-3*k-1, k)).*(BI(QV(3).*(n-2*k), n-2*k))./(QV(2).*(n-2*k).+(1))).num()	""		a(n) = sum(k=0, n\2, binomial(2*n-3*k-1, k)*binomial(3*(n-2*k), n-2*k)/(2*(n-2*k)+1))	_	_	_
+A389285	lambdan	0	n -> RU(0, n/3, k -> QV(BI(n-2*k-1, k)).*(BI(QV(3).*(n-3*k), n-3*k))./(QV(2).*(n-3*k).+(1))).num()	""		a(n) = sum(k=0, n\3, binomial(n-2*k-1, k)*binomial(3*(n-3*k), n-3*k)/(2*(n-3*k)+1))	_	_	_
+A389286	lambdan	0	n -> RU(0, n/3, k -> QV(BI(2*n-5*k-1, k)).*(BI(QV(3).*(n-3*k), n-3*k))./(QV(2).*(n-3*k).+(1))).num()	""		a(n) = sum(k=0, n\3, binomial(2*n-5*k-1, k)*binomial(3*(n-3*k), n-3*k)/(2*(n-3*k)+1))	_	_	_
+A389836	lambdan	1	n -> D007814(E278908(n))
+A389921	partsun	0	new A349094().prepend(0,0)			Partial sums of A349094.

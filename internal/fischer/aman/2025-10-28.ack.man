@@ -1,0 +1,109 @@
+---- 2025-10-28 23:11:11
+A082865	multia	1	"1,2"	(self, n) -> SU(1, n - 1, j -> GCD(ZV(n), self.a(j)).equals(ZV(1)) ? self.a(j) : ZV(0))	a(n) is the sum of the preceding terms that are coprime to n.	nonn	1..1000	nyi	_Jon Perry_
+A082866	multia	1	"1,2"	(self, n) -> SU(1, n, j -> GCDi(n, j) == 1 ? self.a(j) : ZV(0))	a(1)=1, a(2)=2, otherwise a(n) is the sum of the preceding terms a(j), 1<=j<n, where gcd(n,j)=1.	nonn	1..3560	nyi	_Jon Perry_
+A082905	trilambn	0	0	0	(n, j) -> { if (j == 0 || j == n) { return Z.ONE; } final int g = GCDi(n, j); return BI(n/g, j/g); }	Modified Pascal-triangle, read by rows. All C(n,j) binomial coefficients are replaced by C(n/g, j/g), where g = gcd(n,j).	nonn,tabl	0..100	nyi	_Labos Elemer_
+A082906	rowsum	0	new A082905()	Sum of terms in n-th row of modified Pascals triangle displayed in A082905.	nonn	0..32	nyi	_Labos Elemer_
+A082907	trilambn	0	0	0	(n, k) -> GCD(Z2(n), BI(n, k))
+A082916	filnum	1	0	k -> k == 0 ? true : GCD(ZV(k), BI(2*k, k)).equals(ZV(1))	Numbers k such that k and binomial(2*k, k) are relatively prime.	nonn	1..10000	nyi	_Benoit Cloitre_
+A082921	filter	1	new A000290().skip(2)	v -> PP(new Z(Functions.DIGIT_SORT_DESCENDING.z(v).toString().replaceAll("0", "")))	Sort the digits of these squares into descending order and drop zeros to get primes.	base,nonn	1..1000	nyi	_Jason Earls_
+A082944	lambdan	1	n -> new Z(Integer.toString(n) + F010888(2*n).toString() + Functions.REVERSE.z(n*10 + 1).toString().substring(1))	a(n) = concatenate(n, F010888(2*n), reverse(n)), where F010888 = digital root.	easy,nonn,base	1..30	nyi	Meenakshi Srikanth (menakan_s(AT)yahoo.com)
+A082956	lambdan	1	n -> { final Z c = D049614(n); return Functions.NEXT_PRIME.z(c).-(c); }	Difference between C(n) and the first prime after C(n), where C(n) = J049614(n).	nonn	1..1000	nyi	_Jason Earls_
+A112598	holos	1	[0,-1,2,-1]	1, 1, 2, 3, 5, 6, 11, 17, 18, 20	0	0
+A117918	trilambn	1	1	1	(n, k) -> SU(0, n - k, j -> Z_1(j).*(BI(n - k, j)).*(PELL(n - j)))	T(n, k) = Sum_{j=0..n-k} (-1)^j*binomial(n-k, j)*Pell(n-j)
+A126724	parmof2	0	A184984	150
+A197100	lambdan	0	n -> E197072(n - 1).*(2).-(E197072(n))
+A201253	filnum	0	1	k -> PHI(k + 1).equals(PHI(k).*(5))	Numbers k such that phi(k+1) = 5*phi(k).
+A201253	filnum	0	1	k -> PHI(k + 1).equals(PHI(k).*(5))	Numbers k such that phi(k+1) = 5*phi(k).
+A201357	filnum	0	1	k -> { final Z k2 = Z2(k); return PP(k2.+(k + 1).*(k2).-(1)); }	Numbers k such that (2^k + k + 1)*2^k - 1 is prime.	nonn,hard,more	1..9	nyi	_Michel Lagneau_
+A201360	filnum	0	1	k -> { final Z k2 = Z2(k); return PP(k2.-(k - 1).*(k2).+(1)); }	Numbers k such that (2^k - k + 1)*2^k + 1 is prime.	nonn,hard,more	1..8	nyi	_Michel Lagneau_
+A201361	filnum	0	1	k -> { final Z k2 = Z2(k); return PP(k2.-(k - 1).*(k2).-(1)); }	Numbers k such that (2^k - k + 1)*2^k - 1 is prime.	nonn,hard,more	1..18	nyi	_Michel Lagneau_
+A201363	filnum	0	1	k -> { final Z k2 = Z2(k); return PP(k2.-(k + 1).*(k2).-(1)); }	Numbers k such that (2^k - k - 1)*2^k - 1 is prime.	nonn,hard,more	1..4	nyi	_Michel Lagneau_
+A204673	parmof2	0	A184984	180	Primes p such that q-p = 180, where q is the next prime after p.	nonn	1..1000	nyi	_M. F. Hasl
+A204802	parmof2	0	A184984	130	Primes followed by a gap of 130 = nextprime(p)-p.	nonn	1..24	nyi	_M. F. Hasler_
+A204803	parmof2	0	A184984	140	Primes followed by a gap of 140 = nextprime(p)-p.	nonn	1..24	nyi	_M. F. Hasler_
+A204805	parmof2	0	A184984	170	Primes followed by a gap of 170 = nextprime(p)-p.	nonn	1..21	nyi	_M. F. Hasler_
+A204806	parmof2	0	A184984	190	Primes followed by a gap of 190 = nextprime(p)-p.	nonn	1..21	nyi	_M. F. Hasler_
+A204812	parmof2	0	A184984	128	Primes followed by a gap of 128 = nextprime(p)-p.	nonn	1..100	nyi	_M. F. Hasler_
+A246852	filnum	1	1	k -> SIGMA(k + 2).-(SIGMA(k)).equals(ZV(k + 2))	Numbers n such that sigma(n+2) - sigma(n) = n + 2.	nonn	1..33	nyi	_Jaroslav Krizek_
+A246853	filnum	1	1	k -> SIGMA(k + 3).-(SIGMA(k)).equals(ZV(k + 3))	Numbers n such that sigma(n+3) - sigma(n) = n + 3.	nonn,more	1..12	nyi	_Jaroslav Krizek_      
+A246854	filnum	1	1	k -> SIGMA(k + 4).-(SIGMA(k)).equals(ZV(k + 4))	Numbers n such that sigma(n+4) - sigma(n) = n + 4.	nonn,more	1..13	nyi	_Jaroslav Krizek_
+A246857	filnum	1	1	k -> SIGMA(SIGMA(k).+(k)).equals(SIGMA(k).*(2))	Numbers k such that sigma(k + sigma(k)) = 2*sigma(k).	nonn	1..53	nyi	_Jaroslav Krizek_
+A246858	filter	1	new A002808()	c -> SIGMA(SIGMA(c).+(c)).equals(SIGMA(c).*(2))	Composite numbers k such that sigma(k + sigma(k)) = 2*sigma(k).	nonn	1..40	nyi	_Jaroslav Krize
+A246907	filnum	1	1	k -> SIGMA(SIGMA(k).+(k)).equals(ZV(3*k))	Numbers n such that sigma(n + sigma(n)) = 3n.	nonn,more	1..13	nyi	_Jaroslav Krizek_
+A246910	filnum	1	1	k -> SIGMA(SIGMA(k).+(k)).equals(SIGMA(k).*(3))	Numbers n such that sigma(n+sigma(n)) = 3*sigma(n).	nonn	1..1000	nyi	_Jaroslav Krizek_
+A246911	filnum	1	1	k -> SIGMA(SIGMA(k).+(k)).equals(SIGMA(k).*(4))	Numbers n such that sigma(n+sigma(n)) = 4*sigma(n).	nonn	1..42	nyi	_Jaroslav Krizek_
+A246912	filnum	1	1	k -> SIGMA(SIGMA(k).+(k)).equals(SIGMA(k).*(5))	Numbers n such that sigma(n+sigma(n)) = 5*sigma(n).	nonn	1..32	nyi	_Jaroslav Krizek_
+A246913	filnum	1	1	k -> SIGMA(SIGMA(k).+(k)).equals(SIGMA(k).*(6))	Numbers n such that sigma(n+sigma(n)) = 6*sigma(n).	nonn	1..309	nyi	_Jaroslav Krizek_                       
+A246915	filnum	1	1	k -> SIGMA(SIGMA(k).+(k)).equals(SIGMA(SIGMA(k + 1).+(k + 1)))	Numbers n such that sigma(n + sigma(n)) = sigma((n+1) + sigma(n+1)).	nonn	1..38	nyi	_Jaroslav Krizek_
+A248527	filnum	1	1	k -> LPF(ZV(k).*(k).+(1)).equals(ZV(13))	Numbers k such that the smallest prime divisor of k^2+1 is 13.
+A248528	filnum	1	1	k -> LPF(ZV(k).*(k).+(1)).equals(ZV(17))	Numbers k such that the smallest prime divisor of k^2+1 is 17.
+A248529	filnum	1	1	k -> LPF(ZV(k).*(k).+(1)).equals(ZV(29))	Numbers k such that the smallest prime divisor of k^2+1 is 29.
+A248530	filnum	1	1	k -> LPF(ZV(k).*(k).+(1)).equals(ZV(37))	Numbers k such that the smallest prime divisor of k^2+1 is 37.
+A248531	filnum	1	1	k -> LPF(ZV(k).*(k).+(1)).equals(ZV(41))	Numbers k such that the smallest prime divisor of k^2+1 is 41.
+A248532	filnum	1	1	k -> LPF(ZV(k).*(k).+(1)).equals(ZV(53))	Numbers k such that the smallest prime divisor of k^2+1 is 53.
+A248549	filnum	1	1	k -> LPF(ZV(k).*(k).+(1)).equals(ZV(61))	Numbers n such that the smallest prime divisor of n^2+1 is 61.
+A248550	filnum	1	1	k -> LPF(ZV(k).*(k).+(1)).equals(ZV(73))	Numbers n such that the smallest prime divisor of n^2+1 is 73.
+A248551	filnum	1	1	k -> LPF(ZV(k).*(k).+(1)).equals(ZV(89))	Numbers n such that the smallest prime divisor of n^2+1 is 89.
+A248552	filnum	1	1	k -> LPF(ZV(k).*(k).+(1)).equals(ZV(97))	Numbers n such that the smallest prime divisor of n^2+1 is 97.
+A248553	filnum	1	1	k -> LPF(ZV(k).*(k).+(1)).equals(ZV(101))	Numbers n such that the smallest prime divisor of n^2+1 is 101.
+A249968	filnum	1	1	k -> Predicates.SQUARE.is(new Z("2" + Long.toString((long) k*k) + "25"))	Numbers whose squares remain squares when prepended with 2 and appended with 25 in base 10.	nonn,base	1..72	nyi	_Chai Wah Wu_
+A249969	filnum	1	1	k -> Predicates.SQUARE.is(new Z("3" + Long.toString((long) k*k) + "25"))	Numbers whose squares remain squares when prepended with 3 and appended with 25 in base 10.	nonn,base	1..16	nyi	_Chai Wah Wu_
+A249970	filnum	1	1	k -> Predicates.SQUARE.is(new Z("4" + Long.toString((long) k*k) + "25"))	Numbers whose squares remain squares when prepended with 4 and appended with 25 in base 10.	nonn,base,more	1..5	nyi	_Chai Wah Wu_
+A249971	filnum	1	1	k -> Predicates.SQUARE.is(new Z("5" + Long.toString((long) k*k) + "25"))	Numbers whose squares remain squares when prepended with 5 and appended with 25 in base 10.	nonn,base	1..8	nyi	_Chai Wah Wu_
+A319042	filnum	0	2	k-> PELL(k).mod(k) == 1 && !PP(k)	Composite numbers k such that Pell(k) == 1 (mod k).
+A319043	filnum	0	2	k-> PELL(k).mod(k) == k - 1 && !PP(k)	Composite numbers k such that Pell(k) == -1 (mod k).
+A387013	lambdan	0	n -> QV(FA(n)).*(RU(0, n/2, k -> QV(n-2*k+1).^(n-2*k-1).*(BI(QV(2).*(n-2*k), k))./(FA(n-2*k)))).num()	""		a(n) = n!*sum(k=0, n\2, (n-2*k+1)^(n-2*k-1)*binomial(2*(n-2*k), k)/(n-2*k)!)	_	_	_
+A387841	holos	1	[0,-16,42,-37,12,-1]	8, 63, 502, 4065, 32692, 261975	0	0
+A387998	holos	5	[0,1,-1,-1,0,0,1,1,1,-1,-1,-1,0,0,1,1,-1]	8,8,25,44,77,115,182,257,370,497,672,872,1136,1427,1797	0	0
+A389773	holos	6	[0,-1,1,1,0,0,-1,0,-2,0,1,1,1,1,0,-2,0,-1,0,0,1,1,-1]	16,16,53,99,184,291,484,717,1092,1540,2180,2957,4022,5271,6914,8847,11278,14113,17618,21637,26515	0	0
+A389774	holos	7	[0,1,-1,-1,0,0,1,0,1,1,0,-1,-1,-2,0,0,0,2,1,1,0,-1,-1,0,-1,0,0,1,1,-1]	86,86,299,593,1156,1933,3340,5214,8249,12245,18023,25519,35967,49137,66716,88645,116781,151356,194831,247336,312066,389357,482854,593373,725324,879514,1061412,1272329	0	0
+A389833	poly	0	"[1]"	"1,x,exp,n,*,+,<1,exp,*n!"
+A389976	holos	0	[0,12,-16,7,-1]	1,2,5	0	0
+A389986	lambdan	0	n -> RU(0, n/2, k -> new Q(ZV(n - 2*k + 1).^(n - 2*k - 1).*(BI(3*(n - 2*k), k)), FA(n - 2*k))).*(FA(n)).num()
+A389987	lambdan	0	n -> RU(0, n/3, k -> new Q(ZV(n - 3*k + 1).^(n - 3*k - 1).*(BI(2*(n - 3*k), k)), FA(n - 3*k))).*(FA(n)).num()
+A389988	lambdan	0	n -> RU(0, n/3, k -> new Q(ZV(n - 3*k + 1).^(n - 3*k - 1).*(BI(3*(n - 3*k), k)), FA(n - 3*k))).*(FA(n)).num()
+A389992	lambdan	0	n -> RU(0, n  , k -> new Q(BI(n + k + 2, n - k), FA(k))).*(FA(n)).num()
+A390011	lambdan	0	n -> RU(0, n, k -> QV(2*k + 1).^(k - 1).*(Z_1(n - k)).*(BI(k, n - k))./(FA(k))).*(FA(n)).num()	n! * Sum_{k=0..n} (-1)^(n-k) * (2*k+1)^(k-1) * binomial(k,n-k)/k!.
+A390013	lambdan	0	n -> RU(0, n/3, k -> new Q(Z_1(k).*(ZV(n - 2*k + 1).^(n - 2*k - 1)).*(BI(n-2*k, k)), FA(n - 2*k))).*(FA(n)).num()
+A390014	lambdan	0	n -> RU(0, n/4, k -> new Q(Z_1(k).*(ZV(n - 3*k + 1).^(n - 3*k - 1)).*(BI(n-3*k, k)), FA(n - 3*k))).*(FA(n)).num()
+A390015	lambdan	0	n -> RU(0, n/3, k -> new Q(Z_1(k).*(ZV(n - 3*k + 1).^(n - 3*k - 1)).*(BI(2*(n - 3*k), k)), FA(n - 3*k))).*(FA(n)).num()
+A390050	filnum	1	0	k -> PP(ZV(3).^(k).*(256).-(1))	Numbers k such that 256 * 3^k - 1 is prime.	nonn,more,new	1..14	nyi	_Ken Clements_
+A390051	filnum	1	0	k -> PP(ZV(3).^(k).*(256).+(1))	Numbers k such that 256 * 3^k + 1 is prime.	nonn,new	1..48	nyi	_Ken Clements_
+A390057	lambdan	0	n -> RU(0, n, k -> new Q(ZV(2*k + 1).^(k - 1).*(BI(3 *k, n - k)), FA(k))).*(FA(n)).num()
+A390058	lambdan	0	n -> RU(0, n/3, k -> new Q(ZV(2*(n - 2*k) + 1).^(n - 2*k - 1).*(BI(n - 2*k, k)), FA(n-2*k))).*(FA(n)).num()
+A390059	lambdan	0	n -> RU(0, n/4, k -> new Q(ZV(2*(n - 3*k) + 1).^(n - 3*k - 1).*(BI(n - 3*k, k)), FA(n-3*k))).*(FA(n)).num()
+A390060	lambdan	0	n -> RU(0, n/2, k -> new Q(ZV(2*(n - 2*k) + 1).^(n - 2*k - 1).*(BI(2*(n-2*k), k)), FA(n - 2*k))).*(FA(n)).num()
+A390061	lambdan	0	n -> RU(0, n/2, k -> new Q(ZV(2*(n - 2*k) + 1).^(n - 2*k - 1).*(BI(3*(n-2*k), k)), FA(n - 2*k))).*(FA(n)).num()
+A390062	polyx	0	"[1]"	"A,<1,1,A,<1,-,^2,/,exp,1,A,<1,-,*"	0	1
+A390063	lambdan	0	n -> RU(0, n, k -> new Q(ZV(2*k + 1).^(k - 1).*(BI(-2*k, n - k)), FA(k))).*(FA(n)).num()
+A390064	lambdan	0	n -> RU(0, n, k -> new Q(ZV(2*k + 1).^(k - 1).*(BI(-k, n - k)), FA(k))).*(FA(n)).num()
+A390065	lambdan	0	n -> RU(0, n, k -> new Q(ZV(3*k + 1).^(k - 1).*(BI(-k, n - k)), FA(k))).*(FA(n)).num()
+A390094	lambdan	0	n -> RU(0, n/2, k -> new Q(Z_1(k).*(ZV(2*(n - 2*k) + 1).^(n - 2*k - 1)).*(BI(2*(n - 2*k), k)), FA(n - 2*k))).*(FA(n)).num()
+A390102	lambdan	0	n -> RU(0, n/2, k -> new Q(BI(3*n - 5*k - 1, k).*(BI(2*(n - 2*k), n - 2*k)), ZV(n - 2*k + 1))).num()
+A390103	lambdan	0	n -> RU(0, n/3, k -> new Q(BI(2*n - 5*k - 1, k).*(BI(2*(n - 3*k), n - 3*k)), ZV(n - 3*k + 1))).num()
+A390104	lambdan	0	n -> RU(0, n/3, k -> new Q(BI(3*n - 8*k - 1, k).*(BI(2*(n - 3*k), n - 3*k)), ZV(n - 3*k + 1))).num()
+A390105	polyxa	0	"[1]"	"x,B,^2"	0	1	egf(new A361093())
+A390106	polyxa	0	"[1]"	"x,B,^3"	0	1	egf(new A361094())
+A390132	lambdan	0	n -> RU(0, n/2, k -> new Q(Z_1(k).*(BI(2*n - 3*k - 1, k)).*(BI(2*(n - 2*k), n - 2*k)), (n-2*k+1))).num()
+A390133	lambdan	0	n -> RU(0, n/2, k -> new Q(Z_1(k).*(BI(3*n - 5*k - 1, k)).*(BI(2*(n - 2*k), n - 2*k)), (n-2*k+1))).num()
+A390134	lambdan	0	n -> RU(0, n/3, k -> new Q(Z_1(k).*(BI(2*n - 5*k - 1, k)).*(BI(2*(n - 3*k), n - 3*k)), (n-3*k+1))).num()
+A390135	lambdan	0	n -> RU(0, n/3, k -> new Q(Z_1(k).*(BI(3*n - 8*k - 1, k)).*(BI(2*(n - 3*k), n - 3*k)), (n-3*k+1))).num()
+A390136	polyxa	0	"[1]"	"x,B,exp"	0	1	egf(new A334316())
+A390140	holos	0	[0,-1,4,-6,4,-1]	1,49,235,651	0	0		
+A390140	lambdan	1	n -> ZV(46*n -69).*(n).+(29).*(n).-(3)./(3)	Centered truncated cube numbers: a(n) = (46*n^3 - 69*n^2 + 29*n - 3)/3.	nonn,easy,new	1..38	nyi	_Stefano Spezia_
+---- 2025-10-28 23:34:02
+A245742	filter	1	new A000040()	p -> PP(p.+(Functions.DIGIT_SORT_DESCENDING.z(p).toString().charAt(0) - '0'))	Primes p such that p + d is also prime, where d is the largest digit of p.	nonn,base	1..10000	nyi	_Colin Barker_
+A245743	filter	1	new A000040()	p -> PP(p.-(Functions.DIGIT_SORT_DESCENDING.z(p).toString().charAt(0) - '0'))	Primes p such that p - d is also prime, where d is the largest digit of p.	nonn,base	1..10000	nyi	_Colin Barker_
+A245744	filter	1	new A000040()	p -> PP(p.+(Functions.DIGIT_SORT_ASCENDING.z(p).toString().charAt(0) - '0'))	Primes p such that p + d is also prime, where d is the smallest nonzero digit of p.	nonn,base	1..10000	nyi	_Colin Barker_
+A245745	filter	1	new A000040()	p -> PP(p.-(Functions.DIGIT_SORT_ASCENDING.z(p).toString().charAt(0) - '0'))	Primes p such that p - d is also prime, where d is the smallest nonzero digit of p.	nonn,base	1..10000	nyi	_Colin Barker_
+A246024	sintrif	0	(term, n) -> term.-(n)	""	new A070952()
+A246388	filnum	0	1	k -> CV(k).sin().compareTo(CV(0)) >= 0 && CV(k + 1).sin().compareTo(CV(0)) <= 0	Nonnegative integers k satisfying sin(k) >= 0 and sin(k+1) <= 0.	nonn,easy	0..1000	nyi	_Clark Kimberling_
+A246390	filnum	0	1	k -> CV(k).sin().compareTo(CV(0)) <= 0 && CV(k + 1).sin().compareTo(CV(0)) <= 0	Nonnegative integers k satisfying sin(k) <= 0 and sin(k+1) <= 0.	nonn,easy	0..1000	nyi	_Clark Kimberling_
+A246419	filnum	1	1	k -> !Predicates.SQUARE_FREE.is(ZV(k).^(6).-(2))	Numbers n such that n^6 - 2 is not squarefree.
+A246450	filnum	1	1	k -> CV(k).sin().*(CV(k + 1).cos()).compareTo(CV(0)) < 0	Nonnegative integers k satisfying sin(k)*cos(k+1) < 0.	nonn,easy	1..1000	nyi	_Clark Kimberling_
+A246451	filnum	1	1	k -> CV(k).sin().*(CV(k + 1).cos()).compareTo(CV(0)) > 0	Nonnegative integers k satisfying sin(k)*cos(k+1) > 0.	nonn,easy	1..1000	nyi	_Clark Kimberling_
+A246914	filter	1	new A000040()	p -> SIGMA(p.*(2).+(1)).equals(p.+(1).*(3))	Primes p such that sigma(2p+1) = 3*(p+1).	nonn,more	1..6	nyi	_Jaroslav Krizek_
+---- 2025-10-28 23:35:49
+---- 2025-10-28 23:37:56
+A245774	filnum	1	1	k -> SIGMA(k).*(3).mod(k) == 0	Numbers k that divide 3*sigma(k).)/n    )
+A246454	filnum	1	1	k -> SIGMA(k).*(2).mod(k) == 0	Numbers k that divide 2*sigma(k).
