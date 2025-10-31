@@ -21,6 +21,7 @@ CA=$(GITS)/OEIS-mat/ca
 CAS=$(GITS)/OEIS-mat/cas
 DATA=$(GITS)/OEIS-mat/data
 PROG=$(GITS)/OEIS-prog
+PRIO=java,gp
 COMBSTRUCT=$(GITS)/OEIS-mat/combstruct
 COMMON=$(GITS)/OEIS-mat/common
 CONSTANT=$(GITS)/OEIS-mat/constant
@@ -62,8 +63,8 @@ BOFS=1
 BF=
 WITHB=-b $(COMMON)/bfile -t $(TO)
 VERBOSE=false
-# JOPT=-Ddebug=$(D) -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=$(VERBOSE) -Doeis.priority="java,gp" -Doeis.timeout=$(TO)
-JOPT=-Ddebug=$(D) -Xmx2800m -Xss800m -Duser.language=en -Dprog.root=./prog -Doeis.verbose=$(VERBOSE) -Doeis.priority="java,gp" -Doeis.timeout=$(TO)
+# JOPT=-Ddebug=$(D) -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=$(VERBOSE) -Doeis.priority="$(PRIO)" -Doeis.timeout=$(TO)
+JOPT=-Ddebug=$(D) -Xmx2800m -Xss800m -Duser.language=en -Dprog.root=$(PROG)/prog -Doeis.verbose=$(VERBOSE) -Doeis.priority="$(PRIO)" -Doeis.timeout=$(TO)
 ifeq ($(OS),Windows_NT)
     CPS=;
 else
@@ -1833,7 +1834,24 @@ paripat1: # insert 1 column
 	# A007117	7	FATO	4010 ms	19
 	grep -E "^A[0-9]" paritest.4s.2022-06-19.22.00.log \
 	| perl -ne 'my @f = split(/\t/); push(@f, $$f[4]); $$f[4] = ""; print join("\t", @f); '\
-	>   paritest.4s.2022-06-20.00.00.log
+	>   paritest.4s.2022-06-20.00.00.log 
+#-----
+RANGE=100..355
+parisub: # run all PARI in $(PROG)/prog/gp/a*
+	# rm -f $@.log 
+	perl -e 'foreach my $$i($(RANGE)) { print sprintf("%03d\n", $$i); }' \
+	| xargs -innn make parisub1 SUB=nnn COMPA=
+parisub1: # process a single subdirectory prog/gp/$(SUB)
+	find $(PROG)/prog/gp/a$(SUB) -iname "*.gp" -printf "%f\n" | sed -e "s/\.gp//" \
+	| tee ghead.tmp
+	rm -f batch.log
+	make PRIO=gp CC=$@.$(SUB) test2 log
+	cat $@.$(SUB).pass.log $@.$(SUB).fail.log >> parisub.log
+	rm -f $@.*.log
+parisub_retest: # rerun the FAILed from parisub
+	cp -v parisub.0-355.fail.log ghead.tmp
+	rm -f batch.log
+	make PRIO=gp CC=$@ test2 log
 #----
 batlog: # LIST= store result logs in table 'batlog'
 	$(DBAT) -f sql/batlog.create.sql

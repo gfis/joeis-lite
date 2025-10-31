@@ -107,7 +107,6 @@ A279984	filtpos	1	1	new A007916()	PRIME	the prime numbers in the sequence of num
 A281597	filnum	1	1	k -> F001221(k).equals(F001221(F000041(k)))	1..940	nyi	_Colin Barker_
 A281598	filnum	1	1	k -> F001222(k).equals(F001222(F000041(k)))	1..1000	nyi	_Colin Barker_
 A281599	filnum	1	1	k -> F000005(k).equals(F000005(F000041(k)))	1..500	nyi	_Colin Barker_
-late error A287107	filtpos	0	1	new A287104()	v -> v.equals(ZV(2))	2 in J287104.
 A298684	filnum	1	1	k -> { final Z fi = FI(k); return CNT(0, 2, i -> fi.mod(k + i) != 0).isZero(); }	nyi to	Numbers i such that Fibonacci(i) is divisible by i, i+1, and i+2.	nonn	1..1000	nyi	_Alex Ratushnyak_
 A298685	filnum	1	1	k -> { final Z fi = FI(k); return CNT(0, 3, i -> fi.mod(k + i) != 0).isZero(); }	nyi to	Numbers i such that Fibonacci(i) is divisible by i, i+1, i+2, and i+3.	nonn	1..1000	nyi	_Alex Ratushnyak_
 A298686	filnum	1	1	k -> { final Z fi = FI(k); return CNT(0, 4, i -> fi.mod(k + i) != 0).isZero(); }	nyi o	Numbers i such that Fibonacci(i) is divisible by i+k for k=0,1,2,3,4.	nonn	1..147	nyi	_Alex Ratushnyak_

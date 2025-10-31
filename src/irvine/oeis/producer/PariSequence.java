@@ -24,7 +24,7 @@ public class PariSequence extends AbstractSequence implements Closeable {
   private final Process mProc;
   private final PrintWriter mOut;
   private final BufferedReader mIn;
-  private String mTimeOut;
+  private String mTimeOut; 
 
   /**
    * Construct a sequence backed by a PARI program with default offset = 0.
@@ -39,7 +39,7 @@ public class PariSequence extends AbstractSequence implements Closeable {
    * @param offset first index
    * @param pariProgram PARI program
    */
-  public PariSequence(final int offset, final String pariProgram) {
+  public PariSequence(int offset, final String pariProgram) {
     super(offset);
     final ProcessBuilder pb = new ProcessBuilder(PariProducer.PARI_COMMAND, "--fast", "--quiet");
     try {
@@ -53,8 +53,9 @@ public class PariSequence extends AbstractSequence implements Closeable {
     }
     //System.out.println("Sending: " + pariProgram);
     final Header header = new Header(pariProgram);
-//  final int offset = header.getOffset();
-//  setOffset(offset);
+    offset = header.getOffset();
+    setOffset(offset);
+    final int nStart = header.getNStart();
     final String programType = header.getType();
     mOut.println(pariProgram); // Send the program to PARI
     mTimeOut = System.getProperty("oeis.timeout", "3600000"); // 1000 hours = almost never
@@ -69,7 +70,7 @@ public class PariSequence extends AbstractSequence implements Closeable {
         mOut.println("alarm(" + mTimeOut + ",for(n=0,+oo,if(isok(n),print(n))));");
         break;
       case "isok":
-        mOut.println("alarm(" + mTimeOut + ",for(n=" + offset + ",+oo,if(isok(n),print(n))));");
+        mOut.println("alarm(" + mTimeOut + ",for(n=" + nStart + ",+oo,if(isok(n),print(n))));");
         break;
       default:
         throw new RuntimeException("Unknown type of PARI program " + programType + "\n" + pariProgram);
