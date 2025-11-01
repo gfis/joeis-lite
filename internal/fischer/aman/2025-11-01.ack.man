@@ -1,0 +1,90 @@
+---- 2025-11-01 18:14:57
+---- 2025-11-01 21:26:18
+---- 2025-11-01 21:36:26
+---- 2025-11-01 22:11:56
+---- 2025-11-01 22:14:20
+---- 2025-11-01 22:23:58
+A120082	multraf	0	(self, n) -> new Q(self.s(0), self.s(1))./(FA(n + 1)).num()	"1"	new A027641(), new A027642()
+A120083	multraf	0	(self, n) -> new Q(self.s(0), self.s(1))./(FA(n + 1)).den()	"1"	new A027641(), new A027642()
+A141590	filter	0	new A120082().adjust(3, 1,1)	ODD
+A180642	filnum	1	1	k -> { final Z ph = PHI(k); return ph.mod(4) == 0 && PP(ph./(4)); }	Numbers k such that phi(k)/4 is a prime, where phi is the Euler totient function.       nonn    1..10000        nyi     _Carmine Suriano_
+A180643	filnum	1	1	k -> PP(PHI(k).^(2).+(1))	Numbers n such that 1 + phi(n)^2 is prime. Phi is the Euler totient function.     nonn    1..2800 nyi     _Carmine Suriano_
+A180644	filnum	1	1	k -> PP(PHI(k).^(2).+(3))	Numbers k such that 3 + phi(k)^2 is a prime.      nonn    1..58   nyi     _Carmine Suriano_
+A180645	filnum	1	1	k -> PP(PHI(k).^(2).+(5))	Numbers n such that 5 + phi(n)^2 is prime. Phi(n) is Euler's totient.     nonn    1..57   nyi     _Carmine Suriano_
+A180646	filnum	1	1	k -> PP(PHI(k).^(3).+(3))	Numbers k such that 3 + phi(k)^3 is prime, where phi is Euler's totient function.       nonn    1..10000        nyi     _Carmine Suriano_
+A180647	filnum	1	1	k -> PP(PHI(k).^(3).+(5))	Numbers n such that 5 + phi(n)^3 is prime. Phi is Euler's totient function.     nonn    1..59   nyi     _Carmine Suriano_
+A180648	filnum	1	1	k -> PP(PHI(k).^(4).+(1))	Numbers k such that 1 + phi(k)^4 is a prime. Phi is Euler's totient function.   nonn    1..10000        nyi     _Carmine Suriano_
+A181421	filter	1	new A000040()	p -> PP(p.+(Functions.NEXT_PRIME.z(p)).^(2).+(1))	Primes such that the square of the sum of itself and next prime, when added to 1 is a prime.	nonn	1..10000	nyi	_Carmine Suriano_
+A181422	filter	1	new A000040()	p -> PP(p.+(Functions.NEXT_PRIME.z(p)).^(2).+(3))	Primes such that the square of the sum of itself and next prime when added to 3 is a prime.	nonn	1..46	nyi	_Carmine Suriano_
+A181423	filter	1	new A000040()	p -> PP(p.+(Functions.NEXT_PRIME.z(p)).^(2).+(5))	Primes such that the square of the sum of itself and next prime, when added to 5, is a prime.	nonn	1..1000	nyi	_Carmine Suriano_
+A181595	filnum	1	1	k -> { final long d = SIGMA(k).-(2*k).longValueExact(); return d > 0L && d < k && k%d == 0L; }	Abundant numbers n for which the abundance d = sigma(n) - 2*n is a proper divisor, that is, 0 < d < n and d | n.	nonn
+A181596	sintrif	1	(term, n) -> SIGMA(term).-(term.*(2))	""	new A181595()	v -> nyi Ft	Abundance of A181595(n).	nonn	1..200	nyi
+A181597	filnum	0	1	k -> (k&3) == 0 ? SIGMA(k).-(4).equals(ZV(2*k)) : SIGMA(k).equals(2*k)	(N\{4})-perfect numbers, i.e., numbers m for which sigma(m)-4 = 2m, if 4|m, otherwise sigma(m) = 2m.	nonn,more	1..13	ny  
+A181598	filter	0	new LambdaSequence(0, n -> ZV(n).*(8))	v -> SIGMA(v).-(v.*(2)).equals(ZV(8))	Numbers m with divisor 8 | m and abundance sigma(m)-2*m = 8.	nonn	1..23	nyi	_Vladimir Shevelev_                     
+A181599	filter	0	new LambdaSequence(0, n -> ZV(n).*(16))	v -> SIGMA(v).-(v.*(2)).equals(ZV(16))	Numbers m with divisor 16 | m and abundance sigma(m)-2*m = 16.	nonn	1..20	nyi	_Vladimir Shevelev_                     
+A181601	filter	0	new LambdaSequence(0, n -> ZV(n).*(32))	v -> SIGMA(v).-(v.*(2)).equals(ZV(32))	Numbers m with divisor 32 | m and abundance sigma(m)-2*m = 32.	nonn	1..45	nyi	_Vladimir Shevelev_                     
+A181603	filter	1	new A001097()	p -> p.mod(10) == 1
+A181604	filter	1	new A001097()	p -> p.mod(10) == 3
+A181605	filter	1	new A001097()	p -> p.mod(10) == 7
+A181606	filter	1	new A001097()	p -> p.mod(10) == 9
+A182203	filtpos	1	1	new A068869()	(k, v) -> v.compareTo(Functions.SQRT.z(FA(k))) > 0	> sqrt(n!).	nonn	1..54	nyi	_Artur Jasinski_
+A182204	filtpos	1	1	new A068869()	(k, v) -> v.compareTo(Functions.SQRT.z(FA(k))) < 0	< sqrt(n!).	nonn	1..62	nyi	_Artur Jasinski_
+A201556	convprod	0	2	new A213402()
+A213402	multia	0	"1"	(self, n) -> SU(1, n, k -> BI(2*k*k, k*k).*(self.a(n - k))./(2))./(n)	n -> a(n) = (1/n) * Sum_{k=1..n} C(2*k^2,k^2)/2 * a(n-k) for n>0 with a(0)=1.
+A242552	lambdan	1	n -> { final Z np = ZV(n).^(4); int k = 0;   while (!PP(np.+(ZV(++k).^(4)))) {}; return ZV(k); }	k^4 is prime.	nonn	1..83	nyi	_Derek Orr_
+A242553	lambdan	1	n -> { final Z np = ZV(n).^(8); int k = 0;   while (!PP(np.+(ZV(++k).^(8)))) {}; return ZV(k); }	k^8 is prime.	nonn	1..77	nyi	_Derek Orr_
+A242554	lambdan	1	n -> { final Z np = ZV(n).^(16); int k = 0;  while (!PP(np.+(ZV(++k).^(16)))) {}; return ZV(k); }	+ k^16 is prime.	nonn	1..74	nyi	_Derek Orr_
+A242555	lambdan	1	n -> { final Z np = ZV(n).^(32); int k = 0;  while (!PP(np.+(ZV(++k).^(32)))) {}; return ZV(k); }	+ n^32 is prime.	nonn	1..69	nyi	_Derek Orr_
+A242556	lambdan	1	n -> { final Z np = ZV(n).^(64); int k = 0;  while (!PP(np.+(ZV(++k).^(64)))) {}; return ZV(k); }	+ n^64 is prime.	nonn	1..67	nyi	_Derek Orr_
+A242557	lambdan	0	n -> { final Z np = ZV(n).^(128); int k = 0; while (!PP(np.+(ZV(++k).^(128)))) {}; return ZV(k); }	+k^128 is prime.	nonn	1..59	nyi	_Derek Orr_
+A242559	filnum	1	1	k -> Predicates.ZEROLESS.is(k) && !Predicates.ZEROLESS.is(ZV(k).^(3))	Zeroless numbers n such that n^3 contains a 0.	nonn,base	1..58	nyi	_Derek Orr_
+A255505	multraf	0	(self, n) -> new Q(self.s(0), self.s(1))./(FA(n)).num()	"1"	new A000367(), new A002445()	Numerator of Bernoulli(2n)/(2n!).
+A255881	polya	0	"[1]"	"x,B,1,-,/n,exp"	new A000364()
+A255883	polya	0	"[1]"	"x,B,1,-,/n,exp"	new A000281()
+A255900	polya	0	"[1]"	"x,B,<1,/n,exp"	new A000464()
+A255926	polya	0	"[1]"	"x,B,1,-,/n,exp"	new A210676()
+A255928	polya	0	"[1]"	"x,B,1,-,/n,exp"	new A094088()
+A255929	polya	0	"[1]"	"x,B,1,-,/n,exp"	new A210672()
+A255930	polya	0	"[1]"	"x,B,1,-,/n,exp"	new A210674()
+A270743	holos	1	[0,-1,0,0,2,0,0,-1]	1,1,2,1,2,4	0	0
+A273324	holos	1	[0,-1,1,0,0,0,0,1,-1]	2,5,6,10,11,14,18	0	0
+A390238	lambdan	0	n -> SU(0, n, k -> BI(3*n + k + 2, n - k))
+A390239	lambdan	0	n -> SU(0, n, k -> BI(3*n - 2*k + 2, n - k))
+A390251	filnum	1	1	k -> SIGMA(k).equals(F001615(k).+(Functions.OMEGA.z(k).^(2)))
+A390252	filnum	1	1	k -> SIGMA(k).equals(F001615(k).+(Functions.OMEGA.z(k).^(3)))
+A390266	lambdan	0	n -> SU(0, n, k -> BI(2*n + k + 1, n - k))
+A390267	lambdan	0	n -> SU(0, n, k -> BI(2*n + 2*k + 1, n - k))
+A390268	lambdan	0	n -> SU(0, n, k -> BI(2*n + 3*k + 1, n - k))
+A390269	lambdan	0	n -> RU(0, n/2, k -> new Q(Z_1(k).*(ZV(2*(n - 2*k) + 1).^(n - 2*k - 1)).*(BI(n - k - 1, k)), FA(n - 2*k))).*(FA(n)).num()
+A390270	lambdan	0	n -> RU(0, n/2, k -> new Q(Z_1(k).*(ZV(2*(n - 2*k) + 1).^(n - 2*k - 1)).*(BI(2*n - 3*k - 1, k)), FA(n - 2*k))).*(FA(n)).num()
+A390271	lambdan	0	n -> RU(0, n/3, k -> new Q(Z_1(k).*(ZV(2*(n - 3*k) + 1).^(n - 3*k - 1)).*(BI(n - 2*k - 1, k)), FA(n - 3*k))).*(FA(n)).num()
+A390272	lambdan	0	n -> RU(0, n/3, k -> new Q(Z_1(k).*(ZV(2*(n - 3*k) + 1).^(n - 3*k - 1)).*(BI(2*n - 5*k - 1, k)), FA(n - 3*k))).*(FA(n)).num()
+A390279	trilambn	0	0	0	(n, k) -> SD(GCDi(n, k), d -> MU(n/d).*(d))	Triangle read by rows: T(n, k) = Sum_{d | gcd(n, k)} d*M‚ąö‚ąābius(n/d).	sign,tabl,new	0..11475	nyi	_Peter Luschny_
+---- 2025-11-01 23:01:23
+A178551	filter	1	new A000040()	p -> { final int[] dc = ZUtils.digitCounts(p); return dc[2] == 2; }	Primes with exactly two 2's.	nonn,base	1..10000	nyi	_Lekraj Beedassy_
+A178552	filter	1	new A000040()	p -> { final int[] dc = ZUtils.digitCounts(p); return dc[3] == 3; }	Primes with exactly three 3's.	nonn,base	1..10000	nyi	_Lekraj Beedassy_
+A178553	filter	1	new A000040()	p -> { final int[] dc = ZUtils.digitCounts(p); return dc[4] == 4; }	Primes with exactly four 4's.	nonn,base	1..10000	nyi	_Lekraj Beedassy_
+A178554	filter	1	new A000040()	p -> { final int[] dc = ZUtils.digitCounts(p); return dc[5] == 5; }	Primes with exactly five 5's.	nonn,base	1..10000	nyi	_Lekraj Beedassy_
+A181053	filnum	1	1	k -> PP(SU(1, k, j -> Z_1(k - j).*(TAU(j))))	Numbers n such that Sum_{k=1..n} (-1)^(n-k) *tau(k) is prime.	nonn	1..10000	nyi	_Michel Lagneau_
+A181054	filnum	1	1	k -> PP(SU(1, k, j -> Z_1(k - j).*(SIGMA(j))))	Numbers n such that Sum_{k=1..n} (-1)^(n-k)*sigma(k) is prime.	nonn	1..54	nyi	_Michel Lagneau_
+A181055	filnum	1	1	k -> PP(SU(1, k, j -> Z_1(k - j).*(Functions.BIG_OMEGA.z(j))))	ers n such that sum_{k=1..n} (-1)^(n-k) *bigomega(k) is prime.	nonn	1..56	nyi	_Michel Lagneau_
+A181057	filnum	1	1	k -> PP(SU(1, k, j -> Z_1(k - j).*(PHI(2*j))))	Numbers n such that Sum_{k=1..n} (-1)^(n-k) *phi(2*k) is prime.	nonn	1..69	nyi	_Michel Lagneau_
+A181065	lambdan	0	n -> { final Z f = FI(n); return f.-(Functions.DIGIT_SUM.z(f))./(9); }	a(n)=(F(n)-sumofdigits(F(n)))/9
+A181090	lambdan	1	n -> SD(FI(n), d -> ZV(d).^(3))	Sum_{d|F(n)} d^3, where F(n) are the Fibonacci numbers.	nonn	1..23	nyi	_Michel Lagneau_
+A181602	filter	1	new A000040()	p -> { if (!Predicates.SEMIPRIME.is(p.-(1))) { return false; } final Z p2 = p.+(2); if (PP(p2)) { return true; } final Z ps = Functions.SQRT.z(p2); return ps.*(ps).equals(p2) && PP(ps); }	nyi to	Primes p such that p-1 is a semiprime and p+2 is prime or prime squared.	nonn	1..1000	nyi	_Giovanni Teofilatto_
+A178555	filter	0	new A000040()	p -> { final int[] dc = ZUtils.digitCounts(p); return dc[6] == 6; }	Primes with exactly six 6's.	nonn,base,look	1..10000	nyi	_Lekraj Beedassy_
+A178556	filter	0	new A000040()	p -> { final int[] dc = ZUtils.digitCounts(p); return dc[7] == 7; }	Primes with exactly seven 7's.	nonn,base	1..21	nyi	_Lekraj Beedassy_
+---- 2025-11-01 23:14:17
+A176681	filnum	1	0	k -> { final Z k2 = ZV(k).^(2); return PP(k2.+(5)) && PP(k2.-(5)); }	Numbers k such that k^2 +-5 are primes.	nonn	1..10000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A176682	filnum	1	0	k -> { final Z k2 = ZV(k).^(2); return PP(k2.+(7)) && PP(k2.-(7)); }	Numbers k such that k^2 +-7 are primes.	nonn	1..10000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A176683	filnum	1	0	k -> { final Z k2 = ZV(k).^(2); return PP(k2.+(11)) && PP(k2.-(11)); }	Numbers k such that k^2 +-11 are primes.	nonn	1..10000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A176684	filnum	1	0	k -> { final Z k3 = ZV(k).^(3); return PP(k3.+(5)) && PP(k3.-(5)); }	Numbers k such that k^3 +-5 are primes.	nonn	1..10000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A176685	filnum	1	0	k -> { final Z k3 = ZV(k).^(3); return PP(k3.+(7)) && PP(k3.-(7)); }	Numbers k such that k^3 +-7 are primes.	nonn	1..10000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A178557	filter	0	new A000040()	p -> { final int[] dc = ZUtils.digitCounts(p); return dc[8] == 8; } 
+A178327	filnum	0	0	k -> { final int p = Functions.DIGIT_PRODUCT.i(k); return PP(ZV(k).^(p).+(p)); }	Numbers k such that k^p+p is prime, where p is product of the digits of k.	base,more,nonn	1..20	nyi	_Farideh Firoozbakht_   A178327	nyi t	Numbers k such that k^p+p is prime, where p is product of the digits of k.	
+A178328	filnum	0	0	k -> { final int p = Functions.DIGIT_PRODUCT.i(k); return PP(ZV(k).^(p).-(p)); }	Numbers k such that k^p-p is prime, where p is product of the digits of k.	base,nonn	1..44	nyi	_Farideh Firoozbakht_       
+---- 2025-11-01 23:28:24
+A176327	sintrif	0	(term, n) -> n == 1 ? ZV(0) : term	""	new A027641()	Numerators of the rational sequence with e.g.f. (x/2)*(1+exp(-x))/(1-exp(-x)).
+A176407	lambdan	0	n -> new Z("0" + Integer.toString(n).replaceAll("[12]", ""))	Omit all 1's and 2's from n.	nonn,base	0..5000	nyi	_Zak Seidov_
+---- 2025-11-01 23:33:43
+A176253	filtpos	1	1	new A000045().skip(1)	v -> v.toString().indexOf('5') < 0	Indices n corresponding to Fibonacci numbers Fib(n) whose decimal expansion does not contain the digit "5".
