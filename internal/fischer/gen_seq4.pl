@@ -281,6 +281,7 @@ while (<>) { # read inputfile
             $parm =~ s{CORE\(}         {Functions.CORE.z\(}g;
             $parm =~ s{DL\(}           {Functions.DIGIT_LENGTH.l\(}g;
             $parm =~ s{\bF\.}          {Functions.}g;
+            $parm =~ s{EUL\(}          {S173018\(}g;
             $parm =~ s{FA\(}           {Functions.FACTORIAL.z\(}g;
             $parm =~ s{FD\(([^\)]+)}   {Functions.MULTIFACTORIAL.z\(2, $1}g;
             $parm =~ s{DF\(([^\)]+)}   {Functions.MULTIFACTORIAL.z\(2, $1}g;

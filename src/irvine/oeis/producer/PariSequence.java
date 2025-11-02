@@ -65,7 +65,12 @@ public class PariSequence extends AbstractSequence implements Closeable {
         break;
       case "an":
         mOut.println("alarm(" + mTimeOut + ",for(n=" + offset + ",+oo,print(floor(a(n)))));");
-        break;
+        break; 
+//      case "dex": // A036792
+//        default(realprecision, 20080);
+//        y=0; x=Pi; m=x; x2=x*x; n=1; nf=1; s=1; while (x!=y, y=x; n++; nf*=n; n++; nf*=n; m*=x2; s=-s; x+=s*m/(n*nf));
+//        for (n=1, 20000, d=floor(x); x=(x-d)*10; print(d));
+//        break;
       case "isok0":
         mOut.println("alarm(" + mTimeOut + ",for(n=0,+oo,if(isok(n),print(n))));");
         break;
