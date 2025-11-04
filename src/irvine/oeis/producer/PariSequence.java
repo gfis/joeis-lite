@@ -5,9 +5,11 @@ import java.io.Closeable;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.lang.ProcessBuilder.Redirect;
 
 import irvine.math.z.Z;
 import irvine.oeis.AbstractSequence;
+import irvine.util.string.StringUtils;
 
 /**
  * Produce a sequence from a PARI program.
@@ -24,7 +26,7 @@ public class PariSequence extends AbstractSequence implements Closeable {
   private final Process mProc;
   private final PrintWriter mOut;
   private final BufferedReader mIn;
-  private String mTimeOut; 
+  private String mTimeOut;
 
   /**
    * Construct a sequence backed by a PARI program with default offset = 0.
@@ -41,10 +43,13 @@ public class PariSequence extends AbstractSequence implements Closeable {
    */
   public PariSequence(int offset, final String pariProgram) {
     super(offset);
-    final ProcessBuilder pb = new ProcessBuilder(PariProducer.PARI_COMMAND, "--fast", "--quiet");
+//  final ProcessBuilder pb = new ProcessBuilder(PariProducer.PARI_COMMAND, "--fast", "--quiet");
+    final ProcessBuilder pb = new ProcessBuilder(PariProducer.PARI_COMMAND, "--quiet");
+    final boolean verbose = "true".equals(System.getProperty("oeis.verbose", "false"));
     try {
+//      pb.redirectErrorStream(true);
+//      pb.redirectOutput(Redirect.INHERIT);
       mProc = pb.start();
-      final boolean verbose = "true".equals(System.getProperty("oeis.verbose", "false"));
       new DrainStreamThread(mProc.getErrorStream(), verbose);
       mOut = new PrintWriter(mProc.getOutputStream());
       mIn = new BufferedReader(new InputStreamReader(mProc.getInputStream()));
@@ -56,25 +61,48 @@ public class PariSequence extends AbstractSequence implements Closeable {
     offset = header.getOffset();
     setOffset(offset);
     final int nStart = header.getNStart();
-    final String programType = header.getType();
-    mOut.println(pariProgram); // Send the program to PARI
     mTimeOut = System.getProperty("oeis.timeout", "3600000"); // 1000 hours = almost never
+
+    final String programType = header.getType();
     switch (programType) {
       case "an0":
+        mOut.println(pariProgram); // Send the program to PARI
         mOut.println("alarm(" + mTimeOut + ",for(n=0,+oo,print(floor(a(n)))));"); // special for P.H.
         break;
       case "an":
+        mOut.println(pariProgram);
         mOut.println("alarm(" + mTimeOut + ",for(n=" + offset + ",+oo,print(floor(a(n)))));");
-        break; 
-//      case "dex": // A036792
-//        default(realprecision, 20080);
-//        y=0; x=Pi; m=x; x2=x*x; n=1; nf=1; s=1; while (x!=y, y=x; n++; nf*=n; n++; nf*=n; m*=x2; s=-s; x+=s*m/(n*nf));
-//        for (n=1, 20000, d=floor(x); x=(x-d)*10; print(d));
-//        break;
+        break;
+      case "decexp":
+        // A036792
+        // default(realprecision, 20080);
+        // y=0; x=Pi; m=x; x2=x*x; n=1; nf=1; s=1; while (x!=y, y=x; n++; nf*=n; n++; nf*=n; m*=x2; s=-s; x+=s*m/(n*nf));
+        // for (n=1, 20000, d=floor(x); x=(x-d)*10; print(d));
+        final int bfiMax = header.getBfiMax();
+/*
+default(realprecision,119);
+alarm(4, {XX=
+\\ source=https://oeis.org/A382550 lang=pari curno=1 type=decexp  rev=8 offset=1 bfimax=102
+sumeulerrat((p+1)/(p-1)^3)
+;
+for(n=1,10, d=floor(XX); XX=(XX-d)*10; print(d))})
+*/
+
+        final String pariText = "default(realprecision," + (bfiMax + bfiMax / 6) + ");"
+            + "\nXX={" + pariProgram + ";}"
+            + "\nalarm(" + mTimeOut + ",for(n=" + offset + ",+oo, d=floor(XX); XX=(XX-d)*10; print(d)));"
+            + "\n";
+        if (verbose) {
+          StringUtils.message("Text sent to PARI process:\n" + pariText);
+        } 
+        mOut.println(pariText);
+        break;
       case "isok0":
+        mOut.println(pariProgram);
         mOut.println("alarm(" + mTimeOut + ",for(n=0,+oo,if(isok(n),print(n))));");
         break;
       case "isok":
+        mOut.println(pariProgram);
         mOut.println("alarm(" + mTimeOut + ",for(n=" + nStart + ",+oo,if(isok(n),print(n))));");
         break;
       default:

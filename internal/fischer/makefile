@@ -20,8 +20,6 @@ JOEIS=$(GITS)/joeis
 CA=$(GITS)/OEIS-mat/ca
 CAS=$(GITS)/OEIS-mat/cas
 DATA=$(GITS)/OEIS-mat/data
-PROG=$(GITS)/OEIS-prog
-PRIO=java,gp
 COMBSTRUCT=$(GITS)/OEIS-mat/combstruct
 COMMON=$(GITS)/OEIS-mat/common
 CONSTANT=$(GITS)/OEIS-mat/constant
@@ -63,8 +61,9 @@ BOFS=1
 BF=
 WITHB=-b $(COMMON)/bfile -t $(TO)
 VERBOSE=false
-# JOPT=-Ddebug=$(D) -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=$(VERBOSE) -Doeis.priority="$(PRIO)" -Doeis.timeout=$(TO)
-JOPT=-Ddebug=$(D) -Xmx2800m -Xss800m -Duser.language=en -Dprog.root=$(PROG)/prog -Doeis.verbose=$(VERBOSE) -Doeis.priority="$(PRIO)" -Doeis.timeout=$(TO)
+PROG=$(GITS)/OEIS-prog/sandbox
+PRIO=java,gp
+JOPT=-Ddebug=$(D) -Xmx2800m -Xss800m -Duser.language=en -Dprog.root=$(PROG) -Doeis.verbose=$(VERBOSE) -Doeis.priority="$(PRIO)" -Doeis.timeout=$(TO)
 ifeq ($(OS),Windows_NT)
     CPS=;
 else
