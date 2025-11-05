@@ -43,8 +43,7 @@ public class PariSequence extends AbstractSequence implements Closeable {
    */
   public PariSequence(int offset, final String pariProgram) {
     super(offset);
-//  final ProcessBuilder pb = new ProcessBuilder(PariProducer.PARI_COMMAND, "--fast", "--quiet");
-    final ProcessBuilder pb = new ProcessBuilder(PariProducer.PARI_COMMAND, "--quiet");
+    final ProcessBuilder pb = new ProcessBuilder(PariProducer.PARI_COMMAND, "--fast", "--quiet");
     final boolean verbose = "true".equals(System.getProperty("oeis.verbose", "false"));
     try {
 //      pb.redirectErrorStream(true);
@@ -74,10 +73,6 @@ public class PariSequence extends AbstractSequence implements Closeable {
         mOut.println("alarm(" + mTimeOut + ",for(n=" + offset + ",+oo,print(floor(a(n)))));");
         break;
       case "decexp":
-        // A036792
-        // default(realprecision, 20080);
-        // y=0; x=Pi; m=x; x2=x*x; n=1; nf=1; s=1; while (x!=y, y=x; n++; nf*=n; n++; nf*=n; m*=x2; s=-s; x+=s*m/(n*nf));
-        // for (n=1, 20000, d=floor(x); x=(x-d)*10; print(d));
         final int bfiMax = header.getBfiMax();
 /*
 default(realprecision,119);
@@ -88,10 +83,24 @@ sumeulerrat((p+1)/(p-1)^3)
 for(n=1,10, d=floor(XX); XX=(XX-d)*10; print(d))})
 */
 
-        final String pariText = "default(realprecision," + (bfiMax + bfiMax / 6) + ");"
-            + "\nXX={" + pariProgram + ";}"
-            + "\nalarm(" + mTimeOut + ",for(n=" + offset + ",+oo, d=floor(XX); XX=(XX-d)*10; print(d)));"
-            + "\n";
+        String pariText = "default(realprecision," + (bfiMax + bfiMax / 6) + ");\n" + pariProgram + ";\n";
+/*
+        int shift = 0;
+        if (offset > 1) {
+          while (--offset >= 1) {
+            ++shift;
+          } 
+          pariText += "XX=%/10^" + Integer.toString(shift) + ";\n";
+        } else if (offset < 1) {
+          while (++offset <= 1) {
+            ++shift;
+          }
+          pariText += "XX=%*10^" + Integer.toString(shift) + ";\n";
+        } else { // offset == 1
+          pariText += "XX=%;\n";
+        } 
+*/
+        pariText += "alarm(" + mTimeOut + ",for(n=" + offset + ",+oo, d=floor(XX); XX=(XX-d)*10; print(d)));\n";
         if (verbose) {
           StringUtils.message("Text sent to PARI process:\n" + pariText);
         } 
