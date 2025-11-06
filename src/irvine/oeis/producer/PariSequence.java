@@ -73,7 +73,6 @@ public class PariSequence extends AbstractSequence implements Closeable {
         mOut.println("alarm(" + mTimeOut + ",for(n=" + offset + ",+oo,print(floor(a(n)))));");
         break;
       case "decexp":
-        final int bfiMax = header.getBfiMax();
 /*
 default(realprecision,119);
 alarm(4, {XX=
@@ -82,9 +81,10 @@ sumeulerrat((p+1)/(p-1)^3)
 ;
 for(n=1,10, d=floor(XX); XX=(XX-d)*10; print(d))})
 */
-
-        String pariText = "default(realprecision," + (bfiMax + bfiMax / 6) + ");\n" + pariProgram + ";\n";
 /*
+
+        final int bfiMax = header.getBfiMax();
+        String pariText = "default(realprecision," + (bfiMax + bfiMax / 6) + ");\n" + pariProgram + ";\n";
         int shift = 0;
         if (offset > 1) {
           while (--offset >= 1) {
@@ -99,12 +99,13 @@ for(n=1,10, d=floor(XX); XX=(XX-d)*10; print(d))})
         } else { // offset == 1
           pariText += "XX=%;\n";
         } 
-*/
         pariText += "alarm(" + mTimeOut + ",for(n=" + offset + ",+oo, d=floor(XX); XX=(XX-d)*10; print(d)));\n";
         if (verbose) {
           StringUtils.message("Text sent to PARI process:\n" + pariText);
         } 
-        mOut.println(pariText);
+*/
+        mOut.println(pariProgram);
+        mOut.println("alarm(" + mTimeOut + ",for(n=" + offset + ",+oo, d=floor(XX); XX=(XX-d)*10; print(d)));");
         break;
       case "isok0":
         mOut.println(pariProgram);
