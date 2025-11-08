@@ -105,7 +105,7 @@ seqtris: # A=$(A) - print data in upper left triangle format
 seqtrir: # A=$(A) - print data in upper right triangle format
 	$(JAVA) irvine.oeis.SequenceFactory -a "Georg Fischer" -r $(NT) --row-numbers -o $(OFFSET) -R $(A) 2>&1   | tee x.tmp
 seqtest: # A=$(A) NT=$(NT) OFFSET=$(OFFSET) - print b-file
-	$(JAVA) irvine.oeis.SequenceFactory -a  --header -n $(NT) -o $(OFFSET) -B $(A)
+	$(JAVA) irvine.oeis.SequenceFactory -a GFis --header -n $(NT) -o $(OFFSET) --priority=$(PRIO) -B $(A)
 #	$(JAVA) irvine.oeis.SequenceFactory -a  --header -n $(NT) -B $(A)
 # --priority "java,gp"
 seqhelp: #

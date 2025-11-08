@@ -62,6 +62,9 @@ public class PariSequence extends AbstractSequence implements Closeable {
     final int nStart = header.getNStart();
     mTimeOut = System.getProperty("oeis.timeout", "3600000"); // 1000 hours = almost never
 
+    if (verbose) {
+      StringUtils.warning("# Text sent to PARI process:\n" + pariProgram);
+    } 
     final String programType = header.getType();
     switch (programType) {
       case "an0":
@@ -73,37 +76,6 @@ public class PariSequence extends AbstractSequence implements Closeable {
         mOut.println("alarm(" + mTimeOut + ",for(n=" + offset + ",+oo,print(floor(a(n)))));");
         break;
       case "decexp":
-/*
-default(realprecision,119);
-alarm(4, {XX=
-\\ source=https://oeis.org/A382550 lang=pari curno=1 type=decexp  rev=8 offset=1 bfimax=102
-sumeulerrat((p+1)/(p-1)^3)
-;
-for(n=1,10, d=floor(XX); XX=(XX-d)*10; print(d))})
-*/
-/*
-
-        final int bfiMax = header.getBfiMax();
-        String pariText = "default(realprecision," + (bfiMax + bfiMax / 6) + ");\n" + pariProgram + ";\n";
-        int shift = 0;
-        if (offset > 1) {
-          while (--offset >= 1) {
-            ++shift;
-          } 
-          pariText += "XX=%/10^" + Integer.toString(shift) + ";\n";
-        } else if (offset < 1) {
-          while (++offset <= 1) {
-            ++shift;
-          }
-          pariText += "XX=%*10^" + Integer.toString(shift) + ";\n";
-        } else { // offset == 1
-          pariText += "XX=%;\n";
-        } 
-        pariText += "alarm(" + mTimeOut + ",for(n=" + offset + ",+oo, d=floor(XX); XX=(XX-d)*10; print(d)));\n";
-        if (verbose) {
-          StringUtils.message("Text sent to PARI process:\n" + pariText);
-        } 
-*/
         mOut.println(pariProgram);
         mOut.println("alarm(" + mTimeOut + ",for(n=" + offset + ",+oo, d=floor(XX); XX=(XX-d)*10; print(d)));");
         break;
