@@ -67,10 +67,12 @@ public class PariSequence extends AbstractSequence implements Closeable {
     } 
     final String programType = header.getType();
     switch (programType) {
+/*
       case "an0":
         mOut.println(pariProgram); // Send the program to PARI
         mOut.println("alarm(" + mTimeOut + ",for(n=0,+oo,print(floor(a(n)))));"); // special for P.H.
         break;
+*/
       case "an":
         mOut.println(pariProgram);
         mOut.println("alarm(" + mTimeOut + ",for(n=" + offset + ",+oo,print(floor(a(n)))));");
