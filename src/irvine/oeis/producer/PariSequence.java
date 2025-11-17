@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.lang.ProcessBuilder.Redirect;
+// import java.util.concurrent.TimeoutException;
 
 import irvine.math.z.Z;
 import irvine.oeis.AbstractSequence;
@@ -26,7 +27,7 @@ public class PariSequence extends AbstractSequence implements Closeable {
   private final Process mProc;
   private final PrintWriter mOut;
   private final BufferedReader mIn;
-  private String mTimeOut;
+  private int mTimeOut;
 
   /**
    * Construct a sequence backed by a PARI program with default offset = 0.
@@ -60,7 +61,11 @@ public class PariSequence extends AbstractSequence implements Closeable {
     offset = header.getOffset();
     setOffset(offset);
     final int nStart = header.getNStart();
-    mTimeOut = System.getProperty("oeis.timeout", "3600000"); // 1000 hours = almost never
+    try {
+      mTimeOut = Integer.parseInt(System.getProperty("oeis.timeout", "360000")) - 1; // 100 hours = almost never
+    } catch (Exception exc) {
+      mTimeOut = 3;
+    }
 
     if (verbose) {
       StringUtils.warning("# Text sent to PARI process:\n" + pariProgram);
@@ -76,6 +81,7 @@ public class PariSequence extends AbstractSequence implements Closeable {
       case "an":
         mOut.println(pariProgram);
         mOut.println("alarm(" + mTimeOut + ",for(n=" + offset + ",+oo,print(floor(a(n)))));");
+//      mOut.println(                       "for(n=" + offset + ",+oo,print(floor(a(n)))) ;");
         break;
       case "decexp":
         mOut.println(pariProgram);
@@ -106,13 +112,25 @@ public class PariSequence extends AbstractSequence implements Closeable {
         throw new UnsupportedOperationException("PARI process no longer alive", e);// too bad, we tried to clean up
       }
     }
-    try {
+    try { 
+/*
+      int loop = 4;
+      while (--loop >= 0 && !mIn.ready()) {
+          Thread.sleep(500);
+      }
+*/
       final String line = mIn.readLine();
       if (line == null) {
         close();
-        throw new UnsupportedOperationException("PARI did not answer during " + mTimeOut + "s");
+//        throw new TimeoutException("PARI did not answer during " + mTimeOut + "s");
+//        return null;
+        throw new UnsupportedOperationException("Timeout after " + mTimeOut + "s");
       }
       return new Z(line);
+/*
+    } catch (final InterruptedException e) {
+      throw new UnsupportedOperationException("PARI: InterruptedException", e);
+*/
     } catch (final IOException e) {
       throw new UnsupportedOperationException("PARI failed to produce more terms", e);
     }

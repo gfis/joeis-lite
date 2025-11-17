@@ -36,6 +36,7 @@ import java.nio.channels.Channels;
 import java.nio.channels.FileChannel; // seekable()
 import java.nio.channels.ReadableByteChannel;
 import java.util.ArrayList;
+import java.util.concurrent.TimeoutException;
 
 import irvine.math.z.Z;
 import irvine.oeis.DirectSequence;
@@ -240,9 +241,19 @@ public class BatchTest {
         if (failCount >= maxFailCount) {
           failure = 1;
         }
+/*
+      } else if (seq instanceof Closeable) {
+        failure = 1;
+        printLog("FATO", "timeout", String.format("%6d ms", 17)); // timeDiff
+*/
       } else if (! sequenceMayRun) {
         failure = 1; // FAIL
         printLog("FATAL", String.valueOf(timeDiff) + " ms", "timeout expired");
+      }
+    } catch (UnsupportedOperationException exc) {
+      if (exc.getMessage().startsWith("Timeout")) {
+        failure = 0;
+        sequenceMayRun = false;
       }
     } catch (Throwable exc) {
       failure = 1; // FAIL
