@@ -61,7 +61,7 @@ BOFS=1
 BF=
 WITHB=-b $(COMMON)/bfile -t $(TO)
 VERBOSE=false
-PROG=$(GITS)/OEIS-prog/sandbox
+PROG=$(GITS)/OEIS-prog/prog
 PRIO=java,gp
 JOPT=-Ddebug=$(D) -Xmx2800m -Xss800m -Duser.language=en -Dprog.root=$(PROG) -Doeis.verbose=$(VERBOSE) -Doeis.priority="$(PRIO)" -Doeis.timeout=$(TO)
 ifeq ($(OS),Windows_NT)
@@ -665,6 +665,7 @@ test2:
 		$(BATLIT) -s seekpos.mon strip.tmp 2>&1 \
 			| $(JAVA) irvine.test.BatchMonitor -s seekpos.mon -t $(TO)000 -w $(WAITM) -d $(DM) 2> seekpos.tmp \
 			| tee -a batch.log ; \
+		tasklist | grep gp | perl -ne 'm{(\d+)}; print "$$1\n";' | xargs -innn taskkill /F /PID nnn ;\
 	done
 	make evaluate
 	# end of test

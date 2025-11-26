@@ -72,28 +72,20 @@ public class PariSequence extends AbstractSequence implements Closeable {
     } 
     final String programType = header.getType();
     switch (programType) {
-/*
-      case "an0":
-        mOut.println(pariProgram); // Send the program to PARI
-        mOut.println("alarm(" + mTimeOut + ",for(n=0,+oo,print(floor(a(n)))));"); // special for P.H.
-        break;
-*/
       case "an":
         mOut.println(pariProgram);
         mOut.println("alarm(" + mTimeOut + ",for(n=" + offset + ",+oo,print(floor(a(n)))));");
-//      mOut.println(                       "for(n=" + offset + ",+oo,print(floor(a(n)))) ;");
         break;
       case "decexp":
         mOut.println(pariProgram);
         mOut.println("alarm(" + mTimeOut + ",for(n=" + offset + ",+oo, d=floor(XX); XX=(XX-d)*10; print(d)));");
         break;
-      case "isok0":
-        mOut.println(pariProgram);
-        mOut.println("alarm(" + mTimeOut + ",for(n=0,+oo,if(isok(n),print(n))));");
-        break;
       case "isok":
         mOut.println(pariProgram);
         mOut.println("alarm(" + mTimeOut + ",for(n=" + nStart + ",+oo,if(isok(n),print(n))));");
+        break;
+      case "print": // the program has a trailing "print()" function
+        mOut.println(pariProgram);
         break;
       default:
         throw new RuntimeException("Unknown type of PARI program " + programType + "\n" + pariProgram);
