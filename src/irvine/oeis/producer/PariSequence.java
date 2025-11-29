@@ -84,6 +84,10 @@ public class PariSequence extends AbstractSequence implements Closeable {
         mOut.println(pariProgram);
         mOut.println("alarm(" + mTimeOut + ",for(n=" + nStart + ",+oo,if(isok(n),print(n))));");
         break;
+      case "list":
+        mOut.println(pariProgram);
+        mOut.println("alarm(" + mTimeOut + ",for(n=" + nStart + ",+oo,print(XX[n])));");
+        break;
       case "print": // the program has a trailing "print()" function
         mOut.println(pariProgram);
         break;
