@@ -269,6 +269,7 @@ while (<>) { # read inputfile
             $parm =~ s{ARD\(}          {Functions.ARD.z(}g;
             $parm =~ s{BELL\(}         {Functions.BELL.z\(}g;
             $parm =~ s{BI\(}           {Binomial.binomial\(}g;
+            $parm =~ s{BIN\(}          {Functions.BINOMIAL.z\(}g;
             $parm =~ s{BS\(}           {BernoulliSequence}g;
             $parm =~ s{CAT\(}          {Functions.CATALAN.z\(}g;
             #               (1      1  2      2 )
@@ -282,6 +283,8 @@ while (<>) { # read inputfile
             $parm =~ s{DL\(}           {Functions.DIGIT_LENGTH.l\(}g;
             $parm =~ s{\bF\.}          {Functions.}g;
             $parm =~ s{EUL\(}          {S173018\(}g;
+            $parm =~ s{EUL1\(}         {Functions.EULERIAN1.z\(}g;
+            $parm =~ s{EUL2\(}         {Functions.EULERIAN2.z\(}g;
             $parm =~ s{FA\(}           {Functions.FACTORIAL.z\(}g;
             $parm =~ s{FD\(([^\)]+)}   {Functions.MULTIFACTORIAL.z\(2, $1}g;
             $parm =~ s{DF\(([^\)]+)}   {Functions.MULTIFACTORIAL.z\(2, $1}g;
