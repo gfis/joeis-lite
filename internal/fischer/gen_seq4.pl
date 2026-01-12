@@ -268,6 +268,7 @@ while (<>) { # read inputfile
             $parm =~ s{CV\(}           {CR.valueOf\(}g; $parm =~ s{CR\.valueOf\((\-1|[0-9]|10)\)}{"CR." . $zhash{$1}}eg; # after the previous statement!
             $parm =~ s{ARD\(}          {Functions.ARD.z(}g;
             $parm =~ s{BELL\(}         {Functions.BELL.z\(}g;
+            $parm =~ s{qBI\(}          {Binomial.gaussianBinomial\(}g;
             $parm =~ s{BI\(}           {Binomial.binomial\(}g;
             $parm =~ s{BIN\(}          {Functions.BINOMIAL.z\(}g;
             $parm =~ s{BS\(}           {BernoulliSequence}g;
