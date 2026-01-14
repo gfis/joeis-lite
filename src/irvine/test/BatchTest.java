@@ -254,6 +254,14 @@ public class BatchTest {
       if (exc.getMessage().startsWith("Timeout")) {
         failure = 0;
         sequenceMayRun = false;
+      } else {
+        failure = 1; // FAIL
+        // failCount ++;
+        String trace = getShortTrace(exc);
+        if (trace.length() > 2048) {
+            trace = trace.substring(0, 2048);
+        }
+        printLog("FATO", "Exception " + exc.getMessage(), trace);
       }
     } catch (Throwable exc) {
       failure = 1; // FAIL
