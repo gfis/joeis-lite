@@ -1,0 +1,100 @@
+---- 2026-01-12 14:50:41
+---- 2026-01-12 15:42:50
+---- 2026-01-12 15:46:50
+---- 2026-01-12 16:13:31
+---- 2026-01-12 17:06:53
+---- 2026-01-12 17:26:44
+---- 2026-01-12 17:40:34
+---- 2026-01-12 17:48:37
+---- 2026-01-12 18:47:53
+---- 2026-01-12 18:50:19
+---- 2026-01-12 19:02:15
+---- 2026-01-12 19:05:23
+A146753	rambdad	0	A146752	a(n) = denominator((1/2)*(1 + Product_{k=0..n-1} 2*(1 + 3*k)/(5 + 6*k))).	nonn,frac	0..17	nyi	_Artur Jasinski_
+A147836	lambdan	0	n -> CR.PI.*(FA(n)).floor()	a(n) = floor(Pi * n!).	nonn	0..21	nyi	_Leroy Quet_
+A152168	lambdan	0	n -> Functions.DIGIT_LENGTH.z(2, FA(FA(n)))	Number of binary digits in (n!)!.	base,nonn	0..30	nyi	_Jon E. Schoenfield_
+A146752	rambdan	0	n -> RQ(0, n - 1, k -> new Q(2*(1 + 3*k), (5 + 6*k))).+(1)./(2)	a(n) = numerator((1/2)*(1 + Product_{k=0..n-1} 2*(1 + 3*k)/(5 + 6*k))).	nonn,frac	0..17	nyi	_Artur Jasinski_
+A152007	lambdan	0	n -> { final Z n3 = ZV(3).^(n); return Z.TWO.pow(PHI(n3)).-(1)./(n3); }	a(n) = (2^phi(3^n)-1)/3^n.	nonn	0..7	nyi	_Artur Jasinski_
+A151764	lambdan	1	n -> E071786(E071786(n))	nonn,base,mult	1..10000	nyi	_N. J. A. Sloane_, Jun 23 2009
+A151765	lambdan	1	n -> E071786(F004086(n))	F004086(n).	nonn,look,base	1..10000	nyi	_N. J. A. Sloane_
+A147998	lambdan	1	n -> PR(1, n, k -> CR.PHI.*(k).floor())	[r]*[2r]*[3r]*...[nr], where r=(1+sqrt(5))/2 and []=floor.	nonn	1..25	nyi	_Clark Kimberling_
+A146323	lambdan	1	n -> RU(1, n, i -> new Q(ZV(1), PHI(i))).floor()	a(n) = floor(Sum_{i=1..n} (1/phi(i))).	nonn	1..10000	nyi	_Ctibor O. Zizka_
+A152841	finite	0	1, 0, -4, -1, -115, -1	a(0)=1; a(n)=Floor[n^(n+a(n-1))-a(n-1)^(n+a(n-1))].	sign	0..5	nyi	_Vladimir Joseph Stephan Orlovsky_
+A152818	arrlamb	0	0	0	1	(n, k) -> ZV(k + 1).^(n).*(FA(n + k))./(FA(n))	Array read by antidiagonals: A(n,k) = (k+1)^n*(n+k)!/n!.	nonn,tabl	0..50	nyi
+A152420	tablamb	0	0	n -> new Integer[] { 0, 2*n }	(n, k) -> ZV(n).*(n - 2).-(ZV(k - n).*(k - n - 2))	Irregular triangle read by rows: T(n,k) = n*(n-2) - (k-n)*(k-n-2), with 0 <= k <= 2*n.	sign,tabf	0..50	nyi	_Roger L. Bagula_ and _Gary W. Adamson_
+A152439	tablamb	0	0	n -> new Integer[] { 0, 2*n }	(n, k) -> ZV(n-3).*(k - n).*(k - n - 2).-(ZV(2*n - k).*(k - 2))	, with 0 <= k <= 2*n.	tabf,sign	0..50	nyi	_Roger L. Bagula_
+A110616	trilambn	0	0	0	(n, k) ->  ZV(k + 1).*(BI(3*n - 2*k, 2*n - k))./(2*n - k + 1)
+A156916	trilambn	0	0	0	(n, k) -> RQ(0, 1, j -> new Q(qBI(n + j, j + k, 2), qBI(n - k + j, j, 2))).num()
+A156939	trilambn	0	0	0	(n, k) -> RQ(0, 2, j -> new Q(qBI(n + j, j + k, 2), qBI(n + j - k, j, 2))).num()
+A156917	trilambn	0	0	0	(n, k) -> RQ(0, 2, j -> new Q(qBI(n + j, j + k, 3), qBI(n + j - k, j, 3))).num()
+A180957	trilambn	0	0	0	(n, k) -> SU(0, n, j -> Z_1(k - j).*(BI(n, j)).*(BI(n - j, 2*(k - j))))
+A176420	trilambn	0	0	0	(n, k) -> qBI(n, k, 2).+(1).-(BI(n, k))	1 + (q-binomial coefficient [n,k] for q=2) - binomial(n,k).
+A176421	trilambn	0	0	0	(n, k) -> qBI(n, k, 3).+(1).-(BI(n, k))	1 + (q-binomial coefficient [n,k] for q=3) - binomial(n,k).
+A176422	trilambn	0	0	0	(n, k) -> qBI(n, k, 4).+(1).-(BI(n, k))	1 + (q-binomial coefficient [n,k] for q=4) - binomial(n,k).
+A099375	trilambn	0	1	1	(n, k) -> ZV((n - k)*2 + 1)	=if(k<=n, 2(n-k)+1, 0)
+A152904	trilambn	1	1	1	(n, k) -> MU(n - k +1)	T(n,k) = A008683(n-k+1); 1<=k<=n; mu(n) "decrescendo".
+A145201	trilambn	1	1	1	(n, k) -> SA(n, k).modZ(n)	Triangle read by rows: T(n,k) = S(n,k) mod n, where S(n,k) = Stirling numbers of the first kind.	nonn,tabl	1..104	nyi	_Tilman Neumann_, Oct 06 2008
+A139382	trilambn	1	1	1	(n, k) -> SU(k, n, j -> Z_1(n - j).*(BI(n, j)).*(qBI(j, k, 2)))	Sum_{j=k..n} (-1)^(n-j)*binomial(n,j)*qBinomial(j,k,2), where qBinomial(n,k,2) is J022166(n,k). - _Fabian Pereyra_, Jan 31 2024
+A143929	trilambn	1	1	1	(n, m) -> (m == 1) ? ZV(n) : FI(2*(m - 1)).*(n - m + 1)	= 0 if n < m; T(n, 1) = n, for n >= 1, and T(n, m) = F(2*(m-1))*(n-m+1) for n >= m >= 2
+A147861	trilambn	1	1	1	(n,k) -> n%k == 0 ? MIN(k, n/k) : ZV(0)	if k divides n, T(n,k)=0 otherwise (n >=1, 1<=k<=n).	nonn,tabl	1..91	nyi	_Omar E. Pol_, Jul 20 2009
+A145598	trilambn	3	3	1	(n, k) -> BI(n + 1, k + 3).*(BI(n + 1, k - 1)).*(4)./(n + 1)
+A145599	trilambn	4	4	1	(n, k) -> BI(n + 1, k + 4).*(BI(n + 1, k - 1)).*(5)./(n + 1)
+A146542	filnum	0	1	k -> Predicates.PERFECT.is(SIGMA(k))	Numbers m such that sigma(m) is a perfect number.	nonn	1..58	nyi	Howard Berman (howard_berman(AT)hotmail.com)
+A153331	filnum	0	2	k -> PP(Z.TEN.^(k).-(1).*(140)./(99).+(1))	Numbers k such that (10^k - 1)*140/99 + 1  is prime
+A153083	filnum	1	1	k -> !PP(2*k + 11)	Numbers such that 2*n + 11 is not prime.	nonn,e
+A153052	filnum	1	1	k -> !PP(2*k + 5)	Numbers m such that 2*m + 5 is not a prime.	nonn,easy	1..1000	nyi	_Vincenzo Librandi_
+A153053	filnum	1	1	k -> !PP(2*k + 7)	Numbers j such that 2*j + 7 is not a prime.	nonn,easy	1..1000	nyi	_Vincenzo Librandi_
+A146980	filnum	1	1	k -> !Predicates.SQUARE_FREE.is(k) && PP(k - 1) && Predicates.SQUARE.is(k + 1)	Nonsquarefree numbers such that n-1 is prime and n+1 is square.	nonn	1..10000	nyi	_Giovanni Teofilatto_
+A152216	filnum	1	1	k -> SIGMA(ZV(k).*(k + 1)).mod(SIGMA(2*k + 1)).isZero()	For two consecutive numbers, the sum of the divisors of the sum of the two numbers divides the sum of the divisors of the product of the numbers. That is, numbers n such that sigma(2n+1) divides sigma(n^2 + n).	nonn	1..10000	nyi	_J. M. Bergot_
+A152212	filnum	1	1	k -> SIGMA(k).*(k).-(Functions.SIGMA.z(2, k)).mod(TAU(k)).isZero()	Numbers k such that sigma_0(k) divides (k*sigma_1(k) - sigma_2(k)).	easy,nonn	1..10000	nyi	_Ctibor O. Zizka_
+A152215	filnum	1	1	k -> new Q(Functions.SIGMA.z(2, k), SIGMA(k).*(TAU(k))).isInteger()	Numbers k such that sigma_2(k)/(sigma_1(k)*sigma_0(k)) = c, c an integer.	easy,nonn	1..10000	nyi	_Ctibor O. Zizka_
+A146982	filnum	1	1	k -> new Q(PR(1, k, i -> TAU(i)), k).isInteger()	Numbers k such that Product{i=1..k}[sigma_0(i)] / k is an integer.	nonn	1..1000	nyi	_Ctibor O. Zizka_
+A152218	filnum	1	1	k -> { final Q quot = new Q(Functions.SIGMA.z(2, k).*(SIGMA(k)), TAU(k)); return quot.isInteger() && Predicates.SQUARE.is(quot.num()); }	Numbers k such that sigma_2(k)*sigma_1(k)/sigma_0(k) is a perfect square.	nonn	1..500	nyi	_Ctibor O. Zizka_
+A153034	filnum	1	1	k -> {final String ks = Integer.toString(k, 2); return ks.indexOf("11") < 0  && ks.indexOf("00") >= 0; }	Numbers with adjacent 0's and no adjacent 1's in binary expansion.	base,easy,nonn	1..59	nyi	_Gil Broussard_
+A153033	filnum	1	1	k -> {final String ks = Integer.toString(k, 2); return ks.indexOf("11") >= 0 && ks.indexOf("00") < 0;  }	Numbers with adjacent 1's and no adjacent 0's in binary expansion.	base,easy,nonn	1..10000	nyi	_Gil Broussard_
+A153041	filnum	1	10	k -> !PP(2*k - 19)	Numbers n >=10 such that 2*n-19 is not a prime.	nonn,easy	1..1000	nyi	_Vincenzo Librandi_
+A153047	filnum	1	12	k -> !PP(2*k - 15)	Numbers n such that 2*n-15 is not a prime.	nonn,easy	1..1000	nyi	_Vincenzo Librandi_
+A153043	filnum	1	2	k -> !PP(2*k - 3)	Numbers n > 1 such that 2*n-3 is not a prime.	nonn,easy	1..1000	nyi	_Vincenzo Librandi_
+A153245	filnum	1	2	k -> !PP(6*k - 7)	Numbers n>1 such that 6*n-7 is not prime.	nonn,easy	1..1000	nyi	_Vincenzo Librandi_
+A146538	filnum	1	2	k -> (k&1) == 0 && !PP(k + 3)	Even numbers n such that n+3 is not a prime.	easy,nonn	1..59	nyi	_Giovanni Teofilatto_
+A153040	filnum	1	4	k -> !PP(2*k - 5)	Numbers n>3 such that 2*n-5 is not a prime.	nonn,easy	1..1000	nyi	_Vincenzo Librandi_
+A152080	filnum	1	4	k -> !PP(k) && PP(D000695(k))	Composite numbers c for which D000695(c) is prime.	nonn	1..50	nyi	_Vladimir Shevelev_
+A153039	filnum	1	5	k -> !PP(2*k - 7)	Numbers k such that 2*k-7 is composite.	nonn,easy	1..1000	nyi	_Vincenzo Librandi_
+A153044	filnum	1	5	k -> !PP(2*k - 9)	Numbers n such that 2*n-9 is not a prime.	nonn,easy	1..1000	nyi	_Vincenzo Librandi_
+A153049	filnum	1	7	k -> !PP(2*k - 13)	Numbers n such that 2*n - 13 is not a prime.	nonn,easy	1..1000	nyi	_Vincenzo Librandi_
+A153051	filnum	1	9	k -> !PP(2*k - 17)	Numbers n>=9 such that 2*n-17 is not a prime.	nonn,easy	1..1000	nyi	_Vincenzo Librandi_
+A126182	triprod	0	A007318	A001263	Let P be Pascal's triangle A007318 and let N be Narayana's triangle A001263
+A089460	triprod	0	A088956	A088956
+A147767	triprod	0	A116598	A116598
+A152217	filter	0	new A000040()	p -> p.mod(3) == 1 && FA(p.-(1)./(3)).mod(p).equals(ZV(1))	Primes p == 1 (mod 3) such that ((p-1)/3)! == 1 (mod p).	nonn,changed	1..686	nyi	Francois Brunault (brunault(AT)gmail.com)
+A145474	filter	0	new A000040().skip(1)	p -> PP(p.+(13)./(2))	Primes p such that (13+p)/2 is prime.	nonn	1..10000	nyi	_Artur Jasinski_
+A151923	filter	0	new A079316()	(k, v) -> (k&1) == 1	nonn,easy	0..10000	nyi	_N. J. A. Sloane_
+A152058	filter	0	new A152057()	PRIME	 in the order of their appearance.	nonn	1..34	nyi	_Roger L. Bagula_
+A153165	filter	1	new A000040()	p -> p.mod(6) == 1 && p.toString().matches("[23]+")	Primes of form 6k+1 that use only digits 2 and 3
+A152426	filter	1	new A000040()	p -> { final int[] dc = ZUtils.digitCounts(p); return (dc[0] > 0 || dc[1] > 0 || dc[4] > 0 || dc[6] > 0 || dc[8] > 0 || dc[9] > 0) && (dc[2] > 0 || dc[3] > 0 || dc[5] > 0 || dc[7] > 0) ; }	Primes that have both prime digits (2,3,5,7) and nonprime digits (0,1,4,6,8,9).	base,easy,nonn	1..48	nyi	_Omar E. Pol_
+A152427	filter	1	new A000040()	p -> { final int[] dc = ZUtils.digitCounts(p); return (dc[1] > 0 || dc[4] > 0 || dc[6] > 0 || dc[8] > 0 || dc[9] > 0) && (dc[2] > 0 || dc[3] > 0 || dc[5] > 0 || dc[7] > 0); }	Primes that have both prime digits (2,3,5,7) and nonprime digits (1,4,6,8,9).	base,easy,nonn,changed	1..54	nyi	_Omar E. Pol_
+A147846	filter	1	new A000217()	(k, v) -> PP(k) || PP(k + 1)	Triangular numbers n*(n+1)/2 with n or n+1 prime.	nonn,easy	1..10000	nyi	_Giovanni Teofilatto_
+A152071	filter	1	new A000290()	s -> { final Z dif = Functions.REVERSE.z(s).-(s); return !dif.isZero() && Predicates.SQUARE.is(dif); }	Squares which when subtracted from their reverse form nonzero squares.	nonn,base	1..45	nyi	_Gaurav Kumar_
+A152070	filter	1	new A000290()	s -> { final Z dif = s.-(Functions.REVERSE.z(s)); return !dif.isZero() && Predicates.SQUARE.is(dif); }	Squares which when subtracted from their reverse form nonzero squares.	nonn,base	1..45	nyi	_Gaurav Kumar_
+A152188	multia	0	"0"	(self, n) -> CND(n, d -> ZV(d).compareTo(self.a(n - 1)) > 0)	a(0) = 0, a(n) is the number of divisors of n that are greater than a(n-1).	nonn	0..65537	nyi	_Christopher Williamson_
+A152859	multia	0	"0"	(self, n) -> PM(n).pow(self.a(n - 1))	Tower of prime powers: a(n)=prime(n)^a(n-1), a(0)=0.	nonn	0..4	nyi	ShaoJun Ying (dolphinysj(AT)gmail.com)
+A144251	multia	0	"1"	(self, n) -> SU(0, n - 1, k -> self.a(k).*(BI(2*n - 2 - k, k)))	Eigensequence of triangle J054142 = BI(2*n - k, k)
+A165193	multia	0	"1"	(self, n) -> SU(0, n - 1, k -> self.a(k).*(BI(n - 1, k)).*(Z2(n - 1)))	Eigensequence of triangle J038208=(i,j)-th entry is binomial(i,j)*2^i.
+A125094	multia	0	"1"	(self, n) -> SU(0, n - 1, k -> self.a(k).*(BI(n - 1, n/2 + (((n - k)&1) == 1 ? -1 : 1) * (k + 1)/2)))	a(n)=if(n==0, 1, sum(k=0, n-1, a(k)*binomial(n-1, n\2+(-1)^(n-k)*((k+1)\2))))
+A125812	multia	0	"1"	(self, n) -> SU(0, n - 1, k -> self.a(k).*(Binomial.gaussianBinomial(n - 1, k, 2)))	a(n) = Sum_{k=0..n-1} A022166(n-1,k) * a(k) for n>0, with a(0)=1.
+A125813	multia	0	"1"	(self, n) -> SU(0, n - 1, k -> self.a(k).*(Binomial.gaussianBinomial(n - 1, k, 3)))	a(n) = Sum_{k=0..n-1} A022166(n-1,k) * a(k) for n>0, with a(0)=1.
+A125814	multia	0	"1"	(self, n) -> SU(0, n - 1, k -> self.a(k).*(Binomial.gaussianBinomial(n - 1, k, 4)))	a(n) = Sum_{k=0..n-1} A022166(n-1,k) * a(k) for n>0, with a(0)=1.
+A125815	multia	0	"1"	(self, n) -> SU(0, n - 1, k -> self.a(k).*(Binomial.gaussianBinomial(n - 1, k, 5)))	a(n) = Sum_{k=0..n-1} A022166(n-1,k) * a(k) for n>0, with a(0)=1.
+A125277	multia	0	"1"	(self, n) -> SU(0, n - 1, k -> self.a(k).*(S110616(n - 1, k)))	a(n) = Sum_{k=0..n-1} A110616(n-1,k)*a(k) for n>0 with a(0)=1.
+A153344	multia	0	"1"	(self, n) -> SU(0, n - 1, k -> self.a(k).*(S122075(n - 1, k)))	Eigensequence of J122075. - _Andrew Howroyd_, Sep 24 2025
+A187036	multia	0	"1"	(self, n) -> SU(0, n - 1, k -> self.a(k).*(S187034(n - 1, k)))	An eigensequence of J187034 = T(n,k) = (-1)^(n-k) if binomial(k, n-k) &gt; 0, 0 otherwise, with 0 &lt;= k &lt;= n
+A102812	multia	0	"1"	(self, n) -> SU(1, n, k -> self.a(k - 1).*(S001263(n, k)))	Eigensequence of J001263. - _Philippe Del√©ham_, Jun 22 2007
+A185994	multia	0	"1"	(self, n) -> self.a(n - 1).*(2).+(SU(0, n - 2, k -> Z2(k).*(self.a(k)).*(self.a(n - 1 - k))))	a(n)=if(n=0,1,2*a(n-1)+sum{k=0..n-2, 2^k*a(k)*a(n-1-k)}).
+A151749	multia	0	"1,3"	(self, n) -> { final Z mid = self.a(n - 1).+(self.a(n - 2)); return !mid.testBit(0) ? mid./(2) : mid; }	a(0) = 1, a(1) = 3; a(n+2) = (a(n+1) + a(n))/2 if 2 divides (a(n+1) + a(n)), a(n+2) = a(n+1) + a(n) otherwise.	nonn,easy	0..1000	nyi	_N. J. A. Sloane_
+A147524	multia	1	"1"	(self, n) -> SU(0, n - 1, k -> self.a(k).*(GCDi(n - 1, k) == 1 ? 1 : 0))	Eigensequence of triangle T054521.
+A146969	multia	1	"3,1"	(self, n) -> ((n&1) == 1 && PP(n)) ? ZV((n + 1)/2) : self.a(n/2)	a(1)=3, a(2)=1, a(n) = (n+1)/2 if n is an odd prime, and a(n) = a(floor(n/2)) otherwise.	nonn,less	1..90	nyi	_Roger L. Bagula_
+A152827	partprod	0	new A000009()	Partial products of PartitionsQ numbers (F000009)
+A152082	sintrif	1	(term, n) -> GPF(term)	""	new A152080()	Largest prime divisors of the terms of A152080.	nonn	1..62	nyi	_Vladimir Shevelev_
+A152081	sintrif	1	(term, n) -> LPF(term)	""	new A152080()	Least prime divisor of terms of A152080.	nonn	1..83	nyi	_Vladimir Shevelev_
+A145072	poly	0	"[1]"	"1,A,<1,+,A,<1,^2,sub,*"
+A145090	poly	0	"[1]"	"A,<1,^2,sub,1,A,<1,-,/"

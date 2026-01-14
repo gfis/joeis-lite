@@ -1,0 +1,163 @@
+---- 2025-11-19 14:22:19
+---- 2025-11-19 14:35:07
+A089379	filnum	1	0	k -> PP(ZV(10).^(k).+(ZV(k)))	10^k + k
+A099481	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(2).^(k).-(ZV(k).^(2)))	2^k - k^2
+A100837	filnum	1	0	k -> PP(ZV(k).^(k).+(ZV(4)))	k^k + 4
+A100838	filnum	1	0	k -> PP(ZV(k).^(k).+(ZV(7)))	k^k + 7
+A100839	filnum	1	0	k -> PP(ZV(k).^(k).+(ZV(10)))	k^k + 10
+A109387	filnum	1	0	k -> PP(ZV(3).^(k).-(ZV(k).^(3)))	3^k - k^3
+A110065	filnum	1	0	k -> PP(ZV(10).^(k).-(ZV(k)))	10^k - k
+A110912	filnum	0	0	k -> PP(ZV(23).*(ZV(k).^(2)).-(ZV(36)).abs())	23*n^2 - 36
+A110931	filnum	1	0	k -> PP(ZV(2).*(ZV(k).^(k)).-(ZV(1)))	2*k^k - 1
+A110932	filnum	0	0	k -> PP(ZV(2).*(ZV(k).^(k)).+(ZV(1)))	2*k^k + 1
+A114970	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(2).^(k).+(ZV(k).^(2)))	2^m + m^2
+A114971	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(3).^(k).+(ZV(k).^(3)))	3^n + n^3
+A114973	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(5).^(k).+(ZV(k).^(5)))	5^n + n^5
+A114974	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(7).^(k).+(ZV(k).^(7)))	7^n + n^7
+A114975	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(11).^(k).+(ZV(k).^(11)))	11^k + k^11
+A117705	filnum	0	1	k -> PP(ZV(5).^(k).-(ZV(k).^(5)).abs())	5^n-n^5
+A117706	filnum	1	0	k -> PP(ZV(6).^(k).-(ZV(k).^(6)))	6^k - k^6
+A118305	filnum	0	1	k -> PP(ZV(3).*(ZV(k).^(k)).-(ZV(1)))	3*k^k-1
+A126894	filnum	0	0	k -> PP(ZV(k).^(12).+(ZV(4094)))	k^12 + 4094
+A160360	filnum	1	0	k -> PP(ZV(3).*(ZV(k).^(k)).+(ZV(2)))	3*n^n+2
+A195439	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(16).^(k).+(ZV(1)))	16^n + 1
+A216980	filnum	1	0	k -> PP(ZV(k).^(7).+(ZV(2)))	k^7+2
+A224470	filnum	1	0	k -> PP(ZV(7).^(k).-(ZV(k)))	7^k - k
+A224471	filnum	1	0	k -> PP(ZV(8).^(k).-(ZV(k)))	8^k - k
+A224506	filnum	1	0	k -> PP(ZV(9).^(k).-(ZV(k)))	9^k - k
+A239415	filnum	1	0	k -> PP(ZV(k).^(7).-(ZV(7)))	n^7-7
+A242175	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(k).*(ZV(2).^(k)).+(ZV(1)))	k*2^k + 1
+A242178	filnum	1	0	k -> PP(ZV(k).*(ZV(8).^(k)).+(ZV(1)))	k*8^k + 1
+A242196	filnum	1	0	k -> PP(ZV(k).*(ZV(12).^(k)).+(ZV(1)))	k*12^k + 1
+A242330	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(k).^(2).+(ZV(2)))	k^2 + 2
+A242331	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(k).^(2).+(ZV(3)))	k^2 + 3
+A242332	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(k).^(2).+(ZV(4)))	k^2 + 4
+A242333	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(k).^(2).+(ZV(5)))	k^2 + 5
+A252656	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(3).^(k).-(ZV(k)))	3^n - n
+A252657	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(4).^(k).-(ZV(k)))	4^m - m
+A252658	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(5).^(k).-(ZV(k)))	5^m - m
+A252659	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(6).^(k).-(ZV(k)))	6^m - m
+A252660	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(7).^(k).-(ZV(k)))	7^k - k
+A252661	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(8).^(k).-(ZV(k)))	8^m - m
+A252662	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(9).^(k).-(ZV(k)))	9^m - m
+A252663	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(10).^(k).-(ZV(k)))	10^m - m
+A252788	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(3).^(k).+(ZV(k)))	3^m + m
+A252789	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(4).^(k).+(ZV(k)))	4^m + m
+A252790	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(5).^(k).+(ZV(k)))	5^m + m
+A252791	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(6).^(k).+(ZV(k)))	6^m + m
+A252792	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(7).^(k).+(ZV(k)))	7^m + m
+A252793	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(8).^(k).+(ZV(k)))	8^m + m
+A252794	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(9).^(k).+(ZV(k)))	9^m + m
+A252795	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(10).^(k).+(ZV(k)))	10^m + m
+A253471	filnum	1	0	k -> PP(ZV(3).^(k).+(ZV(k).^(3)))	3^k + k^3
+A261435	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(k).^(5).-(ZV(1)))	k^5-1
+A289117	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(155).*(ZV(2).^(k)).+(ZV(1)))	155*2^k + 1
+A309358	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(10).^(k).+(ZV(1)))	10^k + 1
+A338525	filnum	1	0	k -> { final Q kq = new Q(ZV(11).^(k).+(ZV(6).^(k)), ZV(17)); return kq.isInteger() && PP(kq.num()); }	(11^k + 6^k)/17
+A352083	filnum	1	0	k -> { final Q kq = new Q(ZV(3).^(k).-(ZV(k).^(3)), ZV(2)); return kq.isInteger() && PP(kq.num()); }	(3^k - k^3)/2
+A356826	filnum	1	0	k -> PP(ZV(2).^(k).-(ZV(29)))	2^k - 29
+A359695	filnum	1	0	k -> PP(ZV(29).^(k).-(ZV(2)))	29^k - 2
+A363353	filnum	1	1	k -> Predicates.SEMIPRIME.is(ZV(10).^(k).+(ZV(3)))	10^k + 3
+A363374	filnum	1	1	k -> Predicates.SEMIPRIME.is(ZV(2).^(k).-(ZV(3)))	2^k - 3
+A375620	filnum	1	0	k -> { final Q kq = new Q(ZV(20).^(k).-(ZV(3).^(k)), ZV(17)); return kq.isInteger() && PP(kq.num()); }	(20^k - 3^k)/17
+A376910	filnum	1	0	k -> PP(ZV(85).*(ZV(10).^(k)).+(ZV(1)))	85*10^k+1
+A377031	filnum	1	0	k -> { final Q kq = new Q(ZV(27).^(k).-(ZV(2).^(k)), ZV(25)); return kq.isInteger() && PP(kq.num()); }	(27^k - 2^k)/25
+A377779	filnum	1	0	k -> { final Q kq = new Q(ZV(31).^(k).-(ZV(2).^(k)), ZV(29)); return kq.isInteger() && PP(kq.num()); }	(31^k - 2^k)/29
+A377800	filnum	1	0	k -> { final Q kq = new Q(ZV(33).^(k).-(ZV(2).^(k)), ZV(31)); return kq.isInteger() && PP(kq.num()); }	(33^k - 2^k)/31
+A377839	filnum	1	0	k -> { final Q kq = new Q(ZV(25).^(k).-(ZV(2).^(k)), ZV(23)); return kq.isInteger() && PP(kq.num()); }	(25^k - 2^k)/23
+A377856	filnum	1	0	k -> { final Q kq = new Q(ZV(21).^(k).+(ZV(2).^(k)), ZV(23)); return kq.isInteger() && PP(kq.num()); }	(21^k + 2^k)/23
+A378953	filnum	1	0	k -> { final Q kq = new Q(ZV(29).^(k).+(ZV(2).^(k)), ZV(31)); return kq.isInteger() && PP(kq.num()); }	(29^k + 2^k)/31
+A379020	filnum	1	0	k -> PP(ZV(2).^(k).-(ZV(25)))	2^k - 25
+A379428	filnum	1	0	k -> { final Q kq = new Q(ZV(39).^(k).+(ZV(2).^(k)), ZV(41)); return kq.isInteger() && PP(kq.num()); }	(39^k + 2^k)/41
+A379986	filnum	1	0	k -> { final Q kq = new Q(ZV(20).^(k).+(ZV(3).^(k)), ZV(23)); return kq.isInteger() && PP(kq.num()); }	(20^k + 3^k)/23
+A380131	filnum	1	0	k -> { final Q kq = new Q(ZV(45).^(k).+(ZV(2).^(k)), ZV(47)); return kq.isInteger() && PP(kq.num()); }	(45^k + 2^k)/47
+A380253	filnum	1	0	k -> { final Q kq = new Q(ZV(25).^(k).+(ZV(2).^(k)), ZV(27)); return kq.isInteger() && PP(kq.num()); }	(25^k + 2^k)/27
+A380355	filnum	1	0	k -> { final Q kq = new Q(ZV(47).^(k).-(ZV(2).^(k)), ZV(45)); return kq.isInteger() && PP(kq.num()); }	(47^k - 2^k)/45
+A381092	filnum	1	0	k -> { final Q kq = new Q(ZV(43).^(k).+(ZV(2).^(k)), ZV(45)); return kq.isInteger() && PP(kq.num()); }	(43^k + 2^k)/45
+A381093	filnum	1	0	k -> { final Q kq = new Q(ZV(26).^(k).-(ZV(3).^(k)), ZV(23)); return kq.isInteger() && PP(kq.num()); }	(26^k - 3^k)/23
+A381200	filnum	1	0	k -> { final Q kq = new Q(ZV(49).^(k).-(ZV(2).^(k)), ZV(47)); return kq.isInteger() && PP(kq.num()); }	(49^k - 2^k)/47
+A381338	filnum	1	0	k -> { final Q kq = new Q(ZV(22).^(k).-(ZV(3).^(k)), ZV(19)); return kq.isInteger() && PP(kq.num()); }	(22^k - 3^k)/19
+A382391	filnum	1	0	k -> { final Q kq = new Q(ZV(23).^(k).-(ZV(3).^(k)), ZV(20)); return kq.isInteger() && PP(kq.num()); }	(23^k - 3^k)/20
+A382866	filnum	1	0	k -> { final Q kq = new Q(ZV(49).^(k).+(ZV(2).^(k)), ZV(51)); return kq.isInteger() && PP(kq.num()); }	(49^k + 2^k)/51
+A384228	filnum	1	0	k -> PP(ZV(128).*(ZV(3).^(k)).-(ZV(1)))	128 * 3^k - 1
+A384736	filnum	1	0	k -> { final Q kq = new Q(ZV(28).^(k).-(ZV(3).^(k)), ZV(25)); return kq.isInteger() && PP(kq.num()); }	(28^k - 3^k)/25
+A384767	filnum	1	0	k -> { final Q kq = new Q(ZV(29).^(k).-(ZV(3).^(k)), ZV(26)); return kq.isInteger() && PP(kq.num()); }	(29^k - 3^k)/26
+A384925	filnum	1	0	k -> { final Q kq = new Q(ZV(32).^(k).-(ZV(3).^(k)), ZV(29)); return kq.isInteger() && PP(kq.num()); }	(32^k - 3^k)/29
+A384972	filnum	1	0	k -> { final Q kq = new Q(ZV(25).^(k).-(ZV(3).^(k)), ZV(22)); return kq.isInteger() && PP(kq.num()); }	(25^k - 3^k)/22
+A385064	filnum	1	0	k -> { final Q kq = new Q(ZV(31).^(k).-(ZV(3).^(k)), ZV(28)); return kq.isInteger() && PP(kq.num()); }	(31^k - 3^k)/28
+A385518	filnum	1	0	k -> { final Q kq = new Q(ZV(37).^(k).-(ZV(3).^(k)), ZV(34)); return kq.isInteger() && PP(kq.num()); }	(37^k - 3^k)/34
+A385680	filnum	1	0	k -> { final Q kq = new Q(ZV(40).^(k).-(ZV(3).^(k)), ZV(37)); return kq.isInteger() && PP(kq.num()); }	(40^k - 3^k)/37
+A385684	filnum	1	0	k -> { final Q kq = new Q(ZV(38).^(k).-(ZV(3).^(k)), ZV(35)); return kq.isInteger() && PP(kq.num()); }	(38^k - 3^k)/35
+A385851	filnum	1	0	k -> { final Q kq = new Q(ZV(34).^(k).+(ZV(3).^(k)), ZV(37)); return kq.isInteger() && PP(kq.num()); }	(34^k + 3^k)/37
+A385928	filnum	0	0	k -> { final Q kq = new Q(ZV(34).^(k).-(ZV(3).^(k)), ZV(31)); return kq.isInteger() && PP(kq.num()); }	(34^k - 3^k)/31
+A385992	filnum	1	0	k -> { final Q kq = new Q(ZV(35).^(k).-(ZV(3).^(k)), ZV(32)); return kq.isInteger() && PP(kq.num()); }	(35^k - 3^k)/32
+A386281	filnum	1	0	k -> { final Q kq = new Q(ZV(29).^(k).-(ZV(4).^(k)), ZV(25)); return kq.isInteger() && PP(kq.num()); }	(29^k - 4^k)/25
+A386282	filnum	1	0	k -> { final Q kq = new Q(ZV(31).^(k).-(ZV(4).^(k)), ZV(27)); return kq.isInteger() && PP(kq.num()); }	(31^k - 4^k)/27
+A386619	filnum	1	0	k -> PP(ZV(5).^(k).-(ZV(32)))	5^k - 32
+A386794	filnum	1	0	k -> { final Q kq = new Q(ZV(21).^(k).-(ZV(4).^(k)), ZV(17)); return kq.isInteger() && PP(kq.num()); }	(21^k - 4^k)/17
+A386914	filnum	1	0	k -> { final Q kq = new Q(ZV(35).^(k).+(ZV(3).^(k)), ZV(38)); return kq.isInteger() && PP(kq.num()); }	(35^k + 3^k)/38
+A387060	filnum	1	0	k -> PP(ZV(16).*(ZV(3).^(k)).+(ZV(1)))	16 * 3^k + 1
+A387197	filnum	1	0	k -> PP(ZV(32).*(ZV(3).^(k)).-(ZV(1)))	32 * 3^k - 1
+A387201	filnum	1	0	k -> PP(ZV(32).*(ZV(3).^(k)).+(ZV(1)))	32 * 3^k + 1
+A387395	filnum	1	0	k -> { final Q kq = new Q(ZV(44).^(k).-(ZV(3).^(k)), ZV(41)); return kq.isInteger() && PP(kq.num()); }	(44^k - 3^k)/41
+A387473	filnum	1	0	k -> { final Q kq = new Q(ZV(31).^(k).+(ZV(3).^(k)), ZV(34)); return kq.isInteger() && PP(kq.num()); }	(31^k + 3^k)/34
+A387474	filnum	1	0	k -> { final Q kq = new Q(ZV(32).^(k).+(ZV(3).^(k)), ZV(35)); return kq.isInteger() && PP(kq.num()); }	(32^k + 3^k)/35
+A387760	filnum	1	0	k -> PP(ZV(64).*(ZV(3).^(k)).-(ZV(1)))	64 * 3^k - 1
+A387761	filnum	1	0	k -> PP(ZV(64).*(ZV(3).^(k)).+(ZV(1)))	64 * 3^k + 1
+A388040	filnum	1	0	k -> { final Q kq = new Q(ZV(38).^(k).+(ZV(3).^(k)), ZV(41)); return kq.isInteger() && PP(kq.num()); }	(38^k + 3^k)/41
+A388142	filnum	1	0	k -> { final Q kq = new Q(ZV(25).^(k).+(ZV(3).^(k)), ZV(28)); return kq.isInteger() && PP(kq.num()); }	(25^k + 3^k)/28
+A388408	filnum	1	0	k -> PP(ZV(128).*(ZV(3).^(k)).+(ZV(1)))	128 * 3^k + 1
+A389222	filnum	1	0	k -> { final Q kq = new Q(ZV(43).^(k).-(ZV(3).^(k)), ZV(40)); return kq.isInteger() && PP(kq.num()); }	(43^k - 3^k)/40
+A389223	filnum	0	0	k -> { final Q kq = new Q(ZV(41).^(k).-(ZV(3).^(k)), ZV(38)); return kq.isInteger() && PP(kq.num()); }	(41^k - 3^k)/38
+A389266	filnum	1	0	k -> { final Q kq = new Q(ZV(46).^(k).-(ZV(3).^(k)), ZV(43)); return kq.isInteger() && PP(kq.num()); }	(46^k - 3^k)/43
+A389283	filnum	1	0	k -> { final Q kq = new Q(ZV(40).^(k).+(ZV(3).^(k)), ZV(43)); return kq.isInteger() && PP(kq.num()); }	(40^k + 3^k)/43
+A389287	filnum	1	0	k -> { final Q kq = new Q(ZV(41).^(k).+(ZV(3).^(k)), ZV(44)); return kq.isInteger() && PP(kq.num()); }	(41^k + 3^k)/44
+A389433	filnum	1	0	k -> { final Q kq = new Q(ZV(43).^(k).+(ZV(3).^(k)), ZV(46)); return kq.isInteger() && PP(kq.num()); }	(43^k + 3^k)/46
+A389767	filnum	1	0	k -> { final Q kq = new Q(ZV(33).^(k).-(ZV(4).^(k)), ZV(29)); return kq.isInteger() && PP(kq.num()); }	(33^k - 4^k)/29
+A389768	filnum	1	0	k -> { final Q kq = new Q(ZV(35).^(k).-(ZV(4).^(k)), ZV(31)); return kq.isInteger() && PP(kq.num()); }	(35^k - 4^k)/31
+A389935	filnum	1	0	k -> { final Q kq = new Q(ZV(50).^(k).-(ZV(3).^(k)), ZV(47)); return kq.isInteger() && PP(kq.num()); }	(50^k - 3^k)/47
+A085682	filnum	0	0	k -> PP(ZV(k).^(k).-(ZV(k).-(1).^(k)))	k^k - (k-1)^k
+---- 2025-11-19 18:27:08
+A087190	filnum	1	0	k -> PP(ZV(k).^(4).-(ZV(k).+(1).^(3)))	n^4-(n+1)^3
+A093480	filnum	1	0	k -> PP(ZV(k).^(3).-(ZV(k).-(1).^(2)))	k^3 - (k-1)^2
+A093522	filnum	1	0	k -> PP(ZV(k).^(k).-(ZV(k).-(1).^(2)))	k^k - (k-1)^2
+A093707	filnum	1	0	k -> PP(ZV(k).^(3).+(ZV(k).-(1).^(2)))	n^3 + (n-1)^2
+A154535	filnum	1	0	k -> PP(ZV(k).^(16).+(ZV(k).+(1).^(16)))	n^16+(n+1)^16
+A155211	filnum	1	0	k -> PP(ZV(k).^(4).+(ZV(k).+(1).^(4)))	n^4+(n+1)^4
+A168149	filnum	1	0	k -> PP(ZV(k).^(8).+(ZV(k).-(1).^(8)))	n^8+(n-1)^8
+A172192	filnum	1	0	k -> PP(ZV(k).^(6).-(ZV(k).+(1).^(5)))	k^6 - (k+1)^5
+A174156	filnum	1	0	k -> PP(ZV(k).^(32).+(ZV(k).+(1).^(32)))	n^32+(n+1)^32
+A174157	filnum	1	0	k -> PP(ZV(k).^(64).+(ZV(k).+(1).^(64)))	k^64+(k+1)^64
+A215431	filnum	1	0	k -> PP(ZV(k).^(128).+(ZV(k).+(1).^(128)))	n^128+(n+1)^128
+A224870	filnum	1	0	k -> PP(ZV(k).^(2).+(ZV(k).+(3).^(2)))	m^2 + (m+3)^2
+A101234	filnum	0	0	k -> PP(ZV(7).^(k).+(ZV(5).^(k)).-(1))	7^k + 5^k - 1
+A177030	filnum	0	0	k -> PP(ZV(11).^(k).+(ZV(3).^(k)).-(1))	11^k + 3^k - 1
+A212311	filnum	0	0	k -> PP(ZV(3).^(8).*(ZV(2).^(k)).-(1))	3^8*2^n - 1
+---- 2025-11-19 18:44:01
+A085682	filnum	1	0	k -> PP(ZV(k).^(k).-(ZV(k).-(1).^(k)))	k^k - (k-1)^k
+A096594	filnum	1	0	k -> PP(ZV(100).^(k).+(ZV(10).^(k)).-(1))	100^n + 10^n - 1
+A100358	filnum	1	0	k -> PP(ZV(2).^(k).+(ZV(k).^(3)).+(1))	2^n+n^3+1
+A101234	filnum	1	0	k -> PP(ZV(7).^(k).+(ZV(5).^(k)).-(1))	7^k + 5^k - 1
+A168170	filnum	1	0	k -> PP(ZV(3).^(k).+(ZV(3).^(4)).+(1))	3^k + 3^4 + 1
+A177030	filnum	1	0	k -> PP(ZV(11).^(k).+(ZV(3).^(k)).-(1))	11^k + 3^k - 1
+A180744	filnum	1	0	k -> PP(ZV(7).^(k).-(ZV(5).^(k)).-(1))	7^k - 5^k - 1
+A212311	filnum	1	0	k -> PP(ZV(3).^(8).*(ZV(2).^(k)).-(1))	3^8*2^n - 1
+A215446	filnum	1	0	k -> PP(ZV(11).^(k).+(ZV(k).^(11)).-(1))	11^k + k^11 - 1
+A230527	filnum	1	0	k -> PP(ZV(3).^(6).*(ZV(2).^(k)).-(1))	3^6*2^n - 1
+A230537	filnum	1	0	k -> PP(ZV(3).^(7).*(ZV(2).^(k)).-(1))	3^7*2^n - 1
+A231374	filnum	1	0	k -> PP(ZV(3).^(9).*(ZV(2).^(k)).-(1))	3^9*2^n - 1
+A255682	filnum	1	0	k -> PP(ZV(4).^(k).-(ZV(2).^(k)).-(3))	4^k - 2^k - 3
+A354829	filnum	1	0	k -> PP(ZV(2).^(k).+(ZV(3).^(k)).+(6))	2^k + 3^k + 6
+A366422	filnum	1	0	k -> PP(ZV(k).^(4).*(ZV(2).^(k)).+(1))	k^4*2^k + 1
+A366956	filnum	1	0	k -> PP(ZV(3).^(k).*(ZV(k).^(3)).-(2))	3^k*k^3 - 2
+A366997	filnum	1	0	k -> PP(ZV(3).^(k).*(ZV(k).^(3)).+(2))	3^k*k^3 + 2
+A367037	filnum	1	0	k -> PP(ZV(k).^(3).*(ZV(2).^(k)).-(1))	k^3*2^k - 1
+A367102	filnum	1	0	k -> PP(ZV(k).^(4).*(ZV(2).^(k)).-(1))	k^4*2^k - 1
+A367287	filnum	1	0	k -> PP(ZV(k).^(6).*(ZV(2).^(k)).+(1))	k^6*2^k + 1
+A367421	filnum	1	0	k -> PP(ZV(k).^(5).*(ZV(2).^(k)).+(1))	k^5*2^k + 1
+A367464	filnum	1	0	k -> PP(ZV(k).^(5).*(ZV(2).^(k)).-(1))	k^5*2^k - 1
+A367478	filnum	1	0	k -> PP(ZV(k).^(6).*(ZV(2).^(k)).-(1))	k^6*2^k - 1
+A367560	filnum	1	0	k -> PP(ZV(k).^(7).*(ZV(2).^(k)).+(1))	k^7*2^k + 1
+A367561	filnum	1	0	k -> PP(ZV(k).^(7).*(ZV(2).^(k)).-(1))	k^7*2^k - 1
+A367572	filnum	1	0	k -> PP(ZV(k).^(8).*(ZV(2).^(k)).-(1))	k^8*2^k - 1
+A385115	filnum	1	0	k -> PP(ZV(2).^(4).*(ZV(3).^(k)).-(1))	2^4 * 3^k - 1

@@ -1,0 +1,242 @@
+---- 2025-11-14 21:03:27
+A082023	lambdan	0	n -> (n == 0) ? ZV(0): ZV(n).-(PHI(n))./(2)	A082023(n) = if(0==n,n,((n-eulerphi(n))\2));
+A082050	lambdan	1	n -> SD(n, d -> (d%3 != 1) ? ZV(d) : ZV(0))
+A082051	lambdan	1	n -> SD(n, d -> (d%3 != 2) ? ZV(d) : ZV(0))
+A082052	lambdan	1	n -> SD(n, d -> (d%4 != 1) ? ZV(d) : ZV(0))
+A082053	lambdan	1	n -> SD(n, d -> (d%4 != 3) ? ZV(d) : ZV(0))
+A084566	multia	0	"1"	(self, n) -> (n&1) == 0 ? self.a(n - 1).*(2).+(self.a(n/2)) : self.a(n - 1).*(2).+(self.a(n/2).*(2))	a(0)=1, a(2n) = 2a(2n-1)+a(n), a(2n+1) = 2a(2n)+2a(n).
+A087154	rpt	0	f(-1).g(-1).h(new A000037())	Number of partitions of n into distinct nonsquares.
+A087245	filnum	1	1	k -> !Predicates.SQUARE_FREE.is(k) && Predicates.ABUNDANT.is(k)	Nonsquarefree abundant numbers.	nonn	1..10000	nyi	_Labos Elemer_
+A087246	filnum	1	0	k -> Predicates.SQUARE_FREE.is(k) && Predicates.DEFICIENT.is(k)	refree deficient numbers.	nonn	1..10000	nyi	_Labos Elemer_
+A087247	filnum	1	0	k -> Predicates.SQUARE_FREE.is(k) && Predicates.DEFICIENT.is(k) && !PP(k)	Squarefree deficient nonprime numbers.	nonn	1..10000	nyi	_Labos Elemer_
+A087249	filnum	1	0	k -> Predicates.SQUARE_FREE.is(k) && !Predicates.SQUARE_FREE.is(SIGMA(k))	Squarefree numbers k such that sigma(k) is not squarefree.	nonn	1..10000	nyi	_Labos Elemer_
+A087268	filnum	1	0	k -> GCD(ZV(k), PI(k)).equals(ZV(1))	Solutions to gcd(x, pi(x)) = 1, where pi is F000720.	nonn	1..10000	nyi	_Labos Elemer_
+A087269	filnum	1	0	k -> !PP(k) && GCD(ZV(k), PI(k)).equals(ZV(1))	Nonprime solutions to gcd(x, pi(x)) = gcd(x, F000720(x)) = 1.	nonn,easy	1..10000	nyi	_Labos Elemer_
+A087270	filnum	1	0	k -> GCD(ZV(k), PI(k)).compareTo(ZV(1)) > 0	Solutions to gcd(x,pi(x)) = gcd(x, F000720(x)) > 1. Numbers x such that x and pi(x) have common divisor larger than one.	nonn	1..62	nyi	_Labos Elemer_
+A087355	lambdan	1	n -> ZV(n).modPow(10, ZV(10).^(n))	n^10 mod 10^n.
+A087374	lambdan	1	n -> n <= 1 ? ZV(1) : Functions.SQRT.z(FA(n)).+(1).^(2)	Smallest square >= n!.	nonn	1..20	nyi	_Amarnath Murthy_
+A087487	lambdan	1	n -> Z2(n*n - n + 1).*(n*(n - 1)).-(n - 3).*(4)	a(n) = 4*(2^(n^2-n+1)*(n^2-n)-n+3).	nonn	1..13	nyi	_N. J. A. Sloane_
+A087489	filter	1	new A000040()	p -> !PP(ZV(3).^(p).-(ZV(2).^(p)))	Primes p such that 3^p - 2^p is composite.
+A087490	filter	1	new A000040()	p -> !PP(ZV(4).^(p).-(ZV(3).^(p)))	Primes p such that 4^p - 3^p is composite.
+A087685	filter	1	new A000040()	p -> !PP(ZV(5).^(p).-(ZV(4).^(p)))	Primes p such that 5^p - 4^p is composite.
+A087693	filter	0	new A001359()	p -> !PP(ZV(2).^(p).-(1))	Lesser twin prime p such that 2^p-1 is composite
+A087742	lambdan	1	n -> PM(M005185(n)).-(M005185(PM(n))).abs().+(1)
+A087749	filter	1	new A000040()	p -> !PP(ZV(6).^(p).-(ZV(5).^(p)))	Primes p such that 6^p - 5^p is composite.
+A087750	rpt	1	g(k -> Integer.toString(k, 2).indexOf("01") < 0 ? ZV(1) : ZV(0)).skip(1)	h(new A023758().prepend(0))	Number of partitions of n into numbers having in binary representation at most trailing zeros.
+A087759	filter	1	new A000040()	p -> !PP(ZV(7).^(p).-(ZV(6).^(p)))	Primes p such that 7^p - 6^p is composite.
+A087762	filter	1	new A000040()	p -> Functions.REVERSE.z(p).mod(7) == 0	Primes whose reversal is a multiple of 7.	easy,nonn,base	1..10000	nyi	_Zak Seidov_
+A087763	filter	1	new A000040()	p -> !PP(ZV(8).^(p).-(ZV(7).^(p)))	Primes p such that 8^p - 7^p is composite.
+A087764	filter	1	new A000040()	p -> Functions.REVERSE.z(p).mod(13) == 0	Primes whose reversal is a multiple of 13.	easy,nonn,base	1..10000	nyi	_Zak Seidov_
+A087765	filter	1	new A000040()	p -> Functions.REVERSE.z(p).mod(17) == 0	Primes whose reversal is a multiple of 17.	easy,nonn,base	1..10000	nyi	_Zak Seidov_
+A087766	filter	1	new A000040()	p -> Functions.REVERSE.z(p).mod(19) == 0	Primes whose reversal is a multiple of 19.	easy,nonn,base	1..10000	nyi	_Zak Seidov_
+A087767	filter	1	new A000040()	p -> Functions.REVERSE.z(p).mod(23) == 0	Primes whose reversal is a multiple of 23.	easy,nonn,base	1..10000	nyi	_Zak Seidov_
+A087894	filter	1	new A000040()	p -> !PP(ZV(9).^(p).-(ZV(8).^(p)))	Primes p such that 9^p - 8^p is composite.
+A087895	filter	1	new A000040()	p -> !PP(ZV(10).^(p).-(ZV(9).^(p)))	Primes p such that 10^p - 9^p is composite.
+A088669	rpt	0	h(new A010785())	Number of partitions of n into decimal repdigit numbers.
+A088670	rpt	0	f(-1).g(-1).h(new A010785())	Number of partitions of n into distinct decimal repdigit numbers.
+A091580	rpt	0	g(k -> Predicates.PALINDROME.is(k) ? ZV(1) : ZV(0))	Number of partitions of n into decimal palindromes.
+A091581	rpt	0	f(-1).g(k -> Predicates.PALINDROME.is(k) ? ZV(-1) : ZV(0))	Number of partitions of n into distinct decimal palindromes.
+A091889	rpt	1	g(k -> Integer.bitCount(k) == 2 ? ZV(1) : ZV(0)).skip(1)	Number of partitions of n into sums of exactly two distinct powers of 2.
+A091890	rpt	1	g(k -> Integer.bitCount(k) == 3 ? ZV(1) : ZV(0)).skip(1)	Number of partitions of n into sums of exactly three distinct powers of 2.
+A096258	rpt	0	f(-1).g(-1).h(new A018252())	Number of partitions of n into distinct nonprime parts.
+A096343	lambdan	0	n -> ZV(Functions.DIGIT_NZ_PRODUCT.z(ZV(n + 1).^(n + 1)).bitCount())	Number of 1s in binary expansion(product of nonzero digits(n^n)).	base,easy,nonn	0..74	nyi	_Jason Earls_
+A096344	lambdan	1	n -> ZV(Functions.DIGIT_SUM.z(ZV(n).^(n)).bitCount())	Number of 1s in binary expansion(sum of digits(n^n)).	base,easy,nonn	1..105	nyi	_Jason Earls_
+A096421	multia	1	"1"	(self, n) -> SU(1, n - 1, j -> GCDi(n, j) == 1 ? self.a(j).*(self.a(n - j)) : ZV(0))	a(1)=1; for n > 1, a(n) = Sum_{1<=j<n, gcd(j,n)=1} a(j)*a(n-j).	nonn
+A096424	multia	1	"1,1"	(self, n) -> self.a(n - 2).+(FI(n - 2)).*(self.a(n - 1).+(FI(n - 1)))	a(1)=a(2)=1, a(n) = (a(n-2)+F(n-2)) * (a(n-1)+F(n-1)) for n > 2 where F(i) is the i-th Fibonacci no.	nonn	1..12	nyi	_Gerald McGarvey_
+A096425	multia	1	"1,1"	(self, n) -> self.a(n - 2).+(PM(n - 2)).*(self.a(n - 1).+(PM(n - 1)))	a(1)=a(2)=1, a(n) = (a(n-2)+p(n-2)) * (a(n-1)+p(n-1)) for n > 2 where p(i) is the i-th prime number.	nonn	1..11	nyi	_Gerald McGarvey_
+A096459	trilambn	1	1	1	(n, k) -> ZV(n).*(n).mod(PM(k))	Triangle read by rows: T(n,k) = n^2 mod prime(k), 1<=k<=n.	nonn,tabl
+A096483	lambdan	1	n -> SQRT(ZV(10).^(n).-(1)./(9))	Integer part of the square root of n-th decimal repunit.	a[n]=Floor[sqrt[(-1+10^n)/9]].
+A096498	lambdan	2	n -> Functions.PREV_PRIME.z(ZV(10).^(n).-(1)./(9))	Prime before n-th repunit.	nonn	2..999	nyi	_Labos Elemer_
+A096534	multia	1	"0,1"	(self, n) -> self.a(n - 1).+(self.a(n - 2)).modZ(n)	a(1) = 0; a(2) = 1; a(n) = (a(n-1) + a(n-2)) mod n.	easy,nonn	1..10000	nyi	_Franklin T. Adams-Watters_
+A096605	multia	1	"1"	(self, n) -> self.a(n/2).+(n/2)./(2)	a(n) = floor((floor(n/2) + a(floor(n/2)))/2), a(1) = 1.	nonn	1..79	nyi	_Reinhard Zumkeller_
+A096973	multia	1	"10000,10000,2"	(self, n) -> self.a(n - 1).+(self.a(n - 2)).modZ(20000)	a(1)= 10000, a(2)= 10000; for n>2, a(n)= ( a(n-2) + a(n-1) ) (mod 20000).	easy,nonn	1..40	nyi	_Pierre CAMI_
+A097054	filter	1	new A001597()	v -> !Predicates.SQUARE.is(v)	Nonsquare perfect powers.
+A097328	lambdan	0	n -> RU(1, n + 1, k -> new Q(1, 4*k - 3)).den()	Denominator of 1 + 1/5 + 1/9 +...+ 1/(4n+1).	easy,frac,nonn	0..17	nyi	_T. D. Noe_
+A097349	filnum	0	1	n -> PP(SU(1, n, k -> ZV(2*k).^(k)).+(1))	Numbers n such that (Sum (2k)^k, k=1..n) + 1 is prime.	more,nonn	1..6	nyi	_Rick L. Shepherd_
+A097350	filnum	1	1	n -> PP(SU(1, n, k -> ZV(2*k).^(k)).-(1))	Numbers n such that (Sum (2k)^k, k=1..n) - 1 is prime.	nonn	1..4	nyi	_Rick L. Shepherd_
+A097417	multia	1	"1"	(self, n) -> SU(1, n - 1, k -> self.a(k).*(self.a((n - 1)/k)))	a(1)=1; a(n+1) = Sum_{k=1..n} a(k) a(floor(n/k)).	easy,nonn	1..1000	nyi	_Leroy Quet_
+A097419	multia	1	"2"	(self, n) -> self.a(n- 1).^(2).*(2).-(self.a(n - 1))	a(1) = 2, a(n) = 2*a(n-1)^2 - a(n-1) for n > 1.	nonn	1..8	nyi	_Gerald McGarvey_
+A097421	lambdan	0	n -> ZV(5).pow(Z2(n)).-(1)./(Z2(n + 2))	a(n) = (5^(2^n) - 1)/2^(n+2).	nonn	0..7	nyi	_Lekraj Beedassy_
+A097505	trilambn	1	1	1	(n,k) -> SU(1, k, j -> PM(n + j - 1))	= Sum_{j=1..k} Prime(n+j-1).	nonn,tabl	1..100	nyi	_Reinhard Zumkeller_
+A097540	lambdan	1	n -> SU(1, 2*n - 1, k -> Functions.KRONECKER.z(n, k).*(k))	Sum_{k=1..2*n-1} J(n,k)*k where J(i,j) is the Jacobi symbol.	sign	1..72	nyi	_N. J. A. Sloane_
+A097565	multia	0	"0,1"	(self, n) -> self.a(n - 1).mod(FI(n)).*(self.a(n - 1)).+(self.a(n - 2))	a(0) = 0, a(1) = 1, a(n) = (a(n-1) mod F(n))*a(n-1) + a(n-2) for n > 2 where F(n) is the n-th Fibonacci number.	nonn	0..100	nyi	_Gerald McGarvey_
+A097585	lambdan	1	n -> new Z(Integer.toString(n, PP(n) ? 2 : 3))	Binary representation of n if n is prime, otherwise the ternary representation of n.	base,nonn	1..45	nyi	_Cino Hilliard_
+A097605	filnum	1	1	k -> ZV(k).*(k).-(1).mod(PHI(k)).isZero()	Numbers n such that phi(n) divides n^2 - 1, where phi(n) (F000010) is number of positive integers <= n and coprime to n.	nonn	1..10000	nyi	_Leroy Quet_
+A097637	lambdan	0	n -> FI(n/16 + Functions.DIGIT_SUM.i(2, n%16))	a(n) = Fibonacci(floor(n/16) + BinaryWeight(n mod 16)).	nonn,easy,less,dumb	0..96	nyi	_Roger L. Bagula_
+A097644	filnum	1	1	k -> Functions.PRIME_PI.z(k).equals(Functions.REVERSE.z(k))	Numbers n such that pi(n) = reversal(n).	base,nonn	1..9	nyi	_Farideh Firoozbakht_
+A097645	filnum	1	1	k -> SIGMA(Functions.PRIME_PI.z(k).+(Functions.PHI.z(k))).equals(ZV(k))	Numbers k such that k = sigma(phi(k) + pi(k)).	nonn,more,hard	1..12	nyi	_Farideh Firoozbakht_
+A097646	filnum	1	1	k -> PHI(Functions.PHI.z(k).+(Functions.SIGMA.z(k))).equals(ZV(k))	Numbers n such that n = phi(phi(n) + sigma(n)).	nonn	1..10000	nyi	_Farideh Firoozbakht_
+A097647	filnum	1	1	k -> !Predicates.PALINDROME.is(k) && PHI(k).equals(PHI(Functions.REVERSE.z(k)))	Non-palindromic numbers n such that phi(n) = phi(reversal(n)).	base,nonn	1..36	nyi	_Farideh Firoozbakht_
+A097747	multia	0	"1"	(self, n) -> { final int an1 = self.a(n - 1).intValueExact(); return self.a(n % an1).+(n/an1); }	a(n) = a(n mod a(n-1)) + floor(n/a(n-1)), a(0) = 1.	nonn	0..10000	nyi	_Reinhard Zumkeller_
+A097796	rpt	1	g(k -> Predicates.PERFECT.is(k) ? ZV(1) : ZV(0)).skip(1)	Number of partitions of n into perfect numbers.	nonn	1..10000	nyi	_Reinhard Zumkeller_
+A097797	rpt	1	g(k -> Predicates.DEFICIENT.is(k) ? ZV(1) : ZV(0)).skip(1)	new A005100())	Number of partitions of n into deficient numbers.
+A097798	rpt	0	g(k -> Predicates.ABUNDANT.is(k) ? ZV(1) : ZV(0))	Number of partitions of n into abundant numbers.	nonn	0..10000	nyi	_Reinhard Zumkeller_
+A099199	rpt	1	g(k -> (k&1) == 1 && Predicates.TRIANGULAR.is(k) ? ZV(1) : ZV(0)).skip(1)	Number of partitions of n into odd triangular numbers.
+A099200	rpt	1	f(-1).g(k -> (k&1) == 1 && Predicates.TRIANGULAR.is(k) ? ZV(-1) : ZV(0)).skip(1)	Number of partitions of n into distinct odd triangular numbers.
+A101048	rpt	0	h(new A001358())	Number of partitions of n into semiprimes (a(0) = 1 by convention).
+A103264	rpt	0	f(-1).g(-1).h(new A236206())
+A105420	rpt	0	h(new A003586())	Number of partitions of n into 3-smooth parts.
+A111902	rpt	1	f(-1).g(-1).h(new A000430())	G.f.: Product_{k>=1} (1 + x^prime(k))*(1 + x^(prime(k)^2)).
+A112581	rpt	1	h(new A051037()).skip(1)	Number of partitions of n into 5-smooth parts.
+A112582	rpt	1	f(-1).g(-1).h(new A051037()).skip(1)	Number of partitions of n into distinct 5-smooth parts.
+A114325	rpt	1	h(new A078972()).skip(1)	Number of partitions of n into brilliant numbers (J078972).
+A116371	rpt	1	g(k -> Functions.DIGIT_SUM_ROOT.i(k) == 1 ? ZV(1) : ZV(0)).skip(1)	Number of partitions of n into parts with digital root = 1.
+A116372	rpt	1	g(k -> Functions.DIGIT_SUM_ROOT.i(k) == 2 ? ZV(1) : ZV(0)).skip(1)	Number of partitions of n into parts with digital root = 2.
+A116373	rpt	1	g(k -> Functions.DIGIT_SUM_ROOT.i(k) == 3 ? ZV(1) : ZV(0)).skip(1)	Number of partitions of n into parts with digital root = 3.
+A116374	rpt	1	g(k -> Functions.DIGIT_SUM_ROOT.i(k) == 4 ? ZV(1) : ZV(0)).skip(1)	Number of partitions of n into parts with digital root = 4.
+A116375	rpt	1	g(k -> Functions.DIGIT_SUM_ROOT.i(k) == 5 ? ZV(1) : ZV(0)).skip(1)	Number of partitions of n into parts with digital root = 5.
+A116377	rpt	1	g(k -> Functions.DIGIT_SUM_ROOT.i(k) == 7 ? ZV(1) : ZV(0)).skip(1)	Number of partitions of n into parts with digital root = 7.
+A116378	rpt	1	g(k -> Functions.DIGIT_SUM_ROOT.i(k) == 8 ? ZV(1) : ZV(0)).skip(1)	Number of partitions of n into parts with digital root = 8.
+A116491	rpt	0	f(-1).g(k -> (Integer.bitCount(k) & 1) == 0 ? ZV(-1) : ZV(0))	Number of partitions of n into distinct evil numbers.
+A116492	rpt	0	f(-1).g(-1).h(new A000069())	Number of partitions of n into distinct odious numbers.
+A118730	filnum	1	0	k -> (Functions.DIGIT_SUM.i(Z2(k)) & 1) == 0	Numbers k such that 2^k has even digit sum.	nonn,base	1..10000	nyi	_Zak Seidov_
+A118731	filnum	1	0	k -> (Functions.DIGIT_SUM.i(Z2(k)) & 1) == 1	Numbers k such that 2^k has odd digit sum.	base,nonn	1..65	nyi	_Zak Seidov_
+A118732	filnum	1	0	k -> (Functions.DIGIT_SUM.i(ZV(3).^(k)) & 1) == 1	Numbers k such that 3^k has odd digit sum.	base,nonn	1..10000	nyi	_Zak Seidov_
+A118733	filnum	1	0	k -> (Functions.DIGIT_SUM.i(ZV(3).^(k)) & 1) == 0	Numbers k such that 3^k has even digit sum.	nonn,base	1..10000	nyi	_Zak Seidov_
+A118734	filnum	1	0	k -> (Functions.DIGIT_SUM.i(Z2(k)) & 1) == 0 && (Functions.DIGIT_SUM.i(ZV(3).^(k)) & 1) == 0	Numbers k such that 2^k and 3^k have even digit sum.	nonn,base	1..10000	nyi	_Zak Seidov_
+A118735	filnum	1	0	k -> (Functions.DIGIT_SUM.i(Z2(k)) & 1) == 1 && (Functions.DIGIT_SUM.i(ZV(3).^(k)) & 1) == 1	Numbers k such that 2^k and 3^k have odd digit sum.	base,nonn	1..1000	nyi	_Zak Seidov_
+A118931	tablamb	0	0	n -> new Integer[] {0, n/3}	(n, k) -> FA(n)./(FA(k).*(FA(n - 3*k)).*(ZV(3).^(k)))	for n>=3*k>=0.	Trow := n -> seq(n!/(j!*(n - 3*j)!*(3^j)), j = 0..n/3):
+A118933	tablamb	0	0	n -> new Integer[] {0, n/4}	(n, k) -> FA(n)./(FA(k).*(FA(n - 4*k)).*(ZV(4).^(k)))	for n>=4*k>=0.	nonn,tabl	0..150	nyi	_Paul D. Hanna_
+A118941	filter	1	new A000040()	p -> { final Z p2 = p.^(2).-(5); return p2.mod(4) == 0 && PP(p2./(4)); }	Primes p such that (p^2-5)/4 is prime.	nonn	1..56	nyi	_T. D. Noe_
+A118942	filter	1	new A000040()	p -> { final Z p2 = p.^(2).-(13); return p2.mod(12) == 0 && PP(p2./(12)); }	Primes p such that (p^2-13)/12 is prime.	nonn	1..55	nyi	_T. D. Noe_
+A118943	lambdan	1	n -> ZV(ZV(11).^(n).toString().charAt(n - 1) - '0')	left) decimal digit of 11^n.	base,nonn	1..10000	nyi	_Zak Seidov_
+A118945	lambdan	1	n -> ZV(ZV(12).^(n).toString().charAt(n - 1) - '0')	left) decimal digit of 12^n.	base,nonn	1..99	nyi	_Zak Seidov_
+A118946	lambdan	1	n -> ZV(12).^(n)./(ZV(10).^(n - 1)).modZ(10)	right) decimal digit of 12^n.	base,nonn	1..99	nyi	_Zak Seidov_
+A118947	lambdan	1	n -> ZV(ZV(13).^(n).toString().charAt(n - 1) - '0')	left) decimal digit of 13^n.	base,nonn	1..99	nyi	_Zak Seidov_
+A118948	lambdan	1	n -> ZV(13).^(n)./(ZV(10).^(n - 1)).modZ(10)	right) decimal digit of 13^n.	base,nonn	1..99	nyi	_Zak Seidov_
+A118950	filnum	1	0	k -> Integer.toString(k).matches("[^2357]*[2357]\\d*")	Numbers containing at least one prime digit.	base,nonn	1..10000	nyi	_Rick L. Shepherd_
+A118951	filnum	1	0	k -> Integer.toString(k).matches("[^4689]*[4689]\\d*")	Numbers containing at least one composite digit.	base,nonn,easy	1..69	nyi	_Rick L. Shepherd_
+A156881	arrlamb	0	0	0	-1	(n, k) -> k == 0 ? FA(n) : PR(1, n, j -> SU(0, j - 1, i -> ZV(k + 1).^(2).-(ZV(k + 1)).^(i)))	T(n, 0) = n!, read by antidiagonals.	nonn,tabl	0..25	nyi
+A156882	arrlamb	0	0	0	-1	(n, k) -> k == 0 ? FA(n) : PR(1, n, j -> SU(0, j - 1, i -> ZV(k + 1).^(3).-(ZV(k + 1)).^(i)))	T(n, 0) = n!, read by antidiagonals.	nonn,tabl	0..25	nyi
+A156883	arrlamb	0	0	0	-1	(n, k) -> k == 0 ? FA(n) : PR(1, n, j -> SU(0, j - 1, i -> ZV(k + 1).^(4).-(ZV(k + 1).^(3)).^(i)))	with T(n, 0) = n!, read by antidiagonals.	nonn,tabl	0..25	nyi
+A156885	arrlamb	0	0	0	-1	(n, k) -> k == 0 ? FA(n) : PR(1, n, j -> SU(0, j - 1, i -> ZV(k + 1).^(5).-(ZV(k + 1).^(4)).-(ZV(k + 1).^(3)).+(ZV(k + 1).^(2)).^(i)))	with T(n, 0) = n!, read by antidiagonals.	nonn,tabl	0..25	nyi
+A156888	arrlamb	0	0	0	-1	(n, k) -> k == 0 ? FA(n) : PR(1, n, j -> SU(0, j - 1, i -> ZV(k + 1).^(7).-(SU(1, 5, m -> ZV(k + 1).^(m))).^(i)))	with T(n, 0) = n!, read by antidiagonals.	nonn,tabl	0..20	nyi
+A156889	arrlamb	0	0	0	-1	(n, k) -> k == 0 ? FA(n) : PR(1, n, j -> SU(0, j - 1, i -> ZV(k + 1).^(6).-(ZV(k + 1).^(5)).-(ZV(k + 1).^(4)).+(ZV(k + 1).^(2)).^(i)))	with T(n, 0) = n!, read by antidiagonals.	nonn,tabl	0..25	nyi
+A176137	rpt	0	f(-1).g(-1).h(new A000108())	Number of partitions of n into distinct Catalan numbers, cf. F000108.
+A195850	rpt	0	g(k -> { final int km = k%8; return km == 0 || km == 1 || km == 7 ? ZV(1) : ZV(0); })	h(new A047523().prepend(0))	Number of partitions of n into parts congruent to 0, 1 or 7 (mod 8).
+A195851	rpt	0	g(k -> { final int km = k%9; return km == 0 || km == 1 || km == 8 ? ZV(1) : ZV(0); })	h(new A054966().prepend(0))	G.f.: Product_{k>=1} 1/((1 - x^(9*k))*(1 - x^(9*k-1))*(1 - x^(9*k-8))). - _Ilya Gutkovskiy_, Aug 13 2017
+A195852	rpt	0	g(k -> { final int km = k%10; return km == 0 || km == 1 || km == 9 ? ZV(1) : ZV(0); })	h(new A054967().prepend(0))	G.f.: Product_{k>=1} 1/((1 - x^(10*k))*(1 - x^(10*k-1))*(1 - x^(10*k-9))). - _Ilya Gutkovskiy_, Aug 13 2017
+A197081	rpt	0	f(-1).g(-1).h(new A002620().skip(1))	Number of partitions of n into distinct positive quarter-squares (cf. D002620).
+A198727	rpt	0	f(-1).g(-1).h(new A003136().skip(1))	Number of partitions of n into distinct positive Loeschian numbers (cf. J003136).
+A199017	rpt	0	f(-1).g(-1).h(new A002858())	Number of partitions of n into distinct terms of (1,2)-Ulam sequence, cf. J002858.
+A199119	rpt	0	f(-1).g(-1).h(new A002859())	Number of partitions of n into distinct terms of (1,3)-Ulam sequence, cf. J002859.
+A199121	rpt	0	f(-1).g(-1).h(new A003666())	Number of partitions of n into distinct terms of (1,4)-Ulam sequence, cf. J003666.
+A199123	rpt	0	f(-1).g(-1).h(new A001857())	Number of partitions of n into distinct terms of (2,3)-Ulam sequence, cf. J001857.
+A204389	rpt	0	f(-1).g(-1).h(new A002808())	Number of partitions of n into distinct composite parts.
+A205216	rpt	0	h(new A005836().skip(1))	Number of partitions of n into parts having no 2 in ternary representation.
+A217907	filnum	1	0	k -> Predicates.SEMIPRIME.is(Functions.DIGIT_SUM_SQUARES.z(k))	Numbers whose digits squared sum to a semiprime.
+A218380	rpt	0	f(-1).g(k -> Predicates.POLYGONAL.is(5, k) ? ZV(-1) : ZV(0))	Number of partitions of n into distinct pentagonal parts.
+A225045	rpt	0	f(-1).g(-1).h(new A014132())	Number of partitions of n into distinct non-triangular numbers, cf. J014132.
+A226748	rpt	0	h(new A053012())	Number of partitions of n into Platonic numbers, cf. J053012.
+A226749	rpt	0	f(-1).g(-1).h(new A053012())	Number of partitions of n into distinct Platonic numbers, cf. J053012.
+A239002	rpt	0	f(-1).g(-1).h(new A000045().skip(2))	Number of partitions of n into distinct parts all of which are Fibonacci numbers greater than 1.
+A239003	rpt	0	f(-1).g(-1).h(new A000045().skip(3))	Number of partitions of n into distinct Fibonacci numbers that are all greater than 2.
+A239509	rpt	0	f(-1).g(-1).h(new A000469())	Number of partitions of n into distinct nonprime squarefree numbers, cf. J000469.
+A248518	rpt	0	h(new A052383().skip(1))	Number of partitions of n into parts > 0 without 1 as digit, cf. J052383.
+A248519	rpt	0	f(-1).g(-1).h(new A052383().skip(1))	Number of partitions of n into distinct parts > 0 without 1 as digit, cf. J052383.
+A256012	rpt	0	f(-1).g(k -> !Predicates.SQUARE_FREE.is(k) ? ZV(-1) : ZV(0))	Number of partitions of n into distinct parts that are not squarefree.
+A264997	rpt	0	f(-1).g(-1).h(new A003593())	Number of partitions of n into distinct parts of the form 3^a*5^b.
+A265260	rpt	0	h(new A016742())	Number of partitions of n into even squares.
+A277714	sintrif	1	(term, n) -> term./(3)	""	new A277713()
+A278949	rpt	0	h(k -> F000384(k))	Number of partitions of n into nonzero hexagonal numbers (F000384).   
+A280253	rpt	0	f(-1).g(-1).h(new A000041())	Number of partitions of n into distinct partition numbers.
+A280285	rpt	0	h(new A071904())	Number of partitions of n into odd composite numbers (J071904).
+A280287	rpt	0	f(-1).g(-1).h(new A071904())	Number of partitions of n into distinct odd composite numbers (J071904).
+A280586	rpt	0	h(new A246547())	Number of partitions of n into proper prime powers (J246547).
+A280596	rpt	0	f(-1).g(-1).h(new A246547())	Number of partitions of n into distinct proper prime powers (J246547).
+A280912	rpt	0	h(new A046315())
+A280950	rpt	0	h(new A005448())
+A281081	rpt	0	h(new A005448()).f(-1).g(-1)
+A281273	rpt	0	h(new A007504())
+A281274	rpt	0	h(new A007504()).f(-1).g(-1)
+A290942	rpt	0	f(-1).g(-1).h(new A001318())	Number of partitions of n into distinct generalized pentagonal numbers (D001318).
+A294623	rpt	0	f(-1).g(-1).h(new A085787())	Number of partitions of n into distinct generalized heptagonal numbers (J085787).
+A329294	filnum	1	0	k -> Predicates.DIGIT_NONDECREASING.is(new Z(Integer.toString(k, 4))) && Predicates.DIGIT_NONDECREASING.is(new Z(Integer.toString(k, 5)))	Numbers whose digits are in nondecreasing order in bases 4 and 5.
+A329295	filnum	1	0	k -> Predicates.DIGIT_NONDECREASING.is(new Z(Integer.toString(k, 5))) && Predicates.DIGIT_NONDECREASING.is(new Z(Integer.toString(k, 6)))	Numbers whose digits are in nondecreasing order in bases 5 and 6.
+A329296	filnum	1	0	k -> Predicates.DIGIT_NONDECREASING.is(new Z(Integer.toString(k, 6))) && Predicates.DIGIT_NONDECREASING.is(new Z(Integer.toString(k, 7)))	Numbers whose digits are in nondecreasing order in bases 6 and 7.
+A329297	filnum	1	0	k -> Predicates.DIGIT_NONDECREASING.is(new Z(Integer.toString(k, 7))) && Predicates.DIGIT_NONDECREASING.is(new Z(Integer.toString(k, 8)))	Numbers whose digits are in nondecreasing order in bases 7 and 8.
+A329298	filnum	1	0	k -> Predicates.DIGIT_NONDECREASING.is(new Z(Integer.toString(k, 8))) && Predicates.DIGIT_NONDECREASING.is(new Z(Integer.toString(k, 9)))	Numbers whose digits are in nondecreasing order in bases 8 and 9.
+A329299	filnum	1	0	k -> Predicates.DIGIT_NONDECREASING.is(new Z(Integer.toString(k, 9))) && Predicates.DIGIT_NONDECREASING.is(new Z(Integer.toString(k, 10)))	Numbers whose digits are in nondecreasing order in bases 9 and 10.
+A340289	lambdan	1	n -> SU(1, n/2, k -> CV(k).^(new Q(1, n - k)).*(CV(n - k).^(new Q(1, k))).floor())	a(n) = Sum_{k=1..floor(n/2)} floor(k^(1/(n-k))*(n-k)^(1/k)).
+A342761	holos	0	[0,4,-6,0,3,-1]	4,7,10,15,25	0	0
+A343124	holos	1	[0,-1,2,1,-2,-3,0,6,0,-3,-2,1,2,-1]	0,1,11,39,114,273,571,1086,1925,3206,5101,7800,11533	0	0
+A345225	holos	0	[0,-1,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,-1]	1,2,2,16,1,1,1,16,1,2,2,16,1,1,1,32	0	0
+A346797	rpt	0	g(k -> { final int km = k%7; return km == 0 || km == 2 || km == 5 ? ZV(1) : ZV(0); })	Number of partitions of n into parts congruent to 0, 2 or 5 (mod 7).
+A346798	rpt	0	g(k -> { final int km = k%7; return km == 0 || km == 3 || km == 4 ? ZV(1) : ZV(0); })	Number of partitions of n into parts congruent to 0, 3 or 4 (mod 7).
+A355983	filter	1	new A000040()	p -> Functions.REVERSE.z(p).mod(4) == 0	Primes whose reversal is a multiple of 4.
+A355984	filter	1	new A000040()	p -> Functions.REVERSE.z(p).mod(8) == 0	Primes whose reversal is a multiple of 8.
+A355985	filter	1	new A000040()	p -> Functions.REVERSE.z(p).mod(16) == 0	Primes whose reversal is a multiple of 16.
+A356246	filter	1	new A000040()	p -> Functions.REVERSE.z(p).mod(14) == 0	Primes whose reversal is a multiple of 14.
+A365472	filnum	1	0	k -> { final String s = Integer.toString(k); return (s.indexOf('2') < 0 && s.indexOf('3') < 0 && s.indexOf('5') < 0 && s.indexOf('7') < 0) || (s.indexOf('0') < 0 && s.indexOf('1') < 0 && s.indexOf('4') < 0 && s.indexOf('6') < 0 && s.indexOf('8') < 0 && s.indexOf('9') < 0); }	Numbers whose digits are either all primes or all nonprimes.
+A376300	filnum	1	0	k -> { final int dc[] = ZUtils.digitCounts(k); final StringBuffer sb = new StringBuffer(); for(int i = 0; i < 10; ++i) { sb.append(Character.forDigit(dc[i], 10)); } return sb.toString().matches("1*0+1*") || sb.toString().matches("0*1+0*"); }	Numbers whose digits can be rearranged to form a substring of 123456789012345678901234....
+A385250	lambdan	0	n -> SU(0, n, k -> BI(n + 2*k + 1, k))	""		a(n) = sum(k=0, n, binomial(n+2*k+1, k))	_	_	_
+A385292	filnum	1	0	k -> { final String s = Integer.toString(k); return s.matches("[0369]+|[147]+|[258]+"); }	Numbers whose digits all belong to the same residue class mod 3.	nonn,base,easy,look	1..10000	nyi	_Stefano Spezia_
+A385293	filnum	0	0	k -> { final String s = Integer.toString(k); return s.matches("[048]+|[159]+|[26]+|[37]+"); }	Numbers whose digits all belong to the same residue class mod 4.	nonn,base,easy,look	1..10000	nyi	_Stefano Spezia_
+A385294	filnum	1	0	k -> { final String s = Integer.toString(k); return s.matches("[05]+|[16]+|[27]+|[38]+|[49]+"); }	Numbers whose digits all belong to the same residue class mod 5.	nonn,base,easy,look	1..18424	nyi	_Stefano Spezia_
+A385295	filnum	1	0	k -> { final String s = Integer.toString(k); return s.matches("[06]+|[17]+|[28]+|[39]+|4+|5+"); }	Numbers whose digits all belong to the same residue class mod 6.	nonn,base,look	1..14352	nyi	_Stefano Spezia_
+A385296	filnum	1	0	k -> { final String s = Integer.toString(k); return s.matches("[07]+|[18]+|[29]+|3+|4+|5+|6+"); }	Numbers whose digits all belong to the same residue class mod 7.	nonn,base,look	1..10280	nyi	_Stefano Spezia_
+A385297	filnum	1	0	k -> { final String s = Integer.toString(k); return s.matches("[08]+|[19]+|2+|3+|4+|5+|6+|7+"); }	Numbers whose digits all belong to the same residue class mod 8.	nonn,base,look	1..12358	nyi	_Stefano Spezia_
+A385298	filnum	1	0	k -> { final String s = Integer.toString(k); return s.matches("[09]+|1+|2+|3+|4+|5+|6+|7+|8+"); }	Numbers whose digits all belong to the same residue class mod 9.	nonn,base,look	1..16496	nyi	_Stefano Spezia_
+A386839	lambdan	0	n -> SU(0, n, k -> BI(3*n + 2*k + 1, n - k))	""		a(n) = sum(k=0, n, binomial(3*n+2*k+1, n-k))	_	_	_
+A388043	lambdan	0	n -> SU(0, n, k -> BI(3*n - 2*k, n - k))	""		a(n) = sum(k=0, n, binomial(3*n-2*k, n-k))	_	_	_
+A389239	lambdan	0	n -> SU(0, n, k -> BI(n + 3*k, k))	""		a(n) = sum(k=0, n, binomial(n+3*k, k))	_	_	_
+A389361	lambdan	0	n -> SU(0, n, k -> BI(4*n + k, n - k))	""		a(n) = sum(k=0, n, binomial(4*n+k, n-k))	_	_	_
+A389471	lambdan	0	n -> SU(0, n, k -> BI(4*k + 2, k))	""		a(n) = sum(k=0, n, binomial(4*k+2, k))	_	_	_
+A390342	holos	0	[0,-1,3,-3,1,1,-3,3,-1]	0,0,1,2,5,10,18,28,42	0	0
+A390343	holos	0	[0,-1,3,-3,1,1,-3,3,-1]	0,0,2,6,15,30,53,84,126	0	0
+A390344	holos	0	[0,-1,4,-6,3,3,-6,3,3,-6,4,-1]	0,0,1,2,4,7,12,19,28,40,55,74	0	0
+A390345	holos	0	[0,-1,4,-6,3,3,-6,3,3,-6,4,-1]	0,0,1,3,7,14,24,38,56,80,110,147	0	0
+A390346	holos	0	[0,-1,3,-3,1,1,-3,3,-1]	0,0,-1,-1,-1,0,2,7,14	0	0
+A390347	holos	0	[0,-1,3,-3,1,1,-3,3,-1]	0,0,0,-1,-1,0,3,7,14,24	0	0
+A390348	holos	0	[0,1,2,1,-2,-4,0,1,2,-1]	0,1,1,2,4,7,12,22,39	0	0
+A390349	holos	0	[0,1,2,1,-2,-4,0,1,2,-1]	1,1,1,3,4,7,13,22	0	0
+A390489	decexp	0	() -> CV(new Q(4, 3)).log().divide(CR.TWO.log())	Decimal expansion of log_2(1 + 1/3)
+A390499	lambdan	0	n -> PR(0, n, k -> BI(n + 2*k, k))	""		a(n) = prod(k=0, n, binomial(n + 2*k, k))	_	_	_
+A390500	lambdan	0	n -> RU(0, n, k -> new Q(Z_1(k).*(3*k + 1).*(BI(4*n - k + 1, n - k)), ZV(4*n - k + 1))).num()	a(n) = sum(k=0, n, (-1)^k*(3*k+1)*binomial(4*n-k+1, n-k)/(4*n-k+1));
+A390519	lambdan	0	n -> RU(0, n, k -> QV(4*k + 1).*(BI(3*n + k + 1, n - k))./(3*n + k + 1)).num()	""		a(n) = sum(k=0, n, (4*k+1)*binomial(3*n+k+1, n-k)/(3*n+k+1))	_	_	_
+A390520	lambdan	0	n -> RU(0, n, k -> QV(5*k + 1).*(BI(3*n + 2*k + 1, n - k))./(3*n + 2*k + 1)).num()	""		a(n) = sum(k=0, n, (5*k+1)*binomial(3*n+2*k+1, n-k)/(3*n+2*k+1))	_	_	_
+A390527	lambdan	0	n -> RU(0, n, k -> QV(4*k + 1).*(BI(2*n + 2*k + 1, n - k))./(2*n + 2*k + 1)).num()	""		a(n) = sum(k=0, n, (4*k+1)*binomial(2*n+2*k+1, n-k)/(2*n+2*k+1))	_	_	_
+A390528	lambdan	0	n -> RU(0, n, k -> QV(5*k + 1).*(BI(2*n + 3*k + 1, n - k))./(2*n + 3*k + 1)).num()	""		a(n) = sum(k=0, n, (5*k+1)*binomial(2*n+3*k+1, n-k)/(2*n+3*k+1))	_	_	_
+A390541	lambdan	0	n -> SU(0, n, k -> Z_1(n - k).*(BI(3*k + 1, k)))	a(n) = sum(k=0, n, (-1)^(n-k)*binomial(3*k+1, k));
+A390542	lambdan	0	n -> SU(0, n, k -> Z_1(n - k).*(BI(n + 2*k + 1, k)))	nonn,new	0..1000	nyi	_Seiichi Manyama_
+A390543	lambdan	0	n -> SU(0, n, k -> Z_1(k).*(BI(3*n - k + 1, n - k)))	nonn,new	0..1000	nyi	_Seiichi Manyama_
+A390544	lambdan	0	n -> SU(0, n, k -> Z_1(k).*(BI(3*n + 2*k + 1, n - k)))	nonn,new	0..1000	nyi	_Seiichi Manyama_
+A390545	lambdan	0	n -> SU(0, n, k -> Z_1(k).*(BI(3*n + 3*k + 1, n - k)))	nonn,new	0..1000	nyi	_Seiichi Manyama_
+A390547	lambdan	0	n -> SU(0, n, k -> Z_1(k).*(BI(4*n - k + 2, n - k)))	nonn,new	0..1000	nyi	_Seiichi Manyama_
+A390548	lambdan	0	n -> SU(0, n, k -> Z_1(k).*(BI(5*n - k + 2, n - k)))	nonn,new	0..20	nyi	_Seiichi Manyama_
+A390570	lambdan	0	n -> SU(0, n, k -> Z_1(k).*(BI(3*n + k, n - k)))	nonn,new	0..1000	nyi	_Seiichi Manyama_
+A390571	lambdan	0	n -> SU(0, n, k -> Z_1(k).*(BI(4*n + k, n - k)))	nonn,new	0..1000	nyi	_Seiichi Manyama_
+A390572	lambdan	0	n -> SU(0, n, k -> Z_1(k).*(BI(5*n + k, n - k)))	nonn,new	0..900	nyi	_Seiichi Manyama_
+A390577	lambdan	1	n -> PM(n).*(PM(n + 1)).modZ(n)	Remainder when (prime(n) * prime(n+1)) is divided by n.	nonn,easy,new	1..10000	nyi	_Karl-Heinz Hofmann_
+---- 2025-11-14 21:46:54
+A087801	lambdan	1	n -> GCD(TAU(n).+(SIGMA(n)), TAU(n).*(SIGMA(n)))	Greatest common divisor of tau(n)+sigma(n) and tau(n)*sigma(n), where tau = F000005 and sigma = F000203.	nonn	1..10000	nyi	_Reinhard Zumkeller_
+A087943	filnum	1	1	k -> SIGMA(k).mod(3) == 0	Numbers n such that 3 divides sigma(n).	nonn	1..5000	nyi	Yuval Dekel (dekelyuval(AT)hotmail.com)
+A087965	filnum	1	2	k -> Z2(k).-(1).mod(k - 1) == 0	Numbers k such that 2^k - 1 is divisible by (k-1).	nonn	1..10000	nyi	_Labos Elemer_
+A087966	lambdan	1	n -> GCD(Z2(n).-(1), ZV(n).^(2))
+A087967	filnum	1	1	n -> !Predicates.SQUARE.is(GCD(Z2(n).-(1), ZV(n).^(2)))	Integers m such that gcd(2^m-1, m^2) is not a square number.	nonn	1..10000	nyi	_Labos Elemer_
+A088113	lambdan	1	n -> Functions.REVERSE.z(ZV(11).^(n))./(11)	a(n) = digit reversal of (11^n) divided by 11
+A088136	filter	1	new A000040()	p -> PP(Functions.LEADING_DIGIT.l(p) + p.mod(10))	Primes such that sum of first and last digits is prime.	easy,nonn,base	1..10000	nyi	_Zak Seidov_
+A088179	filter	1	new A000040()	p -> MU(p.-(1)).equals(ZV(1))	Primes p such that mu(p-1) = 1; that is, p-1 is squarefree and has an even number of prime factors, where mu is the Moebius function.	nonn	1..10000	nyi	_N. J. A. Sloane_ and _T. D. Noe_
+A088220	polyxa	0	"[1]"	"x,x,x,B,1,-,/n,exp,*,rev,/"	1	0	new A000172()
+A088269	filter	1	new A002385()	p -> PP(new Z("1" + p.toString() + "1"))	(Palindromic primes that yield a prime when sandwiched between two 1s. (Prefixing and suffixing a 1 on both sides yields another palindromic prime.)	base,nonn	1..100	nyi	_Amarnath Murthy_
+A088270	filter	1	new A002385()	p -> PP(new Z("3" + p.toString() + "3"))	(Palindromic primes that yield a prime when sandwiched between two 3s. (Prefixing and suffixing a 'three' on both sides yields another pal prime).	base,nonn	1..37	nyi	_Amarnath Murthy_
+A088271	filter	1	new A002385()	p -> PP(new Z("7" + p.toString() + "7"))	(Palindromic primes that yield a prime when sandwiched between two 7s. (Prefixing and suffixing a 'seven' on both sides yields another pal prime).	base,nonn	1..100	nyi	_Amarnath Murthy_
+A088272	filter	1	new A002385()	p -> PP(new Z("9" + p.toString() + "9"))	(Palindromic primes that yield a prime when sandwiched between two 9s.	base,nonn	1..33	nyi	_Amarnath Murthy_
+A088342	polya	1	"[1]"	"x,B,1,x,B,-,/"	new A000169()
+---- 2025-11-14 21:56:24
+---- 2025-11-14 21:57:01
+---- 2025-11-14 21:57:34
+A088421	parmof2	1	A088420	5	Number of primes in arithmetic progression starting with  5 and with d=2n.
+A088422	parmof2	1	A088420	7	Number of primes in arithmetic progression starting with  7 and with d=2n.
+A088423	parmof2	1	A088420	11	number of primes in arithmetic progression starting with 11 and with d = 2n.
+A088424	parmof2	1	A088420	13	Number of primes in arithmetic progression starting with 13 and with d=2n.
+A088425	parmof2	1	A088420	17	Number of primes in arithmetic progression starting with 17 and with d=2n.
+A088426	parmof2	1	A088420	19	Number of primes in arithmetic progression starting with 19 and with d=2n.
+A088427	parmof2	1	A088420	23	Number of primes in arithmetic progression starting with 23 and with d=2n.
+A088428	parmof2	1	A088420	29	Number of primes in arithmetic progression starting with 29 and with d=2n.
+A088429	parmof2	1	A088420	31	Number of primes in arithmetic progression starting with 31 and with d=2n.
+---- 2025-11-14 22:12:50
+A088465	filter	1	new LambdaSequence(1, n -> new Z("1" + StringUtils.rep('7', n)))	PRIME	Primes whose leftmost decimal digit is 1 and whose other decimal digits are all 7s.
+A088483	filter	1	new A000040()	p -> { final Z p2 = p.*(p.+(1)); return PP(p2.+(1)) && PP(p2.-(1)); }	Primes p such that p^2+p-1 and p^2+p+1 are twin primes.	nonn	1..10000	nyi	_Pierre CAMI_
+A088485	filnum	1	1	k -> { final Z p2 = ZV(k).*(k + 1); return PP(p2.+(1)) && PP(p2.-(1)); }	Numbers n such that n^2 + n - 1 and n^2 + n + 1 are twin primes.	nonn,easy	1..10000	nyi	_Pierre CAMI_
+---- 2025-11-14 22:15:52

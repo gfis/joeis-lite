@@ -336,6 +336,7 @@ while (<>) { # read inputfile
             $parm =~ s{RAD\(}          {Functions.RAD.z\(}g;
             $parm =~ s{RD\(}           {Rationals.SINGLETON.sumdiv\(}g;
             $parm =~ s{REV\(}          {Functions.REVERSE.z\(}g;
+            $parm =~ s{RFAC\(}         {Functions.RISING_FACTORIAL.z\(}g;
             $parm =~ s{RP\(}           {Rationals.SINGLETON.sopf\(}g;
             $parm =~ s{RQ\(}           {Rationals.SINGLETON.product\(}g;
             $parm =~ s{RQD\(}          {Rationals.SINGLETON.productdiv\(}g;
@@ -365,7 +366,7 @@ while (<>) { # read inputfile
             #               1      1    2      2  3     3 with ")."
             $parm =~ s{ZNO\(([^\,]+)\, *([^\)]+)\)([^\)])}  {new IntegersModMul\($2\)\.order\($1\)$3}g; # PARI's znorder(Mod(b,s)) -> new IntegersModMul(s).order(b)
             $parm =~ s{Z\_1\(}         {Z.NEG_ONE.pow\(}g;
-            $parm =~ s{n\_1\(}         {(((n & 1) == 0) ? 1 : -1)}g;
+            $parm =~ s{n\_1\(}         {((((n) & 1) == 0) ? 1 : -1)}g;
             #               1   1   2      2
             $parm =~ s{ZRE\((\d+), *([^\)]+)\)} {Z.valueOf(((($2) & 1) == $1) ? 0 : (((($2) & 2) == 0) ? $1 : -$1))}g;
             $parm =~ s{ZIM\((\d+), *([^\)]+)\)} {Z.valueOf(((($2) & 1) == 0 ) ? 0 : (((($2) & 2) == 0) ? $1 : -$1))}g;

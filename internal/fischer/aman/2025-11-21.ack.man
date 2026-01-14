@@ -1,0 +1,59 @@
+---- 2025-11-20 14:42:45
+---- 2025-11-21 09:20:38
+A090998	decexp	0	() -> X081855.divide(CR.TWO)
+A110591	lambdan	0	n -> ZV(Integer.toString(n, 4).length())
+A110592	lambdan	0	n -> ZV(Integer.toString(n, 5).length())
+A160424	partsun	0	new A139250()			Partial sums of A139250.
+A165196	partsun	1	new A165195()			Partial sums of A165195.
+A172103	partsun	1	new A167020()			Partial sums of A167020 where A167020(n)=1 iff 6*n-1 is prime.
+A172104	partsun	1	new A167021()			Partial sums of A167021 where A167021(n)=1 iff 6*n+1 is prime.
+A215432	filnum	0	0	k -> PP(ZV(k).^(256).+(ZV(k).+(1).^(256)))	n^256+(n+1)^256
+A338761	holos	0	[0,-1,3,-2,-2,3,-1]	1,2,4,8,13,22,37,57,85	0	0
+A390350	holos	0	[0,-1,-1,1,1,1,-1]	1,3,4,7,12	0	0
+A390351	holos	0	[0,-1,-1,1,1,1,-1]	2,3,5,8,12	0	0
+A390490	dirichcon2	1	new A323308()	1	new A158522()	1	Dirichlet convolution of A323308 and A158522.
+A390517	lambdan	0	n -> RU(0, n/3, k -> new Q(Z_1(k).*(ZV(4*k + 1)).*(BI(3*n - 5*k + 1, n - 3*k)), ZV(3*n - 5*k + 1))).num()
+A390518	lambdan	0	n -> RU(0, n/4, k -> new Q(Z_1(k).*(ZV(5*k + 1)).*(BI(3*n - 7*k + 1, n - 4*k)), ZV(3*n - 7*k + 1))).num()
+A390559	holos	0	[0,2,1,-3,-1,-1,3,-1]	0,1,2,5,9,18,36	0	0
+A390560	holos	0	[0,2,1,-3,-1,-1,3,-1]	1,2,3,5,10,19,36,71,139	0	0
+A390562	holos	0	[0,2,-5,6,-6,4,-1]	1,3,6,10,14	0	0
+A390563	holos	0	[0,3,-7,8,-8,8,-8,8,-8,8,-8,8,-8,5,-1]	0,2,5,10,22,56,155,449,1325,3951,11826,35447,106308,318886	0	0
+A390680	lambdan	0	n -> SU(0, n/2, k -> Z_1(k).*(BI(2*n - 2*k - 3, n - 2*k)))
+A390681	lambdan	0	n -> SU(0, n/2, k -> Z_1(k).*(BI(3*n - 2*k - 3, n - 2*k)))
+A390682	lambdan	0	n -> SU(0, n/2, k -> Z_1(k).*(BI(4*n - 2*k - 3, n - 2*k)))
+A390683	lambdan	0	n -> SU(0, n/2, k -> Z_1(k).*(BI(2*n - 2*k - 2, n - 2*k)))
+A390684	lambdan	0	n -> SU(0, n/2, k -> Z_1(k).*(BI(3*n - 2*k - 2, n - 2*k)))
+A390685	lambdan	0	n -> SU(0, n/2, k -> Z_1(k).*(BI(4*n - 2*k - 2, n - 2*k)))
+A390686	lambdan	0	n -> SU(0, n/2, k -> Z_1(k).*(BI(3*n - 2*k, n - 2*k)))
+A390687	lambdan	0	n -> SU(0, n/2, k -> Z_1(k).*(BI(4*n - 2*k, n - 2*k)))
+A390723	trilambn	0	0	0	(n, k) -> Z_1(n - k).*(S1(n, k)).*(Functions.CATALAN.z(k))	(-1)^(n-k)*Stirling1(n, k)*CatalanNumber(k).	nonn,tabl,new	0..54	nyi	_Peter Luschny_
+A390724	trilambn	0	0	0	(n, k) -> S2(n, k).*(Functions.CATALAN.z(k))	.	nonn,tabl,new	0..54	nyi	_Peter Luschny_
+A390727	lambdan	0	n -> S2(2*n, n).*(FA(2*n))./(FA(n + 1))	a(n) = Stirling2(2*n, n)*(2*n)!/(n+1)!.	nonn,new	0..14	nyi	_Peter Luschny_
+A390757	filnum	0	0	k -> { final Q kq = new Q(ZV(23).^(k).-(ZV(4).^(k)), ZV(19)); return kq.isInteger() && PP(kq.num()); }	(23^k - 4^k)/19
+A390764	lambdan	0	n -> ZV(Integer.toString(n, 6).length())	Number of digits in base-6 representation of n.	nonn,base,easy,new	0..10000	nyi	_Paolo Xausa_
+A390765	lambdan	0	n -> ZV(Integer.toString(n, 7).length())	Number of digits in base-7 representation of n.	nonn,base,easy,new	0..10000	nyi	_Paolo Xausa_
+A390766	lambdan	0	n -> ZV(Integer.toString(n, 8).length())	Number of digits in base-8 representation of n.	nonn,base,easy,new	0..10000	nyi	_Paolo Xausa_
+A390767	lambdan	0	n -> ZV(Integer.toString(n, 9).length())	Number of digits in base-9 representation of n.	nonn,base,easy,new	0..10000	nyi	_Paolo Xausa_
+A390770	filnum	0	0	k -> { final Q kq = new Q(ZV(43).^(k).-(ZV(4).^(k)), ZV(39)); return kq.isInteger() && PP(kq.num()); }	(43^k - 4^k)/39---- 2025-11-20 14:55:08
+A390751	filnum	0	0	k -> { final Q kq = new Q(ZV(47).^(k).+(ZV(3).^(k)), ZV(50)); return kq.isInteger() && PP(kq.num()); }	(47^k + 3^k)/50
+---- 2025-11-21 22:56:21
+A262912	holos	1	[0,-345384,230256,-115128,-283209,198400,-99200,58240,-30560,15280,-3830,1280,-640,104,-16,8,-1]	1,6,15,53,318,1207,5797,34782,189135,1089701,6538206,38547751,229660021,1377960126,8242589055	0	0
+A390561	holos	0	[0,2,-5,6,-6,4,-1]	0,2,5,9,13,18	0	0
+A390802	holos	1	[0,1,0,-3,0,3,0,-1]	1,1,6,4,15,9	0	0
+A390803	holos	1	[0,1,0,0,0,0,0,-3,0,0,0,0,0,3,0,0,0,0,0,-1]	1,1,3,4,15,6,28,16,27,25,66,24,91,49,75,64,153,54	0	0
+---- 2025-11-21 23:06:37
+A387714	lambdan	0	n -> QV(FA(n)).*(RU(0, n/2, k -> QV(n-2*k).^(k).*(BI(QV(2).*(n-2*k), n-2*k))./(QV(n-2*k+1).*(FA(k))))).num()	""		a(n) = n!*sum(k=0, n\2, (n-2*k)^k*binomial(2*(n-2*k), n-2*k)/((n-2*k+1)*k!))	_	_	_
+A387945	lambdan	0	n -> SU(0, n/3, k -> BI(3*n-3*k, n-3*k))	""		a(n) = sum(k=0, n\3, binomial(3*n-3*k, n-3*k))	_	_	_
+A387990	lambdan	0	n -> SU(0, n/3, k -> BI(4*n-3*k, n-3*k))	""		a(n) = sum(k=0, n\3, binomial(4*n-3*k, n-3*k))	_	_	_
+A389696	lambdan	0	n -> QV(FA(n)).*(RU(0, n/2, k -> QV(n-2*k).^(k).*(BI(QV(3).*(n-2*k), n-2*k))./((QV(2).*(n-2*k).+(1)).*(FA(k))))).num()	""		a(n) = n!*sum(k=0, n\2, (n-2*k)^k*binomial(3*(n-2*k), n-2*k)/((2*(n-2*k)+1)*k!))	_	_	_
+A389771	lambdan	0	n -> QV(FA(n)).*(RU(0, n/3, k -> QV(n-3*k).^(k).*(BI(QV(2).*(n-3*k), n-3*k))./(QV(n-3*k+1).*(FA(k))))).num()	""		a(n) = n!*sum(k=0, n\3, (n-3*k)^k*binomial(2*(n-3*k), n-3*k)/((n-3*k+1)*k!))	_	_	_
+A390725	trilambn	0	0	0	(n, k) -> Functions.LAH.z(n, k).abs().*(Functions.CATALAN.z(k))	*CatalanNumber(k), and Lah = J271703.	nonn,tabl,new	0..44	nyi	_Peter Luschny_
+A390726	lambdan	0	n -> Z_1(n).*(S1(2*n, n)).*(FA(2*n))./(FA(n + 1))	(-1)^n*Stirling1(2*n, n)*(2*n)!/(n+1)!.	nonn,new	0..14	nyi	_Peter Luschny_
+A390776	lambdan	0	n -> RU(0, n, k -> QV(4*k+2).*(BI(4*n+2, n-k)))./(4*n+2).num()	""		a(n) = sum(k=0, n, (4*k+2)*binomial(4*n+2, n-k))/(4*n+2)	_	_	_
+A390777	lambdan	0	n -> RU(0, n, k -> QV(5*k+2).*(BI(5*n+2, n-k)))./(5*n+2).num()	""		a(n) = sum(k=0, n, (5*k+2)*binomial(5*n+2, n-k))/(5*n+2)	_	_	_
+A390778	lambdan	0	n -> RU(0, n, k -> QV(4*k+3).*(BI(4*n+3, n-k)))./(4*n+3).num()	""		a(n) = sum(k=0, n, (4*k+3)*binomial(4*n+3, n-k))/(4*n+3)	_	_	_
+A390779	lambdan	0	n -> RU(0, n, k -> QV(5*k+3).*(BI(5*n+3, n-k)))./(5*n+3).num()	""		a(n) = sum(k=0, n, (5*k+3)*binomial(5*n+3, n-k))/(5*n+3)	_	_	_
+A390780	lambdan	0	n -> RU(0, n, k -> QV(5*k+4).*(BI(5*n+4, n-k)))./(5*n+4).num()	""		a(n) = sum(k=0, n, (5*k+4)*binomial(5*n+4, n-k))/(5*n+4)	_	_	_
+A390798	lambdan	0	n -> RU(0, n, k -> QV(3*k+2).*(BI(5*n-2*k+2, n-k))./(5*n-2*k+2)).num()	""		a(n) = sum(k=0, n, (3*k+2)*binomial(5*n-2*k+2, n-k)/(5*n-2*k+2))	_	_	_
+A390810	lambdan	0	n -> RU(0, n, k -> QV(k+3).*(BI(4*n-3*k+3, n-k))./(4*n-3*k+3)).num()	""		a(n) = sum(k=0, n, (k+3)*binomial(4*n-3*k+3, n-k)/(4*n-3*k+3))	_	_	_
+A390811	lambdan	0	n -> RU(0, n, k -> QV(2*k+3).*(BI(4*n-2*k+3, n-k))./(4*n-2*k+3)).num()	""		a(n) = sum(k=0, n, (2*k+3)*binomial(4*n-2*k+3, n-k)/(4*n-2*k+3))	_	_	_

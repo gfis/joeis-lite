@@ -1,0 +1,92 @@
+---- 2025-11-29 12:49:53
+A119790	lambdan	1	n -> n == 1 ? ZV(1) : SU(1, n, k -> { final int g = GCDi(n, k); return g != 1 && Predicates.PRIME_POWER.is(g) ? ZV(k) : ZV(0); })	(prime power, J246655),
+A120855	lambdan	0	n -> D062756(n).*(2).+(D081603(n))
+A135480	holos	0	[0,-1,1,0,0,0,0,0,0,0,0,3,-3,0,0,0,0,0,0,0,0,-3,3,0,0,0,0,0,0,0,0,1,-1]	0,1,2,3,4,5,6,7,8,9,81,512,2401,5748,10553,16816,24537,33716,44353,56448,139982,170003,202940,238793,277562,319247,363848,411365,461798,515147,857103,945874	0	0
+A291625	filnum	1	1	k -> Functions.DIGIT_SORT_DESCENDING.z(ZV(k).^(2)).mod(10) == 0
+A291626	filnum	1	0	k -> Functions.DIGIT_SORT_DESCENDING.z(ZV(k).^(2)).mod(10) == 1
+A291627	filnum	1	0	k -> Functions.DIGIT_SORT_DESCENDING.z(ZV(k).^(2)).mod(10) == 2
+A291628	filnum	1	0	k -> Functions.DIGIT_SORT_DESCENDING.z(ZV(k).^(2)).mod(10) == 3
+A291629	filnum	1	0	k -> Functions.DIGIT_SORT_DESCENDING.z(ZV(k).^(2)).mod(10) == 4
+A291630	filnum	1	0	k -> Functions.DIGIT_SORT_DESCENDING.z(ZV(k).^(2)).mod(10) == 5
+A291631	filnum	1	0	k -> Functions.DIGIT_SORT_DESCENDING.z(ZV(k).^(2)).mod(10) == 6
+A291639	filnum	1	1	k -> Functions.DIGIT_SORT_DESCENDING.z(ZV(k).^(3)).mod(10) == 0
+A291640	filnum	1	0	k -> Functions.DIGIT_SORT_DESCENDING.z(ZV(k).^(3)).mod(10) == 1
+A291641	filnum	1	0	k -> Functions.DIGIT_SORT_DESCENDING.z(ZV(k).^(3)).mod(10) == 2
+A291642	filnum	1	0	k -> Functions.DIGIT_SORT_DESCENDING.z(ZV(k).^(3)).mod(10) == 3
+A291643	filnum	1	0	k -> Functions.DIGIT_SORT_DESCENDING.z(ZV(k).^(3)).mod(10) == 4
+A291644	filnum	1	0	k -> Functions.DIGIT_SORT_DESCENDING.z(ZV(k).^(3)).mod(10) == 5
+A291668	filnum	1	1	k -> Functions.DIGIT_SORT_DESCENDING.z(ZV(k).^(4)).mod(10) == 0
+A291669	filnum	1	0	k -> Functions.DIGIT_SORT_DESCENDING.z(ZV(k).^(4)).mod(10) == 1
+A291670	filnum	1	0	k -> Functions.DIGIT_SORT_DESCENDING.z(ZV(k).^(4)).mod(10) == 2
+A291671	filnum	1	0	k -> Functions.DIGIT_SORT_DESCENDING.z(ZV(k).^(4)).mod(10) == 3
+A291672	filnum	1	0	k -> Functions.DIGIT_SORT_DESCENDING.z(ZV(k).^(4)).mod(10) == 4
+A362786	holos	1	[0,-256,1024,-1792,1792,-1120,448,-112,16,-1]	0,0,0,0,0,5,63,476,2772,13680,60060,241472,906048, 3214848, 10890880, 35481600, 111794176, 342171648	0	0
+A363964	holos	1	[0,32,-80,80,-40,10,-1]	0,1,3,14,55,195, 644, 2016	0	0
+A389112	lambdan	0	n -> RU(0, n/2, k -> QV(k+2).*(BI(4*n-7*k+2, n-2*k))./(4*n-7*k+2)).num()	""		a(n) = sum(k=0, n\2, (k+2)*binomial(4*n-7*k+2, n-2*k)/(4*n-7*k+2))	_	_	_
+A389582	holos	0	[0,-1,3,-3,1,0,0,1,-3,3,-1]	0,0,4,13,29,54,90,138,202,283,383	0	0
+A389653	lambdan	0	n -> RU(0, n/3, k -> QV(k+2).*(BI(QV(4).*(n).-(QV(11).*(k)).+(2), n-3*k))./(QV(4).*(n).-(QV(11).*(k)).+(2))).num()	""		a(n) = sum(k=0, n\3, (k+2)*binomial(4*n-11*k+2, n-3*k)/(4*n-11*k+2))	_	_	_
+A389769	sintrif	0	(term, n) -> Functions.DIGIT_LENGTH.z(term)	""	new A003504()
+A389778	decexp	0	() -> CV(new Q(13, 12)).-(Zeta.zeta(4))	Decimal expansion of (13/12) - zeta(4)
+A389806	filter	0	new A389805()	(k, v) -> (k&1) == 1	a(n) = J389805(2*n+1).	nonn,more	0..13	nyi	_Hu Junhua_
+A389807	filter	1	new A389805()	(k, v) -> (k&1) == 0	a(n) = J389805(2*n).	nonn,more	1..14	nyi	_Hu Junhua_
+A389855	filnum	0	0	k -> SIGMA(k).equals(Functions.DEDEKIND_PSI.z(k).+(TAU(k)).+(Functions.PRIME_PI.z(k)))	Numbers k such that sigma(k) = psi(k) + tau(k) + pi(k)
+A389862	filnum	0	0	k -> Predicates.CUBE.is(ZV(k).+(SOPFR(k)))	Numbers k such that k + sopfr(k) is a cube 
+A389905	lambdan	1	k -> ZV((!Predicates.SQUARE_FREE.is(k) && !Predicates.POWERFUL.is(k)) ? 1 : 0)	a(n) = 1 if n is neither squarefree nor powerful, otherwise 0.	nonn,easy	1..65537	nyi	_Antti Karttunen_
+A389906	lambdan	1	k -> MIN(ZV(2*k), D003961(k))	, where D003961 is fully multiplicative with a(p) = nextprime(p)	nonn,easy,new	1..10000	nyi	_Antti Karttunen_
+A389907	lambdan	1	k -> MIN(ZV(k), D054429(k))	, where D054429 list each block of 2^n numbers (from 2^n to 2^(n+1) - 1) in reverse order.	nonn,base,easy,new	1..16383	nyi	_Antti Karttunen_
+A389909	lambdan	1	k -> (k&1) == 1 ? D064989(k).*(2) : D003961(k/2)	for even n, where D003961 is fully multiplicative with a(p) = nextprime(p), and D064989 is its left inverse.	nonn,easy,new	1..10000	nyi	_Antti Karttunen_
+A389910	sintrif	1	(term, n) -> MIN(ZV(n), term)	""	new A389909()
+A390049	filnum	0	0	k -> SIGMA(k).equals(Functions.DEDEKIND_PSI.z(k).+(PHI(k)).+(Functions.OMEGA.z(k)))	sigma(k) = psi(k) + phi(k) + omega(k).	nonn,hard,more	1..8	nyi	_S. I. Dimitrov_
+A390137	holos	0	[[0],[-10,20],[2,1],[0,-1]]	1	0	0
+A390147	lambdan	0	n -> RU(0, n/2, k -> QV(2*k+2).*(BI(4*n-6*k+2, n-2*k))./(4*n-6*k+2)).num()	""		a(n) = sum(k=0, n\2, (2*k+2)*binomial(4*n-6*k+2, n-2*k)/(4*n-6*k+2))	_	_	_
+A390254	multia	0	"2"	(self, n) -> new Q(self.a(n - 1).*(4), ZV(3)).round()	a(0) = 2, thereafter a(n+1) is the nearest integer to 4*a(n)/3.	nonn,easy,new	0..5000	nyi	_Jianing Song_
+A390276	lambdan	0	n -> Functions.CATALAN.z(n).*(S1(2*n, n)).*(Z_1(n))	a(n) = (-1)^n*Stirling1(2*n, n)*CatalanNumber(n).	nonn,new	0..15	nyi	_Peter Luschny_
+A390277	lambdan	0	n -> Functions.CATALAN.z(n).*(S2(2*n, n))	a(n) = Stirling2(2*n, n)*CatalanNumber(n).	nonn,new	0..293	nyi	_Peter Luschny_
+A390529	holos	0	[0,-24,50,-35,10,-1]	1,5,22,95	0	0
+A390530	holos	0	[0,-1536,5504,-8288,6888,-3468,1086,-207,22,-1]	1,11,86,587,3690,21807,122638,662315	0	0
+A390564	holos	0	[0,3,-7,8,-8,8,-8,8,-8,8,-8,8,-8,5,-1]	1,3,6,11,23,57,156,450,1326,3952,11827,35448,106309	0	0
+A390566	holos	0	[0,-1,3,-3,1,0,0,1,-3,3,-1]	0,1,6,17,38,71,120,188,278,392	0	0
+A390800	lambdan	1	n -> SU(1, n, k -> { final int g = GCDi(n, k); return (g == 1 || Predicates.PRIME_POWER.is(g)) ? ZV(k) : ZV(0); })	(power of prime, J000961),
+A390801	lambdan	1	n -> SU(1, n, k -> Predicates.PRIME.is(GCD(n, k)) ? ZV(k) : ZV(0))	(prime),
+A390804	lambdan	1	n -> SU(1, n, k -> Predicates.POWER_OF_TWO.is(GCD(n, k)) ? ZV(k) : ZV(0))	gcd(n, k) is a power of 2.	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+A390805	lambdan	1	n -> SU(1, n, k -> Predicates.SMOOTH.is(3, GCD(n, k)) ? ZV(k) : ZV(0))	gcd(n, k) is a 3-smooth number (J003586).	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+A390806	lambdan	1	n -> SU(1, n, k -> Predicates.SQUARE_FREE.is(GCD(n, k)) ? ZV(k) : ZV(0))	gcd(n, k) is squarefree (J005117).	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+A390807	lambdan	1	n -> SU(1, n, k -> Predicates.CUBE_FREE.is(GCD(n, k)) ? ZV(k) : ZV(0))	gcd(n, k) is cubefree (J004709).	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+A390808	lambdan	1	n -> SU(1, n, k -> Predicates.SQUARE.is(GCD(n, k)) ? ZV(k) : ZV(0))	gcd(n, k) is a square.	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+A390809	lambdan	1	n -> SU(1, n, k -> { final int g = GCDi(n, k); return (g == 1 || g == 2) ? ZV(k) : ZV(0); })	gcd(n, k) is either 1 or 2.	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+A390895	polyx	0	"[1],[0,2]"	"p1,exp,3,+,<1,4,/,exp"	0	1
+A390963	lambdan	0	n -> RU(0, n, k -> QV(k+1).^(4).*(BI(2*n-k, n-k)))./(n+1).num()	""		a(n) = sum(k=0, n, (k+1)^4*binomial(2*n-k, n-k))/(n+1)	_	_	_
+A390964	lambdan	0	n -> RU(0, n, k -> QV(k+1).^(5).*(BI(2*n-k, n-k)))./(n+1).num()	""		a(n) = sum(k=0, n, (k+1)^5*binomial(2*n-k, n-k))/(n+1)	_	_	_
+A390965	lambdan	0	n -> RU(0, n, k -> QV(k).^(2).*(k+1).*(BI(2*n-k, n-k)))./(n+1).num()	""		a(n) = sum(k=0, n, k^2*(k+1)*binomial(2*n-k, n-k))/(n+1)	_	_	_
+A390966	lambdan	0	n -> RU(0, n, k -> QV(k).^(3).*(k+1).*(BI(2*n-k, n-k)))./(n+1).num()	""		a(n) = sum(k=0, n, k^3*(k+1)*binomial(2*n-k, n-k))/(n+1)	_	_	_
+A390967	lambdan	0	n -> RU(0, n, k -> QV(k).^(4).*(k+1).*(BI(2*n-k, n-k)))./(n+1).num()	""		a(n) = sum(k=0, n, k^4*(k+1)*binomial(2*n-k, n-k))/(n+1)	_	_	_
+A390968	lambdan	0	n -> RU(0, n, k -> QV(k+1).^(2).*(2*k+1).*(BI(3*n-k, n-k)))./(2*n+1).num()	""		a(n) = sum(k=0, n, (k+1)^2*(2*k+1)*binomial(3*n-k, n-k))/(2*n+1)	_	_	_
+A390969	lambdan	0	n -> RU(0, n, k -> QV(k+1).^(3).*(2*k+1).*(BI(3*n-k, n-k)))./(2*n+1).num()	""		a(n) = sum(k=0, n, (k+1)^3*(2*k+1)*binomial(3*n-k, n-k))/(2*n+1)	_	_	_
+A390970	lambdan	0	n -> RU(0, n, k -> QV(k+1).^(4).*(2*k+1).*(BI(3*n-k, n-k)))./(2*n+1).num()	""		a(n) = sum(k=0, n, (k+1)^4*(2*k+1)*binomial(3*n-k, n-k))/(2*n+1)	_	_	_
+A390971	lambdan	0	n -> RU(0, n, k -> QV(k).^(2).*(2*k+1).*(BI(3*n-k, n-k)))./(2*n+1).num()	""		a(n) = sum(k=0, n, k^2*(2*k+1)*binomial(3*n-k, n-k))/(2*n+1)	_	_	_
+A390972	lambdan	0	n -> RU(0, n, k -> QV(k).^(3).*(2*k+1).*(BI(3*n-k, n-k)))./(2*n+1).num()	""		a(n) = sum(k=0, n, k^3*(2*k+1)*binomial(3*n-k, n-k))/(2*n+1)	_	_	_
+A390973	lambdan	0	n -> RU(0, n, k -> QV(k).^(4).*(2*k+1).*(BI(3*n-k, n-k)))./(2*n+1).num()	""		a(n) = sum(k=0, n, k^4*(2*k+1)*binomial(3*n-k, n-k))/(2*n+1)	_	_	_
+A390974	decexp	1	() -> CR.TWO.log().^(2).+(CR.PI.^(2).*(4)).sqrt()	Decimal expansion of sqrt(log(2)^2 + 4*Pi^2).	nonn,cons,easy,new	1..100	nyi	_Stefano Spezia_
+A391029	lambdan	0	n -> RU(0, n/3, k -> QV(k+1).*(BI(2*n-5*k+1, n-3*k))./(2*n-5*k+1)).num()	""		a(n) = sum(k=0, n\3, (k+1)*binomial(2*n-5*k+1, n-3*k)/(2*n-5*k+1))	_	_	_
+A391030	lambdan	0	n -> RU(0, n/4, k -> QV(k+1).*(BI(2*n-7*k+1, n-4*k))./(2*n-7*k+1)).num()	""		a(n) = sum(k=0, n\4, (k+1)*binomial(2*n-7*k+1, n-4*k)/(2*n-7*k+1))	_	_	_
+A391031	lambdan	0	n -> RU(0, n/3, k -> QV(2*k+1).*(BI(2*n-4*k+1, n-3*k))./(2*n-4*k+1)).num()	""		a(n) = sum(k=0, n\3, (2*k+1)*binomial(2*n-4*k+1, n-3*k)/(2*n-4*k+1))	_	_	_
+A391032	lambdan	0	n -> RU(0, n/4, k -> QV(2*k+1).*(BI(2*n-6*k+1, n-4*k))./(2*n-6*k+1)).num()	""		a(n) = sum(k=0, n\4, (2*k+1)*binomial(2*n-6*k+1, n-4*k)/(2*n-6*k+1))	_	_	_
+A391033	lambdan	0	n -> RU(0, n/3, k -> QV(3*k+1).*(BI(2*n-3*k+1, n-3*k))./(2*n-3*k+1)).num()	""		a(n) = sum(k=0, n\3, (3*k+1)*binomial(2*n-3*k+1, n-3*k)/(2*n-3*k+1))	_	_	_
+A391034	lambdan	0	n -> RU(0, n/4, k -> QV(3*k+1).*(BI(2*n-5*k+1, n-4*k))./(2*n-5*k+1)).num()	""		a(n) = sum(k=0, n\4, (3*k+1)*binomial(2*n-5*k+1, n-4*k)/(2*n-5*k+1))	_	_	_
+A391035	lambdan	0	n -> RU(0, n/4, k -> QV(4*k+1).*(BI(2*n-4*k+1, n-4*k))./(2*n-4*k+1)).num()	""		a(n) = sum(k=0, n\4, (4*k+1)*binomial(2*n-4*k+1, n-4*k)/(2*n-4*k+1))	_	_	_
+A391036	lambdan	0	n -> RU(0, n/2, k -> QV(5*k+1).*(BI(2*n+k+1, n-2*k))./(2*n+k+1)).num()	""		a(n) = sum(k=0, n\2, (5*k+1)*binomial(2*n+k+1, n-2*k)/(2*n+k+1))	_	_	_
+A391054	holos	0	[0,-1,0,1,0,1,0,-1]	0,10,1,28,1,46,2	0	0
+A391058	lambdan	0	n -> RU(0, n/2, k -> QV(k+1).*(BI(3*n-5*k+1, n-2*k))./(3*n-5*k+1)).num()	""		a(n) = sum(k=0, n\2, (k+1)*binomial(3*n-5*k+1, n-2*k)/(3*n-5*k+1))	_	_	_
+A391059	lambdan	0	n -> RU(0, n/3, k -> QV(k+1).*(BI(3*n-8*k+1, n-3*k))./(3*n-8*k+1)).num()	""		a(n) = sum(k=0, n\3, (k+1)*binomial(3*n-8*k+1, n-3*k)/(3*n-8*k+1))	_	_	_
+A391060	lambdan	0	n -> RU(0, n/2, k -> QV(2*k+1).*(BI(3*n-4*k+1, n-2*k))./(3*n-4*k+1)).num()	""		a(n) = sum(k=0, n\2, (2*k+1)*binomial(3*n-4*k+1, n-2*k)/(3*n-4*k+1))	_	_	_
+A391061	lambdan	0	n -> RU(0, n/3, k -> QV(2*k+1).*(BI(3*n-7*k+1, n-3*k))./(3*n-7*k+1)).num()	""		a(n) = sum(k=0, n\3, (2*k+1)*binomial(3*n-7*k+1, n-3*k)/(3*n-7*k+1))	_	_	_
+A391062	lambdan	0	n -> RU(0, n/3, k -> QV(3*k+1).*(BI(3*n-6*k+1, n-3*k))./(3*n-6*k+1)).num()	""		a(n) = sum(k=0, n\3, (3*k+1)*binomial(3*n-6*k+1, n-3*k)/(3*n-6*k+1))	_	_	_
+A391063	lambdan	0	n -> RU(0, n/3, k -> QV(5*k+1).*(BI(3*n-4*k+1, n-3*k))./(3*n-4*k+1)).num()	""		a(n) = sum(k=0, n\3, (5*k+1)*binomial(3*n-4*k+1, n-3*k)/(3*n-4*k+1))	_	_	_
+A391064	lambdan	0	n -> RU(0, n/3, k -> QV(6*k+1).*(BI(3*n-3*k+1, n-3*k))./(3*n-3*k+1)).num()	""		a(n) = sum(k=0, n\3, (6*k+1)*binomial(3*n-3*k+1, n-3*k)/(3*n-3*k+1))	_	_	_
+A391065	lambdan	0	n -> RU(0, n/3, k -> QV(9*k+1).*(BI(3*n+1, n-3*k)))./(3*n+1).num()	""		a(n) = sum(k=0, n\3, (9*k+1)*binomial(3*n+1, n-3*k))/(3*n+1)	_	_	_
+A391079	lambdan	0	n -> RU(0, n/3, k -> QV(2*k+2).*(BI(4*n-10*k+2, n-3*k))./(4*n-10*k+2)).num()	""		a(n) = sum(k=0, n\3, (2*k+2)*binomial(4*n-10*k+2, n-3*k)/(4*n-10*k+2))	_	_	_
+A391080	lambdan	0	n -> RU(0, n/2, k -> QV(3*k+2).*(BI(4*n-5*k+2, n-2*k))./(4*n-5*k+2)).num()	""		a(n) = sum(k=0, n\2, (3*k+2)*binomial(4*n-5*k+2, n-2*k)/(4*n-5*k+2))	_	_	_
+A391081	lambdan	0	n -> RU(0, n/3, k -> QV(3*k+2).*(BI(4*n-9*k+2, n-3*k))./(4*n-9*k+2)).num()	""		a(n) = sum(k=0, n\3, (3*k+2)*binomial(4*n-9*k+2, n-3*k)/(4*n-9*k+2))	_	_	_
+A391082	lambdan	0	n -> RU(0, n/2, k -> QV(4*k+2).*(BI(4*n-4*k+2, n-2*k))./(4*n-4*k+2)).num()	""		a(n) = sum(k=0, n\2, (4*k+2)*binomial(4*n-4*k+2, n-2*k)/(4*n-4*k+2))	_	_	_
+A391083	lambdan	0	n -> RU(0, n/3, k -> QV(4*k+2).*(BI(4*n-8*k+2, n-3*k))./(4*n-8*k+2)).num()	""		a(n) = sum(k=0, n\3, (4*k+2)*binomial(4*n-8*k+2, n-3*k)/(4*n-8*k+2))	_	_	_
+A391084	lambdan	0	n -> RU(0, n/2, k -> QV(6*k+2).*(BI(4*n-2*k+2, n-2*k))./(4*n-2*k+2)).num()	""		a(n) = sum(k=0, n\2, (6*k+2)*binomial(4*n-2*k+2, n-2*k)/(4*n-2*k+2))	_	_	_

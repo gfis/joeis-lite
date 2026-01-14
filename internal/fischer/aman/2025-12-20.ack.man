@@ -1,0 +1,108 @@
+---- 2025-12-20 22:44:53
+A083094	filnum	1	0	k -> SU(0, k, j -> BI(k, j).modZ(3)).testBit(0)	Numbers k such that Sum_{j=0..k} (binomial(k,j) mod 3) is odd.	easy,nonn	1..50	nyi	_Benoit Cloitre_
+A083095	sintrif	1	(term, n) -> term./(4)	""	new A083094()	a(n) = A083094(n)/4.	nonn,easy	1..16384	nyi	_Benoit Cloitre_
+A083096	filnum	0	0	k -> SU(1, k, j -> BI(2*j, j).modZ(3)).mod(3) == 0	Numbers k such that 3 divides Sum_{j=1..k} binomial(2*j,j).	nonn,easy	1..8192	nyi	_Benoit Cloitre_
+A083097	sintrif	0	(term, n) -> term./(6)	""	new A083096()	a(n) = A083096(n)/6.	nonn,easy	1..8192	nyi	_Benoit Cloitre_
+A083114	filnum	1	1	k -> Predicates.ZEROLESS.is(k) && Predicates.PALINDROME.is(Functions.DIGIT_SUM.z(k)) && Predicates.PALINDROME.is(Functions.DIGIT_PRODUCT.z(k))	Numbers with nonzero digits whose sum of digits as well as product of digits is a palindrome.	base,easy,nonn	1..912	nyi	_Amarnath Murthy_
+A083115	filter	1	new A083114()	v -> Predicates.PALINDROME.is(v)	Palindromes in A083114.	base,nonn	1..2002	nyi	_Amarnath Murthy_
+A083734	filnum	1	1	k -> { final Z v = ZV(k); return ZV(3).modPow(v.-(1), v).equals(Z.ONE) && ZV(5).modPow(v.-(1), v).equals(Z.ONE) && !Predicates.PRIME.is(v); }	3 and 5.	easy,nonn	1..15806	nyi	Serhat Sevki Dincer (sevki(AT)ug.bilkent.edu.tr)
+A083735	filnum	1	1	k -> { final Z v = ZV(k); return ZV(3).modPow(v.-(1), v).equals(Z.ONE) && ZV(7).modPow(v.-(1), v).equals(Z.ONE) && !Predicates.PRIME.is(v); }	3 and 7.	nonn	1..16479	nyi	Serhat Sevki Dincer (sevki(AT)ug.bilkent.edu.tr)
+A083736	filnum	1	1	k -> { final Z v = ZV(k); return ZV(2).modPow(v.-(1), v).equals(Z.ONE) && ZV(5).modPow(v.-(1), v).equals(Z.ONE) && ZV(7).modPow(v.-(1), v).equals(Z.ONE) && !Predicates.PRIME.is(v); }	2,5 and 7.	easy,nonn	1..8691	nyi	Serhat Sevki Dincer (sevki(AT)ug.bilkent.edu.tr)
+A083737	filnum	1	1	k -> { final Z v = ZV(k); return ZV(2).modPow(v.-(1), v).equals(Z.ONE) && ZV(3).modPow(v.-(1), v).equals(Z.ONE) && ZV(5).modPow(v.-(1), v).equals(Z.ONE) && !Predicates.PRIME.is(v); }	2, 3 and 5.	easy,nonn	1..10000	nyi	Serhat Sevki Dincer (sevki(AT)ug.bilkent.edu.tr)
+A083738	filnum	1	1	k -> { final Z v = ZV(k); return ZV(2).modPow(v.-(1), v).equals(Z.ONE) && ZV(3).modPow(v.-(1), v).equals(Z.ONE) && ZV(7).modPow(v.-(1), v).equals(Z.ONE) && !Predicates.PRIME.is(v); }	2,3 and 7.	easy,nonn	1..10460	nyi	Serhat Sevki Dincer (sevki(AT)ug.bilkent.edu.tr)
+A083739	filnum	1	1	k -> { final Z v = ZV(k); return ZV(2).modPow(v.-(1), v).equals(Z.ONE) && ZV(3).modPow(v.-(1), v).equals(Z.ONE) && ZV(5).modPow(v.-(1), v).equals(Z.ONE) && ZV(7).modPow(v.-(1), v).equals(Z.ONE) && !Predicates.PRIME.is(v); }	2, 3, 5 and 7.	nonn	1..7469	nyi	Serhat Sevki Dincer (sevki(AT)ug.bilkent.edu.tr)
+A083740	filnum	1	1	k -> { final Z v = ZV(k); return ZV(3).modPow(v.-(1), v).equals(Z.ONE) && ZV(5).modPow(v.-(1), v).equals(Z.ONE) && ZV(7).modPow(v.-(1), v).equals(Z.ONE) && !Predicates.PRIME.is(v); }	3,5 and 7.	easy,nonn	1..8702	nyi	Serhat Sevki Dincer (sevki(AT)ug.bilkent.edu.tr)
+A083748	filter	1	new A003154()	v -> Predicates.TRIANGULAR.is(Functions.DIGIT_SUM.z(v)) && Predicates.TRIANGULAR.is(Functions.DIGIT_NZ_PRODUCT.z(v))	Star numbers (E003154) whose digital sum and product of nonzero digits are both triangular numbers.	base,nonn	1..30	nyi	_Jason Earls_
+A083749	filter	1	new A003154()	v -> Predicates.BRILLIANT.is(v)	Brilliant star numbers: semiprimes of the form 6n^2 - 6n + 1 such that both prime factors have the same number of decimal digits.	base,nonn	1..31	nyi	_Jason Earls_
+A084228	multia	1	"1,2"	(self, n) -> Functions.DIGIT_SUM.z(SU(1, n - 1, k -> self.a(k)))	a(1)=1, a(2)=2; thereafter a(n) = sum of digits of (a(1)+a(2)+a(3)+...+a(n-1))
+A084306	filnum	0	1	k -> SIGMA(k).mod(k) == 12 && k%6 != 0	sigma(x) mod x = 12 and x is not divisible by 6
+A084341	lambdan	1	n -> Functions.REVERSE.z(13*n).modZ(13)	13*n digit-reversed mod 13
+A084471	lambdan	1	n -> new Z(Integer.toString(n, 2).replaceAll("0", "00"), 2)	Change 0 to 00 in binary representation of n.	nonn,look,base	1..10000	nyi	_Reinhard Zumkeller_
+A084472	lambdan	1	n -> new Z(Integer.toString(n, 2).replaceAll("0", "00"))	Write n in binary and replace 0 with 00.	nonn	1..28	nyi	_Reinhard Zumkeller_
+A084473	lambdan	1	n -> new Z(Integer.toString(n, 2).replaceAll("0", "0000"), 2)	Replace 0 with 0000 in binary representation of n.	nonn,base,look	1..8191	nyi	_Reinhard Zumkeller_
+A084474	lambdan	1	n -> new Z(Integer.toString(n, 2).replaceAll("0", "0000"))	Write n in binary and replace 0 with 0000.	nonn	1..20	nyi	_Reinhard Zumkeller_  lambdan
+A084830	filnum	1	0	k -> { final Z kf = FA(k); return PP(kf.^(2).+(kf).-(1)); }	(k!)^2 + k! - 1 is prime.	more,nonn	1..13	nyi	_Farideh Firoozbakht_
+A084846	lambdan	0	n -> MU(FA(n).+(1))	hard,sign	0..139	nyi	_Rick L. Shepherd_
+A084853	filnum	1	1	k -> PP(ZV(k).^(k + 1).+(ZV(k + 1).^(k)).+(ZV(k).*(k + 1)))	Numbers k such that k^(k+1) + (k+1)^k + k(k+1) is prime.	more,nonn	1..6	nyi	_Farideh Firoozbakht_
+A084890	trilambn	1	1	1	(n, k) -> ARD(ZV(n).*(k))	Triangular array, read by rows: T(n,k) = arithmetic derivative of n*k, 1<=k<=n.	nonn,tabl	1..78	nyi	_Reinhard Zumkeller_
+A084898	filnum	1	1	k -> PP(ZV(k).^(k).*(FA(k)).+(1))	k^k*k! + 1 is prime.	more,nonn	1..10	nyi	_Farideh Firoozbakht_
+A084914	filnum	1	0	k -> PP(ZV(k).^(k).*(FA(k)).-(1))	k^k*k! - 1 is prime.	more,hard,nonn	1..8	nyi	_Farideh Firoozbakht_
+A085010	lambdan	0	n -> RU(0, n, k -> new Q(ZV(1), ZV(2).^(Z2(k)))).*(ZV(2).^(Z2(n))).num()	a(n)=2^(2^n)*sum(k=0,n,1/2^(2^k)).	nonn	0..8	nyi	_Benoit Cloitre_
+A085207	arrlamb	0	0	0	1	(n, k) -> new Z(k == 0 ? Integer.toString(n, 2) : Integer.toString(n, 2) + Integer.toString(k, 2), 2)	Array A(x,y): concatenation of binary expansions of x & y, listed antidiagonalwise as A(0,0), A(1,0), A(0,1), A(2,0), A(1,1), A(0,2), ... Zero is expanded as an empty string.	nonn,tabl	0..77	nyi
+A085208	arrlamb	0	0	0	1	(n, k) -> new Z(n == 0 ? Integer.toString(k, 2) : Integer.toString(k, 2) + Integer.toString(n, 2), 2)	Transpose of A085207.	nonn,tabl	0..77	nyi
+A085209	arrlamb	0	0	0	1	(n, k) -> new Z(k == 0 ? Integer.toString(n, 2) : Integer.toString(n, 2) + Integer.toString(k, 2), 10)	Array A085207 in binary.	nonn,tabl,base	0..45	nyi
+A085210	arrlamb	0	0	0	1	(n, k) -> new Z(n == 0 ? Integer.toString(k, 2) : Integer.toString(k, 2) + Integer.toString(n, 2), 10)	Array A085208 in binary.	nonn,tabl,base	0..45	nyi
+A085241	diffs	1	new A085239().skip(1)	(n+1) - J085239(n).	sign	1..84	nyi	_Reinhard Zumkeller_
+A085242	sintrif	1	(term, n) -> term.-(2)	""	new A085239().skip(1)	a(n) = J085239(n+1) - 2.	nonn	1..102	nyi	_Reinhard Zumkeller_
+A085331	filnum	0	1	k -> PHI(Functions.REVERSE.z(k)).equals(ZV(k))	 = k.	nonn,base,more	1..16	nyi	_Labos Elemer_
+A085390	lambdan	2	n -> ZV(n + 1).^(n - 2).*(n).+(n == 2 ? 1 : 0)./(n + 1)	a(n) = (n(n+1)^(n-2)+0^(n-2))/(n+1).	easy,nonn	2..19	nyi	_Paul Barry_
+A118748	lambdan	1	n -> PR(1, n, k -> Functions.NEXT_PRIME.z(2*k - 1))	a(n) = Product_{k=1..n} P(k), where P(k) is the smallest prime >= 2*k
+A128778	lambdan	1	n -> RQ(1, n, k -> new Q(n, k).frac().+(1)).num()	numerator of Product_{k=1..n} (1 + {n/k}), where {x} is the fractional part of x, {x} = x - floor(x).
+A128779	lambdan	1	n -> RQ(1, n, k -> new Q(n, k).frac().+(1)).den()	denominator of Product_{k=1..n} (1 + {n/k}), where {x} is the fractional part of x, {x} = x - floor(x).
+A130086	lambdan	1	n -> RQ(1, n, k -> new Q(k).^(Functions.MOEBIUS.i(k))).num()	numerator of Product_{k=1..n} k^mu(k), where mu(k) = F008683(k).
+A130088	lambdan	1	n -> RQ(1, n, k -> new Q(k).^(Functions.MOEBIUS.i(n + 1 - k))).num()	numerator of Product_{k=1..n} k^mu(n+1-k), where mu(k) = F008683(k).
+A130089	lambdan	1	n -> RQ(1, n, k -> new Q(k).^(Functions.MOEBIUS.i(n + 1 - k))).den()	denominator of Product_{k=1..n} k^mu(n+1-k), where mu(k) = F008683(k).
+A132746	filnum	1	0	k -> Predicates.POWER.is(PM(k).+(PM(k + 1)))
+A132850	multia	0	"1"	(self, n) -> LPF(self.a(n - 1).+(n))	a(0)=1; a(n) = the smallest prime dividing (n+a(n-1)), for n>=1.	nonn	0..1000	nyi	_Leroy Quet_
+A132915	multia	0	"0,1"	(self, n) -> SU(1, Functions.SQRT.i(n), k -> self.a(n - k))	0..36	nyi	_Rick L. Shepherd_
+A132916	multia	0	"0,1"	(self, n) -> SU(1, Functions.CBRT.i(n), k -> self.a(n - k))	a(0)=0; a(1)=1; a(n) = Sum_{k=1..floor(n^(1/3))} a(n-k) for n >= 2.	nonn	0..3345	nyi	_Rick L. Shepherd_
+A153581	filter	0	new A083739()	v -> !Predicates.CARMICHAEL.is(v)	Pseudoprimes to bases 2,3,5 and 7 which are not Carmichael numbers (J002997).   nonn    1..1077 nyi     _Ray Chandler_ & _Artur Jasinski_
+A158358	filnum	1	1	k -> { final Z v = ZV(k); return ZV(2).modPow(v.-(1), v).equals(Z.ONE) && (!Predicates.SQUARE_FREE.is(v) || !v.testBit(0)); }	 that are not squarefree, including the even pseudoprimes.        nonn    1..10010        nyi     _Rick L. Shepherd_
+A178723	filnum	1	1	k -> { final Z v = ZV(k); return ZV(2).modPow(v.-(1), v).equals(Z.ONE) && !Predicates.PRIME.is(v) && k%4 == 1; }	of the form 4k+1.        nonn    1..10000        nyi     _Joerg Arndt_
+A230004	filnum	1	1	k -> PHI(k).+(SIGMA(k)).equals(Functions.REVERSE.z(k).+(4))	= reversal(k) + 4.        nonn,base       1..9    nyi     _Farideh Firoozbakht_
+A230005	filnum	1	1	k -> PHI(k).+(SIGMA(k)).equals(Functions.REVERSE.z(k).-(4))	= reversal(k) - 4.        nonn,base,more  1..12   nyi     _Farideh Firoozbakht_
+A230006	filnum	1	1	k -> PHI(k).+(SIGMA(k)).equals(Functions.REVERSE.z(k).+(1))	nonn,base,more  1..6    nyi     _Farideh Firoozbakht_
+A230012	filnum	1	1	k -> PHI(k).equals(SIGMA(k).-(Functions.REVERSE.z(SIGMA(k))))	base,nonn       1..103  nyi     _Farideh Firoozbakht_
+A230020	filnum	1	1	k -> !PP(k) && SIGMA(k).-(Functions.REVERSE.z(k)).equals(ZV(1))	- reversal(k) = 1 .       nonn,base,more  1..8    nyi     _Farideh Firoozbakht_
+A230021	filnum	1	1	k -> SIGMA(k).equals(Functions.REVERSE.z(k + 2))	nonn,base,more  1..13   nyi     _Farideh Firoozbakht_
+A230023	filnum	1	1	k -> PHI(k).+(SIGMA(k)).equals(SIGMA(PHI(k)))	= SIGMA(k) + phi(k).  nonn    1..187  nyi     _Farideh Firoozbakht_
+A230032	filnum	1	1	k -> PHI(SIGMA(k)).+(SIGMA(PHI(k))).compareTo(ZV(k)) < 0	1..1000 nyi     _Farideh Firoozbakht_
+A230237	filnum	0	1	k -> { final Z avg = PHI(SIGMA(k)).+(SIGMA(PHI(k))); return !avg.testBit(0) && PHI(k).+(SIGMA(k)).equals(avg./(2)); }
+A230238	filnum	1	1	k -> { final Z avg = PHI(k).+(SIGMA(k)); return !avg.testBit(0) && PHI(SIGMA(k)).+(SIGMA(PHI(k))).equals(avg./(2)); }
+A258325	lambdan	0	n -> PR(1, n, k -> PT(k).+(1))	a(n) = Product_{k=1..n} (1 + p(k)), where p(k) is the partition function F000041.
+A265097	lambdan	0	n -> PR(0, n, k -> F000009(k).^(k))	a(n) = Product_{k=0..n} q(k)^k, where q(k) = partition numbers into distinct parts (F000009).
+A298851	lambdan	0	n -> SU(0, 2*n, k -> ZV(-n).^(k).*(BI(4*n, k)).*(S2(4*n - k, 2*n)))
+A304334	trilambn	0	0	0	(n, k) -> RU(0, k, j -> new Q(Z_1(j).*(BI(2*k, j)).*(ZV(k - j).^(2*n)), FA(k))).num()	/k!, triangle read by rows, n >= 0 and 0 <= k <= n.	nonn,tabl	0..44	nyi	_Peter Luschny_
+A304336	trilambn	0	0	0	(n, k) -> RU(0, k, j -> new Q(Z_1(j).*(BI(2*k, j)).*(ZV(k - j).^(2*n)), FA(k).^(2))).num()	/(k!)^2, triangle read by rows, n >= 0 and 0 <= k <= n.	nonn,tabl	0..44	nyi	_Peter Luschny_
+A304727	multia	0	"0,1"	(self, n) -> FA(n).*(self.a(n- 1)).+(self.a(n - 2))	a(0) = 0, a(1) = 1, a(n) = n! * a(n-1) + a(n-2).
+A304821	multia	1	"6,6,6"	(self, n) -> self.a(n - 3).+(LCM(self.a(n - 3), ZV(n - 2)))	For n > 3, a(n) = a(n-3) + lcm(a(n-3), n-2) with a(1)=6, a(2)=6, a(3)=6.
+A305627	lambdan	0	n -> new Q(Z2(n).*(PR(1, n, k -> Z2(k).-(1))), FA(n)).num()	a(n) = (2^n / n!) * (2^1 - 1) * (2^2 - 1) * ... * (2^n - 1).	nonn,easy	0..85	nyi	_Michael Somos_
+A305635	filnum	1	1	k -> (k == 1) || (((k&1) == 1) && !Predicates.POWER.is(k))	1 and odd numbers that are not perfect powers.	nonn	1..62	nyi	_Gus Wiseman_
+A352743	lambdan	0	n -> RQ(1, n, k -> new Q(PM(k + 1).+(PM(k)), PM(k + 1).-(PM(k)))).num()	Product_{k=1..n} (p(k+1) + p(k))/(p(k+1) - p(k)), where p(k) = prime(k).
+A365266	lambdan	0	n -> PR(1, n, k -> FA(6*k - 1))	a(n) = Product_{k=1..n} Gamma(6*k).
+A369936	sintrif	1	(term, n) -> SQRT(term)	""	new A369935()	a(n) = sqrt(J369935(n)).        nonn,easy       1..10000        nyi     _Amiram Eldar_
+A370260	lambdan	0	n -> SQRT(E370259(2*n + 1))	.    nonn,easy       0..300  nyi     _Peter Bala_
+A370261	lambdan	1	n -> SQRT(E370259(2*n)./(n + 1))	for n >= 1.
+A376227	lambdan	0	n -> (n == 0) ? ZV(1) : RQ(1, n, k -> new Q(Z2(3*k).-(1), Z2(k).-(1))).num()	a(n) = Product_{k=1..n} (8^k - 1)/(2^k - 1) for n >= 1 with a(0) = 1.
+A382082	filter	1	new A000045()	(k, v) -> k != 1 && Predicates.PALINDROME.is(v.+(Functions.REVERSE.z(v)))	F(k) such that F(k) + (F(k) reversed) is a palindrome, where F(k) is a Fibonacci number.	nonn,base	1..16	nyi	_Vincenzo Librandi_
+A382316	polyx	1	"[0,1,1,2,2,5],[0,0,1],[0,0,0,1]"	"p1,sub,p1,sub,^2,p2,sub,*,x,<5,sub,/,+"	6	0
+A382317	polyx	1	"[0,1,1,0,0,1],[0,0,1],[0,0,0,1]"	"p2,sub,p1,sub,p2,sub,-,/"	6	0
+A383859	decexpr	1	() -> CR.PI.subtract(REALS.asec(CR.ONE.subtract(REALS.csc(CR.PI.divide(CR.valueOf(18))))))
+A387917	decexp	1	() -> CR.valueOf(100).divide(X344171)
+A390340	holos	0	[0,-135,162,-72,14,-1]	1,4,17,80	0	0
+A390612	lambdan	0	n -> SU(0, n, k -> ZV(k+1).*(Z2(k)).*(BI(k, n-k).^(2)))	""		a(n) = sum(k=0, n, (k+1)*2^k*binomial(k, n-k)^2)	_	_	_
+A390931	decexp	1	() -> CR.valueOf(25).divide(CR.valueOf(32)).add(CR.FIVE.multiply(CR.FIVE.sqrt()).divide(CR.valueOf(16))).pow(CR.ONE.divide(CR.SIX))
+A391040	decexp	2	() -> CR.valueOf("80605706690966227797244468721167282379053").divide(CR.valueOf("5025557197283613113718784555470007578789"))
+A391272	holos	0	[0,1,0,-4,4,-1]	0,2,7,20,52	0	0
+A391519	filtpos	1	2	new A067599()	(k, v) -> Integer.toString(k).indexOf(v.toString()) >= 0	Numbers k such that J067599(k) is a substring of k.	nonn,more,base,new	1..3	nyi	_Scott R. Shannon_ and _Michael S. Branicky_
+A391522	poly	0	"[1]"	"1,A,^2,<1,+,A,^4,<3,1,A,^2,<1,+,^2,*,sub,*"
+A391523	polya	1	"[0,1]"	"x,B,^2,<1"	new A391522()
+A391647	poly	0	"[1]"	"1,1,x,1,A,^2,<1,-,^4,/,-,/"
+A391648	poly	0	"[1]"	"1,1,x,1,A,^3,<1,-,^4,/,-,/"
+A391649	poly	0	"[1]"	"1,1,x,1,A,^3,<1,-,^2,/,-,/"
+A391650	poly	0	"[1]"	"1,1,x,1,A,^4,<1,-,^2,/,-,/"
+A391653	decexp	2	() -> CR.FIVE.divide(CR.THREE).multiply(CR.valueOf(38).add(CR.valueOf(17).multiply(X002163)).sqrt())
+A391654	decexp	2	() -> CR.THREE.multiply(CR.valueOf(675).add(CR.valueOf(301).multiply(X002163)).add(CR.valueOf(30).multiply(CR.valueOf(1165).add(CR.valueOf(521).multiply(X002163))).sqrt())).sqrt().divide(CR.TWO)
+A391655	decexp	1	() -> CR.valueOf(17).add(CR.SEVEN.multiply(X002163)).divide(CR.EIGHT).sqrt()
+A391656	decexp	0	() -> CR.PI.subtract(X238238)
+A391657	decexpr	0	() -> REALS.acos(CR.ZERO.subtract(CR.FIVE.subtract(CR.TWO.multiply(CR.FIVE.sqrt())).divide(CR.THREE).sqrt()))
+A391676	lambdan	0	n -> SU(0, n, k -> Z2(k).*(BI(k+2, 2)).*(BI(k, n-k).^(2)))	""		a(n) = sum(k=0, n, 2^k*binomial(k+2, 2)*binomial(k, n-k)^2)	_	_	_
+A391677	lambdan	0	n -> SU(0, n, k -> ZV(k+1).*(Z2(k)).*(ZV(3).^(n-k)).*(BI(k, n-k).^(2)))	""		a(n) = sum(k=0, n, (k+1)*2^k*3^(n-k)*binomial(k, n-k)^2)	_	_	_
+A391678	lambdan	0	n -> SU(0, n, k -> Z2(k).*(ZV(3).^(n-k)).*(BI(k+2, 2)).*(BI(k, n-k).^(2)))	""		a(n) = sum(k=0, n, 2^k*3^(n-k)*binomial(k+2, 2)*binomial(k, n-k)^2)	_	_	_
+A391688	lambdan	0	n -> SU(0, n, k -> ZV(k+1).*(Z2(n-k)).*(BI(k, n-k).^(2)))	""		a(n) = sum(k=0, n, (k+1)*2^(n-k)*binomial(k, n-k)^2)	_	_	_
+A391689	lambdan	0	n -> SU(0, n, k -> Z2(n-k).*(BI(k+2, 2)).*(BI(k, n-k).^(2)))	""		a(n) = sum(k=0, n, 2^(n-k)*binomial(k+2, 2)*binomial(k, n-k)^2)	_	_	_
+A391717	lambdan	2	n -> ZV(n).^(n - 1).+(ZV(n).^(n + 1)).-(ZV(n + 1).^(n - 1)).-(ZV(n - 1).^(n + 1))./(2)	2..20	nyi	_Hugo Pfoertner_
+A391723	lambdan	0	n -> SU(0, n/3, k -> Z2(k).*(ZV(3).^(n - 3*k)).*(BI(k + 6, 6)).*(BI(2*k, 2*(n - 3*k))))	0..29	nyi	_Seiichi Manyama_
+A391724	lambdan	0	n -> SU(0, n/4, k -> Z2(k).*(ZV(3).^(n - 3*k)).*(BI(n - 3*k + 6, 6).*(BI(2*(n - 3*k), 2*k))))	0..21	nyi	_Seiichi Manyama_
+A391757	lambdan	0	n -> SU(0, n/4, k -> Z2(k).*(ZV(3).^(n - 3*k)).*(BI(2*(n - 3*k), 2*k)))	0..1000	nyi	_Seiichi Manyama_
+A391758	lambdan	0	n -> SU(0, n/4, k -> Z2(k).*(ZV(3).^(n - 3*k)).*(BI(2*(n - 3*k), 2*k)).*(n - 3*k + 1))	0..1000	nyi	_Seiichi Manyama_

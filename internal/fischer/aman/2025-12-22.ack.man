@@ -1,0 +1,124 @@
+ A391779	lambdan	0	n -> SU(0, n, k -> Z2(k).*(ZV(3).^(n - k)).*(BI(k + 6, 6)).*(BI(2*k, 2*(n - k))))	0..1000	nyi	_Seiichi Manyama_
+---- 2025-12-22 14:58:25
+A090494	lambdan	0	n -> PR(1, n, j -> PR(1, n, k -> LCM(j, k)))	Product_{j=1..n} Product_{k=1..n} lcm(j,k).
+A092153	lambdan	0	n -> B018188(n).-(11)./(24)	1/24 * (B018188(n)-11).	nonn	0..41	nyi	_Ralf Stephan_
+A092170	lambdan	1	n -> SU(1, n, k -> FA(k).^(2).*(Z_1(k)).*((n&1) == 0 ? 1 : -1))	Sum of squares of alternating factorials : n!^2 - (n-1)!^2 + (n-2)!^2 - ... 1!^2.	easy,nonn	1..253	nyi	Christer Mauritz Blomqvist (MauritzTortoise(AT)hotmail.com)
+A092176	sintrif	0	(term, n) -> term.+(D000079(n)./(2))	""	new A067076().prepend(0)
+A092207	filter	1	new A001358()	s -> Predicates.SEMIPRIME.is(s.+(2))	Semiprimes k such that k+2 is also a semiprime.	nonn	1..10000	nyi	_Robert G. Wilson v_ and _Zak Seidov_
+A111135	lambdan	1	n -> PR(1, n, k -> FI(PM(k)))	Product_{k=1..n} F(p(k)), where p(k) is the k-th prime and F(k) is the k-th Fibonacci number.
+A136365	filtpos	0	0	new A075986()	PRIME	Numbers k such that J075986(k) is prime.	nonn,hard,more	1..8	nyi	_Alexander Adamchuk_
+A136462	arrlamb	0	0	0	1	(n, k) -> BI((n + 1)*(1 << (k - 1)), k)	Square table, read by antidiagonals, where T(n,k) = C((n+1)*2^(k-1), k) for n>=0, k>=0.	nonn,tabl	0..495	nyi
+A136490	filnum	1	0	k -> ZV(k).^(3).toString(2).indexOf(Integer.toString(k, 2)) >= 0	Numbers whose binary representation is contained in that of their cubes.	nonn,base	1..66	nyi	_Reinhard Zumkeller_
+A154331	filnum	1	1	k -> { final Z av = ZV(k).*(12*k); return PP(av.-(1)) && PP(av.+(1)); }	Numbers m such that 12 m^2 is the average of a twin prime pair.
+A154653	trilambn	0	0	0	(n, k) -> (k == 0) ? ZV(1) : BI(Functions.PRIME.i(n + 1) - 1, Functions.PRIME.i(k + 1) - 1)	with T(n,0) = 1, read by rows.	nonn,tabl	0..100	nyi	_Roger L. Bagula_
+A154758	filter	1	new A000040()	p -> p.toString().matches("[13579]*[02468][13579]*")	1	1	Primes with one even digit.	nonn,base	1..10000	nyi
+A154761	filter	1	new A000040()	p -> p.toString().matches("[02-8]+")	Primes without {1, 9} as digits.	nonn,base	1..10000	nyi	_Juri-Stepan Gerasimov_
+A154764	filter	1	new A000040()	p -> p.toString().matches("[02468]*[13579][02468]*")	1	1	Primes with exactly one odd decimal digit.	nonn,base	1..53	nyi
+A154766	filnum	1	1	k -> { final Z p = PM(k); return p.toString().matches("[13579]*[02468][13579]*"); }	Numbers k with exactly one even decimal digit in prime(k).	nonn,base,less	1..1000	nyi	_Juri-Stepan Gerasimov_
+A154767	filter	1	new A000040()	p -> (Functions.DIGIT_SORT_ASCENDING.z(p).mod(10) & 1) == 0	1	1	Primes with even largest digit.	nonn,base	1..2500	nyi
+A154768	filnum	1	1	k -> { final Z p = PM(k); return !Functions.DIGIT_SORT_ASCENDING.z(p).testBit(0) && !Functions.DIGIT_SORT_DESCENDING.z(p).testBit(0); }
+A154772	filnum	1	1	k -> { final Z av = ZV(k).*(180*k); return PP(av.-(1)) && PP(av.+(1)); }	Numbers m such that 180 m^2 is the average of a twin prime pair.
+A154773	filnum	1	1	k -> { final Z av = ZV(k).*(252*k); return PP(av.-(1)) && PP(av.+(1)); }	Numbers n such that 252n^2 is the average of a twin prime pair.
+A154774	filnum	1	1	k -> { final Z av = ZV(k).*(9900*k); return PP(av.-(1)) && PP(av.+(1)); }	Numbers n such that 9900n^2 is the average of a twin prime pair.
+A154775	filnum	1	1	k -> { final Z av = ZV(k).*(36*k).*(13); return PP(av.-(1)) && PP(av.+(1)); }	Numbers k such that 13*(6*k)^2 is the average of a twin prime pair.
+A154812	filter	1	new A000040()	p -> PP(Functions.DIGIT_SORT_DESCENDING.z(p).mod(10) + Functions.DIGIT_SORT_DESCENDING.z(PM(p)).mod(10))	Primes p such that the smallest decimal digit of p plus the smallest decimal digit of PM(p) is prime.	1..55
+A154813	filter	1	new A000040()	p -> PP(Functions.DIGIT_SORT_ASCENDING.z(p).mod(10) + Functions.DIGIT_SORT_DESCENDING.z(PM(p)).mod(10))		Primes p such that the largest decimal digit of p + the smallest digit of PM(p) is a prime.	1..51
+A154843	trilambn	0	0	0	(n, k) -> S1(n, k).+(S1(n, n - k))	Triangular array, T(n,k) = s(n,k) + s(n,n-k), where s(n,k) are the Stirling numbers of the first kind.	tabl,sign	0..100	nyi	_Roger L. Bagula_
+A154844	trilambn	0	0	0	(n, k) -> S2(n, k).+(S2(n, n - k))	Triangle T(n, k) = S(n, k) + S(n, n-k), where S are the Stirling numbers (J048993) of the second kind, read by rows.	nonn,tabl	0..100	nyi	_Roger L. Bagula_
+A154906	recval	1	new A063375()	, false
+A154918	trilambn	0	0	0	(n, k) -> BI(4*n, 3*k).+(BI(4*n, 3*(n - k)))	0..100
+A154919	trilambn	0	0	0	(n, k) -> BI(3*n, 2*k).+(BI(3*n, 2*(n - k)))	0..100
+A154966	filter	1	new A000040()	p -> !PP(new Z(p.toString() + PM(p).toString()))	Primes p such that the concatenation of p and PM(p) is composite.	1..1000
+A154967	filter	1	new A018252()	v -> !PP(new Z(v.toString() + PM(v).toString()))	Nonprime numbers n such that concatenation of n and n-th prime is composite.	1..1000
+A155026	filter	1	new A000040()	p -> Functions.DIGIT_SORT_DESCENDING.z(p).testBit(0)	Primes with odd smallest digit.	1..57
+A155043	multia	0	"0"	(self, n) -> self.a(n - Functions.TAU.i(n)).+(1)	a(0)=0; for n >= 1, a(n) = 1 + a(n-d(n)), where d(n) is the number of divisors of n (F000005).	0..124340
+A155053	filter	1	new A000040()	p -> !PP(Functions.DIGIT_SORT_DESCENDING.z(PM(p)).mod(10))	Primes n with nonprime smallest digit of PM(n).	1..1000
+A155054	filter	1	new A000040()	p -> { final int[] dc = ZUtils.digitCounts(PM(p)); return dc[2] + dc[3] + dc[5] + dc[7] < dc[0] + dc[1] + dc[4] + dc[6] + dc[8] + dc[9]; }	Primes p such that (number of prime digits of PM(p)) < (number of nonprime digits of PM(p)).	1..54
+A155055	filter	1	new A000040()	p -> p.toString().matches("[013579]+")	Primes without positive even digits.	1..10000
+A155056	filter	1	new A000040()	p -> { final int[] dc = ZUtils.digitCounts(PM(p)); return dc[2] + dc[3] + dc[5] + dc[7] > dc[0] + dc[1] + dc[4] + dc[6] + dc[8] + dc[9]; }	Primes p such that number of prime digits of PM(p) > number of nonprime digits of PM(p).	1..43
+A155058	filter	1	new A000040()	p -> Functions.DIGIT_SORT_ASCENDING.z(p).testBit(0)		Primes with odd largest digit.	1..2000
+A155070	filter	1	new A000040()	p -> !PP(Functions.DIGIT_SORT_ASCENDING.z(p).mod(10))	Primes with nonprime largest digit.	1..54
+A155081	filter	1	new A000040()	p -> PP(Functions.DIGIT_SORT_ASCENDING.z(new Z(p.toString() + PM(p).toString())).mod(10))		Primes p such that the largest digit of the concatenation of p and the p-th prime is a prime.	1..52
+A155088	filnum	0	0	k -> Integer.toString(k).matches("[2357]+") && PM(k).toString().matches("[2357]+")	Numbers n such that n and PM(n) contain prime digits only.	1..200
+A155093	filter	1	new A000040()	p -> { final long d = Functions.DIGIT_SORT_ASCENDING.z(new Z(p.toString() + PM(p).toString())).mod(10); return (d&1) == 0 && d != 2; }	Primes k such that the largest digit of the concatenation of k and the k-th prime is an even nonprime.	1..38
+A155102	trilambn	1	1	1	(n, k) -> (n == k) ? ZV(1) : ((n == 2*k) ? ZV(- k - 1) : ZV(0))	If n=k then T(n,k)=1, elseif n=2*k then T(n,k)=-(k+1), else T(n,k)=0.	1..102
+A155113	filnum	1	1	k -> (k&1) == 1 && Functions.DIGIT_SORT_ASCENDING.z(PM(k)).testBit(0)	Odd numbers n with odd largest digit of PM(n).	1..1000
+A155133	filnum	1	1	k -> PP(ZV(k).*(5).+(4).*(k).+(1))		Numbers k >= 0 such that 5k^2+4k+1 is prime.	1..1000
+A155153	filter	1	new A000040()	p -> PP(p.*(13).+(3).*(p).+(1))	Primes p such that 13*p^2+3*p+1 is a prime.	1..1000
+A155162	trilambn	0	0	0	(n, k) -> BI(n, k).*(FA(k).+(FA(n - k)))	0..50
+A155451	trilambn	0	0	0	(n, m) -> BI(n, m).*(2).-(FA(m).-(FA(n)).+(FA(n - m)))	m! - n! + (-m + n)!).	0..52
+A155453	trilambn	0	0	0	(n, k) -> FA(n).-(FA(k)).+(1).-(FA(n - k)).+(FA(k).*(FA(n - k)))	1 + n! - k! - (n - k)! + k!*(n - k)!.	0..1325
+A155454	trilambn	0	0	0	(n, k) -> FA(k).+(FA(n - k).*(ZV(1).-(FA(k))))	k! + (1-k!)*(n - k)!, 0<=k<=n.	0..60
+A155495	trilambn	0	0	0	(n, m) -> BI(2*n,2*m).*(BI(n,m))	0..10010
+A155516	trilambn	0	0	0	(n, k) -> BI(2*n, 2*k).*(BI(2*n+1, 2*k+1))./(2*n-2*k+1)
+A155742	trilambn	0	0	0	(n, k) -> Z_1(n).*(S1(n, k)).*(S1(n, n-k))	, read by rows.	0..50
+A155744	trilambn	0	0	0	(n, k) -> Z_1(n-k).*(S1(n, k)).+(Z_1(k).*(S1(n, n-k))).+(Z_1(n).*(S1(n, k)).*(S1(n, n-k)))	0..50
+A155777	filter	1	new A000040()	p -> PP(Functions.DIGIT_SORT_ASCENDING.z(p).mod(10))	Primes with largest digit prime.	1..1000
+A155785	filter	1	new A018252()	v -> { final long d1 = Functions.LEADING_DIGIT.l(v); return d1 == v.mod(10) && d1 == Functions.DIGIT_LENGTH.l(v); }	Nonprimes where the first digit equals the final digit and also equals the number of digits.	1..44
+A155786	filter	1	new A000040()	p -> Math.abs(p.mod(10) - Functions.LEADING_DIGIT.i(p)) == 1	Primes whose first and last digits differ by 1.	1..48
+A155794	trilambn	0	0	0	(n, k) -> FA(k*(n - k))	0..44
+A155797	trilambn	0	0	0	(n, k) -> BI(k*(n - k), n)	0..62
+A155798	trilambn	0	0	0	(n, k) -> BI(n, k).+(BI(k*(n - k), n))	0..62
+A155825	trilambn	0	0	0	(n, k) -> Z_1(n).*(FA(n)).*(S1(n, k)).*(S1(n, n-k))./(BI(n, k))	0..50
+A155826	trilambn	0	0	0	(n, k) -> BI(n, k).+(BI(k*(n-k), n)).+(Z_1(n).*(2).*(S1(n, k)).*(S1(n, n-k)))	, read by rows.	0..50
+A155836	lambdan	1	n -> Z.TWO.modPow(Z2(n), ZV(n))	2^(2^n) mod n.	1..10000
+A155868	trilambn	0	0	0	(n, k) -> (k == 0 || k == n) ? ZV(1) : Z_1(n).*(S1(n, k)).*(S1(n, n - k))	, with T(n, 0) = T(n, n) = 1, read by rows.	0..50
+A155869	trilambn	0	0	0	(n, k) -> (n == 0) ? ZV(2) : ((k == 0 || k == n) ? ZV(1) : BI((k+1)*(n-k+1), n+2))	with T(0, 0) = 2, T(n, 0) = T(n, n) = 1, read by rows.	0..50
+A155897	arrlamb	1	1	1	-1	(m, n) -> PP(ZV(2*m + 1).^(n).-(2)) ? ZV(1) : ZV(0)	is prime, 0 otherwise; read by antidiagonals.	1..105
+A155898	arrlamb	1	1	1	-1	(m, n) -> PP(ZV(2*m + 1).^(2*n).-(2)) ? ZV(1) : ZV(0)	is prime, 0 otherwise; read by antidiagonals.	1..105
+A155899	arrlamb	1	1	1	-1	(m, n) -> PP(ZV(2*m + 1).^(2*n - 1).-(2)) ? ZV(1) : ZV(0)	is prime, 0 otherwise; read by antidiagonals.	1..105
+A155900	filnum	0	1	k -> Functions.BIG_OMEGA.i(k) == Functions.BIG_OMEGA.i(Z2(k).-(1))	Numbers k such that Omega(k) = Omega(2^k-1), where Omega(k) is the number of prime factors of k counted with multiplicity (F001222).	1..26
+A155913	filter	1	new A000040()	p -> PP(Functions.DIGIT_SUM.i(p) - p.mod(10))	Primes p such that (sum of digits of p) - (last digit of p) is prime.	1..10000
+A155999	trilambn	0	0	0	(n, k) -> Z_1(n).*(S2(n, k)).*(S2(n, n-k))	, read by rows.	0..100
+A156003	trilambn	1	1	1	(n, k) -> BI(3*n, k-1).+(BI(3*n, n-k))	1..100
+A156044	trilambn	0	0	0	(n, k) -> F000041(n).-(F000041(k)).-(F000041(n-k)).+(2)	0..1325
+A156045	trilambn	0	0	0	(n, k) -> FA(n).-(FA(k)).+(2).-(FA(n - k))	2 + n! - k! - (n-k)!, read by rows.	0..100
+A156047	trilambn	1	1	1	(n, k) -> ZV(n + 1).*(FA(n + 1))./(k*(n - k + 1))	(n+1)!*(1/k + 1/(n-k+1)).	1..100
+A156049	trilambn	0	0	0	(n, k) -> BI(n, k).+(FA(n).-(FA(k)).+(1).-(FA(n - k)).*(2))	0..100
+A156050	trilambn	0	0	0	(n, m) -> BI(n, m).+(F000041(n).-(F000041(m)).-(F000041(n-m)).+(1).*(2))	0..65
+A156054	trilambn	0	0	0	(n, k) -> F000009(n).-(F000009(k)).-(F000009(n-k)).+(2)	0..1325
+A156056	lambdan	1	n -> TRI(n).mod(PM(n))	n-th triangular number modulo n-th prime.	1..66
+A156063	filter	1	new A002808()	v -> { final Z r = Functions.REVERSE.z(v); return v.testBit(0) && !PP(r) && !v.equals(r); }	Odd composite numbers whose reversal is a different composite.	1..1000
+A156074	trilambn	0	0	0	(n, k) -> PM(n+1).-(PM(k+1)).-(PM(n-k+1)).+(3)	0..100
+A156224	trilambn	0	0	0	(n, k) -> BI(n, k).*(F000009(n).+(F000009(n - k)).+(F000009(k))).-(2)	0..50
+A156240	lambdan	0	n -> CV(16).^(n)./(CR.PI.-(3)).round()	Nearest integer to 16^n/(Pi-3).	0..15
+A156241	trilambn	1	1	1	(n, k) -> (n == k) ? ZV(1) : ((n % k == 0) ? MU(n).*(MU(k)) : ZV(0))	if k divides n then F008683(n)*F008683(k).	1..100
+A156263	filter	1	new A000002()	(k, v) -> k%3 == 2	a(n)=J000002(3*n-1).	1..105
+A156264	filter	1	new A000002()	(k, v) -> k%3 == 1	a(n) = J000002(3*n-2), where J000002 is the Kolakoski sequence.	1..12000
+A156286	trilambn	1	1	1	(n, k) -> PR(1, n, j -> ZV(k - 1).*(ZV(k + 1).^(j)).+(1))./(ZV(k).^(n))	1..25
+A156301	lambdan	0	n -> CV(2).log().divide(CR.THREE.log()).*(n).ceil()	a(n) = ceiling( n * log_3(2) ) = ceiling(n * 0.6309297535714574371...).	0..10000
+A156316	filter	1	new A000290()	v -> { final Z r = Functions.REVERSE.z(v); return r.compareTo(v) > 0 && Predicates.SQUARE.is(r); }	Perfect squares with property that their digit reversal is a larger perfect square.	1..399
+A156317	filter	1	new A000290()	v -> { final Z r = Functions.REVERSE.z(v); return r.compareTo(v) >= 0 && Predicates.SQUARE.is(r); }		Numbers which are perfect squares and either form equal or larger perfect squares when reversed.	1..34
+A156334	polya	0	"[1]"	"x,B,/n,exp"	new LambdaSequence(1, n -> Z2(n*n/2 + 1))
+A156335	polya	0	"[1]"	"x,B,/n,exp"	new LambdaSequence(1, n -> Z2((n*n + 1)/2))
+A156336	polya	0	"[1]"	"x,B,/n,exp"	new LambdaSequence(1, n -> ZV(3).^((n*n + 1)/2))
+A156337	polya	0	"[1]"	"x,B,/n,exp"	new LambdaSequence(1, n -> ZV(4).^((n*n + 1)/2))
+A156340	polya	0	"[1]"	"x,B,/n,exp"	new LambdaSequence(1, n -> Z2(n*(n - 1) + 1))
+A156363	trilambn	0	0	0	(n, m) -> SU(0, m, i -> Z_1(m - i).*(BI(n-i-1, m-i)).*(S2(n + i + 1, i + 1)))	0..100
+A156364	trilambn	0	0	0	(n, m) -> SU(0, n, i -> Z_1(m - i).*(EUL(n-i+1, m-i)).*(S2(n+i+1, i+1)))	, where Eulerian1 are the Eulerian numbers of the first kind (J173018).	0..100
+A163687	holos	1	[0,1,4,1,-2,24,4,-45,86,14,-172,234,-12,-320,440,-168,-260,471,-328,24,180,-200,120,-45,10,-1]	1,8,39,132,389,1095,3107,8790,24449,66724,179212,475169,1247181,3249223,8420475,21735923,55926076,143501956,367381497,938864371,2396062211,6108616160,15560958273,39614145740	0	0
+A163735	holos	0	[0,1,4,3,1,11,2,-8,16,-9,-7,14,-13,6,-1]	1,2,9,13,29,87,299,917,2589,7059,19075,51111,135445,355377,925723,2398807	0	0
+A163736	holos	1	[0,-4,4,15,64,-22,-211,-391,-190,572,410,300,-422,63,425,-1056,1182,-620,-91,-285,-665,2447,-2548,865,407,-559,939,-1577,1582,-664,-314,688,-529,247,-74,13,-1]	1,4,17,29,73,265,1200,4888,17897,62437,216583,751019,2584540,8793604	0	0
+A185099	filtpos	1	2	new A185079()	(k, v) -> v.compareTo(k*k) > 0	> k^2.	nonn	1..3000	nyi	_Vladimir Shevelev_
+A185107	lambdan	1	n -> { final Z p = PM(n); return Z.TWO.*(Functions.LEADING_DIGIT.i(p)).-(Functions.DIGIT_SUM.z(p)); }	a(n) is the first digit of prime(n) minus the sum of the other digits.	sign,base,less	1..1000	nyi	_Dario Piazzalunga_
+A185300	filnum	1	1	k -> PP(Functions.DIGIT_SUM.z(k).+(Functions.DIGIT_PRODUCT.z(k)))	Numbers k such that (sum of the decimal digits of k) + (product of the decimal digits of k) is prime.	nonn,base,easy	1..10000	nyi	_Michel Lagneau_
+A224481	filnum	1	7	k -> { final Z av = ZV(k).*(k).-(34); return PP(av.-(1)) && PP(av.+(1)); }	Positive integers x such that x^2 - 34 is the average of a twin prime pair.
+A390619	holos	0	[0,-36,24,-4,0,12,4,0,0,-1]	1,0,0,2,6,0,4,72	0	0
+A390781	holos	0	[0,-1296,1728,-864,192,848,-288,-96,32,-216,-48,-24,0,24,8,0,0,-1]	1,0,0,4,12,0,12,216,108,32,1440,4320,944,6720,50400,60672	0	0
+A390849	holos	0	[0,-1296,1728,0,-96,-328,-16,0,8,-1]	1,4,24,248,1628,11232,77632,513088	0	0
+A391263	holos	2	[0,1,-4,4,-1]	0,8,30,88	0	0
+A391651	poly	0	"[1]"	"1,1,x,1,A,^4,<1,-,^3,/,-,/"
+A391711	filter	1	new A000045()	(k, v) -> k > 0 && (k&1) == 0 && (Functions.BIG_OMEGA.i(k) & 1) == 1	Fibonacci numbers whose indices are even positive numbers with an odd number of prime factors (counted with multiplicity).	nonn,easy,new	1..1000	nyi	_Amiram Eldar_
+A391712	filter	1	new A000045()	(k, v) -> k > 0 && (k&1) == 0 && (Functions.BIG_OMEGA.i(k) & 1) == 0	Fibonacci numbers whose indices are even positive numbers with an even number of prime factors (counted with multiplicity).	nonn,easy,new	1..1000	nyi	_Amiram Eldar_
+A391770	decexp	0	() -> CR.EIGHT./(CR.PI.square()).log().negate()	Decimal expansion of log(8/(Pi^2)), negated.	nonn,cons,easy,new	0..10000	nyi	_Paolo Xausa_
+A391779	holos	0	[0,-78364164096,365699432448,-609499054080,386016067584,-69415170048,151246061568,-209938563072,33807310848,7258180608,44308518912,-13148448768,-6026517504,-4952408832,2074232832,758564864,345705472,-137566912,-27900544,-10145408,5698112,155568,120768,-124992,15008,-1148,1064,-280,28,-1]	1,14,154,2688,34608,387744,4189920,42410496,408280992,3787340480,33960764992,295868561408,2514525570816,20906787095040,170489979041280,1366489403252736,10783773983748864,83916508450048512,644759749272120832,4896753272486297600,36796161089297096704,273812267274670227456,2019239241686908157952,14767211668023634821120,107162978565140225409024,772074364363924957396992,5525233150035822075740160,39292334984270546534924288	0	0		
+A391780	decexpr	0	() -> CR.PI./(4).*(REALS.atan(CR.SQRT2.*(2).inverse()))	(Pi/4) * arctan(1/(2*sqrt(2))).	nonn,cons,new	0..104	nyi	_Amiram Eldar_
+A391829	holos	0	[0,-1,4,-2,0,-11,0,-2,4,-1]	1,3,9,30,91,271,801,2330	0	0
+A391830	holos	0	[0,-1,4,-6,8,-5,-4,-2,-4,-6,4,4,0,-1]	1,0,3,3,6,20,16,70,85,190,399,565	0	0
+A391831	holos	0	[0,-1,0,4,4,-6,-4,-2,-4,-5,8,-6,4,-1]	1,3,6,13,35,91,214,491,1151,2711,6290,14427	0	0
+A391832	holos	0	[0,-16,64,-64,32,-72,16,-16,8,-1]	1,6,30,160,824,4112,20240,98432	0	0
+A391833	holos	0	[0,-16,64,-96,96,-48,-32,8,-16,-24,8,8,0,-1]	1,0,6,6,24,80,104,560,800,2960,6720,15200	0	0
+A391834	holos	0	[0,-16,0,64,32,-96,-32,40,-32,-32,40,-24,8,-1]	1,6,24,86,320,1232,4696,17488,64160,233872,848960,3067200	0	0
+A391835	holos	0	[0,-16,32,8,-8,-33,-4,2,4,-1]	1,3,12,50,179,661,2390,8476	0	0
+A391836	holos	0	[0,-16,32,-24,40,-17,-8,-20,-8,-6,8,4,0,-1]	1,0,3,6,6,40,34,140,295,440,1533,2210	0	0
+A391837	holos	0	[0,-16,0,32,32,-24,-16,-16,-8,-9,12,-6,4,-1]	1,3,6,16,55,161,412,1086,3013,8199,21602,56748	0	0

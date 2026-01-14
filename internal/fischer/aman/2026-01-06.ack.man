@@ -1,0 +1,134 @@
+---- 2026-01-06 22:42:58
+A087485	filter	0	new A141548()	ODD	Odd terms of J141548.
+A111042	filter	0	new A059756()	ODD	Odd terms of J059756.
+A112493	trilambn	0	0	0	(n,k) -> SU(0, n, j -> BI(n - j, n - k).*(Functions.EULERIAN2.z(n, j)))	,where E2 are the second-order Eulerian numbers J201637,for n >= 0 and 0 <= k <= n.
+A121874	filnum	1	1	k -> FI(k).mod(TRI(k)).isZero()	Numbers n such that Fibonacci(n) == 0 (mod triangular(n)).
+A123692	filter	0	new A242959()	PRIME	Prime terms of J242959. (End)
+A125866	filter	1	new A051913()	ODD	Odd terms of J051913.
+A133213	filter	1	new A046974()	PRIME	Prime terms of J046974.
+A140768	filter	1	new A000926()	PRIME	Prime terms of B000926. From _Jud McCranie_s comment in B000926, if an additional term exists it is > 100000000, and Weinberger showed that there is at most one further term. - _Jonathan Vos Post_, Jan 29 2011
+A141690	trilambn	0	0	0	(n,m) -> S008292(n + 1, m + 1).*(2).-(BI(n, m))	,a linear combination of Eulerian numbers and Pascals triangle,0 <= m <= n.
+A142075	trilambn	1	1	1	(n,k) -> Z2(k - 1).*(S173018(n, k - 1))	where E(n,k) are the Eulerian numbers S173018,read by rows.
+A145818	filter	1	new A000695()	ODD	Odd terms of D000695 (the Moser-de Bruijn sequence: sums of distinct powers of 4). - _Jon E. Schoenfield_, Mar 18 2021
+A154921	trilambn	0	0	0	(n,k) -> BI(n, k).*(SU(0, n - k, j -> S173018(n - k, j).*(Z2(j))))	where E(n,k) are the Eulerian numbers S173018(n,k),for 0 <= k <= n.
+A163014	holos	1	[0,-1,49,-99,-4461,34459,-115804,136350,612301,-2267390,331308,5525320,-2980202,-1716806,510459,-3414959,8663468,-1246016,-4174679,1438895,-101650,980592,-488756,-444090,507392,-161261,-29646,44032,-17927,4079,-547,39,-1]	5,113,2502,50720,1000725,19654292,385935282,7579570311,148869588338,2923988203008,57431069385100,1128024279705628,22155931579758019,435172637255862047,8547382559268828602,167882220114753100654,3297435164663218573014,64766111959950515510019,1272094536775650546310548,24985667064481948511756024,490752487814059881791285694,9639046405052541499398919832,189323982874978070385024288624,3718580550961684152529795019094,73037980207303644416043233049809,1434565280933038393133094558843937,28176813480018632599638269001228923,553430944161277481899693605638820558,10870136545867517072481436494718641681,213504267826721239831314505053338270808,4193514238563446593334686149765859953096	0	0
+A163698	holos	1	[0,-4,4,15,64,-22,-211,-391,-190,572,410,300,-422,63,425,-1056,1182,-620,-91,-285,-665,2447,-2548,865,407,-559,939,-1577,1582,-664,-314,688,-529,247,-74,13,-1]	5,38,200,896,3643,13930,53065,200834,744868,2693153,9538151,33294644,114946998,392988985,1331511414,4475037078,14933983435,49528712620,163354373057,536081251527,1751298062811,5697715862254,18467710354468,59653615209697,192085481286986,616729863931303,1974854263238736,6308144668411833,20103551703448772,63932073942314289,202909893503526130,642811699748557041,2032885682535947990,6418576289938307153,20235078051544119109,63701802534910426837,200270147541067754160,628828865185623357583,1972113759876995594777,6177942160447802879862,19332815466774374220924,60438107015746698354426,188761934723822977145810	0	0
+A163717	holos	1	[0,-4,4,15,64,-22,-211,-391,-190,572,410,300,-422,63,425,-1056,1182,-620,-91,-285,-665,2447,-2548,865,407,-559,939,-1577,1582,-664,-314,688,-529,247,-74,13,-1]	15,101,463,2119,9012,35116,132342,493096,1811125,6520133,23029880,80160412,275921198,940822284,3180583139,10669390899,35546124724,117710823554,387700663494,1270755846084,4146762516815,13477567723311,43643876420456,140857493346244,453210972509906,1454085962597930,4653107055658051,14854009585816241,47311634529996018,150377986149192910,477039780545533878,1510550391319017828,4775044083462424911,15070508899783058979,47493009100534118872,149458991077254641800,469722327839066299714,1474417746684234548906,4622649146821627217851,14477078007474194037475,45291529612682435954332	0	0
+A163725	holos	1	[0,1,1,-8,4,27,-60,7,160,-262,57,418,-712,384,416,-1018,903,-217,-444,668,-506,243,-74,13,-1]	1,16,108,531,2119,7338,23330,70369,204461,576824,1589880,4304373,11495305,30376964,79611466,207289163,536963245,1385313538,3562495802,9138021569,23392128783,59784414592,152598577140,389109027023,991382100235	0	0
+A163736	holos	1	[0,-4,4,15,64,-22,-211,-391,-190,572,410,300,-422,63,425,-1056,1182,-620,-91,-285,-665,2447,-2548,865,407,-559,939,-1577,1582,-664,-314,688,-529,247,-74,13,-1]	1,4,17,29,73,265,1200,4888,17897,62437,216583,751019,2584540,8793604,29620863,99028541,329064965,1087406243,3574695130,11695446500,38100971981,123645830993,399846976383,1288851192055,4142070592420,13275143424566,42438396933635,135349886784229,430733530979981,1367971237268525,4336330332948540,13721421546766418,43346762431995409,136722574730768391,430617041607758055,1354402284216972253,4254462227206071128,13347949133971001992,41829935976544352895,130945432141793149529,409496055755859975753,1279349556358103627611,3993292507728254904384,12453636832753694787678	0	0
+A169972	lambdan	1	n -> PR(0, n - 1, k -> S173018(n, k))	Product of Eulerian numbers T(n,k),k=0..n-1.
+A173572	filter	0	new A015921()	ODD	The odd terms of J015921.
+A174033	trilambn	0	0	0	(n,m) -> SU(0, 10, i -> S173018(n + 1, m)./(Z2(i)))	,where Eulerian(n,k) = S008292(n,k).
+A205597	filter	0	new A019278()	ODD	Odd terms of J019278: odd n such that sigma(sigma(n))/n is an integer.
+A212015	filter	1	new A062861()	v -> !Predicates.SQUARE.is(v)		Nonsquare terms of J062861.
+A215189	arrlamb	0	0	0	1	(n, k) -> ZV(n + k)./(GCD(n + k, 4)).*(n)./(GCD(n, 4))
+A215610	filter	1	new A015926()	ODD	The odd terms of J015926.
+A215611	filter	1	new A015929()	ODD	The odd terms of J015929.
+A215612	filter	1	new A015932()	ODD	The odd terms of J015932.
+A215613	filter	1	new A015937()	ODD	The odd terms of J015937.
+A215618	filnum	1	1	k -> k%10 != 0 && Predicates.SQUARE.is(Functions.DIGIT_SUM.i(ZV(k).*(k)))	Sum of digits of n^2 is a square.
+A215747	lambdan	1	n -> ZV(-2).modPow(n, n)	a(n) = (-2)^n mod n.
+A216728	lambdan	0	n -> FA(2*n).*(ZV(2*n + 1).^(n - 1))./(Z2(n))
+A217369	multia	1	"1,4"	(self, n) -> PR(1, n - 1, k -> self.a(k)).*(SU(1, n - 1, k -> self.a(k)))	(product of previous terms) * (sum of previous terms), with a(1)=1, a(2)=4.	nonn	1..6	nyi	_Jon Perry_
+A217370	multia	1	"2,3"	(self, n) -> PR(1, n - 1, k -> self.a(k)).*(SU(1, n - 1, k -> self.a(k)))	(product of previous terms) * (sum of previous terms), with a(1) = 2, a(2) = 3.	nonn	1..7	nyi	_Jon Perry_
+A217584	filnum	1	1	k -> new Q(TAU(ZV(k).*(k)), TAU(k)).isInteger()	Numbers k such that d(k^2)/d(k) is an integer, where d(k) is the number of divisors of k.	nonn	1..10000	nyi	_Michel Marcus_
+A217761	filnum	1	0	k -> Predicates.SQUARE.is(Functions.DIGIT_LENGTH.i(k*k))	Numbers whose square has a square number of decimal digits.	nonn,easy,base	1..67	nyi	_Kevin L. Schwartz_ and _Christian N. K. Anderson_
+A217762	arrlamb	0	0	0	-1	(n, k) -> FI(n).+(FI(k).*(2))	Square array T, read by antidiagonals: T(n,k) = F(n) + 2*F(k) where F(n) is the n-th Fibonacci number.	nonn,tabl	0..71	nyi
+A217764	arrlamb	0	0	0	1	(n, k) -> ZV(3).^(n).*((k + 2)/2).-(Z2(n).*((k + 1)/2))	Array defined by a(n,k) = floor((k+2)/2)*3^n - floor((k+1)/2)*2^n, read by antidiagonals.	nonn,tabl	0..65	nyi
+A220780	filter	1	new A220779()	NONZERO	Nonzero terms of J220779: exponent of highest power of 2 dividing an even sum 1^n + 2^n + ... + n^n.
+A221280	filnum	1	1	k -> Functions.LIOUVILLE_LAMBDA.z(k).equals(Functions.LIOUVILLE_LAMBDA.z(k + 1))	Numbers m such that lambda(m) = lambda(m+1), where lambda(n) = F008836(n) is the Liouville function.	nonn	1..10000	nyi	_Charles R Greathouse IV_
+A221281	filnum	1	1	k -> { final Z k1 = Functions.LIOUVILLE_LAMBDA.z(k + 1); return k1.equals(Functions.LIOUVILLE_LAMBDA.z(k)) && k1.equals(Functions.LIOUVILLE_LAMBDA.z(k + 2)); }	Numbers n such that lambda(n) = lambda(n+1) = lambda(n+2), where lambda(n) = F008836(n) is the Liouville function.	nonn	1..10000	nyi	_Charles R Greathouse IV_
+A221282	filnum	1	1	k -> { final Z k1 = Functions.LIOUVILLE_LAMBDA.z(k + 1); final Z k2 = Functions.LIOUVILLE_LAMBDA.z(k + 2); return k1.equals(Functions.LIOUVILLE_LAMBDA.z(k)) && k1.equals(k2) && k2.equals(Functions.LIOUVILLE_LAMBDA.z(k + 3)); }	Numbers n such that lambda(n) = lambda(n+1) = lambda(n+2) = lambda(n+3), where lambda(n) = F008836(n) is the Liouville function.	nonn	1..10000	nyi	_Charles R Greathouse IV_
+A223512	parmof2	1	A111594	new A045756().skip(1)
+A223513	parmof2	1	A111594	new A045757()
+A223514	parmof2	1	A111594	new HolonomicRecurrence(1, "[[0],[10,-11],[1]]", "1")
+A223515	parmof2	1	A111594	new HolonomicRecurrence(1, "[[0],[11,-12],[1]]", "1")
+A223516	parmof2	1	A111594	new HolonomicRecurrence(1, "[[0],[12,-13],[1]]", "1")
+A223517	parmof2	1	A111594	new HolonomicRecurrence(1, "[[0],[13,-14],[1]]", "1")
+A223518	parmof2	1	A111594	new HolonomicRecurrence(1, "[[0],[14,-15],[1]]", "1")
+A223519	parmof2	1	A111594	new HolonomicRecurrence(1, "[[0],[15,-16],[1]]", "1")
+A223520	parmof2	1	A111594	new HolonomicRecurrence(1, "[[0],[16,-17],[1]]", "1")
+A223521	parmof2	1	A111594	new HolonomicRecurrence(1, "[[0],[17,-18],[1]]", "1")
+A223522	parmof2	1	A111594	new HolonomicRecurrence(1, "[[0],[18,-19],[1]]", "1")
+A225678	trilambn	0	0	0	(n,k) -> SU(0, n, j -> Z_1(n + k + j).*(S173018(n, j)).*(BI(j, n - k)))	,A(n,j) the Eulerian numbers; n >= 0,k >= 0.
+A238226	filnum	1	1	k -> { final Z x = SIGMA(k).+(TAU(k)).-(k); return x.compareTo(ZV(0)) >= 0 && ZV(k).equals(SIGMA(x).+(TAU(x)).-(x)); }	1..900	nyi	_Paolo P. Lava_
+A238227	filnum	1	0	n -> { final Z x = SIGMA(n).-(TAU(n)).-(n); return n == 1 || (x.compareTo(ZV(0)) >= 0 && ZV(n).equals(SIGMA(x).-(TAU(x)).-(x))); }	1..1001	nyi	_Paolo P. Lava_
+A238228	filnum	1	1	n -> { final Z x = SIGMA(n).+(PHI(n)).-(TAU(n)).-(n); return x.compareTo(ZV(0)) > 0 && ZV(n).equals(SIGMA(x).+(PHI(x)).-(TAU(x)).-(x)); }	nonn,more	1..5	nyi	_Paolo P. Lava_
+A238229	filnum	1	1	n -> { final Z x = SIGMA(n).-(PHI(n)).+(TAU(n)).-(n); return x.compareTo(ZV(0)) > 0 && ZV(n).equals(SIGMA(x).-(PHI(x)).+(TAU(x)).-(x)); }	nonn	1..38	nyi	_Paolo P. Lava_
+A238230	filnum	1	1	m -> { final Z x = SIGMA(m).-(PHI(m)).-(TAU(m)).-(m); return x.compareTo(ZV(0)) > 0 && ZV(m).equals(SIGMA(x).-(PHI(x)).-(TAU(x)).-(x)); }	nonn,more	1..24	nyi	_Paolo P. Lava_
+A238231	filnum	1	1	n -> { final Z x = PHI(n).*(TAU(n)).-(SIGMA(n)).-(n); return x.compareTo(ZV(0)) > 0 && ZV(n).equals(PHI(x).*(TAU(x)).-(SIGMA(x)).-(x)); }	nonn,more	1..7	nyi	_Paolo P. Lava_
+A238233	filnum	1	1	n -> ZV(n).equals(SIGMA(PHI(n)).-(PHI(n)))	nonn,more	1..8	nyi	_Paolo P. Lava_
+A243810	filter	0	new A038688()	ODD	Odd terms of J038688, where most of the terms are even.
+A257565	arrlamb	0	0	0	1	(n,k) -> (n == 0) ? ZV(1) : SU(0, n-1, j -> ZV(k).^(n - j - 1).*(ZV(k + 1).^(j)).*(S173018(n,j)))	for n>0,else 1; <n,j> denotes the Eulerian numbers.
+A260682	filter	1	new A202822()	ODD	Odd terms of J202822, which lists L√∂schian numbers of the form 3*k+1. - _Altug Alkan_, Nov 15 2015
+A269844	filter	1	new A179017().skip(1)	PRIME	v -> PP(V) && !v.equals(ZV(3))	The prime terms of J179017 (except 3). - _Bill McEachen_, Oct 21 2021
+A275250	filter	1	new A051178()	ODD	Odd terms of J051178.
+A275671	filter	1	new A002191()	EVEN	Even terms of J002191.
+A278911	filter	1	new A023194()	ODD	Odd terms of J023194.
+A281622	filter	1	new A270413()	v -> v.testBit(0) || v.equals(ZV(26))	ODD	Union of 26 and odd terms of J270413.
+A282669	filter	0	new A059610()	PRIME	Prime terms of J059610.
+A290448	trilambn	0	0	0	(n,k) -> S173018(n + 1, k).-(BI(n, k))./(2)	for 0 <= k <= n.
+A291216	filter	1	new A000931()	(k, v) -> k == 1 || k >= 7 && Predicates.SQUARE.is(v)	Common terms of D000931 and D000290.
+A291673	filter	1	new A000931()	(k, v) -> k == 1 || k == 3 || k >= 9 && Predicates.FIBONACCI.is(v)	Common terms of D000931 and F000045.
+A291977	trilambn	0	0	0	(n,k) -> SU(0, n, j -> Z_1(k - j).*(S173018(n, j)).*(BI(n - j, n - k)))	for 0 <= k <= n.
+A295102	filter	1	new A048098()	v -> Predicates.SQUARE_FREE.is(v)	Squarefree terms of J048098, and also of J063539.
+A301384	filter	1	new A051584()	NONZERO	Nonzero terms of J051584.
+A316773	trilambn	0	0	0	(n,m) -> (n == 0) ? ZV(1) : SU(m + 1, n, k -> FA(n - 1)./(FA(k - 1)).*(BI(2*n - k - 1, n - 1)).*(S173018(k, m)))	where E(n,m) is Eulers triangle S173018,T(0,0) = 1,n >= m >= 0.
+A326323	arrlamb	0	0	0	1	(n,k) -> SU(0, k, j -> S173018(k,j).*(ZV(n).^(j)))	*n^j where a(k,j) are the Eulerian numbers.
+A327599	filter	1	new A327165()	ODD	Odd terms of J327165.
+A332700	arrlamb	0	0	0	1	(n,k) -> SU(0, n, j -> S173018(n, j).*(ZV(k).^(j)))	,where E(n,k) = S173018(n,k).
+A335545	arrlamb	0	0	0	-1	(n,k) -> SU(0, Functions.MAX.i(0, n - 1), j -> S173018(n,j).^(k))
+A338102	filter	1	new A338820()	PRIME	Prime terms of E338820.
+A343804	trilambn	0	0	0	(n,k) -> SU(k, n, j -> BI(n, j).*(Functions.EULERIAN2.z(j, j - k)))	,where E2 are the Eulerian numbers J201637. T(n,k) for 0 <= k <= n.
+A346167	filter	0	new A090703()	PRIME	Prime terms of J090703.
+A346168	filter	0	new A090704()	PRIME	Prime terms of J090704.
+A348576	trilambn	1	1	1	(n,k) -> SU(1, n - 1, j -> ZV(n - j).*(S173018(n - 1, j - 1)).*(BI(j - 1, n - k - 1)))
+A356545	trilambn	0	0	0	(n,k) -> Z_1(k).*(S173018(n, k)).*(FA(k)).*(FA(n - k))
+A356547	trilambn	0	0	0	(n,k) -> (n == 0) ? ZV(1) : Z_1(k).*(Functions.EULERIAN2.z(n,k)).*(FA(k)).*(FA(2*n - k - 1))
+A357125	filter	1	new A245319()	ODD	The odd terms of J245319.
+A358622	trilambn	0	0	0	(n,k) -> SU(0, n-k, j -> BI(j, n - 2*k).*(Functions.EULERIAN2.z(n - k, j)))	,where <<n,k>> denote the second order Eulerian numbers (extending Knuths notation).
+A359062	filter	1	new A359059()	v -> !PP(v)	Nonprime terms of J359059.
+A361797	filter	1	new A075025()	EVEN	Even terms of J075025. Cf. F000005.
+A364543	filter	1	new A364541()	ODD	Odd terms of J364541.
+A366323	filter	1	new A242274()	ODD	Odd terms of J242274.
+A366932	holos	0	[0,1,-5,10,-10,5,-1]	3,9,51,255,855	0	0
+A367015	holos	0	[0,1,-5,10,-10,5,-1]	1,4,28,136,445	0	0
+A368038	filter	1	new A048146()	POSITIVE	The positive terms of J048146, since J048146(k) = 0 if and only if k is squarefree (J005117).
+A368040	filter	1	new A057521()	v -> v.compareTo(ZV(1)) > 0	that are larger than 1, since J057521(k) = 1 if and only if k is squarefree (J005117).
+A372311	trilambn	0	0	0	(n,k) -> ZV(n).^(k).*(SU(0, n, j -> BI(n - j, n - k).*(S173018(n, j))))
+A373058	filter	1	new A336563()	POSITIVE	The positive terms of J336563: if k is a squarefree number (J005117) then the only coreful divisor of k is k itself, so k has no aliquot coreful divisors.
+A381888	trilambn	0	0	0	(n,k) -> SU(k, n, j -> BI(n, j).*(S173018(j, j - k))).*(n + 1)
+A382965	filter	1	new A376366()	POSITIVE	The positive terms of J376366.
+A383544	distinct	1	new A071808()	ODD	The distinct terms of J071808.
+A383547	distinct	1	new A071809().prepend(1)	The distinct terms of J071809.
+A387251	holos	0	[0,243,-405,270,-90,15,-1]	0,3,144,2187,20736,151875	0	0
+A387713	filtpos	1	1	new A387715()	v -> v.compareTo(ZV(1)) > 0		Nonprimitive terms of J387711: numbers k for which E387715(k) > 1.
+A388998	holos	1	[0,-1,4,-4,-4,10,-4,-4,4,-1]	0,1,18,68,204,501,1106,2208,4104	0	0
+A389626	holos	0	[0,1,-5,10,-10,5,-1]	1,3,17,85,285	0	0
+A390532	holos	0	[0,2,0,-5,0,4,0,-1]	0,1,1,2,2,4,3	0	0
+A391766	holos	1	[0,-1,2,3,-8,-2,12,-2,-8,3,2,-1]	0,0,0,1,10,27,90,182,412,714,1324,2079,3414	0	0
+A391778	holos	1	[0,32,-80,80,-40,10,-1]	0,0,1,16,120,640,2800	0	0
+A391917	holos	1	[0,-1,2,1,-4,5,-3,-10,17,-7,4,1,-23,22,-13,-1,42,-29,-11,10,-5,1,3,-1]	2,10,17,122,257,577,1850,5626,16901,47525,140626,414737,1223237,3583450,10523537,30946970,90973445,267322501,785456677,2308418117,6784157957,19937157602	0	0
+A391963	holos	0	[0,1,-3,9,-16,24,-27,23,-15,6,-1]	1,3,6,16,45,111,253,561,1221	0	0
+A391978	holos	1	[0,-1,6,-15,20,-15,6,-1]	0,0,0,8,50,180,490,1120,2268	0	0
+A392003	holos	1	[0,-2,1,2,-1]	0,4,7,18	0	0
+A392042	holos	0	[0,24,8,0,0,-12,0,0,6,0,0,-1]	1,0,0,2,0,0,4,0,0,8	0	0
+A392043	holos	0	[0,-576,-384,-64,0,576,192,0,-288,-240,0,48,160,0,0,-60,0,0,12,0,0,-1]	1,0,0,4,0,0,12,0,0,32,96,0,80,960,0,192,5760,0,448,26880	0	0
+A392044	holos	0	[0,-1,-2,5,0,-13,20,-15,6,-1]	1,2,3,4,9,26,67,148	0	0
+A392074	holos	0	[0,48,-16,0,0,32,0,0,-24,0,0,8,0,0,-1]	1,0,0,2,0,0,4,0,0,8,0,0,16	0	0
+A392075	holos	0	[0,-2304,1536,-256,0,-3072,1024,0,2304,-1792,0,-768,1792,0,96,-1120,0,0,448,0,0,-112,0,0,16,0,0,-1]	1,0,0,4,0,0,12,0,0,32,0,0,80,240,0,192,2880,0,448,20160,0,1024,107520,0,2304,483840	0	0
+A392076	holos	0	[0,-1,2,-9,20,-36,58,-70,56,-28,8,-1]	1,2,3,4,5,11,37,113,289,640	0	0
+A392083	holos	0	[0,4,-8,5,-1]	0,3,13,41	0	0
+A392084	holos	0	[0,9,-15,7,-1]	0,5,32,149	0	0
+A392159	decexp	1	() -> CR.PI.^(2)./(CV(36).*(CV(3).-(CV(6).sqrt())).*(CR.SQRT2.-(CV(1))).*(Zeta.zeta(3)))	Pi^2/(36*(3 - sqrt(6))*(sqrt(2) - 1)*zeta(3)).	nonn,cons,new	1..100	nyi	_Stefano Spezia_
+A392160	decexp	1	() -> CR.PI.^(2).*(2).*(CV(3).sqrt())./(CV(27).*(Zeta.zeta(3)))	.2*sqrt(3)*Pi^2/(27*zeta(3)).	nonn,cons,new	1..100	nyi	_Stefano Spezia_
+A392172	holos	0	[0,1,-5,10,-10,5,-1]	1,8,95,514,1721	0	0
+A392173	holos	0	[0,1,-5,10,-10,5,-1]	4,9,82,475,1644	0	0
+A392174	holos	0	[0,1,-5,10,-10,5,-1]	1,4,44,247,841	0	0
+A392230	decexp	0	() -> CV(new Q(5,4 )).log()	log(5/4).	nonn,cons,easy,new	0..99	nyi	_Stefano Spezia_
+A392250	holos	0	[0,1,-1,0,2,0,-1]	1,0,1,0,1	0	0
+A392251	holos	0	[0,-1,2,-1,-4,4,2,-6,0,4,0,-1]	1,0,2,0,3,3,4,12,5,30	0	0
+A392252	holos	0	[0,1,-3,3,5,-12,3,18,-15,-12,20,3,-15,0,6,0,-1]	1,0,3,0,6,6,10,30,15,90,36,210,133,420,456	0	0
+A392253	holos	0	[0,1,1,0,-3,0,3,0,-1]	1,0,1,0,1,0,1	0	0
+A392254	holos	0	[0,-1,-2,-1,6,6,-6,-15,2,20,0,-15,0,6,0,-1]	1,0,2,0,3,0,4,4,5,20,6,60,7,140	0	0
+A392255	holos	0	[0,1,3,3,-8,-18,0,45,33,-60,-84,45,126,-18,-126,3,84,0,-36,0,9,0,-1]	1,0,3,0,6,0,10,10,15,60,21,210,28,560,64,1260,297,2520,1315,4620,4686	0	0

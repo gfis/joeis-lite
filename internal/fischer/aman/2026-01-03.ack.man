@@ -1,0 +1,98 @@
+---- 2026-01-03 19:46:06
+---- 2026-01-03 20:14:26
+---- 2026-01-03 21:23:01
+---- 2026-01-03 21:43:38
+---- 2026-01-03 21:49:52
+---- 2026-01-03 22:10:47
+A111808	trilambn	1	0	0	(n, k) -> SU(0, k/2, i -> BI(n, n - k + 2*i).*(BI(n - k + 2*i, i)))	Sum{i=0,..,(k/2)} binomial(n, n-k+2*i) * binomial(n-k+2*i, i), 0<=k<=n.
+A187665	lambdan	0	n -> SU(0, n, k -> BI(n, k).*(D187535(k)).*(S2(2*n - 2*k, n - k)))
+A210360	filter	1	new A000040()	p -> !PP(p.+(2*(2 + 1))) && CNT(0, 1, x -> !PP(p.+(x*(x + 1)))).isZero()	nyi Prime numbers p such that x^2 + x + p produces primes for x = 0..1 but not x = 2.	nonn	1..1000	nyi	_T. D. Noe_
+A210361	filter	1	new A000040()	p -> !PP(p.+(3*(3 + 1))) && CNT(0, 2, x -> !PP(p.+(x*(x + 1)))).isZero()	nyi Prime numbers p such that x^2 + x + p produces primes for x = 0..2 but not x = 3.	nonn	1..1000	nyi	_T. D. Noe_
+A210362	filter	1	new A000040()	p -> !PP(p.+(4*(4 + 1))) && CNT(0, 3, x -> !PP(p.+(x*(x + 1)))).isZero()	nyi Prime numbers p such that x^2 + x + p produces primes for x = 0..3 but not x = 4.	nonn	1..1000	nyi	_T. D. Noe_
+A210363	filter	1	new A000040()	p -> !PP(p.+(5*(5 + 1))) && CNT(0, 4, x -> !PP(p.+(x*(x + 1)))).isZero()	nyi Prime numbers p such that x^2 + x + p produces primes for x = 0..4 but not x = 5.	nonn	1..1000	nyi	_T. D. Noe_
+A210364	filter	1	new A000040()	p -> !PP(p.+(6*(6 + 1))) && CNT(0, 5, x -> !PP(p.+(x*(x + 1)))).isZero()	nyi Prime numbers p such that x^2 + x + p produces primes for x = 0..5 but not x = 6.	nonn	1..1000	nyi	_T. D. Noe_
+A210365	filter	1	new A000040()	p -> !PP(p.+(7*(7 + 1))) && CNT(0, 6, x -> !PP(p.+(x*(x + 1)))).isZero()	nyi Prime numbers p such that x^2 + x + p produces primes for x = 0..6 but not x = 7.	nonn	1..1000	nyi	_T. D. Noe_
+A210530	arrlamb	1	1	1	-1	(n,k) -> ZV(k + 3*n - 2).-(ZV(k + n - 2).*(Z_1(k + n)))./(2)	n, k > 0, T(n,k) = (k + 3*n - 2 - (k+n-2)*(-1)^(k+n))/2 n, k > 0, read by antidiagonals.
+A210589	filnum	1	1	k -> k % Functions.LEADING_DIGIT.i(k) == k % 10	Numbers which, when divided by their first digit, have their last digit as remainder.	nonn,base,easy	1..7000	nyi	_Eric Angelini_ (idea) and _M. F. Hasler_
+A210712	filter	1	new LambdaSequence(1, n -> { final String sn = Integer.toString(n); return new Z(sn + sn + sn + "1");})	PRIME	Primes formed by concatenating n, n, n, and 1 for n = 1, 2, 3,....	nonn,base,easy	1..1000	nyi	_Jonathan Vos Post_
+A210845	filtpos	1	1	new A055034()	v -> Predicates.SQUARE_FREE.is(v)	Values n for which J055034(n) is squarefree.	nonn,easy	1..60	nyi	_Wolfdieter Lang_
+A210846	lambdan	1	n -> ZV(5).pow(ZV(3).^(n - 1)).+(1)./(ZV(3).^(n).*(2))	(5^(3^(n-1)) + 1)/(2*3^n).	nonn,easy	1..5	nyi	_Wolfdieter Lang_
+A210847	lambdan	1	n -> ZV(3).pow(ZV(5).^(n - 1).*(2)).+(1)./(ZV(5).^(n).*(2))	(3^(2*5^(n-1)) + 1)/(2*5^n), n >= 1.	nonn	1..5	bref	_Wolfdieter Lang_
+A210935	filnum	1	1	k -> { final Z ak = ARD(k); return new Q(ak.*(k), ak.+(k)).isInteger(); }	Numbers n for which n*n'/(n+n') is an integer, where n' is the arithmetic derivative of n.	nonn	1..500	nyi	_Paolo P. Lava_'
+A210994	filtpos	1	1	new A000005()	v -> !v.equals(ZV(4))	Numbers k such that F000005(k) != 4.	nonn	1..64	nyi	_Omar E. Pol_
+A211181	filnum	1	1	k -> { final Z k1 = ZV(k + 1).^(2); return PP(k1.+(k)) && PP(k1.-(k)); }	Numbers k such that (k+1)^2 + k and (k+1)^2 - k are both prime.	nonn	1..10000	nyi	_C‚ąö¬©sar Aguilera_
+A211211	lambdan	0	n -> SU(0, n, k -> BI(n + 1, k).*(SA(n, k)))	Binomial convolution of the Stirling numbers of the first kind.	nonn	0..20	nyi	_Olivier G‚ąö¬©rard_
+A211236	filter	1	new A000040()	p -> !PP(p.+(8*(8 + 1))) && CNT(0, 7, x -> !PP(p.+(x*(x + 1)))).isZero()	nyi Prime numbers p such that x^2 + x + p produces primes for x = 0..7 but not x = 8.	nonn	1..1000	nyi	_T. D. Noe_
+A211238	filter	0	new A000040()	p -> !PP(p.+(10*(10 + 1))) && CNT(0, 9, x -> !PP(p.+(x*(x + 1)))).isZero()	nyi Prime numbers p such that x^2 + x + p produces primes for x = 0..9 but not x = 10.	nonn	1..133	nyi	_T. D. Noe_
+A211312	sintrif	0	(term, n) -> term.modZ(3)	""	new A008288()
+A211313	sintrif	0	(term, n) -> term.modZ(5)	""	new A008288()
+A211314	sintrif	0	(term, n) -> term.modZ(7)	""	new A008288()	Square array of Delannoy numbers D(i,j) mod 7 (i >= 0, j >= 0) read by antidiagonals.	nonn,tabl	0..90	nyi	_N. J. A. Sloane_
+A211315	sintrif	0	(term, n) -> term.modZ(11)	""	new A008288()	Square array of Delannoy numbers D(i,j) mod 11 (i >= 0, j >= 0) read by antidiagonals.	nonn,tabl	0..90	nyi	_N. J. A. Sloane_
+A211349	filter	0	new A000040()	p -> ZV(2).^(p).+(2).mod(p.-(1)).isZero()		Primes p such that p-1 divides 2^p + 2.	nonn	
+A211366	arrlamb	1	1	1	-1	(m, n) -> SU(1, m, i -> FA(n + 2*(i - 1)).*(i))	nonn,tabl	1..2016	nyi	_Tilman Piesk_
+A211367	arrlamb	1	1	1	-1	(m, n) -> SU(1, m, i -> FA(m + n - 2 + i)).*(m)	nonn,tabl	1..2016	nyi	_Tilman Piesk_
+A211368	arrlamb	1	1	1	-1	(m, n) -> SU(1, m, i -> FA(n + 2*(i - 1)))	nonn,tabl	1..2016	nyi	_Tilman Piesk_
+A211369	arrlamb	1	1	1	-1	(m, n) -> SU(n, m + n - 2, i -> FA(i)).+(FA(m + n - 1).*(m))	nonn,tabl	1..2016	nyi	_Tilman Piesk_
+A211701	arrlamb	1	1	1	1	(n, k) -> SU(1, k, j -> ZV(n)./(j))	Rectangular array by antidiagonals, n >= 1, k >= 1: R(n,k) = n + [n/2] + ... + [n/k], where [ ]=floor.	nonn,tabl	1..83	nyi
+A212156	sintrif	0	(term, n) -> term.*(6).^(3).+(1)./(ZV(7).^(n))	""	new A023000()	a(n) = ((6*J023000(n))^3 + 1)/7^n, n >= 0.	nonn,easy	0..14	nyi	_Wolfdieter Lang_
+A212158	lambdan	2	n -> FA(PM(n).-(1)./(2))	a(n) = ((prime(n) - 1)/2)!, n >= 2.	nonn,easy	2..17	nyi	_Wolfdieter Lang_
+A212210	trilambn	1	1	1	(n, k) -> PI(n).+(PI(k)).-(PI(n + k))	Triangle read by rows: T(n,k) = pi(n) + pi(k) - pi(n+k), n >= 1, 1 <= k <= n, where pi() = F000720().	sign,tabl,nice	1..150	nyi	_N. J. A. Sloane_
+A212211	trilambn	2	2	2	(n, k) -> PI(n).+(PI(k)).-(PI(n + k))	Triangle read by rows: T(n,k) = pi(n) + pi(k) - pi(n+k), n >= 2, 2 <= k <= n, where pi() = F000720().	nonn,tabl,nice	2..150	nyi	_N. J. A. Sloane_
+A212212	arrlamb	1	1	1	1	(n, k) -> PI(n).+(PI(k)).-(PI(n + k))	Array read by antidiagonals: pi(n) + pi(k) - pi(n+k), where pi() = F000720.	sign,tabl,nice	1..105	nyi
+A212213	arrlamb	2	2	2	2	(n, k) -> PI(n).+(PI(k)).-(PI(n + k))	Array read by antidiagonals: pi(n) + pi(k) - pi(n+k), where pi() = F000720.	nonn,tabl,nice	2..106	nyi
+A212277	convprod	1	1/2	new A212392()
+A212296	rambdan	1	n -> RU(1, n, k-> new Q(ZV(n).*(n), PR(1, k, j -> ZV(4*j).*(j)))).+(1)	a(n) = numerator(1 + Sum_{k=1..n} n^2 / Product_{j=1..k} 4*j^2).	nonn,frac	1..225	nyi	_Charles R Greathouse IV_
+A212297	rambdad	1	A212296
+A212314	filnum	1	0	k -> F000120(ZV(k).^(3)).equals(F000120(k).*(3))	B(m^3) = 3*B(m), where B(m) is the binary weight of m (F000120).	nonn,base,easy	1..10000	nyi	_Alex Ratushnyak_
+A212315	filnum	1	0	k -> F000120(TRI(k)).equals(F000120(k))	B(m) = B(triangular(m)), where B(m) is the binary weight of m (F000120).	nonn,base,easy	1..10000	nyi	_Alex Ratushnyak_
+A212391	sintrif	1	(term, n) -> term./(n)	""	new A212392()
+A212392	polyz	1	"[0,1,1]"	"x,A,sub,+,^2"	2	0	2	3
+A212499	filnum	1	1	k -> Functions.DIGIT_PRODUCT.z(k).modZ(k).isZero()	Numbers k that divide the product of digits of k.	base,easy,nonn	1..1000	nyi	_Arkadiusz Wesolowski_
+A212558	lambdan	10	n -> { final int s = Functions.DIGIT_SUM.i(n); return ZV(n - s).^(2).modZ(n + s).-(ZV(n + s).^(2).modZ(n - s)); }	a(n) = ((n - s)^2 mod (n + s)) - ((n + s)^2 mod (n - s)), where s is the sum of the decimal digits of n.	sign,base,easy	10..78	nyi	_Marius Coman_
+A212671	lambdan	0	n -> FA(D001037(n))	nonn	0..9	nyi	_N. J. A. Sloane_
+A212805	lambdan	0	n -> { final Z fan = FA(n).^(n); return fan.-(fan.*(n - 1)./(Z2(n))); }	a(n) = (1-(n-1)/2^n)*(n!)^n.	nonn	0..11	nyi	_N. J. A. Sloane_
+A212881	filnum	1	1	k -> PP(ZV(k).^(3).-(PM(k)))
+A212883	filnum	1	1	k -> PP(ZV(k).^(4).-(PM(k)))
+A212922	poly	1	"[0,1],[0,0,1],[1,-1]"	"p1,p2,/,x,A,<1,-,rev,+"
+A213240	filnum	1	1	k -> Functions.DIGIT_SUM.i(k) == Functions.DIGIT_SUM.i(ARD(k))	Numbers k such that sum of digits of k = sum of digits of k', where k' is the arithmetic derivative of k.	nonn,base	1..10000	nyi	_Paolo P. Lava_
+A213241	filnum	1	2	k -> { final Z ark = ARD(k); return ZV(k).equals(ARD(ark).mod(ark)); }	Numbers n for which n=(n'' mod n'), where n' and n'' are the first and second arithmetic derivative of n.	nonn	1..36	nyi	_Paolo P. Lava_
+A213382	filnum	1	1	k -> ZV(k).modPow(k, k + 2).equals(ZV(k))	Numbers n such that n^n mod (n + 2) = n.
+A213428	filnum	1	1	k -> PP(ZV(k).^(8).-(PM(k)))	Numbers k such that k^8 - prime(k) is prime.	nonn,easy	1..10000	nyi	_Jonathan Vos Post_
+A213444	filnum	1	1	k -> ZV(k).*(k).toString().indexOf('2') >= 0	Numbers n such that decimal expansion of n^2 contains a 2.	nonn,base	1..79	nyi	_N. J. A. Sloane_
+A213445	filter	1	new A000290()	s -> s.toString().indexOf('2') >= 0	Squares containing a digit 2.	nonn,base	1..56	nyi	_N. J. A. Sloane_
+A213535	filnum	1	1	k -> PP(ZV(k).^(5).-(PM(k)))	Numbers n such that n^5 - prime(n) is prime
+A213536	multia	1	"14"	(self, n) -> (n&1) == 0 ? self.a(n - 1).+(GCD(ZV(n + 5), self.a(n - 1))) : self.a(n - 1).+(GCD(ZV(n + 1), self.a(n - 1)))	Cousin prime recurrence sequence: a(1) = 14, and for n > 1, a(n) = a(n-1) + gcd(n+5, a(n-1)), if n is even, otherwise a(n) = a(n-1) + gcd(n+1, a(n-1)).	nonn	1..1273	nyi	_Joseph Benstock_
+A213600	sintrif	0	(term, n) -> term.^(2)	""	new A053121()
+A213742	trilambn	0	0	0	(n, k) -> SU(0, k/4, r -> Z_1(r).*(BI(n, r)).*(BI(n - 4*r + k - 1, n - 1)))	sum{r=0,...,floor(k/4)}(-1)^r*C(n,r)*C(n-4*r+k-1, n-1)
+A213743	trilambn	0	0	0	(n, k) -> SU(0, k/5, r -> Z_1(r).*(BI(n, r)).*(BI(n - 5*r + k - 1, n - 1)))	Sum{r=0...  floor(k/5)}(-1)^r*C(n,r)*C(n-5*r+k-1, n-1)
+A213744	trilambn	0	0	0	(n, k) -> SU(0, k/6, r -> Z_1(r).*(BI(n, r)).*(BI(n - 6*r + k - 1, n - 1)))	sum{r=0,...,floor(k/6)}(-1)^r*C(n,r)*C(n-6*r+k-1, n-1)
+A213745	trilambn	0	0	0	(n, k) -> SU(0, k/7, r -> Z_1(r).*(BI(n, r)).*(BI(n - 7*r + k - 1, n - 1)))	sum{r=0,...,floor(k/7)}(-1)^r*C(n,r)*C(n-7*r+k-1, n-1).
+A213808	trilambn	0	0	0	(n, k) -> SU(0, k/8, r -> Z_1(r).*(BI(n, r)).*(BI(n - 8*r + k - 1, n - 1)))	Sum_{r=0..floor(k/8)} (-1)^r*C(n,r)*C(n-8*r+k-1, n-1).
+A214094	multia	0	"0,1"	(self, n) -> { final Z an12 = self.a(n - 1).+(self.a(n - 2)); return !Predicates.SEMIPRIME.is(an12) ? an12 : GPF(an12); }	a(0)=0, a(1)=1; a(n)=a(n-1)+a(n-2) if a(n-1)+a(n-2) is not semiprime; otherwise a(n) is the largest prime divisor of a(n-1)+a(n-2).	nonn	0..499	nyi	_Vladimir Shevelev_
+A214126	multia	0	"1,1"	(self, n) -> (n&1) == 0 ? self.a(n/2 - 1).+(self.a(n/2)) : self.a(n/2 + 1)	a(2n) = a(n-1) + a(n) and a(2n+1) = a(n+1) for n>=1, with a(0)=a(1)=1.	nonn,easy	0..8192	nyi	_Alex Ratushnyak_
+A214127	multia	0	"1,2"	(self, n) -> (n&1) == 0 ? self.a(n/2 - 1).+(self.a(n/2)) : self.a(n/2 + 1)	a(2n) = a(n-1) + a(n) and a(2n+1) = a(n+1) for n>=1, with a(0)=1, a(1)=2.	nonn,easy	0..72	nyi	_Alex Ratushnyak_
+A214331	multia	0	"2,3,5"	(self, n) -> self.a(n - 1).+(self.a(n - 3))./(GCD(self.a(n - 1), self.a(n - 3)))	a(n) = (a(n-1) + a(n-3))/gcd(a(n-1), a(n-3)) with a(0) =2,  a(1) = 3, a(2) = 5.	nonn	0..10000	nyi	_N. J. A. Sloane_
+A214588	filter	1	new A000040()	p -> p.mod(16) < 8	Primes p such that p mod 16 < 8.
+A214643	filter	1	new A000040()	p -> p.xor(ZV(22)).equals(p.+(22))	Primes p such that p XOR 22 = p + 22
+A214646	multia	1	"1,1,1"	(self, n) -> self.a(n - 2).+(self.a(n - 3))./(GCD(self.a(n - 2), self.a(n - 3)))	a(n) = (a(n-2) + a(n-3))/gcd(a(n-2), a(n-3)) with a(1) = a(2) = a(3) = 1.	nonn	1..1003	nyi	_Reed Kelly_A214760	poly
+A214949	rambdan	0	n -> { final int[] dc = ZUtils.digitCounts(n); Q sum = Q.ZERO; for (int i = 1; i <= 9; ++i) { if (dc[i] != 0) { sum = sum.add(new Q(dc[i], i)); } } return sum; }	Numerator of sum of reciprocals of all nonzero digits of n in decimal representation.	nonn,base,frac	0..10000	nyi	_Reinhard Zumkeller_
+A214950	rambdad	0	A214949
+A214957	filtpos	1	0	new A214950()	v -> v.equals(ZV(1))	Numbers for which the sum of reciprocals of nonzero digits is an integer.	nonn,base	1..10000	nyi	_Reinhard Zumkeller_
+A214958	filtpos	1	0	new A214949()	v -> v.equals(ZV(1))	Numbers for which the sum of reciprocals of nonzero digits is reciprocal of an integer.	nonn,base	1..10000	nyi	_Reinhard Zumkeller_
+A214959	filnum	1	1	n -> { final int[] dc = ZUtils.digitCounts(n); Q sum = Q.ZERO; for (int i = 1; i<= 9; ++i) { if (dc[i] != 0) { sum = sum.add(new Q(dc[i], i)); } } return sum.equals(QV(1)); }	Numbers for which the sum of reciprocals of nonzero digits = 1.	nonn,base	1..10000	nyi	_Reinhard Zumkeller_
+A215078	trilambn	0	0	0	(n,k) -> BI(n, k).*(SU(1, k, j -> ZV(j).^(n)))	sum(j^n, j=1..k)
+A215079	trilambn	0	0	0	(n,k) -> ZV(k).^(n).*(SU(0, n - k, j -> BI(n, n - k - j)))		nonn,tabl	0..1000	nyi	_Olivier G‚ąö¬©rard_
+A215080	trilambn	0	0	0	(n,k) -> SU(0, k, j -> ZV(k - j).^(n).*(BI(n, j)))	Sum_{j=0..k} (k-j)^n * binomial(n,j).	nonn,tabl	0..140	nyi	_Olivier G‚ąö¬©rard_
+A215083	trilambn	0	0	0	(n,k) -> SU(1, k, j -> ZV(j).^(n))	T(n, k) = Sum_{j=1..k} j^n
+A215138	filnum	1	1	k -> TAU(k).^(2)./(2).compareTo(ZV(k)) < 0	Numbers k such that k > d(k)^2/2 where d = F000005
+A215259	lambdan	0	n -> CV(D003418(n)).log().round()	0..10000	nyi	_N. J. A. Sloane_
+A215260	lambdan	0	n -> CV(F002110(n)).log().round()	0..10000	nyi	_N. J. A. Sloane_
+A215268	lambdan	0	n -> { final Z n2 = ZV(n).*(n); return new Z(n2.-(1).toString() + n2.toString()); }	Concatenation of the decimal digits of n^2-1 and n^2
+A215450	multia	0	"0,1"	(self, n) -> self.a(n - 1).+(SU(0, n - 1, i -> self.a(i)).modZ(n))	a(n) = a(n-1) + (Sum_{i=0..n-1} a(i)) mod n.	nonn,easy	0..59	nyi	_Alex Ratushnyak_
+A215451	multia	0	"1"	(self, n) -> SU(0, n - 1, i -> self.a(i)).mod(self.a(n - 1).+(n))	, a(n) = (sum of previous terms) mod (a(n-1)+n).	nonn	0..1000	nyi	_Alex Ratushnyak_
+A215452	multia	1	"1"	(self, n) -> SU(0, n - 1, i -> self.a(i)).mod(self.a(n - 1).+(n))	, a(n) = (sum of previous terms) mod (a(n-1) + n).	nonn	1..10000	nyi	_Alex Ratushnyak_
+A215486	lambdan	1	n -> ZV(n - 1).mod(PHI(n))	nyi to	n - 1 mod phi(n), where phi(n)
+A215533	filnum	1	1	k -> PP(ZV(k).^(Functions.DIGIT_SUM.i(k)).+(1))	Numbers n such that n^s(n) + 1 is a prime, where s(n) is the sum of the digits of n.	nonn,base	1..41	nyi	_Vicente Izquierdo Gomez_
+A215604	multia	0	"0"	(self, n) -> self.a(n/2).+(n).modZ(3)	a(0)=0, a(n) = (n + a(floor(n/2))) mod 3.
+A216145	filter	1	new A000040()	p -> p.mod(5) == p.mod(7)	Primes p such that p (mod 5) = p (mod 7).	nonn,easy	1..10000	nyi	_Zak Seidov_
+A216431	multia	0	"0"	(self, n) -> self.a(n - 1).+(1).+(D023416(self.a(n - 1)))	a(0)=0; thereafter a(n+1) = a(n) + 1 + number of 0's in binary representation of a(n), counted with D023416.	nonn,base	0..1000	nyi	_Alex Ratushnyak_

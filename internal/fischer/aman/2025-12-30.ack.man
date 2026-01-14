@@ -1,0 +1,108 @@
+---- 2025-12-30 20:53:03
+---- 2025-12-30 21:43:03
+A083908	recpos	1	new A082469()	,1	Numbers n at which record values of J082469(n) occur.	1..11A163697
+A086809	filtpos	0	0	new A057176()	v -> v.equals(ZV(2))	Indices k where M057176(k) = 2.	1..29
+A086838	filtpos	0	0	new A057176()	v -> v.equals(ZV(4))	Indices k where M057176(k) = 4.	1..45
+A087045	filtpos	0	1	new A057176().skip(1)	v -> v.equals(ZV(1))	Indices k where M057176(k) = 1.	1..15
+A087167	filnum	0	1	k -> SIGMA(k).-(2*k).equals(ZV(6))	Numbers k such that sigma(k) - 2k = 6.	1..4 
+A101701	filnum	0	1	k -> ZV(k).equals(SD(k, d -> REV(d)))	Numbers n such that n = sum of the reversals of divisors of n.	1..6
+A102277	filnum	0	0	k -> ZV(k).equals(REV(k).*(15))	Numbers n such that n = 15*reversal(n).	1..10000
+A104902	filnum	1	1	k -> SIGMA(k).equals(PHI(k).*(12))	Numbers n such that sigma(n) = 12*phi(n).	1..10000
+A104904	filnum	0	1	k -> TAU(k).*(PI(k)).equals(ZV(k))	Numbers n such that d(n)*pi(n)=n, where d(n) is the number of positive divisors of n.	1..8
+A105324	filnum	0	1	k -> SIGMA(k).equals(REV(k).*(2))	Numbers n such that 2*reversal(n)=sigma(n).	1..20
+A105330	filnum	1	0	k -> PP(Z2(k + 1).+(2*k + 1))	Numbers n such that 2^(n+1)+2n+1 is prime.	1..41
+A110073	filnum	1	1	k -> SIGMA(k).equals(ZV(2*k).-(PHI(PHI(k))))	Numbers n such that sigma(n)=2n-phi(phi(n)).	1..10000
+A110074	filnum	1	1	k -> SIGMA(k).equals(ZV(2*k).-(PHI(PHI(k)).*(3)))	Numbers n such that sigma(n) = 2n - 3*phi(phi(n)).	1..70
+A110079	filnum	1	1	k -> SIGMA(k).equals(ZV(2*k).-(Z2(Functions.TAU.i(k))))	Numbers n such that sigma(n)=2n-2^d(n) where d(n) is number of positive divisors of n.	1..22
+A114927	filnum	0	1	k -> SIGMA(k).equals(REV(k).*(3))	Numbers n such that sigma(n)=3*reversal(n).	1..7
+A114928	filnum	0	1	k -> SIGMA(k).equals(REV(k).*(4))	Numbers n such that sigma(n)=4*reversal(n).	1..10
+A115748	filnum	0	1	k -> SIGMA(k).equals(REV(k).*(7))	Numbers n such that sigma(n)=7*reversal(n).	1..5
+A115749	filnum	0	1	k -> SIGMA(k).equals(REV(k).*(8))	Numbers n such that sigma(n)=8*reversal(n).	1..10
+A124248	filnum	0	0	k -> PP(DF(k).+(Z2(k)))	Numbers n such that n!!+2^n is prime.	1..26
+A135242	filnum	1	1	k -> SIGMA(k).equals(ZV(k).-(REV(k)).*(2))	Numbers n such that sigma(n) = 2*(n-reversal(n)).	1..25
+A135243	filnum	1	1	k -> SIGMA(k).equals(REV(k).-(k).*(6))	Numbers n such that sigma(n) = 6*(reversal(n)-n).	1..20
+A136542	filnum	1	1	k -> SIGMA(k).equals(REV(k).+(5))	Numbers n such that sigma(n)=reversal(n)+5.	1..15
+A136544	filnum	0	1	k -> SIGMA(k).+(PHI(k)).equals(REV(k).+(3))	Numbers k such that phi(k) + sigma(k) = reversal(k) + 3.	1..6
+A137600	filnum	1	1	k -> SIGMA(SIGMA(k)).-(PHI(PHI(k))).equals(ZV(3*k))	Numbers n such that sigma(sigma(n))-phi(phi(n)) = 3n.	1..9
+A145749	filnum	1	1	k -> SIGMA(k).+(PHI(k)).equals(SIGMA(k + 1).+(PHI(k + 1)))	Numbers n such that sigma(n)+phi(n)=sigma(n+1)+phi(n+1).	1..10000
+A163012	holos	1	[0,1,-7,1,6,-11,7,-1]	3,16,82,416,2103,10633	0	0
+A163013	holos	1	[0,1,13,-71,7,-113,22,222,-210,-19,97,-59,15,-1]	4,44,469,4776,48047,482895,4854639,48809845,490753552,4934223120,49610514652,498802509247	0	0
+A163014	holos	1	[0,-1,49,-99,-4461,34459,-115804,136350,612301,-2267390,331308,5525320,-2980202,-1716806,510459,-3414959,8663468,-1246016,-4174679,1438895,-101650,980592,-488756,-444090,507392,-161261,-29646,44032,-17927,4079,-547,39,-1]	5,113,2502,50720,1000725,19654292,385935282,7579570311,148869588338,2923988203008,57431069385100,1128024279705628,22155931579758019,435172637255862047,8547382559268828602,167882220114753100654,3297435164663218573014	0	0
+A163031	holos	1	[0,-1,49,-99,-4461,34459,-115804,136350,612301,-2267390,331308,5525320,-2980202,-1716806,510459,-3414959,8663468,-1246016,-4174679,1438895,-101650,980592,-488756,-444090,507392,-161261,-29646,44032,-17927,4079,-547,39,-1]	15,245,5191,104989,2075271,40792921,801218515,15736428305,309080891641,6070750256417,119237718452471,2341990743046197,45999883370408813,903500281246849523,17745974522766912147,348555078644003475079,6846095866027124445869,134466635189696499098689,2641107622912159591737683,51874946271576878120170843,1018894507491127148730135725	0	0
+A163687	holos	1	[0,1,4,1,-2,24,4,-45,86,14,-172,234,-12,-320,440,-168,-260,471,-328,24,180,-200,120,-45,10,-1]	1,8,39,132,389,1095,3107,8790,24449,66724,179212,475169,1247181,3249223,8420475,21735923,55926076,143501956,367381497,938864371,2396062211,6108616160,15560958273,39614145740,100795424446,256362601215,651824860468	0	0
+A163697	holos	1	[0,1,4,3,1,11,2,-8,16,-9,-7,14,-13,6,-1]	4,21,80,259,775,2223,6336,17796,48912,131828,350506,923197,2413779,6272766,16221462	0	0
+A163698	holos	1	[0,-4,4,15,64,-22,-211,-391,-190,572,410,300,-422,63,425,-1056,1182,-620,-91,-285,-665,2447,-2548,865,407,-559,939,-1577,1582,-664,-314,688,-529,247,-74,13,-1]	5,38,200,896,3643,13930,53065,200834,744868,2693153,9538151,33294644,114946998,392988985	0	0
+A163706	holos	1	[0,1,1,-6,5,14,-44,30,58,-158,143,44,-268,329,-164,-92,246,-237,140,-52,11,-1]	1,11,63,259,896,2821,8515,24940,70944,196626,534162,1430008,3786133,9937397,25902833,67151065,173338487,445930356,1144130515,2929289696,7487194973,19111652812	0	0
+A163716	holos	1	[0,1,4,3,1,11,2,-8,16,-9,-7,14,-13,6,-1]	10,49,163,531,1611,4601,12865,35525,96583,258479,683455,1791811,4667275,12093461,31202401,80234775	0	0
+A163717	holos	1	[0,-4,4,15,64,-22,-211,-391,-190,572,410,300,-422,63,425,-1056,1182,-620,-91,-285,-665,2447,-2548,865,407,-559,939,-1577,1582,-664,-314,688,-529,247,-74,13,-1]	15,101,463,2119,9012,35116,132342,493096,1811125,6520133,23029880,80160412,275921198	0	0
+A163725	holos	1	[0,1,1,-8,4,27,-60,7,160,-262,57,418,-712,384,416,-1018,903,-217,-444,668,-506,243,-74,13,-1]	1,16,108,531,2119,7338,23330,70369,204461,576824,1589880,4304373,11495305,30376964,79611466,207289163,536963245,1385313538,3562495802,9138021569,23392128783,59784414592,152598577140	0	0
+A163736	holos	1	[0,-4,4,15,64,-22,-211,-391,-190,572,410,300,-422,63,425,-1056,1182,-620,-91,-285,-665,2447,-2548,865,407,-559,939,-1577,1582,-664,-314,688,-529,247,-74,13,-1]	1,4,17,29,73,265,1200,4888,17897,62437,216583,751019,2584540,8793604	0	0
+A165629	filnum	1	1	k -> new Q(SIGMA(k), PHI(k)).equals(new Q(25,4))	Numbers n such that sigma(n)/phi(n) = 25/4, where sigma = F000203, phi = F000010.	1..1000
+A165630	filnum	1	1	k -> new Q(SIGMA(k), PHI(k)).equals(new Q(25,9))	Numbers n such that sigma(n)/phi(n) = 25/9, where sigma = F000203, phi = F000010.	1..1000
+A166850	filnum	0	1	k -> PP(REV(FA(k).-(k)))	Numbers k such that reversal(k!-k) is prime.	1..6
+A166851	filnum	0	1	k -> PP(REV(FA(k).+(k)))	Numbers k such that reversal(k!+k) is prime.	1..5
+A182532	filnum	0	1	v -> v % 17 == 0 && v % 7 == 0 && Predicates.CARMICHAEL.is(v)	Carmichael numbers divisible by 7 and 17.	nonn	1..10000	nyi	_Marius Coman_
+A185321	filnum	0	1	v -> v % 4 == 3 && Predicates.CARMICHAEL.is(v)	Carmichael numbers congruent to 3 modulo 4.	nonn	1..15447	nyi	_Jos√© Mar√≠a Grau Ribas_
+A205947	filnum	0	1	v -> v % 6 != 1 && Predicates.CARMICHAEL.is(v)	Carmichael numbers not congruent to 1 modulo 6.	nonn	1..10000	nyi	_Jos√© Mar√≠a Grau Ribas_ 
+A210511	filter	1	new LambdaSequence(1, k -> { final String ks = Integer.toString(k); return new Z(ks + ks + "1"); })	PRIME	Primes formed by concatenating k, k, and 1 for k >= 1.	nonn,easy,base	1..1000	nyi	_Abhiram R Devesh_
+A210512	filter	1	new LambdaSequence(1, k -> { final String ks = Integer.toString(k); return new Z(ks + ks + "3"); })	PRIME	Primes formed by concatenating k, k and 3 for k >= 1.	base,nonn,easy	1..1000	nyi	_Abhiram R Devesh_
+A210513	filter	1	new LambdaSequence(1, k -> { final String ks = Integer.toString(k); return new Z(ks + ks + "7"); })	PRIME	Primes formed by concatenating k, k, and 7.	base,nonn,easy	1..10000	nyi	_Abhiram R Devesh_
+A210514	filter	1	new LambdaSequence(1, k -> { final String ks = Integer.toString(k); return new Z(ks + ks + "9"); })	PRIME	Prime numbers generated by concatenating k, k, and 9.	base,nonn,easy	1..10000	nyi	_Abhiram R Devesh_
+A210536	arrlamb	1	1	1	-1	(n,k) -> ZV(3*n + (k - 1) % 3 - 2)	= 3*n + (k-1) mod 3 - 2; n , k > 0, read by antidiagonals.	nonn,tabl	1..74	nyi	_Boris Putievskiy_
+A230007	filnum	0	1	k -> SIGMA(k).equals(REV(k + 7))	Numbers n such that sigma(n) = reversal(n+7).	1..12
+A230009	filnum	0	1	k -> SIGMA(k).equals(REV(k + 9))	Numbers n such that sigma(n) = reversal(n+9).	1..5
+A230019	filnum	1	1	k -> SIGMA(k).+(PHI(k)).equals(REV(k))	Numbers n such that sigma(n) + phi(n) = reversal(n) - 3.	1..5
+A233467	filnum	0	1	k -> SIGMA(k).equals(REV(3*k))	Numbers n such that sigma(n) = reversal(3n).	1..8
+A244440	filnum	0	1	k -> PHI(k).+(k).toString().matches("10*")	Numbers n such that n + phi(n) is a power of 10.	1..20
+A246776	lambdan	1	n -> CV(PM(n)).^(new Q(n + 1, n)).floor().-(PM(n + 1))	a(n) = floor(prime(n)^(1+1/n)) - prime(n+1).	1..10000
+A246778	lambdan	1	n -> CV(PM(n)).^(new Q(n + 1, n)).floor().-(PM(n))	a(n) = floor(prime(n)^(1+1/n)) - prime(n).	1..10000
+A248854	filnum	0	1	 k -> ZV(k).-(PI(k)).toString().matches("10*")	Numbers n such that n - pi(n) is a power of 10.	1..24
+A248856	filnum	0	1	 k -> PI(k).+(k).toString().matches("10*")	Numbers n such that n + pi(n) is a power of 10.	1..16
+A258801	filnum	0	1	v -> v % 3 == 0 && Predicates.CARMICHAEL.is(v)	Carmichael numbers divisible by 3.	nonn	1..10000	nyi	_Fred Patrick Doty_
+A263403	filter	1	new A002997()	v -> Predicates.SQUARE_FREE.is(Functions.MAKE_ODD.z(v.-(1)))	Carmichael numbers k such that the odd part of k-1 is squarefree.	nonn	1..10000	nyi	_Thomas Ordowski_
+A265827	filnum	0	1	v -> !Predicates.PRACTICAL.is(v - 1) && Predicates.CARMICHAEL.is(v)	Carmichael numbers n such that n-1 is not a practical number.	nonn	1..10000	nyi	_Frank M 
+A272798	filter	1	new A002997()	v -> Predicates.SQUARE.is(PHI(v))	Carmichael numbers k such that Euler totient function of k (phi(k)) is a perfect square.	nonn	1..10000	nyi	_Altug Alkan_
+A287591	filnum	0	1	v -> PP(v - 2) && PP(v + 2) && Predicates.CARMICHAEL.is(v)	Carmichael numbers k such that k-2 and k+2 are both primes.	nonn	1..282	nyi	_Amiram Eldar_
+A306338	filter	1	new A002997()	v -> Functions.CARMICHAEL_LAMBDA.z(v).*(v.-(1)).mod(PHI(v)).isZero()	Carmichael numbers k such that phi(k) divides (k-1)*lambda(k).	nonn	1..10000	nyi	_Amiram Eldar_ and _Thomas Ordowski_
+A338395	filnum	1	1	k -> { final Z pd = POD(k); return LCM(LCM(TAU(k), SIGMA(k)), pd).equals(pd); }	Numbers m such that lcm(tau(m), sigma(m), pod(m)) = pod(m)
+A338397	trilambn	0	0	0	(n, m) -> RU(0, m/2, k -> new Q(BI(n - k, m - 2*k).*(BI(n - k, m - k)).*(BI(n, k)), BI(2*k, k))).num()	Triangle read by rows: T(n,m)= Sum_{k=0..m/2} C(n-k,m-2*k)*C(n-k,m-k)*C(n,k)/C(2*k,k).	nonn,tabl	0..54	nyi	_Vladimir Kruchinin_
+A338406	filnum	1	1	k -> { final Z t = TAU(k); final Z sg = SIGMA(k); final Z pd = POD(k); return GCD(t, sg).equals(ZV(1)) && GCD(t, pd).equals(ZV(1)) && GCD(pd, sg).equals(ZV(1)); }	Numbers m such that tau(m), sigma(m) and pod(m) are pairwise relatively prime
+A338415	trilambn	0	0	0	(n, m) -> BI(n + m + 1, n).*(BI(2*n - m, n)).*(BI(3*n + 1, n)).*(BI(4*n + 2, 2*m + 1))./(ZV(2*(n+1)).*(BI(2*n, n)).*(BI(2*n + 2*m + 2, 2*n)))
+A338654	trilambn	0	0	0	(n, k) -> RQ(1, k, j -> new Q(j, 2).^(((j - 1) & 1) == 0 ? 1 : -1)).*(Z2(n)).num()	2^n * Product_{j=1..k} (j/2)^((-1)^(j - 1)). Triangle read by rows, for 0 <= k <= n.	nonn,tabl	0..10000	nyi	_Peter Luschny_
+A338821	filter	1	new A000040()	p -> PP(E338820(PI(p)))	Primes prime(k) such that E338820(k) is prime
+A338822	lambdan	1	n -> { final int digs = Functions.DIGIT_LENGTH.i(n); return CND(n, d -> d % 10 == digs); }	a(n) is the number of divisors of n whose last digits equal the number of digits of n.
+A338836	filter	1	new A000040()	p -> { final Z q = Functions.NEXT_PRIME.z(p); final Z q2 = q.*(q); final Z p2 = p.*(p); return PP(p2.*(2).-(q2)) && PP(q2.*(2).-(p2)); }	Primes p such that 2*p^2-q^2 and 2*q^2-p^2 are prime, where q is the next prime after p.
+A338934	arrlamb	0	0	0	1	(i,j) -> SU(0, (i < j) ? i : j, k -> BI(i, k).*(BI(j, k)).*(BI(2*k, k)))	(i>=0,j>=0)
+A339028	trilambn	0	0	0	(n, m) -> ZV(3*(m + 1)).*(BI(n + m + 3, m)).*(BI(2*n + 2, n - m))./(ZV(n + m + 3).*(BI(n + 1, m)))	0..54	nyi	_Vladimir Kruchinin_
+A389625	lambdan	0	n -> (n == 0) ? ZV(1) : ZV(11*n - 9).*(n).+(4)./(2)
+A390700	holos	0	[0,-16,64,-64,32,-72,16,-16,8,-1]	1,4,16,104,572,2912,14720,73152	0	0
+A390732	holos	0	[0,-16,32,8,-8,-33,-4,2,4,-1]	1,2,7,40,137,526,1979,7092	0	0
+A390775	holos	0	[0,12,-4,0,0,4,0,0,-1]	1,0,0,2,0,0,4	0	0
+A391686	holos	0	[0,4,-9,6,-1]	1,12,63	0	0
+A391875	holos	0	[0,-64,384,-768,704,-816,960,-384,480,-204,88,-48,12,-1]	1,6,30,224,1464,8592,48912,270720,1459248,7709216,40068000,205378560	0	0
+A391876	holos	0	[0,-64,192,-48,-128,-204,156,147,78,-51,-16,-3,6,-1]	1,3,12,82,339,1461,6198,24732,97557,377095,1431792,5370102	0	0
+A391890	holos	0	[0,-1,4,-2,0,-11,0,-2,4,-1]	1,6,17,58,188,570,1715,5074	0	0
+A391891	holos	0	[0,-1,4,-2,0,-11,0,-2,4,-1]	1,2,9,34,104,326,995,2954	0	0
+A391892	holos	0	[0,-16,32,8,-8,-33,-4,2,4,-1]	1,6,19,88,337,1242,4623,16652	0	0
+A391893	holos	0	[0,-16,32,8,-8,-33,-4,2,4,-1]	1,2,15,64,233,926,3411,12380	0	0
+A391894	holos	0	[0,-16,64,-64,32,-72,16,-16,8,-1]	1,12,64,344,1852,9504,47616,235072	0	0
+A391895	holos	0	[0,-16,64,-64,32,-72,16,-16,8,-1]	1,4,24,152,812,4192,21312,106048	0	0
+A391897	partprod	0	new A063659()	Partial products of E063659.
+A391902	holos	0	[0,1,3,0,22,0,3,-1]	1,1,2,21,86,305	0	0
+A391903	holos	0	[0,1,3,3,-2,21,-3,3,3,0,-1]	1,0,1,1,1,20,2,84,85	0	0
+A391904	holos	0	[0,1,3,3,1,-3,21,-3,0,3,3,0,0,-1]	1,0,0,1,1,0,1,20,1,1,84,84	0	0
+A391951	decexp	1	() -> CV(32)./(CV(27).sqrt())
+A391952	decexp	2	() -> CV(512).sqrt()
+A391960	holos	0	[0,-144,96,-16,0,-96,32,0,24,-24,0,0,8,0,0,-1]	1,0,0,4,0,0,12,36,0,32,288,0,80,1440	0	0
+A391961	holos	0	[0,35831808,-83607552,83607552,-46448640,99090432,-170311680,139689984,-82849792,140894208,-176246784,108494848,-76640256,121798656,-108752896,51674112,-53007360,68483072,-40642560,19353600,-28120064,24385536,-9241344,7798784,-10160640,4967424,-1736448,2903040,-2128896,499776,-544320,665280,-192192,60480,-147840,64064,-3024,22176,-16016,0,-2016,2912,0,84,-364,0,0,28,0,0,-1]	1,0,0,14,0,0,112,336,0,672,6048,0,3360,60480,30240,14784,443520,665280,59136,2661120,7983360,1816320,13837824,69189120,42282240,64576512,484323840,583751168,339026688,2905943040,5820086272,2975132160,15498362880,46520434688,34071797760	0	0
+A391962	holos	0	[0,-1,2,-5,6,-6,4,-1]	1,2,3,7,17,36	0	0
+A391964	holos	0	[0,-16,32,-48,40,-24,8,-1]	1,4,12,44,176,672	0	0
+A391965	holos	0	[0,64,-192,384,-496,480,-336,172,-60,12,-1]	1,6,24,104,480,2112,8752,34848,135168	0	0
+A391985	lambdan	0	n -> SU(0, n/4, k -> ZV(k + 1).*(Z2(k)).*(ZV(3).^(n - 3*k)).*(BI(n - 2*k, k)).*(BI(n - 3*k, k)))	* 2^k * 3^(n-3*k) * binomial(n-2*k,k) * binomial(n-3*k,k).	nonn,new	0..26	nyi	_Seiichi Manyama_
+A391986	lambdan	0	n -> SU(0, n/4, k -> Z2(k).*(ZV(3).^(n - 3*k)).*(BI(k + 2, 2)).*(BI(n - 2*k, k)).*(BI(n - 3*k, k)))	2^k * 3^(n-3*k) * binomial(k+2,2) * binomial(n-2*k,k) * binomial(n-3*k,k).	nonn,new	0..26	nyi	_Seiichi Manyama_
+A391987	decexp	0	() -> CV(5).sqrt().*(7).-(5)./(CV(22))	(7*sqrt(5)-5)/22.	nonn,cons,new	0..104	nyi	_Amiram Eldar_
+A391990	lambdan	0	n -> SU(0, n/2, k -> ZV(k + 1).*(BI(n, k)).*(BI(n - k, k)))	0..28	nyi	_Seiichi Manyama_
+A391991	trilambn	0	0	0	(n, k) -> Functions.DIGIT_LENGTH.z(BI(n, k))	Triangle read by rows: T(n,k) = number of digits in decimal representation of binomial(n,k), 0<=k<=n.	nonn,tabl,easy,base,new	0..104	nyi	_Seiichi Manyama_
+A391992	lambdan	0	n -> Functions.DIGIT_LENGTH.z(BI(2*n, n))	Number of digits in the decimal expansion of binomial(2*n,n).	nonn,easy,base,new	0..72	nyi	_Seiichi Manyama_
+A392032	lambdan	0	n -> SU(0, n/2, k -> BI(k + 2, 2).*(BI(n, k)).*(BI(n - k, k)))	binomial(k+2,2) * binomial(n,k) * binomial(n-k,k).	nonn,new	0..1000	nyi	_Seiichi Manyama_
+A392033	lambdan	0	n -> SU(0, n/2, k -> BI(k + 3, 3).*(BI(n, k)).*(BI(n - k, k)))	* binomial(n,k) * binomial(n-k,k).	nonn,new	0..1000	nyi	_Seiichi Manyama_

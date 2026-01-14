@@ -1,0 +1,200 @@
+---- 2026-01-11 20:17:55
+---- 2026-01-11 21:09:43
+---- 2026-01-11 21:17:56
+---- 2026-01-11 21:26:32
+---- 2026-01-11 21:49:03
+A090039	lambdan	0	n -> (n == 1) ? ZV(1) : CR.E.^(n + 1)./(CR.E.^(2).+(1)).floor()	a(1) = 1, otherwise a(n) = floor(e^(n+1)/(e^2 + 1)).	nonn	0..29	nyi	_Gary W. Adamson_
+A090044	trilambn	0	0	0	(n, k) -> { final long m = BI(n, k).mod(3); return m == 1 ? ZV(2) : (m == 2 ? ZV(1) : ZV(0)); }
+A090120	filnum	1	1	k -> Functions.NEXT_PRIME.z(ZV(k).^(2)).-(Functions.PREV_PRIME.z(ZV(k).^(2))).equals(ZV(4))	Numbers k such that nextprime(k^2) - prevprime(k^2) = 4.	nonn	1..10000	nyi	_Labos Elemer_
+A090121	filnum	1	1	k -> Functions.NEXT_PRIME.z(ZV(k).^(3)).-(Functions.PREV_PRIME.z(ZV(k).^(3))).equals(ZV(4))	Numbers n such that nextprime(n^3)-prevprime(n^3) = 4.	nonn	1..10000	nyi	_Labos Elemer_
+A090122	filnum	1	1	k -> Functions.NEXT_PRIME.z(ZV(k).^(4)).-(Functions.PREV_PRIME.z(ZV(k).^(4))).equals(ZV(4))	Numbers k such that nextprime(k^4) - prevprime(k^4) = 4.	nonn	1..10000	nyi	_Labos Elemer_
+A090123	filnum	1	1	k -> Functions.NEXT_PRIME.z(ZV(k).^(5)).-(Functions.PREV_PRIME.z(ZV(k).^(5))).equals(ZV(4))	Integers k such that nextprime(k^5) - prevprime(k^5) = 4.	nonn	1..10000	nyi	_Labos Elemer_
+A090127	distinct	1	new A000010()	Distinct values of phi(n) in order of appearance as n increases.	nonn	1..10000	nyi	_Labos Elemer_
+A090128	distinct	1	new A000203()	Distinct values of sigma(k), the sum of divisors, in order of appearance as k grows.	nonn,easy	1..10000	nyi	_Labos Elemer_
+A090141	lambdan	1	n -> ZV(n).mod(ZV( 4).+(SU(1, 10, m -> ZV(n)./(ZV( 4).^(m)).modZ( 4))))	a(n) = Mod[n, 4+Sum[Mod[Floor[n/ 4^m], 4],{m,1,10}]].	nonn,easy,less	1..105	nyi	_Roger L. Bagula_
+A090170	lambdan	0	n -> CR.E.^(CR.GAMMA.*(n)).floor()	floor(e^(n*g)),
+A090175	lambdan	1	n -> ZV(n).mod(ZV(10).+(SU(1, 10, m -> ZV(n)./(ZV(10).^(m)).modZ(10))))	a(n) = Mod[n,10+Sum[Mod[Floor[n/10^m],10],{m,1,10}]].
+A090183	lambdan	1	n -> ZV(10).-(PM(n + 3).modZ(10)).modZ(4).-(n%4).+(3)	a(n) = Mod[10-Mod[Prime[n+3],10],4]-Mod[n,4]+3.
+A090194	filter	1	new A000040()	p -> PP(p.*(Functions.DIGIT_SORT_ASCENDING.z(p).mod(10)).+(1))	Primes which when multiplied by their largest digit and 1 is added form another prime.	easy,nonn,base	1..1000	nyi	_Enoch Haga_
+A090195	filter	1	new A000040()	p -> PP(p.*(Functions.DIGIT_SORT_ASCENDING.z(p).mod(10)).-(1))	Primes which when multiplied by their largest digit and 1 is subtracted form another prime.	easy,nonn,base	1..1000	nyi	_Enoch Haga_
+A090206	filter	1	new A000045()	(k, v) -> k <= 2 || !PP(v)	Nonprime Fibonacci numbers.	easy,nonn	1..30	nyi	_Felix Tubiana_
+A090207	sintrif	0	(term, n) -> (n <= 2) ? ZV(1) : Functions.BIG_OMEGA.z(term)	""	new A090206()	Number of factors of n-th nonprime Fibonacci number.	easy,nonn	0..29	nyi	_Felix Tubiana_
+A090241	sintrif	0	(term, n) -> term.^(FI(n + 1))	""	new A000045()	a(n) = F(n)^F(n+1), where F is the Fibonacci sequence F000045.	easy,nonn	0..9	nyi	_Felix Tubiana_
+A090242	sintrif	0	(term, n) -> term.^(FI(n - 1))	""	new A000045()	a(n) = F(n)^F(n-1), where F is the Fibonacci sequence F000045.	easy,nonn	0..11	nyi	_Felix Tubiana_
+A090262	filnum	1	1	k -> { final String ks = Integer.toString(k); return PP(new Z(ks + "1" + ks)) && PP(new Z("1" + ks + "1")); }	Numbers n such that the strings n1n and 1n1 are both prime.	base,nonn	1..10000	nyi	_Amarnath Murthy_
+A090263	filnum	1	1	k -> { final String ks = Integer.toString(k); return PP(new Z(ks + "3" + ks)) && PP(new Z("3" + ks + "3")); }	Numbers n such that the strings n3n and 3n3 are both prime.	base,nonn	1..10000	nyi	_Amarnath Murthy_
+A090264	filnum	1	1	k -> { final String ks = Integer.toString(k); return PP(new Z(ks + "7" + ks)) && PP(new Z("7" + ks + "7")); }	Numbers n such that the strings n7n and 7n7 are both prime.	base,nonn	1..10000	nyi	_Amarnath Murthy_
+A090265	filnum	1	1	k -> { final String ks = Integer.toString(k); return PP(new Z(ks + "9" + ks)) && PP(new Z("9" + ks + "9")); }	Numbers n such that the strings n9n and 9n9 are both prime.	base,nonn	1..1000	nyi	_Amarnath Murthy_
+A090273	filnum	1	0	k -> Predicates.PALINDROME.is(Functions.DIGIT_PRODUCT.z(k))	Numbers with a palindromic digital product.	base,easy,nonn	1..65	nyi	_Amarnath Murthy_
+A090274	filnum	1	1	k -> { final Z pr = Functions.DIGIT_PRODUCT.z(k); return !pr.isZero() && Predicates.PALINDROME.is(pr); }	Numbers with a nonzero palindromic digital product (contains no zeros).	base,easy,nonn	1..62	nyi	_Amarnath Murthy_
+A090387	rambdan	1	n -> new Q(TAU(n), n)	Numerator of d(n)/n, where d(n) (F000005) is the number of divisors of n.
+A090395	rambdad	1	A090387	Denominator of d(n)/n, where d(n) is the number of divisors of n (F000005).	easy,frac,nonn	1..65537	nyi	Ivan_E_Mayle(AT)a_provider.com
+A090426	lambdan	0	n -> (n == 1) ? ZV(1) : CR.PI.^(n + 1)./(CR.PI.^(2).+(1)).floor()	a(1) = 1, otherwise a(n) = floor(Pi^(n+1)/(Pi^2 + 1)).	nonn	0..28	nyi	_Gary W. Adamson_
+A090432	filter	1	new A000040()	(k, p) -> Functions.DIGIT_SUM.z(p).compareTo(Functions.DIGIT_SUM.z(k)) > 0	Primes prime(k) having a greater sum of digits than does k.	nonn,base	1..57	nyi	_Reinhard Zumkeller_
+A090433	filter	1	new A000040()	(k, p) -> Functions.DIGIT_SUM.z(p).compareTo(Functions.DIGIT_SUM.z(k)) < 0	Primes p(k) having a smaller sum of digits than k.	nonn,base	1..1000	nyi	_Reinhard Zumkeller_
+A090456	filter	1	new A000040()	(k, p) -> Functions.DIGIT_SUM.z(2, p).compareTo(Functions.DIGIT_SUM.z(2, k)) > 0	Primes prime(k) having more binary 1s than k.	nonn,base	1..10000	nyi	_Reinhard Zumkeller_
+A090457	filter	1	new A000040()	(k, p) -> Functions.DIGIT_SUM.z(2, p).compareTo(Functions.DIGIT_SUM.z(2, k)) < 0	Primes prime(k) having fewer binary 1s than k.	nonn,base	1..10000	nyi	_Reinhard Zumkeller_
+A090502	filnum	1	1	k -> TAU(k).equals(TAU(k - 1).+(TAU(k + 1)))	Numbers k such that tau(k) = tau(k-1) + tau(k+1).	nonn	1..4000	nyi	_Amarnath Murthy_
+A090583	lambdan	0	n -> CV(2*n).+(new Q(1, 3)).*(CR.PI).sqrt().*(ZV(n).^(n))./(CR.E.^(n)).round()	Gospers approximation to n!, sqrt((2*n+1/3)*Pi)*n^n/e^n, rounded to nearest integer.	nonn	0..449	nyi	_Hugo Pfoertner_
+A090642	trilambn	0	0	0	(n, k) -> BI(n*n, k)	Triangle read by rows: T(n,k) = binomial(n^2, k), 0 <= k <= n.	nonn,tabl,easy	0..44	nyi	_Reinhard Zumkeller_
+A090643	multraf	0	(self, n) -> new Q(3, 4).*(Z_1(n + 1)).*(ZV( 9).^(n).-(1)).*(self.s(0))./(self.s(1)).num()	""	new A000367(), new A002445()
+A090644	multraf	0	(self, n) -> new Q(5, 4).*(Z_1(n + 1)).*(ZV(25).^(n).-(1)).*(self.s(0))./(self.s(1)).num()	""	new A000367(), new A002445()
+A090645	multraf	0	(self, n) -> new Q(2, 1).*(Z_1(n + 1)).*(ZV(16).^(n).-(1)).*(self.s(0))./(self.s(1)).num()	""	new A000367(), new A002445()
+A090646	multraf	0	(self, n) -> new Q(6, 1).*(Z_1(n + 1)).*(ZV(36).^(n).-(1)).*(self.s(0))./(self.s(1)).num()	""	new A000367(), new A002445()
+A090647	multraf	0	(self, n) -> new Q(7, 8).*(Z_1(n + 1)).*(ZV(49).^(n).-(1)).*(self.s(0))./(self.s(1)).num()	""	new A000367(), new A002445()
+A090648	multraf	0	(self, n) -> new Q(2).*(ZV(4).^(n).-(1))./(self.s(1)).num()	""	new A000367(), new A002445()	a(n)=2*(4^n-1)/denominator(B(2n)) where B(k) denotes the k-th Bernoulli number.	nonn	0..28	nyi	_Benoit Cloitre_
+A090658	filnum	1	1	n -> PP(n - 1) && (n - 1) % 4 == 3	Numbers n such that n-1 is a prime of the form 4k+3.
+A106828	tablamb	0	0	n -> new Integer[]{0, n/2}	(n, k) -> SU(0, n - k, j -> BIN(j, n - 2*k).*(Functions.EULERIAN2.z(n - k, j)))	,where E2 are the second-order Eulerian numbers (S008517). - _Peter Luschny_,Jan 13 2016
+A122496	trilambn	1	0	0	(n, k) -> Z2(k).*(BIN(-k, n))	, for 0 <= m <= n, n >= 0, triangle read by rows.
+A124837	lambdan	1	n -> RU(0, n - 1, k -> new Q(Z_1(k).*(BIN(-3, k)), ZV(n - k))).num()
+A142075	trilambn	1	1	1	(n, k) -> EUL1(n, k - 1).*(Z2(k - 1))	Triangle T(n, k) = 2^(k-1) * E(n, k-1) where E(n,k) are the Eulerian numbers A173018, read by rows.
+A155560	insect2	1	new A000404()	new A092572()
+A156197	trilambn	0	0	0	(n, k) -> ZV(n - k + 1).*(BIN(n + k, n)).+(ZV(k + 1).*(BIN(-k + 2*n, n)))./(n + 1)
+A156365	prepend	0	new A142075()	1
+A165666	filter	1	new A000040()	p -> { final Q p27 = new Q(p.^(2).-(2), ZV(7)); return !p27.isInteger() || !PP(p27.num()); }	is not prime.	nonn,easy	1..1000	nyi	_Vincenzo Librandi_
+A165667	filter	1	new A000040()	p -> { final Q p27 = new Q(p.^(2).-(2), ZV(7)); return p27.isInteger() &&  PP(p27.num()); }	p -> PP(p.^(2).-(2)./(7))(p^2-2)/7 is also prime.	nonn	1..1000	nyi	_Vincenzo Librandi_
+A180875	multia	0	"1"	(self, n) -> self.a(n - 1).+(1).+(SU(1, n, m -> BI(n, m).*(self.a(n - m))))	a(0)=1; if n>=1, then a(n) = a(n-1) + 1 + Sum_{m=1..n} binomial(n,m)*a(n-m). - _Detlef Meya_, Jan 22 2018
+A268438	trilambn	0	0	0	(n, k) -> SU(0, k, m -> Z_1(m + k).*(BI(n + k, n + m)).*(S1(n + m, m).abs())).*(FA(2*n))./(Functions.FALLING_FACTORIAL.z(n + k, n))	where FF denotes the falling factorial function.
+A269951	trilambn	0	0	0	(n, k) -> SU(0, n, j -> Z_1(n - j).*(BIN(-j, -n)).*(SA(j, k)))
+A269953	trilambn	0	0	0	(n, k) -> SU(0, n, j -> BIN(-j - 1,-n - 1).*(SA(j, k)))
+A269954	trilambn	0	0	0	(n, k) -> SU(0, n, j -> BIN(-j, -n).*(SA(j, k)))
+A271697	trilambn	0	0	0	(n, k) -> SU(0, n, j -> BI(n, n - j).*(Z_1(n - j)).*(S173018(j, k))).+((k == 0) ? 0 : ((n&1) == 1) ? 1 : -1)	,E1 the Eulerian numbers S173018,for n>=0 and 0<=k<=n.
+A271698	trilambn	0	0	0	(n, k) -> SU(0, n, j -> BIN(-j, -n).*(EUL1(j, k)))	,E1 the Eulerian numbers S173018,for n>=0 and 0<=k<=n.
+A271699	trilambn	0	0	0	(n, k) -> SU(0, n, j -> SA(k, j).*(BIN(-j, -n)).*(Z_1(n-j)))
+A271700	trilambn	0	0	0	(n, k) -> SU(0, n, j -> SA(k, j).*(BIN(-j-1, -n-1)).*(Z_1(n-j)))
+A271701	trilambn	0	0	0	(n, k) -> SU(0, n, j -> S2(k, j).*(BIN(-j, -n)).*(Z_1(n-j)))
+A271702	trilambn	0	0	0	(n, k) -> SU(0, n, j -> S2(k, j).*(BIN(-j-1, -n-1)).*(Z_1(n-j)))
+A271704	trilambn	0	0	0	(n, k) -> SU(0, n, j -> S271703(j, k).*(BIN(-j, -n)).*(Z_1(n-j)))
+A272098	trilambn	0	0	0	(n, k) -> SU(0, n, i -> BI(n, i).*(S173018(i, k))).-((k == 0) ? 0 : 1)	,where Eulerian(n,k) = Eulerian numbers S173018. Equivalently,if T is the matrix generated by T(n,k),B is the BI matrix and E is the Eulerian matrix,then T = B E. - _Emanuele Munarini_,Oct 19 2023
+A277234	lambdan	0	n -> RU(0, n, k-> new Q(DF(2*k - 1), DF(2*k)).^(3).*(Z_1(k)).*(1 + 4*k)).num()
+A278140	lambdan	0	n -> RU(0, n, k-> new Q(DF(2*k - 1), DF(2*k)).^(5).*(Z_1(k)).*(1 + 4*k)).num()
+A278141	lambdan	0	n -> RU(0, n, k -> BI(new Q(-1, 4), k).^(4).*(8*k + 1)).num()	k=0..n} (1+8*k)*(BIN(-1/4,k))^4.
+A278142	lambdan	0	n -> RU(0, n, k -> BI(new Q(-1, 4), k).^(4).*(8*k + 1)).den()	a(n) = denominator( Sum_{k=0..n} (1+8*k)*(BIN(-1/4,k))^4 ).
+A278143	lambdan	0	n -> RU(0, n, k -> BI(new Q(-1, 2), k).^(3)).num()	for(n=0,25, print1(numerator(sum(k=0,n, BIN(-1/2,k)^3)), ", ")) \\ _G. C. Greubel_, Feb 06 2017
+A278145	lambdan	0	n -> RU(0, n, k -> BI(new Q(-1, 2), k).^(2).*(new Q(1, k + 1))).den()	a(n)=  Sum_{k=0..n} (1/(k+1))*(BIN(-1/2,k))^2  = Sum_{k=0..n}(1/(k+1))*((2*k-1)!!/(2*k)!!)^2 , with the rising factorial risefac(x,k) defined above. The double factorials are given in A001147 and A000165 with (-1)!! := 1.
+A289452	holos	0	[[0],[5832,-1377,81],[19008,-5256,360],[25806,-8715,723],[19010,-8460,910],[7456,-4925,757],[942,-1260,338],[-174,125,11],[0,72,-48],[0,-12,-12]]	1	0	0
+A289587	holos	0	[[0],[480,-88,4],[756,-156,8],[-2832,604,-32],[-8868,2131,-127],[-8640,2317,-153],[-1674,355,-11],[2892,-1440,174],[2166,-1384,214],[480,-484,114],[-6,-19,17],[0,15,-9],[0,-3,-3]]	1	0	0
+A289588	holos	0	[[0],[612,-140,8],[510,-176,14],[-1848,578,-44],[366,-64,-2],[318,-159,15],[72,-85,25],[-30,49,-19],[0,-3,3]]	1,1,1,2	0	0
+A289589	holos	0	[[0],[156,-50,4],[300,-115,11],[144,-183,33],[6,-71,19],[-642,461,-79],[36,-24,-6],[0,-14,22],[0,-4,-4]]	1,1,1,2	0	0
+A289590	holos	0	[[0],[342,-74,4],[-3402,885,-57],[2340,-746,58],[-72,45,-3],[-462,276,-42],[54,-50,10],[0,-2,4],[0,-1,-1]]	1,1,1,1,5	0	0
+A289591	holos	0	[[0],[1800,-294,12],[3210,-519,21],[-13440,2950,-158],[-20820,4482,-234],[18144,-5272,380],[17640,-5750,466],[-3684,1900,-248],[-4452,2580,-372],[648,-632,148],[0,-4,20],[0,-8,-8]]	1,1,1,2	0	0
+A289592	holos	0	[[0],[1026,-222,12],[-3060,795,-51],[1176,-368,28],[966,-412,44],[-642,382,-56],[60,-55,11],[0,-2,4],[0,-1,-1]]	1,1,1,2	0	0
+A289593	holos	0	[[0],[1026,-222,12],[6120,-1509,93],[8076,-2128,140],[-966,363,-33],[-2892,1486,-194],[-2196,1320,-192],[408,-432,108],[0,-4,20],[0,-8,-8]]	1,1,1,3	0	0
+A289594	holos	0	[[0],[33600,-5088,192],[-200112,33088,-1360],[466656,-84304,3768],[-558300,110824,-5396],[358512,-78222,4110],[-101184,23236,-1180],[-10398,4423,-491],[13224,-4464,366],[-1476,-18,114],[-582,708,-186],[114,-196,76],[0,12,-14],[0,1,1]]	1	0	0
+A289595	holos	0	[[0],[342,-74,4],[-1500,389,-25],[732,-234,18],[-30,33,-3],[-252,156,-24],[30,-30,6],[0,-2,4],[0,-1,-1]]	1,1,1,2	0	0
+A289596	holos	0	[[0],[16320,-3552,192],[-39600,10032,-624],[24888,-7208,496],[-1992,480],[-1980,922,-110],[282,-104,-2],[30,-66,30],[0,8,-10],[0,1,1]]	1,1,1,1,5	0	0
+A289597	holos	0	[[0],[3696,-688,32],[-17160,3560,-184],[44184,-10632,636],[-65976,18352,-1268],[53856,-17256,1368],[-22296,8148,-720],[3564,-1240,68],[222,-391,119],[-90,159,-63],[0,-11,13],[0,-1,-1]]	1,1,1,2	0	0
+A289598	holos	0	[[0],[1050,-290,20],[-720,145,-5],[-1740,740,-80],[1704,-796,92],[-342,180,-18],[-6,28,-16],[0,-6,8],[0,-1,-1]]	1	0	0
+A289599	holos	0	[[0],[600,-98,4],[-732,121,-5],[792,-171,9],[-372,58,-2],[-432,168,-12],[324,-165,15],[-228,129,-15],[30,-19,-1],[18,-29,13],[0,5,-7],[0,1,1]]	1	0	0
+A289601	holos	0	[[0],[1260,-246,12],[-726,105,-3],[132,-80,8],[-2634,830,-66],[2124,-696,56],[-294,98,-10],[60,-52,16],[-30,48,-20],[0,-6,8],[0,-1,-1]]	1	0	0
+A289603	holos	0	[[0],[139968,-18144,576],[-858704,119328,-4048],[2398720,-360248,13168],[-4001732,654804,-25992],[4316640,-774480,33532],[-3080200,611741,-29097],[1465372,-326491,17241],[-461804,117650,-7006],[97034,-29850,2144],[-18360,8155,-885],[5652,-3701,595],[-1490,1365,-307],[158,-251,93],[0,13,-15],[0,1,1]]	1	0	0
+A289604	holos	0	[[0],[139968,-18144,576],[-769104,106560,-3600],[1804560,-268632,9696],[-2386356,384612,-14928],[2017980,-356784,15096],[-1200628,236859,-11135],[542740,-121849,6507],[-192902,50027,-3073],[48016,-13773,885],[-2120,-681,273],[-4056,2955,-521],[1442,-1333,303],[-158,251,-93],[0,-13,15],[0,-1,-1]]	1	0	0
+A289605	holos	0	[[0],[244800,-33984,1152],[-1120320,167040,-6048],[2219280,-358576,13984],[-2571360,456120,-19424],[1990656,-393512,18592],[-1100568,246450,-13134],[443472,-114600,7008],[-126156,38134,-2686],[20760,-6932,478],[456,-892,232],[-972,932,-220],[132,-211,79],[0,12,-14],[0,1,1]]	1	0	0
+A289606	holos	0	[[0],[279936,-36288,1152],[-1717408,238656,-8096],[4591360,-687856,25056],[-7028616,1143128,-44976],[6823240,-1215448,52048],[-4416756,872206,-41098],[1956884,-434710,22830],[-593022,150893,-8963],[121584,-37127,2635],[-21060,9120,-960],[5772,-3756,600],[-1490,1365,-307],[158,-251,93],[0,13,-15],[0,1,1]]	1	0	0
+A289608	holos	0	[[0],[244800,-33984,1152],[-1274880,190784,-6944],[2837520,-460848,18112],[-3555744,632488,-27056],[2810040,-554736,26160],[-1485408,330346,-17410],[527532,-134124,7976],[-118980,35521,-2433],[17424,-6972,658],[-3600,2359,-377],[1068,-996,228],[-132,211,-79],[0,-12,14],[0,-1,-1]]	1	0	0
+A289613	holos	0	[[0],[11340,-1836,72],[-52780,9342,-398],[104100,-20395,955],[-114740,25297,-1323],[78118,-19775,1177],[-33900,10113,-701],[8744,-3091,243],[-648,329,-35],[62,-95,29],[-38,65,-27],[0,-7,9],[0,-1,-1]]	1	0	0
+A292861	arrlamb	0	0	0	-1	(n, k) -> SU(0, n, j -> ZV(-k).^(j).*(S2(n, j)))
+A292892	arrlamb	0	0	0	-1	(n, k) -> RU(0, n/(k+1), j -> new Q(S2(n - k*j, j), FA(n - k*j))).*(FA(n)).num()
+A292894	arrlamb	0	0	0	-1	(n, k) -> RU(0, n/(k+1), j -> new Q(Z_1(j).*(S2(n - k*j, j)), FA(n - k*j))).*(FA(n)).num()
+A292973	arrlamb	0	0	0	-1	(n, k) -> (k == 0) ? BELL(n).*(Z_1(n)) : RU(0, n/k, j -> new Q(ZV(-j).^(n - k*j), FA(j).*(FA(n - k*j)))).*(FA(n)).num()	for k > 0.  k == 0 ? BELL(n).*(Z_1(n))
+A292978	arrlamb	0	0	0	-1	(n, k) -> (k == 0) ? BELL(n) : RU(0, n/k, j -> new Q(ZV(j).^(n - k*j), FA(j).*(FA(n - k*j)))).*(FA(n)).num()	for k > 0. k=0: BELL(n)
+A305466	arrlamb	0	0	0	-1	(n, k) -> RU(0, n/2, j -> new Q(FA(n - j), FA(j)).*(BI(n - j, j)).*(ZV(k).^(n - 2*j)).*(Z_1(j))).num()	sign,tabl	0..139	nyi	_Seiichi Manyama_
+A321967	trilambn	0	0	0	(n, k) -> BIN(-k - n - 1, -2*n - 1).*(EUL1(k + n, n))
+A321967	trilambn	0	0	0	(n, k) -> BIN(-k - n - 1, -2*n - 1).*(EUL1(k + n, n))	T(n,k) = binomial(-k-n-1, -2*n-1)*E1(k+n, n),
+A323663	arrlamb	1	1	1	-1	(n, k) -> SU(1, n, j -> BI(j*k, k))	nonn,tabl	1..140	nyi	_Seiichi Manyama_
+A323767	arrlamb	0	0	0	-1	(n, k) -> SU(0, n/2, j -> BI(n - j, j).^(k))
+A357340	trilambn	0	0	0	(n, k) -> SU(0, n - k, j -> BIN(-n, j).*(S268438(n - k, j)))
+A358623	trilambn	0	0	0	(n, k) -> SU(0, k, j -> BIN(n, k - j).*(S2(n - k + j, j)).*(Z_1(k - j)))	,where <<n,k>> denote the second order Eulerian numbers (extending Knuths notation).
+A359364	trilambn	0	0	0	(n, k) -> (k&1) == 1 ? ZV(0) : Functions.CATALAN.z(k/2).*(BI(n, k))	ifelse(irem(k, 2) = 1, 0, CatalanNumber(k/2)*binomial(n, k)):
+A361840	arrlamb	0	0	0	-1	(n, k) -> RU(0, n, j -> BI(new Q(-1, 3), j).*(ZV(9).^(j)).*(BI(k*j, n - j))).num().*(Z_1(n))
+A363984	lambdan	0	n -> SU(0, n, k -> Z_1(n + k).*(BI(n, k)).*(BI(n + k, k)).*(D363983(k)))	a(n) = Sum_{k = 0..n} (-1)^(n+k)*binomial(n,k)*binomial(n+k,k)*A363983(k).
+A379168	parmof7	0	A384801	1	0	1	1	0	1	k*SU(j=0, n, (1*n+0*j+k)^(j-1)*BI(n, j)*a(n-j, 1*j))
+A380113	trilambn	0	0	0	(n, k) -> (k == 0) ? Z_1(n).*(BIN(-n, n)) : ((k == n) ? ZV(1) :  BIN(2*n, n - k))	for 0 < k < n. T(n, n) = 1; T(n, 0) = Z_1n*BIN(-n, n).
+A380178	parmof7	0	A384801	1	-1	1	1	0	1	k*SU(j=0, n, (1*n-1+j+k)^(j-1)*BI(n, j)*a(n-j, 1*j))
+A382347	arrlamb	0	0	0	-1	(n, k) -> RU(0, n, j -> new Q(BIN(-k*n, j), ZV(n + 1 - j)).*(Z_1(j))).*(FA(n + 1)).num()
+A384690	parmof7	0	A384801	1	1	1	1	0	1	k*SU_{j=0..n} (n+j+k)^(j-1) * BI(n,j) * A(n-j,j)
+A384692	parmof7	0	A384801	1	0	2	1	0	1	k*SU(j=0, n, (1*n+0*j+k)^(j-1)*BI(n, j)*a(n-j, 2*j))
+A384718	arrlamb	0	0	0	-1	(n, k) -> (n*k == 0) ? (n == 0 ? ZV(1) : ZV(0)) : ZV(2*n+k).^(n - 1).*(k)	for n > 0.
+A384721	parmof7	0	A384801	1	-1	2	1	0	1	k*SU(j=0, n, (1*n-1*j+k)^(j-1)*BI(n, j)*a(n-j, 2*j))
+A384722	parmof7	0	A384801	1	-1	3	1	0	1	k*SU(j=0, n, (1*n-1*j+k)^(j-1)*BI(n, j)*a(n-j, 3*j))
+A384741	parmof7	0	A384801	2	-2	1	1	0	1	k*SU(j=0, n, (2*n-2*j+k)^(j-1)*BI(n, j)*a(n-j, 1*j))
+A384742	parmof7	0	A384801	3	-3	1	1	0	1	k*SU(j=0, n, (3*n-3*j+k)^(j-1)*BI(n, j)*a(n-j, 1*j))
+A384751	parmof7	0	A384801	2	-2	2	1	0	1	k*SU(j=0, n, (2*n-2*j+k)^(j-1)*BI(n, j)*a(n-j, 2*j))
+A384752	parmof7	0	A384801	3	-3	3	1	0	1	k*SU(j=0, n, (3*n-3*j+k)^(j-1)*BI(n, j)*a(n-j, 3*j))
+A384758	parmof7	0	A384801	1	-1	1	-1	0	1
+A384761	parmof7	0	A384801	1	0	1	-1	0	1	(-1)^n*k*SU(j=0, n, (1*n-0*j+k)^(j-1)*BI(n, j)*a(n-j, 1*j))
+A384802	parmof7	0	A384801	-3	3	1	-1	1	-1	(-1)^n*k*SU(j=1, n, (-3*n+3*j+k)^(j-1)*BI(n, j)*b(n-j, 1*j))
+A384804	parmof7	0	A384801	-4	4	1	-1	1	-1	(-1)^n*k*SU(j=1, n, (-4*n+4*j+k)^(j-1)*BI(n, j)*b(n-j, 1*j))
+A384808	parmof7	0	A384801	-1	1	2	-1	1	-1	(-1)^n*k*SU(j=1, n, (-1*n+1*j+k)^(j-1)*BI(n, j)*b(n-j, 2*j))
+A384811	parmof7	0	A384801	-2	2	2	-1	1	-1	(-1)^n*k*SU(j=1, n, (-2*n+2*j+k)^(j-1)*BI(n, j)*b(n-j, 2*j))
+A384813	parmof7	0	A384801	-3	3	2	-1	1	-1	(-1)^n*k*SU(j=1, n, (-3*n+3*j+k)^(j-1)*BI(n, j)*b(n-j, 2*j))
+A384859	parmof7	0	A384801	-1	1	3	-1	1	-1	(-1)^n*k*SU(j=1, n, (-1*n+1*j+k)^(j-1)*BI(n, j)*b(n-j, 3*j))
+A384860	parmof7	0	A384801	-2	2	3	-1	1	-1	(-1)^n*k*SU(j=1, n, (-2*n+2*j+k)^(j-1)*BI(n, j)*b(n-j, 3*j))
+A384861	parmof7	0	A384801	-3	3	3	-1	1	-1	(-1)^n*k*SU(j=1, n, (-3*n+3*j+k)^(j-1)*BI(n, j)*b(n-j, 3*j))
+A384862	parmof7	0	A384801	-8	8	3	-1	1	-1	(-1)^n*k*SU(j=1, n, (-8*n+8*j+k)^(j-1)*BI(n, j)*b(n-j, 3*j))
+A384865	parmof4	0	A384864	-3	4	1	(n, k) -> (n*k == 0) ? (n == 0 ? ZV(1) : ZV(0)) : RU(1, n, j -> new Q(BIN(-3*n+4*j+k-1, j-1)*b(n-j,  j), j)).num().*(Z_1(n)).*(k)
+A384866	parmof4	0	A384864	-4	5	1	(n, k) -> (n*k == 0) ? (n == 0 ? ZV(1) : ZV(0)) : RU(1, n, j -> new Q(BIN(-4*n+5*j+k-1, j-1)*b(n-j,  j), j)).num().*(Z_1(n)).*(k)
+A384899	parmof4	0	A384864	-1	2	2	(n, k) -> (n*k == 0) ? (n == 0 ? ZV(1) : ZV(0)) : RU(1, n, j -> new Q(BIN(-  n+2*j+k-1, j-1)*b(n-j,2*j), j)).num().*(Z_1(n)).*(k)
+A384900	parmof4	0	A384864	-2	3	2	(n, k) -> (n*k == 0) ? (n == 0 ? ZV(1) : ZV(0)) : RU(1, n, j -> new Q(BIN(-2*n+3*j+k-1, j-1)*b(n-j,2*j), j)).num().*(Z_1(n)).*(k)
+A384901	parmof4	0	A384864	-1	2	3	(n, k) -> (n*k == 0) ? (n == 0 ? ZV(1) : ZV(0)) : RU(1, n, j -> new Q(BIN(-  n+2*j+k-1, j-1)*b(n-j,3*j), j)).num().*(Z_1(n)).*(k)
+A384902	parmof4	0	A384864	-2	3	3	(n, k) -> (n*k == 0) ? (n == 0 ? ZV(1) : ZV(0)) : RU(1, n, j -> new Q(BIN(-2*n+3*j+k-1, j-1)*b(n-j,3*j), j)).num().*(Z_1(n)).*(k)
+A384903	parmof4	0	A384864	-3	4	3	(n, k) -> (n*k == 0) ? (n == 0 ? ZV(1) : ZV(0)) : RU(1, n, j -> new Q(BIN(-3*n+4*j+k-1, j-1)*b(n-j,3*j), j)).num().*(Z_1(n)).*(k)
+A384944	parmof4	0	A384864	-1	2	4	(n, k) -> (n*k == 0) ? (n == 0 ? ZV(1) : ZV(0)) : RU(1, n, j -> new Q(BIN(-  n+2*j+k-1, j-1)*b(n-j,4*j), j)).num().*(Z_1(n)).*(k)
+A384945	parmof4	0	A384864	-1	2	5	(n, k) -> (n*k == 0) ? (n == 0 ? ZV(1) : ZV(0)) : RU(1, n, j -> new Q(BIN(-  n+2*j+k-1, j-1)*b(n-j,5*j), j)).num().*(Z_1(n)).*(k)
+A384946	parmof4	0	A384864	-1	2	6	(n, k) -> (n*k == 0) ? (n == 0 ? ZV(1) : ZV(0)) : RU(1, n, j -> new Q(BIN(-  n+2*j+k-1, j-1)*b(n-j,6*j), j)).num().*(Z_1(n)).*(k)
+A384976	parmof4	0	A384864	-1	1	1	(n, k) -> (n*k == 0) ? (n == 0 ? ZV(1) : ZV(0)) : RU(1, n, j -> new Q(BIN(-  n+  j+k-1, j-1)*b(n-j,  j), j)).num().*(Z_1(n)).*(k)
+A384977	parmof4	0	A384864	-3	3	2	(n, k) -> (n*k == 0) ? (n == 0 ? ZV(1) : ZV(0)) : RU(1, n, j -> new Q(BIN(-3*n+3*j+k-1, j-1)*b(n-j,2*j), j)).num().*(Z_1(n)).*(k)
+A384978	parmof4	0	A384864	-5	5	3	(n, k) -> (n*k == 0) ? (n == 0 ? ZV(1) : ZV(0)) : RU(1, n, j -> new Q(BIN(-5*n+5*j+k-1, j-1)*b(n-j,3*j), j)).num().*(Z_1(n)).*(k)
+A384985	parmof7	0	A384801	-2	1	1	-1	1	-1	(-1)^n*k*SU(j=1, n, (-2*n+1*j+k)^(j-1)*BI(n, j)*b(n-j, 1*j))
+A384986	parmof7	0	A384801	-4	3	2	-1	1	-1	(-1)^n*k*SU(j=1, n, (-4*n+3*j+k)^(j-1)*BI(n, j)*b(n-j, 2*j))
+A384987	parmof7	0	A384801	-6	5	3	-1	1	-1	(-1)^n*k*SU(j=1, n, (-6*n+5*j+k)^(j-1)*BI(n, j)*b(n-j, 3*j))
+A385017	parmof4	0	A384864	-2	2	1	(n, k) -> (n*k == 0) ? (n == 0 ? ZV(1) : ZV(0)) : RU(1, n, j -> new Q(BIN(-2*n+2*j+k-1, j-1)*b(n-j,  j), j)).num().*(Z_1(n)).*(k)
+A385018	parmof4	0	A384864	-1	1	2	(n, k) -> (n*k == 0) ? (n == 0 ? ZV(1) : ZV(0)) : RU(1, n, j -> new Q(BIN(-  n+  j+k-1, j-1)*b(n-j,2*j), j)).num().*(Z_1(n)).*(k)
+A385019	parmof4	0	A384864	-1	1	3	(n, k) -> (n*k == 0) ? (n == 0 ? ZV(1) : ZV(0)) : RU(1, n, j -> new Q(BIN(-  n+  j+k-1, j-1)*b(n-j,3*j), j)).num().*(Z_1(n)).*(k)
+A385020	parmof4	0	A384864	-1	1	4	(n, k) -> (n*k == 0) ? (n == 0 ? ZV(1) : ZV(0)) : RU(1, n, j -> new Q(BIN(-  n+  j+k-1, j-1)*b(n-j,4*j), j)).num().*(Z_1(n)).*(k)
+A385061	parmof7	0	A384801	-1	0	1	-1	1	-1	(-1)^n*k*SU(j=1, n, (-1*n+0*j+k)^(j-1)*BI(n, j)*b(n-j, 1*j))
+A385062	parmof7	0	A384801	-1	0	2	-1	1	-1	(-1)^n*k*SU(j=1, n, (-1*n+0*j+k)^(j-1)*BI(n, j)*b(n-j, 2*j))
+A385063	parmof7	0	A384801	-1	0	3	-1	1	-1	(-1)^n*k*SU(j=1, n, (-1*n+0*j+k)^(j-1)*BI(n, j)*b(n-j, 3*j))
+A387188	lambdan	0	n -> TRI(E160384(n)).+(D081603(n)).+(1)	a(n) = s*(s+1)/2 + t + 1 where s = E160384(n) and t = D081603(n) are the number of nonzero and number of 2 digits of n in ternary.	nonn,base,easy,look	0..19682	nyi	_Yunus Selimov_
+A389179	holos	3	[0,1,-1,2,-6,5,-1]	78,190,504,1562,5142,17236,58126,196432,664294	0	0
+A389180	holos	3	[0,3,-7,5,-1]	57,159,380,836,2293,6682,19819	0	0
+A389234	holos	3	[0,4,-9,6,-1]	79,285,1065,4137,16427,65585,262199	0	0
+A389717	holos	0	[0,-1,1,0,4,0,0,-6,0,0,4,0,0,-1]	1,0,0,1,0,0,1,0,0,1,0,1	0	0
+A389718	holos	0	[0,1,1,0,-5,0,0,10,0,0,-10,0,0,5,0,0,-1]	1,0,0,1,0,0,1,0,0,1,0,0,1,0,1	0	0
+A391264	holos	0	[0,1,0,0,-3,0,0,3,0,0,-1]	1,1,1,1,4,10,1,7,28	0	0
+A391265	holos	0	[0,-1,1,0,2,0,0,-1]	1,0,0,1,0,1	0	0
+A391399	holos	0	[0,1,-1,0,0,2,0,0,-1]	1,0,0,1,0,0,1	0	0
+A391541	holos	0	[0,1,0,4,-1,2,-1]	1,1,1,4,11	0	0
+A391826	holos	1	[0,8,-16,2,-6,31,-18,3,-9,6,-1]	2,4,13,35,113,368,1182,3838,12463	0	0
+A391827	holos	1	[0,24,-192,496,-376,-406,1940,-6052,13818,-24399,30799,-27459,28077,-26762,6980,8449,-10122,3981,6996,-5966,366,-2577,3935,-1925,245,192,-38,-35,12,-1]	2,13,66,397,2436,14785,90660,553739,3388938,20741171,126964984,777465223,4761197556,29162734671,178641529684,1094401625403,6705058123466,41082146261365,251723814381242,1542452107793101,9451751484893444,57919325075543063,354930424660085100,2175053003740626565,13329135871702906528,81684302445581585519,500586119909385507498,3067763617124618000471	0	0
+A391993	holos	0	[0,1,-3,3,-1]	0,14,40,78	0	0
+A391994	holos	0	[0,-1,3,-2,-2,3,-1]	0,0,-1,0,2,8,17	0	0
+A391997	holos	0	[0,-1,3,0,-8,6,6,-8,0,3,-1]	0,0,4,27,112,325,792,1666,3200,5670,9500	0	0
+A392267	holos	0	[0,-1,2,3,-4,-6,2,4,0,-1]	1,0,2,3,3,12,9,30	0	0
+A392268	holos	0	[0,-1,2,-1,4,-4,0,-6,2,0,4,0,0,-1]	1,0,0,2,0,3,3,0,12,4,5,30	0	0
+A392269	holos	0	[0,-1,3,3,-11,-9,18,17,-12,-15,3,6,0,-1]	1,0,3,6,6,30,25,90,120,238,441,672	0	0
+A392270	holos	0	[0,-1,3,-3,7,-12,6,-15,18,-3,20,-12,0,-15,3,0,6,0,0,-1]	1,0,0,3,0,6,6,0,30,10,15,90,15,105,210,49,420,420	0	0
+A392271	holos	0	[0,1,1,-3,0,3,0,-1]	1,0,1,0,1,1	0	0
+A392272	holos	0	[0,1,1,0,-3,0,0,3,0,0,-1]	1,0,0,1,0,0,1,0,1	0	0
+A392273	holos	0	[0,1,1,0,0,-3,0,0,3,0,0,-1]	1,0,0,1,0,0,1,0,0,1	0	0
+A392311	holos	0	[0,-1,-2,5,6,-15,-6,20,2,-15,0,6,0,-1]	1,0,2,0,3,4,4,20,5,60,13,140	0	0
+A392312	holos	0	[0,-1,-2,-1,6,6,0,-15,-6,0,20,2,0,-15,0,0,6,0,0,-1]	1,0,0,2,0,0,3,0,4,4,0,20,5,0,60,6,7,140	0	0
+A392313	holos	0	[0,1,3,-6,-8,33,-24,-39,108,-123,84,-36,9,-1]	1,3,6,10,25,81,238,596,1333,2827,5946,12618	0	0
+A392314	holos	0	[0,1,3,-6,-17,27,45,-75,-60,123,45,-126,-18,84,3,-36,0,9,0,-1]	1,0,3,0,6,10,10,60,15,210,49,560,280,1260,1296,2575,4665,5280	0	0
+A392316	holos	0	[0,1,3,3,-8,-18,-9,36,45,9,-84,-60,-3,126,45,0,-126,-18,0,84,3,0,-36,0,0,9,0,0,-1]	1,0,0,3,0,0,6,0,10,10,0,60,15,0,210,21,28,560,28,252,1260,36,1260,2520,100,4620,4620	0	0
+A392328	lambdan	0	n -> FI(n*n + 1)	a(n) = Fibonacci(n^2+1).	nonn,easy,new	0..65	nyi	_Seiichi Manyama_
+A392334	holos	0	[0,1,0,-3,0,3,0,-1]	1,1,3,9,5,25	0	0
+A392349	holos	0	[0,1,0,0,0,0,3,0,1,-1]	1,1,1,3,6,9,18,36	0	0
+A392350	holos	0	[0,1,-1,1,-1,1,-1,1,2,-2,2,-1]	1,1,1,1,3,6,9,12,21,39	0	0
+A392351	holos	0	[0,1,0,0,0,0,0,0,0,0,3,0,0,0,1,-1]	1,1,1,1,1,3,6,9,12,15,24,42,69,105	0	0
+A392352	holos	0	[0,1,-1,1,-1,1,-1,1,-1,1,-1,1,2,-2,2,-2,2,-1]	1,1,1,1,1,1,3,6,9,12,15,18,27,45,72,108	0	0
+A392355	holos	0	[0,-1,1,4,0,-6,0,4,0,-1]	1,0,1,0,1,0,1,1	0	0
+A392356	holos	0	[0,1,1,-5,0,10,0,-10,0,5,0,-1]	1,0,1,0,1,0,1,0,1,1	0	0
+A392398	holos	0	[0,1,0,0,4,0,-1,2,-1]	1,1,1,1,4,11,22	0	0
+A392399	holos	0	[0,1,0,0,0,4,0,0,-1,2,-1]	1,1,1,1,1,4,11,22,37	0	0
+A392400	holos	0	[0,-1,7,-1,3,-1]	1,1,2,11	0	0
+A392401	holos	0	[0,1,2,7,-3,3,-1]	1,1,1,5,21	0	0
+A392402	holos	0	[0,-1,0,6,3,-3,3,-1]	1,1,1,2,11,36	0	0
+A392403	holos	0	[0,1,0,2,6,1,-3,3,-1]	1,1,1,1,5,21,57	0	0
+A392404	holos	0	[0,-1,0,0,6,2,1,-3,3,-1]	1,1,1,1,2,11,36,85	0	0
+A392405	holos	0	[0,1,0,0,2,6,0,1,-3,3,-1]	1,1,1,1,1,5,21,57,121	0	0
