@@ -3808,7 +3808,7 @@ holrefa: holref1 holref2 holref3 holref4
 holref0: # grep the parameters of HolonomicRecurrence from jOEIS sources
 	$(DBAT) -x "SELECT aseqno FROM joeis WHERE superclass LIKE 'Holonomic%'" \
 	| perl -ne 's/\s+\Z//; print "../../../joeis/src/irvine/oeis/" . lc(substr($$_, 0, 4)) . "/$$_.java\n";' \
-	| xargs -l -innn grep -EH "super\(" nnn \
+	| xargs -innn grep -EH "super\(" nnn \
 	| sed -e 's/^.*A/A/'  -e 's/\.java:[ \t]*super./\tholos\t/' \
 	      -e 's/, \"/\t/' -e 's/\", \"/\t/' -e 's/\", /\t/' -e 's/.\;//' \
 	>        $@.tmp

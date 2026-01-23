@@ -1,0 +1,115 @@
+---- 2026-01-20 19:11:46
+A084631	lambdan	0	n -> new Q(BI(n + 8, 8), BI(n + 2, 2)).floor()	a(n) = floor(C(n+8,8)/C(n+2,2)).
+A086274	lambdan	1	n -> ZV(n + 6).*(n).-(1).*(n).+(18).*(n)./(24)	n^3+6*n^2-n+18)/24
+A095974	filter	0	new LambdaSequence(0, n -> ZV(n - 93).*(n).+(3196).*(n).-(48008).*(n).+(265483))	v -> PP(v.abs())	Evaluate n^4 - 93n^3 + 3196n^2 - 48008n + 265483 for n >= 0, record the primes.A109742	holos	1	[[0],[150,-115,27,-2],[100,-85,23,-2],[27,-6],[-9,2]]	1	0
+A095974	filter	0	new LambdaSequence(0, n -> ZV(n - 93).*(n).+(3196).*(n).-(48008).*(n).+(265483))	v -> PP(v.abs())	Evaluate n^4 - 93n^3 + 3196n^2 - 48008n + 265483 for n >= 0, record the primes.A109742	holos	1	[[0],[150,-115,27,-2],[100,-85,23,-2],[27,-6],[-9,2]]	1	0
+A109742	holos	1	[[0],[150,-115,27,-2],[100,-85,23,-2],[27,-6],[-9,2]]	1,2,5	0	0
+A117624	filter	1	new HolonomicRecurrence(0, "[[-93363947,38263500,-6509950,588615,-29836,804,-9],[1]]", "93363947", 0, 0)	v -> PP(v.abs())
+A123076	filnum	1	1	k -> PP(ZV(4*k+3).*(k).+(2).*(k).+(1))	Numbers k such that p = 1 + 2k + 3k^2 + 4k^3 is prime.
+A123238	holos	1	[[-1,0,0,0,0,0,0,0,-1,0,0,0,-1,0,0,0,0,0,-1,0,-1,0,0,0,0,0,0,-1,-1,0,-1,0,0,0,0,0,0,0,0,0,0,0,-1,0,-1,-1,0,0,0,0,-1,0,-1,0,0,0,0,0,0,0,0,0,0,-1,0,0,-1,0,-1,0,-1,0,0,0,0,-1,-1,0,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,-1,0,0,0,0,0,-1,-1,0,0,-1,0,0,-1,0,0,0,0,-1,0,0,0,-1,0,-1,-1,0,0,0,0,0,0,-1,-1,0,0,0,0,-1],[1]]	32	0	0
+A123635	sintrif	1	(term, n) -> Functions.NEXT_PRIME.z(term).+(term)./(2).modZ(3)	""	new A000040().skip(1)	Residue mod 3 of average of n-th and (n+1)st odd primes.	easy,nonn	1..105	nyi	_Clark Kimberling_
+A123677	filter	0	new A000040()	p -> PP(LU(PM(p)))	Primes p such that Lucas(prime(p)) is prime, where Lucas = F000032.	hard,more,nonn	1..11	nyi	_Alexander Adamchuk_
+A123678	filnum	0	1	k -> PP(LU(PM(PM(k))))	Numbers n such that Lucas(prime(prime(n))) is prime, where Lucas(k) = F000032(k).	hard,more,nonn	1..11	nyi	_Alexander Adamchuk_
+A123703	multia	1	"1,1"	(self, n) -> PR(1, n - 1, k -> self.a(k)).-(SU(1, n - 1, k -> self.a(k))).abs()	a(1)=a(2)=1. For n >= 3, a(n) = |(product{k=1 to n-1} a(k)) - (sum{j=1 to n-1} a(j))|.	easy,nonn	1..14	nyi	_Leroy Quet_
+A123724	partsun	1	new LambdaSequence(1, n -> CV(2).^(new Q(1, 3)).*(n).floor().testBit(0) ? ZV(-1) : ZV(1))	Partial sums of (-1)^floor(n*2^(1/3)).	easy,nice,sign,look	1..40000	nyi	_T. D. Noe_
+A123856	filter	1	new A000040()	p -> E123855(p.-(1)).mod(p).isZero()	Primes p that divide E123855(p-1).	nonn	1..199	nyi	_Alexander Adamchuk_
+A123857	filter	1	new A002808()	m -> E123855(m.-(1)).mod(m).isZero()	Composite numbers m that divide E123855(m-1) = Sum_{i=1..m-1} Sum_{j=1..m-1} prime(i)^j.	hard,more,nonn	1..30	nyi	_Alexander Adamchuk_, Oct 15 2006, Oct 22 2006
+A123859	multia	1	"1"	(self, n) -> { final Z s = SU(1, n - 1, k -> self.a(k)); return self.a(n - 1).+(SU(1, n - 1, k -> s.mod(self.a(k)).isZero() ? self.a(k) : ZV(0))); }	a(1)=1. a(n) = a(n-1) + (sum of the terms, from among terms a(1) through a(n-1), which divide sum{k=1 to n-1} a(k)).	nonn	1..1128	nyi	_Leroy Quet_
+A123885	multia	1	"1"	(self, n) -> self.a(n - 1).+(CNT(1, n - 1, k -> ZV(n).mod(self.a(k)).isZero()))	a(1)=1. a(n) = a(n-1) + (number of earlier terms {i.e., terms a(1) through a(n-1)} that divide n).	easy,nonn	1..63	nyi	_Leroy Quet_
+A123886	multia	0	"1"	(self, n) -> self.a(n - 1).+(CNT(0, n - 1, k -> ZV(n).mod(self.a(k)).isZero()))	a(0)=1. a(n) = a(n-1) + (number of earlier terms {i.e., terms a(0) through a(n-1)} that divide n).	easy,nonn	0..20000	nyi	_Leroy Quet_
+A124045	filnum	0	1	k -> E123269(k).mod(ZV(k).*(k)).isZero()	Numbers n such that n^2 divide E123269(n)
+A124067	filtpos	1	0	new A000045()	v -> PP(v.*(2).+(1))	Numbers k such that 2*F(k) + 1 is a prime, where F = A000045.
+A124105	filter	1	new A000045().skip(2)	v -> Predicates.PRACTICAL.is(v)	Practical Fibonacci numbers.	nonn	1..108	nyi	_David Eppstein_
+A124179	sintrif	1	(term, n) -> PM(REV(term))	""	new A000040()	a(n) = prime(R(prime(n))) where prime(i) is the i-th prime and R(p) is the value of the reverse of the digits of p.	easy,nonn,base	1..10000	nyi	_Cino Hilliard_
+A160470	holos	0	[[0],[-240,-251,-87,-10],[0,11,5]]	4	0	0
+A160471	holos	0	[[0],[-17136,-17608,-6719,-1127,-70],[0,346,231,35]]	34	0	0
+A160472	holos	0	[[0],[-1071360,-1109622,-452705,-90952,-8995,-350],[0,11862,9461,2310,175]]	496	0	0
+A182333	multraf	1	(self, n) -> self.s(0).*(self.s(1))	"1"	new A323500(), new A323501()
+A188269	filter	1	new LambdaSequence(0, n -> ZV(n + 1).*(n).+(4).*(n).+(7).*(n).+(5))	PRIME	lst={};Do[If[PrimeQ[p=n^4+n^3+4*n^2+7*n+5]
+A189642	ratos	0	[[-50,-70,-30,-4],[24,50,35,10,1]]	25/12	0	0
+A189998	ratos	0	[[-274,-450,-255,-60,-5],[120,274,225,85,15,1]]	137/60	0	0
+A192359	ratos	0	[[-1764,-3248,-2205,-700,-105,-6],[720,1764,1624,735,175,21,1]]	49/20	0	0
+A192449	ratos	0	[[-13068,-26264,-20307,-7840,-1610,-168,-7],[5040,13068,13132,6769,1960,322,28,1]]	363/140	0	0
+A202946	holos	1	[[0],[-120,162,-54],[2]]	3	0	0
+A202948	holos	1	[[0],[-24,54,-27],[1]]	-3	0	0
+A218377	polyza	0	"[0,1,0,1]"	"x,B,x,neg,B,+,2,-,2,/,exp"	0	1	0	2	egf(new A001187())
+A243694	holos	0	[[0],[-972,4698,-4482,1188],[720,-3522,5175,-2277],[0,-112,-136,176]]	1,1	0	0
+A270825	lambdan	0	n -> SU(0, n, i -> (((i/2)&1) == 1 ? ZV(-1) : ZV(1)).*(SQRT(i)))	a(n) = Sum_{i=0..n} (-1)^floor(i/2)*floor(sqrt(i)).
+A272302	filtpos	1	0	new LambdaSequence(0, n -> ZV(3*n - 183).*(n).+(3318).*(n).-(18757).abs())	PRIME	(abs(3*n^3-183*n^2+3318*n-18757)) \\ _Charles R Greathouse IV_, Feb 17 2017
+A272323	filtpos	1	0	new LambdaSequence(0, n -> ZV(82*n -1228).*(n).+(6130).*(n).-(5861).abs())	PRIME	(abs(82*n^3-1228*n^2+6130*n-5861)), print1(n, ", "))); \\ _Altug Alkan_, Apr 25 2016
+A272325	filtpos	1	0	new LambdaSequence(0, n -> ZV(n + 853).*(n).+(2636).*(n).+(3536).*(n).+(1753))	PRIME	(n^4+853*n^3+2636*n^2+3536*n+1753), print1(n, ", "))); \\ _Altug Alkan_, Apr 25 2016
+A272443	filtpos	1	0	new LambdaSequence(0, n -> ZV(n - 99).*(n).+(3588).*(n).-(56822).*(n).+(348272).*(n).-(286397).abs())	PRIME	(abs(n^5-99*n^4+3588*n^3-56822*n^2+348272*n-286397)), print1(n, ", "))); \\ _Altug Alkan_, Apr 29 2016
+A274901	holos	1	[[0,0,0,-8,-6,-6,-8,-7,-3,-3,-6,0,0,0,-1],[48]]	1	0	0
+A274902	holos	1	[[0,0,0,0,0,0,-8,0,0,-12,0,0,-8,0,0,0,0,0,-4,-6,-3,-6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-1],[48]]	1	0	0
+A323500	lambdan	1	n -> { final int n4 = n&3; if (n == 1) { return ZV(1); } else if (n4 == 0) { return FA(n/2).*(n + 1)./(2); } else if (n4 == 1) { return FA((n - 1)/2).*(ZV(n + 3).*(n).+(2).*(n).-(2))./(8); } else if (n4 == 2) { return FA(n/2 -1).*(ZV(n + 1).*(n).+(2))./(4); } else { return FA((n - 1)/2); }}	Number of minimum dominating sets in the n X n black bishop graph.
+A323501	lambdan	2	n -> { final int n4 = n&3; if (n == 1) { return ZV(1); } else if (n4 == 0) { return FA(n/2).*(n + 1)./(2); } else if (n4 == 1) { return FA((n - 1)/2); } else if (n4 == 2) { return FA(n/2 -1).*(ZV(n + 1).*(n).+(2))./(4); } else { return FA((n - 3)/2).*(ZV(n + 1)).*(ZV(n + 1).*(n).-(6).*(n).+(6))./(16); }}
+A325008	tablamb	1	1	n -> new Integer[] { 1, 2*n}	(n,k) -> SU(0, k - 1, j -> BIN(-j - 2, k - j - 1).*(BIN(BIN(j + 2, 2).+(n - 1), ZV(n)))).+(SU(0, k - 2, j -> BIN(j - k - 1, j).*(BIN(BIN(k - j, 2), ZV(n)))))
+A325009	tablamb	1	1	n -> new Integer[] { 1, 2*n}	(n,k) -> SU(0, k - 1, j -> BIN(-j - 2, k - j - 1).*(BIN(BIN(j + 2, 2).+(n - 1), ZV(n))))
+A325011	tablamb	1	1	n -> new Integer[] { 1, 2*n}	(n,k) -> SU(0, k - 1, j -> BIN(-j - 2, k - j - 1).*(BIN(BIN(j + 2, 2).+(n - 1), ZV(n)))).-(SU(0, k - 2, j -> BIN(j - k - 1, j).*(BIN(BIN(k - j, 2), ZV(n)))))
+A351696	ratos	1	[[-9,-54,-117,-120,-65,-18,-2],[0,6,11,6,1]]	385/96	0	0
+A351697	ratos	1	[[-72,-432,-936,-960,-520,-144,-16],[0,6,11,6,1]]	32/3	0	4
+A356417	filnum	1	0	k -> Predicates.SQUARE.is(REV(k))		Numbers whose reversal is a square.
+A362677	filter	1	new A000040()	p -> Predicates.CUBE.is(REV(p).+(1))	Primes whose reversal + 1 is a cube.
+A367593	filnum	1	0	k -> new Q(REV(k).-(1), k + 1).isInteger()	Nonnegative integers k such that (R(k) - 1)/(k + 1) is an integer, where R(k) is the digit reversal of k.
+A367793	filter	1	new A000040()	p -> Predicates.SEMIPRIME.is(p.+(REV(p)))	Primes p such that the sum of p and its reversal is a semiprime.
+A376259	filnum	1	1	k -> { final Q rk = new Q(REV(k), k); return rk.den().+(1).equals(rk.num()); }	Numbers k such that R(k)/k is of the form (m + 1)/m, where R(k) is the digital reversal of k.
+A376260	filnum	1	1	k -> { final Q rk = new Q(REV(k), k); return rk.den().equals(rk.num().+(1)); }	Numbers k such that R(k)/k is of the form m/(m + 1), where R(k) is the digital reversal of k.
+A376872	holos	0	[[0],[6,-33,54,-27],[0,-2,2]]	1,1	0	0
+A385903	polyx	0	"[0,0,0,6],[1,-1],[1,-4,6,-5,1]"	"p1,^4,p2,/,log"	0	1
+A386283	holos	0	[[0],[-15240,9398,-1905,127],[18540,-15003,3924,-333],[-7812,7941,-2709,303],[3354,-3570,1296,-165],[-666,1116,-603,101],[-102,141,-36,-15],[6,-23,33,-19],[0,0,0,1]]	1	0	0
+A387559	holos	1	[0,-1,34,-288,406,2110,-2758,-428,110,-1]	328,34656,3663196,387220788,40931551142,4326710290084,457359216406718,48345611095683868	0	0
+A387561	holos	1	[0,12,-27,-306,-16,34,-1]	75,2499,83079,2761659,91800447	0	0
+A387567	holos	1	[0,-1,18,-17,-526,-1476,-1582,-561,50,-1]	332,12210,411402,13182776,408531656,12362010796,367445471844,10771214079422	0	0
+A389176	holos	0	[0,1,-1,-6,6,15,-15,-20,20,15,-15,-6,6,1,-1]	63,177,396,912,1583,3145,4759,8596,11892,20113,26118,42064,52131,80785,96629	0	0		
+A390218	holos	0	[0,-1,1,4,0,-6,0,4,0,-1]	1,0,2,0,3,0,4,1	0	0
+A390219	holos	0	[0,-1,1,4,0,-6,0,4,0,-1]	1,0,3,0,6,0,10,1	0	0
+A390220	holos	0	[0,1,-1,0,4,0,-6,0,4,0,-1]	1,0,1,0,1,0,1,0,1	0	0
+A390221	holos	0	[0,1,-1,0,4,0,-6,0,4,0,-1]	1,0,2,0,3,0,4,0,5	0	0
+A390222	holos	0	[0,1,-1,0,4,0,-6,0,4,0,-1]	1,0,3,0,6,0,10,0,15	0	0
+A391843	holos	0	[0,1,1,-3,0,3,0,-1]	1,0,2,0,3,1	0	0
+A391995	holos	0	[0,-1,3,-2,-2,3,-1]	0,0,-1,-1,-1,1	0	0
+A392419	holos	0	[0,1,-7,21,-35,35,-21,7,-1]	7,41,190,678,2006,5130,11680,24224,46576	0	0		
+A392540	holos	0	[0,1,0,0,-1,2,-1]	1,2,3,4,5	0	0
+A392541	holos	0	[0,1,0,0,0,-1,2,-1]	1,2,3,4,5,6	0	0
+A392542	holos	0	[0,1,0,-1,4,-6,4,-1]	1,4,10,20,35,56	0	0
+A392543	holos	0	[0,1,0,0,0,0,-1,2,-1]	1,2,3,4,5,6,7	0	0
+A392544	holos	0	[0,1,0,0,0,1,-3,3,-1]	1,3,6,10,15,21,28	0	0
+A392545	holos	0	[0,1,0,0,-1,4,-6,4,-1]	1,4,10,20,35,56,84	0	0
+A392546	holos	0	[0,1,0,1,-5,10,-10,5,-1]	1,5,15,35,70,126,210	0	0
+A392547	holos	0	[0,1,-1,6,-15,20,-15,6,-1]	1,6,21,56,126,252,462	0	0
+A392552	holos	0	[0,-1,0,2,-4,1,4,-6,4,-1]	1,4,10,20,37,68,126,232	0	0
+A392553	holos	0	[0,-1,0,0,2,-4,2,-1,4,-6,4,-1]	1,4,10,20,35,58,96,162,277,472	0	0
+A392554	holos	0	[0,-1,0,0,0,2,-4,2,0,-1,4,-6,4,-1]	1,4,10,20,35,56,86,132,207,332,538,868	0	0
+A392576	decexp	0	() -> CV(3).-(CR.E)./(CR.E.-(CV(2)).*(6))	nyi t	Decimal expansion of (3 - e)/(6*(e - 2)).	nonn,cons,easy,new	0..100	nyi	_Stefano Spezia_
+A392578	holos	0	[0,-1,6,-17,26,-22,8,-1]	1,8,42,186,755,2910	0	0
+A392579	holos	0	[0,-1,8,-28,58,-78,68,-37,10,-1]	1,10,63,328,1551,6936,29915,125784	0	0
+A392580	holos	0	[0,-1,10,-45,120,-212,262,-230,140,-56,12,-1]	1,12,88,524,2810,14198,69068,327240,1520519,6959930	0	0
+A392581	holos	0	[0,-1,4,-10,14,-13,6,-1]	1,6,23,74,219,618	0	0
+A392582	holos	0	[0,-1,8,-26,48,-59,48,-26,8,-1]	1,8,38,144,489,1568,4858,14696	0	0
+A392583	holos	0	[0,-1,10,-45,118,-200,232,-191,110,-43,10,-1]	1,10,57,250,958,3422,11759,39416,129700,420542	0	0
+A392584	holos	0	[0,-4,12,-21,22,-15,6,-1]	1,6,21,58,144,342	0	0
+A392585	holos	0	[0,-1,10,-37,68,-78,58,-28,8,-1]	1,8,36,122,354,948,2447,6210	0	0
+A392586	holos	0	[0,-1,10,-47,130,-231,272,-220,122,-45,10,-1]	1,10,55,222,745,2242,6368,17620,48196,130764	0	0
+A392587	holos	0	[0,-1,-2,5,0,-13,20,-15,6,-1]	1,6,21,56,128,270,552,1122	0	0
+A392588	holos	0	[0,-16,48,-68,56,-28,8,-1]	1,8,36,120,332,816	0	0
+A392589	holos	0	[0,-1,8,-36,100,-190,242,-208,120,-45,10,-1]	1,10,55,220,717,2032,5245,12800,30433,71936	0	0
+A392590	holos	1	[0,-1,1,0,0,1,-1]	1,1,3,4,5	0	0
+A392595	lambdan	0	n -> E324895(n).modZ(360)	gives the largest proper divisor of primorial base exp-function.	nonn,base,easy,new	0..30030	nyi	_Antti Karttunen_
+A392596	lambdan	0	n -> F276086(n).modZ(360)	is the primorial base exp-function.	nonn,base,look,new	0..30030	nyi	_Antti Karttunen_
+A392599	lambdan	0	n -> E276087(n).modZ(360)	is the primorial base exp-function applied twice.	nonn,base,easy,new	0..30030	nyi	_Antti Karttunen_
+A392600	lambdan	0	n -> E327860(n).modZ(360)	is the arithmetic derivative of the primorial base exp-function.	nonn,base,easy,new	0..30030	nyi	_Antti Karttunen_
+A392638	holos	0	[0,-1,2,-9,20,-36,58,-70,56,-28,8,-1]	1,8,36,120,330,794,1740,3588,7163,14170	0	0
+A392639	holos	0	[0,-4,20,-65,140,-220,254,-210,120,-45,10,-1]	1,10,55,220,715,2004,5035,11680,25670,54740	0	0
+A392640	holos	0	[[0],[-2,1],[12,-8],[-6,6],[2,-4],[0,1]]	1	0	0
+A392641	holos	0	[[0],[-3,1],[15,-6],[-30,15],[30,-20],[-15,15],[5,-10],[0,1]]	1	0	0
+A392642	holos	0	[[0],[-3,1],[15,-6],[-30,15],[30,-20],[-11,11],[3,-6],[0,1]]	1	0	0
+A392643	holos	0	[[0],[-3,1],[15,-6],[-30,15],[36,-24],[-15,15],[3,-6],[0,1]]	1	0	0
+A392644	holos	0	[[0],[-4,1],[20,-6],[-40,15],[40,-20],[-20,15],[10,-15],[0,1]]	1	0	0
+A392645	holos	0	[[0],[-6,1],[48,-9],[-168,36],[336,-84],[-420,126],[336,-126],[-168,84],[48,-36],[-12,18],[0,-1]]	1	0	0
+A392673	holos	0	[0,1,1,0,-3,0,3,0,-1]	1,0,2,0,3,0,4	0	0
+A392674	holos	0	[0,1,1,0,-3,0,0,3,0,0,-1]	1,0,0,2,0,0,3,0,1	0	0
+A392675	holos	0	[0,1,1,0,0,-3,0,0,3,0,0,-1]	1,0,0,2,0,0,3,0,0,4	0	0
+---- 2026-01-20 19:24:52
+---- 2026-01-20 19:32:19
+---- 2026-01-20 19:36:56
+---- 2026-01-20 19:49:40

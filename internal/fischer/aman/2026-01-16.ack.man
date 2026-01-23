@@ -1,0 +1,106 @@
+---- 2026-01-16 22:10:55
+A085133	filnum	1	1	k -> Predicates.SMOOTH.is(7, k) &&  Predicates.SMOOTH.is(7, REV(k))	Numbers k such that k and its digit reversal are both 7-smooth (J002473).	base,nonn	1..10000	nyi	_Amarnath Murthy_
+A085329	filnum	1	1	k -> SIGMA(REV(k)).equals(SIGMA(k)) && !Predicates.PALINDROME.is(k)	Non-palindromic solutions to sigma(R(n)) = sigma(n), where R = F004086 is digit-reversal.	base,nonn	1..1000	nyi	_Labos Elemer_
+A085429	filnum	0	0	k -> Functions.DIGIT_SUM.i(2, k) == Functions.DIGIT_SUM.i(2, REV(k))	Numbers k such that the number of 1's in the binary expansion of k is equal to the number of 1's in the binary expansion of the reversal of k.	base,easy,nonn	0..1000	nyi	_Jason Earls_
+A085607	filnum	1	1	k -> !Predicates.PALINDROME.is(k) && Functions.SOPFR.i(REV(k)) == Functions.SOPFR.i(k)	Non-palindromic n and its digit reversal have the same sum of prime factors (with repetition).	base,nonn	1..500	nyi	_Jason Earls_
+A085751	filter	1	new A001358()	s -> SEM(REV(s))	Semiprimes whose reversal is also a semiprime.	base,easy,nonn	1..1000	nyi	_Jason Earls_
+A085778	filter	1	new A000040()	p -> SEM(REV(p))	Primes whose reversal is a semiprime.	base,easy,nonn	1..1000	nyi	_Jason Earls_
+A085928	multia	1	"1,2"	(self, n) -> { final Z conc = new Z(self.a(n - 2).toString() + self.a(n - 1).toString()); return conc.-(REV(conc)).abs(); }	a(1) = 1, a(2) = 2, then the absolute difference of the concatenation of two previous terms and its digit reversal.	base,nonn	1..12	nyi	_Amarnath Murthy_ and _Jason Earls_
+A088112	filnum	1	1	k -> Predicates.POWER.is(k) && PP(REV(k))	Perfect powers whose digit reversal is prime.	base,nonn	1..471	nyi	_Amarnath Murthy_
+A093317	sintrif	1	(term, n) -> MU(term)	""	new A064148()	Consider numbers n such that mu(n) = mu(n+1), J064148; sequence gives values of mu(J064148(n))
+A095198	multia	1	"1"	(self, n) -> REV(self.a(n - 1)).*(PM(n - 1))	nyi	a(1) = 1, a(n+1) = prime(n)*Digit reversal of a(n).	base,nonn	1..19	nyi	_Amarnath Murthy_
+A096987	lambdan	0	n -> RU(1, n, k -> Q.ONE./(RU(1, k, j -> new Q(1, j)))).num()	Numerator of Sum_{k=1..n} 1/H(k), where H(k) = Sum_{j=1..k} 1/j is the k-th harmonic number.	easy,frac,nonn	0..14	nyi	_Leroy Quet_
+A097393	filnum	1	1	k -> { final Z q = REV(k); return !ZV(k).equals(q) && SEM(k) && SEM(q); }	Emirpimes: numbers n such that n and its reversal are distinct semiprimes.
+A102720	lambdan	0	n -> RU(1, n, k -> QV(k).^(2).*(RU(1, n + k, i -> new Q(1, i)))).num()	Numeratoror of Sum_{k=1..n} k^2*H_{n+k} where H_m = Sum_{i=1..m} 1/i.	nonn,frac	0..1000	nyi	_N. J. A. Sloane_
+A111308	lambdan	0	n -> SU(1, n, k -> DF(k).*(DF(n + 1 - k)))	Sum_{k=1..n} k!! * (n+1-k)!!, where k!! = k*(k-2)*(k-4)..*(1 or 2).	easy,nonn	0..25	nyi	_Leroy Quet_
+A113844	multia	1	"1,1"	(self, n) -> SU(1, (n - 1)/2, k -> self.a(k)).*(SU((n - 1)/2 + 1, n - 1, j -> self.a(j)))	a(1) =a(2) =1. a(n+1) = (sum{1<=k<=n/2} a(k)) * (sum{n/2<j<=n} a(j)).	easy,nonn	1..20	nyi	_Leroy Quet_
+A113845	multia	1	"1,1"	(self, n) -> PR(1, (n - 1)/2, k -> self.a(k)).+(PR((n - 1)/2 + 1, n - 1, j -> self.a(j)))	a(1) =a(2) =1. a(n+1) = (sum{1<=k<=n/2} a(k)) * (sum{n/2<j<=n} a(j)).	easy,nonn	1..20	nyi	_Leroy Quet_
+A114549	filter	1	new A000040()	p -> PP(Functions.DIGIT_SUM.i(p) + Functions.DIGIT_LENGTH.i(p))	Prime numbers p for which (sum of the digits of p) + (number of the digits of p) is a prime.	base,nonn	1..1000	nyi	Luc Stevens (lms022(AT)yahoo.com)
+A114652	multia	1	"1"	(self, n) -> self.a(n - 1).+(CNT(1, n - 1, k -> GCD(ZV(n), self.a(k)).equals(ZV(1))))	a(1)=1. For n>1, a(n) = a(n-1) + (number of terms among {a(1),a(2),...,a(n-1)} which are coprime to n).	nonn	1..57	nyi	_Leroy Quet_
+A114653	diffs	1	new A114652()	- A114652(n).	nonn	1..76	nyi	_Leroy Quet_
+A114926	filnum	1	1	k -> PI(k).equals(REV(k).-(k))	Numbers n such that pi(n)=reversal(n)-n.	nonn,base,more	1..15	nyi	_Farideh Firoozbakht_
+A114930	filnum	1	1	k -> PHI(k).equals(REV(k).*(2))	Numbers n such that phi(n)=2*reversal(n).	nonn,base,more	1..10	nyi	_Farideh Firoozbakht_
+A114931	filnum	1	1	k -> PHI(k).equals(REV(k).*(4))	Numbers n such that phi(n)=4*reversal(n).	nonn,base,more	1..29	nyi	_Farideh Firoozbakht_
+A114931	filnum	1	1	k -> PHI(k).equals(REV(k).*(4))	Numbers n such that phi(n)=4*reversal(n).	nonn,base,more	1..29	nyi	_Farideh Firoozbakht_
+A115673	filter	0	new A078972()	v -> Predicates.CUBE.is(REV(v))	whose digit reversal is a cube.
+A117218	filter	1	new A000290()	v -> v.mod(Functions.DIGIT_LENGTH.l(v)) == 0L	Squares divisible by their number of digits.	base,easy,nonn	1..10000	nyi	Luc Stevens (lms022(AT)yahoo.com)
+A117219	filter	1	new A000578()	v -> v.mod(Functions.DIGIT_LENGTH.l(v)) == 0L	Cubes divisible by their number of digits.	base,easy,nonn	1..10000	nyi	Luc Stevens (lms022(AT)yahoo.com)
+A119031	multia	1	"1"	(self, n) -> REV(self.a(n - 1).+(4))	Add and Reverse: a(n) = the reversal of (a(n-1)+d), case a(1)=1 and d=4.
+A123989	lambdan	0	n -> RU(1, 2*n, k -> new Q(1, k)).*(FA(2*n))./(FA(n)).num()	a(n) = H(2*n)*(2*n)!/n! where H(n) = Sum_{k=1..n} 1/k, the n-th harmonic number.        easy,nonn       0..16   nyi     _Leroy Quet_
+A124078	lambdan	0	n -> RU(1, n, k -> new Q(1, k)).*(FA(n))./(FA(n/2)).num()	a(n) = H(n)*n!/(floor(n/2))!, where H(n) = Sum_{k=1..n} 1/k, the n-th harmonic number.	easy,nonn	0..23	nyi	_Leroy Quet_
+A124079	lambdan	0	n -> RU(1, 2*n + 1, k -> new Q(1, k)).*(FA(2*n + 1))./(FA(n)).num()	a(n) = H(2n+1)*(2n+1)!/n!, where H(n) = Sum_{k=1..n} 1/k, the n-th harmonic number.	easy,nonn	0..15	nyi	_Leroy Quet_
+A125677	multia	0	"1,1"	(self, n) -> self.a(n - 1).modZ(n).+(self.a(n - 2))	a(0) = a(1) = 1; for n>1, a(n) = a(n-2) + a(n-1) (mod n).	easy,nonn	0..10000	nyi	_Leroy Quet_
+A125678	multia	0	"1"	(self, n) -> self.a(n - 1).^(2).modZ(n).+(1)	a(0) = 1; for n>0, a(n) = (a(n-1)^2 reduced mod n) + 1.	easy,nonn	0..10000	nyi	_Leroy Quet_
+A125952	multia	0	"1"	(self, n) -> SU(0, n - 1, k -> self.a(self.a(k).intValueExact() % n))	a(0)=1. a(n) = sum{k=0 to n-1} a(a(k)(mod n)).	easy,nonn	0..36	nyi	_Leroy Quet_
+A125953	multia	0	"1"	(self, n) -> SU(0, n - 1, k -> self.a(k).modZ(n))	a(0)=1. a(n) = sum{k=0 to n-1} (a(k)(mod n)).	easy,nonn	0..55	nyi	_Leroy Quet_
+A126022	multia	0	"1"	(self, n) -> CNT(0, n - 1, k -> self.a(k).compareTo(ZV(n)) <= 0).+(self.a(n - 1)).-(1)	a(1)=1; for n>1, a(n) = a(n-1) + (the number of terms of {a(k)} which are <= n).	easy,nonn	1..57	nyi	_Leroy Quet_
+A130000	filnum	0	4	k -> !PP(k) && REV(k).-(PHI(k)).equals(ZV(1))	Composite solutions to the equation reversal(x) - phi(x) = 1.
+A130147	multia	0	"1"	(self, n) -> self.a(ZV(n - 1)./(self.a(n - 1)).intValueExact()).+(1)	a(0)=1. a(n+1) = a(floor(n/a(n))) + 1.	easy,nonn	0..20000	nyi	_Leroy Quet_
+A143603	trilambn	0	0	0	(n, k) -> BI(3*n - k, n - k).*(2*k + 1)./(2*n + 1)
+A144480	trilambn	0	0	0	(n, k) -> BI(n, k).*(MIN(k + 1, n - k + 1))	, triangle read by rows (n >= 0, 0 <= k <= n).	nonn,easy,tabl	0..65	nyi	_Roger L. Bagula_
+A144525	polyx	0	"[1],[1,-3]"	"1,p1,sqrt,-,exp"	0	0
+A144526	polyx	0	"[1],[1,-3]"	"1,p1,sqrt,-,exp"	0	4
+A144652	trilambn	1	1	1	(n, m) -> ZV(2*m + 1).*(n).+(m)./(2)	Triangle, read by rows, where T(m,n) = floor((2mn+m+n)/2) with m >= n >= 1.	nonn,tabl,easy	1..100	nyi	_Vincenzo Librandi_
+A144653	lambdan	0	n -> RU(1, n, k -> QV(k).^(2).*(RU(1, n + k, i -> new Q(1, i)))).den()	Denominator of Sum_{k=1..n} k^2*H_{n+k} where H_m = Sum_{i=1..m} 1/i.	nonn,frac	0..1000	nyi	_N. J. A. Sloane_
+A144654	lambdan	0	n -> RU(1, n, k -> QV(k).*(RU(1, n + k, i -> new Q(1, i)))).num()	Numerator of   Sum_{k=1..n} k*  H_{n+k} where H_m = Sum_{i=1..m} 1/i.	nonn,frac	0..1000	nyi	_N. J. A. Sloane_
+A144655	lambdan	0	n -> RU(1, n, k -> QV(k).*(RU(1, n + k, i -> new Q(1, i)))).den()	Denominator of Sum_{k=1..n} k*  H_{n+k} where H_m = Sum_{i=1..m} 1/i.	nonn,frac	0..1000	nyi	_N. J. A. Sloane_
+A144656	multia	0	"0,1,0,1"	(self, n) -> { final Z n257 = ZV(n).^(2).-(5*n - 7); return new Q(self.a(n - 1).*(n - 2).*(n257), n - 3).+(self.a(n - 2).*(n257)).-(new Q(self.a(n - 3).*(n - 2), n - 3)).num(); }	a(n) = (n mod 2) if n <= 3, otherwise a(n) = (n^2-5n+7)*(n-2)*a(n-1)/(n-3) + (n^2-5n+7)*a(n-2) - (n-2)*a(n-3)/(n-3).	nonn	0..19	nyi	_N. J. A. Sloane_
+A181093	sintrif	1	(term, n) -> term.*(term.+(2))./(3)	""	new A023200()	p*(p+2)/3 where p and p+4 are primes.	nonn	1..39	nyi	_Zak Seidov_
+A181637	filnum	1	1	k -> Functions.CARMICHAEL_LAMBDA.z(k).equals(REV(k))	Numbers n such that lambda(n) = reversal(n).
+A181638	filnum	1	1	k -> Functions.BIG_OMEGA.z(k).equals(REV(k))	Numbers n such that bigomega(n) = reversal(n).
+A181767	multia	0	"95,111,119,123,125,62,31"	(self, n) -> self.a(n-7).xor(self.a(n-5)).xor(self.a(n-4)).xor(self.a(n-3)).xor(self.a(n-2)).xor(self.a(n-1))	with initial seven terms 95, 111, 119, 123, 125, 62, and 31.	nonn,easy,less	0..100	nyi	_Roger L. Bagula_
+A181864	multia	1	"1,2"	(self, n) -> ZUtils.concatenate(1, n - 1, k -> self.a(k).^(2)).divide(self.a(n - 1))	, "10,1". For n >= 3, a(n) is found by concatenating the squares of the first n-1 terms of the sequence and then dividing the resulting number by a(n-1).	nonn,easy	1..8	nyi	_Peter Bala_
+A181865	multia	1	"1,2"	(self, n) -> ZUtils.concatenate(1, n - 1, k -> self.a(k).^(3)).divide(self.a(n - 1))	, "10,1". For n >= 3, a(n) is found by concatenating the cubes of the first n-1 terms of the sequence and then dividing the resulting number by a(n-1).	nonn,easy,base	1..6	nyi	_Peter Bala_
+A181866	multia	1	"1,2"	(self, n) -> ZUtils.concatenate(1, n - 1, k -> self.a(k).^(4)).divide(self.a(n - 1))	, "10,1". For n >= 3, a(n) is found by concatenating the fourth powers of the first n-1 terms of the sequence and then dividing the resulting number by a(n-1).	nonn,easy,base	1..5	nyi	_Peter Bala_
+A181867	multia	1	"2,1"	(self, n) -> ZUtils.concatenate(1, n - 1, k -> self.a(n - k)).divide(self.a(n - 1))	, "10,1". For n >= 3, a(n) is found by concatenating the first n-1 terms of the sequence in reverse order and then dividing the resulting number by a(n-1).	nonn,easy,base	1..10	nyi	_Peter Bala_
+A181869	multia	1	"2,1"	(self, n) -> ZUtils.concatenate(1, n - 1, k -> self.a(n - k).^(2)).divide(self.a(n - 1))	, "10,1". For n >= 3, a(n) is found by concatenating the squares of the first n-1 terms of the sequence in reverse order and then dividing the resulting number by a(n-1).	nonn,easy,base	1..7	nyi	_Peter Bala_
+A181870	multia	1	"2,1"	(self, n) -> ZUtils.concatenate(1, n - 1, k -> self.a(n - k).^(3)).divide(self.a(n - 1))	, "10,1". For n >= 3, a(n) is found by concatenating the cubes of the first n-1 terms of the sequence in reverse order and then dividing the resulting number by a(n-1).	nonn,easy,base	1..6	nyi	_Peter Bala_
+A181885	lambdan	1	n -> CR.PHI.^(n)./(n).round()	Integer nearest (1/n)*(r^n), where r = golden ratio = (1 + sqrt(5))/2.	nonn	1..1000	nyi	_Clark Kimberling_
+A181942	lambdan	2	n -> { final CR nlog = CV(n).log(); return (n == 2) ? ZV(-7) : CV(n)./(nlog.*(nlog.log())).floor(); }	A181942(n)=n\(log(n)*log(log(n)))
+A182210	trilambn	1	1	1	(n, k) -> new Q(k*(n + 1), k + 1).floor()	Triangle T(n,k) = floor(k*(n+1)/(k+1)), 1 <= k <= n.	nonn,nice,easy,tabl,look	1..150	nyi	_Dennis P. Walsh_
+A217386	filter	1	new A006567()	v -> Predicates.SQUARE.is(v.-(REV(v)).abs())	Emirps (J006567) whose difference with the reversal is a perfect square.
+A217387	filter	1	new A006567()	v -> Predicates.CUBE.is(v.-(REV(v)).abs())	Emirps (J006567) whose difference with the reversal is a perfect cube.
+A217591	sintrif	1	(term, n) -> term.-(REV(term)).abs()	""	new A006567()		Absolute differences between emirps (J006567) and their reversals.
+A217613	sintrif	1	(term, n) -> term.-(REV(term)).abs()	""	new A097393()	Absolute value of difference between the n-th "emirpimes" A097393(n) and its reversal.
+A227371	filnum	1	1	k -> Predicates.SQUARE.is(PM(k).+(REV(PM(k))))	Numbers n such that prime(n) + reversal(prime(n)) is a square.
+A227508	filnum	1	1	k -> FA(k).mod(REV(k)).isZero()	Numbers n such that n! is divisible by R(n), the digit reversal of n.
+A227780	filter	1	new A006567()	p -> Predicates.SQUARE.is(p.+(REV(p)))	Emirps p such that p plus its decimal reversal is a perfect square.
+A230768	filnum	1	1	k -> ZV(k + 2).equals(REV(SIGMA(k)))	Numbers n such that n = reversal(sigma(n)) - 2.
+A247201	filnum	1	1	k -> ZV(k + 1).mod(REV(k)).isZero()	Numbers m whose reversal divides m+1.
+A250602	filnum	1	1	k -> REV(k + 1).mod(REV(k)).isZero()	Numbers k whose reversal divides the reversal of k+1.
+A253912	filter	1	new A000583()	v -> PP(REV(v))	Fourth powers whose reversal is a prime.
+A275896	sintrif	0	(term, n) -> term.-(1)	""	new A065189()	a(n) = J065189(n+1)-1.	nonn	0..9999	nyi	_N. J. A. Sloane_
+A275971	filnum	1	1	k -> ZV(k).*(k).toString().matches("[2357]+")	Numbers n such that the decimal digits of n^2 are all prime.	nonn,base	1..1000	nyi	_Zak Seidov_
+A279007	holos	0	[0,2,5,0,-1]	0,2,1,10	0	0
+A306273	filnum	1	0	k -> Predicates.SQUARE.is(REV(k).*(k))	Numbers k such that k * rev(k) is a square, where rev=F004086, decimal reversal.
+A309607	filnum	0	0	k -> PP(REV(Z2(k).-(1)))	Exponents k for which reversal(2^k-1) is prime.
+A355651	filter	1	new A006567()	p -> { final Z q = REV(p); return Predicates.EMIRP.is(p.*(q).mod(p.+(q))); }	Emirps p such that (p*q) mod (p+q) is also an emirp, where q is the digit reversal of p.
+A356791	filter	1	new A006567()	p -> { final Z q = REV(p); return q.compareTo(p) > 0 && PP(q.mod(p)); }	Emirps p such that R(p) > p and  R(p) mod p is prime, where R(p) is the reversal of p.
+A356947	filter	1	new A006567()	p -> { final Z q = REV(p); final Z s = Functions.DIGIT_SUM.z(p); return p.mod(s).equals(ZV(1)) && q.mod(s).equals(ZV(1)); }	Emirps p such that p == 1 (mod s) and R(p) == 1 (mod s), where R(p) is the digit reversal of p and s the sum of digits of p.
+A357098	filter	1	new A006567()	p -> Predicates.EMIRP.is(p.+(REV(p))./(2))	Emirps p such that the average of p and its digit reversal is an emirp.
+A389186	holos	0	[0,-16,24,64,-108,-96,198,60,-189,-3,99,-15,-27,7,3,-1]	1,4,11,30,78,137,327,499,1124,1640,3559,5194,10994,16499	0	0
+A390034	holos	0	[0,1,1,-3,0,3,0,-1]	1,0,3,0,6,1	0	0
+A390035	holos	0	[0,1,1,0,-3,0,3,0,-1]	1,0,3,0,6,0,10	0	0
+A390036	holos	0	[0,1,1,0,-3,0,0,3,0,0,-1]	1,0,0,3,0,0,6,0,1	0	0
+A390037	holos	0	[0,1,1,0,0,-3,0,0,3,0,0,-1]	1,0,0,3,0,0,6,0,0,10	0	0
+A390039	holos	0	[0,-1,1,4,0,-6,0,4,0,-1]	1,0,4,0,10,0,20,1	0	0
+A390040	holos	0	[0,1,-1,0,4,0,-6,0,4,0,-1]	1,0,4,0,10,0,20,0,35	0	0
+A390041	holos	0	[0,-1,1,0,4,0,0,-6,0,0,4,0,0,-1]	1,0,0,4,0,0,10,0,0,20,0,1	0	0
+A390042	holos	0	[0,1,-1,0,0,4,0,0,-6,0,0,4,0,0,-1]	1,0,0,4,0,0,10,0,0,20,0,0,35	0	0
+A390044	holos	0	[0,1,-1,4,-6,4,-1]	1,4,10,20,35	0	0
+A390045	holos	0	[0,1,1,-5,10,-10,5,-1]	1,5,15,35,70,126	0	0
+A391470	holos	0	[0,729,-27,27,-1]	0,0,90,2268,58806	0	0
+A391600	holos	0	[0,1,-2,1,4,0,-1]	1,1,3,5,11	0	0
+A391641	holos	1	[0,2,-1,2,1,-3,1,0,-4,2,2,-1]	1,2,4,7,15,31,63,126,253,508	0	0
+A392367	filnum	1	1	k -> { final int p1 = Functions.GPF.i(k); return Integer.bitCount(p1) == 2 && (p1&1) == 1 && Integer.bitCount(Integer.numberOfTrailingZeros(p1 -1)) == 1; }	Numbers whose greatest prime factor is a Fermat prime.	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+A392368	filnum	1	1	k -> { final int p1 = Functions.LPF.i(k); return Integer.bitCount(p1) == 2 && (p1&1) == 1 && Integer.bitCount(Integer.numberOfTrailingZeros(p1 -1)) == 1; }	Numbers whose least prime factor is a Fermat prime.	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+A392420	holos	1	[0,1,-9,36,-84,126,-126,84,-36,9,-1]	11, 94, 678, 3771, 16724, 61382, 192280, 528267, 1302956, 2940272, 6162266, 12137259, 22677276	0	0
+A392421	holos	1	[0,-1,1,3,-3,-3,3,1,-1]	0,0,1,4,5,14,14,32,30	0	0
+A392454	holos	0	[0,1,-2,1,4,0,-1]	1,0,3,2,10	0	0
+A392455	holos	0	[0,1,-2,1,0,4,0,0,-1]	1,0,0,3,1,1,10	0	0
+A392456	holos	0	[0,1,-2,1,0,0,4,0,0,0,-1]	1,0,0,0,3,1,0,1,10	0	0
+A392487	holos	0	[0,1,-2,1,0,4,0,0,-1]	1,0,1,3,0,5,10	0	0
+A392488	holos	0	[0,1,-2,1,0,0,4,0,0,0,-1]	1,0,0,1,3,0,0,5,10	0	0
+A392489	holos	0	[0,1,-1,0,2,0,-1]	1,0,2,0,3	0	0
+A392490	holos	0	[0,1,-1,0,0,2,0,0,-1]	1,0,0,2,0,0,3	0	0
+A392491	holos	0	[0,1,-1,0,0,0,2,0,0,0,-1]	1,0,0,0,2,0,0,0,3	0	0
