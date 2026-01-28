@@ -1,0 +1,128 @@
+---- 2026-01-28 18:22:15
+A085880	trilambn	0	0	0	(n, k) -> BI(n, k).*(Functions.CATALAN.z(n))	multiply row n of Pascals triangle (BI) by the n-th Catalan number (F000108).
+A085881	trilambn	0	0	0	(n, k) -> BI(n, k).*(D001147(n))
+A089503	trilambn	1	1	1	(n, m) -> BI(n - 1, m - 1).*(BI(2*n, m - 1)).*(FA(m - 1))	for 1 <= m <= n, with BI(n, m) = BI. - _Stefano Negro_, Nov 10 2021
+A090417	filter	0	new LambdaSequence(1, n -> CR.PI.*(2*n)./(CR.E.*(CV(n).log())).floor())	PRIME	Primes of the form floor(2*Pi*n/(e*log(n))).	nonn,easy	1..57	nyi	_Roger L. Bagula_
+A090484	lambdan	2	n -> CV(PM(n))./(n).exp().-(1)./(CV(n).log()).floor()	a(n) = Floor[(Exp[Prime[n]/n]-1)/Log[n]].
+A090487	lambdan	2	n -> CR.PI./(2).*(CV(n)./(PI(n)).+(3).exp())./(CV(n).log()).floor()	Floor[(Pi/2)*(Exp[3+n/PrimePi[n]])/Log[n]].	nonn	2..53	nyi	_Roger L. Bagula_
+A096145	trilambn	0	0	0	(n, k) -> Functions.DIGIT_SUM.z(BI(n, k))	digits in Pascals triangle (BI) in decimal representation, triangle read by rows, 0<=k<=n.
+A097990	lambdan	0	n -> n == 0 ? ZV(10) : REV(ZV(n).^(2).+(10))	A puzzle: reverse digits of n^2 + 10.	nonn,base,easy	0..50	nyi	_N. J. A. Sloane_, following a suggestion of Jacek Kolodziejczyk
+A097991	lambdan	0	n -> REV(ZV(n).^(2).+(10))	A puzzle: reverse digits of n^2 + 10.	nonn,base,easy	0..50	nyi	_N. J. A. Sloane_, following a suggestion of Jacek Kolodziejczyk
+A098172	trilambn	0	0	0	(n, k) -> BIN(n, 3*(n - k))	Triangle T(n,k) with diagonals T(n,n-k) = binomial(n,3k).	easy,nonn,tabl	0..139	nyi	_Paul Barry_
+A098173	trilambn	0	0	0	(n, k) -> BIN(n, 4*(n - k))	Triangle T(n,k) with diagonals T(n,n-k) = binomial(n, 4k).	easy,nonn,tabl	0..139	nyi	_Paul Barry_
+A103447	trilambn	0	0	0	(n, k) -> F008683(BI(n, k))
+A104710	trilambn	1	1	1	(n, k) -> SU(k, n, i -> S001263(n, i))	For 1 <= k <= n, T(n, k) = Sum_{i=k..n} J001263(n, i).
+A104711	trilambn	1	1	1	(n, m) -> SU(m, n, k -> S001263(k, m))	Triangle T(n,m) = sum_{k=m..n} J001263(k,m).
+A107893	trilambn	1	1	1	(n, k) -> RU(1, n, i -> new Q(SU(0, k, j -> Z_1(k - j).*(BI(k, j)).*(ZV(j).^(i))), ZV(k))).num()	Table[Sum[Sum[(-1)^(k - j) Binomial[k, j] j^i, {j, 0, k}]/k, {i, n}], {n, 10}, {k, n}]
+A108044	trilambn	0	0	0	(n, k) -> ((n + k)&1) == 1 ? ZV(0) : BI(n, (n + k)/2)	if n+k is even, T(n, k)=0 if n+k is odd.
+A114656	trilambn	1	1	1	(n, k) -> S001263(n, k).*(Z2(n - k))	*2^(n-k). - _Philippe Del√©ham_, Apr 11 2007
+A120116	filnum	0	1	k -> SIGMA(UPHI(k)).equals(ZV(k))	Numbers n such that sigma(uphi(n)) = n where uphi is the unitary totient (or unitary phi) function (see F047994).
+A128264	trilambn	1	1	1	(n, m) -> LCM(S2(n, m), SA(n, m))	= lcm(F008277(n,m), |F008275(n,m)|). - _R. J. Mathar_, Sep 24 2007
+A128821	trilambn	1	1	1	(n, k) -> BI(n, k).*(BI(n - 1, k - 1)).+(BI(n, k - 1).*(BI(n - 1, k)))
+A131635	trilambn	1	1	1	(n, m) -> BI(n + m, m).^(2).*(m).*(n)./(2*(m + n))
+A135356	trilambn	0	1	1	(n, k) -> (n > k) ? Z_1(k + 1).*(BI(n, k)) : ZV(2*(n&1))	T(n,n) = 1 - (-1)^n.
+A136168	multia	0	"1,3"	(self, n) -> RU(1, n, i -> new Q(Z_1(i + 1).*(S027907(n - i + 2, i + 1)).*(self.a(n - i)), FA(n - i))).*(FA(n - 1)).num()	a(n) = (n-1)!*Sum_{i=1..n-1} (-1)^(i+1)*A027907(n-i+2,i+1)*a(n-i)/(n-i)! for n>0 with a(0)=1, where A027907 is the triangle of trinomial coefficients.
+A136518	lambdan	0	n -> { final Z n2  = Z2(n);      return SU(0, n/3, r -> Z_1(r).*(BI(n2 , ZV(r))).*(BI( n2.-(1 + 3*r - n),  n2.-(1)))); }	a(n) = A027907(2^n,   n), where A027907(n, k) = Sum_{r=0..floor(k/3)} (-1)^r*binomial(n, r)*binomial(k-3*r+n-1, n-1)
+A136519	lambdan	0	n -> { final Z n21 = Z2(n).+(1); return SU(0, n/3, r -> Z_1(r).*(BI(n21, ZV(r))).*(BI(n21.-(1 + 3*r - n), n21.-(1)))); }	a(n) = A027907(2^n+1, n), where A027907 = triangle of trinomial coefficients.
+A141689	tablamb	1	1	n -> new Integer[]{0, n - 1}	(n, k) -> SU(0, k + 1, j -> Z_1(j).*(BI(n + 1, j)).*(ZV(k + 1 - j).^(n))).+(BI(n - 1, k))./(2)	Table[Table[(Sum[(-1)^j Binomial[n + 1, j](k + 1 - j)^n, {j, 0, k + 1}] + Binomial[n - 1, k])/2, {k, 0, n - 1}], {n, 1, 10}]
+A155537	trilambn	1	1	1	(n, k) -> S001263(n, k).*(Z2(n).+(1))	Triangle T(n,k,p,q) = (p^n + q^n)*J001263(n, k) with p=2 and q=1, read by rows.
+A156366	tablamb	0	0	n -> new Integer[]{0, n == 0 ? 0 : n - 1}	(n, k) -> (n == 0) ? ZV(1) : SU(0, k, j -> BI(n + 1, j).*(Z_1(j)).*(ZV(k - j + 1).^(n))).*(ZV(3).^(k))	T[n_, k_]:= 3^k*Sum[(k-j+1)^n*Binomial[n+1, j]*(-1)^j, {j, 0, k}];
+A156717	tablamb	1	1	n -> new Integer[]{0, n - 1}	(n, m) -> BI(n + m - 1, 2*m).+(BI(2*n - m - 2, 2*(n - m - 1)))	a := (n, m) -> binomial(n+m-1, 2*m)+binomial(2*n-m-2, 2*(n-m-1))
+A156992	trilambn	1	1	1	(n, k) -> FA(n).*(BI(n - 1, k - 1))
+A168287	trilambn	0	0	0	(n, k) -> S046802(n, k).*( 2).-(BI(n,k))
+A168288	trilambn	0	0	0	(n, k) -> S046802(n, k).*( 3).-(BI(n,k).*(2))
+A168289	trilambn	0	0	0	(n, k) -> S046802(n, k).*( 4).-(BI(n,k).*(3))
+A168290	trilambn	0	0	0	(n, k) -> S046802(n, k).*( 5).-(BI(n,k).*(4))
+A174116	trilambn	0	0	0	(n, k) -> (k == 0 || k == n) ? ZV(1) : BI(n - k + 1, 2).*(S001263(n, k))	with T(n, 0) = T(n, n) = 1.
+A174303	trilambn	0	0	0	(n, k) -> S008292(n + 1, k + 1).*((n/2 >= k) ? Z2(k) : Z2(n - k))	(n,k) = J008292(n+1, k) * f(n,k), where f(n,k) = 2^k when floor(n/2) >= k, otherwise 2^(n-k).
+A174544	trilambn	0	0	0	(n, m) -> (m == 0 || m == n) ? ZV(1) : ((n/2 >= m) ? S2(n, m).*(ZV(1).^(m)) : S2(n, n - m).*(ZV(1).^(n - m)))	t[n_, m_, q_] = If[m == 0 || m == n, 1, If[Floor[n/2] >= m, StirlingS2[n, m]*q^ m, StirlingS2[n, n - m]*q^(n - m)]];
+A174545	trilambn	0	0	0	(n, m) -> (m == 0 || m == n) ? ZV(1) : ((n/2 >= m) ? S2(n, m).*(ZV(2).^(m)) : S2(n, n - m).*(ZV(2).^(n - m)))	t[n_, m_, q_] = If[m == 0 || m == n, 1, If[Floor[n/2] >= m, StirlingS2[n, m]*q^ m, StirlingS2[n, n - m]*q^(n - m)]];
+A174546	trilambn	0	0	0	(n, m) -> (m == 0 || m == n) ? ZV(1) : ((n/2 >= m) ? S2(n, m).*(ZV(3).^(m)) : S2(n, n - m).*(ZV(3).^(n - m)))	t[n_, m_, q_] = If[m == 0 || m == n, 1, If[Floor[n/2] >= m, StirlingS2[n, m]*q^ m, StirlingS2[n, n - m]*q^(n - m)]];
+A174567	filnum	1	1	k -> Functions.DIGIT_SUM_SQUARES.z(k).bitCount() == 1	Numbers n such that sum of squares of digits of n is a power of 2.	nonn,base	1..44	nyi	_Michel Lagneau_
+A174568	filnum	1	1	k -> PHI(k).+(SIGMA(k)).equals(SIGMA(PHI(k).+(k)))	Numbers n such that phi(n) + sigma(n) = sigma(n + phi(n)).	nonn	1..10000	nyi	_Michel Lagneau_
+A176190	trilambn	0	0	0	(n, m) -> S001263(n + 1, m + 1).+(1).^(n)	R. J. Mathar_, May 21 2025
+A176487	trilambn	0	0	0	(n, k) -> S008292(n + 1, k + 1).+(BI(n, k)).-(1)	T(n, k) = F007318(n,k) + J008292(n+1,k+1) - 1, 0 <= k <= n.
+A199220	trilambn	1	1	1	(n, k) -> ZV(n - 1 - k).*(SA(n, n + 1 - k))	, where s(n,k) are the signed Stirling numbers of the first kind and 1 <= k <= n.	sign,tabl	1..66	nyi	_Frank M Jackson_
+A199221	trilambn	1	1	1	(n, k) -> ZV(n + 1 - k).*(SA(n, n + 1 - k)).-(SA(n - 1, n - k).*(2))	| - 2*|s(n-1,n-k)|, where s(n,k) are the signed Stirling numbers of the first kind and 1 <= k <= n.	sign,tabl	1..66	nyi	_Frank M Jackson_
+A199478	tablamb	1	1	n -> new Integer[] { 0, (n + 1)/2 }	(n, k) -> SU(0, n, i -> BI(n - k, i - k).*(BI(n - i + 1, 2*k - i)))	Z2(i - 1).*(BI(n - i + 1, i).+(BI(n - i, i)))	T(n, k) = sum(i=0, n, binomial( n-k, i-k) * binomial( n-i+1, 2*k-i))
+A199512	trilambn	0	0	0	(n, k) -> FI(n + k + 1)
+A199717	filnum	1	1	k -> !PP(6*k - 1) && PP(6*k - 5)	is prime.	nonn,easy	1..1000	nyi	_Eleonora Echeverri-Toro_
+A199718	filnum	1	5	k -> !PP(6*k - 5) && PP(6*k - 1)	is prime.	nonn,easy	1..1000	nyi	_Eleonora Echeverri-Toro_
+A200146	tablamb	2	2	n -> new Integer[]{1, n - 1}	(n, k) -> ZV(k).^(n - 1).modZ(n)	Triangle read by rows: T(n, k) = mod(k^(n - 1), n), where 1 <= k < n.	nonn,easy,tabl	2..79	nyi	_Alonso del Arte_
+A232598	trilambn	1	1	1	(n, k) -> S2(n, k).*(D000670(k))	T(n,k) = F008277(n,k) * D000670(k).
+A256894	trilambn	0	0	0	(n, k) -> (n == 0 || n == k) ? ZV(1) : S2(n, k).+(S2(n, k + 1 ))	for n>=1, k>=1. (End)
+A258077	filnum	1	1	k -> SIGMA(k).mod(D049060(k)).isZero()	Numbers x such that (-1)sigma(x) | sigma(x), where (-1)sigma(x) is defined in J049060 and sigma(x) is the sum of the divisors of x (F000203).
+A258079	filnum	1	1	k -> SIGMA(k).-(k).mod(D049060(k)).isZero()	Numbers x such that (-1)sigma(x) | sigma(x) - x, where (-1)sigma(x) is defined in J049060 and sigma(x) - x is the sum of the aliquot parts of x (F001065).
+A258101	filnum	1	1	k -> Functions.USIGMA1.z(k).equals(D049060(k))	Number x such that usigma(x) = (-1)sigma(x), where usigma(x) is the sum of unitary divisors of x (F034448) and (-1)sigma(x) is defined in J049060 .
+A258106	filnum	1	1	k -> SIGMA(k).equals(Functions.USIGMA1.z(k).+(D049060(k)))	Number x such that sigma(x) = usigma(x) + (-1)sigma(x), where sigma(x) is the sum of divisors of x (F000203), usigma(x) is the sum of unitary divisors of x (F034448) and (-1)sigma(x) is defined in J049060.
+A280580	trilambn	0	0	0	(n, k) -> S001263(n + 1, k + 1).*(F000108(n))./(F000108(k))	for 0 <= k <= n.
+A287055	filnum	1	1	k -> UPHI(k).equals(UPHI(k + 1))	Numbers n such that uphi(n) = uphi(n+1), where uphi(n)
+A297365	filnum	0	1	k -> UPHI(k).*(Functions.USIGMA1.z(k)).equals(UPHI(k + 1).*(Functions.USIGMA1.z(k + 1)))	, where uphi is the unitary totient function (F047994) and usigma the sum of unitary divisors (F034448).
+A297365	filnum	0	1	k -> UPHI(k).*(Functions.USIGMA1.z(k)).equals(UPHI(k + 1).*(Functions.USIGMA1.z(k + 1)))	, where uphi is the unitary totient function (F047994) and usigma the sum of unitary divisors (F034448).
+A297366	filnum	1	1	k -> UPHI(k).+(Functions.USIGMA1.z(k)).equals(UPHI(k + 1).+(Functions.USIGMA1.z(k + 1)))	uphi(k) + usigma(k) = uphi(k+1) + usigma(k+1)
+A298761	filnum	1	2	k -> ZV(k).equals(PI(k).+(UPHI(k)))	n = pi(n) + uphi(n), where pi = F000720, uphi = F047994.
+A298762	filnum	0	1	k -> UPHI(k).equals(UPHI(k + 2).-(UPHI(k + 1)))	uphi(n) = uphi(n+2) - uphi(n+1), where uphi is the unitary totient function (F047994).
+A298944	sintrif	1	(term, n) -> Z.TWO.modPow(term.-(1), term.^(2))	""	new A002808()	nyi pto	a(n) = 2^(c-1) mod c^2, where c is the n-th composite number.	nonn	1..10000	nyi
+A299296	holos	0	[[0],[50400,-31980,7530,-780,30],[-431760,299162,-77347,8842,-377],[974160,-755592,219112,-28152,1352],[-411240,374138,-127693,19378,-1103],[75840,-87260,37970,-7420,550],[-6840,10566,-6101,1566,-151],[240,-560,460,-160,20],[0,6,-11,6,-1]]	1,2,7,30	0	0
+A299427	arrlamb	0	1	0	+1	(n, k) -> BI(n*(n + k), k).*(n)./(n + k)	Square table where T(n,k) = binomial(n*(n+k), k) * n/(n+k), for n>=1, k>=0, as read by antidiagonals.	nonn,tabl	0..1079	nyi
+A299614	decexp	1	() -> X030178.*(2).exp()	e^(2*A030178) = e^(2*W(1)) = (1/W(1))^2, where W is the Lambert W function (or PowerLog); see Comments.	nonn,cons,easy	1..10000	nyi	_Clark Kimberling_
+A299615	decexp	1	() -> X030178.+(X196515)	W(1) + W(2), where w is the Lambert W function (or PowerLog); see Comments.	nonn,cons,easy	1..10000	nyi	_Clark Kimberling_
+A299616	decexp	1	() -> X299615.exp()	e^(W(1) + W(2)) = 2/(W(1)*W(2)), where W is the Lambert W function (or PowerLog); see Comments.	nonn,cons,easy	1..10000	nyi	_Clark Kimberling_
+A299617	decexp	1	() -> CR.E./(X030178)	e^(W(1) + W(e)) = e/(W(1)*W(e)), where W is the Lambert W function (or PowerLog); see Comments.	nonn,cons,easy	1..10000	nyi	_Clark Kimberling_
+A299618	decexp	0	() -> X030178.+(X202357)		W(1) + W(1/e), where w is the Lambert W function (or PowerLog); see Comments.	nonn,cons,easy	0..10000	nyi	_Clark Kimberling_
+A299619	decexp	1	() -> X299618.exp()	e^(W(1) + W(1/e)) = (1/e)/(W(1)*W(1/e)), where W is the Lambert W function (or PowerLog); see Comments.	nonn,cons,easy	1..10000	nyi	_Clark Kimberling_
+A299620	decexp	1	() -> X030178.+(X196516)	W(1) + W(3), where w is the Lambert W function (or PowerLog); see Comments.	nonn,cons,easy	1..10000	nyi	_Clark Kimberling_
+A299621	decexp	1	() -> X299620.exp()	e^(W(1) + W(3)) = 3/(W(1)*W(3)), where W is the Lambert W function (or PowerLog); see Comments.	nonn,cons,easy	1..10000	nyi	_Clark Kimberling_
+A299622	decexp	0	() -> X030178.+(X202356)		W(1) + W(1/2), where W is the Lambert W function (or PowerLog); see Comments.	nonn,cons,easy	0..10000	nyi	_Clark Kimberling_
+A299623	decexp	1	() -> X299622.exp()	e^(W(1) + W(1/2)) = (1/2)/(W(1)*W(1/2)), where W is the Lambert W function (or PowerLog); see Comments.	nonn,cons,easy	1..10000	nyi	_Clark Kimberling_
+A299624	decexp	0	() -> X196515.*(2)	2*W(2), where W is the Lambert W function (or PowerLog); see Comments.	nonn,cons,easy	0..10000	nyi	_Clark Kimberling_
+A299625	decexp	1	() -> X299624.exp()	e^(2*W(2)) = 4/(W(2))^2, where W is the Lambert W function (or PowerLog); see Comments.	nonn,cons,easy	1..10000	nyi	_Clark Kimberling_
+A299626	decexp	0	() -> X196516.*(2)	2*W(3), where W is the Lambert W function (or PowerLog); see Comments.	nonn,cons,easy	0..10000	nyi	_Clark Kimberling_
+A299627	decexp	1	() -> X299626.exp()	e^(2*W(3)) = 9/(W(3))^2, where W is the Lambert W function (or PowerLog); see Comments.	nonn,cons,easy	1..10000	nyi	_Clark Kimberling_
+A299628	decexp	0	() -> X202392.*(2)	2*W(1/3), where W is the Lambert W function (or PowerLog); see Comments.	nonn,cons,easy	0..10000	nyi	_Clark Kimberling_
+A299629	decexp	1	() -> X299628.exp()	e^(2*W(1/3)) = (1/9)/(W(1/3))^2, where W is the Lambert W function (or PowerLog); see Comments.	nonn,cons,easy	1..86	nyi	_Clark Kimberling_
+A299632	decexp	0	() -> X202353.negate().+(1).*(2)	2*W(e/2), where W is the Lambert W function (or PowerLog); see Comments.	nonn,cons,easy	0..85	nyi	_Clark Kimberling_
+A299633	decexp	1	() -> X299632.exp()	e^(2*W(e/2)) = (e^2/4)/(W(e/2))^2, where W is the Lambert W function (or PowerLog); see Comments.	nonn,cons,easy	1..86	nyi	_Clark Kimberling_
+A299853	lambdan	0	n -> (n == 0) ? ZV(1) : BI(new Q(3*n, 2), n).*(ZV(-4).^(n)).*(2)./(3*n -2)./(3*n - 4).num()	a(n) = 2*(-4)^n * binomial(3*n/2,n) / ((3*n-2)*(3*n-4)) for n>=1, with a(0) = 1.
+A299854	lambdan	2	n -> (n == 2) ? ZV(36) : BI(new Q(3*n - 4, 2), n).*(ZV(-4).^(n)).*(18).*(3*n - 3)./(3*n - 4)./(3*n - 6).num()	a(n) = 18*(-4)^n * (3*n-3) * binomial(3*n/2-2,n) / ((3*n-4)*(3*n-6)) for n>=3, with a(2) = 36.
+A299855	lambdan	0	n -> (n == 0) ? ZV(1) : BI(new Q(3*n, 2), n).*(ZV(-4).^(n)).negate()./(3*n -2).num()	a(n) = -(-4)^n * binomial(3*n/2,n) / (3*n-2) for n>=1, with a(0) = 1.
+A300155	filtpos	0	1	new A243822()	(k, v) -> v.equals(F000005(k))	Numbers n for which J243822(n) = F000005(n).	nonn	1..10000	nyi	_Michael De Vlieger_
+A300222	lambdan	0	n -> new Z(Integer.toString(n, 3).replaceAll("1", "0"), 3)	In ternary (base-3) representation of n, replace 1's with 0's.	nonn,base	0..59048	nyi	_Antti Karttunen_
+A300294	tablamb	1	1	n -> new Integer[]{1, (n == 1) ? 1 : n - 1}	(n, m) -> (n == 1) ? ZV(1) : (GCDi(n, m) == 1 ? ZV(1) : ZV(0))	Irregular triangle giving the GCD characteristic: T(1, 1) = 1 and, for n >= 2 and 1 <= m <= n-1, T(n, m) = 1 if gcd(n, m) = 1 and 0 otherwise.	nonn,tabf,easy	1..11176	nyi	_Wolfdieter Lang_
+A300557	lambdan	1	n -> CONC(1, n, k -> CONC(1, k, j -> new Z(Integer.toString(k, 2))))	a(n) is the concatenation of 1 written in base 2 once, 2 written in base 2 twice, ..., n written in base 2 n times.	nonn,base,easy,changed	1..21	nyi	_Seiichi Manyama_
+A300558	lambdan	1	n -> CONC(n, 1, k -> CONC(1, k, j -> new Z(Integer.toString(k, 2))))	a(n) is the concatenation of n written in base 2 n times, n-1 written in base 2 n-1 times, ..., 1 written in base 2 once.	nonn,base,easy,changed	1..21	nyi	_Seiichi Manyama_
+A300577	sintrif	1	(term, n) -> new Z(term.toString(), 2)	""	new A300558()	a(n) is the decimal expansion of A300558(n).	nonn,base	1..35	nyi	_Seiichi Manyama_
+A300578	sintrif	1	(term, n) -> new Z(term.toString(), 2)	""	new A300557()	a(n) is the decimal expansion of A300557(n).	nonn,base	1..35	nyi	_Seiichi Manyama_
+A300658	filnum	1	4	k -> SIGMA(SIGMA(k).-(k)).mod(k) == 0	Numbers m that divide sigma(sigma(m) - m) where sigma is the sum of divisors function (F000203).	nonn	1..41	nyi	_Jaroslav Krizek_
+A319481	filnum	0	1	k -> ZV(k).mod(UPHI(k)).isZero()	Integers k such that uphi(k) divides k, where uphi is the unitary phi function (F047994).
+A321091	multia	0	"4,1,2,3,2"	(self, n) -> { if (n%3 == 0) { return ZV(3); } else if (n%3 == 2) { return ZV(3).subtract(self.a(n - 1)); } else if (n%9 == 1) { return ZV(1); } else if (n%9 == 7) { return ZV(2); } else { return ZV(3).subtract(self.a(n/3)); }}
+A321093	multia	0	"6,1,3,5,3"	(self, n) -> { if (n%3 == 0) { return ZV(5); } else if (n%3 == 2) { return ZV(4).subtract(self.a(n - 1)); } else if (n%9 == 1) { return ZV(1); } else if (n%9 == 7) { return ZV(3); } else { return ZV(4).subtract(self.a(n/3)); }}
+A321095	multia	0	"8,1,4,7,4"	(self, n) -> { if (n%3 == 0) { return ZV(7); } else if (n%3 == 2) { return ZV(5).subtract(self.a(n - 1)); } else if (n%9 == 1) { return ZV(1); } else if (n%9 == 7) { return ZV(4); } else { return ZV(5).subtract(self.a(n/3)); }}
+A321097	multia	0	"10,1,5,9,5"	(self, n) -> { if (n%3 == 0) { return ZV(9); } else if (n%3 == 2) { return ZV(6).subtract(self.a(n - 1)); } else if (n%9 == 1) { return ZV(1); } else if (n%9 == 7) { return ZV(5); } else { return ZV(6).subtract(self.a(n/3)); }}
+A322524	filter	0	new A002975()	v -> v.mod(4) == 0 && v.mod(8) != 0	Primitive weird numbers (pwn; J002975) divisible by 4 but not 8.	nonn	1..26	nyi	_Robert G. Wilson v_
+A358585	lambdan	1	n -> (n == 1) ? ZV(1) : SU(1, (n - 1)/2, k -> S001263(n - 1, k))	for n >= 2.
+A358586	lambdan	1	n -> (n == 1) ? ZV(1) : SU(1, n/2, k -> S001263(n - 1, k))	for n >= 2.
+A363849	trilambn	0	0	0	(n, k) -> BI(n, k).*(S2(n + 1, k + 1))	T(n,k) = F007318(n,k)*F008277(n+1,k+1).
+A367022	trilambn	0	0	0	(n, k) -> S001263(n + 1, k + 1).*(ZV(4).^(n - k)).*(BI(2*k, k))./(k + 1)
+A367023	trilambn	0	0	0	(n, k) -> S001263(n + 1, k + 1).*(BI(2*k, k))./(k + 1)
+A380912	tablamb	0	0	n -> new Integer[]{0, 2*n}	(n, k) -> S027907(2*n, 2*n + k).-(S027907(2*n, 2*n + k + 1))
+A389985	tablamb	1	1	n -> new Integer[]{1, 2*n}	(n, k) -> SU(0, Functions.MIN.i(k, 2*n - k), j -> Z_1(j).*(BI(n, j)).*(S2(2*(n - j), k - j)))	Sum_{j=0..min(k,2*n-k)} (-1)^j*binomial(n,j)*F008277(2*(n-j),k-j).
+A392441	holos	1	[0,-1,6,-15,20,-15,6,-1]	0,36,361,1684,5410	0	0
+A392849	polyx	0	"[1]"	"1,A,<1,exp,1,-,^2,+"	0	1
+A392851	polyx	0	"[1],[1,-1]"	"1,A,<1,A,<1,exp,1,-,^3,*,+"	0	1
+A392852	polyx	0	"[1],[1,-1]"	"1,1,A,<1,-,log,^2,+"	0	1
+A392853	polyx	0	"[1],[1,-1]"	"1,1,A,<1,-,log,^3,-"	0	1
+A392854	polyx	0	"[1],[1,-1]"	"1,A,<1,1,A,<1,-,log,^3,*,-"	0	1
+A392855	polyx	0	"[1]"	"1,1,A,^2,<1,exp,1,-,^2,<1,-,/"	0	1
+A392856	polyx	0	"[1]"	"1,1,1,A,^2,<1,-,log,^2,<1,-,/"	0	1
+A392858	lambdan	0	n -> D028234(F276086(n))
+A392860	lambdan	0	n -> SU(1, n, i -> { final Z p = PM(i); final Z pr = PR(1, i - 1, j -> PM(j)); return p.-(2).*(pr); }).+(1)
+A392881	polyx	0	"[-1],[1,-1]"	"p0,1,p1,log,<1,lambertW,-,/"	0	1
+A392886	polyx	0	"[1]"	"1,1,A,<1,^3,-,log,A,<1,^2,/,-"	2	1
+A392887	polyx	0	"[1]"	"1,1,A,<1,^2,-,log,^2,A,<1,/,+"	2	1
+A392888	polyx	0	"[1]"	"1,1,A,<1,^3,-,log,^2,A,<1,^2,/,+"	2	1
+A392889	polyx	0	"[1]"	"1,1,A,<1,^2,exp,1,-,A,<1,/,+"	2	1
+A392890	polyx	0	"[1]"	"1,1,A,<1,^3,exp,1,-,A,<1,^2,/,+"	2	1
+A392891	polyx	0	"[1]"	"1,1,A,<1,^2,exp,1,-,^2,A,<1,/,+"	2	1
+A392892	polyx	0	"[1]"	"1,1,A,<1,^3,exp,1,-,^2,A,<1,^2,/,+"	2	1
+A392917	polyx	0	"[1],[1,-1]"	"1,1,p1,log,^3,<1,lambertW,+,/"	0	1
