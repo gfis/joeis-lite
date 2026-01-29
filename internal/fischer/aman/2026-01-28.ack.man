@@ -2,7 +2,6 @@
 A085880	trilambn	0	0	0	(n, k) -> BI(n, k).*(Functions.CATALAN.z(n))	multiply row n of Pascals triangle (BI) by the n-th Catalan number (F000108).
 A085881	trilambn	0	0	0	(n, k) -> BI(n, k).*(D001147(n))
 A089503	trilambn	1	1	1	(n, m) -> BI(n - 1, m - 1).*(BI(2*n, m - 1)).*(FA(m - 1))	for 1 <= m <= n, with BI(n, m) = BI. - _Stefano Negro_, Nov 10 2021
-A090417	filter	0	new LambdaSequence(1, n -> CR.PI.*(2*n)./(CR.E.*(CV(n).log())).floor())	PRIME	Primes of the form floor(2*Pi*n/(e*log(n))).	nonn,easy	1..57	nyi	_Roger L. Bagula_
 A090484	lambdan	2	n -> CV(PM(n))./(n).exp().-(1)./(CV(n).log()).floor()	a(n) = Floor[(Exp[Prime[n]/n]-1)/Log[n]].
 A090487	lambdan	2	n -> CR.PI./(2).*(CV(n)./(PI(n)).+(3).exp())./(CV(n).log()).floor()	Floor[(Pi/2)*(Exp[3+n/PrimePi[n]])/Log[n]].	nonn	2..53	nyi	_Roger L. Bagula_
 A096145	trilambn	0	0	0	(n, k) -> Functions.DIGIT_SUM.z(BI(n, k))	digits in Pascals triangle (BI) in decimal representation, triangle read by rows, 0<=k<=n.

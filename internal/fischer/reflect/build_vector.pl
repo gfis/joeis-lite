@@ -9,15 +9,23 @@
 #:#   perl build_vector.pl [-f directfile] [-k] infile > outfile
 #:#        -k use known.txt
 #
-# Read codes for the vector from files in this order (records contain "Annnnnn\tcode..."): 
+# Read codes for the vector from files in this order (records contain "Annnnnn\tcode\t..."): 
 # (default)  'A' for unimplemented sequences
-# dirimp.txt 'E' inherits DirectSequence from LambdaSequence etc.
-#            'M' extends MemorySequence with a(Z) and a(int)
+# dirimp.txt 'B' extends {Brief|Finite|Noncomputable}Sequence
+#            'E' extends LambdaSequence, MultiplicativeSequence etc.
+#            'M' extends MemorySequence, with a(Z) and a(int)
 #            'X' extends DecimalExpansionSequence etc.
 #            'J' for all other sequences already implemented in jOEIS
-# dirseq.txt 'D' with explicit "implements DirectSequence" 
+#            'S' extends LambdaTable
+#            'T' extends LambdaTriangle
+#            'U' extends LambdaArray
+# hasram.txt 'H' calls hasRam(true)
+# dirseq.man 'D' implements DirectSequence
+# dirseq.txt 'D' implements DirectSequence
+# dirarr.txt 'T' implements DirectArray
+# conjec.txt 'C' implements Conjectural
 # known.txt  'K' known functions that can be used directly
-# funct.txt  'F' for math.function.Functions
+# funct.txt  'F' for sequences that are directly implemented by math.function.Functions
 #--------------------------------------------------------
 use strict;
 use integer;
@@ -61,10 +69,11 @@ for (my $sno = 0; $sno <= $max_anumber; $sno ++) {
 }
 &read_file("$reflect/dirimp.txt");
 &read_file("$reflect/dirseq.txt");
-&read_file("$reflect/dirseq.man");
+&read_file("$reflect/dirarr.txt");
 &read_file("$reflect/hasram.txt");
 &read_file("$reflect/known.txt") if $known > 0;
 &read_file("$reflect/funct.txt");
+&read_file("$reflect/conjec.txt");
 
 for (my $sno = 0; $sno <= $max_anumber; $sno ++) {
     if (!defined($vector[$sno])) {

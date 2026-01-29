@@ -110,18 +110,6 @@ direct_load:
 direct_dump:
 	$(DBAT) -x "SELECT aseqno, offset1 FROM direct ORDER BY 1" > $(ROBOT)/direct.txt
 #========
-hasram: # extract all that extend Triangle with hasRAM()=true
-	$(DBAT) -x "SELECT i.aseqno, i.offset1, j.superclass FROM asinfo i, joeis j\
-	    WHERE i.aseqno = j.aseqno \
-	      AND i.keyword LIKE '%tabl%' \
-	      AND j.superclass NOT IN ('LambdaTriangle','LambdaArray','PartitionTransformTriangle') \
-	    ORDER BY 1" \
-	| $(ABSINSPECT) hasram - \
-	| grep -vP "\bget\(\t" | sed -e "s/\t/\tH\t/" \
-	>        $@.txt
-	head -n4 $@.txt
-	wc -l    $@.txt
-#----
 joeis_list: # create a list of all A-numbers with their superclasses and implemented interfaces
 	head -n999999 $(COMMON)/joeis_names.txt \
 	| perl -pe 's/^.(\d+).*/A$$1/' \
@@ -136,30 +124,31 @@ diff_joeis_list: # compare with $(COMMON)
 	wc       $@.tmp
 #========
 K=
-vector: dirseq dirman dirdate dirimp hasram known funct # prepare for and create file vector.txt for the classification of all A-numbers
+vector:                dirimp     dirseq     dirarr     hasram known funct     conjec     # prepare for and create file vector.txt for the classification of all A-numbers
+	grep -h -P "[B-Z]" dirimp.txt dirseq.txt dirarr.txt              funct.txt conjec.txt | cut -b9 | sort | uniq -c
 	perl build_vector.pl $(K)
 	cut -b1-1024 vector.txt
 	ls -al       vector.txt
-dirman: # DirectSequences in ../manual
-	grep -iHP "oeis\.(DirectSequence|LambdaSequence)" ../manual/*.java \
-	| perl -ne 'm{(A\d+)}; print "$$1\tD\n";' \
-	>    $@.tmp
-	sort $@.tmp dirseq.man | uniq \
-	| tee dirseq.man
-	wc -l dirseq.man
-dirdate: # grep LambdaSequences from aman/date.man
-	grep -P "^A\d{6}\s+lambdan" ../aman/`date +%Y-%m-%d`.man | cut -b1-9 | sed -e "s/l/E/" \
-	| tee -a dirseq.man
-	wc -l    dirseq.man
-dirseq: # DirectSequences 'D', explicit "implementing D.S.", not inherited
-	grep DirectSequence $(COMMON)/joeis_list.txt | grep -P "^A\d+\s" \
-	| sed -e "s/\t/\tD\t/" -e "s/DirectSequence//" \
+conjec: #                 'C', explicitely "implementing Conjectural", not inherited
+	grep " Conjectural" $(COMMON)/joeis_list.txt | grep -P "^A\d+\s" \
+	| sed -e "s/\t/\tC\t/" -e "s/ Conjectural//" \
 	>        $@.txt
 	head -n2 $@.txt
 	wc -l    $@.txt
-dirarr: # DirectArray 'T', explicit "implementing DirectArray", not inherited
-	grep DirectArray $(COMMON)/joeis_list.txt | grep -P "^A\d+\s" \
-	| sed -e "s/\t/\tT\t/" -e "s/DirectArray//" \
+#dirman: # DirectSequences in ../manual
+#	grep -iHP "oeis\.(DirectSequence|LambdaSequence)" ../manual/*.java \
+#	| perl -ne 'm{(A\d+)}; print "$$1\tD\n";' \
+#	>        $@.tmp
+#	sort     $@.tmp dirseq.man | uniq \
+#	| tee    dirseq.man
+#	wc -l    dirseq.man
+#dirdate: # grep LambdaSequences from aman/date.man
+#	grep -P "^A\d{6}\s+lambdan" ../aman/`date +%Y-%m-%d`.man | cut -b1-9 | sed -e "s/l/E/" \
+#	| tee -a dirseq.man
+#	wc -l    dirseq.man
+dirarr: # DirectArray     'T', explicitely "implementing DirectArray", not inherited
+	grep " DirectArray"    $(COMMON)/joeis_list.txt | grep -P "^A\d+\s" \
+	| sed -e "s/\t/\tT\t/" -e "s/ DirectArray//" \
 	>        $@.txt
 	head -n2 $@.txt
 	wc -l    $@.txt
@@ -200,16 +189,40 @@ dirimp: # DirectSequences 'E', inherited from LambdaSequence etc., and 'M', 'X',
 	| sed -e "s/\r//" \
 	>        $@.txt
 	head -n2 $@.txt
+	wc -l    $@.txt 
+dirseq: # DirectSequences 'D', explicitely "implementing DirectSequence", not inherited
+	grep " DirectSequence" $(COMMON)/joeis_list.txt | grep -P "^A\d+\s" \
+	| sed -e "s/\t/\tD\t/" -e "s/ DirectSequence//" \
+	>        $@.txt
+	head -n2 $@.txt
 	wc -l    $@.txt
 #----
-funct: # extract from jOEIS source
-	cp $(JOEIS)/src/irvine/math/function/Functions.java $@.tmp
+funct: # extract from formalized comments in jOEIS source Functions.java
+	cp $(JOEIS)/src/irvine/math/function/Functions.java    $@.tmp
 	cat $(LITE)/src/irvine/math/function/Functions.java >> $@.tmp || :
 	perl read_functions.pl $@.tmp \
 	| grep -vP "A007919" \
 	| sort | uniq -w7 \
 	| tee    funct.txt
 	wc -l    funct.txt
+#----
+hasram: # extract all that extend Triangle with hasRAM()=true
+	$(DBAT) -x "SELECT i.aseqno, i.offset1, j.superclass FROM asinfo i, joeis j\
+	    WHERE i.aseqno = j.aseqno \
+	      AND i.keyword LIKE '%tabl%' \
+	      AND j.superclass NOT IN ('LambdaTriangle','LambdaArray','PartitionTransformTriangle') \
+	    ORDER BY 1" \
+	| $(ABSINSPECT) hasram - \
+	| grep -vP "\bget\(\t" | sed -e "s/\t/\tH\t/" \
+	>        $@.txt
+	head -n4 $@.txt
+	wc -l    $@.txt
+#-----
+known: # extract known functions
+	grep -P "^[A-Z]\d+\tK" $@.man \
+	| tee    $@.txt
+	wc -l    $@.txt
+#----
 knopre: knopre1 knopre2 knopre3 # extract Predicates from jOEIS source
 knopre1: # extract
 	cat $(JOEIS)/src/irvine/math/predicate/Predicates.java \
@@ -229,11 +242,6 @@ knopre3: # load db table
 	$(DBAT) -f knopre.create.sql
 	$(DBAT) -m csv -s "\t" -r knopre < knopre.txt
 	$(DBAT) -4 knopre
-#-----
-known: # extract known functions
-	grep -P "^[A-Z]\d+\tK" $@.man \
-	| tee $@.txt
-	wc -l $@.txt
 #========
 finite1:     # select the eligable programs
 	$(DBAT) -x "SELECT i.aseqno, i.termno,  j.superclass FROM asinfo i, joeis j WHERE i.aseqno = j.aseqno \
