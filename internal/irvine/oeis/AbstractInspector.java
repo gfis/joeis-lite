@@ -90,6 +90,7 @@ public final class AbstractInspector {
             try {
               final int parm1 = Integer.parseInt(parms[1]);
               final String superClass = parms.length > 2 ? parms[2] : "";
+              // System.err.println("# instantiate " + aNumber);
               final Sequence seq = SequenceFactory.sequence(aNumber);
               if (false) {
 

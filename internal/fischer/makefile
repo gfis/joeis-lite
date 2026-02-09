@@ -4000,7 +4000,7 @@ holrefpow:
 	| tee    $@.tmp
 	wc -l    $@.tmp
 #--------
-# get all signatures form lrindex recreation
+# get all signatures from lrindex recreation
 holsig:
 	grep -E "^A[0-9]" $(COMMON)/../lrindex/lrindx_nyi_check.txt \
 	| perl sig_matrix.pl \
@@ -4062,7 +4062,8 @@ hygeom:
 	wc -l    $@.gen
 #--------------------------------
 revert:
-	grep -iE "series reversion|series inversion|inverse series|revert transform" joeis_names.txt \
+	grep -iP "series reversion|series inversion|inverse series|revert transform" $(COMMON)/joeis_names.txt \
+	| grep -P "\tnyi" \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp

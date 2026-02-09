@@ -1,0 +1,159 @@
+---- 2026-02-01 18:40:03
+---- 2026-02-01 20:33:20
+---- 2026-02-01 20:59:19
+---- 2026-02-01 21:22:51
+---- 2026-02-01 21:41:53
+---- 2026-02-01 21:48:02
+---- 2026-02-01 21:58:50
+A084093	filnum	0	0	k -> k == 1 || (!PP(k) && Predicates.PALINDROME.is(k) && Predicates.PRIME_POWER.is(k))	Prime power decimal palindromes that are not prime. A084092() without J002385.
+A084718	filter	1	new A084402()	(k, v) -> k >= 2	without the first term. - _R. J. Mathar_, Sep 17 2008
+A085759	filter	1	new LambdaSequence(0, n -> ZV(4*n + 1))	v -> v.equals(ZV(1)) || Predicates.PRIME_POWER.is(v)	Prime powers of the form 4n+1.
+A085760	filter	1	new LambdaSequence(0, n -> ZV(4*n + 3))	v -> Predicates.PRIME_POWER.is(v)	Prime powers of the form 4n+3.
+A086395	filter	1	new A001333()	PRIME
+A086785	filter	0	new A002485()	PRIME
+A086788	filter	0	new A002486()	PRIME
+A089341	filter	1	new A081306().skip(1)	v -> !Predicates.PRIME_POWER.is(v)	without prime powers.
+A096146	filter	1	new A002531()	PRIME	Prime numerators of the rational convergents to sqrt(3).
+A096147	filter	1	new A002530()	PRIME	Prime denominators of the rational convergents to sqrt(3).
+A099024	lambdan	0	n -> new Q(ZV(2*n + 1), ZV(n).^(2).+(ZV(2*n + 1).^(2)).*(ZV(5*n + 3).^(2).+(1))).den()	denominators of (2*n+1)/((n^2+(2*n+1)^2)*(1+(5*n+3)^2))
+A100556	filter	1	new A052007().skip(1)	v -> !PP(v)	Composite terms in J052007.
+A103444	trilambn	0	0	0	(n, k) -> Functions.USIGMA0.z(BI(n, k))	Triangle read by rows: T(n,k) is number of unitary divisors of C(n,k), 0<=k<=n.
+A110465	filter	1	new A073751()	v -> !v.equals(ZV(2))	without the "2" terms.
+A110560	rambdan	0	n -> new Q(F000217(n + 1), FA(n))	reduced to lowest terms, where T(n) are the triangular numbers F000217.
+A110561	rambdad	0	A110560		T(n+1)/n! reduced to lowest terms, where T(n) are the triangular numbers F000217.
+A110914	lambdan	0	n -> SU(0, n, k -> D001850(k).*(D001850(n - k)).modZ(3))	Sum_{k=0..n} ((b(k)*b(n-k)) mod 3)
+A113327	polya	0	"[1],[0,2]"	"1,1,x,B,>1,p1,*,-,/"	new A000142()
+A113328	polyxa	0	"[1],[0,3/2]"	"1,1,x,B,>2,p1,*,-,/"	2	0	new A000142()
+A113329	polyxa	0	"[1],[0,2/3]"	"1,1,x,B,>3,p1,*,-,/"	3	0	new A000142()
+A113330	polyxa	0	"[1],[0,5/24]"	"1,1,x,B,>4,p1,*,-,/"	4	0	new A000142()
+A113331	polyxa	0	"[1],[0,1/20]"	"1,1,x,B,>5,p1,*,-,/"	5	0	new A000142()
+A116871	lambdan	0	n -> SU(0, n, k -> Functions.CATALAN.z(k).*(Functions.CATALAN.z(5 + n - k)))	sum(C(k)*C(5+n-k),k=0..n)
+A120460	filter	1	new A121259()	PRIME	Prime terms in J121259 = numbers n such that (3n^2+1)/4 is prime.
+A120994	rambdan	1	n -> new Q(ZV(4).^(n), BI(2*n, n)).^(2)./(2*n + 1).*(new Q(3,4))	numerator((3/4)*W(n)), n>=1, with the rationals W(n) given above. An equivalent form is W(n) = (((4^n)/binomial(2*n,n))^2)/(2*n+1).
+A120995	rambdad	1	A120994
+A121494	filter	1	new A074821()	v -> !PP(v)	Composite terms of J074821, while prime terms of J074821 are Sophie Germain primes J005384.
+A122252	rambdan	1	n -> RU(1, n, j -> new Q(Z_1(n - j).*(S1(n, j)).*(j), ZV(j + 1).*(j+2)))./(2*n)
+A122253	rambdad	1	A122252
+A129934	rambdan	0	n -> RU(0, n, j -> new Q(FA(2*j), FA(j).^(2)).^(2).*(new Q(1, 32).^(j)))	numer( sum((((2*j)!/(j!^2))^2)*(1/2^(5*j)),j=0..n)), n>=0.
+A130034	rambdad	0	A129934
+A130036	rambdad	0	A130037
+A130037	rambdan	0	n -> RU(0, n, j -> new Q(FA(2*j), FA(j).^(2)).^(2).*(new Q(3, 64).^(j)))
+A130039	rambdan	0	n -> RU(0, n, j -> new Q(FA(2*j), FA(j).^(2)).^(2).*(new Q(1, 80).^(j)))
+A130040	rambdad	0	A130039
+A130187	polyz	0	"[1],[0,0,1/4]"	"2,p1,exp,1,-,x,/"	2	1	1	2
+A130188	polyz	0	"[1],[0,0,1/4]"	"4,p1,exp,1,-,x,/,*"	2	5	1	2
+A130409	polyx	0	"[1],[1,1]"	"x,1,p1,log,+,log,/"	1	5
+A130413	rambdan	0	n -> RU(1, n, j -> new Q(Z_1(j + 1), ZV(2*j + 1).*(ZV(2*j + 1).^(2).-(1)))).*(new Q(4, 3)).+(1)	numer(1+ (4/3)*add(((-1)^(j+1))/((2*j+1)*((2*j+1)^2-1)), j=1..n)):
+A130414	rambdad	0	A130413
+A131408	multia	0	"1"	(self, n) -> F000041(n).+(SU(2, n - 1, i -> S008284(n, i).*(self.a(i))))
+A133214	trilambn	0	0	0	(n, k) -> BI(n, k).^(2).*(Z2(k))	T(n, k) = 2^k binomial(n,k)^2.
+A136652	polya	1	"[1]"	"x,B,log,*n"	new A006125()
+A138316	rambdan	1	n -> RU(1, n, k -> new Q(MU(k).^(2), PHI(k)))	numerator[sum(k=1 to n)mu^2(k)/phi(k)]
+A138317	rambdad	1	A138316
+A141151	polya	1	"[1]"	"x,B,log,*n"	new A000312()
+A141152	polya	1	"[1]"	"x,B,1,+,log,*n"	new A000169()
+A141154	polya	1	"[1]"	"x,B,<1,1,+,log,*n"	new A000142()
+A144519	filter	1	new A034953()	v -> !v.equals(ZV(3))	without the 3. [From _R. J. Mathar_, Feb 21 2009]
+A145557	lambdan	1	n -> RU(1, n, k -> new Q(Z_1(k + 1), BI(2*k, k).*(k))).num()	r(n):=sum(((-1)^(k+1))/(k*binomial(2*k,k)),k=1..n).
+A145558	lambdan	1	n -> RU(1, n, k -> new Q(Z_1(k + 1), BI(2*k, k).*(k))).den()./(2)	r(n):=sum(((-1)^(k+1))/(k*binomial(2*k,k)),k=1..n).
+A147779	filter	1	new A073120()	v -> Predicates.SQUARE_FREE.is(v)	Squarefree terms of J073120. Squarefree terms of J009112.
+A156213	polya	0	"[1]"	"x,B,1,-,2,/,/n,exp"	new A111637()
+A157165	rambdan	1	n -> RU(1, n, k -> RU(1, k, j -> new Q(1, 2*j - 1))./(ZV(k).*(4*k).-(1))).*(3)
+A157166	rambdad	1	A157165
+A158095	polya	0	"[1]"	"x,B,2,*,/n,exp"	new A082245()
+A158265	polya	0	"[1]"	"x,B,2,*,/n,exp"	new A294645()
+A158266	polya	0	"[1]"	"x,B,1,-,/n,exp"	new A060150()
+A158274	rambdan	1	n -> new Q(Functions.SIGMA.z(2, n), SIGMA(n))
+A158275	rambdad	1	A158274
+A158298	rambdad	1	A158299
+A158299	rambdan	1	n -> new Q(Functions.SIGMA.z(2, n), TAU(n))
+A158466	rambdan	0	n -> RU(1, n, k -> new Q(Z_1(k).*(BI(n, k)))./(Q.ONE.-(new Q(1, 2).^(k)))).negate()	-Sum_{k=1..n} (-1)^k * C(n,k) / (1-(1/2)^k).
+A158467	rambdad	0	A158466
+A159236	filter	1	new A050674()	PRIME	Prime terms in J050674.
+A160039	rambdan	0	n -> RU(1, n + 1, i -> new Q(1, i)).*(FA(n))	numer(n!*add(1/i, i=1..n+1));
+A162588	polya	0	"[1]"	"x,B,/n,2,*,exp"	new A075101()
+A163998	filter	1	new A000040()	p -> p.and(Z.ONE).equals(PT(p).and(Z.ONE))	Primes p having the same parity as the number of partitions of p.	nonn	1..57	nyi	_Omar E. Pol_
+A164029	sintrif	1	(term, n) -> term.+(term.testBit(0) ? Z.NEG_ONE : Z.ONE)	""	new A141468()	nonprime(n) + (-1)^(nonprime(n))
+A164114	filnum	1	1	k -> PP(Functions.CHOWLA.z(k).+(PHI(k)))	Numbers k such that Chowla(k) + phi(k) is prime.	nonn	1..5000	nyi	_Juri-Stepan Gerasimov_
+A164318	filter	1	new A000040()	p -> SIGMA(p.-(1)).compareTo(p.*(2)) > 0	Primes p such that the sum of divisors of p-1 is larger than 2*p.	nonn	1..5000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A164319	filter	1	new A000040()	p -> SIGMA(p.+(1)).compareTo(p.*(2)) > 0	Primes p such that the sum of divisors of p+1 is larger than 2*p.	nonn	1..5000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A164320	filter	1	new A000040()	p -> SIGMA(p.-(1)).compareTo(p.*(2)) > 0 && SIGMA(p.+(1)).compareTo(p.*(2)) > 0		Primes p such that sums of divisors of the two adjacent integers are each > 2*p.	nonn	1..5000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A164571	filnum	1	0	k -> k == 1 || (Predicates.PRIME_POWER.is(k) && Predicates.PRIME_POWER.is(k + 3))	are prime powers.	nonn	1..50	nyi	_Daniel Forgues_
+A164572	filnum	1	0	k -> k == 1 || (Predicates.PRIME_POWER.is(k) && Predicates.PRIME_POWER.is(k + 4))	are both prime powers.	nonn	1..10000	nyi	_Daniel Forgues_, Aug 17 2009
+A164574	filnum	1	0	k -> k == 1 || (Predicates.PRIME_POWER.is(k) && Predicates.PRIME_POWER.is(k + 6))	are both prime powers.	nonn	1..10000	nyi	_Daniel Forgues_
+A169731	filter	1	new A000787()	v -> v.toString().indexOf('8') < 0	without using digit 8,
+A172394	polya	0	"[1]"	"x,A,/,B"	new A001464()
+A172395	polya	0	"[1]"	"x,A,/,B"	new A000085()
+A172396	polya	0	"[1]"	"x,A,/,B"	new A003701()
+A174711	filter	1	new A216147()	v -> !PP(v)	in E216147. - _M. F. Hasler_, Sep 02 2012
+A175496	filnum	1	1	k -> !Predicates.SQUARE_FREE.is(k) && TAU(k).bitCount() == 1
+A178808	lambdan	1	n -> D001850(n).*(D001850(n - 1)).*(6).-(D001850(n).^(2)).-(D001850(n - 1).^(2))./(8)	_Mark van Hoeij_, Nov 12 2022
+A180606	polya	0	"[1]"	"x,B,<1,/n,exp"	new A180602()
+A185897	polyxa	1	"[0,1]"	"x,B,1,x,B,-,/"	2	0	new A389476()
+A193305	filter	1	new A033948()	(k, v) -> k > 1 && !PP(v)	Nonprime terms of J033948 (omitting the initial term 1). - _Joerg Arndt_, Aug 07 2011
+A201014	filter	1	new A199978().prepend(0)	v -> Functions.DIGIT_PRODUCT.z(v).isZero()
+A208271	filter	1	new A011531()	v -> !PP(v)	Nonprime numbers containing a digit 1.
+A211822	filnum	1	1	k -> k == 1 || (!PP(k) && CND(k, d -> Functions.DIGIT_SUM_ROOT.i(d) != 1).isZero())
+A213527	multia	0	"1"	(self, n) ->RU(1, n, i -> new Q(FI(i + 1).*(self.a(n - i)), FA(n - i))).*(FA(n - 1)).num()	a[0] = 1; a[n_] := a[n] = (n-1)! Sum[Fibonacci[i+1] a[n-i]/(n-i)!, {i, n}];
+A215927	filter	1	new A000040()	p -> { final int dc[] = ZUtils.digitCounts(p); return dc[0] > 0 || dc[1] > 0 || dc[4] > 0 || dc[6] > 0 || dc[8] > 0 || dc[9] > 0; }
+A216355	polya	0	"[1]"	"x,B,1,-,/n,exp"	new A216356()
+A225836	filter	1	new A091072()	v -> v.bitCount() != 1	without the powers of 2.
+A225845	rambdan	0	n -> { final Z p2 = Z2(2*n); return new Q(p2.*(p2.-(1)), FA(2*n)); }	Numerator of c(n) = 2^(2*n)*(2^(2*n) - 1)/(2*n)!,
+A225846	rambdad	0	A225845
+A226586	filter	1	new A051612()	ODD	Odd values of J051612(n) sorted along n.
+A238527	filter	1	new A238525()	PRIME	Prime value of J238525.
+A268138	lambdan	1	n -> D001850(n).*(D001850(n - 1)).*(3*(2*n + 1)).-(D001850(n - 1).^(2).*(n))./(n + 1).-(D001850(n).^(2))./(4)	((3*(2*n+1)*D001850(n)*D001850(n-1) - n*D001850(n-1)^2)/(n+1) - D001850(n)^2)/4. - _Mark van Hoeij
+A272476	lambdan	0	n -> PP(n) ? ZV(n) : ZV(2*n + 3)	a(n) = n if n is prime, a(n) = 2*n+3 otherwise.
+A273011	filnum	1	1	n -> { final int dn = Functions.INFINITARY_SIGMA0.i(n); return CNT(1, n - 1, k -> dn < Functions.INFINITARY_SIGMA0.i(k)).isZero(); }	zNumbers n such that d_i(n) >= d_i(k) for k = 1 to n-1, where d_i(n) is the number of infinitary divisors of n (D037445).
+A282322	filter	1	new A181604()	v -> !v.equals(ZV(3))	without the 3. [Proof: working mod 10 we see that each value here is in J181604. For the other direction: Except 3 all twin primes in J181604 are upper twin primes; they cannot be lower twin primes because the upper ones would be multiples of 5. The twin primes in J181604 could be == 3 (mod 30) or == 13 (mod 30) or == 23 (mod 30). The first case is excluded because they would be multiples of 3; the third case is excluded because the lower twin primes would be == 21 (mod 30) and also multiples of 3. So only the case == 13 (mod 30) remains.] - _R. J. Mathar_, Feb 14 2017
+A282323	filter	1	new A181605()	v -> !v.equals(ZV(7))	without the 7. The proof works along the same lines as the proof in ?282322. - _R. J. Mathar_, Feb 14 2017
+A283266	filter	0	new A050414()	PRIME	Prime terms in J050414.
+A316527	filter	1	new A000045()	(k, v) -> k == 0 || k == 1 || (k > 2 && !PP(Functions.DIGIT_SUM.z(v)))	Fibonacci numbers whose sum of digits is not a prime.
+A325435	filter	1	new A163162()	v -> !v.equals(ZV(3))	without number 3.
+A330203	filter	 0	new A002808()	v -> D001850(v).mod(v).equals(ZV(3))	Composite numbers k such that D(k) == 3 (mod k), where D(k) is the k-th central Delannoy number (J001850).
+A331976	filter	1	new A111035()	ODD	Odd terms in J111035, ?124456.
+A340736	filter	1	new A067439()	PRIME	Prime value in J067439, in the order in which they appear.
+A342949	filter	1	new A007602()	ODD	Odd terms in J007602.
+A347908	filter	1	new A130421()	EVEN	Even terms in J130421. Complement of J347906 in J130421.
+A348839	filter	1	new A056652()	v -> !PP(v)	Composite terms in J056652.
+A351337	filter	0	new A270951()	(k, v) -> k > 1 && !PP(v)	Composite terms in J270951.
+A351385	trilambn	0	0	0	(n, k) -> RU(k, n, j-> new Q(BI(n + j, n).*(BI(n, j)), ZV(j + 1))).num()
+A351443	filter	1	new A351446()	ODD	Odd terms in J351446.
+A353679	filter	1	new A006872()	ODD	Odd terms in J006872.
+A358222	filter	1	new A358221()	v -> !PP(v)	Composite terms in J358221.
+A362056	filter	1	new A261997()	PRIME	Prime terms in J261997.
+A364495	filter	1	new A364494()	ODD	Odd terms in J364494.
+A364547	filter	0	new A364546()	ODD	Odd terms in J364546.
+A364963	filter	0	new A364496()	ODD	Odd terms in J364496.
+A364965	filter	0	new A364964()	ODD	Odd terms in J364964.
+A368297	filter	1	new A000219()	PRIME	Prime value of J000219.
+A374570	polyxa	1	"[0,1]"	"x,A,B,/"	2	0	new A374571()
+A378247	polyx	1	"[0,1],[0,0,1],[0,2]"	"p1,A,^2,p2,*,+,A,^4,2,*,+,sub,sqrt"	3	0
+A378260	polyxa	1	"[0,1],[0,0,1]"	"p1,sub,x,B,/"	2	0	new A008683()
+A378261	polyxa	0	"[1],[0,0,1]"	"p1,sub,x,B,*,x,/"	2	0	new A008683()
+A379426	filter	1	new A287353()	PRIME	Prime terms in J287353.
+A383563	polya	0	"[1]"	"x,A,^2,/,B"	new A121687()
+A385350	filter	1	new A007422()	ODD	Odd terms in J007422.
+A388980	filter	1	new A229125()	EVEN	Even terms of J229125
+A390955	filter	1	new A303606()	ODD	Odd terms in J303606.
+A390956	filter	1	new A303606()	EVEN	Even terms in J303606.
+A391756	filter	1	new A131605()	EVEN	Even terms in J131605.
+A392605	filnum	1	0	k -> E327860(k).compareTo(ZV(k)) <= 0
+A392613	filnum	1	0	k -> ZV(k).mod(E392858(k)).isZero()
+A392861	lambdan	0	n -> E392860(1 + n).-(PM(1 + n).-(1).*(E392860(n)))	, where J006093(n) is prime(n)-1.	nonn,new	0..21	nyi	_Antti Karttunen_
+A392862	sintrif	0	(term, n) -> term.+(14).mod(PM(n + 1))	""	new A143293()	a(n) = J143293(n)+14 mod prime(n+1), where J143293 gives the partial sums of primorials.	nonn,new	0..12000	nyi	_Antti Karttunen_
+A392918	polyx	0	"[1],[1,-1]"	"p1,log,^3,<1,lambertW,neg"	0	1
+A392933	polyx	0	"[1]"	"1,A,<1,1,A,^2,<2,-,log,*,-"	0	1
+A392957	polyx	0	"[1]"	"1,A,<1,A,^2,<2,exp,1,-,*,+"	0	1
+A392976	lambdan	0	n -> SU(0, n/2, k -> BI(2*n - 2*k, n).*(BI(4*n - 3*k + 1, k)))./(n + 1)
+A392977	lambdan	0	n -> SU(0, n/2, k -> BI(2*n - 2*k, n).*(BI(6*n - 5*k + 2, k)))./(n + 1)
+A392978	lambdan	0	n -> SU(0, n/3, k -> BI(2*n - 3*k, n).*(BI(4*n - 5*k + 1, k)))./(n + 1)
+A392979	lambdan	0	n -> SU(0, n/3, k -> BI(2*n - 3*k, n).*(BI(6*n - 8*k + 2, k)))./(n + 1)
+A392991	lambdan	0	n -> RU(0, n/2, k -> new Q(FA(2*(n - 2*k)), FA(n - 2*k).*(FA(2*k + 1))).*(S2(k, 2*(n - 2*k)))./(FA(k))).*(FA(n).^(2)).num()
+A392992	lambdan	0	n -> RU(0, n/3, k -> new Q(FA(2*(n - 3*k)), FA(n - 3*k).*(FA(3*k + 1))).*(S2(k, 2*(n - 3*k)))./(FA(k))).*(FA(n).^(2)).num()
+A392993	lambdan	0	n -> RU(0, n/2, k -> new Q(FA(2*(n - 2*k)), FA(n - 2*k).*(FA(2*k + 1))).*(S1(k, 2*(n - 2*k)).abs())./(FA(k))).*(FA(n).^(2)).num()
+A392994	lambdan	0	n -> RU(0, n/3, k -> new Q(FA(2*(n - 3*k)), FA(n - 3*k).*(FA(3*k + 1))).*(S1(k, 2*(n - 3*k)).abs())./(FA(k))).*(FA(n).^(2)).num()
+A392997	lambdan	0	n -> RU(0, n/2, k ->QV(n + k + 1).^(n - 2*k - 1).*(BI(n + k + 1, k))./(FA(n - 2*k))).*(FA(n)).num()
+A392998	lambdan	0	n -> RU(0, n/3, k ->QV(n + k + 1).^(n - 3*k - 1).*(BI(n + k + 1, k))./(FA(n - 3*k))).*(FA(n)).num()
+A392999	lambdan	0	n -> RU(0, n/2, k ->QV(n - k + 1).^(n - 2*k - 1).*(BI(n, k))./(FA(n - 2*k))).*(FA(n)).num()
+A393003	lambdan	0	n -> RU(0, n/3, k ->QV(n - k + 1).^(n - 3*k - 1).*(BI(n, k))./(FA(n - 3*k))).*(FA(n)).num()

@@ -1,0 +1,82 @@
+---- 2026-02-09 11:12:18
+---- 2026-02-09 11:14:10
+---- 2026-02-09 11:18:02
+A094385	trilambn	0	0	0	(n, k) -> (k == 0) ? (n == 0 ? ZV(1) : ZV(0)) : BI(2*n, k - 1).*(BI(2*n - k - 1, n - k))./(n)	/n for n, k >= 1, and T(n, 0) = 0^n
+A094387	filnum	1	1	k -> GCDi(k, Integer.bitCount(k)) == 1	Numbers k such that gcd(k, F000120(k)) = 1.	nonn,base	1..10000	nyi	_Benoit Cloitre_
+A094389	sintrif	1	(term, n) -> term.modZ(10)	""	new A038003().prepend(1)	Last decimal digit of the odd Catalan number J038003(n).	nonn,base	1..105	nyi	_Eric W. Weisstein_
+A094390	beatty2	1	() -> CR.PI./(4).exp()	Beatty sequence of exp(Pi/4).	nonn	1..10000	nyi	_Robert G. Wilson v_
+A094391	beatty2	1	() -> CR.PI./(4).exp()./(CR.PI./(4).exp().-(1))	A Beatty sequence using exp(Pi/4)/(exp(Pi/4) - 1).	nonn	1..10000	nyi	_Robert G. Wilson v_
+A094398	filtpos	1	1	new A000204()	(k, v) -> v.+(1).mod(k) == 0	Numbers k that divide Lucas(k) + 1.	nonn	1..1000	nyi	_Eric Rowland_
+A094399	filtpos	1	1	new A000204()	(k, v) -> (k&1) == 1 && v.+(1).mod(k) == 0	Odd numbers k that divide Lucas(k) + 1.	nonn	1..35	nyi	_Eric Rowland_
+A094400	filter	1	new A000045()	(k, v) -> (k&1) == 1 && !PP(k) && v.-(1).mod(k) == 0 && FI(k - 1).mod(k) != 0 && FI(k + 1).mod(k) != 0	FI(	Odd n dividing Fibonacci(n)-1 but neither Fibonacci(n-1) nor Fibonacci(n+1).	nonn	1..559	nyi	_Eric Rowland_
+A094401	filnum	1	4	k -> !PP(k) && FI(k - 1).mod(k) == 0 && FI(k).-(1).mod(k) == 0	Composite n such that n divides both Fibonacci(n-1) and Fibonacci(n) - 1.	nonn	1..1000	nyi	_Eric Rowland_
+A094402	filtpos	1	1	new A000204()	(k, v) -> v.+(1).mod(k) == 0 && FI(k + 1).mod(k) == 0	Numbers k that divide both Fibonacci(k+1) and Lucas(k) + 1.	nonn	1..1000	nyi	_Eric Rowland_
+A195130	sintrif	1	(term, n) -> ((n&1) == 1) ? term : term.negate()	""	new A005149()
+A214988	beatty2	1	() -> CR.PHI.sqrt()	Beatty sequence for sqrt(r), where r = (1+sqrt(5))/2 = golden ratio; complement of ?214989.
+A214989	beatty2	1	() -> CR.PHI.sqrt()./(CR.PHI.sqrt().-(1))	Beatty sequence [sqrt(phi)/(sqrt(phi)-1) * n], where phi = (1 + sqrt(5))/2 = golden ratio; complement of ?214988.
+A355326	holos	0	[0,1,-17,136,-680,2380,-6188,12376,-19448,24310,-24310,19448,-12376,6188,-2380,680,-136,17,-1]	1,1,2,67,2157,96471,2312410,32099453,302049265,2134677349,12111035146,57724828943,238763085133,877863236043,2922096754578,8932649551321,25364746314689,67523106652585	0	0
+A390190	holos	0	[0,-1,4,-1]	5,25	0	0
+A392834	holos	1	[0,1,-1,-1,0,1,1,-1]	1,2,3,7,9,14,17, 22, 26, 32, 37, 43, 49, 56, 62, 70	0	0
+A392996	lambdan	0	n -> RU(0, n/3, k -> new Q(Z.ONE, FA(3*k + 1)).*(S2(k, n - 3*k))./(FA(k))).*(FA(n).^(2)).num()	a(n) = (n!)^2 * Sum_{k=0..floor(n/3)} 1/(3*k+1)! * Stirling2(k,n-3*k)/k!.
+A393051	lambdan	1	n -> SD(n, d -> D356162(d))
+A393052	lambdan	1	n -> SD(n, d -> ZV(1).-(D356162(d)))
+A393053	lambdan	1	n -> { final Z f = F276086(n); return SD(n, d -> GCD(ZV(d), f).equals(ZV(1)) ? ZV(1) : ZV(0)); }
+A393054	lambdan	1	n -> { final Z f = F276086(n); return SD(n, d -> GCD(ZV(d), f).compareTo(ZV(1)) > 0 ? ZV(1) : ZV(0)); }
+A393087	decexp	0	() -> CR.PI.-(CV(new Q(149, 60)))./(60)	Decimal expansion of (Pi - 149/60)/60.	nonn,cons,easy,new	0..100	nyi	_Stefano Spezia_
+A393088	decexp	0	() -> CV(new Q(5, 36)).-(CV(2).log()./(6))	Decimal expansion of 5/36 - log(2)/6.	nonn,cons,easy,new	0..100	nyi	_Stefano Spezia_
+A393089	decexp	0	() -> CV(2).log()./(4).-(CR.PI./(24))	Decimal expansion of log(2)/4 - Pi/24.	nonn,cons,easy,new	0..100	nyi	_Stefano Spezia_
+A393093	holos	0	[0,1,0,-1,-2,0,2,1,0,-1]	0,0,0,1,1,2,4,5,6,10,11	0	0
+A393095	holos	0	[0,1,0,-1,-2,0,2,1,0,-1]	0,0,0,1,2,2,5,6,7,11,13	0	0
+A393135	poly	0	"[1],[1,-1],[0,-1]"	"1,p2,sub,^2,<1,p1,/,+"
+A393158	decexp	0	() -> CV(2).log().*((CR.SQRT2./(CR.PI)).log()).negate()	log(2)*log(sqrt(2)/Pi), negated.	n
+A393165	decexp	0	() -> CR.PI.^(3)./(96)	(Pi^3)/96.	nonn,cons,easy,new	0..10
+A393175	holos	0	[0,4,-4,1,-4,4,-1]	0,0,0,0,1,4,12,33,84	0	0
+A393177	holos	0	[0,4,4,-3,-6,-3,3,2,-1]	0,0,0,0,0,1,2,7,17,43,101,236	0	0
+A393181	holos	0	[[0],[1280,-288,16],[-1296,360,-24],[0],[-760,252,-20],[776,-372,40],[-268,138,-14],[160,-144,20],[-2,57,-19],[-2,-3,5],[4,-9,-7],[0,9,3]]	1	0	0
+A393182	holos	0	[[0],[1280,-288,16],[-3032,804,-52],[3412,-1062,80],[-3008,1122,-100],[1880,-900,100],[-874,549,-77],[350,-339,61],[-38,150,-40],[-38,-36,20],[20,-9,-11],[0,9,3]]	1	0	0
+A393195	poly	0	"[1],[0,0,1]"	"p1,sub,p1,sub,^3,<1,+"
+A393196	poly	0	"[1],[0,0,1]"	"p1,sub,p1,sub,^3,<1,-"
+A393214	lambdan	1	n -> D007426(n).^(2)	a(n) = d_4(n)^2, where d_4 is the 4th Piltz function (D007426)
+A393227	poly	0	"[1],[1,-1]"	"1,x,p1,^2,/,sub,p1,^3,/,<1,+"
+A393228	poly	0	"[1],[1,-1]"	"1,x,p1,^3,/,sub,p1,^2,/,<1,+"
+A393244	holos	0	[[0],[-15,5],[15,-8],[-9,6],[3,-4],[0,1]]	1	0	0
+A393245	holos	0	[[0],[-12,3],[-8,1],[24,-10],[-16,10],[4,-5],[0,1]]	1	0	0
+A393246	holos	0	[[0],[-14,4],[5,-3],[9,-4],[-9,6],[3,-4],[0,1]]	1	0	0
+A393247	holos	0	[[0],[-16,4],[10,-4],[-3,1],[9,-4],[-9,6],[3,-4],[0,1]]	1	0	0
+A393249	holos	0	[[0],[-12,4],[10,-4],[0],[0],[-1,1],[1,-2],[0,1]]	1	0	0
+A393250	holos	0	[[0],[-18,4],[12,-4],[0],[-3,1],[9,-4],[-9,6],[3,-4],[0,1]]	1	0	0
+A393251	holos	0	[[0],[-12,4],[0],[0],[0],[1,-1],[-1,2],[0,-1]]	1	0	0
+---- 2026-02-09 13:41:05
+A118391	ratos	1	[[-6],[0,-2,-3,-1],[0,2,3,1]]	1	0	0
+A118392	conum	1	A118391
+A118411	ratos	1	[[-24],[0,-6,-11,-6,-1],[0,6,11,6,1]]	1	0	0
+A118412	conum	1	A118411
+A118431	ratos	1	[[-120],[0,-24,-50,-35,-10,-1],[0,24,50,35,10,1]]	1	0	0
+A118432	conum	1	A118431
+---- 2026-02-09 14:05:21
+A373439	rambdan	1	n -> RD(n, d -> Predicates.SQUARE.is(d) ? new Q(1, d) : Q.ZERO)	Numerator of sum of reciprocals of square divisors of n.
+A373440	rambdad	1	A373439	Denominator of sum of reciprocals of square divisors of n.
+---- 2026-02-09 14:17:14
+A281085	rambdan	1	n -> RU(1, n - 1, k -> n%k == 0 ? QV(0) : new Q(1, k))	Numerator of sum of reciprocals of numbers less than n that do not divide n.
+A281086	rambdad	1	A281085
+A334074	rambdan	1	n -> { final Z b = BI(2*n, n); return RU(2, n, k -> (PP(k) && b.mod(k) != 0) ? new Q(1, k) : QV(0)); }	a(n) is the numerator of the sum of reciprocals of primes not exceeding n and not dividing binomial(2*n, n).
+A334075	rambdad	1	A334074	a(n) is the denominator of the sum of reciprocals of primes not exceeding n and not dividing binomial(2*n, n).
+---- 2026-02-09 14:41:38
+A181098	filtpos	1	0	new A038822()	v -> v.equals(ZV(0))
+A186393	filtpos	1	0	new A038822()	v -> v.equals(ZV(1))	prime between 100*k and 100*k + 99.      nonn    1..1000 nyi     _Tim Johannes Ohrtmann_
+A186394	filtpos	1	0	new A038822()	v -> v.equals(ZV(2))	primes between 100*k and 100*k + 99.    nonn    1..1000 nyi     _Tim Johannes Ohrtmann_
+A186395	filtpos	1	0	new A038822()	v -> v.equals(ZV(3))	primes between 100*k and 100*k + 99.    nonn    1..1000 nyi     _Tim Johannes Ohrtmann_
+A186396	filtpos	1	0	new A038822()	v -> v.equals(ZV(4))	primes between 100*k and 100*k + 99.    nonn    1..1000 nyi     _Tim Johannes Ohrtmann_
+A186397	filtpos	1	0	new A038822()	v -> v.equals(ZV(5))	primes between 100*k and 100*k + 99.    nonn    1..1000 nyi     _Tim Johannes Ohrtmann_
+A186398	filtpos	1	0	new A038822()	v -> v.equals(ZV(6))	primes between 100*k and 100*k + 99.    nonn    1..1000 nyi     _Tim Johannes Ohrtmann_
+A186399	filtpos	1	0	new A038822()	v -> v.equals(ZV(7))	primes between 100*k and 100*k + 99.    nonn    1..1000 nyi     _Tim Johannes Ohrtmann_
+A186400	filtpos	1	0	new A038822()	v -> v.equals(ZV(8))	primes between 100*k and 100*k + 99.    nonn    1..1000 nyi     _Tim Johannes Ohrtmann_
+A186401	filtpos	1	0	new A038822()	v -> v.equals(ZV(9))	primes between 100*k and 100*k + 99.    nonn    1..1000 nyi     _Tim Johannes Ohrtmann_
+A186402	filtpos	1	0	new A038822()	v -> v.equals(ZV(10))	primes between 100*k and 100*k + 99.   nonn    1..1000 nyi     _Tim Johannes Ohrtmann_
+A186403	filtpos	1	0	new A038822()	v -> v.equals(ZV(11))	primes between 100*k and 100*k + 99.   nonn    1..1000 nyi     _Tim Johannes Ohrtmann_
+A186404	filtpos	1	0	new A038822()	v -> v.equals(ZV(12))	primes between 100*k and 100*k + 99.   nonn    1..1000 nyi     _Tim Johannes Ohrtmann_
+A186405	filtpos	1	0	new A038822()	v -> v.equals(ZV(13))	primes between 100*k and 100*k + 99.   nonn    1..1000 nyi     _Tim Johannes Ohrtmann_
+A186406	filtpos	1	0	new A038822()	v -> v.equals(ZV(14))	primes between 100*k and 100*k + 99.   nonn    1..1000 nyi     _Tim Johannes Ohrtmann_
+A186407	filtpos	1	0	new A038822()	v -> v.equals(ZV(15))	primes between 100*k and 100*k + 99.   nonn    1..1000 nyi     _Tim Johannes Ohrtmann_
+A186408	filtpos	0	0	new A038822()	v -> v.equals(ZV(16))	primes between 100*k and 100*k + 99.   nonn    1..1000 nyi     _Tim Johannes Ohrtmann_
+A186509	filtpos	0	0	new A038822()	v -> v.equals(ZV(17))	(17 primes), 

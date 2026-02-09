@@ -1,0 +1,97 @@
+---- 2026-02-02 19:26:17
+A055231	mult	1	e == 1 ? p : Z.ONE
+A095071	setdiff	1	new A000040()	new A095074()		in F000040. Subset: J095072. Cf. ?095019.
+A095282	setdiff	1	new A000040()	new A095283()		in F000040. Cf. J027699, ?095292.
+A096264	setdiff	1	new A000040()	new A007996()		in F000040 the primes).
+A098545	lambdan	0	n ->  (n == 0) ? ZV(1) : SU(1, n, k -> BI(n, k).*(T008284(n, k)))	for n > 0. - _Vladeta Jovovic_, Jul 24 2005
+A107379	lambdan	0	n -> T008284((n*n + n)/2, n)	= T008284(F000217(n),n). - _Max Alekseyev_, Sep 25 2009
+A120330	filter	1	new A000040()	v-> { final long p = v.mod(13); return p != 1L && p != 3L && p != 4L && p != 9L && p != 10L && p != 12L; }
+A138511	setdiff	1	new A001358()	new A251728()		in J001358.
+A152157	trilambn	0	0	0	(n, k) -> T008284(n + k + 1, 2*k + 1)	, n >= 0, k >= 0, with p(N,M)= T008284(N,M), the number of partitions of N into M parts. See the sketch of the proof given above as a comment. - _Wolfdieter Lang_, Jul 09 2012
+A176328	polyx	0	"[1],[0,1/2],[0,-1]"	"p1,p2,exp,1,+,*,x,exp,1,-,/"	1	1
+A176591	polyx	0	"[1],[0,1/2],[0,-1]"	"p1,p2,exp,1,+,*,x,exp,1,-,/"	1	5
+A186098	setdiff	1	new A000040()	new A076757()		in F000040.
+A191996	rambdan	1	n -> RQ(2, n, j -> Q.ONE.-(Q.ONE./(PM(j).-(1).^(2)))).*(2)	r(n):=2*product(1-1/(p(j)-1)^2,j=2..n),
+A191997	rambdad	1	A191996
+A197227	setdiff	1	new A000040()	new A067377()		in F000040. For the primes less than 10^6, these primes make up about 56%.
+A197636	setdiff	0	new A000040()	new A007540()		 in F000040. - _Felix Fröhlich_, Jan 24 2016
+A199514	rambdan	2	n -> new Q(MU(n).^(2).*(n), ZV(n).-(PHI(n)))	Numerators of zeros to a symmetric polynomial. Numerators of mu(n)^2*(n/(n - phi(n))).
+A199515	rambdad	2	A199514
+A209816	lambdan	1	n -> SU(1, n, k -> T008284(2*n, k))	= F000041(2*n) - J000070(n-1), for n >= 1. - _Wolfdieter Lang_, May 21 2019
+A211771	setdiff	1	new A009993().skip(1)	new A052015()		to J009993. Supersequence of B211772.
+A220434	poly	0	"[0,1],[0,0,0,1/6],[0,0,1]"	"p1,p2,-,x,+,rev"
+A220435	polyx	0	"[0,1],[0,0,0,1/6],[0,0,1]"	"p1,p2,-,x,+,rev"	0	4
+A225083	setdiff	1	new A000040()	new A063980()		in the primes.
+A225697	rambdan	0	n -> new Q(DF(4*n - 1), ZV(24).^(n).*(FA(n)))	!!/(6!^n n!);
+A225698	rambdad	0	A225697
+A226256	rambdan	0	n -> new Q(DF(6*n - 1), ZV(720).^(n).*(FA(n)))	!!/(6!^n n!);
+A226257	rambdad	0	A226256
+A240988	lambdan	1	n -> new Q(DF(n - 1), DF(n).*(Z2((1 + ((n&1) == 1 ? -1 : 1))/2))).^((n&1) == 1 ? -1 : 1).den()	denom((DF(n-1) / (DF(n)*2^((1+(-1)^n)/2)))^((-1)^n))
+A244734	trilambn	0	0	0	(n, k) -> new Q(TRI(n).+(k + 1), k + 1).num()	Numerators of the triangle T(n,k) = (n*(n+1)/2 + k + 1)/(k+1) for n >= k >= 0.
+A244840	trilambn	0	0	0	(n, k) -> new Q(TRI(n).+(k + 1), k + 1).den()	Denominators of the triangle T(n,k) = (n*(n+1)/2+k+1)/(k+1) for n >= k >= 0.
+A247328	setdiff	1	new A005408()	new A005231()		to D005408 (odd numbers), assuming that no odd perfect numbers exist. - Comment clarified by _Daniel Forgues_, Jan 19 2015
+A247473	setdiff	1	new A000079()	new A094505()		to D000079 (powers of 2).
+A248591	rambdan	1	n -> new Q(Z2(n - 1).*(n), FA(n - 1))	Numerators of the (simplified) rationals n*2^(n - 1)/(n - 1)! .
+A248592	rambdad	1	A248591
+A249225	rambdan	1	n -> RU(1, n, j -> GCDi(j, n) == 1 ? new Q(1, j) : Q.ZERO).*(n)./(PHI(n))	a(n)={numerator(n*sum(j=1, n, if(gcd(j, n)==1, 1/j))/eulerphi(n))}
+A249226	rambdad	1	A249225
+A249486	setdiff	1	new A078762()	new A005384()		to J078762 (numbers n such that n + sigma(n) is prime).
+A254603	setdiff	1	new A046528()	new A000668()		to J046528.
+A259852	rambdan	1	n -> new Q(Z2(n).*(n).*(n), BI(2*n, n))	(n^2*2^n/C(2*n,n)).
+A259853	rambdad	1	A259852
+A260658	rambdan	0	n -> new Q(-1,8).^(n).*((new Q(2, 3*n+1)).+(new Q(1, 3*n+2)))	(-1/8)^n * (2/(3*n+1) + 1/(3*n+2))
+A260659	rambdad	0	A260658
+A261419	polyxa	0	"[1,1]"	"x,B,1,+,sqrt"	1	0	new A000290()
+A261420	polyxa	0	"[1,1]"	"x,B,1,+,sqrt"	1	0	new A000217()
+A261456	setdiff	1	new A000040()	new A068807()		to A000040	primes.
+A264234	polyx	0	"[1]"	"x,x,lambertW,-,x,x,lambertW,*,/"	2	0
+A264235	polyx	0	"[1]"	"x,x,lambertW,-,x,x,lambertW,*,/"	2	4
+A264356	lambdan	4	n -> SU(0, n*(n - 4), j -> T008284(n - 1 + j, n - 1))	, with T(n, k) = T008284(n, k) (number of partitions of n with k parts), n >= 4.
+A278562	polyx	0	"[0,1],[1,1]"	"x,asin,p1,log,/,log"	2	0
+A278563	polyx	0	"[0,1],[1,1]"	"x,asin,p1,log,/,log"	2	4
+A290637	rambdan	0	n -> (n == 0) ? Q.ONE : RQ(0, (1 << (n - 1)) - 1, k -> new Q(2*k + 1, 2*k + 2).^(F010060(k).testBit(0) ? -1 : 1))	Product_{k=0..2^(n-1)-1} ((2k+1)/(2k+2))^((-1)^tm(k)), where tm(k) is the Thue-Morse sequence A010060.
+A290638	rambdad	0	A290637
+A307627	setdiff	1	new A001122()	new A019338()		to J001122.
+A327028	trilambn	0	0	0	(n, k) -> k == 0 ? (n == 0 ? ZV(1) : ZV(0)) : FA(k).*(SD(n, d -> PHI(d).*(T008284(n/d, k))))	for n >= 1, T(0, k) = 0^k. Triangle read by rows for 0 <= k <= n.
+A329095	setdiff	1	new A005408()	new A058529()		to D005408	over the odd numbers: odd numbers k such that x^2 == 2 (mod k) has solutions.
+A329487	setdiff	1	new A000040()	new A030080()		in A000040 the primes.
+A331724	setdiff	0	new A007691()	new A330533()		 to J007691. Supersequence of J046985.
+A335437	setdiff	1	new A013929()	new A133466()		in J013929.
+A340002	rambdan	0	n -> Q.ONE./(Q.TWO.^(n - 2).*(FA(n + 1))).*(SU(0, (n - 1)/2, k -> Z_1(k).*(BI(n, k)).*(ZV(n - 2*k).^(n + 1))))	(1/(2^(n-2) * (n+1)!)) * Sum_{k=0..floor((n-1)/2)} (-1)^k * C(n,k) * (n-2*k)^(n+1)
+A340003	rambdad	0	A340002
+A346380	polyxa	0	"[0,0,1],[1,0,-1],[1,0,0,1]"	"x,B,<1,p1,^2,<1,p2,^2,/,rev,-"	3	0	new A000108()
+A348421	setdiff	1	new A002145()	new A092109()		to J002145.
+A349627	rambdan	1	n -> RD(n, d -> new Q(D003961(d), SIGMA(d)).*(MU(n/d)))
+A349628	rambdad	1	A349627
+A349633	rambdan	1	n -> RD(n, d -> new Q(D003961(d), d).*(MU(n/d)))	sumdiv(n, d, moebius(n/d)*(A003961(d)/d)));
+A349634	rambdad	1	A349633
+A355175	holos	0	[0,-1,10,-45,120,-210,252,-210,120,-45,10,-1]	1,1,0,-9,45,931,6392,29205,104497,315469	0	0
+A358833	lambdan	0	n -> (n == 0) ? ZV(1) : SD(n, d -> SU(1, n/d, j -> T008284(n/d, j).^(d)))	for n  > 0. - _Andrew Howroyd_, Dec 31 2022
+A358835	lambdan	0	n -> (n == 0) ? ZV(1) : SD(n, d -> SU(1, n/d, j -> BI(T008284(n/d, j).+(d - 1), ZV(d))))	for n > 0. - _Andrew Howroyd_, Dec 31 2022
+A359559	holos	0	[0,-8,24,-36,32,-18,6,-1]	1,1,-3,-16,-36,-40	0	0
+A364795	lambdan	3	n -> T008284((n-2)*180, n)	. - _Alois P. Heinz_, Aug 08 2023
+A367518	polyz	0	"[1]"	"x,tan,x,/,sqrt"	1	0	0	2
+A367519	polyz	0	"[1]"	"x,tan,x,/,sqrt"	1	4	0	2
+A374588	setdiff	1	new A013929()	new A074661()		in J013929.
+A375170	setdiff	1	new A000040()	new A042978()		in F000040.
+A375241	setdiff	1	new A014132()	new A375242()		in J014132.
+A376692	setdiff	1	new A030141()	new A062285()		in J030141.
+A378458	setdiff	1	new A007674()	new A007675()		in J007674.
+A379357	rambdan	1	n -> RU(1, n, k -> new Q(Z.ONE, D007425(k)))
+A379358	rambdad	1	A379357
+A379579	rambdan	1	n -> RU(1, n, k -> new Q(Z.ONE, E055231(k)))
+A379580	rambdad	1	A379579
+A379581	rambdan	1	n -> RU(1, n, k -> new Q(Z_1(k + 1), E055231(k)))	Sum_{k=1..n} (-1)^(k+1)/A055231(k)).
+A379582	rambdad	1	A379581
+A379583	rambdan	1	n -> RU(1, n, k -> new Q(Z.ONE, E057521(k)))
+A379584	rambdad	1	A379583
+A379585	rambdan	1	n -> RU(1, n, k -> new Q(Z_1(k + 1), E057521(k)))	Sum_{k=1..n} (-1)^(k+1)/A057521(k)).
+A379586	rambdad	1	A379585
+A390096	setdiff	1	new A229027()	new A001248()		in J229027. (End)
+A390326	setdiff	1	new A002378().skip(1)	new A390325()		in D002378.
+A390501	holos	1	[0,-12,19,4,-18,8,-1]	1,3,18,86,389	0	0
+A392878	lambdan	1	n -> F276086(F276085(n))
+A392878	lambdan	1	n -> F276086(F276085(n))
+A393067	lambdan	1	n -> (F276086(F003415(n)).compareTo(ZV(n)) <= 0)? ZV(1) : ZV(0)
+A323433	lambdan	0	n -> (n == 0) ? ZV(1) : SU(1, n, i -> SU(1, n, j -> T008284(n,i*j)))	. - _Ridouane Oudra_, Apr 13 2023
+A393083	holos	1	[0,-1,3,-3,2,-3,3,-1]	0, 0, 1, 2, 5, 10, 17, 26, 38, 53, 71, 93, 119, 149, 184, 224, 269, 320, 377, 440, 510	0	0

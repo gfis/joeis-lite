@@ -1,0 +1,144 @@
+---- 2026-01-29 17:39:21
+A084984	complem	1	Z.ZERO	, new A118950()		. - _Reinhard Zumkeller_, Jul 19 2011
+A085253	complem	1	Z.ONE	, new A076871()		.
+A087686	complem	1	Z.ONE	, new A088359()		; J051135(a(n)) > 1. [_Reinhard Zumkeller_, Jun 03 2011]
+A089017	complem	1	Z.ONE	, new A055520()		(n)=J055557(n) - 1. The first n for which {10^(n+1) - 7}/3 is composite is thus n=8,corresponding to 333333331=17*19607843.
+A091210	complem	1	Z.ONE	, new A091207()		.
+A098952	complem	1	Z.ZERO	, new A171491()		. [_Jaroslav Krizek_, Dec 10 2009]
+A102488	complem	1	Z.ONE	, new A102487()		; ?102490, ?102492, ?102494.
+A102490	complem	1	Z.ONE	, new A102489()		; ?102488, ?102492, ?102494.
+A102492	complem	1	Z.ONE	, new A102491()		; ?102488, ?102490, ?102494.
+A104211	complem	1	Z.ONE	, new A028834()		.
+A105441	complem	1	Z.ONE	, new A093641()		; ?093642 is a subsequence.
+A111910	trilambn	0	0	0	(n, k) -> BI(n + 1, k).*(BI(2*n + 1, 2*k))./(ZV(k + 1).*(2*k + 1))	Table[Binomial[n+1, k]*Binomial[2*n+1, 2*k]/((k+1)*(2*k+1)), {n, 0, 12}, {k, 0,
+A115849	complem	1	Z.ONE	, new A115847()		.
+A115945	complem	1	Z.ONE	, new A059590()		; J115944(a(n)) = 0.
+A118963	trilambn	1	1	1	(n, k) -> T001263(n,k).*(n + 1)
+A126016	complem	1	Z.ONE	, new A080907()		. Includes J000396, J063990 and other sociable numbers, J063769, numbers whose aliquot sequence reaches a sociable number and numbers whose aliquot sequence grows without bound.
+A128974	complem	1	Z.ONE	, new A072378()		= {1, 2, 3, 4, 5, 6, 8, 9, 10, 12, 14, 15, 16, 18, 20, 24, 25, 27, ...} (numbers k such that 12k divides Fibonacci(12k)). It appears that {a(n)} includes all powers p^k for prime p > 5 and integer k > 0.
+A135367	complem	1	Z.ONE	, new A074499()		.
+A136491	complem	1	Z.ONE	, new A136490()		.
+A138968	complem	1	Z.ONE	, new A138969()		(positions of primes congruent to
+A141375	dead	0	A107008	dupl	AbstractSequence	Duplicate of A107008.
+A141376	dead	0	A134517	dupl	CongruenceForm	Duplicate of A134517.
+A144795	complem	1	Z.ONE	, new A377169()		.
+A152854	complem	1	Z.ONE	, new A152843()		: Numbers n such that both 2n+3 and 4n+7 are prime.
+A154893	complem	1	Z.ONE	, new A063806()		.
+A155721	dead	0	A080674	dupl	HolonomicRecurrence	Duplicate of A080674.
+A158276	complem	1	Z.ONE	, new A020487()		.
+A162923	complem	1	Z.ONE	, new A070286()		.
+A166527	complem	1	Z.ONE	, new A076537()		.
+A168291	trilambn	0	0	0	(n, k) -> S046802(n, k).*( 4).-(S008518(n, k).*(2)).-(BI(n, k))
+A168292	trilambn	0	0	0	(n, k) -> S046802(n, k).*(24).-(S008518(n, k).*(9)).-(BI(n, k).*(8))
+A168293	trilambn	0	0	0	(n, k) -> S046802(n, k).*(12).-(S008518(n, k).*(9)).-(BI(n, k).*(2))
+A169653	trilambn	1	1	1	(n, k) -> Z_1(n).*(FA(k).+(FA(n - k + 1))).*(T001263(n, k))
+A172019	complem	1	Z.ONE	, new A097987()		.
+A173186	complem	1	Z.ONE	, new A067874()		- _R. J. Mathar_, Feb 13 2010
+A174117	trilambn	0	0	0	(n, k) -> (k == 0 || k == n) ? ZV(1) : T001263(n, k).*(2).*(n + 1).*(n - k)./(k + 1)
+A175054	complem	1	Z.ONE	, new A377167()		
+A175082	prepend	1	new ComplementSequence(1, Z.ONE, new A001597())	1		(n+1) for n >= 1 (perfect powers >= 4). a(n) = J007916(n-1) for n >= 2. [From _Jaroslav Krizek_, Jan 30 2010]
+A175352	complem	1	Z.ONE	, new A078175()		
+A175354	prepend	1	new ComplementSequence(1, Z.ONE, new A089374())	1		(n) for n >= 2.
+A175431	complem	1	Z.ONE	, new A065496()		.
+A176587	complem	1	Z.ONE	, new A078174()		.
+A178655	trilambn	0	0	0	(n, k) -> (n == 0) ? ZV(1) : BI(n, k).^(2).*(n + 1).*(n - 2*k)./(n)./(k + 1)./(n - k + 1)	T(n, k) = if(n==0, 1, ((n+1)*(n-2*k)/(n*(k+1)*(n-k+1)))* binomial(n, k)^2)
+A180157	complem	1	Z.ONE	, new A061383()		; J180160(a(n)) > 0;
+A196990	complem	1	Z.ONE	, new A055235()		(sums of two powers of 3)
+A204219	filter	1	new A000040()	p -> !PP(Functions.REVERSE.z(2, p))	0	Z.ZERO	, new A074832()		in F000040.
+A206287	filnum	1	1	k -> CND(k, d -> Functions.LEADING_DIGIT.i(d) != 1).isZero()
+A206288	filter	1	new A206287()	v -> !PP(v)	(primes with first digit 1) with respect to B202287 (numbers with all divisors starting with digit 1).
+A208273	filnum	1	4	c -> !PP(c) && c.toString().indexOf('2') >= 0
+A210940	complem	1	Z.ONE	, new A079364()		.
+A213367	complem	1	Z.ONE	, new A001248()		. Column 3 of ?210976.
+A219115	complem	1	Z.ONE	, new A176189()		.
+A220695	complem	1	Z.ONE	, new A220655()		.
+A237287	complem	1	Z.ONE	, new A005153()		(practical numbers).
+A238524	complem	1	Z.ONE	, new A174973()		.
+A240370	complem	1	Z.ONE	, new A053443()		. Subsequence of ?192450.
+A241265	complem	1	Z.ONE	, new A155211()		.
+A243489	complem	1	Z.ONE	, new A243490()		: Numbers n such that J069787(n) <> n.
+A249104	complem	1	Z.ONE	, new A079002()		. - _Jeppe Stig Nielsen_, Dec 11 2017
+A257691	complem	1	Z.ONE	, new A175526()		(F000120-abundant numbers).
+A260907	complem	1	Z.ONE	, new A072225()		.
+A268415	complem	1	Z.ONE	, new A268412()		.
+A281005	complem	1	Z.ONE	, new A082662()		.
+A289553	complem	1	Z.ONE	, new A167171()		.
+A295085	complem	0	Z.ONE	, new A190250()		(as has been proved), thus, intertwining of J190249 and J190251.
+A298879	complem	1	Z.ZERO	, new A235331()		.
+A299482	complem	1	Z.ONE	, new A282131()		.
+A320730	complem	1	Z.ONE	, new A060142()		. Cf. ?086747.
+A321883	complem	1	Z.ZERO	, new A146968()		= positive integers n such that n!+1 is a square (Brocards problem, so far {4, 5, 7} are the only known terms).
+A325422	complem	1	Z.ONE	, new A077477()		.
+A330945	complem	1	Z.ONE	, new A076610()		(products of primes of prime index).
+A333214	complem	1	Z.ONE	, new A064113()		(the version for adjacent equal terms).
+A335275	complem	1	Z.ONE	, new A295661()		. - _Vaclav Kotesovec_, Jul 07 2020
+A336410	complem	1	Z.ONE	, new A336411()		.
+A337867	dead	0	A354380	erro	NotYetImplemented	Erroneous version of A354380.
+A339770	dead	0	A354403	erro	NotYetImplemented	Erroneous version of A354403.
+A344609	complem	1	Z.ONE	, new A119899()		, Heinz numbers of the partitions counted by ?344608.
+A344980	complem	1	Z.ONE	, new A344974()		. Positions of nonzero terms in J344973, and of terms > 1 in J344970.
+A348577	complem	1	Z.ONE	, new A010814()		.
+A350757	complem	1	Z.ONE	, new A099776()		.
+A353084	complem	1	Z.ONE	, new A003146()		: position of letter c in the tribonacci word.
+A362147	complem	1	Z.ONE	, new A036966()		.
+A368917	complem	1	Z.ONE	, new A342018()		.
+A373868	complem	1	Z.ONE	, new A000584()		.
+A376745	complem	1	Z.ONE	, new A002411()		. Numbers not of the form k^2*(k+1)/2.
+A376919	complem	0	Z.ZERO	, new A000244()		. Numbers whose sum of digits in base 3 is not equal to 1.
+A377306	complem	1	Z.ONE	, new A000538()		.
+A377313	complem	1	Z.ONE	, new A000389()		. Numbers k such that 120*k is not a product of 5 consecutive integers.
+A377333	complem	1	Z.ONE	, new A377332()		.
+A377540	complem	1	Z.ONE	, new A060461()		(with respect to the positive integers) or ?171696 (with respect to the nonnegative integers).
+A378287	complem	1	Z.ONE	, new A076467()		.
+A379851	complem	1	Z.ONE	, new A007694()		.
+A381255	complem	1	Z.ONE	, new A007910()		.
+A382875	complem	1	Z.ZERO	, new A161790()		in J001477.
+A383325	complem	1	Z.ONE	, new A383324()		.
+A385683	complem	1	Z.ONE	, new A030511()		.
+A385704	complem	1	Z.ONE	, new A184535()		.
+A388077	complem	1	Z.ONE	, new A000332()		.
+A390538	complem	1	Z.ONE	, new A059172()		.
+A392782	complem	1	Z.ONE	, new A000792()		.
+A392798	polyx	0	"[2,4],[0,0,1],[1,1]"	"p1,x,p2,log,-,/"	2	0
+A392799	polyx	0	"[2,4],[0,0,1],[1,1]"	"p1,x,p2,log,-,/"	2	4
+A392837	holos	0	[0,-16,72,-64,18,-1]	1,3,30,412	0	0
+A392838	holos	0	[0,-1,9,-16,9,-1]	0,3,17,107,718	0	0
+A392839	holos	0	[0,-1,9,-16,9,-1]	2,3,15,103	0	0
+A392850	lambdan	0	n -> RU(0, n/3, k -> QV(FA(3*k)).*(BI(n+1, k)).*(S2(n, 3*k)))./(n+1).num()	""		a(n) = sum(k=0, n\3, (3*k)!*binomial(n+1, k)*stirling(n, 3*k, 2))/(n+1)	_	_	_
+A392872	lambdan	1	n -> D122111(n).mod(PM(Functions.BIG_OMEGA.i(n) + 1))	(1+bigomega(n)).	nonn,easy,new	1..10000	nyi	_Antti Karttunen_
+A392897	polyx	0	"[1]"	"1,1,x,exp,1,-,<3,neg,lambertW,+,/"	0	1
+A392915	polyx	0	"[1],[1,-1]"	"p1,log,^2,<1,neg,lambertW,neg"	0	1
+A392916	polyx	0	"[1],[1,-1]"	"1,1,p1,log,^2,<1,neg,lambertW,+,/"	0	1
+A392928	lambdan	0	n -> ZV(32502*n).-(1727988).*(n).+(24009847)	Prime generating polynomial: a(n) = 32502 n^2 - 1727988 n + 24009847.	nonn,easy,less,new	0..30	nyi	Harma H. Kruizinga and _Hilko Koning_
+A392929	lambdan	0	n -> RU(0, n/2, k -> new Q(ZV(1), FA(k+1)).*(SA(n - k,   n - 2*k))).*(FA(n)).num()
+A392930	lambdan	0	n -> RU(0, n/2, k -> new Q(FA(2*n - 3*k), FA(  n -   k+1)).*(SA(n-k, n-2*k))./(FA(n - k))).*(FA(n)).num()
+A392931	lambdan	0	n -> RU(0, n/2, k -> new Q(FA(2*n - 3*k), FA(  n -   k+1)).*(SA(  k, n-2*k))./(FA(    k))).*(FA(n)).num()
+A392932	lambdan	0	n -> RU(0, n/2, k -> new Q(FA(3*n - 4*k), FA(2*n - 2*k+1)).*(SA(n-k, n-2*k))./(FA(n - k))).*(FA(n)).num()
+A392934	lambdan	0	n -> RU(0, n/2, k -> new Q(FA(3*n - 4*k), FA(2*n - 2*k+1)).*(SA(  k, n-2*k))./(FA(    k))).*(FA(n)).num()
+A392935	polyx	0	"[1]"	"1,A,^5,<3,1,A,^2,<2,-,log,*,-"	0	1
+A392938	polyx	0	"[1]"	"1,A,<1,1,A,^3,<3,-,log,*,-"	0	1
+A392953	lambdan	0	n -> RU(0, n/2, k -> new Q(ZV(1), FA(k+1)).*(S2(n - k,   n - 2*k))).*(FA(n)).num()
+A392954	lambdan	0	n -> RU(0, n/2, k -> new Q(FA(2*n - 3*k), FA(  n -   k+1)).*(S2(n-k, n-2*k))./(FA(n - k))).*(FA(n)).num()
+A392955	lambdan	0	n -> RU(0, n/2, k -> new Q(FA(2*n - 3*k), FA(  n -   k+1)).*(S2(  k, n-2*k))./(FA(    k))).*(FA(n)).num()
+A392956	lambdan	0	n -> RU(0, n/2, k -> new Q(FA(3*n - 4*k), FA(2*n - 2*k+1)).*(S2(n-k, n-2*k))./(FA(n - k))).*(FA(n)).num()
+A392958	lambdan	0	n -> RU(0, n/2, k -> new Q(FA(3*n - 4*k), FA(2*n - 2*k+1)).*(S2(  k, n-2*k))./(FA(    k))).*(FA(n)).num()
+A392959	lambdan	0	n -> RU(0, n/3, k -> new Q(ZV(1), FA(k+1)).*(S2(n - 2*k, n - 3*k))).*(FA(n)).num()
+A392960	lambdan	0	n -> RU(0, n/3, k -> new Q(ZV(1), FA(k+1)).*(SA(n - 2*k, n - 3*k))).*(FA(n)).num()
+---- 2026-01-29 18:13:49
+A145273	parity	1	new A006893()	A145273 Parity sequence of A006893
+A201017	filter	1	new A034052()	PRIME
+A201019	filter	1	new A034053()	PRIME
+A201022	filter	1	new A034055()	PRIME
+A204825	filter	1	new A005101()	v -> !SIGMA(v).testBit(0)	with respect to J005101 (abundant numbers).					Abundant numbers with even sum of divisors.
+A206286	filter	1	new A131835()	v -> !PP(v)	with respect to J131835. Supersequence of ?206288.					Nonprime numbers starting with a digit 1.
+A208260	filter	1	new A208259()	v -> !PP(v)	with respect to J208259. Supersequence of ?208261 (nonprime numbers with all divisors starting and ending with digit
+A208261	filter	1	new A208262()	v -> !PP(v)	with respect to ?208262. Subsequence of ?208260 (nonprime numbers starting and ending with digit 1).
+A208262	filnum	1	1	k -> CND(k, d -> d % 10 != 1 || Functions.LEADING_DIGIT.i(d) != 1).isZero()	Numbers with all divisors starting and ending with digit 1.
+A245072	filter	1	new A000040()	p -> !PP(REV(p).+(1))
+A328944	filter	1	new A003601()	v -> !Predicates.ORE_HARMONIC.is(v)
+A328952	filter	1	new A003601()	v -> !Functions.SIGMA.z(2, v).mod(SIGMA(v)).isZero()
+A328953	filter	1	new A020487()	v -> !Predicates.ARITHMETIC.is(v)
+A378598	parity	1	new A083206()
+---- 2026-01-29 18:53:17
+A210441	filter	1	new A010784().skip(1)	v -> !PP(v)
+A212372	filter	1	new A009995().skip(1)	v -> !PP(v)
