@@ -96,9 +96,7 @@ dirarr_dump:
 direct_db: direct_reflect direct_load direct_dump # build a table of all DirectSequences
 direct_reflect: # extract all sequences that implement DirectSequence
 	sed -e "s/\t/\t0\t/" $(COMMON)/joeis_list.txt \
-	| grep -vP "A393234" \
-	>                    $@.tmp
-	$(ABSINSPECT) direct $@.tmp \
+	| $(ABSINSPECT) direct - \
 	>        direct.tmp
 	head -n4 direct.tmp
 	wc -l    direct.tmp
