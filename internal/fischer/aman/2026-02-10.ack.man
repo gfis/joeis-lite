@@ -1,0 +1,88 @@
+---- 2026-02-11 00:36:54
+A086152	lambdan	1	n -> CV(2).pow(new Q(ZV(n), PHI(n))).floor()	a(n)=floor(2^(n/phi(n)))
+A086398	sintrif	1	(term, n) -> term.-(1)	""	new A284753()	a(n)=J284753(n)-1	_	_	_
+A088186	sintrif	0	(term, n) -> term.*(2).+(3).+(PI(term).*(2))	""	new A001359()	Sums of twin primes and their indices.	easy,nonn	0..46	nyi	_Zak Seidov_
+A088187	filter	1	new A088186()	PRIME	Primes that are a sum of twin primes and their indices.	easy,nonn	1..41	nyi	_Zak Seidov_
+A088188	filter	1	new A088186()	v -> Predicates.SQUARE.is(v)	Squares that are a sum of twin primes and their indices.	easy,nonn	1..25	nyi	_Zak Seidov_
+A088335	sintrif	0	(term, n) -> FA(n).-(term)	""	new A088994()	a(n)=n!-J088994(n)	_	_	_
+A089809	sintrif	1	(term, n) -> term.xor(Z.ONE)	""	new A078588()
+A090530	sintrif	1	(term, n) -> PM(n).*(term)	""	new A071407()	a(n)=prime(n)*J071407(n)	_	_	_
+A090864	complem	1	Z.ZERO,	new A001318()	,0
+A091739	lambdan	0	n -> (QV(21).*(QV(7*6*5*4*3).^(n)).-(QV(12).*(QV(6*5*4*3*2).^(n))).+(QV(5*4*3*2*1).^(n)))./(10).num()	""		a(n)=(21*(7*6*5*4*3)^n-12*(6*5*4*3*2)^n+(5*4*3*2*1)^n)/10	_	_	_
+A092147	lambdan	1	n -> SU(1, n-1, k -> D010052(ZV(k).*(n-k)))	""		a(n)=Sum_{k=1..n-1}D010052(k*(n-k))	_	_	_
+A093609	beatty2	1	CR.E.pow(CR.GAMMA).add(1)
+A093610	beatty2	1	CR.E.pow(CR.GAMMA).add(1).divide(CR.E.pow(CR.GAMMA))
+A093677	convprod	1	2	new A093659()
+A093809	multia	1	"0"	(self, n) -> self.a(n - 1).+(PM(n).*(2*n)).-(ZV(n).^(2))	a[n] =a[n-1] + 2*n*Prime[n]-n^2
+A093820	multia	1	"1"	(self, n) -> SU(1, n - 1, k -> GCD(ZV(n), self.a(k)))	a(n) = Sum_{k=1..n-1} gcd(n, a(k)) for n > 1; a(1) = 1.	nonn	1..10000	nyi	_Reinhard Zumkeller_
+A093836	sintrif	1	(term, n) -> new Q(term, ZV(n).^(2)).num()	""	new A000328()	Numerator of J000328(n)/n^2, where J000328(n) is the number of lattice points (x,y) with x^2 + y^2 <= n^2.	nonn,frac	1..10000	nyi	_Eric W. Weisstein_
+A093837	sintrif	1	(term, n) -> new Q(term, ZV(n).^(2)).den()	""	new A000328()	Denominator of N(n)/n^2, where N(n) is the num
+A093846	trilambn	1	1	1	(n, k) -> { final Z zn = ZV(10).^(n - 1); return zn.-(1).+(zn.*(9)./(n).*(k)); }	Triangle read by rows: T(n, k) = 10^(n-1) - 1 + k*floor(9*10^(n-1)/n), for 1 <= k <= n
+A093861	sintrif	1	(term, n) -> CV(term).^(new Q(term, n)).floor()	""	new A002808()	a(n) = floor(composite(n)^(composite(n)/n)), composite(n) = J002808(n).	nonn	1..50	nyi	_Amarnath Murthy_
+A093862	sintrif	1	(term, n) -> CV(term).^(new Q(term, n)).floor()	""	new A000040()	Floor[ prime(n)^{prime(n)/n}], prime(n) = F000040(n).	base,nonn	1..30	nyi	_Amarnath Murthy_
+A094394	filter	1	new A002808()	v -> v.testBit(0) && FI(v).-(1).mod(v).isZero()	Odd composites m that divide Fibonacci(m)-1.	nonn	1..1000	nyi	_Eric Rowland_
+A094409	filnum	1	1	k -> (k&1) == 1 && FI(k - 1).mod(k) != 0 && FI(k).-(1).mod(k) == 0	Odd numbers k that divide Fibonacci(k) - 1 but not Fibonacci(k-1).	nonn	1..1000	nyi	_Eric Rowland_
+A094410	filnum	1	1	k -> FI(k - 1).mod(k) == 0 && FI(k).-(1).mod(k) != 0	Numbers k that divide Fibonacci(k-1) but do not divide Fibonacci(k) - 1.	nonn	1..1000	nyi	_Eric Rowland_
+A094412	filnum	1	1	k -> FI(k + 1).mod(k) == 0 && FI(k).+(1).mod(k) != 0	Numbers k that divide Fibonacci(k+1) but do not divide Fibonacci(k) + 1.	nonn	1..1000	nyi	_Eric Rowland_
+A094684	lambdan	0	n -> CV(MAX(2*n-1, 0)).^(new Q(3, 2)).floor()	a(n)=floor(max(2*n-1,0)^(3/2))
+A095199	lambdan	1	n -> { final Z n10 = ZV(10).^(n); final Z fn10 = n10./(n); return fn10./(GCD(n10, fn10)); }	a(n)=floor(10^n/n)/gcd(10^n,floor(10^n/n))	_	_	_
+A096029	sintrif	1	(term, n) -> term.-(1)./(2)	""	new A079886()	a(n)=(J079886(n)-1)/2	_	_	_
+A097326	lambdan	1	n -> ZV(10).^(F055642(n)).-(1)./(n)	""		a(n)=floor((10^F055642(n)-1)/n)	_	_	_
+A104127	lambdan	1	n -> ZV(1).+(PM(n)).^(PMi(n))	""		a(n)=(1+prime(n))^prime(n)	_	_	_
+A104401	sintrif	0	(term, n) -> term./(4)	""	new A104235()	a(n)=J104235(n)/4	_	_	_
+A105331	sintrif	1	(term, n) -> ZV(2).^(term).*(Z2(term.+(1)).+(ZV(2).*(term).+(1)))	""	new A105330()	a(n)=2^J105330(n)*(2^(J105330(n)+1)+2*J105330(n)+1)	_	_	_
+A111177	lambdan	2	n -> RU(0, n-1, i -> (QV(i).^(2).+(i).+(1)).*(QV(FA(n-1))./(FA(n-1-i)))).num()	""		a(n)=Sum_{i=0..n-1}(i^2+i+1)*(n-1)!/(n-1-i)!	_	_	_
+A112714	sintrif	1	(term, n) -> term.-(2)	""	new A080075()	a(n)=J080075(n)-2	_	_	_
+A115001	sintrif	4	(term, n) -> term./(24)	""	new A321879()	a(n)=J321879(n)/24	_	_	_
+A115002	lambdan	6	n -> E059377(n)./(240)	""		a(n)=E059377(n)/240	_	_	_
+A115017	sintrif	1	(term, n) -> term.*(term.+(1))./(2)	""	new A083312()	a(n)=J083312(n)*(J083312(n)+1)/2	_	_	_
+A115070	sintrif	1	(term, n) -> F000010(n)./(term)	""	new A115069()	a(n)=F000010(n)/3^J005088(n)=F000010(n)/J115069(n)	_	_	_
+A115206	sintrif	3	(term, n) -> term./(2)	""	new A078611()	a(n)=J078611(n)/2	_	_	_
+A116213	sintrif	0	(term, n) -> D051179(Z2(n))./(term)	""	new A000215()	a(n) = (2^(2^(2^n))-1)/(2^(2^n)+1). a(n) = J051179(2^n)/J000215(n).
+A120447	sintrif	1	(term, n) -> term.*(PM(n).+(term))./(F034386(SQRT(PM(n))))	""	new A079900()	a(n)=J079900(n)*(prime(n)+J079900(n))/primorial(sqrt(prime(n)))
+A122199	lambdan	0	n -> D065621(n).+(D048724(n))./(4)	""		a(n)=(D065621(n)+D048724(n))/4	_	_	_
+A124229	lambdan	1	n -> FI(F070939(n).+(1))	""		a(n)=F000045(F070939(n)+1)	_	_	_
+A124862	sintrif	0	(term, n) -> term.*(D000984(n))	""	new A007583()	a(n)=J007583(n)*D000984(n)	_	_	_
+A126251	sintrif	1	(term, n) -> ZV(2).*(term)	""	new A082669()	a(n)=2*J082669(n)	_	_	_
+A129139	lambdan	1	n -> SD(n, d -> F008683(d).*((F000005(n)./(d))))	""		a(n)=Sum_{d|n}mu(d)*floor(tau(n)/d)	_	_	_
+A131232	sintrif	1	(term, n) -> term.-(D010055(n))	""	new A131233()	a(n)=J131233(n)-D010055(n)	_	_	_
+A131681	lambdan	0	n -> PHI(BI(2*n, n).*(ZV(n).^(2)))	""		a(n)=phi(binomial(2*n,n)*n^2)	_	_	_
+A133910	sintrif	1	(term, n) -> term./(n)	""	new A064446()	a(n)=J064446(n)/n	_	_	_
+A136374	sintrif	2	(term, n) -> term.-(1)./(PM(n).*(2))	""	new A128677()	a(n)=(J128677(n)-1)/(2*PM(n))	_	_	_
+A136496	lambdan	1	n -> E136495(n).+(M005374(n-1)).+(n)	""		a(n)=E136495(n)+M005374(n-1)+n	_	_	_
+A140700	sintrif	1	(term, n) -> ZV(n).*(term)	""	new A069158()	a(n)=n*J069158(n)	_	_	_
+A141426	sintrif	1	(term, n) -> term.-(1)	""	new A140555()	a(n)=phi(J140555(n))=J140555(n)-1	_	_	_
+A145823	sintrif	1	(term, n) -> term.^(2)	""	new A080149()	a(n)=J080149(n)^2	_	_	_
+A152958	sintrif	1	(term, n) -> F000010(term).*(F000203(D000188(n)))	""	new A019554()	a(n)=phi(J019554(n))*sigma(D000188(n))	_	_	_
+A152998	lambdan	0	n -> E139250(n+1).-(1)./(2)	""		a(n)=(E139250(n+1)-1)/2	_	_	_
+A154671	sintrif	1	(term, n) -> ZV(12).*(term.^(2))	""	new A154331()	a(n)=12*J154331(n)^2	_	_	_
+A154674	sintrif	1	(term, n) -> ZV(9900).*(term.^(2))	""	new A154774()	a(n)=9900*J154774(n)^2	_	_	_
+A158092	sintrif	1	(term, n) -> ZV(2).*(term)	""	new A083527()	a(n)=2*J083527(n)	_	_	_
+A159699	sintrif	0	(term, n) -> term.+(ZV(2).*(n))	""	new A136013()	a(n)=J136013(n)+2*n	_	_	_
+A160164	lambdan	0	n -> ZV(2).*(E139250(n))	""		a(n)=2*E139250(n)	_	_	_
+A160165	sintrif	0	(term, n) -> term.-(E139250(n + 1))	""	new A000969()	a(n)=J000969(n)-E139250(n+1)	_	_	_
+A163644	lambdan	0	n -> F034386(n)./(E163641(n))	""		a(n)=primorial(n)/rad(n$)=F034386(n)/E163641(n)	_	_	_
+A165668	sintrif	1	(term, n) -> term.^(2).-(2)./(7)	""	new A165667()	a(n)=(J165667(n)^2-2)/7	_	_	_
+A165993	lambdan	1	n -> SU(1, PMi(n) - 1, j -> ZV(j).^(2)./(PM(n)))	""		a(n)=Sum_{j=1..prime(n)-1}floor(j^2/prime(n))	_	_	_
+A168433	multraf	1	(self, n) -> self.s(0).-(self.s(1))./(2)	""	new A078731(), new A048614()	a(n)=(J078731(n)-J048614(n))/2	_	_	_
+A170816	sintrif	1	(term, n) -> E140475(n).-(term)	""	new A141468()	a(n)=E140475(n)-J141468(n)	_	_	_
+A171485	sintrif	0	(term, n) -> ZV(2).*(D003418(n).^(3)).*(term)	""	new A005259()	a(n)=2*D003418(n)^3*J005259(n)	_	_	_
+A171622	lambdan	1	n -> D008578(n)./(n)	""		a(n)=floor(D008578(n)/n)	_	_	_
+A171937	sintrif	1	(term, n) -> term.-(n)	""	new A079427()	a(n)=J079427(n)-n	_	_	_
+A173454	sintrif	0	(term, n) -> E139250(n).-(term)	""	new A173522()	a(n)=E139250(n)-J173522(n)	_	_	_
+A174383	sintrif	1	(term, n) -> term.^(2).-(1)	""	new A114335()	a(n)=J114335(n)^2-1	_	_	_
+A174963	lambdan	1	n -> ZV(n).^(n).-(ZV(n - 1).*(n).*(2*n - 1)./(6).*(ZV(n).^(n - 2)))	a(n)=n^n-((n-1)*n*(2*n-1)/6)*n^(n-2)
+A175518	sintrif	1	(term, n) -> term.-(4)./(9)	""	new A072841()	a(n)=(J072841(n)-4)/9	_	_	_
+A182459	sintrif	1	(term, n) -> term.-(1)	""	new A081615()	a(n)=J081615(n)-1	_	_	_
+A182475	sintrif	1	(term, n) -> term.^(2).+(10)	""	new A243367()	a(n)=J243367(n)^2+10	_	_	_
+A185371	lambdan	1	n -> PM(n).*(PM(n + 1))./(PM(n + 2))	""		a(n)=floor(prime(n)*prime(n+1)/prime(n+2))	_	_	_
+A187220	lambdan	0	n -> (n <= 1) ? ZV(n) : ZV(1).+(ZV(2).*(E139250(n-1)))	#2:0,1/0~1/		a(n)=1+2*E139250(n-1),forn>=1	_	_	_
+A191360	multraf	1	(self, n) -> self.s(0).-(self.s(1))	""	new A035612(), new A003603()	a(n)=J035612(n)-J003603(n)	_	_	_
+A191486	sintrif	1	(term, n) -> term.^(2)	""	new A275971()	a(n)=J275971(n)^2	_	_	_
+A243969	holos	1	[0,-1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,-1]	9175,9351,17676,24826,26038,28612,38026,38158,46212,46927,48247,56473,61863,63075,63898,65649,75063,75195,83425,83964,85284,91750,93510,100935,120286	0	0
+A243974	holos	1	[0,-1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,-1]	10176,17601,19361,25827,27147,27686,35916,36048,45462,47213,48036,49248,54638,62864,64184,64899,72953,73085,82499,85073,86285,93435,101760,101936,121287	0	0
+A327214	convprod	0	2	new A270913()	Self-convolution of J270913.
+A393274	holos	0	[[0],[-20,5],[18,-8],[-12,6],[4,-4],[0,1]]	1	0	0
+A393275	holos	0	[[0],[-15,3],[-12,1],[30,-10],[-20,10],[5,-5],[0,1]]	1	0	0
+A393276	holos	0	[[0],[-18,4],[4,-3],[12,-4],[-12,6],[4,-4],[0,1]]	1	0	0
+A393277	holos	0	[[0],[-16,4],[8,-4],[3,-1],[-6,3],[3,-3],[0,1]]	1	0	0

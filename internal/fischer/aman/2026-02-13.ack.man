@@ -1,0 +1,137 @@
+---- 2026-02-13 16:09:02
+A057204	parmof5	1	A124984	() -> ZV(7)	6	1	q -> q.^(2).*(4).+(3)	1 mod 6  prime is 7. The next term isme; p divi4Q^2+3; p mod 6 = 1}, where
+A057205	parmof5	1	A124984	() -> ZV(3)	4	3	q -> q.*(4).-(1)	3 modulo 4 gin_{p, prime; p mod 4 = 3;     p | 4Q-1}, where Q is the produc
+A057206	parmof5	1	A124984	() -> ZV(5)	6	5	q -> q.*(6).-(1)	6k+5 generatemin{p, prime; p mod 6 = 5;     p | 6Q-1}, where Q is the produc
+A057208	parmof5	1	A124984	() -> ZV(5)	8	5	q -> q.^(2).+(4)	8k+5 generateleast prime p == 5 (mod 8) wi  p | 4+Q^2, where Q is the produc
+A085637	filnum	1	1	k -> { final Z f = PM(k).*(k); return PP(f.-(1)) && PP(f.+(1)); }	Numbers k such that k*prime(k) -+ 1 are twin primes.	1..1000
+A087112	trilambn	0	1	1	(n, k) -> PM(n).*(PM(k))	T(n,k)=Annn(n)*Annn(k)		F000040,F000040
+A087907	filnum	1	1	k -> { final Z f = F002110(72).*(k); return PP(f.-(1)) && PP(f.+(1)); }	Numbers n such that n*359# +-1 are twin primes, where 359# = 72nd primorial (F002110(72)).	1..35
+A088498	filnum	1	1	k -> { final Z f = ZV(k + 1).*(k); final Z g = ZV(k + 2).*(k + 1);  return PP(f.-(1)) && PP(f.+(1)) && PP(g.-(1)) && PP(g.+(1)); }	Numbers k such that k^2 + k - 1 and k^2 + k + 1 are twin primes and (k + 1)*(k + 1) + k + 1 - 1 and (k + 1)*(k + 1) + k + 1 + 1 are also twin primes.	1..10000
+A099229	filnum	1	1	k -> { final Z f = Z2(61).-(1).^(2).*(k); return PP(f.-(1)) && PP(f.+(1)); }	Numbers k such that k*((2^61-1)^2) - 1 and k*((2^61-1)^2) + 1 are twin primes.	1..37
+A099230	filnum	1	1	k -> { final Z f = Z2(61).-(1).^(3).*(k); return PP(f.-(1)) && PP(f.+(1)); }	Numbers n such that n*((2^61-1)^3) - 1 and n*((2^61-1)^3) + 1 are twin primes.	1..33
+A099231	filnum	1	1	k -> { final Z f = Z2(61).-(1).^(4).*(k); return PP(f.-(1)) && PP(f.+(1)); }	Numbers n such that n*((2^61-1)^4) - 1 and n*((2^61-1)^4) + 1 are twin primes.	1..19
+A105174	filnum	1	1	k -> { final Z f = ZV(k).*(k + 1); return f.mod(4) == 0 && PP(f./(4).-(1)) && PP(f./(4).+(1)); }	Numbers k such that k*(k+1)/4 - 1 and k*(k+1)/4 + 1 are twin primes.	1..10000
+A108134	filnum	1	1	k -> { final Z f = ZV(k).^(9).*(3); return PP(k - 1) && PP(k + 1) && PP(f.-(1)) && PP(f.+(1)); }	Values of k such that k - 1 and k + 1 are twin primes and 3*k^9 - 1 and 3*k^9 + 1 are also twin primes.	1..1000
+A111503	filnum	1	1	k -> { final Z f = ZV(k).^(3).-(ZV(k).^(2)); return PP(f.-(1)) && PP(f.+(1)); }	Numbers k such that k^3 - k^2 - 1 and k^3 - k^2 + 1 are twin primes.	1..1000
+A111504	filnum	1	1	k -> { final Z f = ZV(k).^(5).-(ZV(k).^(3)); return PP(f.-(1)) && PP(f.+(1)); }	Numbers k such that k^5 - k^3 - 1 and k^5 - k^3 + 1 are twin primes.	1..10000
+A117852	trilambn	0	0	0	(n, k) -> BI(n, k).*(D000984(n - k))	T(n,k)=binomial(n,k)*Annn(n-k)		D000984
+A119835	filter	1	new A000040()	p -> { final Z f = F002110(PI(p)).*(2); return PP(f.-(1)) && PP(f.+(1)); }	Primes p such that 2*p#-1 and 2*p#+1 are twin primes.	1..6
+A120364	filter	1	new A000040()	p -> { final Z f = p.-(1).*(p); return PP(f.-(1)) && PP(f.+(1)); }		Primes p such that p^2-p-1 and p^2-p+1 are twin primes.	1..10000
+A123200	filnum	1	1	k -> { final long f = k*1000000L; return PP(f - 1L) && PP(f + 1L); }	*k-1 and 1000000*k+1 are twin primes.	1..2000
+A124379	filnum	1	1	k -> { final long f = k*120L; return PP(f - 1L) && PP(f + 1L); }	n-1, 120n+1 are twin primes.	1..5746
+A124985	parmof5	1	A124984	() -> ZV(7)	8	7	q -> q.^(2).*(8).-(1)	8*k+7 genime is   7. neral term is   ap divides 8*Q^2 - 1; p == 7 (mod 8)},
+A124986	parmof5	1	A124984	() -> ZV(5)	12	5	q -> q.^(2).*(4).+(1)	12*k+5 gerime is  5. eneral term is  ap divides 1 + 4*Q^2; p == 5 (mod 12)},
+A124987	parmof5	1	A124984	() -> ZV(5)	12	5	q -> q.^(2).+(4)	12k+5 generatis   5. General term is a(n)=vides 4+Q^2; p == 5 (mod 12)}, where Q
+A124988	parmof5	1	A124984	() -> ZV(7)	12	7	q -> q.^(2).*(4).+(3)	12k+7 genime is   7. General term is ap divides 3+4Q^2; Mod[p,12]=7}, where
+A124989	parmof5	1	A124984	() -> ZV(19)	10	9	q -> q.^(2).*(100).-(5)	10*k+9 gerime is 19. General term is ap divides 100*Q^2 - 5; p == 9 (mod 10)
+A124990	parmof5	0	A124984	() -> ZV(13)	12	1	q -> q.^(4).-(q.^(2)).+(1)	12k+1l prime is  13.General term ime; p divides Q^4-Q^2+1}, where Q is t
+A124991	parmof5	1	A124984	() -> ZV(11)	5	1	q -> { final Z r = q.*( 5); return r.^(5).-(1)./(r.-(1)); }	10k+1 genime is  11.Ges (R^5  - 1)/(R   - 1); Mod[p,5]=1}, where  R =  5Q.
+A124992	parmof5	0	A124984	() -> ZV(29)	7	1	q -> { final Z r = q.*( 7); return r.^(7).-(1)./(r.-(1)); }	14k+1 genime is  29.Ges (R^7  - 1)/(R   - 1); Mod[p,7]=1}, where  R =  7Q.
+A124993	parmof5	0	A124984	() -> ZV(23)	11	1	q -> { final Z r = q.*(11); return r.^(11).-(1)./(r.-(1)); }	22k+1 genime is  23.Ges (R^11 - 1)/(R   - 1); p == 1 (mod 11)},   R = 11*Q.
+A125037	parmof5	0	A124984	() -> ZV(53)	13	1	q -> { final Z r = q.*(13); return r.^(13).-(1)./(r.-(1)); }	26k+1 genime is  53.Ges (R^13 - 1)/(R   - 1); p == 1 (mod 13)},   R = 13*Q.
+A125038	parmof5	0	A124984	() -> ZV(103)	17	1	q -> { final Z r = q.*(17); return r.^(17).-(1)./(r.-(1)); }	34k+1 genime is 103. es (R^17 - 1)/(R   - 1); p == 1 (mod 17)},   R = 17*Q.
+A125039	parmof5	1	A124984	() -> ZV(17)	8	1	q -> q.*(2).^(4).+(1)	8k+1 geneme is   17. General term is ap divides (2Q)^4 + 1}, where Q is the
+A125040	parmof5	0	A124984	() -> ZV(17)	16	1	q -> q.*(2).^(8).+(1)	 16k+1 genime is  17. eneral term is  ap divides (2Q)^8 + 1}, where Q is the 
+A125041	parmof5	1	A124984	() -> ZV(17)	24	17	q -> q.*(2).^(4).+(1)	24k+17 gerime is 17. General term is ap divides (2Q)^4 + 1; p == 17 (mod 24)
+A125042	parmof5	0	A124984	() -> ZV(17)	48	17	q -> q.*(2).^(8).+(1)	 48k+17 gerime is 17. General term is ap divides (2Q)^8 + 1; Mod[p,48]=17}, w
+A125043	parmof5	0	A124984	() -> ZV(19)	9	1	q -> { final Z r = q.*( 3); return r.^(9).-(1)./(r.^(3).-(1)); }	18k+1 genime is  19.Ges (R^9  - 1)/(R^3 - 1); p == 1 (mod  9)},   R =  3*Q.
+A125044	parmof5	0	A124984	() -> ZV(109)	27	1	q -> { final Z r = q.*( 3); return r.^(27).-(1)./(r.^(9).-(1)); }	54k+1 genime is 109. es (R^27 - 1)/(R^9 - 1); p == 1 (mod 27)}    R =  3*Q.
+A125045	parmof5	1	A124984	() -> ZV(3)	2	1	q -> q.+(2)	odd   gen  a(1)   3,                 ap divides Q+2}, where Q is the product
+A126198	trilambn	1	1	1	(n, k) -> T181695(n, k).-(T181695(n - 1, k))	T(n,k)=Annn(n,k)-Annn(n-(\d+),k)	1	T181695,T181695
+A126655	filnum	1	1	k -> { final Z f0 = PM(k).*(6); final Z f1 = PM(k + 1).*(6); return PP(f0.-(1)) && PP(f0.+(1)) && PP(f1.-(1)) && PP(f1.+(1)); }	Numbers n such that 6*p(n)-1 and 6*p(n)+1 are twin primes and 6*p(n+1)-1 and 6*p(n+1)+1 are also twin primes with p(n) = n-th prime.	1..1000
+A128436	filter	1	new A000040()	p -> { final Z f = p.*( 2).-(2); return PP(f.-(1)) && PP(f.+(1)); }		Primes p such that  2p - 3 and 2p - 1 are twin primes.	1..10000
+A129213	filnum	1	1	k -> { final Z f = FA(7).*(k); return PP(f.-(1)) && PP(f.+(1)); }	Numbers m such that 7!*m-/+1 are twin primes.	1..10000
+A129214	filnum	1	1	k -> { final Z f = FA(8).*(k); return PP(f.-(1)) && PP(f.+(1)); }	Numbers m such that 8!*m-/+1 are twin primes.	1..10000
+A129215	filnum	1	1	k -> { final Z f = FA(9).*(k); return PP(f.-(1)) && PP(f.+(1)); }	Numbers m such that 9!*m -+ 1 are twin primes.	1..10000
+A129216	filnum	1	1	k -> { final Z f = FA(10).*(k); return PP(f.-(1)) && PP(f.+(1)); }	Numbers m such that 10!*m-/+1 are twin primes.	1..10000
+A129310	filnum	1	1	k -> { final Z f = PM(k).*(PM(k + 1)).*(PM(k + 2)).*(PM(k + 3)).*(PM(k + 4)).*(6); return PP(f.-(1)) && PP(f.+(1)); }	Numbers k such that 6*p(k)*p(k+1)*p(k+2)*p(k+3)*p(k+4)-1 and 6*p(k)*p(k+1)*p(k+2)*p(k+3)*p(k+4)+1 are twin primes with p(h) = h-th prime.	1..10000
+A129311	filnum	1	1	k -> { final Z f = PM(k).*(PM(k + 1)).*(PM(k + 2)).*(PM(k + 3)).*(PM(k + 4)).*(PM(k + 5)).*(6); return PP(f.-(1)) && PP(f.+(1)); }	Numbers k such that 6*p(k)*p(k+1)*p(k+2)*p(k+3)*p(k+4)*p(k+5)-1 and 6*p(k)*p(k+1)*p(k+2)*p(k+3)*p(k+4)*p(k+5)+1 are twin primes with p(h) = h-th prime.	1..10000
+A129313	filnum	1	1	k -> { final Z f = PM(k).*(PM(k + 1)).*(PM(k + 2)).*(PM(k + 3)).*(PM(k + 4)).*(PM(k + 5)).*(PM(k + 6)).*(6); return PP(f.-(1)) && PP(f.+(1)); }	Numbers k such that 6*p(k)*p(k+1)*p(k+2)*p(k+3)*p(k+4)*(k+5)*p(k+6)-1 and 6*p(k)*p(k+1)*p(k+2)*p(k+3)*p(k+4)*(k+5)*p(k+6)+1 are twin primes with p(h) = h-th prime.	1..10000
+A131578	filnum	1	1	k -> { final Z p = PM(k); final Z f = p.-(1).*(p); return PP(f.-(1)) && PP(f.+(1)); }	Numbers n such that p(n)^2-p(n)-1 and p(n)^2-p(n)+1 are twin primes with p(i)=i-th prime.	1..1000
+A134358	lambdan	3	n -> { final int m = 3; return FA(n).^(m)./(FA(m)).*(PR(0, m - 1, k -> ZV(n - k))); }	a={};Do[k=CoefficientList[Expand[(y+n!)^n],y];AppendTo[a,k[[Length[k]-(\d+)]]],{n,(\d+),(\d+)}];a	3,3,50
+A134359	lambdan	4	n -> { final int m = 4; return FA(n).^(m)./(FA(m)).*(PR(0, m - 1, k -> ZV(n - k))); }	a={};Do[k=CoefficientList[Expand[(y+n!)^n],y];AppendTo[a,k[[Length[k]-(\d+)]]],{n,(\d+),(\d+)}];a	4,4,50
+A137877	filnum	1	1	k -> { final long f = k*18L; return PP(f - 1L) && PP(f + 1L); }	*k - 1 and 18*k + 1 are twin primes.	1..10000
+A137920	filnum	1	1	k -> { final long f = k*24L; return PP(f - 1L) && PP(f + 1L); }	*k-1 and 24*k+1 are twin primes.	1..10000
+A138248	filter	1	new A000040()	p -> { final Z f = p.*(18); return PP(f.-(1)) && PP(f.+(1)); }		Prime  k such that 18*k - 1 and 18*k + 1 are twin primes.	1..10000
+A138249	filter	1	new A000040()	p -> { final Z f = p.*(24); return PP(f.-(1)) && PP(f.+(1)); }		Prime  k such that 24*k - 1, 24*k + 1 are twin primes.	1..10000
+A138250	filter	1	new A000040()	p -> { final Z f = p.*(30); return PP(f.-(1)) && PP(f.+(1)); }		Prime  k such that 30*k - 1, 30*k + 1 are twin primes.	1..10000
+A138303	filnum	1	1	k -> { final Z f1 = ZV(k).*(k + 1);; final Z f3 = ZV(k).*(k + 3); return PP(f1.-(1)) && PP(f1.+(1)) && PP(f3.-(1)) && PP(f3.+(1)); }	Numbers k such that k*(k+1)-1 and k*(k+1)+1 are twin primes and k*(k+3)-1 and k*(k+3)+1 are also twin primes.	1..10000
+A138655	filter	1	new A000040()	p -> { final Z f = p.*(36); return PP(f.-(1)) && PP(f.+(1)); }		Primes p such that 36*p-1 and 36*p+1 are twin primes.	1..10000
+A138656	filter	1	new A000040()	p -> { final Z f = p.*(42); return PP(f.-(1)) && PP(f.+(1)); }		Primes p such that 42*p - 1 and 42*p + 1 are twin primes.	1..10000
+A138657	filter	1	new A000040()	p -> { final Z f = p.*(48); return PP(f.-(1)) && PP(f.+(1)); }		Primes p such that 48*p - 1 and 48*p + 1 are twin primes.	1..10000
+A138659	filter	1	new A000040()	p -> { final Z f = p.*(60); return PP(f.-(1)) && PP(f.+(1)); }		Primes p such that 60*p - 1 and 60*p + 1 are twin primes.	1..10000
+A138695	filter	1	new A000040()	p -> { final Z f = p.*(24); final Z g = p.*(30); return PP(f.-(1)) && PP(f.+(1)) && PP(g.-(1)) && PP(g.+(1)); }	Primes p such that 24*p-1, 24*p+1 and 30*p-1, 30*p+1 are twin primes.	1..1600
+A138696	filter	1	new A000040()	p -> { final Z f = p.*(30); final Z g = p.*(36); return PP(f.-(1)) && PP(f.+(1)) && PP(g.-(1)) && PP(g.+(1)); }	Primes p such that 30*p-1, 30*p+1 and 36*p-1, 36*p+1 are twin primes.	1..2000
+A138697	filter	1	new A000040()	p -> { final Z f = p.*(42); final Z g = p.*(48); return PP(f.-(1)) && PP(f.+(1)) && PP(g.-(1)) && PP(g.+(1)); }	Primes p such that 42*p-1, 42*p+1 and 48*p-1, 48*p+1 are twin primes.	1..2000
+A138698	filter	1	new A000040()	p -> { final Z f = p.*(54); final Z g = p.*(60); return PP(f.-(1)) && PP(f.+(1)) && PP(g.-(1)) && PP(g.+(1)); }	Primes p such that 54*p-1, 54*p+1 and 60*p-1, 60*p+1 are twin primes.	1..1000
+A156021	filnum	1	1	k -> { final Z f = ZV(k).+(1).*(k).+(1).*(k).+(1).*(k); return PP(f.-(1)) && PP(f.+(1)); }	Numbers k such that k^1 + k^2 + k^3 + k^4 -+ 1 are twin primes.	1..10000
+A156815	trilambn	0	0	0	(n, k) -> FA(n).*(S2(n, k))./(BI(n, k))	T(n,k)=n!*StirlingS(\d+)(n,k)/binomial(n,k)	2
+A158296	filter	1	new A000040()	p -> { final Z f = p.^(2).*(12); return PP(f.-(1)) && PP(f.+(1)); }		Primes p such that 12*p^2 -+ 1 are twin primes.	1..10000
+A158297	filter	1	new A000040()	p -> { final Z f = p.^(3).*(12); return PP(f.-(1)) && PP(f.+(1)); }		Primes p such that 12*p^3+-1 are twin primes.	1..10000
+A158350	filter	1	new A000040()	p -> { final Z f = p.+(Functions.PREV_PRIME.z(p)); return PP(f.-(1)) && PP(f.+(1)); }		Primes p such that previousPrime(p) + p -+ 1 are twin primes.	1..1000
+A163159	filter	1	new A000045()	v -> PP(v.^(2).-(2))
+A163182	filter	1	new A000040()	p -> !PP(p.*(4).+(3)) && !PP(p.*(4).-(3))	Primes p such that neither 4p+3 nor 4p-3 are prime.	nonn,easy	1..5673	nyi	_Vladimir Joseph Stephan Orlovsky_
+A168618	filnum	1	1	k -> { final long f = k*17L; return PP(f - 1L) && PP(f + 1L); }	*n-1, 17*n+1 are twin primes.	1..2000
+A169583	filtpos	1	1	new A000040()	p -> { final Z p87 = p.*(8).-(7); return Predicates.SQUARE.is(p87) && PP(Functions.SQRT.z(p87)); }	n-th prime*8-7 is the square of a prime.	nonn	1..350	nyi	_Juri-Stepan Gerasimov_
+A169606	lambdan	1	n -> (n&1) == 0 ? PM(n/2 + 2).-(2) : PM(n/2 + 3).-(3)	a(2n-1) = prime(n+2)-3, a(2n) = prime(n+2)-2.	nonn,easy	1..1000	nyi	_Juri-Stepan Gerasimov_
+A173284	tablamb	0	0	n -> new Integer[]{0, n/2}	(n, k) -> H104762(n - k, k) 	H104762
+A174373	trilambn	0	0	0	(n, m) -> Functions.NEXT_PRIME.z(BI(n, m).-(1))	=Annn(Annn(n,m))		F007918,F007318
+A175131	sintrif	1	(term, n) -> Z2(n - 1).mod(term)	""	new A001358()	a(n) = 2^(n-1) mod semiprime(n).	nonn,less	1..1000	nyi	_Juri-Stepan Gerasimov_
+A175150	multia	1	"0"	(self, n) -> self.a(n - 1).+(TAU(n).compareTo(TAU(n - 1)))	then a(n)=a(n-1)+1. If d(n)<d(n-1), then a(n)=a(n-1)-1. If d(n)=d(n-1), then a(n)=a(n-1). (d(n) is the number of divisors of n.)	sign	1..10000	nyi	_Leroy Quet_
+A175152	filnum	1	1	k -> { final long f = k*11L; return PP(f - 1L) && PP(f + 1L); }	*k-1 and 11*k+1 are twin primes.	1..1000
+A175153	filnum	1	1	k -> { final long f = k*13L; return PP(f - 1L) && PP(f + 1L); }	*k-1, 13*k+1 are twin primes.	1..1000
+A175157	filnum	1	1	k -> { final long f = k*19L; return PP(f - 1L) && PP(f + 1L); }	*n-1, 19*n+1 are twin primes.	1..10000
+A176061	filnum	1	0	k -> { final Z f = new Z("304250263527210").*(Z2(k)); return PP(f.-(1)); }	Numbers n such that 41#*2^n-1 is prime, where # denotes the primorial, F002110.	1..5
+A176062	filnum	1	1	k -> { final Z f = new Z("304250263527210").*(Z2(k)); return PP(f.-(1)) && PP(f.+(1)); }	Numbers n such that 41#*2^n-1 and 41#*2^n+1 are twin primes, where # denotes the primorial, F002110.	1..5
+A176114	filnum	1	1	k -> { final long f = k*30L; return PP(f - 1L) && PP(f + 1L); }	*n-1, 30*n+1 are twin primes.	1..1000
+A176115	filnum	1	1	k -> { final long f = k*2310L; return PP(f - 1L) && PP(f + 1L); }	*n-1, 2310*n+1 are twin primes, (2310=2*3*5*7*11).	1..56
+A176132	filter	1	new A001359()	tp -> { final Z f0 = tp.*(30); final Z f1 = tp.+(2).*(30); return PP(f0.-(1)) && PP(f0.+(1)) && PP(f1.-(1)) && PP(f1.+(1)); }		Lesser of twin primes p0 such that 30*p0 -+ 1 and 30*p1 -+ 1 are twin primes, p1 = p0 + 2.	1..10000
+A176133	filter	1	new A000040()	p -> { final Z f = p.*(6); return p.mod(4) == 1 && PP(f.-(1)) && PP(f.+(1)); }		Pythagorean primes p (primes of form 4*k + 1) such that 6*p -+ 1 are twin primes.	1..10000
+A176663	trilambn	0	0	0	(n, k) -> SU(0, n - k, i -> S1(i + k, k))	T(n,k)=Sum_{i=(\d+),n-k}Stirling(\d+)(i+k,k)	0,1
+A215474	trilambn	1	1	1	(n, k) -> RU(1, n, j -> new Q(1, j).*(SD(j, d -> MU(j/d).*(ZV(k).^(d))))).num()	SU(1<=j<=n}((\d+)/j)*Sum_{d|j}mu(j/d)*k^d	1,1
+A217759	parmof5	1	A124984	() -> ZV(3)	4	3	q -> q.^(2).*(4).-(1)	4k+3 gene  a(1)   3                  ae; Mod[p,4]=3; p|4Q^2-1}, where Q is t
+A229993	filtpos	2	1	new A061214()	v -> PP(v.-(1)) && PP(v.+(1))	Numbers for which c(n) - 1 and c(n) + 1 are twin primes, where c(n) = J061214(n) = product of composite numbers between prime(n) and prime(n+1) .	2..1000
+A232598	trilambn	1	1	1	(n, k) -> S2(n, k).*(D000670(k))	T(n,k)=Annn(n,k)*Annn(k)		F008277,D000670
+A236524	filnum	1	1	k -> { final Z f = ZV(k).^(3).-(k); return PP(f.-(1)) && PP(f.+(1)); }	Numbers n such that n^3 - n +/- 1 are twin primes.	1..2600
+A236526	filnum	1	1	k -> { final Z f = ZV(k).^(3).+(k); return PP(f.-(1)) && PP(f.+(1)); }	Numbers k such that k^3 + k +/- 1 are twin primes.	1..10000
+A236760	filnum	1	1	k -> { final Z f = ZV(k).^(4).+(k); return PP(f.-(1)) && PP(f.+(1)); }	Numbers n such that n^4 + n +/- 1 are twin primes.	1..1000
+A236763	filnum	1	1	k -> { final Z f = ZV(k).^(4).-(k); return PP(f.-(1)) && PP(f.+(1)); }	Numbers n such that n^4 - n +/- 1 are twin primes.	1..1000
+A236951	filter	1	new A000040()	p -> { final Z f = p.^(3).+(1).*(p); return PP(f.-(1)) && PP(f.+(1)); }		Primes p such that p^4 + p +/- 1 are twin primes.	1..900
+A236952	filter	1	new A000040()	p -> { final Z f = p.^(3).-(1).*(p); return PP(f.-(1)) && PP(f.+(1)); }		Primes p such that p^4 - p +/- 1 are twin primes.	1..900
+A238364	filnum	1	1	k -> { final Z f = ZV(9*k).+(3).*(k); return PP(f.-(1)) && PP(f.+(1)); }	Numbers n such that 9*n^2+3*n-1 and 9*n^2+3*n+1 are twin primes.	1..10000
+A238453	trilambn	0	0	0	(n, k) -> RQ(1, k, i -> new Q(PHI(n + 1 - i), PHI(i))).num()
+A239702	trilambn	0	0	0	(n, k) -> (n == 0 || k == 0 || n == k) ? ZV(1) : PR(1, n, i -> D173557(i))./(PR(1, k, j -> D173557(j)).*(PR(1, n - k, m -> D173557(m))))	T(n,k)=prod_{i=(\d+),n}Annn(i)/(prod_{i=(\d+),k}Annn(i)*prod_{i=(\d+),n-k}Annn(i))	1,1,1	D173557,D173557,D173557
+A239788	filnum	1	1	k -> { final Z f = ZV(k).^(3).*(3); return PP(f.-(1)) && PP(f.+(1)); }	Numbers n such that 3n^3 +/- 1 are twin primes.	1..1000
+A243661	trilambn	1	1	1	(n, k) -> BI(4*n + 1 - k, n - k).*(BI(3*n, k - 1))./(n)	T(n,k)=binomial((\d+)*n+(\d+)-k,n-k)*binomial((\d+)*n,k-(\d+))/n	4,1,3,1
+A243987	trilambn	1	1	1	(n, k) -> SD(n, d -> (d <= k) ? ZV(1) : ZV(0))	1, k, j -> H051731(n, j)	T(n,k)=Sum_{j=(\d+),k}Annn(n,j)	1	H051731
+A246465	trilambn	0	0	0	(n, k) -> (k == 0 || k == n) ? ZV(1) : E085056(n)./(E085056(k).*(E085056(n - k)))
+A281881	trilambn	1	1	1	(n, k) -> BI(k + 1, 2).*(FA(n))./(FA(n - k))	T(n,k)=binomial(k,(\d+))*n!/(n+(\d+)-k)!	2,1
+A283151	trilambn	0	0	0	(n, k) -> (n == 1) ? ZV(6 - 7*k) : BI(new Q(3*n - 1, 3), n - k).*(Z_1(k)).*(ZV(9).^(n - k)).num()
+A283809	filnum	1	1	k -> { final Z f = ZV(6*k); return Predicates.SQUARE_FREE.is(k) && PP(f.-(1)) && PP(f.+(1)); }	Squarefree numbers k such that 6*k - 1 and 6*k + 1 are twin primes.	1..10000
+A283957	filter	1	new A000040()	p -> { final Z f = p.*(6); final Z g = f.-(1).^(2).+(f.+(1).^(2)); return PP(f.-(1)) && PP(f.+(1)) && g.mod(10) == 0 && PP(g./(10)); }	Primes p such that  6p - 1 and 6p + 1 are twin primes and ((6p-1)^2 + (6p+1)^2) / 10 is prime.	1..1000
+A300729	tablamb	1	1	n -> new Integer[]{1, n*2}	(n, k) -> S122193(n, k).+(S122193(n, k + 1))	=Annn(n,k)+Annn(n,k+(\d+))	1	S122193,S122193
+A303550	filnum	1	1	k -> { final Z f = ZV(60*k).-(1710).*(k).+(12150).abs(); return PP(f.-(1)) && PP(f.+(1)); }	Numbers k such that abs(60*k^2 - 1710*k + 12150) +- 1 are twin primes.	1..10000
+A308347	parmof2	1	A061480	6
+A323547	parmof2	1	A061480	2
+A323591	parmof2	1	A061480	3
+A323592	parmof2	1	A061480	4
+A326231	filnum	1	1	k -> { final Z f = ZV(5*k).^(2).*(6); return PP(f.-(1)) && PP(f.+(1)); }	Numbers k such that N = (5*k)^2 is a twin rank (cf. J002822: 6N +- 1 are twin primes).	1..10000
+A326232	filnum	1	1	k -> { final Z f = ZV(k).^(2).*(6); return PP(f.-(1)) && PP(f.+(1)); }	Numbers k such that N = k^2 is a twin rank (cf. J002822: 6N +- 1 are twin primes).	1..10001
+A326233	filnum	1	1	k -> { final Z f = ZV(7*k).^(3).*(6); return PP(f.-(1)) && PP(f.+(1)); }	Numbers k such that N = (7*k)^3 is a twin rank (J002822: 6N +- 1 are twin primes).	1..10000
+A326234	filnum	1	1	k -> { final Z f = ZV(k).^(3).*(6); return PP(f.-(1)) && PP(f.+(1)); }	Numbers n such that N = n^3 is a twin rank (J002822: 6N +- 1 are twin primes).	1..14709
+A326235	filnum	1	1	k -> { final Z f = ZV(35*k).^(6).*(6); return PP(f.-(1)) && PP(f.+(1)); }	Numbers k such that N = (35k)^6 is a twin rank (J002822: 6N +- 1 are twin primes).	1..10000
+A326236	filnum	1	1	k -> { final Z f = ZV(k).^(6).*(6); return PP(f.-(1)) && PP(f.+(1)); }	Numbers k such that N = k^6 is a twin rank (cf. J002822: 6N +- 1 are twin primes).	1..10001
+A331840	filnum	1	1	k -> { final Z f = ZV(30*k).-(12); return PP(f.-(1)) && PP(f.+(1)); }	Numbers k such that 30*k-13, 30*k-11 are twin primes.	1..58
+A335001	filnum	1	0	k -> TAU(FI(k)).equals(TAU(LU(k)))	Integers m such that d(F(m)) = d(L(m)) where d is the number of divisors function, F(n) and L(n) are respectively the n-th Fibonacci and n-th Lucas numbers.	nonn	1..87	nyi	_Michel Marcus_
+A335002	filnum	1	0	k -> Functions.OMEGA.z(FI(k)).equals(Functions.OMEGA.z(LU(k)))	Integers m such that omega(F(m)) = omega(L(m)) where omega is the number of distinct prime divisors function, F(n) and L(n) are the n-th Fibonacci and n-th Lucas numbers.	nonn	1..134	nyi	_Michel Marcus_
+A342905	arrlamb	1	1	1	-1	(n, k) -> F007947(n*k)	T(n,k)=Annn(n*k)		F007947
+A353302	filtpos	0	1	new A004394()	v -> PP(v.-(1)) && PP(v.+(1))	Numbers k such that J004394(k)-1 and J004394(k)+1 are twin primes.	1..14
+A358202	filter	1	new A001359()	tp -> { final Z f = tp.*(6); final Z p1 = tp.+(1); return p1.mod(6) == 0 && PP(f.-(1)) && PP(f.+(1)) && PP(p1./(6)); }		Lower twin primes p such that 6*p-1 and 6*p+1 are twin primes and (p+1)/6 is prime.	1..1000
+A360758	filnum	1	1	k -> { final Z f = ARD(k); return PP(f.-(1)) && PP(f.+(1)); }	Numbers k for which k' - 1 and k' + 1 are twin primes, where the prime denotes the arithmetic derivative.	1..54
+A365618	arrlamb	0	0	0	-1	(n, k) -> Functions.DIGIT_SUM.z(2, n).+(Functions.DIGIT_SUM.z(2, k))	Table read by antidiagonals: T(n, k) = A000120(n) + A000120(k).
+A392478	holos	0	[0,3,-13,15,-1]	3,15,199	0	0
+A393192	holos	1	[0,-1,4,-6,4,-1]	1,69,377,1117	0	0
+A393216	holos	0	[0,1,-13,78,-286,715,-1287,1716,-1716,1287,-715,286,-78,13,-1]	0,0,0,12,806,15510,169153,1280111,7455168,35539896,144444690,515106306,1646498502,4795353134,12891766251,32328970765	0	0
+A393231	holos	1	[0,-1,4,-6,4,-1]	0,3,13,33,66	0	0
+A393259	decexp	0	() -> CR.PI.^(2).*(5)./(54).-(CV(new Q(197, 216)))	Decimal expansion of 5*Pi^2/54 - 197/216.	nonn,cons,easy,new	0..101	nyi	_Stefano Spezia_
+A393326	holos	0	[0,-9,24,-22,8,-1]	1,15,123,603	0	0
