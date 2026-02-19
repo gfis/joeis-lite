@@ -402,7 +402,7 @@ addpass: # append seq4 records with passed tests to TODAY=file
 	echo ---- `date +%Y-%m-%d%t%T`  > aman/$(CC).man || :
 	grep -vP "^\-\-\-\-" $@.tmp    >> aman/$(CC).man || :
 	make today
-manpass: # move passed from ./manual to ./manpass
+manpass: # move passed from ./manual to ./manack
 	echo ---- `date +%Y-%m-%d%t%T` >> aman/$(TODAY).ack.man
 	grep -P  "\tpass\t" man.pass.log                      | cut -b1-7 >  $@.grep.tmp
 	grep -P  "\AA\d+\t([5-9]|\d\d+)\tFATO\t" man.fail.log | cut -b1-7 >> $@.grep.tmp
@@ -442,6 +442,10 @@ ccdiff: # compare seqs. in joeis/src with generated ones in joeis-lite/src
 	cd ../.. ; find src/irvine/oeis -iname "A??????.java" \
 	| xargs -innn diff -s -C0 ../joeis/nnn nnn \
 	| tee     internal/fischer/$@.tmp
+hold_check: # DIR= ; check whether the sequences in DIR occur as superclasses
+	ls -1 $(DIR) | cut -b1-7 | tee $@.tmp
+	make seq LIST=$@.tmp
+	$(DBAT) "SELECT s.aseqno, j.aseqno FROM seq s, joeis j WHERE s.aseqno = j.superclass"
 #--------
 REMOTE=dummy
 # git_remote:

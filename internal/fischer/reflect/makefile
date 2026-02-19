@@ -428,6 +428,24 @@ offpack: # pack all jOEIS sources that have wrong offsets - edit them
 	e $@.pack
 offunpack: # unpack the edited sources into joeis-lite/src
 	perl queue.pl -uf offpack.pack
+#========
+offpatch: offpatch1 offpatch2 # CC= ; needs offin.tmp; patch wrong offsets listed in offin.tmp
+offpatch1:
+	cd .. ; make purge
+	perl queue.pl -p offin.tmp > $@.pack 
+	cp -v $@.pack $@.rest.pack
+	make offpatchi MODE=sequencei
+	make offpatchi MODE=setoffset
+	make offpatchi MODE=super
+offpatch2: # compile and test
+	cd .. ; make man dist testall evaluate log GU=16
+offpatchi: # MODE=
+	perl split_queue.pl -m $(MODE) offpatch.rest.pack \
+	>      $(MODE).pack \
+	2>     $(MODE).rest.pack
+	cp -v  $(MODE).rest.pack       offpatch.rest.pack
+	tail -n1 $(MODE).pack $(MODE).rest.pack | grep -P "^\#"
+	perl queue.pl -uf $(MODE).pack
 #----
 pack_grep: # GREP=A018940 pack all sources that extend $(GREP)
 	grep -P "$(GREP)" offin.tmp \

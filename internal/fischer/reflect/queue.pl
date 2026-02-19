@@ -8,7 +8,7 @@
 #:# Usage:
 #:#   perl queue.pl [-d debug] [-s srcdir] -p listfile > outfile
 #:#   perl queue.pl [-d debug] {-p|-u[f] infile} > outfile
-#:#       -s main source directory qualifier: joeis (default) or joeis-lite
+#:#       -s  main source directory qualifier: joeis (default) or joeis-lite
 #:#       -uf force update
 #:#       listfile has tsv fields aseqno, p1, p2, p3 ...
 #--------------------------------------------------------
