@@ -433,12 +433,13 @@ offpatch: offpatch1 offpatch2 # CC= ; needs offin.tmp; patch wrong offsets liste
 offpatch1:
 	cd .. ; make purge
 	perl queue.pl -p offin.tmp > $@.pack 
-	cp -v $@.pack $@.rest.pack
+	cp -v $@.pack  offpatch.rest.pack
+	make offpatchi MODE=abstract
 	make offpatchi MODE=sequencei
 	make offpatchi MODE=setoffset
 	make offpatchi MODE=super
 offpatch2: # compile and test
-	cd .. ; make man dist testall evaluate log GU=16
+	cd .. ; make dist testall evaluate log GU=16
 offpatchi: # MODE=
 	perl split_queue.pl -m $(MODE) offpatch.rest.pack \
 	>      $(MODE).pack \
