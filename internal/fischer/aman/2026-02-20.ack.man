@@ -1,0 +1,102 @@
+---- 2026-02-20 17:33:48
+---- 2026-02-20 19:30:29
+A086848	holos	1	[0,-2,2,5,-5,-4,4,1,-1]	42,43,98,101,145,152,185	0	0
+A088041	holos	1	[0,-2,3,-1]	2,3,3,3,7	0	0
+A134350	holos	0	[0,6,-5,-5,5,-1]	1,7,23,67	0	0
+A134351	lambdan	0	n -> (n == 0) ? ZV(1) : Z2(n + 1).+(2)	a(n) = if(n==0, 1, 2 + 2^(n+1)) \\ Andrew Howroyd, Sep 14 2025
+A134418	holos	0	[0,4,2,-1]	1,5	0	0
+A137198	filter	1	new A001567()	v -> PP(v.+(2))	Sarrus numbers that become prime when two is added.
+A137930	holos	0	[0,-1,3,-2,-2,3,-1]	0,1,10,25,56	0	0
+A140347	dead	0	A002808 dupl    PrependSequence Duplicate of A002808.
+A143058	lambdan	0	n -> ZV(n).+(18).*(n).+(17).*(n).+(6)./(6)	a(n) = (n^3 + 18*n^2 + 17*n + 6)/6.
+A153499	holos	1	[0,-64,80,-56,50,-14,5,-1]	1,5,17,85,365,1365,5285	0	0
+A176166	lambdan	1	n -> n == 0 ? ZV(0) : D051903(Functions.TRIANGULAR.z(n))
+A180921	holos	1	[0,-1,3904,-238206,3904,-1]	1,2079,7876385,30254180671	0	0
+A182180	filter	1	new A001358()	v -> PP(Functions.DIGIT_SORT_DESCENDING.z(v))	Semiprimes that become prime when their digits are sorted into nonincreasing order.
+A183627	holos	1	[0,6,-11,6,-1]	309,447,741	0	0
+A201554	holos	0	[0,1,-7,21,-35,35,-21,7,-1]	1,393,8135,60691,273127,908755,2473325	0	0
+A208728	parmof2	1	A225506	-1	-Knödel numbers
+A224400	filter	1	new A002808()	v -> PP(Functions.DIGIT_SORT_ASCENDING.z(v))	Composite numbers that become prime when their digits are put in nondecreasing order.
+A224402	filter	1	new A002808()	v -> PP(Functions.DIGIT_SORT_DESCENDING.z(v))	Composite numbers that become prime when their digits are put in nonincreasing order.
+A224739	holos	1	[[0],[-36],[87],[-27],[-59],[34],[7],[-7],[1]]	38,152,565,2326,9554,40297,170754	0	0
+A225507	parmof2	1	A225506	-3	-Knödel numbers
+A225508	parmof2	1	A225506	-4	-Knödel numbers
+A225509	parmof2	1	A225506	-5	-Knödel numbers
+A225510	parmof2	1	A225506	-6	-Knödel numbers
+A225511	parmof2	1	A225506	-7	-Knödel numbers
+A225512	parmof2	1	A225506	-8	-Knödel numbers
+A225513	parmof2	1	A225506	-9	-Knödel numbers
+A225514	parmof2	1	A225506	-10	-Knödel numbers
+A225699	rambdan	0	n -> new Q(SIGMA(2*n  + 1), 2*n + 2)
+A225700	rambdad	0	A225699
+A225703	parmof4	1	A225702	6	-3	+3	Composite squarefree numbers n such that p(i)-3 divides n+3 , where p(i) are the prime factors of n.	nonn	1..80	nyi
+A225704	parmof4	1	A225702	6	-4	+4	Composite squarefree numbers n such that p(i)-4 divides n+4 , where p(i) are the prime factors of n.	nonn	1..37	nyi
+A225705	parmof4	1	A225702	8	-5	+5	Composite squarefree numbers n such that p(i)-5 divides n+5 , where p(i) are the prime factors of n.	nonn	1..100	nyi
+A225706	parmof4	1	A225702	6	-6	+6	Composite squarefree numbers n such that p(i)-6 divides n+6 , where p(i) are the prime factors of n.	nonn	1..40	nyi
+A225707	parmof4	1	A225702	10	-7	+7	Composite squarefree numbers n such that p(i)-7 divides n+7 , where p(i) are the prime factors of n.	nonn	1..50	nyi
+A225708	parmof4	1	A225702	10	-8	+8	Composite squarefree numbers n such that p(i)-8 divides n+8 , where p(i) are the prime factors of n.	nonn	1..40	nyi
+A225709	parmof4	1	A225702	12	-9	+9	Composite squarefree numbers n such that p(i)-9 divides n+9 , where p(i) are the prime factors of n.	nonn	1..47	nyi
+A225710	parmof4	1	A225702	13	-10	+10	Composite squarefree numbers n such that p(i)-10 divide n+10, where p(i) are the prime factors of n.	nonn	1..43	nyi
+A225711	parmof4	1	A225702	5	+1	-1	Composite squarefree numbers k such that p   +1 divides k-1 for any prime p dividing k.	nonn	1..1000	nyi
+A225712	parmof4	1	A225702	6	+2	-2	Composite squarefree numbers n such that p(i)+2 divides n-2 , where p(i) are the prime factors of n.	nonn	1..30	nyi
+A225713	parmof4	1	A225702	7	+3	-3	Composite squarefree numbers n such that p(i)+3 divides n-3 , where p(i) are the prime factors of n.	nonn	1..100	nyi
+A225714	parmof4	1	A225702	8	+4	-4	Composite squarefree numbers n such that p(i)+4 divides n-4 , where p(i) are the prime factors of n.	nonn	1..28	nyi
+A225715	parmof4	1	A225702	9	+5	-5	Composite squarefree numbers n such that p(i)+5 divides n-5 , where p(i) are the prime factors of n.	nonn	1..150	nyi
+A225716	parmof4	0	A225702	6	+6 	-6 	Composite squarefree numbers n such that p(i)+6 divides n-6 , where p(i) are the prime factors of n.	nonn	1..25	nyi	_Paolo P. Lava_
+A225717	parmof4	1	A225702	11	+7	-7	Composite squarefree numbers n such that p(i)+7 divides n-7 , where p(i) are the prime factors of n.	nonn	1..100	nyi
+A225718	parmof4	0	A225702	12	+8 	-8 	Composite squarefree numbers n such that p(i)+8 divides n-8 , where p(i) are the prime factors of n.	nonn	1..26	nyi	_Paolo P. Lava_
+A225719	parmof4	1	A225702	13	+9	-9	Composite squarefree numbers n such that p(i)+9 divides n-9 , where p(i) are the prime factors of n.	nonn	1..31	nyi
+A225873	filter	1	new A000290()	v -> PP(v.mod(Z.TEN.pow(Functions.DIGIT_LENGTH.i(v) - 1)))	Squares that become prime when their most significant (or leftmost) digit is removed.
+A226090	filter	1	new A000578()	v -> PP(v.mod(Z.TEN.pow(Functions.DIGIT_LENGTH.i(v) - 1)))	Cubes that become prime when their most significant (or leftmost) digit is removed.
+A226092	filter	1	new A000583()	v -> PP(v.mod(Z.TEN.pow(Functions.DIGIT_LENGTH.i(v) - 1)))	Fourth powers that become prime when their most significant (leftmost) decimal digit is removed.
+A226098	filter	1	new A000584()	v -> PP(v.mod(Z.TEN.pow(Functions.DIGIT_LENGTH.i(v) - 1)))	Fifth powers that become prime when their most significant (leftmost) decimal digit is removed.
+A226117	filnum	1	1	k -> PHI(SIGMA(TAU(k))).equals(TAU(SIGMA(PHI(k))))
+A226118	filnum	1	1	k -> SIGMA(TAU(PHI(k))).equals(PHI(TAU(SIGMA(k))))
+A226119	filnum	1	1	k -> SIGMA(PHI(TAU(k))).equals(TAU(PHI(SIGMA(k))))
+A226368	filnum	1	1	k -> Functions.BIG_OMEGA.z(k).equals(Functions.BIG_OMEGA.z(Z2(k).+(1)))	Omega(k) = Omega(2^k + 1), where Omega = F001222 is the number of prime factors counted with multiplicity.	nonn,more,hard	1..30	nyi	_Irina Gerasimova_
+A226531	filter	1	new A000578()	v -> PP(v./(10))	Cubes that become prime when their least-significant (rightmost) digit is removed.
+A226703	trilambn	0	0	0	(n, k) -> BI(2*n, k).*(S2(2*n - k, n))
+A226734	lambdan	1	n -> F002110(n).mod(F000217(n))
+A226742	filter	0	new LambdaSequence(1, n -> new Z(Integer.toString(2*n) + Integer.toString(n)))	v -> Predicates.TRIANGULAR.is(v)	Triangular numbers obtained as the concatenation of 2*k and k
+A226779	filnum	1	1	k -> ARD(k).equals(ARD(k + 1))	Numbers n such that n'=(n+1)', where n' is the 'arithmetic derivative of n.	nonn,more	1..5	nyi	_Paolo P. Lava_
+A226788	filter	1	new LambdaSequence(1, n -> new Z(Integer.toString(n) + Integer.toString(n + 1)))	v -> Predicates.TRIANGULAR.is(v)	n and n+1.	nonn,base	1..27	nyi	_Antonio Rold‚ąö¬įn_
+A226855	lambdan	0	n -> (n <= 1) ? ZV(n) : BELL(n - 1).+(BELL(n - 2).*(n - 1)).*(n)	n*B(n-1) + n*(n-1)*B(n-2), where the B(i) are Bell numbers (F000110)
+A230483	filter	1	new A001262()	v -> PP(v.-(2))	Strong pseudoprimes (base 2) that become prime when two is subtracted.
+A230484	filter	1	new A001262()	v -> PP(v.+(2))	Strong pseudoprimes (base 2) that become prime when two is added.
+A248427	holos	3	[0,1,-2,0,2,-1]	8,14,24,36,48,64	0	0
+A265211	filter	1	new A000290()	v -> PP(v./(10))	Squares that become prime when their rightmost digit is removed.
+A283049	holos	1	[[0],[24,-176,384,-256],[-12,-48,-27,27]]	0,4	0	0
+A289451	holos	0	[[0],[330,-126,12],[-168,-3,9],[-444,177,-15],[-14,63,-25],[38,-65,27],[0,7,-9],[0,1,1]]	1,1,1,2	0	0
+A289615	holos	0	[[0],[5712,-1148,56],[-17856,3990,-214],[20184,-5086,302],[-10104,2959,-199],[2976,-1138,102],[-1128,527,-57],[120,-50,-2],[24,-43,19],[0,6,-8],[0,1,1]]	1	0	0
+A289616	holos	0	[[0],[9576,-1692,72],[-35880,6998,-326],[55452,-12139,629],[-46824,11770,-694],[23508,-6947,475],[-6000,2076,-156],[0,6,-6],[72,-18,-6],[24,-43,19],[0,6,-8],[0,1,1]]	1	0	0
+A289652	holos	0	[[0],[2340,-620,40],[-4344,1310,-94],[1572,-507,33],[612,-299,37],[-168,98,-10],[-12,24,-12],[0,-5,7],[0,-1,-1]]	1	0	0
+A333510	holos	1	[0,2,-9,16,-14,6,-1]	1,8,29,80,195	0	0
+A343015	decexp	0	() -> CR.ONE.-(CV(RQ(0, 22, k -> new Q(365 - k, 365))).*(new Q(146000L, 146097L).^(23)).*(new Q(ZV(97*365).*(23), ZV(146000).*(366-23)).+(1)))	1 - (365!/((365 - 23)! * 365^23)) * (146000/146097)^23 * (1 + 97 * 365 * 23/146000/(366 - 23)).
+A390835	holos	0	[0,-64,96,0,-108,80,18,-30,-1,6,-1]	9,6,34,108,506,2416,11194,53584,252674	0	0
+A390874	holos	1	[0,-1,2,1,-4,1,2,-1]	72,372,1080,2472,4680,8028	0	0
+A392315	holos	1	[0,144,-393,376,-150,24,-1]	0,132,3492,63066,1039272,16743744	0	0
+A392531	holos	0	[0,-1,2,1,-4,1,2,-1]	0,18,186,654,1556,3050,5262	0	0
+A393341	holos	0	[0,-2,7,-9,5,-1]	1,1,3,11,37	0	0
+A393343	holos	0	[0,-2,10,-11,6,-1]	1,1,3,11,42	0	0
+A393344	holos	0	[0,-24,92,-142,113,-49,11,-1]	1,1,3,11,41,145,483	0	0
+A393385	holos	0	[0,6,10,7,-1]	3,7,69	0	0
+A393387	filnum	1	1	k -> PP(Z2(k).*(39).+(5))	Numbers k such that 39*2^k + 5 is prime.	nonn,new	1..47	nyi	_Zhicheng Wei_
+A393422	lambdan	1	n -> SU(0, Functions.DIGIT_LENGTH.i(2, n) - 2, e -> ZV(e + 1).^(2).*(ZV(n).testBit(e) ? -1 : 1))	a(n) = { my (v = 0); for (e = 0, exponent(n)-1, v += (e+1)^2 * (-1)^bittest(n, e); ); return (v); }
+A393461	filtpos	1	1	new A393422()	ZERO	Positions of zeros in A393422.	nonn,base,new	1..10000	nyi	_R‚ąö¬©my Sigrist_
+A393469	holos	0	[0,-81,108,297,-432,-405,684,237,-544,-35,228,-21,-48,9,4,-1]	1,16,112,318,1139,2213,6744,11875,34669,61542,178784,346316,1013919,2249731	0	0
+A393478	holos	1	[0,2,-5,4,-1]	54,81,138,247,462	0	0
+A393499	decexp	0	() -> CV(512)./(CR.PI.^(new Q(5, 2)).*(45))	Decimal expansion of 512/(45*Pi^(5/2)), which is the average dimensionless pairwise Manhattan distance between all points in a city of circular shape.	nonn,cons,new	0..10000	nyi	_Hugo Pfoertner_
+A393503	holos	1	[0,-16,40,-33,10,-1]	30,368,2400,13056	0	0
+A393521	holos	0	[0,64,0,0,0,-48,0,0,0,12,0,0,0,-1]	4,6,34,30,16,120,1140,280,64,864,12480,1760	0	0
+A393535	poly	0	"[1],[1,-2],[0,2]"	"1,p2,p1,/,sub,<1,p1,^2,/,+"
+A393536	poly	0	"[1],[1,-2],[0,2]"	"1,p2,p1,^2,/,sub,<1,p1,/,+"
+---- 2026-02-20 22:15:38
+A045798	holos	1	[0,-1,1,0,0,1,-1]	11,13,17,19,31	0	0
+A126939	holos	0	[0,1,3,3,7,1,2,-1]	1,1,3,11,35,107	0	0
+A180920	holos	1	[0,1,-63,63,-1]	1,33,2017	0	0
+A204238	holos	1	[0,-16,-8,-1]	2,-17	0	0
+A208531	holos	1	[0,-1,4,-6,4,-1]	2,4,8,16,28,52,89,147,224,324,445,589	0	0
+A269657	holos	0	[[0],[-1],[5],[-10],[10],[-5],[1]]	1,15,79,253,621	0	0
+A269658	holos	0	[0,-1,6,-15,20,-15,6,-1]	1,26,225,988,3065	0	0
+A299272	holos	0	[0,1,0,0,-3,0,0,3,0,0,-1]	1,6,18,37,63,99,142,189,249,317	0	0
+A325173	holos	1	[0,1,-7,21,-35,35,-21,7,-1]	9,144,1089,5184,18225,51984	0	0

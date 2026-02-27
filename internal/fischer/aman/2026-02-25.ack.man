@@ -1,0 +1,83 @@
+---- 2026-02-25 17:33:01
+A085412	filnum	1	1	k -> { final Z p = PM(k); return PP(new Z(p.toString() + Functions.LEADING_DIGIT.z(p).toString())); }	Numbers n such that concatenation of prime[n] and first digit of prime[n] is prime.	nonn,base	1..1000	nyi	_Zak Seidov_
+A085413	filter	1	new A000040()	p -> PP(new Z(p.toString() + Functions.LEADING_DIGIT.z(p).toString()))	Prime such that concatenation of it and its first digit is prime.	nonn,base	1..10000	nyi	_Zak Seidov_
+A085421	multia	0	"2,1"	(self, n) -> CR.E.-(CR.ONE./(CR.E)).*(self.a(n - 1)).+(self.a(n - 2)).floor()	a(0)=2, a(1)=1, a(n+2)=floor[(e-1/e)*a(n+1)+a(n-2)].	nonn	0..26	nyi	_Gary W. Adamson_
+A085428	sintrif	0	(term, n) -> LPF(term).+(GPF(term))	""	new A002808()	Sum of the smallest and largest prime divisors of the n-th composite number.	easy,nonn	0..73	nyi	_Cino Hilliard_
+A085434	sintrif	1	(term, n) -> term.shiftLeft(1)	""	new A007510().skip(1)	Twice odd isolated primes.	easy,nonn	6..56	nyi	_Cino Hilliard_
+A085448	filter	1	new A000040()	p -> { final int[] dc = ZUtils.digitCounts(p, 2); return SEM(dc[1]); }	Primes having a semiprime number of 1s in their binary representation.	easy,nonn,base	1..10000	nyi	_Jason Earls_
+A085556	filnum	1	0	k -> { final int[] dc = ZUtils.digitCounts(k); return dc[0] + dc[1] + dc[4] + dc[6] + dc[8] + dc[9] == dc[2] + dc[3] + dc[5] + dc[7]; }	Numbers that have exactly as many prime digits as nonprime digits.	base,easy,nonn	1..59	nyi	_Jason Earls_
+A085557	filnum	1	0	k -> { final int[] dc = ZUtils.digitCounts(k); return dc[0] + dc[1] + dc[4] + dc[6] + dc[8] + dc[9] <  dc[2] + dc[3] + dc[5] + dc[7]; }	Numbers that have more prime digits than nonprime digits.	nonn,easy,base	1..10000	nyi	_Jason Earls_
+A085558	filnum	1	0	k -> { final int[] dc = ZUtils.digitCounts(k); return dc[0] + dc[1] + dc[4] + dc[6] + dc[8] + dc[9] >  dc[2] + dc[3] + dc[5] + dc[7]; }	Numbers that have more nonprime digits than prime digits.	base,easy,nonn	1..63	nyi	_Jason Earls_
+A085562	lambdan	1	n -> { final int[] dc = ZUtils.digitCounts(n); return ZV(dc[1] + dc[4]*4 + dc[6]*6 + dc[8]*8 + dc[9]*9); }	Sum of the nonprime digits of n.	base,easy,nonn	1..1000	nyi	_Jason Earls_
+A085563	lambdan	1	n -> { final int[] dc = ZUtils.digitCounts(n); return ZV(dc[2]*2 + dc[3]*3 + dc[5]*5 + dc[7]*7); }	Sum of the prime digits of n.	base,easy,nonn	1..1000	nyi	_Jason Earls_
+A085564	filter	1	new A000040()	p -> { final int[] dc = ZUtils.digitCounts(p); return PP(dc[1] + dc[4]*4 + dc[6]*6 + dc[8]*8 + dc[9]*9); }	Primes whose sum of nonprime digits is also prime.	base,easy,nonn	1..1000	nyi	_Jason Earls_
+A085568	rambdan	0	n -> ((n&1) == 0) ? RU(0, n/2-1, w -> new Q(BI(n, w), 2*w+1)).*(2).+(new Q(BI(n, n/2), n+1)) : RU(0, (n-1)/2, w -> new Q(BI(n, w), (2*w+1))).*(2)
+A085569	rambdad	0	A085568	2*Sum(C(n,w)/(2*w+1),w=0..n/2-1)+C(n,n/2)/(n+1) if n is even, or of 2*Sum(C(n,w)/(2*w+1),w=0..(n-1)/2) if n is odd.
+A085570	lambdan	0	n -> ((n&1) == 0) ? SU(0, n/2-1, w -> BI(n, w)./(2*w+1)).*(2).+(BI(n, n/2)./(n+1)) : SU(0, (n-1)/2, w -> BI(n, w)./(2*w+1)).*(2)
+A085571	rambdan	2	n -> ((n&1) == 0) ? RU(1, n/2-1, w -> new Q(BI(n, w), w    )).*(2).+(new Q(BI(n, n/2))./(n/2)) : RU(1, (n-1)/2, w -> new Q(BI(n, w), w      )).*(2)
+A085572	rambdad	2	A085571
+A085573	lambdan	2	n -> ((n&1) == 0) ? SU(1, n/2-1, w -> BI(n, w)./(w)    ).*(2).+(BI(n, n/2)./(n/2)) : SU(1, (n-1)/2, w -> BI(n, w)./(w)    ).*(2)
+A085575	filter	1	new A000290()	p -> { final int[] dc = ZUtils.digitCounts(p); return Predicates.SQUARE.is(dc[2]*2 + dc[3]*3 + dc[5]*5 + dc[6]*6 + dc[7]*7 + dc[8]*8); }	Squares whose sum of nonsquare digits is a square.	base,easy,nonn	1..10000	nyi	_Jason Earls_
+A085581	lambdan	2	n -> CV(PM(n))./(CV(n).log()).floor()	a(n) = floor( prime(n)/log(n) ).
+A085585	filter	1	new A000290()	v -> { final int[] dc = ZUtils.digitCounts(v); return 1 == dc[1] + dc[3] + dc[5] + dc[7] + dc[9]; }	Squares with exactly one odd digit.
+A085598	filter	1	new A000040()	p -> p.mod(10) == PI(p).mod(10)	Primes p with same final decimal digit as k, p = prime(k).	nonn,base	1..42	nyi	_Reinhard Zumkeller_
+A085683	lambdan	1	n -> { final int p = PMi(n); return SU(1, p - 1, k -> ZV(p/k)); }	a(n) = Sum_{k = 1..N-1} floor(N/k) where N is the n-th prime.	nonn	1..10000	nyi	_N. J. A. Sloane_
+A085711	filnum	1	1	k -> SEM(SOPFR(k))	nyi t	Numbers k such that sopfr(k) is a semiprime.	easy,nonn	1..10000	nyi	_Jason Earls_
+A085712	filter	1	new A001358()	v -> SEM(GPF(v).^(LPF(v)).+(1))	Semiprimes n such that lpf(n)^spf(n)+1 is also semiprime, where lpf(n) is larger pri
+A085769	lambdan	1	n -> { final int[] d2 = ZUtils.digitCounts(Z2(n)); final int[] d5 = ZUtils.digitCounts(Z.FIVE.^(n)); return ZV(d2[0] + d5[0]); }	Total number of zeros in the decimal expansions of 2^n and 5^n.	nonn,base	1..100	nyi	_Jason Earls_
+A085772	filnum	1	1	k -> { final Q quot = new Q(ZV(k), Functions.DIGIT_SUM.z(k)); return quot.isInteger() && SEM(quot.num()); }	(n / sum of digits of n) is a semiprime.	base,nonn	1..1000	nyi	_Jason Earls_
+A085773	filnum	0	1	k -> { if (Integer.toString(k).indexOf('0') >= 0) { return false; } else { final Q quot = new Q(ZV(k), Functions.DIGIT_PRODUCT.z(k)); return quot.isInteger() && SEM(quot.num()); }}	(n / product of digits of n) is a semiprime.	base,nonn	1..40	nyi	_Jason Earls_
+A085774	filnum	1	1	k -> { final Q quot = new Q(ZV(k), Functions.DIGIT_SUM.z(k)); final Q quot1 = new Q(ZV(k + 1), Functions.DIGIT_SUM.z(k + 1)); return quot.isInteger() && quot1.isInteger() && SEM(quot.num()) && SEM(quot1.num()); }	Numbers k such that (k / sum of digits of k) and (k+1 / sum of digits of k+1) are both semiprime.	base,nonn	1..10000	nyi	_Jason Earls_
+A085775	filnum	1	1	k -> { final Q quot = new Q(ZV(k), Functions.DIGIT_SUM.z(k)); final Q quot1 = new Q(ZV(k + 1), Functions.DIGIT_SUM.z(k + 1)); return quot.isInteger() && quot1.isInteger() && PP(quot.num()) && PP(quot1.num()); }	Numbers k such that (k / sum of digits of k) and (k+1 / sum of digits of k+1) are both prime.	base,nonn	1..10000	nyi	_Jason Earls_
+A085793	filnum	1	2	k -> PP(BI(2*k, k).*(k - 1).+(1))	Numbers k such that (k-1)*binomial(2k,k) + 1 is prime
+A092620	filnum	1	1	v -> { final int[] dc = ZUtils.digitCounts(v); return 1 == dc[2] + dc[3] + dc[5] + dc[7]; }	Numbers with exactly one prime digit.
+A092621	filter	1	new A000040()	v -> { final int[] dc = ZUtils.digitCounts(v); return 1 == dc[2] + dc[3] + dc[5] + dc[7]; }	Primes with exactly one prime digit.
+A092622	filter	1	new A000040()	v -> { final int[] dc = ZUtils.digitCounts(v); return 2 == dc[2] + dc[3] + dc[5] + dc[7]; }	Primes with exactly two prime digits.
+A092623	filter	1	new A000040()	v -> { final int[] dc = ZUtils.digitCounts(v); return 3 == dc[2] + dc[3] + dc[5] + dc[7]; }	Primes with exactly three prime digits.
+A092624	filnum	1	1	v -> { final int[] dc = ZUtils.digitCounts(v); return 2 == dc[2] + dc[3] + dc[5] + dc[7]; }	Numbers with exactly two prime digits.
+A092627	filter	1	new A000040()	v -> { final int[] dc = ZUtils.digitCounts(v); return 2 == dc[0] + dc[1] + dc[4] + dc[6] + dc[8] + dc[9]; }	Primes with exactly two nonprime digits.
+A092628	filter	1	new A000040()	v -> { final int[] dc = ZUtils.digitCounts(v); return 3 == dc[0] + dc[1] + dc[4] + dc[6] + dc[8] + dc[9]; }	Primes with exactly three nonprime digits.
+A092630	filter	1	new A018252()	v -> { final int[] dc = ZUtils.digitCounts(v); return 1 == dc[0] + dc[1] + dc[4] + dc[6] + dc[8] + dc[9]; }	Nonprime numbers with exactly one nonprime digit.
+A092632	filter	1	new A018252()	v -> { final int[] dc = ZUtils.digitCounts(v); return 2 == dc[0] + dc[1] + dc[4] + dc[6] + dc[8] + dc[9]; }	Nonprime numbers with exactly two nonprime digits.
+A092633	filter	1	new A018252()	v -> { final int[] dc = ZUtils.digitCounts(v); return 3 == dc[0] + dc[1] + dc[4] + dc[6] + dc[8] + dc[9]; }	Nonprime numbers with exactly three nonprime digits.
+A106207	sintrif	-1	(term, n) -> (n == 0) ? ZV(-24) : term	""	new A007241()
+A132303	lambdan	0	n -> SU(0, 2*n, k -> T027907(n, k).^(3))	Sum of cubes of trinomial coefficients: a(n) = Sum_{k=0..2n} trinomial(n,k)^3
+A132304	lambdan	0	n -> SU(0, 2*n, k -> T027907(n, k).^(4))
+A132305	lambdan	0	n -> SU(0, 2*n, k -> T027907(n, k).^(5))
+A180747	polyxa	0	"[1]"	"x,x,B,1,-,rev,/"	2	0	new A000272()
+A180925	filnum	1	1	k -> Predicates.PALINDROME.is(TAU(k))	Natural numbers with palindromic number of divisors.	base,easy,nonn	1..10000	nyi	_Giovanni Teofilatto_
+A187097	polya	0	"[1]"	"x,<3,C,x,<37,B,*,x,C,<2,x,<18,C,*,-,x,<1,B,<9,x,<75,C,*,+"	new A000122(), new A010054()
+A189770	holos	1	[[0],[-70,20],[71,-29],[-24,18],[-1,-7],[-1,1]]	2	0	0
+A190589	holos	0	[[0],[2400,-196,4],[-6624,564,-12],[2208,-234,6],[-1896,260,-8],[-10716,1222,-34],[80100,-9145,259],[-45360,6199,-205],[-94686,11027,-317],[38958,-5893,211],[54828,-9356,380],[-72012,14628,-684],[196026,-29825,1169],[-180942,27276,-1062],[-82872,9755,-227],[338334,-49001,1685],[-417690,65811,-2463],[322500,-55330,2242],[-178224,34273,-1567],[85314,-19882,1132],[-44178,13187,-965],[23568,-8826,798],[-9984,4676,-524],[2736,-1672,244],[-408,356,-74],[24,-37,13],[0,1,-1]]	1,4,8,20,46,110,260,616,1456,3442,8134,19218,45394,107204,253140,597666,1410948,3330622,7861542,18555092,43792062,103349390,243895352	0	0
+A204342	polya	0	"[1],[0,0,1]"	"x,B,^4,p1,C,^2,*,x,B,^4,64,p1,C,^4,<1,*,+,*"	new A000122(), new A010054()
+A218173	filter	0	new SingleTransformSequence(0, (term, n) -> term.negate(), "", new A010815())	(n, v) -> (n&1) == 1
+A225720	parmof4	1	A225702	10	+10	-10	Composite squarefree numbers n such that p   +10 divide n-10 for each prime p dividing n.	nonn	1..28	nyi
+A226789	filter	1	new LambdaSequence(0, n -> new Z(Integer.toString(n + 1) + Integer.toString(n)))	v -> Predicates.TRIANGULAR.is(v)	n+1 and n.	nonn,base,more	1..6	nyi	_Antonio Rold‚ąö¬įn_
+A228072	polya	0	"[1],[0,0,1],[0,0,-1]"	"p1,C,^2,p2,B,^6,*,8,p1,C,^6,<1,*,p2,B,^2,*,+"	new A000122(), new A010054()
+A252731	polya	0	"[1],[0,0,1],[0,0,0,0,1]"	"2,p1,B,^5,*,x,B,p2,B,^2,*,/,x,B,^3,p1,B,/,-,4,x,B,<1,*,p1,B,*,-"	new A030200()
+A258260	polya	0	"[0,1]"	"x,B,x,<1,B,2,*,+,x,<8,B,3,*,+,x,<17,B,6,*,+"	new A101455()
+A261977	convprod	0	1/2	new A261975()	
+A261978	convprod	0	1/4	new A261975()	
+A261979	convprod	0	-1/2	new A261975()	
+A261980	convprod	0	-1/4	new A261975()	
+A262780	polya	0	"[1],[0,0,0,0,0,0,-1],[0,0,0,0,1],[0,0,-1]"	"p1,B,p2,C,*,p3,B,<1,x,<11,C,*,+"	new A000122(), new A010054()
+A269524	multia	1	"1"	(self, n) -> { final int taun = Functions.TAU.i(n); return CNT(1, n - 1, m -> Functions.TAU.i(self.a(m)) <= taun); }	a(1) = 1, a(n) counts m < n for which a(m) has at most as many divisors as n.	easy,nonn	1..10000	nyi	_Alec Jones_
+A269525	multia	1	"1"	(self, n) -> { final int taun = Functions.TAU.i(n); return SU(1, n - 1, m -> (Functions.TAU.i(self.a(m)) <= taun) ? ZV(m) : ZV(0)); }	a(1) = 1, a(n) is the sum of m < n for which a(m) has at most as many divisors as n.	easy,nonn	1..1000	nyi	_Alec Jones_
+A284322	multia	0	"1"	(self, n) -> SU(1, n, k -> (SD(k, d -> { final int m = d%5; return (m == 2 || m == 3) ? ZV(d) : ZV(0); })).*(self.a(n - k)))./(-n)	a(n) = -(1/n)*Sum_{k=1..n} A284152(k)*a(n-k), a(0) = 1.
+A285675	multia	0	"1"	(self, n) -> SU(1, n, k -> E076577(k).*(self.a(n - k))).*(-2)./(n)	a(0) = 1, a(n) = -(2/n)*Sum_{k=1..n} A076577(k)*a(n-k) for n > 0.
+A285991	multia	0	"1"	(self, n) -> SU(1, n, k -> E096960(k).*(self.a(n - k))).*(-2)./(n)	a(0) = 1, a(n) = -(2/n)*Sum_{k=1..n} A096960(k)*a(n-k) for n > 0.
+A343726	filter	1	new A000290()	p -> { final int[] dc = ZUtils.digitCounts(p); return 1 == dc[0] + dc[2] + dc[4] + dc[6] + dc[8]; }	Squares with exactly one even digit.
+A346774	filnum	1	1	k -> { final Z las = Functions.LOOK_AND_SAY.z(ZV(k).^(2)); final String s = las.toString(); return s.startsWith("2") && las./(10).mod(10) == 2; }	Numbers whose square starts and ends with exactly 2 identical digits.
+A346812	filnum	1	1	k -> Functions.LOOK_AND_SAY.z(ZV(k).^(2)).toString().startsWith("2")	Positive numbers whose square starts with exactly 2 identical digits.
+A346891	filnum	1	1	k -> Functions.LOOK_AND_SAY.z(ZV(k).^(2)).toString().startsWith("3")	Positive numbers whose square starts with exactly 3 identical digits.
+A346892	filnum	1	1	k -> { final Z las = Functions.LOOK_AND_SAY.z(ZV(k).^(2)); final String s = las.toString(); return s.startsWith("3") && las./(10).mod(10) == 3; }	Numbers whose square starts and ends with exactly 3 identical digits.
+A346940	filnum	1	1	k -> Functions.LOOK_AND_SAY.z(ZV(k).^(2)).toString().startsWith("4")	Numbers whose square starts with exactly 4 identical digits.
+A346942	filnum	1	1	k -> { final Z las = Functions.LOOK_AND_SAY.z(ZV(k).^(2)); final String s = las.toString(); return s.startsWith("4") && las./(10).mod(10) == 4; }	Numbers whose square starts and ends with exactly 4 identical digits.
+A390139	filnum	1	16	k -> new Q(F008472(k), F001222(k)).equals(Q.HALF)
+A390161	trilambn	1	1	1	(n, k) -> new Q(BI(n, k).*(Z2(k)), 2*n + 1).ceiling()	nonn,tabl,easy	1..66	nyi	_Andrew Howroyd_
+A392105	holos	0	[0,-1,3,-2,-2,3,-1]	0,2,8,23,48,88	0	0
+A393327	holos	0	[0,-1,4,-6,4,-1]	0,10,30,63,112	0	0
+A393346	holos	0	[0,-1,3,-3,2,-3,3,-1]	0,1,6,18,37,66	0	0
+A393347	holos	0	[0,-1,3,-3,2,-3,3,-1]	0,2,7,18,38,67	0	0
+A393548	holos	1	[0,-1024,3600,-4728,2825,-747,75,-1]	39,3882,260847,16770378,1073708139,68719317138	0	0
+A393553	holos	1	[0,-1024,3600,-4728,2825,-747,75,-1]	51,3975,261417,16773441,1073723487,68719390851	0	0
