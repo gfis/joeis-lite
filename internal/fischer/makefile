@@ -386,7 +386,9 @@ mangen: # parameter: CC; copy all in CC.gen to fischer/manual
 sumall: # copy all generated in joeis-lite/src to ./manual
 	find ../../src/irvine/oeis/a* -iname "*.java" | xargs -innn cp -pv nnn manual
 sumpass: # copy all with passed test in joeis-lite/src to ./manual
-	cut -b1-7 $(CC).pass.log \
+	grep -P  "\tpass\t"                      $(CC).pass.log | cut -b1-7 >  $@.tmp
+	grep -P  "\AA\d+\t([5-9]|\d\d+)\tFATO\t" $(CC).fail.log | cut -b1-7 >> $@.tmp
+	cat $@.tmp \
 	| perl -ne 'use strict; s/\s+\Z//; my $$asn = substr($$_, 0, 7); print "../../src/irvine/oeis/a" . substr($$asn, 1, 3) . "/$$asn.java\n";' \
 	| xargs -innn cp -pv nnn manual
 techo: # append timestamp
@@ -395,7 +397,7 @@ techo: # append timestamp
 ap: addpass
 addpass: # append seq4 records with passed tests to TODAY=file
 	echo ---- `date +%Y-%m-%d%t%T` >> aman/$(TODAY).ack.man
-	grep -P  "\tpass\t" $(CC).pass.log                | cut -b1-7 | sed -e "s/^/\^/"       >  $@.grep.tmp
+	grep -P  "\tpass\t"                      $(CC).pass.log | cut -b1-7 | sed -e "s/^/\^/" >  $@.grep.tmp
 	grep -P  "\AA\d+\t([5-9]|\d\d+)\tFATO\t" $(CC).fail.log | cut -b1-7 | sed -e "s/^/\^/" >> $@.grep.tmp
 	grep -E  -f $@.grep.tmp $(CC).gen | grep -P "[a-z]" | cut -f1-11 | perl -pe 's/[ \t]+\Z//;' >> aman/$(TODAY).ack.man
 	grep -vE -f $@.grep.tmp aman/$(CC).man > $@.tmp  || :

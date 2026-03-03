@@ -432,21 +432,25 @@ offunpack: # unpack the edited sources into joeis-lite/src
 offpatch: offpatch1 offpatch2 # CC= ; needs offin.tmp; patch wrong offsets listed in offin.tmp
 offpatch1:
 	cd .. ; make purge
-	perl queue.pl -p offin.tmp > $@.pack 
-	cp -v $@.pack  offpatch.rest.pack
+	cp -v offpack.2026-03-03.pack offpatch.rest.pack 
+	make offpatchi MODE=manual # must be first MODE
 	make offpatchi MODE=abstract
 	make offpatchi MODE=sequencei
 	make offpatchi MODE=setoffset
-	make offpatchi MODE=super
-offpatch2: # compile and test
-	cd .. ; make dist testall evaluate log GU=16
+	make offpatchi MODE=basuper
+	make offpatchi MODE=sesuper
+	make offpatchi MODE=noxtend # must be last MODE
 offpatchi: # MODE=
 	perl split_queue.pl -m $(MODE) offpatch.rest.pack \
 	>      $(MODE).pack \
 	2>     $(MODE).rest.pack
 	cp -v  $(MODE).rest.pack       offpatch.rest.pack
-	tail -n1 $(MODE).pack $(MODE).rest.pack | grep -P "^\#"
-	perl queue.pl -uf $(MODE).pack
+	tail -n1 $(MODE).pack  $(MODE).rest.pack | grep -P "^\#"
+	perl queue.pl -d 1 -uf $(MODE).pack
+offpatch2: # compile and test
+	cd .. ; \
+	make CC=offpatch dist testall evaluate log GU=16 ; \
+	make CC=offpatch sumpass
 #----
 pack_grep: # GREP=A018940 pack all sources that extend $(GREP)
 	grep -P "$(GREP)" offin.tmp \
