@@ -449,7 +449,7 @@ offpatchi: # MODE=
 	perl queue.pl -d 1 -uf $(MODE).pack
 offpatch2: # compile and test
 	cd .. ; \
-	make CC=offpatch dist testall evaluate log GU=16 ; \
+	make CC=offpatch man dist testall evaluate log GU=16 ; \
 	make CC=offpatch sumpass
 #----
 pack_grep: # GREP=A018940 pack all sources that extend $(GREP)
