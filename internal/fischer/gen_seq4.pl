@@ -2,6 +2,7 @@
 
 # Read rows from database table 'seq4' and generate corresponding Java sources for jOEIS
 # @(#) $Id$
+# 2026-03-05, V9.0: static_dirs uniq
 # 2025-05-26, V8.9: BELL, PELL
 # 2025-05-01, V8.8: HW hammingweight -> int!
 # 2025-02-21, V8.7: FFAC = FALLING_FACTORIAL, ZRE, ZIM
@@ -84,7 +85,7 @@ use English; # PREMATCH
 my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime (time);
 my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d", $year + 1900, $mon + 1, $mday, $hour, $min);
 # $timestamp = sprintf ("%04d-%02d-%02d ", $year + 1900, $mon + 1, $mday);
-my $version_id  = "gen_seq4.pl V8.9";
+my $version_id  = "gen_seq4.pl V9.0";
 my $max_term = 16;
 my $max_size = 16;
 my $max_line_len = 120;
@@ -180,7 +181,7 @@ close(RAM);
 
 mkdir $targetdir;
 my $old_callcode = "";
-my $static_dirs; # list of "private final static DirectSequence Annnnn = new Annnnnn();"
+my %static_dirs; # list of "private final static DirectSequence Annnnn = new Annnnnn();"
 while (<>) { # read inputfile
     s{\A\#.*}{}; # remove comments
     next if m{\A\s*\Z}; # skip empty lines
@@ -221,7 +222,7 @@ while (<>) { # read inputfile
     my $copy = $pattern;
     #          1           12     2 3        3
     $copy =~ s{(\$\(PARM\d+)(\=\w+)?([^\)]*\))}{$1$3}g; # remove Java parameter names $2, e.g. $(PARM1=start.L) -> $(PARM1.L)
-    $static_dirs = "";
+    %static_dirs = (); # empty
     $do_generate = 1;
     if ($debug >= 2) {
         print "# scalar(parms)=" . scalar(@parms) . "\n";
@@ -242,7 +243,7 @@ while (<>) { # read inputfile
         $parms[$iparm] =~ s{ +\)}{\)}g;  # spaces before ")"
         $parms[$iparm] =~ s{\. +}{\.}g;  # spaces after  "."
         $parms[$iparm] =~ s{ +\.}{\.}g;  # spaces before "."
-        if (($parms[$iparm] =~ m{\-\>}) || ($callcode =~ m{\A(lpf|spf|satis|decexpr?)\Z})) { # with lambda expression: replace shortcuts and check bracketing, accumulate $static_dirs
+        if (($parms[$iparm] =~ m{\-\>}) || ($callcode =~ m{\A(lpf|spf|satis|decexpr?)\Z})) { # with lambda expression: replace shortcuts and check bracketing, accumulate %static_dirs
             my $parm = $parms[$iparm];
         #   if ($parm =~ s{(BI|FA|FD|FI|MU|PR|SU|S1|S2|ZV|Z\_1|n_1|Z2|\.[\+\-\*\/])([^\(])} {$1\<--HERE$2}g) {
         #       print STDERR "# $aseqno, unknown shortcut: $aseqno $parm\n";
@@ -434,16 +435,16 @@ while (<>) { # read inputfile
                 my $ano = $statics{$xseqno};
                 if (0) {
                 } elsif($xseqno =~ m{\A[BDE]}) {
-                    $static_dirs .= "\n  private static final DirectSequence $ano = new $ano();";
+                    $static_dirs{$ano} = "\n  private static final DirectSequence $ano = new $ano();";
                 } elsif($xseqno =~ m{\A[H]}) {
                     my $base_class = ($hasram{$ano} =~ m{^triangle}) ? "BaseTriangle" : "UpperLeftTriangle";
-                    $static_dirs .= "\n  private static final $base_class $ano = new $ano();";
+                    $static_dirs{$ano} = "\n  private static final $base_class $ano = new $ano();";
                 } elsif($xseqno =~ m{\A[STU]}) {
-                    $static_dirs .= "\n  private static final DirectArray $ano = new $ano();";
+                    $static_dirs{$ano} = "\n  private static final DirectArray $ano = new $ano();";
                 } elsif($xseqno =~ m{\A[M]} ) {
-                    $static_dirs .= "\n  private static final MemorySequence $ano = new $ano();";
+                    $static_dirs{$ano} = "\n  private static final MemorySequence $ano = new $ano();";
                 } elsif($xseqno =~ m{\A[X]} ) {
-                    $static_dirs .= "\n  private static final DecimalExpansionSequence $ano = new $ano();";
+                    $static_dirs{$ano} = "\n  private static final DecimalExpansionSequence $ano = new $ano();";
                 }
             }
             $parms[$iparm] = $parmi;
@@ -548,9 +549,13 @@ if ($fatal > 0) {
 sub write_output {
     my ($copy, $aseqno) = @_; # global $old_package, $gen_count, $debug
     my $call1 = ($cc eq $callcode) ? $cc : "$cc/$callcode";
-    if ($static_dirs ne "") {
+    my $static_list = "";
+    foreach my $ano (sort(keys(%static_dirs))) {
+        $static_list .= $static_dirs{$ano};
+    }
+    if ($static_list ne "") { 
       $copy =~ s[public +class([^\{]+)\{]
-                [public class$1\{\n$static_dirs];
+                [public class$1\{\n$static_list];
     }
     map {
         my $line = $_;
