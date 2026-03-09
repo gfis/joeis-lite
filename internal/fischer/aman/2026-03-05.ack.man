@@ -1,0 +1,106 @@
+---- 2026-03-05 19:12:48
+A094962	decexp	1	() -> X064582.*(CV(3).sqrt()./(2))
+A096789	decexp	1	() -> CrFunctions.BESSEL_I.cr(1, CV(2))
+A101262	records	0	new A024573()
+A102888	decexpr	0	() -> CR.PI.*(CV(new Q(8, 3))).-(REALS.acos(CV(new Q(1, 3))).*(new Q(27, 4))).+(CR.SQRT2./(4))	(8/3)*Pi - (27/4)*arccos(1/3) + sqrt(2)/4
+A110617	decexp	0	() -> CV(new Q(1, 64532))
+A120754	records	0	new A016730().skip(1)
+A126988	trilambn	1	1	1	(n, k) -> ZV(n % k == 0 ? n/k : 0)
+A140416	decexp	0	() -> CV(869041).sqrt().-(71)./(432000)	(-71 + 869041^(1/2))/432000	.
+A147613	complen	1	Z.ONE	new A001045()		x
+A164646	parmof4	1	A164649	9	4	51	Numbers m such that sigma(m)/phi(m) = 9/4.	nonn	1..1000	nyi
+A164647	parmof4	1	A164649	16	9	1463	Numbers k such that sigma(k)/phi(k) = 16/9.	nonn	1..1000	nyi
+A164648	parmof4	1	A164649	25	16	40859	Numbers k such that sigma(k)/phi(k) = 25/16.	nonn	1..1000	nyi
+A164650	parmof4	1	A164649	49	36	679	Numbers m such that sigma(m)/phi(m) = 49/36.	nonn	1..1000	nyi
+A165629	parmof4	1	A164649	25	4	760	Numbers n such that sigma(n)/phi(n) = 25/4, where sigma = A000203, phi = A000010.
+A165630	parmof4	1	A164649	25	9	8721	Numbers n such that sigma(n)/phi(n) = 25/9, where sigma = A000203, phi = A000010.
+A166139	trilambn	1	1	1	(n, k) -> n % k == 0 ? E080305(n/k) : ZV(0)	Triangle T(n,k) read by rows. A080305(A126988(n,k)) if k|n, 0 otherwise.
+A166140	rowprodnz	1	new A166139()
+A168257	filnum	1	0	k -> Predicates.SQUARE.is(ZV(k).^(2).*(3).+(2).*(k).+(4))	Numbers k with property that 4 + 2*k + 3*k^3 is a square.
+A173273	decexp	0	() -> CV(1).-(X037077.*(2))
+A192930	decexp	0	() -> CR.PI.*(X191102.cos()).-(CR.PI./(2))	Pi*cos(phi) - Pi/2	, where phi is the constant defined by 191102.
+A193869	rowprod	1	new A077316()
+A195599	decexp	1	() -> CV(3)./(X195596./(2).log().*(2))
+A202953	decexp	57	() -> CR.PI.^(CR.PI).^(CR.PI.^(CR.PI))	x^x with x=Pi^Pi	.
+A215447	decexp	1	() -> CrFunctions.ELLIPTIC_K.cr(CV(3).sqrt()./(2)).+(CrFunctions.ELLIPTIC_E.cr(CV(3).sqrt()./(2)).*(2)).*(new Q(2, 3))
+A228346	records	0	new A016738()
+A228439	filtpos	1	0	new A107920()	(k, v) -> k > 0 && v.mod(k) == 0
+A231114	filtpos	1	1	new A106853()	DIVISIBLE_BY_INDEX
+A231388	filtpos	1	0	new A088137()	(k, v) -> k > 0 && v.mod(k) == 0
+A231404	filtpos	1	0	new A088138()	(k, v) -> k > 0 && v.mod(k) == 0
+A231958	filtpos	1	0	new A045873()	(k, v) -> k > 0 && v.mod(k) == 0
+A231959	filtpos	1	0	new A001906()	(k, v) -> k > 0 && v.mod(k) == 0
+A236145	records	0	new A006518().skip(1)
+A240993	rowprod	0	new A245334()
+A242000	decexp	0	() -> X065442.+(1)./(4)	, a constant appearing in Koecher's formula for Euler's gamma constant, where alpha is J065442, the ErdŇĎs-Borwein Constant.
+A244238	decexp	1	() -> X006752.*(8)./(CR.PI.*(3)).exp()
+A245672	decexp	0	() -> CV(3)./(CV(2).*(CR.PI).*(X086231))
+A247036	decexp	0	() -> CV(2).*(X006752)./(CR.PI.*(CV(2).log()))	a constant appearing in the average root bifurcation ratio of binary trees, where G is Catalans constant.
+A248472	decexp	0	() -> CR.GAMMA.+(CV(2).log().log()).-(CV(2).*(CrFunctions.EI.cr(CV(2).log().negate())))
+A248916	decexp	1	() -> X033259.^(2).*(8)	, a critical threshold of a boundary value problem, where lambda is Laplaces limit constant J033259.
+A255251	decexp	0	() -> CV(2688).log().+(CV(2688).log().log()).-(CV(PM(2688))./(2688))	d(n) = log(n) + log(log(n)) - prime(n)/n	at n = 2688, a (local?) maximum.
+A261879	decexp	0	() -> CrFunctions.BESSEL_I.cr(3, CV(2))
+#A269164	complen	1	Z.ONE	new A269160()		range
+#A277019	complen	1	Z.ONE	new A277022()		range.
+A297190	complen	1	Z.ONE	new A072099()		x
+A298241	decexp	0	() -> CrFunctions.BESSEL_I.cr(1, CV(new Q(2, 3)))./(CrFunctions.BESSEL_I.cr(0, CV(new Q(2, 3))))
+A298242	decexp	0	() -> CrFunctions.BESSEL_I.cr(1, CV(new Q(1, 2)))./(CrFunctions.BESSEL_I.cr(0, CV(new Q(1, 2))))
+A298243	decexp	0	() -> CrFunctions.BESSEL_I.cr(1, CV(new Q(2, 5)))./(CrFunctions.BESSEL_I.cr(0, CV(new Q(2, 5))))
+A317617	trilambn	1	1	1	(n, k) -> Z.valueOf((long) n * n + 1).multiply(n).add((2L * k - n - 1) * (n & 1)).divide2()
+A337981	decexp	1	() -> CR.PI.*(CrFunctions.BESSEL_Y0.cr(2))./(CrFunctions.BESSEL_J0.cr(2).*(2)).-(CR.GAMMA)	Pi*BesselY(0,2)/(2*BesselJ(0,2)) - gamma
+A345413	decexp	0	() -> CR.GAMMA.+(X077761).exp().*(X006752.-(Zeta.zeta(3).*(7)./(CR.PI.*(4))))./(4)	exp(gamma + X006752)*(X006752 - 7*zeta(3)/(4*Pi))/4, where gamma is Eulers constant (X001620), M is Mertens's constant (X077761) and G is Catalan's constant (X006752)
+A347423	decexp	1	() -> CV(2).log().*(2).sqrt().*(2)	2*sqrt(2 log 2).
+A358450	decexp	0	() -> CV(1)./(X088375)
+A358559	decexp	0	() -> CrFunctions.AIRY_BI.cr(CV(0))	Bi(0)	, where Bi is the Airy function of the second kind.
+A359086	decexpr	1	() -> CV(4).*(REALS.cosh(CR.PI./(CV(12).sqrt())).^(2))
+A360180	decexp	15	() -> CV(new Z("10681177560000000000000"))./(ZV(44173801L))	= 241798924208491 + 36055709/44173801
+A361006	decexp	-8	() -> CV(new Z("71207857995393"))./(new Z("71207850400000000000000"))
+A361010	decexp	1	() -> CV(new Z("98251739507564459"))./(new Z("5521725026748260492435541")).+(1)
+A361918	decexp	7	() -> CV(1)./(X363766)
+A362000	decexp	1	() -> CV(new Z("15642924386799194873461"))./(new Z("80000000000000000000000000000")).+(1)	W.
+A362529	decexp	36	() -> CV(new Z("449377589368408820000000000000000000000000000"))./(ZV(801088317L))	= 560958860380445193785044302424897303 + 641890949/801088317 [eV/c^2].
+A362530	decexp	15	() -> CV(new Z("483597900000000"))	GHz/V.
+A362590	decexp	5	() -> CV(25812.807)	ohms
+A363766	decexp	-6	() -> CV(662607015L).*(CV(10).^(-42)).*(CV(299792458L))./(CR.PI.*(2))./(CV(1602176634).*(CV(10).^(-28)))
+A364896	decexp	3	() -> CV(1575).+(CV(705).*(CV(5).sqrt()))./(4)
+A364897	decexp	2	() -> CV(50).+(CV(5).sqrt().*(25))./(4)
+A373548	decexp	0	() -> CR.SQRT2.+(1).log().divide(CR.TWO.log())./(2)	log_2(1 + sqrt(2))/2.
+#A373878	lambdan	0	n -> (n == 0) ? ZV(1) : PR(1, n, k -> S317617(n, k))	rowprod	0	new A317617()
+A376643	decexp	1	() -> CrFunctions.ELLIPTIC_K.cr(CV(new Q(4, 5)).sqrt()).*(4)./(CV(5).sqrt())	4*EllipticK(4/5)/sqrt(5),
+A378482	decexp	0	() -> CV(1)./(X005597.*(8).*(CV(2).log()))
+A379322	decexp	1	() -> CV(3).+(CV(1).-(CV(9).-(CV(8).^(-5)).^(-6))./(CV(7).+(CV(2).^(-4))))
+A379555	prepend	0	new RowProductSequence(1, new A330613())	1
+A379601	decexp	2	() -> CR.E.*(120).-(600).*(CR.E).+(960).*(CR.E).-(540).*(CR.E).+(80).*(CR.E).-(1).*(CR.E)./(120)	Decimal expansion of (120e^6 - 600e^5 + 960e^4 - 540e^3 + 80e^2 - e) / 120.	nonn,cons,easy	2..10001	nyi	_Daniel Mondot_
+A379694	filnum	0	1	k -> PP(Z2(2*k).-(PM(k)))	Numbers k such that 4^k - prime(k) is prime.
+A381673	decexp	2	() -> CR.E.*(720).-(4320).*(CR.E).+(9000).*(CR.E).-(7680).*(CR.E).+(2430).*(CR.E).-(192).*(CR.E).+(1).*(CR.E)./(720)	(720*e^7 - 4320*e^6 + 9000*e^5 - 7680*e^4 + 2430*e^3 - 192*e^2 + e) / 720.
+A381809	decexp	0	() -> Zeta.zeta(3)./(CR.PI.^(2).*(8))
+A382778	decexp	2	() -> CV(6).*(CV(3).log())./(CV(3).*(CV(3).log()).-(3))	6*log(3)/(3*log(3) - 3).
+A382867	decexp	1	() -> CR.PI.^(3)./(31)	(Pi^3)/31.
+A383851	decexp	1	() -> X006752.*(8)./(CR.PI).exp().*((CV(1).-(CR.PI./(-2).exp()))./(CV(1).+(CR.PI./(-2).exp())).^(2))
+A384541	decexp	0	() -> CV(new Q(1, 32)).*(CV(2).-(CR.GAMMA)).*(CR.PI)	*(2 - gamma)*Pi, where gamma is the Euler-Mascheroni constant.
+A385253	decexp	0	() -> CrFunctions.AIRY_AI.cr(CV(1))	AiryAi(x) at x=1.
+A387194	decexp	0	() -> CrFunctions.BESSEL_J0.cr(CR.PI./(2))	BesselJ[0, Pi/2],
+A387195	decexp	0	() -> CrFunctions.BESSEL_J0.cr(CR.PI./(3))	BesselJ[0, Pi/3],
+A389184	holos	3	[0,1,-1,-6,6,15,-15,-20,20,15,-15,-6,6,1,-1]	54,181,311,892,1247,3153,3814,8806,9648,20749,21425,43450,43221,83329,80938,149278,142786,253221,239821	0	0
+A389654	decexp	0	() -> Zeta.zeta(3)./(1728)
+A389885	decexp	0	() -> CV(new Q(1L, 7142857L))
+A391953	decexpr	0	() -> REALS.hypergeometric(new CR[] { CV(new Q(1, 4)), CR.HALF, CV(new Q(3, 4)) }, new CR[] { CV(new Q(2, 3)), CV(new Q(4,3 )) }, CV(new Q(1, 27)))./(4)	hypergeom([1/4, 1/2, 3/4], [2/3, 4/3], 1/27)/4.
+A392573	decexpr	1	() -> CR.PI.*(4).*(REALS.acot(CR.PHI.sqrt()))	4*Pi*arccot(sqrt(phi)), where phi is the golden ratio (X001622).
+A392899	holos	1	[0,1,0,-3,0,3,0,-1]	0,1,1,6,2,12,3	0	0
+A393555	polya	0	"[1]"	"x,B,x,C,*"	new A327726(), new A173241()
+A393556	polya	0	"[1]"	"x,B,x,C,*"	new A373295(), new A174065()
+A393557	polya	0	"[1]"	"x,B,x,C,*"	new A373296(), new A373219()
+A393558	polya	0	"[1]"	"x,B,x,C,*"	new A373297(), new A373220()
+A393668	decexpr	1	() -> REALS.sinh(CR.PI)./(CR.PI).log()	log(sinh(Pi)/Pi).
+A393776	decexp	0	() -> CrFunctions.BESSEL_I.cr(2, CV(2)).*(2).-(1)	Decimal expansion of 2 * BesselI(2, 2) - 1.	nonn,cons,easy,new	0..104	nyi	_Amiram Eldar_
+A393839	holos	0	[0,-1,2,-1]	1,8,32,88,192,324,448,548,620,696,788	0	0
+A393846	polya	0	"[1]"	"1,1,x,B,<1,-,/"	new MultiTransformSequence(0, (self, n) -> QV(n + 1).^(6*n + 6)./(FA(n + 1)).-(RU(1, n, k -> QV(n + 1).^(6*k)./(FA(k)).*(self.a(n - k)))).num(), "")
+A393847	polya	0	"[1]"	"1,1,x,B,<1,-,/"	new MultiTransformSequence(0, (self, n) -> QV(n + 1).^(7*n + 7)./(FA(n + 1)).-(RU(1, n, k -> QV(n + 1).^(7*k)./(FA(k)).*(self.a(n - k)))).num(), "")
+A393848	polya	0	"[1]"	"1,1,x,B,<1,-,/"	new MultiTransformSequence(0, (self, n) -> QV(n + 1).^(8*n + 8)./(FA(n + 1)).-(RU(1, n, k -> QV(n + 1).^(8*k)./(FA(k)).*(self.a(n - k)))).num(), "")
+A393849	polya	0	"[1]"	"1,1,x,B,<1,-,/"	new MultiTransformSequence(0, (self, n) -> QV(n + 1).^(9*n + 9)./(FA(n + 1)).-(RU(1, n, k -> QV(n + 1).^(9*k)./(FA(k)).*(self.a(n - k)))).num(), "")
+A393902	filnum	1	1	k -> CNT(2, 10, b -> Functions.REVERSE.i(b, k) >= k).isZero()	digit reversals of k, when written in all bases 2 to 10, are less than k.	nonn,base,new	1..10000	nyi	_Scott R. Shannon_
+A393903	filnum	1	1	k -> CNT(2, 10, b -> Functions.REVERSE.i(b, k) <= k).isZero()	digit reversals of k, when written in all bases 2 to 10, are greater than k.	nonn,base,new	1..10000	nyi	_Scott R. Shannon_
+A393907	holos	1	[0,64,-56,14,-1]	1,2,10,60	0	0
+A393911	holos	0	[[0],[200,-90,10],[-416,200,-24],[336,-211,33],[-144,128,-28],[8,-24,16],[0,2,-8],[0,1,1]]	1	0	0
+A393912	holos	0	[[0],[210,-65,5],[-1368,504,-46],[3150,-1330,140],[-3312,1620,-198],[1734,-1088,170],[-504,448,-98],[42,-78,36],[0,4,-10],[0,1,1]]	1	0	0
+A393913	holos	0	[[0],[900,-405,45],[-1480,690,-80],[840,-517,79],[-360,292,-56],[20,-39,19],[0,2,-8],[0,1,1]]	1	0	0

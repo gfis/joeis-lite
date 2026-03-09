@@ -1,0 +1,89 @@
+---- 2026-03-08 23:12:04
+A101347	tablamb	0	0	n -> new Integer[]{0, (n&1) == 0 ? n/2 : (n + 1)/2}	(n, k) -> (n <= 1) ? ZV(1) : BI(n - k, k).*(n)./(n - k).+(BI(n - k, k - 1).*(n))	T(n, k)=nC(n-k, k)/(n-k)+nC(n-k, k-1)
+A105285	filtpos	1	0	new A001644()	(k, v) -> k > 0 && GCD(v, ZV(k)).compareTo(ZV(1)) > 0	Indices of Lucas 3-step numbers A001644
+A105289	filtpos	1	0	new A074048()	(k, v) -> k > 0 && GCD(v, ZV(k)).compareTo(ZV(1)) > 0	Indices of Lucas 5-step numbers A074048
+A105935	filtpos	1	0	new A104621()	(k, v) -> k > 0 && GCD(v, ZV(k)).compareTo(ZV(1)) > 0	Indices of Lucas 7-step numbers A104621 which have a nontrivial divisor in common with index.
+A108156	filtpos	1	0	new HolonomicRecurrence(0, "[0,1,1,-1]", "3794765361567513,20615674205555510", 0, 0)	PRIME	Numbers n such that a(n) is prime, where a(n) = a(n-1) + a(n-2), a(1) = 3794765361567513, a(2) = 20615674205555510.
+A113239	filter	1	new A113238()	PRIME
+A113501	filtpos	0	0	new A002315()	PRIME
+A117602	filter	1	new A000931().skip(9).prepend(1)	v -> { final long r = Functions.DIGIT_SUM_ROOT.l(v); return r != 0L && v.mod(r) == 0L; }	Padovan numbers which can be divided by their digital root.
+A117603	filter	1	new A000931().skip(9).prepend(1)	v -> { final long r = Functions.DIGIT_PRODUCT.l(v); return r != 0L && v.mod(r) == 0L; }	Padovan numbers which can be divided by the product of their digits.
+A117604	filter	1	new A000931().skip(9).prepend(1)	v -> { final long r = Functions.DIGIT_PRODUCT_ROOT.l(v); return r != 0L && v.mod(r) == 0L; }	Padovan numbers which can be divided by their multiplicative digital root.
+A117789	filter	1	new A000204()	v -> v.mod(Functions.DIGIT_SUM.i(v)) == 0	Lucas numbers which are divisible by the sum of their digits.
+A117952	filter	1	new A001608().skip(6).prepend(2, 3)	v -> { final long r = Functions.DIGIT_SUM.l(v); return r != 0L && v.mod(r) == 0L; }	Perrin numbers which are divisible by the sum of their digits.
+A117959	filter	1	new A001608().skip(6).prepend(2, 3)	v -> { final long r = Functions.DIGIT_SUM_ROOT.l(v); return r != 0L && v.mod(r) == 0L; }
+A118208	rpt	0	f(new A008836()).g(-1)	G.f.: A(x) = Product_{k>=1} (1 + x^k)^(-lambda(k)) where lambda(k) is the Liouville function, A008836.
+A125035	filnum	1	10	k -> GCD(Z2(k).-(69), ZV(k)).compareTo(ZV(1)) > 0	Numbers k such that gcd(2^k-69,k) > 1.	nonn	1..10000	nyi	_Zak Seidov_
+A125036	filnum	1	1	k -> { final Z k3 = ZV(k).^(3); return PP(k3.+(4)) && PP(k3.+(16)) && PP(k3.+(36)) && PP(k3.+(100)); }	Numbers n such that all of n^3+{2,4,6,10}^2 are primes.	nonn	1..29	nyi	_Zak Seidov_
+A128911	filter	1	new A000073().skip(3).prepend(0)	v -> Predicates.SQUARE.is(v)	Square tribonacci numbers.
+A156761	filter	1	new A056816()	v -> PP(REV(v))
+A237446	filter	1	new A000040()	p -> PP(Functions.CYCLOTOMIC.z(7, Functions.CYCLOTOMIC.z(7, p)))	Primes p such that f(f(p)) is prime where f(x) = Phi_6(x).
+A250621	lambdan	1	n -> CV(PM(n)).log().*(n).floor()	a(n) = floor(n*log(prime(n))).	nonn,easy	1..59	nyi	_Freimut Marschner_
+A250622	lambdan	1	n -> { final Z p = PM(n); return CV(p).log().*(n).floor().-(p); }	a(n) = floor(n*log(prime(n)))-prime(n), n >= 1.	sign,easy	1..10000	nyi	_Freimut Marschner_
+A250623	lambdan	1	n -> { final Z p = PM(n); return CV(p).log().*(n).floor().+(CV(n).log().*(n).ceil()).-(p.*(2)); }	a(n) = floor(n*log(prime(n))) + ceiling(n*log(n)) - 2*prime(n).	sign,easy	1..10000	nyi	_Freimut Marschner_
+A251925	filter	0	new A000961().skip(1)	p -> !PP(p) && Predicates.SQUARE.is(p.*(2).-(1))	Prime powers p^k (k>=2) of the form (n^2+1)/2.	nonn	1..19	nyi	_Joerg Arndt_
+A252021	filter	1	new A000040()	p -> { final Z t = TAU(p.-(1)); final Z p1 = p.-(1); return p1.mod(t).isZero() && PP(p1./(t)); }	Primes p such that (p - 1)/tau(p - 1) is also prime.	nonn,easy	1..10000	nyi	_Carlos Eduardo Olivieri_
+A252041	filnum	1	1	k -> k != 3 && ZV(k).^(k).+(3).mod(k - 3) == 0	Numbers m such that m - 3 divides m^m + 3.	nonn	1..331	nyi	_Juri-Stepan Gerasimov_
+A252042	filter	1	new A000040()	p -> { final Z p2 = p.^(3).*(2); return PP(p2.+(1)) && PP(p2.+(3)); }	Primes p such that 2*p^3 + 1 and 2*p^3 + 3 are also primes.	nonn	1..11485	nyi	_K. D. Bajpai_
+A252089	filter	1	new A000040()	p -> PP(p.+(26))	Primes p such that p + 26 is prime.	nonn,easy	1..10000	nyi	_Vincenzo Librandi_
+A252091	filter	1	new A000040()	p -> PP(p.+(34))	Primes p such that p + 34 is prime.	nonn,easy	1..10000	nyi	_Vincenzo Librandi_
+A252370	sintrif	1	(term, n) -> D243055(D066048(term))	""	new A251726()
+A252371	sintrif	1	(term, n) -> D243055(D066048(term))	""	new A251727()
+A252463	lambdan	1	n -> ((n&1) == 0) ? ZV(n/2) : D064989(n)	Hybrid shift: a(1) = 1, a(2n) = n, a(2n+1) = D064989(2n+1)
+A252477	lambdan	1	n -> CV(1)./(CV(PM(n + 1)).sqrt().-(CV(PM(n)).sqrt())).floor()	Integer part of 1/(sqrt(prime(n+1))-sqrt(prime(n))).	nonn	1..10000	nyi	_M. F. Hasler_
+A252480	filnum	1	100	k -> Long.toString(k / 10).indexOf('0') >= 0	Numbers whose decimal representation has at least one '0' digit in a position other than the final digit.	nonn,easy,base	1..10000	nyi	_M. F. Hasler_
+A252482	filnum	1	0	k -> ZV(12).^(k).toString().indexOf('0') < 0	Exponents n such that the decimal expansion of the power 12^n contains no zeros.	nonn,base	1..11	nyi	_M. F. Hasler_
+A252484	filnum	1	1	m -> CNT(1, 4, k -> ZV(m).^(k).toString().indexOf('0') >= 0).isZero()	Numbers m such that m^k is zeroless for k=1,...,4.	nonn,base	1..1000	nyi	_M. F. Hasler_
+A252491	lambdan	0	n -> ZV(10).^(n*n).-(1)./(ZV(10).^(n).-(1))
+A252501	trilambn	0	0	0	(n, k) -> BI(2*n + 1, k).*(BI(n, k))	, n>=0, 0<=k<=n.
+A252502	lambdan	1	n -> Functions.DIGIT_LENGTH.z(Functions.CYCLOTOMIC.z(n, 10))	Number of digits of Phi_n(10), or number of digits in base b of Phi_n(b), where Phi is the cyclotomic polynomial.	nonn	1..1000	nyi	_Eric Chen_
+A252596	multia	1	"5"	(self, n) -> { final Z p = self.a(n - 1); final long k = Functions.PRIME_PI.l(p); return PM(k + p.mod(3)); }	Let a(n-1)=p and k=pi(p); then a(n)=prime(k+mod(p,3)).
+A252750	lambdan	0	n -> { final Z dn = D005940(n + 1); return D003961(dn).-(dn.*(2)); }
+A252751	partsun	0	new A252750().skip(1).prepend(0)
+A252848	decexp	2	() -> CR.E.*(CR.E.^(CR.E).-(1))./(CR.E.-(1))	Decimal expansion of Sum_{n>0} Sum_{k=0..n} exp(k)/n! = e*(e^e - 1)/(e - 1)
+A253106	filter	1	new A001358()	s -> s.mod(2) == 0 || s.mod(3) == 0	Semiprimes with smallest factor <= 3
+A253137	sintrif	1	(term, n) -> GCD(term, TAU(term)).*(n)	""	new A002808()	c -> nyi t	a(n) = n*gcd(c(n), d(n)), where c(n) = composite numbers, d(n) = number of divisors of c(n).
+A253141	lambdan	1	n -> Predicates.PRIME_POWER.is(n) ? D014963(F000005(n)) : ZV(1)	If n is a prime power, then a(n) = lambda(tau(n)) = D014963(F000005(n)); otherwise, a(n) = 1.
+A253142	filnum	1	2	k -> CNT(1, 2, j -> !PP(ZV(k).^(j).+(15))).isZero()	Numbers k such that k + 15 and k^2 + 15 are prime.	nonn	1..10000	nyi	_Zak Seidov_
+A253143	filnum	1	2	k -> CNT(1, 3, j -> !PP(ZV(k).^(j).+(15))).isZero()	Numbers n such that n + 15, n^2 + 15 and n^3 + 15 are prime.	nonn	1..52	nyi	_Zak Seidov_
+A253240	arrlamb	0	0	0	-1	(m, n) -> (m == 0) ? ZV(1) : Functions.CYCLOTOMIC.z(m, n)	Square array read by antidiagonals: T(m, n) = Phi_m(n), the m-th cyclotomic polynomial at x=n.
+A257227	filtpos	0	0	new A122265()	PRIME	Indices of primes in the 10th-order Fibonacci number sequence, A122265.
+A270997	filtpos	1	1	new A006190()	(k, v) -> v.mod(k) == 0	Numbers k such that k | A006190(k-1).
+A277110	multia	0	"0,1"	(self, n) -> D066048(self.a(n - 1).+(self.a(n - 2)))	with a(0) = 0 and a(1) = 1.
+A296209	charfunc	0	new A001591().skip(5).prepend(0)		x	a(n) = 1 if n is a pentanacci number, 0 otherwise; characteristic function for A001591.
+A307493	filter	1	new A131750()	PRIME
+A320734	polyxa	0	"[1],[1,-3,1],[1,-3]"	"p1,p2,/,x,B,*"	1	0	new A000041()
+A329343	lambdan	1	n -> D243055(E324886(n))
+A335534	multraf	1	(self, n) -> self.s(0).mod(self.s(1))	""	new A000073(), new A000045()	a(n) = tribonacci(n) modulo Fibonacci(n).
+A342255	arrlamb	1	1	1	1	(n, k) -> GCD(ZV(k), Functions.CYCLOTOMIC.z(k, n))
+A342323	arrlamb	0	0	0	1	(n, k) -> GCD(ZV(k + 1), (k == 0) ? ZV(1) : Functions.CYCLOTOMIC.z(k + 1, n))	Square array read by ascending antidiagonals: T(n,k) = gcd(k, Phi_k(n)),
+A352744	arrlamb	0	0	0	1	(n, k) -> ZV(n - 1).*(FI(k)).+(FI(k + 1))	F(n, k) = (n-1)*f(k-1) + f(k) where f(k - 1) = A000045(k), f(k) = FI(k + 1) the Fibonacci numbers starting with f(0) = 1.
+A372491	filtpos	1	0	new A002533()	PRIME	Indices k such that A002533(k) is prime.
+A373055	filtpos	1	1	new A000213()	(k, v) -> k > 0 && v.mod(k) == 0	Numbers k that divide the k-th term of the tribonacci sequence A000213.
+A378902	holos	1	[0,81,-27,-729,-513,900,810,-108,-159,9,9,-1]	5,6,39,156,922,5060,31165,196605,1301490,8844147	0	0
+A390990	lambdan	1	n -> (n <= 1) ? ZV(0) : D056239(n).*(2).-(D390430(n))
+A393795	filter	1	new A014574()	v -> Predicates.SMOOTH.is(7, v)	7-smooth numbers that are averages of twin prime pairs.	nonn,new
+A393926	multia	0	"1"	(self, n) -> ZV(3 - 2*n).+(SU(0, n - 1, k -> self.a(k).*(self.a(n - 1 - k))))	a(0) = 1; a(n) = 3 - 2*n + Sum_{k=0..n-1} a(k) * a(n-1-k).
+A393930	multia	0	"0,1"	(self, n) -> RU(1, n - 1, k -> QV(n).^(k - 2).*(BI(n, k)).*(self.a(n - k))).num()	a(n) = Sum_{k=1..n-1} n^(k-2) * binomial(n,k) * a(n-k) for n > 1.
+A393954	convprod	0	2	new A192945()
+A393955	polyx	0	"[1],[0,-2,-1]"	"1,p1,exp,<1,rev,+,^2"	0	1
+A393956	polyz	1	"[0,1],[0,1/2]"	"5,p1,*,p1,cos,3,p1,*,cos,-,*,5,p1,*,sin,/"	1	1	0	2
+A393976	lambdan	1	n -> { final Z ph = PHI(n); return ph.+(1).*(ph).+(1); }	a(n) = phi(n)^2 + phi(n) + 1, where phi is Eulers totient function.	nonn,easy,new	1..10000	nyi	_Paolo Xausa_
+A393987	rpt	0	f(-1).g(-1).h(k -> Z.valueOf(k*(k + 3L)/2))	Product_{k>=1} (1 + x^(k*(k+3)/2)).	nonn,new	0..10000	nyi	_Vaclav Kotesovec_
+A393988	rpt	0	h(k -> Z.valueOf(k*(k + 5L)/2))	Product_{k>=1} 1 / (1 - x^(k*(k+5)/2)).	nonn,new	0..10000	nyi	_Vaclav Kotesovec_
+A393989	rpt	0	f(-1).g(-1).h(k -> Z.valueOf(k*(k + 5L)/2))	Product_{k>=1} (1 + x^(k*(k+5)/2)).	nonn,new	0..10000	nyi	_Vaclav Kotesovec_
+A393990	rpt	0	h(k -> Z.valueOf(k*k + 1L))	Product_{k>=1} 1 / (1 - x^(k^2 + 1)).	nonn,new	0..10000	nyi	_Vaclav Kotesovec_
+A393991	rpt	0	f(-1).g(-1).h(k -> Z.valueOf(k*k + 1L))	Product_{k>=1} (1 + x^(k^2 + 1)).	nonn,new	0..10000	nyi	_Vaclav Kotesovec_
+A394017	rpt	0	h(k -> Z.valueOf(k*k + 2L))	Product_{k>=1} 1 / (1 - x^(k^2 + 2)).	nonn,new	0..10000	nyi	_Vaclav Kotesovec_
+A394018	rpt	0	h(k -> Z.valueOf(k*k + 3L))	Product_{k>=1} 1 / (1 - x^(k^2 + 3)).	nonn,new	0..10000	nyi	_Vaclav Kotesovec_
+A394019	rpt	0	h(k -> Z.valueOf(k*k + 4L))	Product_{k>=1} 1 / (1 - x^(k^2 + 4)).	nonn,new	0..10000	nyi	_Vaclav Kotesovec_
+A394020	rpt	0	h(k -> Z.valueOf(k*k + 5L))	Product_{k>=1} 1 / (1 - x^(k^2 + 5)).	nonn,new	0..10000	nyi	_Vaclav Kotesovec_
+A394030	multia	0	"1"	(self, n) -> SU(0, n - 1, j -> SU(0, j, i -> self.a(i).*(self.a(j - i)))).*(n)	a(0) = 1; a(n) = n * Sum_{j=0..n-1} Sum_{i=0..j} a(i) * a(j-i).	nonn,new	0..20	nyi	_Ilya Gutkovskiy_
+---- 2026-03-09 09:58:05
+A037294	sintrif	1	(term, n) -> term.-(1)	""	new A360489().skip(1)	G.f.: 1/((1 - x)^2*Product_{k>=1} (1 - x^k)^k) - 1/(1 - x). a(n) = A360489(n+1) - 1. (End)
+A292547	rpt	0	f(-1).g(-1).h(k -> ZV(2*k - 1).^(3))	G.f.: Product_{k>=1} (1 + x^((2*k-1)^3))
+---- 2026-03-09 10:47:40
+A090677	rpt	0	h(new A001248())
+A160406	polya	0	"[0,1],[0,5,-1],[1,-2,1],[2,2]"	"x,B,2,+,p1,p2,/,+,<1,p3,/"	new A139250()
+A261563	convprod	0	1,1	new A261561(), new A261562()
+A279227	convprod	0	2,2	new A001156(), new A033461()

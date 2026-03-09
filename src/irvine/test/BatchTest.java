@@ -214,7 +214,7 @@ public class BatchTest {
     try {
       Z term = seq.next();
       if (mDirect && mIsDirect && index <= mDirectMax) {
-        final Z termAi = mDirectSeq.a(index);
+        final Z termAi = mDirectSeq.a((long) index);
         if (!termAi.equals(term)) {
           failure = 1;
           printLog("FATAL", "Difference between next() and a(" + String.valueOf(index) + "): ", 

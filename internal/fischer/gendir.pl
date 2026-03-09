@@ -1,7 +1,8 @@
 #!perl
 
 # turn a sequence into a DirectSequence
-# @(#) $Id$
+# @(#) $Id$ 
+# 2026-03-07: a(long n)
 # 2024-04-26, Georg Fischer: copied from genman.pl
 #
 #:# Usage:
@@ -91,11 +92,11 @@ sub copyseq {
 
   \@Override
   public Z a(final Z n) {
-    return a(n.intValueExact());
+    return a(n.longValueExact());
   }
 
   \@Override
-  public Z a(final int n) {
+  public Z a(final long n) {
     return a(Z.valueOf(n));
   }
 
