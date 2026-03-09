@@ -433,11 +433,14 @@ offpatch: offpatch1 offpatch2 # CC= ; needs offin.tmp; patch wrong offsets liste
 offpatch1:
 	cd .. ; make purge
 	perl queue.pl -p offin.tmp > $@.pack 
-	cp -v $@.pack  offpatch.rest.pack
+	cp -v offpack.pack  offpatch.rest.pack # maybe with man edits
+	make offpatchi MODE=manual    # must be the first MODE
 	make offpatchi MODE=abstract
 	make offpatchi MODE=sequencei
 	make offpatchi MODE=setoffset
-	make offpatchi MODE=super
+	make offpatchi MODE=basuper
+	make offpatchi MODE=sesuper
+	make offpatchi MODE=noxtend   # must be the last MODE
 offpatch2: # compile and test
 	cd .. ; make dist testall evaluate log GU=16
 offpatchi: # MODE=
