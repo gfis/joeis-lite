@@ -1,6 +1,7 @@
 package irvine.test;
 /*  Reads a subset of OEIS 'stripped', calls joeis sequences and compares the results
  *  @(#) $Id$
+ *  2026-03-09: V4.5: direct.a((long) n)
  *  2025-08-29: V4.4: respect offset in parameter testNext.index
  *  2023-10-18: V4.2: optionally try DirectSequence a-methods
  *  2022-06-20: V4.0: use SequenceFactory
@@ -51,7 +52,7 @@ public class BatchTest {
   public final static String CVSID = "@(#) $Id$";
 
   /** This program's version */
-  private static String VERSION = "BatchTest V4.3";
+  private static String VERSION = "BatchTest V4.5";
 
   /** A-number of sequence currently tested */
   private String  aseqno;
