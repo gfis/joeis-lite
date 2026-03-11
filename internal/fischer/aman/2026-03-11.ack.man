@@ -1,30 +1,97 @@
----- 2026-03-11 09:56:44
+---- 2026-03-11 22:55:03
+A085072	sintrif	2	(term, n) -> term.-(n)	""	new A081761()	a(n)=J081761(n)-n	_	_	_
+A085368	multraf	0	(self, n) -> self.s(0).+(self.s(1))	""	new A007676(), new A007677()	a(n)=J007676(n)+J007677(n)	_	_	_
+A087128	sintrif	1	(term, n) -> term.-(n)	""	new A393398()	a(n)=J393398(n)-n	_	_	_
+A087724	lambdan	2	n -> E085581(n).-(Functions.PRIME_PI.z(n)).-(2)	""		a(n)=E085581(n)-F000720(n)-2	_	_	_
+A088486	sintrif	1	(term, n) -> term.*(term.+(1)).-(1)	""	new A088485()	a(n)=J088485(n)*(J088485(n)+1)-1	_	_	_
+A093527	lambdan	0	n -> new Q(BI(2*n + 2, n + 1), n + 1).den()	a(n) = denominator(binomial(2n, n)/n)
+A093896	lambdan	1	n -> D002034(ZV(n).^(n))	""		a(n)=D002034(n^n)	_	_	_
+A094085	lambdan	1	n -> (n <= 1) ? ZV(3) : ZV(8).^(n-1).*(12)	a(n)=12*8^(n-1)=12*J001018forn>1	_	_	_
 A094947	rpt	0	fq(k -> new Q(1, k)).g(new A007947())	Product_{n>=1} 1/(1 - F007947(n)*x^n)^(1/n), where F007947(n) is the product of the distinct prime factors of n.
 A095895	rpt	0	fq(k -> new Q(1, k*k)).g((k, t) -> t.*(k), new A007947())	Product_{n>=1} 1/(1 - n*F007947(n)*x^n)^(1/n^2), where F007947(n) is the product of the distinct prime factors of n.
+A096487	lambdan	2	n -> ZV(2).*(E096483(n - 1))	""		a(n)=2*E096483(n)
+A097327	lambdan	1	n -> E097326(n).+(1)	""		a(n)=E097326(n)+1	_	_	_
+A105563	sintrif	1	(term, n) -> ZV(5).-(term)	"0,0,0,1,0"	new A050815()	a(n)=5-J050815(n),forn>1	_	_	_
+A105565	sintrif	1	(term, n) -> term.-(4)	"0,1,1"	new A050815()	a(n)=J050815(n)-4,forn>1	_	_	_
+A109743	sintrif	2	(term, n) -> term./(3)	"1"	new A109742().skip(1)	a(2)=1;forn>2,a(n)=J109742(n)/3	_	_	_
+A109940	lambdan	1	n -> ZV(n).*(E097326(n))	""		a(n)=n*E097326(n)	_	_	_
 A110154	rpt	0	fq(k -> new Q(ZV(4), ZV(4).^(k))).g(k -> ZV(4).^(k))	Product_{n>=1} 1/(1 - 4^n*x^n)^(4/4^n)	; self-convolution of ?110156.
 A110155	rpt	0	fq(k -> new Q(ZV(5), ZV(5).^(k))).g(k -> ZV(5).^(k))	Product_{n>=1} 1/(1 - 5^n*x^n)^(5/5^n)	.
 A110156	rpt	0	fq(k -> new Q(ZV(2), ZV(4).^(k))).g(k -> ZV(4).^(k))	Product_{n>=1} 1/(1 - 4^n*x^n)^(2/4^n)	; self-convolution equals ?110154.
+A111008	multraf	0	(self, n) -> self.s(0)./(self.s(1))	""	new A000367(), new A141590()	a(n)=J000367(n)/J141590(n)	_	_	_
+A120263	sintrif	1	(term, n) -> E096617(n)./(term)	""	new A001008()	a(n)=E096617(n)/J001008(n)=numerator[n*Sum[1/i,{i,1,n}]]/numerator[Sum[1/i,{i,1,n}]]	_	_	_
+A121934	lambdan	1	n -> (n <= 1) ? ZV(1) : D003418(n).-(1)			For n>=2,a(n)=D003418(n+1)-1	_	_	_
+A137730	lambdan	1	n -> { final Z f = FA(n); return ((n&1) == 0) ? f.^(2)./(2*n) : f.^(2).+(f)./(2*n); }	even n, a(n) = n!^2 / (2n). For odd n, a(n) = (n!^2 + n!) / (2n).
+A138376	multia	0	"0"	(self, n) -> self.a(n - 1).+(Z_1(n).*(Functions.DIGIT_SUM.z(n))).abs()	a(n+1) = abs[ a(n) + (-1)^(n+1) * Sum_of_digits_of(n+1)], with a(0)=0.
+A138553	tablamb	1	1	n -> new Integer[] { 1, D003418(n).intValueExact() }	(n, k) -> CND(k, d -> d <= n)	is the number of divisors of k that are <= n.	easy,nonn,tabf	1..105	nyi	_Franklin T. Adams-Watters_
+A160740	sintrif	0	(term, n) -> ZV(4).*(term)	""	new A160406()	a(n)=4*J160406(n)	_	_	_
+A161945	sintrif	1	(term, n) -> term.-(2)	""	new A099019()	a(n)=J099019(n)-2	_	_	_
+A165966	sintrif	1	(term, n) -> term.*(term.+(1))./(2)	""	new A105174()	a(n)=J105174(n)*(J105174(n)+1)/2	_	_	_
+A175582	sintrif	1	(term, n) -> F000203(term)./(2)	""	new A083207()	a(n)=F000203(J083207(n))/2	_	_	_
+A180337	lambdan	1	n -> B392459(n).+(1)	""		a(n)=B392459(n)+1	_	_	_
 A180563	polyxa	1	"[0,1]"	"x,B,log,rev"	0	1	new A000041()
 A181541	rpt	0	egf().fl(k -> -k).gq(k -> new Q(-1, k))	E.g.f.: A(x) = Product_{n>=1} (1 + x^n/n)^n.
+A181703	sintrif	1	(term, n) -> Z2(term.-(1)).*(ZV(2).^(term).-(3))	""	new A050414()	a(n)=2^(J050414(n)-1)*(2^J050414(n)-3)	_	_	_
 A182965	rpt	0	egf().fl(k -> -k).gq(k -> new Q(-2, k))	E.g.f.: A(x) = Product_{n>=1} (1 + 2*x^n/n)^n.
 A182966	rpt	0	egf().fl(k -> -k).gq(k -> new Q(-3, k))	E.g.f.: A(x) = Product_{n>=1} (1 + 3*x^n/n)^n.
 A182967	rpt	0	egf().fl(k -> -k).gq(k -> new Q(-4, k))	E.g.f.: A(x) = Product_{n>=1} (1 + 4*x^n/n)^n.
+A183067	lambdan	0	n -> SU(0, n, k -> BI(2*k, k).^(2).*(BI(4*k, 2*k)).*(BI(n+2*k, 4*k)).*(Z2(n-2*k)))	""		a(n)=Sum_{k=0..n}binomial(2*k,k)^2*binomial(4*k,2*k)*binomial(n+2*k,4*k)*2^(n-2*k)	_	_	_
 A184171	multraf	0	(self, n) -> self.s(0).+(self.s(1))./(2)	""	new RationalProductTransform(0, new RationalProductTransform.Builder().f(-1).g(-1).h(new A000040())), new RationalProductTransform(0, new RationalProductTransform.Builder().f(-1).h(new A000040()))
 A184172	multraf	0	(self, n) -> self.s(0).-(self.s(1))./(2)	""	new RationalProductTransform(0, new RationalProductTransform.Builder().f(-1).g(-1).h(new A000040())), new RationalProductTransform(0, new RationalProductTransform.Builder().f(-1).h(new A000040()))
+A187223	sintrif	0	(term, n) -> term.-(E187220(n))	""	new A147562()	a(n)=J147562(n)-E187220(n)	_	_	_
+A191092	lambdan	3	n -> QV(n).^(n-7).*(n-3).*(ZV(12).*(ZV(n).^(5)).-(ZV(104).*(ZV(n).^(4))).+(ZV(360).*(ZV(n).^(3))).-(ZV(679).*(ZV(n).^(2))).+(1122*n).-(1560))./(3).*(Q.TWO.^(n - 6)).num()	""		a(n)=2^(n-6)*n^(n-7)*(n-3)*(12*n^5-104*n^4+360*n^3-679*n^2+1122*n-1560)/3	_	_	_
+A243765	filnum	1	1	k -> CND(k, d -> !P002191(d)).isZero()	Numbers that have all their divisors in A002191 (possible values for sigma(n), A000203).
 A244997	decexp	0	() -> CR.SEVEN.divide(CR.valueOf(12)).multiply(X253905)
-A280126	convprod	0	1,1	new RationalProductTransform(1, new RationalProductTransform.Builder().f(-1).g(-1).h(k -> PM(k).^(2))), new RationalProductTransform(1, new RationalProductTransform.Builder().f(-1).g(-1).h(k -> PM(k).^(3)))	Product_{k>=1} (1 + x^(prime(k)^2))*(1 + x^(prime(k)^3)).
 A280423	convprod	0	1,1	new RationalProductTransform(1, new RationalProductTransform.Builder().f(-1).g(-1).h(k -> ZV(k).*(k + 1))), new A000041()	Product_{k>=1} (1 + x^(k*(k+1))) / (1 - x^k).
 A280424	convprod	0	1,1	new A000009(), new RationalProductTransform(1, new RationalProductTransform.Builder().h(k -> ZV(k).*(k + 1)))	Product_{k>=1} (1 + x^k) / (1 - x^(k*(k+1))).
-A280541	rpt	0	f(k -> TAU(k).*(-k)).g(-1)	Product_{k>=1} (1 + x^k)^(k*d(k)), where d(k) = number of divisors of k (F000005). - _Ilya Gutkovskiy_, Aug 26 2018
 A280611	rpt	0	f((k, t) -> t.negate(), new A014197()).g(-1)	Product_{i>=1} (1 + x^phi(i)) = Product_{j>=1} (1 + x^j)^J014197(j), where phi(i)=F000010(i) is Euler_s totient function.
 A280709	poly	0	"[1],[1,1],A280611"	"p1,x,B,*"	(1+x)*Product_{i>=1} (1+x^phi(i)) = (1+x)*Product_{j>=1} (1+x^j)^J014197(j), where phi(i)=F000010(i) is Euler_s totient function.
 A280715	convprod	0	1,1,1	new A000607(), new A090677(), new A279760()
-A291695	polya	1	"[1]"	"x,B,rev"	new A006128()
+A292563	rpt2pfs	0	f(-1).g(-1).h(k -> ZV(2*k - 1).^(3))	h(k -> ZV(2*k - 1).^(3))	(1 + x^((2*k-1)^3))	(1 - x^((2*k-1)^3))
+A294624	rpt2pfs	0	f(-1).g(-1).h(k -> ZV(3*k - 2).*(k))	f(-1).g(-1).h(k -> ZV(3*k + 2).*(k))	(1 + x^(k*(3*k-2)))	*(1 + x^(k*(3*k+2)))
+A296048	rpt2pfse	0	fq(k -> new Q(-1, k))	fq(k -> new Q(1, k)).g(-1)	e.g.f. Product_{k>=1} ((1 - x^k)/(1 + x^k))^(1/k).
+A303306	rpt2pfs	0	fq(k -> new Q(-1, 2)).g(k -> ZV(2).^(k))	fq(k -> new Q(1, 2)).g(k -> ZV(2).^(k).negate())	((1 - 2^k*x^k)	(1 + 2^k*x^k))	^(1/2)
+A303307	rpt2pfs	0	fq(k -> new Q(-1, 2)).g(k -> ZV(2).^(k).negate())	fq(k -> new Q(1, 2)).g(k -> ZV(2).^(k))	((1 + 2^k*x^k)	(1 - 2^k*x^k))	^(1/2 )
+A303342	rpt2pfs	0	fq(k -> new Q(-1, 3)).g(k -> ZV(9).^(k).negate())	fq(k -> new Q(1, 3)).g(k -> ZV(9).^(k))	((1 + 9^k*x^k)	(1 - 9^k*x^k))	^(1/3 )
+A303343	rpt2pfs	0	fq(k -> new Q(-1, k)).g(k -> ZV(k).^(k))	fq(k -> new Q(1, k)).g(k -> ZV(k).^(k).negate())	((1 - (k*x)^k)	(1 + (k*x)^k))	^(1/k)
+A303344	rpt2pfs	0	fq(k -> new Q(-1, k)).g(k -> ZV(k).^(k).negate())	fq(k -> new Q(1, k)).g(k -> ZV(k).^(k))	((1 + (k*x)^k)	(1 - (k*x)^k))	^(1/k)
+A303345	rpt2pfs	0	fq(k -> new Q(-1, 2)).g(2L)	fq(k -> new Q(1, 2)).g(-2L)	((1 + 2*x^k)	((1 - 2*x^k)	(1 + 2*x^k))	^(1/2)	Product_{k>=1} ((1 - 2*x^k)/(1 + 2*x^k))^(1/2).
+A303346	rpt2pfs	0	fq(k -> new Q(-1, 2)).g(-2L)	fq(k -> new Q(1, 2)).g(2L)	((1 + 2*x^k)	(1 - 2*x^k))	^(1/2)
+A303361	rpt2pfs	0	fq(k -> new Q(-1, 4)).g(k -> ZV(4).^(k).negate())	fq(k -> new Q(1, 4)).g(k -> ZV(4).^(k))	((1 + 4^k*x^k)	(1 - 4^k*x^k))	^(1/4 )
+A303381	rpt2pfs	0	fq(k -> new Q(-1, 8)).g(k -> ZV(8).^(k).negate())	fq(k -> new Q(1, 8)).g(k -> ZV(8).^(k))	((1 + 8^k*x^k)	(1 - 8^k*x^k))	^(1/8 )
+A303382	rpt2pfs	0	fq(k -> new Q(-1, 8)).g(-8L)	fq(k -> new Q(1, 8)).g(8L)	((1 + 8*x^k)	(1 - 8*x^k))	^(1/8)
+A303387	rpt2pfs	0	fq(k -> new Q(-1, 4)).g(4L)	fq(k -> new Q(1, 4)).g(-4L)	((1 + 4*x^k)	((1 - 4*x^k)	(1 + 4*x^k))	^(1/4)	Product_{k>=1} ((1 - 4*x^k)/(1 + 4*x^k))^(1/4).
+A303392	rpt2pfs	0	fq(k -> new Q(-1, 2)).g(-4L)	fq(k -> new Q(1, 2)).g(4L)	((1 + 4*x^k)	(1 - 4*x^k))	^(1/2)
+A303394	rpt2pfs	0	fq(k -> new Q(-1, 4)).g(k -> ZV(4).^(k))	fq(k -> new Q(1, 4)).g(k -> ZV(4).^(k).negate())	((1 - 4^k*x^k)	(1 + 4^k*x^k))	^(1/4)
+A303395	rpt2pfs	0	fq(k -> new Q(-1, 8)).g(k -> ZV(8).^(k))	fq(k -> new Q(1, 8)).g(k -> ZV(8).^(k).negate())	((1 - 8^k*x^k)	(1 + 8^k*x^k))	^(1/8)
+A303396	rpt2pfs	0	fq(k -> new Q(-1, 8)).g(8L)	fq(k -> new Q(1, 8)).g(-8L)	((1 + 8*x^k)	((1 - 8*x^k)	(1 + 8*x^k))	^(1/8)
+A303438	rpt2pfs	0	fq(k -> new Q(-1, ZV(2).^(k))).g(k -> ZV(2).^(k).negate())	fq(k -> new Q(1, ZV(2).^(k))).g(k -> ZV(2).^(k))	((1 + 2^k*x^k)	(1 - 2^k*x^k))	^(1/2^k)
+A303439	rpt2pfs	0	fq(k -> new Q(-1, ZV(2).^(k))).g(k -> ZV(2).^(k))	fq(k -> new Q(1, ZV(2).^(k))).g(k -> ZV(2).^(k).negate())	((1 - 2^k*x^k)	(1 + 2^k*x^k))	^(1/2^k)
+A303441	rpt2pfs	0	fq(k -> new Q(-1, ZV(2).^(k))).g(k -> ZV(2).^(k).^(k))	fq(k -> new Q(1, ZV(2).^(k))).g(k -> ZV(2).^(k).^(k).negate())	((1 - (2^k)^k*x) / (1 + (2^k)^k*x^k))	^(1/2^k)
+A303442	rpt2pfs	0	fq(k -> new Q(-1, ZV(4).^(k))).g(k -> ZV(4).^(k).negate())	fq(k -> new Q(1, ZV(4).^(k))).g(k -> ZV(4).^(k))	((1 + 4^k*x^k)	(1 - 4^k*x^k))	^(1/4^k)
+A303443	rpt2pfs	0	fq(k -> new Q(-1, ZV(8).^(k))).g(k -> ZV(8).^(k).negate())	fq(k -> new Q(1, ZV(8).^(k))).g(k -> ZV(8).^(k))	((1 + 8^k*x^k)	(1 - 8^k*x^k))	^(1/8^k)
+A303444	rpt2pfs	0	fq(k -> new Q(-1, ZV(4).^(k))).g(k -> ZV(4).^(k).^(k).negate())	fq(k -> new Q(1, ZV(4).^(k))).g(k -> ZV(4).^(k).^(k))	((1 + (4^k)^k*x) / (1 - (4^k)^k*x^k))	^(1/4^k)
+A303445	rpt2pfs	0	fq(k -> new Q(-1, ZV(8).^(k))).g(k -> ZV(8).^(k).^(k).negate())	fq(k -> new Q(1, ZV(8).^(k))).g(k -> ZV(8).^(k).^(k))	((1 + (8^k)^k*x) / (1 - (8^k)^k*x^k))	^(1/8^k)
+A303490	rpt2pfs	0	fq(k -> new Q(-1, ZV(4).^(k))).g(k -> ZV(4).^(k))	fq(k -> new Q(1, ZV(4).^(k))).g(k -> ZV(4).^(k).negate())	((1 - 4^k*x^k)	(1 + 4^k*x^k))	^(1/4^k)
+A303491	rpt2pfs	0	fq(k -> new Q(-1, ZV(8).^(k))).g(k -> ZV(8).^(k))	fq(k -> new Q(1, ZV(8).^(k))).g(k -> ZV(8).^(k).negate())	((1 - 8^k*x^k)	(1 + 8^k*x^k))	^(1/8^k)
 A303939	convprod	0	1,1	new A359966(), new A000041()
-A307241	multia	0	"1"	(self, n) -> SU(1, n, k -> Z_1(k + 1).*(TAU(k + 1)).*(self.a(n - k)))	a(0) = 1; a(n) = Sum_{k=1..n} (-1)^(k+1)*d(k+1)*a(n-k), where d() is the number of divisors (A000005).
+A303942	rpt2pfs	0	f(-1).h(k -> ZV(k).^(2).*(k + 1))	h(k -> ZV(k).^(2))	(1 - x^(k^2*(k+1)))	(1 - x^(k^2))
+A303944	rpt2pfs	0	f(-1).g(+1).hl(k -> k*(k*k + 1))	f(1)		(1 - x^(k*(k^2+1)))	(1 - x^k)
+A304021	rpt2pfs	0	f(-1).h(k -> ZV(k).^(3).*(k + 1))	h(k -> ZV(k).^(3))	(1 - x^(k^3*(k+1)))	(1 - x^(k^3))
 A307242	multia	0	"1"	(self, n) -> SU(1, n, k -> Z_1(k + 1).*(Functions.SIGMA.z(2, k + 1)).*(self.a(n - k)))	a(0) = 1; a(n) = Sum_{k=1..n} (-1)^(k+1)*sigma_2(k+1)*a(n-k)
+A318814	rpt2pfse	0	fq(k -> new Q(SIGMA(k), -k)).g(-1)	fq(k -> new Q(SIGMA(k), k))		((1 + x^k)	(1 - x^k))	^(sigma(k)/k).
 A320734	polya	0	"[1],[1,-3,1],[1,-3]"	"p1,p2,/,x,B,*"	new A000041()
+A329155	rpt2pfs	0	fq(k -> new Q(-1, 2)).hl(k -> 2*k - 1)	fq(k -> new Q(1, 2)).g(3)	((1 - x^(2*k-1))	(1 - 3*x^k))	^(1/2)
+A330199	multia	0	"1"	(self, n) -> SU(1, n, k -> BI(n - 1, k - 1).*(D057625(k)).*(self.a(n - k))).negate()	a(0) = 1; a(n) = -Sum_{k=1..n} binomial(n-1,k-1) * A057625(k) * a(n-k).
 A330201	multia	0	"1"	(self, n) -> RU(1, n, k -> new Q(SIGMA(k).-(k).*(self.a(n -k)), FA(n - k))).*(FA(n - 1)).num()	a(0) = 1; a(n) = (n - 1)! * Sum_{k=1..n} (sigma(k) - k) * a(n-k) / (n - k)!.
+A341714	rpt2pfs	0	f(-1).g(+1).hl(k -> 13*k)	f(1)			(1 - x^(13*k))	(1 - x^k)
+A345870	rpt2pfse	0	fq(k -> new Q(-1, FA(k))).g(-1)	fq(k -> new Q(1, FA(k)))		((1 + x^k)	(1 - x^k))	^(1/k!).
+A345871	rpt2pfse	0	fq(k -> new Q(-1, FA(k).*(2))).g(-1)	fq(k -> new Q(1, FA(k).*(2)))		((1 + x^k)	(1 - x^k))	^(1/(2*k!)).
+A350642	rpt2pfs	0	f(-1).g(+1).hl(k -> 2*k)	f(4)			(1 - x^(2*k))	(1 - x^k)^4
+A350643	rpt2pfs	0	f(-2).g(+1).hl(k -> 2*k)	f(7)			(1 - x^(2*k))^2	(1 - x^k)^7
+A350644	rpt2pfs	0	f(-3).g(+1).hl(k -> 2*k)	f(10)			(1 - x^(2*k))^3	(1 - x^k)^10
+A370765	rpt2pfs	0	fq(k -> new Q(-1, 3)).g(k -> Z2(k + 1).*(ZV(9).^(k)).negate())	fq(k -> new Q(-1, 3)).g(k -> Z2(k - 1).*(ZV(9).^(k)).negate())	((1 + 2^(k+1)*(9*x)^k) * (1 + 2^(k-1)*(9*x)^k))^(1/3).
+A370792	rpt2pfs	0	f(-1).g(k -> ZV(3).^(k + 1).negate())	f(-1).g(k -> ZV(3).^(k - 1).negate())		(1 + 3^(k+1)*x^k) * (1 + 3^(k-1)*x^k).
 A391304	decexp	0	() -> CR.PI.pow(2).divide(CR.valueOf(12)).subtract(CR.TWO.log().divide(CR.TWO)).subtract(CR.TWO.log().pow(2).divide(CR.TWO))
 A391781	decexpr	0	() -> CR.PI.divide(CR.TEN.multiply(REALS.cos(CR.PI.divide(CR.TWO.multiply(CR.FIVE.sqrt())))))
 A391782	decexpr	1	() -> CR.PI.divide(CR.TWO.multiply(REALS.cos(CR.PI.divide(CR.TWO.multiply(CR.FIVE.sqrt()))))).subtract(CR.ONE)
@@ -38,7 +105,3 @@ A393962	decexp	0	() -> CR.TWO.add(X010503).sqrt().divide(CR.TWO)
 A393963	decexp	1	() -> CR.TWO.multiply(X090388).sqrt()
 A393964	decexp	1	() -> X165663.sqrt().divide(CR.TWO)
 A393965	decexp	0	() -> X160390.sqrt()
----- 2026-03-11 11:58:02
-A318814	rpt2pfse	0	fq(k -> new Q(SIGMA(k), -k)).g(-1)	fq(k -> new Q(SIGMA(k), k))		((1 + x^k)	(1 - x^k))	^(sigma(k)/k).
-A345870	rpt2pfse	0	fq(k -> new Q(-1, FA(k))).g(-1)	fq(k -> new Q(1, FA(k)))		((1 + x^k)	(1 - x^k))	^(1/k!).
-A345871	rpt2pfse	0	fq(k -> new Q(-1, FA(k).*(2))).g(-1)	fq(k -> new Q(1, FA(k).*(2)))		((1 + x^k)	(1 - x^k))	^(1/(2*k!)).

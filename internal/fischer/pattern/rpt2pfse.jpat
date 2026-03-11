@@ -15,7 +15,7 @@ public class $(ASEQNO) extends PolynomialFieldSequence {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
-    super($(OFFSET), "[1]", "[x,B,x,C,*", 0, 1, 1, 1, new RationalProductTransform(0, new RationalProductTransform.Builder().
+    super($(OFFSET), "[1]", "x,B,x,C,*", 0, 1, 1, 1, new RationalProductTransform(0, new RationalProductTransform.Builder().
        $(PARM1=builder1)
        ), new RationalProductTransform(0, new RationalProductTransform.Builder().
        $(PARM2=builder2)

@@ -2,6 +2,7 @@
 
 # Read rows from database table 'seq4' and generate corresponding Java sources for jOEIS
 # @(#) $Id$
+# 2026-03-11, V9.1: Pnnnnnn = DirectPredicate
 # 2026-03-05, V9.0: static_dirs uniq
 # 2025-05-26, V8.9: BELL, PELL
 # 2025-05-01, V8.8: HW hammingweight -> int!
@@ -85,7 +86,7 @@ use English; # PREMATCH
 my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime (time);
 my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d", $year + 1900, $mon + 1, $mday, $hour, $min);
 # $timestamp = sprintf ("%04d-%02d-%02d ", $year + 1900, $mon + 1, $mday);
-my $version_id  = "gen_seq4.pl V9.0";
+my $version_id  = "gen_seq4.pl V9.1";
 my $max_term = 16;
 my $max_size = 16;
 my $max_line_len = 120;
@@ -404,7 +405,7 @@ while (<>) { # read inputfile
             # extract any DirectSequences
             my %statics = (); # maps [ABDEFKMSTUX]<number> to A<number>
             my $parmi = $parms[$iparm];
-            foreach my $xseqno ($parmi =~ m{([BDEFHKMSTUX]\d{6})}g) { # collect the DirectSequences
+            foreach my $xseqno ($parmi =~ m{([BDEFHKMPSTUX]\d{6})}g) { # collect the DirectSequence_s and DirectPredicate_s
                 my $ano = "A" . substr($xseqno, 1);
                 if (0) {
                 } elsif($xseqno =~ m{\A[BDE]}) { # DirectSequence
@@ -414,7 +415,7 @@ while (<>) { # read inputfile
                 } elsif($xseqno =~ m{\A[STU]}) { # DirectArray
                     $parmi =~ s{$xseqno\(}{$ano\.a\(}g;
                     $statics{$xseqno} = $ano;
-                } elsif($xseqno =~ m{\A[H]})   { # Triangles with hasRAM()=true
+                } elsif($xseqno =~ m{\A[H]}  ) { # Triangles with hasRAM()=true
                     $parmi =~ s{$xseqno\(}{$ano\.$hasram{$ano}}g;
                     $statics{$xseqno} = $ano;
                 } elsif($xseqno =~ m{\A[F]} )  { # Functions.*.z
@@ -426,6 +427,9 @@ while (<>) { # read inputfile
                 } elsif($xseqno =~ m{\A[M]} )  { # MemorySequence
                     $statics{$xseqno} = $ano;
                     $parmi =~ s{$xseqno\(}{$ano\.a\(}g;
+                } elsif($xseqno =~ m{\A[P]}  ) { # DirectPredicate
+                    $parmi =~ s{$xseqno\(}{$ano\.is\(}g;
+                    $statics{$xseqno} = $ano;
                 } elsif($xseqno =~ m{\A[X]} )  { # DecimalExpansionSequence
                     $statics{$xseqno} = $ano;
                     $parmi =~ s{$xseqno}{$ano\.getCR\(\)}g;
@@ -435,16 +439,18 @@ while (<>) { # read inputfile
                 my $ano = $statics{$xseqno};
                 if (0) {
                 } elsif($xseqno =~ m{\A[BDE]}) {
-                    $static_dirs{$ano} = "\n  private static final DirectSequence $ano = new $ano();";
-                } elsif($xseqno =~ m{\A[H]}) {
+                    $static_dirs{$ano} =    "\n  private static final DirectSequence $ano = new $ano();";
+                } elsif($xseqno =~ m{\A[H]})   {
                     my $base_class = ($hasram{$ano} =~ m{^triangle}) ? "BaseTriangle" : "UpperLeftTriangle";
-                    $static_dirs{$ano} = "\n  private static final $base_class $ano = new $ano();";
+                    $static_dirs{$ano} =    "\n  private static final $base_class $ano = new $ano();";
                 } elsif($xseqno =~ m{\A[STU]}) {
-                    $static_dirs{$ano} = "\n  private static final DirectArray $ano = new $ano();";
-                } elsif($xseqno =~ m{\A[M]} ) {
-                    $static_dirs{$ano} = "\n  private static final MemorySequence $ano = new $ano();";
-                } elsif($xseqno =~ m{\A[X]} ) {
-                    $static_dirs{$ano} = "\n  private static final DecimalExpansionSequence $ano = new $ano();";
+                    $static_dirs{$ano} =    "\n  private static final DirectArray $ano = new $ano();";
+                } elsif($xseqno =~ m{\A[M]}  ) {
+                    $static_dirs{$ano} =    "\n  private static final MemorySequence $ano = new $ano();";
+                } elsif($xseqno =~ m{\A[P]}  ) {
+                    $static_dirs{$ano} =    "\n  private static final DirectPredicate $ano = new $ano();";
+                } elsif($xseqno =~ m{\A[X]}  ) {
+                    $static_dirs{$ano} =    "\n  private static final DecimalExpansionSequence $ano = new $ano();";
                 }
             }
             $parms[$iparm] = $parmi;
