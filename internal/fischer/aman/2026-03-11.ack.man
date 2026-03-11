@@ -1,0 +1,44 @@
+---- 2026-03-11 09:56:44
+A094947	rpt	0	fq(k -> new Q(1, k)).g(new A007947())	Product_{n>=1} 1/(1 - F007947(n)*x^n)^(1/n), where F007947(n) is the product of the distinct prime factors of n.
+A095895	rpt	0	fq(k -> new Q(1, k*k)).g((k, t) -> t.*(k), new A007947())	Product_{n>=1} 1/(1 - n*F007947(n)*x^n)^(1/n^2), where F007947(n) is the product of the distinct prime factors of n.
+A110154	rpt	0	fq(k -> new Q(ZV(4), ZV(4).^(k))).g(k -> ZV(4).^(k))	Product_{n>=1} 1/(1 - 4^n*x^n)^(4/4^n)	; self-convolution of ?110156.
+A110155	rpt	0	fq(k -> new Q(ZV(5), ZV(5).^(k))).g(k -> ZV(5).^(k))	Product_{n>=1} 1/(1 - 5^n*x^n)^(5/5^n)	.
+A110156	rpt	0	fq(k -> new Q(ZV(2), ZV(4).^(k))).g(k -> ZV(4).^(k))	Product_{n>=1} 1/(1 - 4^n*x^n)^(2/4^n)	; self-convolution equals ?110154.
+A180563	polyxa	1	"[0,1]"	"x,B,log,rev"	0	1	new A000041()
+A181541	rpt	0	egf().fl(k -> -k).gq(k -> new Q(-1, k))	E.g.f.: A(x) = Product_{n>=1} (1 + x^n/n)^n.
+A182965	rpt	0	egf().fl(k -> -k).gq(k -> new Q(-2, k))	E.g.f.: A(x) = Product_{n>=1} (1 + 2*x^n/n)^n.
+A182966	rpt	0	egf().fl(k -> -k).gq(k -> new Q(-3, k))	E.g.f.: A(x) = Product_{n>=1} (1 + 3*x^n/n)^n.
+A182967	rpt	0	egf().fl(k -> -k).gq(k -> new Q(-4, k))	E.g.f.: A(x) = Product_{n>=1} (1 + 4*x^n/n)^n.
+A184171	multraf	0	(self, n) -> self.s(0).+(self.s(1))./(2)	""	new RationalProductTransform(0, new RationalProductTransform.Builder().f(-1).g(-1).h(new A000040())), new RationalProductTransform(0, new RationalProductTransform.Builder().f(-1).h(new A000040()))
+A184172	multraf	0	(self, n) -> self.s(0).-(self.s(1))./(2)	""	new RationalProductTransform(0, new RationalProductTransform.Builder().f(-1).g(-1).h(new A000040())), new RationalProductTransform(0, new RationalProductTransform.Builder().f(-1).h(new A000040()))
+A244997	decexp	0	() -> CR.SEVEN.divide(CR.valueOf(12)).multiply(X253905)
+A280126	convprod	0	1,1	new RationalProductTransform(1, new RationalProductTransform.Builder().f(-1).g(-1).h(k -> PM(k).^(2))), new RationalProductTransform(1, new RationalProductTransform.Builder().f(-1).g(-1).h(k -> PM(k).^(3)))	Product_{k>=1} (1 + x^(prime(k)^2))*(1 + x^(prime(k)^3)).
+A280423	convprod	0	1,1	new RationalProductTransform(1, new RationalProductTransform.Builder().f(-1).g(-1).h(k -> ZV(k).*(k + 1))), new A000041()	Product_{k>=1} (1 + x^(k*(k+1))) / (1 - x^k).
+A280424	convprod	0	1,1	new A000009(), new RationalProductTransform(1, new RationalProductTransform.Builder().h(k -> ZV(k).*(k + 1)))	Product_{k>=1} (1 + x^k) / (1 - x^(k*(k+1))).
+A280541	rpt	0	f(k -> TAU(k).*(-k)).g(-1)	Product_{k>=1} (1 + x^k)^(k*d(k)), where d(k) = number of divisors of k (F000005). - _Ilya Gutkovskiy_, Aug 26 2018
+A280611	rpt	0	f((k, t) -> t.negate(), new A014197()).g(-1)	Product_{i>=1} (1 + x^phi(i)) = Product_{j>=1} (1 + x^j)^J014197(j), where phi(i)=F000010(i) is Euler_s totient function.
+A280709	poly	0	"[1],[1,1],A280611"	"p1,x,B,*"	(1+x)*Product_{i>=1} (1+x^phi(i)) = (1+x)*Product_{j>=1} (1+x^j)^J014197(j), where phi(i)=F000010(i) is Euler_s totient function.
+A280715	convprod	0	1,1,1	new A000607(), new A090677(), new A279760()
+A291695	polya	1	"[1]"	"x,B,rev"	new A006128()
+A303939	convprod	0	1,1	new A359966(), new A000041()
+A307241	multia	0	"1"	(self, n) -> SU(1, n, k -> Z_1(k + 1).*(TAU(k + 1)).*(self.a(n - k)))	a(0) = 1; a(n) = Sum_{k=1..n} (-1)^(k+1)*d(k+1)*a(n-k), where d() is the number of divisors (A000005).
+A307242	multia	0	"1"	(self, n) -> SU(1, n, k -> Z_1(k + 1).*(Functions.SIGMA.z(2, k + 1)).*(self.a(n - k)))	a(0) = 1; a(n) = Sum_{k=1..n} (-1)^(k+1)*sigma_2(k+1)*a(n-k)
+A320734	polya	0	"[1],[1,-3,1],[1,-3]"	"p1,p2,/,x,B,*"	new A000041()
+A330201	multia	0	"1"	(self, n) -> RU(1, n, k -> new Q(SIGMA(k).-(k).*(self.a(n -k)), FA(n - k))).*(FA(n - 1)).num()	a(0) = 1; a(n) = (n - 1)! * Sum_{k=1..n} (sigma(k) - k) * a(n-k) / (n - k)!.
+A391304	decexp	0	() -> CR.PI.pow(2).divide(CR.valueOf(12)).subtract(CR.TWO.log().divide(CR.TWO)).subtract(CR.TWO.log().pow(2).divide(CR.TWO))
+A391781	decexpr	0	() -> CR.PI.divide(CR.TEN.multiply(REALS.cos(CR.PI.divide(CR.TWO.multiply(CR.FIVE.sqrt())))))
+A391782	decexpr	1	() -> CR.PI.divide(CR.TWO.multiply(REALS.cos(CR.PI.divide(CR.TWO.multiply(CR.FIVE.sqrt()))))).subtract(CR.ONE)
+A392064	decexp	1	() -> CR.TEN.divide(CR.NINE).pow(10)
+A392687	decexp	1	() -> CR.THREE.multiply(CR.SQRT2).divide(CR.FIVE).add(CR.FIVE.sqrt().divide(CR.THREE)).subtract(CR.ONE).add(CR.THREE.multiply(CR.ONE.add(CR.SQRT2).log())).subtract(CR.valueOf(11).multiply(CR.ONE.add(CR.FIVE.sqrt()).divide(CR.TWO).log()).divide(CR.THREE))
+A393116	decexp	1	() -> CR.valueOf(45).multiply(Zeta.zeta(4)).divide(CR.valueOf(16))
+A393694	holos	1	[0,-1,2716,-37830,2716,-1]	530712,736097544,1979009657352,5347145100161592	0	0
+A393960	decexp	0	() -> CR.FOUR.add(CR.THREE.multiply(CR.SQRT2)).sqrt().divide(CR.THREE)
+A393961	decexp	0	() -> CR.ONE.add(X010503).sqrt().divide(CR.TWO)
+A393962	decexp	0	() -> CR.TWO.add(X010503).sqrt().divide(CR.TWO)
+A393963	decexp	1	() -> CR.TWO.multiply(X090388).sqrt()
+A393964	decexp	1	() -> X165663.sqrt().divide(CR.TWO)
+A393965	decexp	0	() -> X160390.sqrt()
+---- 2026-03-11 11:58:02
+A318814	rpt2pfse	0	fq(k -> new Q(SIGMA(k), -k)).g(-1)	fq(k -> new Q(SIGMA(k), k))		((1 + x^k)	(1 - x^k))	^(sigma(k)/k).
+A345870	rpt2pfse	0	fq(k -> new Q(-1, FA(k))).g(-1)	fq(k -> new Q(1, FA(k)))		((1 + x^k)	(1 - x^k))	^(1/k!).
+A345871	rpt2pfse	0	fq(k -> new Q(-1, FA(k).*(2))).g(-1)	fq(k -> new Q(1, FA(k).*(2)))		((1 + x^k)	(1 - x^k))	^(1/(2*k!)).
