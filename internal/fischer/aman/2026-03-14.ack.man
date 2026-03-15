@@ -1,0 +1,131 @@
+---- 2026-03-14 23:08:29
+A038144	multraf	1	(self, n) -> self.s(0).-(self.s(1))	""	new A000228(), new A018190()	a(n)=J000228(n)-J018190(n)	_	_	_
+A087540	lambdan	1	n -> { final long m = n/2; return Z.TWO.^(((n&1) == 1 ? n + 3 : n)*m/2).*(PR(2, m, i -> Z2(i).-(1))).*(Z.TWO.^(m*(m - 1)/2)); }	a(n)={my(m=n\2); 2^(m*if(n%2, n+3, n)/2)*prod(i=2, m, 2^i-1)*2^binomial(m, 2)}
+A090354	convprod	0	1/2	new BinomialTransformSequence(0, new A090353(), 0)	Self-convolution equals the binomial transform of J090353: A^2 = BINOMIAL(J090353).
+A090359	convprod	0	1/2	new BinomialTransformSequence(0, new A090358(), 0)	Self-convolution equals the binomial transform of J090358: A^2 = BINOMIAL(J090358), where J090358^6 = BINOMIAL(J090358^5).
+A096485	lambdan	2	n -> D003285(D002275(n))	""		a(n)=D003285(D002275(n))	_	_	_
+A106213	filtpos	0	0	new A083349()	(k, v) -> v.mod(3) == 1	is the minimal permutation of the positive integers having a self-convolution cube-root.
+A106214	filtpos	0	0	new A083349()	(k, v) -> v.mod(3) == 2	 is the minimal permutation of the positive integers having a self-convolution cube-root.
+A109413	filter	0	new PolynomialFieldSequence(0, "[1],[0,0,1],[1,-1]", "p1,eta,^2,x,eta,/,^2,p2,/")	(k, v) -> Predicates.TRIANGULAR.is(k)
+A109414	filter	0	new PolynomialFieldSequence(0, "[1],[0,0,1],[1,-1]", "p1,eta,^2,x,eta,/,^3,p2,/")	(k, v) -> Predicates.TRIANGULAR.is(k)
+A109415	filter	0	new PolynomialFieldSequence(0, "[1],[0,0,1],[1,-1]", "p1,eta,^2,x,eta,/,^4,p2,/")	(k, v) -> Predicates.TRIANGULAR.is(k)	poly	0	"[1],[0,0,1],[1,-1]"	"p1,eta,^2,x,eta,/,^4,p2,/"
+A110629	filter	0	new A083954()	(k, v) -> k % 4 == 0	th term of J083954 such that the self-convolution 4th power is congruent modulo 8 to J083954, which consists entirely of numbers 1 through 4.
+A110630	filter	0	new A083954()	(k, v) -> k % 2 == 0	nd term of J083954 such that the self-convolution 2nd power is congruent modulo 8 to J083954, which consists entirely of numbers 1 through 4.
+A110631	filter	0	new A083945()	(k, v) -> k % 5 == 0	th term of J083945 such that the self-convolution 5th power is congruent modulo 25 to J083945, which consists entirely of numbers 1 through 5.
+A110633	filter	0	new A083946()	(k, v) -> k % 3 == 0	rd term of J083946 where the self-convolution third power is congruent modulo 9 to J083946, which consists entirely of numbers 1 through 6.
+A110634	filter	0	new A083946()	(k, v) -> k % 2 == 0	nd term of J083946 where the self-convolution 2nd power is congruent modulo 4 to J083946, which consists entirely of numbers 1 through 6.
+A110635	filter	0	new A083947()	(k, v) -> k % 7 == 0	th term of J083947 such that the self-convolution 7th power is congruent modulo 49 to J083947, which consists entirely of numbers 1 through 7.
+A110636	filter	0	new A083948()	(k, v) -> k % 8 == 0	th term of J083948 where the self-convolution 8th power is congruent modulo 16 to J083948, which consists entirely of numbers 1 through 8.
+A110637	filter	0	new A083948()	(k, v) -> k % 4 == 0	th term of J083948 where the self-convolution 4th power is congruent modulo 16 to J083948, which consists entirely of numbers 1 through 8.
+A110638	filter	0	new A083948()	(k, v) -> k % 2 == 0	nd term of J083948 where the self-convolution 2nd power is congruent modulo 16 to J083948, which consists entirely of numbers 1 through 8.
+A110639	filter	0	new A083949()	(k, v) -> k % 9 == 0	th term of J083949 where the self-convolution 9th power is congruent modulo 27 to J083949, which consists entirely of numbers 1 through 9.
+A110640	filter	0	new A083949()	(k, v) -> k % 3 == 0	rd term of J083949 where the self-convolution third power is congruent modulo 27 to J083949, which consists entirely of numbers 1 through 9.
+A110642	filter	0	new A083950()	(k, v) -> k % 5 == 0	th term of J083950 where the self-convolution 5th power is congruent modulo 25 to J083950, which consists entirely of numbers 1 through 10.
+A110643	filter	0	new A083950()	(k, v) -> k % 2 == 0	nd term of J083950 where the self-convolution 2nd power is congruent modulo 4 to J083950, which consists entirely of numbers 1 through 10.
+A110644	filter	0	new A084066()	(k, v) -> k % 11 == 0	1thterm of J084066 such that the self-convolution 11th power is congruent modulo 121 to J084066, which consists entirely of numbers 1 through 11.
+A110647	filter	0	new A084067()	(k, v) -> k % 4 == 0	th term of J084067 where the self-convolution 4th power is congruent modulo 8 to J084067, which consists entirely of numbers 1 through 12.
+A110648	filter	0	new A084067()	(k, v) -> k % 3 == 0	rd term of J084067 where the self-convolution third power is congruent modulo 9 to J084067, which consists entirely of numbers 1 through 12.
+A110649	filter	0	new A084067()	(k, v) -> k % 2 == 0	nd term of J084067 where the self-convolution 2nd power is congruent modulo 8 to J084067, which consists entirely of numbers 1 through 12.
+A117956	polya	1	"[0,1]"	"x,B,x,C,*"	new A001227(), new A183063()
+A122842	lambdan	1	n -> SQRT(D038547(2*n - 1))	""		a(n)=sqrt(D038547(2*n-1))	_	_	_
+A127826	polya	0	"[1],[0,0,0,0,1]"	"p1,B,x,C,*"	new A138515(), new A112172()
+A151548	polyxa	0	"[1]"	"x,C,x,B,/,x,/"	1	0	new A151575(), new A139250()
+A151550	polyxa	0	"[1]"	"x,B,x,C,/,x,/"	1	0	new A153006(), new A040000()
+A156690	trink1	0	0	0	1	(n, k) -> (k == 0 || k == n) ? ZV(1) : b(n, mQ)./(b(n - k, mQ).*(b(k, mQ)))	(n, m) -> PR(1, n, j -> PR(1, j - 1, i -> ZV(1).-(ZV(m + 1).*(  i+1))))	1
+A156691	parmof2	0	A156690	2	T(n, k, m) = t(n,m)/( t(k,m) * t(n-k,m) ) with T(n, 0, m) = T(n, n, m) = 1, where t(n, m) = Product_{j=1..n} Product_{i=1..j-1} ( 1 - (m+1)*(i+1) ) and m = 1
+A156692	parmof2	0	A156690	3
+A156696	trink1	0	0	0	1	(n, k) -> (k == 0 || k == n) ? ZV(1) : b(n, mQ)./(b(n - k, mQ).*(b(k, mQ)))	(n, m) -> PR(1, n, j -> PR(1, j - 1, i -> ZV(1).-(ZV(m + 1).*(2*i - 1))))	1	t(n, m) = Product_{j=1..n} Product_{i=1..j-1} ( 1 - (m+1)*(2*i-1) ) and m = 1, read by rows.
+A156697	parmof2	0	A156696	2	T(n, k, m) = t(n,m)/( t(k,m) * t(n-k,m) ) with T(n, 0, m) = T(n, n, m) = 1, where t(n, m) = Product_{j=1..n} Product_{i=1..j-1} ( 1 - (m+1)*(2*i-1) ) and m = 1
+A156698	parmof2	0	A156696	3
+A156722	trink1	0	0	0	1	(n, k) -> (k == 0 || k == n) ? ZV(1) : b(n, mQ)./(b(n - k, mQ).*(b(k, mQ)))	(n, m) -> PR(1, n, j -> PR(1, j - 1, i -> ZV(1).-(ZV(m + 1).*(3*i - 2))))	1	t(n, m) = Product_{j=1..n} Product_{i=1..j-1} ( 1 - (m+1)*(3*i-2) ) and m = 1, read by rows.
+A156725	parmof2	0	A156722	2	T(n, k, m) = t(n,m)/( t(k,m) * t(n-k,m) ) with T(n, 0, m) = T(n, n, m) = 1, where t(n, m) = Product_{j=1..n} Product_{i=1..j-1} ( 1 - (m+1)*(3*i-2) )
+A156727	parmof2	0	A156722	3
+A156739	trink0	0	0	0	6	(n, k) -> RQ(0, mQ, j -> new Q(BI(2*(n + j), 2*(k + j)), BI(2*(n - k + j), 2*j))).round()
+A156740	parmof2	0	A156739	7	T(n, k, m) = round( Product_{j=0..m} binomial(2*(n+j), 2*(k+j))/binomial( 2*(n-k+j), 2*j) ), where m = 7,
+A156741	parmof2	0	A156739	8
+A156742	parmof2	0	A156739	9
+A156765	trink1	0	0	0	1	(n, k) -> (n == 0) ? ZV(1) : b(n, mQ)./(b(n - k, mQ).*(b(k, mQ)))	(n, k) -> (k == 0) ? FA(n) : PR(1, n, j -> ZV(k + 1).^(j).-(1)./(k).*(FA(j)))
+A156766	parmof2	0	A156765	2	T(n, k, m) = f(n, m)/(f(k, m)*f(n-k, m)), where T(0, k, m) = 1, f(n, k) = Product_{j=1..n} ( j!*((k+1)^j -1)/k ), f(n, 0) = n!, and m = 2, read by rows.
+A156767	parmof2	0	A156765	3	T(n, k, m) = f(n, m)/(f(k, m)*f(n-k, m)), where T(0, k, m) = 1, f(n, k) = Product_{j=1..n} ( j!*((k+1)^j -1)/k ), f(n, 0) = n!, and m = 3, read by rows.
+A156950	trink1q	0	0	0	1	(n, k) -> b(n, mQ)./(b(n - k, mQ).*(b(k, mQ))).num()	(n, k) -> (k == 0) ? QV(FA(n)) : RQ(1, n, j -> RQ(0, j - 1, i -> QV(1).-(ZV(k + 1).*(ZV(k + 1).^(i))))./(ZV(-k).^(j)))
+A156951	parmof2	0	A156950	2	Triangle T(n, k, q) = t(n,q)/(t(k,q)*t(n-k,q)), where t(n, k) = Product_{j=1..n} q-Pochhammer(j, k+1, k+1)/(1-(k+1))^j and t(n, 0) = n!, with q = 2, read by rows.
+A156952	parmof2	0	A156950	3	Triangle T(n, k, q) = t(n,q)/(t(k,q)*t(n-k,q)), where t(n, k) = Product_{j=1..n} q-Pochhammer(j, k+1, k+1)/(1-(k+1))^j and t(n, 0) = n!, with q = 3, read by rows.
+A156953	arrlamb	0	0	0	-1	(n, k) -> (k == 0) ? FA(n) : RQ(1, n, j -> RQ(0, j - 1, i -> QV(1).-(ZV(k + 1).*(ZV(k + 1).^(i))))./(ZV(-k).^(j))).num()	, with A(n, k) = n!
+A157174	parm3	0	A157169	-1	3	(-1, 2)
+A160762	polya	1	"[0,1],[1,-2,1],[1,1]"	"p1,x,B,*,p2,/"	new A139250()
+A171128	triprod	0	A117852	A130595	A117852*A130595 as lower triangular matrices.
+A172091	trink1	0	0	0	2	(n, k) -> b(k, mQ).+(b(n - k, mQ)).-(b(n, mQ))	(n, m) -> PR(1, n - 1, j -> ZV(m).^(j + 1).-(1)./(ZV(m).-(1)))
+A172092	parmof2	0	A172091	3	Triangle, read by rows, T(n,k,q) = c(k,q) + c(n-k,q) - c(n, m) where c(n,m) = Product_{j=1..n-1} ((m^(j+1) - 1)/(m-1)) and q = 2.
+A172093	parmof2	0	A172091	4	q = 4.
+A172243	partsun	1	new A080076()			Partial sums of A080076.
+A172300	trink1	1	1	1	3	(n, k) -> new Q(1 - mQ, ZV(1).-(ZV(mQ).^(k))).*(b(n - 1, mQ)).*(b(n, mQ))./(b(k - 1, mQ).^(2).*(b(n - k, mQ)).*(b(n - k + 1, mQ))).num()	(n, m) -> PR(1, n, j -> ZV(1).-(ZV(m).^(j)))
+A172301	parmof2	1	A172300	4	T(n, k, q) = ((1-q)/(1-q^k))*c(n-1, q)*c(n, q)/(c(k-1,q)^2*c(n-k,q)*c(n-k+1, q)), where c(n, q) = Product_{j=1..n} (1-q^j) and q = 4, read by rows.
+A172302	parmof2	1	A172300	5	T(n, k, q) = ((1-q)/(1-q^k))*c(n-1, q)*c(n, q)/(c(k-1,q)^2*c(n-k,q)*c(n-k+1, q)), where c(n, q) = Product_{j=1..n} (1-q^j) and q = 5, read by rows.
+A173117	trink0	0	0	0	1	(n, k) -> (k == 0 || k == n) ? ZV(1) : ZV(mQ).*(n == 2 ? 1 : 0).+(SU(0, 5, j -> ZV(mQ).^(j).*(BI(n - 2*j, k - j)).*(n > 2*j ? 1 : 0)))	q*[n=2] + Sum_{j=0..5} q^j*binomial(n-2*j, k-j)*[n>2*j] with T(n,0) = T(n,n) = 1 for q = 1, read by rows.
+A173118	parmof2	0	A173117	2	T(n, k, q) = q*[n=2] + Sum_{j=0..5} q^j*binomial(n-2*j, k-j)*[n>2*j] with T(n,0) = T(n,n) = 1 for q = 2,
+A173119	parmof2	0	A173117	3	T(n, k, q) = q*[n=2] + Sum_{j=0..5} q^j*binomial(n-2*j, k-j)*[n>2*j] with T(n,0) = T(n,n) = 1 for q = 3,
+A173120	parmof2	0	A173117	-4	T(n, k, q) = q*[n=2] + Sum_{j=0..5} q^j*binomial(n-2*j, k-j)*[n>2*j] with T(n,0) = T(n,n) = 1 for q = -4,
+A173503	trink1q	0	0	0	2	(n, k) -> b(n, mQ)./(b(n - k, mQ).*(b(k, mQ))).num()	(n, qq) -> RQ(1, n, m -> QV(qq).^(m).-(1).^(n - m))
+A173504	parmof2	0	A173503	3	T(n, k, q) = c(n, q)/(c(k, q)*c(n-k, q)) where c(n,q) = Product_{j=1..n} (q^j -1)^(n-j) and q = 3, read by rows.
+A173505	parmof2	0	A173503	4	c[n_, q_]:= Product[(q^m-1)^(n-m), {m, 1, n}]; T[n_, k_, q_]:= c[n, q]/(c[k, q]*c[n-k, q]);
+A173507	trink1	0	0	0	3	(n, k) -> b(n, mQ).*(2)./(b(n - k, mQ).*(b(k, mQ)))	(n, qq) -> PR(0, n, j -> ZV(qq).^(ZV(qq).^(j)).-(1))	T(n, k, q) = 2*c(n, q)/(c(k,q)*c(n-k,q)) where c(n,q) = Product_{j=0..n} (q^(q^j) - 1) and q=3, read by rows.
+A174037	trink0	0	0	0	2	(n, k) -> SU(0, 2*n, j -> ZV(mQ).^(j).*(BI(n, k)./(Z2(j))))	T(n, k, q) = Sum_{j>=0} q^j * floor(binomial(n, k)/2^j) with q = 2, read by rows.
+A174038	parmof2	0	A174037	3	T(n, k, q) = Sum_{j>=0} q^j * floor(binomial(n, k)/2^j) with q = 3, read by rows.
+A174043	trink0	1	1	1	1	(n, k) -> SU(0, 10, j -> BI(n + 1, k).*(BI(n - 1, k - 1))./(Z2(j).*(n + 1)).*(ZV(mQ).^(j)))
+A174044	parmof2	1	A174043	2	T(n, k, q) = Sum_{j=0..10} q^j * floor( binomial(n+1,k)*binomial(n-1,k-1)/(2^j*(n+1)) ) for q = 2, read by rows.
+A174045	parmof2	1	A174043	3	T(n, k, q) = Sum_{j=0..10} q^j * floor( binomial(n+1,k)*binomial(n-1,k-1)/(2^j*(n+1)) ) for q = 3, read by rows.
+A174449	trink0	0	0	0	1	(n, k) -> QV(FA(n)).*(FA(n + 1)).*((n/2 > k - 1) ? QV(mQ).^(k)./(FA(n - k).*(FA(n - k + 1))) : QV(mQ).^(n - k)./(FA(k).*(FA(k + 1)))).num()
+A174450	parmof2	0	A174449	2	T(n, k, q) = n!*(n+1)!*q^k/((n-k)!(n-k+1)!) if floor(n/2) > k-1, otherwise n!*(n+1)!*q^(n-k)/(k!*(k+1)!) for q = 2, read by rows.
+A174451	parmof2	0	A174449	3	T(n, k, q) = n!*(n+1)!*q^k/((n-k)!(n-k+1)!) if floor(n/2) > k-1, otherwise n!*(n+1)!*q^(n-k)/(k!*(k+1)!) for q = 3, read by rows.
+A187096	convprod	1	2	new A187097()	Convolution square of A187097.
+A242903	convprod	0	1/2	new A088220()	0
+A276474	lambdan	0	n -> ComputableReals.SINGLETON.product(0, n - 1, j -> CV(1).-(CR.SQRT2.*(CR.SQRT2.^(j)))).+(ComputableReals.SINGLETON.product(0, n - 1, j -> CV(1).-(CR.SQRT2.negate().*(CR.SQRT2.negate().^(j)))))./(2).floor()	a(n) = ((sqrt(2); sqrt(2))_n + (-sqrt(2); -sqrt(2))_n)/2, where (q; q)_n is the q-Pochhammer symbol.
+A276475	lambdan	0	n -> ComputableReals.SINGLETON.product(0, n - 1, j -> CV(1).-(CR.SQRT2.*(CR.SQRT2.^(j)))).-(ComputableReals.SINGLETON.product(0, n - 1, j -> CV(1).-(CR.SQRT2.negate().*(CR.SQRT2.negate().^(j)))))./(CR.SQRT2.*(2)).floor()	a(n) = ((sqrt(2); sqrt(2))_n - (-sqrt(2); -sqrt(2))_n)/(2*sqrt(2)), whe
+A276990	lambdan	0	n -> { final CR p1 = CV(1).-(CR.PHI); return ComputableReals.SINGLETON.product(0, n - 1, j -> CV(1).-(CR.PHI.*(CR.PHI.^(j)))).+(ComputableReals.SINGLETON.product(0, n - 1, j -> CV(1).-(p1.*(p1.^(j))))).floor(); }	a(n) = (phi; phi)_n + (1-phi; 1-phi)_n, where (q; q)_n is the q-Pochhammer symbol, phi = (1+sqrt(5))/2 is the golden ratio.
+A276991	lambdan	0	n -> { final CR p1 = CV(1).-(CR.PHI); return ComputableReals.SINGLETON.product(0, n - 1, j -> CV(1).-(CR.PHI.*(CR.PHI.^(j)))).-(ComputableReals.SINGLETON.product(0, n - 1, j -> CV(1).-(p1.*(p1.^(j)))))./(CV(5).sqrt()).floor(); }	a(n) = ((phi; phi)_n - (1-phi; 1-phi)_n)/sqrt(5), where (q; q)_n is the q-Pochhammer symbol, phi = (1+sqrt(5))/2 is the golden ratio.
+A280126	convprod	0	1,1	new RationalProductTransform(1, new RationalProductTransform.Builder().f(-1).g(-1).h(k -> PM(k).^(2))), new RationalProductTransform(1, new RationalProductTransform.Builder().f(-1).g(-1).h(k -> PM(k).^(3)))	Product_{k>=1} (1 + x^(prime(k)^2))*(1 + x^(prime(k)^3)).
+A280541	rpt	0	f(k -> TAU(k).*(-k)).g(-1)	Product_{k>=1} (1 + x^k)^(k*d(k)), where d(k) = number of divisors of k (F000005). - _Ilya Gutkovskiy_, Aug 26 2018
+A281449	polya	1	"[1]"	"x,B,<1,x,C,*,x,/"	new A056170(), new A090677()
+A281617	polya	0	"[1]"	"x,B,x,C,*"	new A086971(), new A101048()
+A289249	polya	0	"[1]"	"x,C,x,C,x,B,*,<2,+"	new A000045(), new A000041()
+A290974	lambdan	0	n -> RQ(0, n, j -> QV(1).-(Q.HALF.*(Z2(2*j)))).*(2).num()	a[n_Integer] := a[n] = 2 QPochhammer[1/2, 4, n + 1];
+A291695	polya	1	"[1]"	"x,B,rev"	new A006128()
+A305104	polya	0	"[1]"	"x,B,x,C,*"	new A066898(), new A000009()
+A307241	multia	0	"1"	(self, n) -> SU(1, n, k -> Z_1(k + 1).*(TAU(k + 1)).*(self.a(n - k)))	a(0) = 1; a(n) = Sum_{k=1..n} (-1)^(k+1)*d(k+1)*a(n-k), where d() is the number of divisors (A000005).
+A318579	rpt2pfs	0	f(k -> TAU(k).*(-k)).g(-1)	f(k -> TAU(k).*(k))	((1 + x^k)/(1 - x^k))	^(k*TAU(k))		, where tau(k) = number of divisors of k (F000005).
+A329057	trink0	0	0	0	1	(r, i) -> (i == 0) ? BI(r*(mQ + 1) + mQ - 1, r)./(r + 1) : (r == i ? D000272(r + 1) : ZV(r + 1).^(i - 1).*(BI(mQ*(r + 1) + r - i - 1, r - i)))
+A329058	parmof2	0	A329057	2	(r, i) -> ZV(r + 1).^(i - 1).*(BI(mQ*(r + 1) + r - i - 1, r - i))
+A329059	parmof2	0	A329057	3	(r, i) -> ZV(r + 1).^(i - 1).*(BI(mQ*(r + 1) + r - i - 1, r - i))
+A329060	parmof2	0	A329057	4	(r, i) -> ZV(r + 1).^(i - 1).*(BI(mQ*(r + 1) + r - i - 1, r - i))
+A341876	polyxa	0	"[1]"	"x,B,x,C,*"	0	1	egf(new A341505()), egf(new A341506())
+A349348	dirichinv	1	new A252463()	1	Dirichlet inverse of A252463, where A252463 shifts the prime factorization of odd numbers one step towards smaller primes and divides even numbers by two.
+A349437	dirichcon2	1	new A252463()	1	new A055615()	1
+A351991	rpt	0	egf().gq(k -> new Q(1, FA(k))).h(k -> PM(k))	Expansion of e.g.f. Product_{k>=1} 1/(1 - x^prime(k) / prime(k)!).
+A366355	lambdan	0	n -> Z_1(n).*(PR(0, n - 1, j -> ZV(1).-(ZV(n).^(j + 1))))	a(n) = (-1)^n * QPochhammer(n, n, n)
+A390551	partsun	0	new A380230()			Partial sums of A380230.
+A391235	lingf	1	0,0,0,0,1,1,-1,-1	1,0,-2,0,0,-1,1,1,0,1					0
+A391645	lingf	1	0,0,0,0,0,1	1,-3,-2,11,-3,-6					0
+A391679	lingf	1	0,0,0,0,0,0,0,0,0,1	1,-1,-4,2,4,3,2,-5,-5,-2,0,2,1					0
+A391680	lingf	1	0,1,-1,-2,2,1	1,-2,-3,5,4,-2,-4					0
+A391681	lingf	1	0,0,0,0,0,0,0,1	1,-1,-4,2,6,1,-4,-2					0
+A391682	lingf	1	0,1,1,-1,-1	1,-1,-3,2,2					0
+A391683	lingf	1	0,0,1,1,-1,-1	1,0,-3,-1,2,2					0
+A393057	partsun	1	new A393067()			Partial sums of A393067.
+A393435	m1pow	0	A033264	a(n) = (-1)^A033264(n).
+A393496	multraf	1	(self, n) -> self.s(0).gcd(self.s(1))	""	new A174344(), new A274923()
+A393559	convprod	0	1,1	new A373221(), new A373298()	Convolution of A373221 and A373298.
+A393841	holos	1	[0,-1,10,-45,120,-210,252,-210,120,-45,10,-1]	1,0,108,660,2622,8346,22914,56358,127125,267247,529777	0	0
+A394197	holos	0	[0,-1,2,-1]	1,8,32,88,192,360,608,832,960,1040,1112,1212,1332,1456	0	0
+A394199	rpt2	0	f(-1).g(-1).hl(k -> k*(k + 3)/2)	hl(k -> k*(k + 3)/2)	Expansion of Product_{k>=1} (1 + x^(k*(k+3)/2)) / (1 - x^(k*(k+3)/2)).
+A394200	rpt2	0	f(-1).g(-1).hl(k -> k*(k + 2))	hl(k -> k*(k + 2))	Expansion of Product_{k>=1} (1 + x^(k*(k+2))) / (1 - x^(k*(k+2))).
+A394201	rpt2	0	f(-1).g(-1).hl(k -> k*(k + 5)/2)	hl(k -> k*(k + 5)/2)	Expansion of Product_{k>=1} (1 + x^(k*(k+5)/2)) / (1 - x^(k*(k+5)/2)).
+A394202	rpt2	0	f(-1).g(-1).hl(k -> k*(2*k + 1))	hl(k -> k*(2*k + 1))	Expansion of Product_{k>=1} (1 + x^(k*(2*k+1))) / (1 - x^(k*(2*k+1))).
+A394203	rpt2	0	f(-1).g(-1).hl(k -> k*(2*k + 3))	hl(k -> k*(2*k + 3))	Expansion of Product_{k>=1} (1 + x^(k*(2*k+3))) / (1 - x^(k*(2*k+3))).
+A394204	rpt2	0	f(-1).g(-1).hl(k -> k*(2*k - 1))	hl(k -> k*(2*k - 1))	Expansion of Product_{k>=1} (1 + x^(k*(2*k-1))) / (1 - x^(k*(2*k-1))).
+A394205	rpt2	0	f(-1).g(-1).hl(k -> k*(3*k + 1)/2)	hl(k -> k*(3*k + 1)/2)	Expansion of Product_{k>=1} (1 + x^(k*(3*k+1)/2)) / (1 - x^(k*(3*k+1)/2)).
+A394206	rpt2	0	f(-1).g(-1).hl(k -> k*(3*k + 2))	hl(k -> k*(3*k + 2))	Expansion of Product_{k>=1} (1 + x^(k*(3*k+2))) / (1 - x^(k*(3*k+2))).
+A394207	rpt2	0	f(-1).g(-1).hl(k -> k*(3*k - 1)/2)	hl(k -> k*(3*k - 1)/2)	Expansion of Product_{k>=1} (1 + x^(k*(3*k-1)/2)) / (1 - x^(k*(3*k-1)/2)).
+A394208	rpt2	0	f(-1).g(-1).hl(k -> k*(3*k - 2))	hl(k -> k*(3*k - 2))	Expansion of Product_{k>=1} (1 + x^(k*(3*k-2))) / (1 - x^(k*(3*k-2))).
+A394231	holos	0	[[0],[-17,17],[5,-10],[0,1]]	1,5	0	0
+A394232	holos	0	[[0],[-28,28],[6,-12],[0,1]]	1,6	0	0
+A394233	holos	0	[[0],[-41,41],[7,-14],[0,1]]	1,7	0	0
