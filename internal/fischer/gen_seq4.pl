@@ -317,6 +317,7 @@ while (<>) { # read inputfile
             $parm =~ s{MAX\(}          {Functions.MAX.z\(}g;
             $parm =~ s{MIN\(}          {Functions.MIN.z\(}g;
             $parm =~ s{MU\(}           {Functions.MOEBIUS.z\(}g;
+            $parm =~ s{MUi\(}          {Functions.MOEBIUS.i\(}g;
             $parm =~ s{NPM\(}          {Functions.NEXT_PRIME.z\(}g;
             $parm =~ s{PELL\(}         {Functions.PELL.z\(}g;
             $parm =~ s{PP\(}           {Predicates.PRIME.is\(}g;
