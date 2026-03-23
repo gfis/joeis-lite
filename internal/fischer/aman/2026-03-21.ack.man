@@ -1,0 +1,98 @@
+---- 2026-03-21 23:20:19
+A094175	lambdan	1	n -> new Q(n, Functions.DIGIT_SUM.l(n)).round()	round(n/sumdigit(n)) where "round" is the rounded integer part of the division and "sumdigit" is the sum of the digits of the number.
+A096036	multia	1	"1"	(self, n) -> new Q(n, self.a((n&1) == 1 ? (n + 1)/2 : n/2)).ceiling()	a(n) = ceiling(n/a(ceiling(n/2))); a(1) = 1.	nonn	1..91	nyi	_Reinhard Zumkeller_
+A100665	lambdan	0	n -> CV(FI(n)).sqrt().round()	round(sqrt()).
+A120414	multia	0	"0,1"	(self, n) -> new Q(3, 2).^(n - 3).*(n).*(n - 1).ceiling()	a(0)=0, a(1)=1; thereafter a(n) = ceiling((3/2)^(n-3)*n*(n-1)).	easy,nonn	0..1000	nyi	Jeff Boscole (jazzerciser(AT)hotmail.com)
+A123389	lambdan	1	n -> new Q(PR(1, n, k -> PM(k)), FA(n)).round()	round((Product_{k=1..n} prime(k))/factorial(n)).
+A137404	lambdan	1	n -> new Q(PM(n + 1).-(PM(n)).*(10), CV(PM(n)).*(CV(PM(n)).log()).sqrt().floor().*(2)).ceiling()	a(n) = ceiling(10*(prime(n+1)-prime(n))/(2*floor(sqrt(prime(n)*log(prime(n)))))).	nonn,less	1..100	nyi	_Roger L. Bagula_
+A140828	multia	0	"1"	(self, n) -> new Q(PM(n), self.a(n - 1)).ceiling()	a(0)=1, a(n) = ceiling(prime(n)/a(n-1)), where prime(n) is the n-th prime.	nonn	0..10000	nyi	_Leroy Quet_
+A143800	lambdan	1	n -> CV(n).log().divide(CR.TWO.log()).*(12).round()	round(log_2(n)*12).
+A164082	lambdan	1	n -> CR.PI.*(2).^(n)./(FA(n - 1)).round()	round(((2*CR.PI)^n)/(n-1)!).
+A171626	sintrif	0	(term, n) -> new Q(term, n).ceiling()	""	new A008578()	a(n) = ceiling(n-th noncomposite/n).	nonn	1..10000	nyi	_Jaroslav Krizek_
+A171626	sintrif	1	(term, n) -> new Q(term, n).ceiling()	""	new A008578()	a(n) = ceiling(n-th noncomposite/n).	nonn	1..10000	nyi	_Jaroslav Krizek_
+A174059	lambdan	0	n -> ComputableReals.SINGLETON.sum(1, n, k -> CV(k).sqrt()).ceil()	a(n) = ceiling(Sum_{k=1..n} sqrt(k)).	nonn	0..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A181874	lambdan	0	n -> new Q(300, 11).*(n).round().modZ(60)	round((300/11)*n) (mod 60), n=0..10. See the solution in the Loyd book with (27+3/11)s = 300/11 s.
+A187284	lambdan	0	n -> CV(D003418(n)).log().round().-(n)
+A188669	lambdan	1	n -> new Q(BI(2*n - 1, n - 1), n).ceiling()	a(n) = ceiling(binomial(2*n-1,n-1)/n).	nonn,easy	1..1000	nyi	_Robert Gerbicz_ and _N. J. A. Sloane_
+A217254	lambdan	1	n -> new Q(PI(n).*(PM(n)), n).round()	round(primepi(n) * prime(n)/n).
+A221206	lambdan	1	n -> { final Z n10 = ZV(10).^(n); return CV(n10)./(CV(n10).log()).sqrt().round(); }	round(sqrt(10^n / log(10^n))).
+A227572	lambdan	0	n -> CR.PHI.^(n - 13).*(175).round()	round(phi^(-13 + n)*175) with the golden section phi:=(1 + sqrt(5))/2, with decimal expansion given in X001622.
+A227621	multraf	0	(self, n) -> new Q(self.s(0))./(QV(2).^(n - 3)).round()	"4"	new A083313()	a(0) = 4; for n >= 1, a(n) = round(J083313(n)/2^(n-3)).
+A228295	lambdan	0	n -> CV(12).^(new Q(1, 4)).*(n).ceil()	a(n) = ceiling(12^(1/4)*n).	nonn	0..65	nyi	Marcus du Sautoy and _Robert G. Wilson v_
+A228779	lambdan	0	n -> CR.PHI.^(n - 13).*(183).round()	round(phi^(-13 + n)*183) with the golden section phi:=(1 + sqrt(5))/2, with decimal expansion given in X001622.
+A229977	lambdan	0	n -> CV(3)./(CV(7).sqrt()).^(n).round()	round((3/sqrt(7))^n).
+A244277	lambdan	1	n -> new Q(BI(2*n, n).*(100), ZV(4).^(n)).round()	round(100*C(2n,n)/4^n).
+A246336	partsun	0	new A151548()			Partial sums of A151548.
+A258782	lambdan	0	n -> CV(FA(n)).log().divide(CR.TWO.log()).round()	round(log_2(n!)).
+A258898	multia	1	"1,1"	(self, n) -> CR.E.*(self.a(n - 1)).-(self.a(n - 2)).ceil()	a(1)=a(2)=1, a(n) = ceiling(e*a(n-1) - a(n-2)) for n>2.	nonn	1..30	nyi	_Morris Neene_
+A261779	lambdan	1	n -> new Q(FA(n - 1), n).ceiling()	a(n) = ceiling((n-1)! / n).	nonn	1..26	nyi	_Franklin T. Adams-Watters_
+A262070	lambdan	2	n -> CV(BI(n, 2)).log()./(CV(3).log()).ceil()	a(n) = ceiling( log_3( binomial(n,2) ) ).	nonn,easy	2..120	nyi	_R. J. Mathar_
+A267084	lambdan	0	n -> ZV(D007504(n).mod(n) == 0 ? 0 : 1)	a(n) = ceiling(D007504(n)/n) - floor(D007504(n)/n); a(n) is 0 if n divides the sum of first n primes, 1 otherwise.	nonn,easy	1..12000	nyi	_Ctibor O. Zizka_
+A267084	lambdan	1	n -> ZV(D007504(n).mod(n) == 0 ? 0 : 1)	a(n) = ceiling(D007504(n)/n) - floor(D007504(n)/n); a(n) is 0 if n divides the sum of first n primes, 1 otherwise.	nonn,easy	1..12000	nyi	_Ctibor O. Zizka_
+A267087	lambdan	1	n -> { final Q q = new Q(D007504(n), n); return q.ceiling().+(q.floor()); }	a(n) = ceiling(D007504(n)/n) + floor(D007504(n)/n).	nonn,easy	1..57	nyi	_Ctibor O. Zizka_
+A272231	lambdan	2	n -> CV(n)./(CV(PI(n))).round()	round(n / pi(n)).
+A276498	lambdan	2	n -> CV(new Q(1, n)).log()./(CV(1).-(CV(new Q(1, n))).log()).round()	round(log(1/n)/log(1-1/n)).
+A280471	lambdan	0	n -> CV(5).log()./(CV(10).log())./(CV(1).+(new Q(2, n - 2)).log()./(CV(10).log())).ceil()	a(n) = ceiling((log_10 5)/(log_10 (1+2/(n-2)))) for integer n >= 3.	easy,nonn	3..70	nyi	_Luke Botta_
+A280762	lambdan	0	n -> CV(Functions.CATALAN.z(n)).log()./(CV(2).log()).ceil()		a(n) = ceiling( log_2( Catalan(n) ) ).	nonn	0..10000	nyi	_N. J. A. Sloane_
+A301277	lambdan	1	n -> new Q(D007504(n), n).round()	- _David A. Corneth_, Mar 22 2018
+A305289	lambdan	0	n -> CR.PI.*(2).^(n).round()		round((2 CR.PI)^n) = J001675(2*n) >= J001674(2n).
+A305400	sintrif	0	(term, n) -> { final Z pl = F002110(n); return new Q(pl, term.-(pl)).round(); }	""	new A073918()	round(1/(J073918(n)/prime(n)# - 1)), where J073918(n) = min { prime p | omega(p-1) = n } and p# = product of primes <= p.
+A306904	lambdan	1	n -> CV(FA(n)).^(new Q(1, n)).round()	round(n!^(1/n)).
+A307136	sintrif	1	(term, n) -> CV(term).sqrt().*(2).ceil()	""	new A000037()	a(n) = ceiling(2*sqrt(J000037(n))), n >= 1.	nonn,easy	1..10000	nyi	_Wolfdieter Lang_
+A309398	lambdan	1	n -> CV(ZV(10).^(n)).log().log().round()	round(log(log(10^n))) = log n + O(1).
+A309971	multia	1	"1,2"	(self, n) -> new Q(ZV(n).-(self.a(n - 1)), self.a(n - 2)).round()
+A320304	lambdan	0	n -> CV(6.875).*(CV(2).^(new Q(n, 12).+(new Q(1,4)))).round()	a(n) = round(6.875*2^(n/12+1/4)).
+A321018	lambdan	1	n -> new Q(PI(n), 2).round()	round(pi(n)/2).
+A327898	lambdan	1	n -> Predicates.SQUARE.is(n) ? ZV(0) : CV(n).sqrt().-(CV(n).sqrt().round()).inverse().round()	round(1/(sqrt(n)-round(sqrt(n)))) for n not a square; a(n) = 0 otherwise.
+A329056	lambdan	1	n -> CV(n).^(CV(n).log()./(CR.PHI.log())).round()	round(n^(log(n)/log(phi))).
+A330188	lambdan	1	n -> CV(n).pow(ComputableReals.SINGLETON.atan(CV(FA(n)))).round()	round(n^arctan(n!)).
+A336757	lambdan	1	n -> (n%3 == 0 && n >= 9) ? F000010(n/3)./(2) : ZV(0)	= F000010(b)/2, otherwise a(n) = 0.
+A350810	lambdan	1	n -> { final Z r = Functions.REVERSE.z(ZV(n).*(n)); return new Q(ZV(n).-(r).^(2), r.+(n)).ceiling(); }	a(n) = ceiling((n-R(n^2))^2/(n+R(n^2))), where R(n^2) is the digit reversal of n^2.	nonn,base,easy,look	1..10000	nyi	_Claude H. R. Dequatre_
+A350811	lambdan	1	n -> { final Z r = Functions.REVERSE.z(n); return new Q(ZV(n).-(r).^(2), r.+(n)).ceiling(); }	a(n) = ceiling((n-R(n))^2/(n+R(n))), where R(n) is the digit reversal of n.	nonn,base,easy,look	1..10000	nyi	_Claude H. R. Dequatre_
+A350812	lambdan	1	n -> { final Z r = Functions.REVERSE.z(Functions.CEIL_SQRT.z(n)); return new Q(ZV(n).-(r).^(2), r.+(n)).ceiling(); }	a(n) = ceiling((n-R(ceiling(n^(1/2))))^2/(n+R(ceiling(n^(1/2))))), where R(ceiling(n^(1/2))) is the digit reversal of ceiling(n^(1/2)).	nonn,base,easy	1..1000	nyi	_Claude H. R. Dequatre_
+A368649	lambdan	1	n -> CV(5).+(CV(5).sqrt())./(2).*(n).round()	round(n*rho), where rho = (5+sqrt(5))/2.
+A368784	lambdan	0	n -> CV(n).*(ZV(n + 1).^(2)).+(new Q(1, 4)).sqrt().round()	round(sqrt(n*(n+1)^2 + 1/4)). - _Chai Wah Wu_, Mar 11 2024
+A373895	lambdan	1	n -> new Q(Z2(n).+(n - 1), n).ceiling()	a(n) = ceiling((2^n+n-1)/n).	nonn,easy	1..3333	nyi	_Eric W. Weisstein_
+A376066	lambdan	1	n -> CR.PI./(ComputableReals.SINGLETON.asin(CR.SQRT2./(2*n))).ceil()	ceiling(Pi/arcsin(sqrt(2)/(2*n))).
+A378056	multraf	1	(self, n) -> self.s(0).gcd(self.s(1))	""	new A057643(), new A084190()
+A380459	lambdan	1	n -> PD(n, d -> F276086(n/d).^(D349394(d)))	a(n) = Product_{d|n} A276086(n/d)^A349394(d).
+A380479	sintrif	1	(term, n) -> Functions.BIG_OMEGA.z(term)	""	new A380459()	Number of prime factors (with repetition) in Product_{d|n} A276086(n/d)^A349394(d).
+A380480	sintrif	1	(term, n) -> { final FactorSequence fs = Jaguar.factor(term); return ZV(fs.maxExponent()); }	""	new A380459()	The maximal exponent in the prime factorization of Product_{d|n} A276086(n/d)^A349394(d).
+A386517	lambdan	0	n -> BI(3*n, n).*(60)./(n + 2)
+A386725	lambdan	0	n -> CV(n)./(CR.PI.log().divide(CR.TEN.log())).round()	round(n/log10(CR.PI)).
+A388423	sintrif	1	(term, n) -> new Q(E077645(n), term).round()	""	new A006879()
+A392460	holos	0	[0,1,-15,105,-455,1365,-3003,5005,-6435,6435,-5005,3003,-1365,455,-105,15,-1]	0, 0, 0, 6, 668, 21830, 358290, 3821357, 29994016, 186452712, 963208980, 4276890420, 16732331484, 58779532526, 188192800406	0	0
+A393148	holos	4	[0,1,-5,10,-10,5,-1]	1,8,27,65	0	0
+A393563	parmof6	0	A393562	3	1	1	1	1	cubic lattice,  / 8, that have 1 inside and 1 outside the sphere x^2 + y^2 + z^2 = n.
+A393564	parmof6	0	A393562	2	2	2	2	1	square lattice, / 8, that have 2 inside and 2 outside the circle x^2 + y^2 = n.
+A393655	holos	3	[0,-9,6,-1]	35,153,603,2241	0	0
+A393677	holos	0	[0,1,-2,0,2,-1]	1,3,9,17	0	0
+A393696	parmof6	0	A393562	2	3	1	1	1	square lattice, / 4, that have 3 inside and 1 outside the circle x^2 + y^2 = n.
+A393697	parmof6	0	A393562	2	1	3	1	1	square lattice, / 4, that have 1 inside and 3 outside the circle x^2 + y^2 = n.
+A393821	parmof6	0	A393562	3	1	7	1	1	cubic lattice,  / 8, that have 1 inside and 7 outside the sphere x^2 + y^2 + z^2 = n.
+A393822	parmof6	0	A393562	3	2	6	3	1	cubic lattice,  /24, that have 2 inside and 6 outside the sphere x^2 + y^2 + z^2 = n.
+A393823	parmof6	0	A393562	3	3	5	3	1	cubic lattice,  /24, that have 3 inside and 5 outside the sphere x^2 + y^2 + z^2 = n.
+A393824	parmof6	0	A393562	3	4	4	1	1	cubic lattice,  / 8, that have 4 inside and 4 outside the sphere x^2 + y^2 + z^2 = n.
+A393825	parmof6	0	A393562	3	5	3	3	1	cubic lattice,  /24, that have 5 inside and 3 outside the sphere x^2 + y^2 + z^2 = n.
+A393826	parmof6	0	A393562	3	6	2	3	1	cubic lattice,  /24, that have 6 inside and 2 outside the sphere x^2 + y^2 + z^2 = n.
+A393827	parmof6	0	A393562	3	7	1	1	1	cubic lattice,  / 8, that have 7 inside and 1 outside the sphere x^2 + y^2 + z^2 = n.
+A393925	holos	0	[0,1,-17,136,-680,2380,-6188,12376,-19448,24310,-24310,19448,-12376,6188,-2380,680,-136,17,-1]	0, 0, 0, 0, 429, 25265, 623790, 9358566, 98860386, 800447256, 5250109500, 28994884050, 138706996527, 587290512237, 2238235897898, 7782608356380, 24963634402980	0	0
+A394192	holos	0	[0,-1,4,-6,4,-1]	2,7,16,35	0	0
+A394243	rpt	0	hl(k -> 2*k*k - 1)	Expansion of Product_{k>=1} 1/(1 - x^(2*k^2 - 1)).	nonn,new	0..10000	nyi	_Vaclav Kotesovec_
+A394244	rpt	0	hl(k -> 2*k*k + 1)	Expansion of Product_{k>=1} 1/(1 - x^(2*k^2 + 1)).	nonn,new	0..10000	nyi	_Vaclav Kotesovec_
+A394257	lingf	0	1,1,-1,-2,-2,1,0,-1,5,16,12,5,10,7,4,1,-4,0,-3,-1,-2,1	1,-1,0,-1,1,0,-3,3,0,3,-3,0,3,-3,0,-3,3,0,-1,1,0,1,-1					0
+A394261	convprod	0	1,1	new A291749(), new A394244()	Expansion of Product_{k>=1} (1 + x^(2*k^2+1)) / (1 - x^(2*k^2+1))
+A394262	convprod	0	1,1	new A291748(), new A394243()	Expansion of Product_{k>=1} (1 + x^(2*k^2-1)) / (1 - x^(2*k^2-1))
+A394294	parmof6	0	A393562	3	1	7	8	2	cubic  lattice, / 8, that have 1 y inside and 7 outside the sphere (x-1/2)^2 + (y-1/2)^2 + (z-1/2)^2 = n
+A394295	parmof6	0	A393562	3	2	6	12	2	cubic  lattice, /12, that have 2 y inside and 6 outside the sphere (x-1/2)^2 + (y-1/2)^2 + (z-1/2)^2 = n
+A394296	parmof6	0	A393562	3	3	5	24	2	cubic  lattice, /24, that have 3 y inside and 5 outside the sphere (x-1/2)^2 + (y-1/2)^2 + (z-1/2)^2 = n
+A394297	parmof6	0	A393562	3	4	4	2	2	cubic  lattice, / 2, that have 4 y inside and 4 outside the sphere (x-1/2)^2 + (y-1/2)^2 + (z-1/2)^2 = n
+A394298	parmof6	0	A393562	3	1	1	2	2	cubic  lattice, / 2, that have 1 y inside and 1 outside the sphere (x-1/2)^2 + (y-1/2)^2 + (z-1/2)^2 = n
+A394301	parmof6	0	A393562	2	1	3	4	2	square lattice, / 4, that have 1 y inside and 3 outside the circle (x-1/2)^2 + (y-1/2)^2 = n
+A394302	parmof6	0	A393562	2	2	2	4	2	square lattice, / 4, that have 2 y inside and 2 outside the circle (x-1/2)^2 + (y-1/2)^2 = n
+A394303	parmof6	0	A393562	2	3	1	4	2	square lattice, / 4, that have 3 y inside and 1 outside the circle (x-1/2)^2 + (y-1/2)^2 = n
+A394304	parmof6	0	A393562	3	7	1	8	2	cubic  lattice, / 8, that have 7 y inside and 1 outside the sphere (x-1/2)^2 + (y-1/2)^2 + (z-1/2)^2 = n
+A394305	parmof6	0	A393562	3	6	2	12	2	cubic  lattice, /12, that have 6 y inside and 2 outside the sphere (x-1/2)^2 + (y-1/2)^2 + (z-1/2)^2 = n
+A394306	parmof6	0	A393562	3	5	3	24	2	cubic  lattice, /24, that have 5 y inside and 3 outside the sphere (x-1/2)^2 + (y-1/2)^2 + (z-1/2)^2 = n
+A394335	decexp	1	() -> CV(15015)./(CR.PI.^(2).*(1382))	Decimal expansion of 15015/(1382*Pi^2)
+A394371	holos	0	[[0],[13621608000,-623302041600,11653352939520,-120189098655744,773362318311424,-3309660190801920,9749161029140480,-20062101477261312,28791364808343552,-28235458601287680,18031990695526400,-6755399441055744,1125899906842624],[0,0,-113400,3434850,-43062975,299443750,-1293940625,3660562500,-6907687500,8625000000,-6843750000,3125000000,-625000000]]	1	0	0

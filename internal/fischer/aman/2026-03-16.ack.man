@@ -1,0 +1,101 @@
+---- 2026-03-16 19:08:02
+A084202	convprod	0	1/2	new A083952()
+A084203	convprod	0	1/3	new A083953()
+A084204	convprod	0	1/4	new A083954()
+A084205	convprod	0	1/5	new A083945()
+A084206	convprod	0	1/6	new A083946()
+A084207	convprod	0	1/7	new A083947()
+A084208	convprod	0	1/8	new A083948()
+A084209	convprod	0	1/9	new A083949()
+A084210	convprod	0	1/10	new A083950()
+A084211	convprod	0	1/11	new A084066()
+A084212	convprod	0	1/12	new A084067()
+A092502	lambdan	1	n -> (n <= 2) ? ZV(1) : RQD(n, d -> QV(d).^(MUi(n/d))).*(PHI(n))./(2).num()	a(n) = (phi(n)/2)*Product_{d|n} d^moebius(n/d), n>1.
+A096216	multia	0	"1"	(self, n) -> CNT(1, n - 1, k -> GCD(self.a(k), ZV(n)).equals(ZV(1)))	 a(n) = number of terms among {a(1), a(2), a(3), ..., a(n-1)} that are coprime to n; a(1)=1.
+A097559	multia	0	"2"	(self, n) -> CNT(1, n - 1, k -> GCD(self.a(k), ZV(n)).equals(ZV(1)))	 a(n) = number of terms among {a(1), a(2), a(3), ..., a(n-1)} that are coprime to n; a(1)=2.
+A097560	multia	0	"3"	(self, n) -> CNT(1, n - 1, k -> GCD(self.a(k), ZV(n)).equals(ZV(1)))	 a(n) = number of terms among {a(1), a(2), a(3), ..., a(n-1)} that are coprime to n; a(1)=3.
+A097562	multia	0	"5"	(self, n) -> CNT(1, n - 1, k -> GCD(self.a(k), ZV(n)).equals(ZV(1)))	 a(n) = number of terms among {a(1), a(2), a(3), ..., a(n-1)} that are coprime to n; a(1)=5.
+A097606	multia	0	"6"	(self, n) -> CNT(1, n - 1, k -> GCD(self.a(k), ZV(n)).equals(ZV(1)))	 a(n) = number of terms among {a(1), a(2), a(3), ..., a(n-1)} that are coprime to n; a(1)=6.
+A098543	polya	0	"[0,0,1],[0,1,1],[1,-1]"	"p1,p2,/,x,B,1,-,*"	new A002449()  
+A108783	filtpos	1	0	new A083952()	ONE	Positions of 1s in A083952
+A112570	polya	0	"[1]"	"x,B,^1/2"	new A110630()
+A112571	polya	0	"[1]"	"x,B,^1/2"	new A110637()
+A112572	polya	0	"[1]"	"x,B,^1/4"	new A110638()
+A112573	polya	0	"[1]"	"x,B,^1/3"	new A110640()
+A112574	polya	0	"[1]"	"x,B,^1/2"	new A110649()
+A118369	filnum	1	1	k -> PP(POD(k).+(1))	Numbers k such that 1 + Product_{d|k} d is prime.
+A129876	holos	1	[[0],[-6480,2178,-243,9],[-68688,26586,-3402,144],[-263520,111516,-15678,732],[-671940,313284,-48600,2508],[-789624,422088,-74952,4422],[-400908,252268,-52476,3608],[-57960,37620,-7050,300],[10236,-17500,9264,-1556],[1320,-3658,3195,-887],[-12,162,-162,-48],[-24,-48,24,48]]	2,4	0	0
+A129880	holos	1	[[0],[-567000,125550,-9225,225],[-2975700,714450,-56850,1500],[-5304000,1442800,-129000,3800],[2169000,-208650,-12975,1275],[27067740,-7164624,627855,-18201],[56132760,-16985826,1708665,-57129],[63439260,-21623658,2449944,-92238],[43874568,-17022702,2193324,-93798],[18574212,-8468600,1280997,-64231],[4584648,-2682128,517698,-32962],[621516,-599740,174834,-16010],[41448,-113960,56655,-7837],[-7788,-6766,10329,-2561],[-2748,4264,-1497,-97],[-12,318,-678,216],[-24,-48,24,48]]	1,1	0	0
+A143646	lambdan	0	n -> (n <= 1) ? ZV(n) : RU(0, n, k -> new Q(k, n).*(BI(2*n - k - 1, n - k)).*(D006190(k))).num()	n>0, a(n) = sum_{k=0..n} (k/n)*C(2n-k-1,n-k)*A006190(k).
+A171664	filnum	1	1	k -> PP(POD(k).-(k + 1)) && PP(POD(k).+(k + 1))	Numbers k such that (Product_{d|k} d) - k - 1 and (Product_{d|k} d) + k + 1 are primes.
+A220849	lambdan	1	n -> PD(n, d -> PD(n, dx -> (dx <= d ? ZV(dx) : ZV(1))))	a(n) = Product_{d|n} Product_{d_x|n , d_x <= d} d_x.
+A226305	rambdan	1	n -> RQD(n, d -> QV(D100371(d)).^(MUi(n/d)))	Numerator of Product_{d|n} b(d)^Moebius(n/d), where b() = J100371().
+A226306	rambdad	1	A226305	Denominator of Product_{d|n} b(d)^Moebius(n/d), where b() = J100371().
+A247174	filnum	0	1	k -> PHI(k).equals(PHI(k + 1)) && PD(k, d -> PHI(d)).equals(PD(k + 1, d -> PHI(d)))	Numbers k such that phi(k) = phi(k+1) and simultaneously Product_{d|k} phi(d) = Product_{d|(k+1)} phi(d) where phi(x) = Euler totient function (F000010).
+A248795	filnum	0	1	k -> PD(k, d -> PHI(d)).equals(PD(k + 1, d -> PHI(d)))	Numbers k such that Product_{d|k} phi(d) = Product_{d|(k+1)} phi(d) where phi(x) = Euler totient function (F000010).
+A253139	lambdan	1	n -> PD(n, d -> E253141(d))
+A253807	lambdan	1	n -> RQD(n, d -> QV(D006190(d)).^(MUi(n/d))).num()	a(n) = Product_{d|n} A006190(d)^mu(n/d)
+A280087	filnum	1	1	k -> PD(k, d -> SIGMA(d)).equals(PD(k + 1, d -> SIGMA(d)))	Numbers n such that Product_{d|n} sigma(d) = Product_{d|n+1} sigma(d).
+A280246	lambdan	1	n -> PD(n, d -> D023896(d))	a(n) = Product_{d|n} psi(d), where psi(m) is the sum of totatives of m (J023896).
+A280247	partsun	1	new A280246()	(Product_{d|n} psi(d)).
+A280248	partprod	1	new A280246()	artial products of ?280246 (Product_{d|n} psi(d)).
+A282600	lambdan	1	n -> D023896(n)./(2).-(F000010(n)./(((n&1) == 1) ? 4 : 2))
+A294895	lambdan	1	n -> PD(n, d -> D008578(GCD(d, n/d)))
+A295666	lambdan	1	n -> PD(n, d -> GCD(d, n/d).^(D010051(GCDi(d,n/d))))
+A300830	lambdan	1	n -> PD(n, d -> D019565(d).^(1 - Math.abs(MUi(n/d))))
+A300832	lambdan	1	n -> PD(n, d -> D019565(d).^(MUi(n/d) == -1 ? 1 : 0))
+A307401	polyxa	0	"[1]"	"x,1,x,B,+,/,rev,x,/"	1	0	new A000593()
+A307997	lambdan	1	n ->  SU(1, n, k -> (GCDi(k, n) != 1 ? ZV(0) : D023896(k)))
+A316370	polyx	0	"[1]"	"A,1,A,<2,+,/,x,pow,1,A,<1,+,*"	0	1
+A316702	polyx	0	"[1]"	"A,1,A,<3,+,/,x,x,*,pow,1,A,<1,+,*"	0	1
+A316704	polyx	0	"[1,2],[1,1]"	"A,1,2,A,<2,*,+,/,x,pow,1,2,A,<1,*,+,*"	0	1
+A316860	filnum	1	1	k -> D053818(k).mod(k) != 0	Integers k that do not divide J053818(k).
+A320017	lambdan	1	n -> (n == 1) ? ZV(1) : PD(n, d -> D019565(d).^(MUi(d) > 0 ? 1 : 0))	a(1) = 1; for n > 1, a(n) = Product_{d|n} D019565(d)^[moebius(d) = +1].
+A322673	lambdan	1	n -> RQD(n, d -> new Q(SIGMA(d), d)).num()	numerator of Product_{d|n} (sigma(d)/d) where sigma(k) = the sum of the divisors of k (F000203).
+A323762	filnum	1	1	m -> RQD(m, d -> new Q(POD(d), TAU(d))).isInteger()	is an integer h where pod(k) = the product of the divisors of k (F007955) and tau(k) = the number of the divisors of k (F000005).
+A324506	lambdan	1	n -> RQD(n, d -> new Q(d, TAU(d))).num()	numerator of Product_{d|n} (d/tau(d)) where tau(k) = the number of divisors of k (F000005).
+A324508	filnum	1	1	m -> RQD(m, d -> new Q(d, TAU(d))).isInteger()	is an integer h where tau(k) = the number of divisors of k (F000005).
+A324509	lambdan	1	n -> RQD(n, d -> new Q(SIGMA(d), TAU(d))).num()	numerator of Product_{d|n} (sigma(d)/tau(d)) where sigma(k) = the sum of the divisors of k (F000203) and tau(k) = the number of divisors of k (F000005).
+A324511	filnum	1	1	m -> RQD(m, d -> new Q(SIGMA(d), TAU(d))).isInteger()	) is an integer h where sigma(k) = the sum of the divisors of k (F000203) and tau(k) = the number of divisors of k (F000005).
+A326932	lambdan	1	n -> PD(n, d -> { final Z d37 = D001037(d); return FA(d37).*(ZV(d).^(d37)); })	Product_{d|n} p(d)!*d^p(d), where p(d) is the number of irreducible polynomials over GF(2) of degree d (i.e., sequence D001037). Proven more generally in Carlitz and Hayes, 1972.
+A327653	filnum	0	4	k -> GCDi(k, 13) == 1 && !PP(k) && D006190(k - Functions.KRONECKER.l(13, k)).mod(k) == 0	Composite numbers k coprime to 13 such that k divides J006190(k-Kronecker(13,k)).
+A327654	filnum	0	4	k -> GCDi(k, 13) == 1 && !PP(k) && D006190(k).-(Functions.KRONECKER.l(13, k)).mod(k) == 0	Composite numbers k coprime to 13 such that k divides J006190(k) - Kronecker(13,k).
+A334471	sintrif	1	(term, n) -> RQD(n, d -> new Q(term, SIGMA(d))).num()	""	new A069934()	a(n) = Product_{d|n} (J069934(n) / sigma(d)) where J069934(n) = lcm_{d|n} sigma(d).
+A334489	lambdan	1	n -> { final Z podn = POD(n); return RQD(n, d -> new Q(podn, POD(d))).num(); }	a(n) = Product_{d|n} (pod(n)/pod(d)) where pod(n) = F007955(n), the product of divisors of n.
+A335665	lambdan	1	n -> RQD(n, d -> { final Q dtau = new Q(d, TAU(d)); return QV(d).^(1 - (dtau.ceiling().-(dtau.floor()).intValueExact())); }).num()	a(n) = Product_{d|n} d^(1 - ceiling(d/tau(d)) + floor(d/tau(d))), where tau(n) is the number of divisors of n (F000005).
+A339868	filter	1	new A000040()	p -> PP(p.+(D023896(p.-(1)))) && PP(p.+(D023896(p.+(1))))	Primes p such that p + J023896(p-1) and p + J023896(p+1) are prime.
+A340179	lambdan	1	n -> SU(1, n - 1, k -> (GCDi(k, n) == 1) ? D023896(n).modZ(k) : ZV(0))	a(n) = Sum_{x in C(n)} (J023896(n) mod x), where C(n) is the set of numbers < n coprime to n, and J023896(n) is the sum of C(n).
+A340299	filnum	1	2	k -> D023896(k).mod(F001414(k)).equals(ZV(1))
+A343883	filnum	1	3	k -> D023896(k).mod(D340179(k)).isZero()	is a multiple of ?340179(k).
+A351910	filnum	1	1	k -> D053818(k).mod(F000010(k)).isZero()	is an integer.
+A356782	polyx	1	"[0,1],[0,2]"	"A,<1,p1,A,^2,*,+,sub,A,/"	2	0
+A367725	polyx	0	"[1],[1,1]"	"x,1,x,p1,^5,x,+,/,rev,+,<1,rev,/"	1	0
+A368375	polyxa	0	"[0,1],[1,1],[0,1,0,0,1]"	"1,p1,x,B,*,-,p2,x,B,^2,*,+,x,B,<1,1,-,<1,/"	1	0	new A005220()
+A378053	lambdan	1	n -> GCD(PD(n, d -> ZV(d + 1)), PD(n, d -> (d > 1) ? ZV(d - 1) : ZV(1)))	a(n) = gcd(Product_{d|n} (d + 1), Product_{d|n, d>1} (d - 1)) = gcd(J020696(n), E377484(n)).
+A378054	filtpos	1	1	new A378053()	(k, v) -> v.mod(k) == 0	Numbers k that divide ?378053(k) = gcd(Product_{d|k} (d + 1), Product_{d|k, d>1} (d - 1)).
+A381675	lambdan	1	n -> { final long p = Functions.PRIME.l(n); return ZV(p).*(Z.TWO.pow(p -1)).*(FA(p - 1)); }	a(n) = p*2^(p - 1)*(p - 1)!, where p = prime(n).
+A392211	holos	1	[[0],[41932800000,-25021440000,5585920000,-552960000,20480000],[88608000000,-66339200000,18425600000,-2252800000,102400000],[-48643392000,36331790400,-10392382400,1349088000,-66947200],[-74003580000,65369215000,-21725976000,3225872000,-180912000],[7346186280,-8905257726,3983979199,-775564566,54987869],[1783860000,-2823870320,1703065680,-465655120,48553680],[-44167680,89807616,-60362496,16194816,-1472256],[0,7249920,-13291520,7249920,-1208320]]	1,1,5	0	0
+A392212	holos	1	[[0],[9625927680,-2344353792,213778432,-8650752,131072],[7386562560,-1956798464,193716224,-8495104,139264],[-76403834880,19958751232,-1955864576,85213184,-1392640],[-66960875520,19426756608,-2114077696,102254592,-1854464],[155908227072,-44820439040,4823801856,-230330368,4116480],[180613791744,-59241580544,7281396224,-397441024,8128000],[-73698459648,22456720384,-2499232768,119171072,-2017280],[-169040302080,63759173888,-8999664768,563491840,-13207680],[-36708028416,16097363712,-2658781952,196028928,-5443072],[39820191744,-18506475264,3207376192,-245564928,7004096],[14318932992,-7560933760,1496355968,-131593472,4340992],[-1213785984,754420064,-173135408,17351968,-638800],[-234432000,126923840,-21921088,1046080,27328],[9851136,-13766688,6259192,-1147872,72392],[-4297344,6832400,-4083440,1074400,-104416],[-15456,107724,-129702,57096,-8622],[23520,-64116,62628,-25704,3672],[0,-54,297,-486,243]]	1,1	0	0
+A393169	holos	0	[[0],[-1339975,2309245,-1458250,428750,-59375,3125],[0],[0],[0],[0],[0],[0,24,-50,35,-10,1]]	1,1,-3,16,-91	0	1
+A393629	polyx	1	"[0,1]"	"x,A,^2,dif,<1,2,/,dif,<1,+"	2	0
+A394103	decexpr	0	() -> CR.THREE.divide(CR.FOUR).pow(CR.ONE_THIRD).multiply(CR.FOUR.divide(CR.valueOf(105)).add(CR.valueOf(13).multiply(CR.SQRT2).divide(CR.valueOf(105))).subtract(CR.FOUR.multiply(CR.PI).divide(CR.valueOf(45))).add(CR.valueOf(109).multiply(CR.THREE.log()).divide(CR.valueOf(630).multiply(CR.SQRT2))).add(CR.valueOf(16).multiply(REALS.acot(CR.SQRT2)).divide(CR.valueOf(315))).add(CR.valueOf(158).multiply(REALS.acoth(CR.SQRT2)).multiply(CR.SQRT2).divide(CR.valueOf(315))))
+A394105	decexpr	0	() -> CR.ONE.divide(CR.valueOf(30).add(CR.valueOf(14).multiply(CR.FIVE.sqrt())).pow(CR.ONE_THIRD)).multiply(CR.valueOf(1516).divide(CR.valueOf(1575)).add(CR.TWO.multiply(CR.TWO.divide(CR.FIVE).sqrt()).divide(CR.valueOf(45))).subtract(CR.valueOf(124).multiply(CR.THREE.divide(CR.FIVE).sqrt()).divide(CR.valueOf(175))).subtract(CR.valueOf(71).multiply(CR.SQRT2).divide(CR.valueOf(1575))).subtract(CR.valueOf(12).multiply(CR.THREE.sqrt()).divide(CR.valueOf(35))).add(CR.valueOf(342).divide(CR.valueOf(175).multiply(CR.FIVE.sqrt()))).add(CR.valueOf(493).multiply(CR.PI).divide(CR.valueOf(23625))).add(CR.valueOf(67).multiply(CR.PI).divide(CR.valueOf(945).multiply(CR.FIVE.sqrt()))).add(CR.valueOf(397).subtract(CR.valueOf(244).multiply(CR.FIVE.sqrt())).multiply(REALS.acot(CR.TWO)).divide(CR.valueOf(18900))).add(CR.valueOf(24023).add(CR.valueOf(11788).multiply(CR.FIVE.sqrt())).multiply(REALS.acos(CR.TWO.divide(CR.THREE)).subtract(REALS.acos(CR.ONE_THIRD))).divide(CR.valueOf(94500))).subtract(CR.valueOf(461).add(CR.valueOf(212).multiply(CR.FIVE.sqrt())).multiply(REALS.acos(CR.valueOf(23).divide(CR.valueOf(41))).add(REALS.acos(CR.valueOf(39).divide(CR.valueOf(41))))).divide(CR.valueOf(1000))).subtract(CR.valueOf(1031).add(CR.valueOf(521).multiply(CR.FIVE.sqrt())).multiply(REALS.acosh(CR.valueOf(13).divide(CR.THREE))).divide(CR.valueOf(75600))).add(CR.valueOf(367).add(CR.valueOf(163).multiply(CR.FIVE.sqrt())).multiply(REALS.acosh(CR.NINE)).divide(CR.valueOf(16800))).add(CR.valueOf(22197).add(CR.valueOf(8149).multiply(CR.FIVE.sqrt())).multiply(REALS.acosh(CR.valueOf(121).divide(CR.valueOf(41))).subtract(REALS.acosh(CR.valueOf(57).divide(CR.valueOf(41))))).divide(CR.valueOf(84000))).add(CR.valueOf(15763).add(CR.valueOf(7063).multiply(CR.FIVE.sqrt())).multiply(REALS.acosh(CR.SEVEN.divide(CR.THREE)).subtract(REALS.acosh(CR.THREE))).divide(CR.valueOf(21000))).add(CR.valueOf(288889).add(CR.valueOf(129739).multiply(CR.FIVE.sqrt())).multiply(CR.THREE.log()).divide(CR.valueOf(378000))).add(CR.TWO.multiply(CR.valueOf(423).add(CR.valueOf(187).multiply(CR.FIVE.sqrt()))).multiply(REALS.acosh(CR.FOUR).subtract(REALS.acosh(CR.TWO))).divide(CR.valueOf(875))).add(CR.valueOf(109).subtract(CR.valueOf(3143).multiply(CR.FIVE.sqrt())).multiply(CR.FIVE.log()).divide(CR.valueOf(151200))))
+A394107	decexp	0	() -> CR.valueOf(25).divide(CR.FOUR).add(CR.PI.divide(CR.valueOf(12).multiply(CR.THREE.sqrt()))).add(CR.valueOf(393).divide(CR.TEN).multiply(CR.THREE.sqrt().divide(CR.TWO).log()))
+A394110	lambdan	0	n -> BI(3*n, n).*(7*n + 3)./(n + 1)./(2*n + 1)	a(n) = binomial(3*n, n)*(7*n+3)/((n+1)*(2*n+1)).
+A394111	lambdan	0	n -> BI(3*n, n).*(5*n + 3)./(n + 1)./(2*n + 1)	a(n) = binomial(3*n, n)*(5*n+3)/((n+1)*(2*n+1)).
+A394112	sintrif	1	(term, n) -> F000108(n - 1).+(term)	""	new A007852()	a(n) = F000108(n-1)+J007852(n).
+A394120	holos	0	[[0],[121440,-43864,5932,-356,8],[-2179320,824592,-116946,7368,-174],[13231920,-5247362,779617,-51430,1271],[-28991040,11758346,-1773251,117670,-2893],[4351680,703866,-624645,89010,-3807],[32690760,-19714970,4292461,-401158,13595],[2930400,-3972478,1596853,-251402,13595],[-2283480,2149278,-709533,93726,-3807],[105480,-37346,-36683,21194,-2893],[12840,-30838,26281,-9578,1271],[-600,1824,-2034,984,-174],[0,-8,28,-28,8]]	0,1,3	0	0
+A394123	holos	0	[[0],[1306368,-1425600,578880,-103680,6912],[-287280,385488,-194208,43488,-3648],[18504,-32740,21760,-6440,716],[-312,864,-874,384,-62],[0,-2,7,-7,2]]	0,1,3	0	0
+A394124	holos	0	[[0],[1530619675200,-1298624354640,458931402504,-86470918200,9161663760,-517531680,12177216],[14571614277360,-14942069340876,6371235545760,-1446129866745,184302243405,-12505760019,352997595],[-8792387825760,10522140295032,-5259121919676,1404851029740,-211475353140,17004214548,-570414024],[1624561630560,-2224339392144,1270237957962,-387190706475,66429787575,-6081176301,232005063],[-115222357440,185323931568,-124249328856,44520688340,-9011086550,979375132,-44793154],[2783090880,-5730679824,4922348096,-2272492140,598844660,-85932996,5268044],[-13037760,46105200,-66414888,50051520,-20852280,4555440,-407232],[0,-69984,314928,-505440,369360,-124416,15552]]	0,1,2,8	0	0
+A394125	holos	0	[[0],[20173419826560,-6376902799680,839732550720,-58963564800,2328426240,-49029120,430080],[1027332607351680,-331951170005856,44701528064208,-3211211522880,129789913920,-2798452224,25147392],[2630563165132560,-816659224435728,103893715181088,-6896498569200,249869059920,-4619912832,33149952],[-188944249171184640,69054434523374400,-10512485104626408,853268244046020,-38945417472660,947751124320,-9607043712],[161435093564117520,-62300724182513568,10015547138341860,-858532027220280,41387218098060,-1063858837752,11392100400],[7008806989628640,-4035442974291288,895081383467820,-100907998144560,6192814471740,-197921448792,2588039280],[137480780831149080,-64313842820307318,12524950134628503,-1299855660021090,75824583689265,-2357315659152,30515886672],[-175339417042455840,88202423542965624,-18474845319585792,2062531408078890,-129441230153640,4329933558786,-60314754348],[75037539437514720,-41170613019105276,9398153595352788,-1142608993684380,78039628468560,-2839266044244,42992380512],[-12402137084005440,7682314693023984,-1967050642584044,266799028869570,-20235786777800,814361460366,-13593252716],[-429708564828360,146700502613322,-9661371806135,-2157669527310,404082102415,-25007181792,546406180],[447896805242400,-296419659725556,82700696779494,-12477514639260,1075545439350,-50272575684,995639856],[-57066124106880,44021914157280,-14381293992148,2549006180400,-258526487860,14212536240,-330312952],[1105262123760,-1162411271952,529220497668,-130987017780,18337299780,-1365291348,42048792],[345468244680,-324880730346,122865461457,-23504777310,2314800375,-101303184,973968],[-33310401120,38998770120,-18743592820,4717849530,-652750180,46723650,-1335580],[1287632880,-1918518564,1177408844,-380723580,68377640,-6466596,251816],[-21570480,43007928,-35063748,14958690,-3521160,433662,-21852],[90360,-272826,322687,-191010,59305,-9024,508],[0,-108,486,-780,570,-192,24]]	0,1,1,4	0	0
+A394126	holos	0	[[0],[36194558400,-13729297500,2169480996,-182800080,8662320,-218880,2304],[2941559886600,-1168376620800,193503057924,-17103973980,850996920,-22596960,250176],[55209785919120,-22876127981406,3947403704045,-363081370230,18774735455,-517472064,5939120],[-164230395179760,74428549096704,-14038834840008,1410744951150,-79657116180,2396309586,-30005412],[243267758952120,-120730314440646,24937863809401,-2744232464790,169676975695,-5589069444,76622944],[-266153766195240,146448612207876,-33517194702066,4084378288380,-279521422410,10186805004,-154456944],[204468879200040,-126453936718194,32492820990419,-4440925892310,340548065285,-13894277676,235661396],[-95561248260240,67233198439620,-19623010731146,3042309362790,-264336916970,12207285510,-234138284],[23876862117840,-19559726439186,6613928456883,-1183499874870,118339998465,-6275138904,137956932],[-2154781014120,2324415957480,-989345326576,216811373820,-26078354380,1643082600,-42547504],[-289090549440,182063424174,-37311888293,931546830,668490625,-88846344,3498568],[84528536400,-81950189880,33087982420,-7150344630,877567240,-58486050,1670740],[-6822534600,7989765750,-3920616457,1039263150,-158442775,13317180,-487048],[163646280,-219218124,120899262,-35651100,6105630,-603156,28128],[2084040,-5109630,5050437,-2576130,714075,-101580,5748],[-58320,188244,-243810,163170,-59850,11466,-900],[0,-162,729,-1170,855,-288,36]]	0,1,3,14	0	0
+A394127	holos	0	[[0],[-2310,661,-63,2],[-12570,3907,-405,14],[14712,-4876,540,-20],[50952,-19779,2541,-108],[-112968,50351,-7437,364],[98340,-52488,9294,-546],[-45990,30473,-6705,490],[11136,-9709,2817,-272],[-1146,1510,-666,98],[42,-105,87,-24],[0,1,-3,2]]	0,1	0	0
+A394170	decexp	0	() -> CR.valueOf(19297).multiply(CR.PI.pow(2)).divide(CR.valueOf(3843840)).subtract(CR.valueOf(6619).divide(CR.valueOf(184320)))
+A394175	decexp	0	() -> CR.valueOf(1859).divide(CR.valueOf(116640)).subtract(CR.PI.pow(2).divide(CR.valueOf(17010)))
+A394176	decexp	0	() -> CR.valueOf(941).multiply(CR.PI.pow(2)).divide(CR.valueOf(72072)).subtract(CR.valueOf(977).divide(CR.valueOf(8640)))
+A394272	holos	1	[0,480,-244,31,-1]	1,44,1264	0	0
+A394274	holos	1	[0,24,-35,12,-1]	1,16,168	0	0
+A394275	holos	1	[0,-4,5,-1]	10,37,142	0	0
+A394276	holos	1	[0,1,0,-7,0,21,0,-35,0,35,0,-21,0,7,0,-1]	1,6,21,67,168,369,733,1350,2328,3823,6009,9114,13399,19185	0	0
+A394278	holos	1	[0,1,-3,3,-1]	1,4,9,16,33,73,129,205,331,529,779,1097,1531,2075,2716,3475,4376,5399,6544,7824,9232	0	0
+A394279	holos	1	[0,1,-3,1,5,-5,-1,3,-1]	1,3,11,25,54,98,170	0	0

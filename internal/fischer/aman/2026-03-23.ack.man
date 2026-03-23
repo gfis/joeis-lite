@@ -1,0 +1,147 @@
+---- 2026-03-22 23:15:52
+A179242	filtpos	1	0	new A007895()	v -> v.equals(ZV(2))	nyi pto	Numbers that have two terms in their Zeckendorf representation.	nonn	1..10000	nyi
+A179243	filtpos	1	0	new A007895()	v -> v.equals(ZV(3))	A007895nyi Fpto	Numbers that have three terms in their Zeckendorf representation.	nonn,look	1..10000	nyi
+A179244	filtpos	1	0	new A007895()	v -> v.equals(ZV(4))	nyi pto	Numbers that have 4 terms in their Zeckendorf representation.	nonn	1..10000	nyi
+A179245	filtpos	1	0	new A007895()	v -> v.equals(ZV(5))	SingleTransformSequence	Numbers that have 5 terms in their Zeckendorf representation.	nonn,easy	1..10000	2024-12-04.ack/s
+A179246	filtpos	1	0	new A007895()	v -> v.equals(ZV(6))	nyi pto	Numbers that have 6 terms in their Zeckendorf representation.	nonn	1..10000	nyi
+A179247	filtpos	1	0	new A007895()	v -> v.equals(ZV(7))	nyi pto	Numbers that have 7 terms in their Zeckendorf representation.	nonn	1..10000	nyi
+A179248	filtpos	1	0	new A007895()	v -> v.equals(ZV(8))	nyi pto	Numbers that have 8 terms in their Zeckendorf representation.	nonn	1..10000	nyi
+A179249	filtpos	1	0	new A007895()	v -> v.equals(ZV(9))	nyi pto	Numbers that have 9 terms in their Zeckendorf representation.	nonn	1..10000	nyi
+A179250	filtpos	1	0	new A007895()	v -> v.equals(ZV(10))	nyi pto	Numbers that have 10 terms in their Zeckendorf representation.	nonn,look	1..10000	nyi
+A179251	filtpos	1	0	new A007895()	v -> v.equals(ZV(11))	nyi pto	Numbers that have 11 terms in their Zeckendorf representation.	nonn	1..10000	nyi
+A179252	filtpos	1	0	new A007895()	v -> v.equals(ZV(12))	nyi pt	Numbers that have 12 terms in their Zeckendorf representation.	nonn	1..10000	nyi
+A179253	filtpos	1	0	new A007895()	v -> v.equals(ZV(13))	nyi pto	Numbers k that have 13 terms in their Zeckendorf representation.	nonn,changed	1..1000	nyi
+A183229	rpt1pfs	0	f(-1).gq(k -> new Q(-1, FA(k).^(2)))	new A001044()	G.f.: Sum_{n>=0} a(n)*x^n/n!^2 = Product_{n>=1} (1 + x^n/n!^2).
+A183230	rpt1pfs	0	f(-1).gq(k -> new Q(-1, FA(k).^(3)))	new A000442()	G.f.: Sum_{n>=0} a(n)*x^n/n!^3 = Product_{n>=1} (1 + x^n/n!^3).
+A183235	rpt1pfs	0	gq(k -> new Q(1, FA(k).^(3)))	new A000442()	G.f.: Sum_{n>=0} a(n)*x^n/n!^3 = Product_{n>=1} 1/(1 - x^n/n!^3).
+A183236	rpt1pfs	0	gq(k -> new Q(1, FA(k).^(4)))	new A134375()	G.f.: Sum_{n>=0} a(n)*x^n/n!^4 = Product_{n>=1} 1/(1 - x^n/n!^4).
+A183237	rpt1pfs	0	gq(k -> new Q(1, FA(k).^(5)))	new LambdaSequence(0, n -> Functions.FACTORIAL.z(n).pow(5))	G.f.: Sum_{n>=0} a(n)*x^n/n!^5 = Product_{n>=1} 1/(1 - x^n/n!^5).
+A183238	rpt1pfs	0	gq(k -> new Q(1, FA(k).^(6)))	new LambdaSequence(0, n -> Functions.FACTORIAL.z(n).pow(6))	G.f.: Sum_{n>=0} a(n)*x^n/n!^6 = Product_{n>=1} 1/(1 - x^n/n!^6).
+A183240	rpt1pfs	0	gq(k -> new Q(1, FA(k).^(2)))	new A001044()	G.f.: Sum_{n>=0} a(n)*x^n/n!^2 = Product_{n>=1} 1/(1 - x^n/n!^2).
+A186077	filtpos	1	1	new A000213()	(k, v) -> v.mod(10) == FI(k).mod(10)	Index of Fibonacci and tribonacci numbers having the same last digit.	nonn,base	1..1000	nyi	_Carmine Suriano_
+A186078	filtpos	1	1	new A000213()	(k, v) -> v.mod(10) <  FI(k).mod(10)	Index of Fibonacci numbers having last digit greater than corresponding tribonacci number.	nonn,base,easy,less	1..1000	nyi	_Carmine Suriano_
+A186079	filtpos	1	1	new A000213()	(k, v) -> v.mod(10) >  FI(k).mod(10)	Index of Fibonacci numbers having last digit less than corresponding tribonacci number.	nonn,base	1..100	nyi	_Carmine Suriano_
+A214198	holos	0	[[0],[9152,-3072,256],[-3608,1536,-160],[-2140,972,-104],[1172,-768,112],[-136,156,-32],[0,-9,3]]	0,0,0,2	0	0
+A214199	holos	0	[[0],[24320,-4992,256],[29376,-6720,384],[-2560,1344,-128],[-8944,2880,-224],[-2200,600,-32],[892,-468,56],[460,-264,32],[-104,114,-22],[0,-9,3]]	0,0,0,2	0	0
+A214200	holos	0	[[0],[132480,-26240,1280],[0],[0],[0],[-8160,2592,-192],[1440,-520,40],[0],[0],[6,-10,4],[0,1,-1]]	0,1,1,2	0	0
+A214201	holos	0	[[0],[9984,-2784,192],[-4032,1360,-112],[384,-160,16],[-1092,480,-48],[516,-316,40],[-60,65,-11],[0,-4,1]]	0,0,0,0,4	0	0
+A214202	holos	0	[[0],[415744,-58368,2048],[359424,-54272,2048],[230400,-37632,1536],[-132480,29184,-1536],[-70784,13632,-640],[-41184,8704,-448],[6880,-2640,224],[8880,-2576,176],[720,-144],[676,-252,20],[-768,448,-52],[110,-117,19],[0,8,-2]]	0,0,0,0,4	0	0
+A214203	holos	0	[[0],[946176,-153600,6144],[0],[0],[0],[0],[-28032,7360,-448],[5280,-1536,96],[0],[0],[0],[6,-10,4],[0,1,-1]]	0,1,1,2	0	0
+A214204	holos	0	[[0],[145920,-34816,2048],[-60384,16896,-1152],[6000,-2000,160],[0],[-6720,2816,-256],[3180,-1856,208],[-372,388,-56],[0,-25,5]]	0,0,0,0,0,8	0	0
+A214205	holos	0	[[0],[10321920,-1163264,32768],[9191424,-1097728,32768],[6094848,-774144,24576],[3563520,-483328,16384],[-1677312,320512,-14336],[-815616,131072,-5120],[-504576,86272,-3584],[-278400,51456,-2304],[49344,-15936,1152],[56544,-14080,832],[2256,-176,-32],[4080,-1232,80],[1824,-656,48],[-2268,1268,-132],[336,-344,48],[0,25,-5]]	0,0,0,0,0,8	0	0
+A249588	rpt1pfs	0	gq(k -> new Q(1, ZV(k).^(2)))	new A001044()		G.f.: Product_{n>=1} 1/(1 - x^n/n^2) = Sum_{n>=0} a(n)*x^n/n!^2.
+A249593	rpt1pfs	0	gq(k -> new Q(1, ZV(k).^(3)))	new A000442()		G.f.: Product_{n>=1} 1/(1 - x^n/n^3) = Sum_{n>=0} a(n)*x^n/n!^3.
+A269791	rpt1pfs	0	gq(k -> new Q(1, ZV(k).^(4)))	new A134375()		G.f.: Product_{n>=1} 1/(1 - x^n/n^2)G.f.: Product_{n>=1} 1/(1 - x^n/n^4) = Sum_{n>=0} a(n)*x^n/n!^4.
+A269793	rpt1pfs	0	gq(k -> new Q(1, ZV(k).^(5)))	new LambdaSequence(0, n -> Functions.FACTORIAL.z(n).pow(5))		G.f.: Product_{n>=1} 1/(1 - x^n/n^2)G.f.: Product_{n>=1} 1/(1 - x^n/n^5) = Sum_{n>=0} a(n)*x^n/n!^5.
+A269794	rpt1pfs	0	gq(k -> new Q(1, ZV(k).^(6)))	new LambdaSequence(0, n -> Functions.FACTORIAL.z(n).pow(6))		G.f.: Product_{n>=1} 1/(1 - x^n/n^2)G.f.: Product_{n>=1} 1/(1 - x^n/n^6) = Sum_{n>=0} a(n)*x^n/n!^6.
+A326864	rpt1pfs	0	f(-1).gq(k -> new Q(-1, ZV(k).^(2)))	new A001044()	G.f.: Product_{k>=1} (1 + x^k/k^2) = Sum_{n>=0} a(n)*x^n/n!^2.	nonn	0..254	nyi	_Vaclav Kotesovec_
+A326865	rpt1pfs	0	f(-1).gq(k -> new Q(-1, ZV(k).^(3)))	new A000442()	G.f.: Product_{k>=1} (1 + x^k/k^3) = Sum_{n>=0} a(n)*x^n/n!^3.	nonn	0..182	nyi	_Vaclav Kotesovec_
+---- 2026-03-23 10:51:57
+A394487	lambdan	0	n -> BI(new Q(n + 1, 4), n)./(n + 1).*(ZV(4).^(n)).*(FA(n)).num()	*n!*binomial(  (n+1)/4, n)/(n+1);
+A394488	lambdan	0	n -> BI(new Q(n + 1, 5), n)./(n + 1).*(ZV(5).^(n)).*(FA(n)).num()	*n!*binomial(  (n+1)/5, n)/(n+1);
+A394489	lambdan	0	n -> BI(new Q(2*(n + 1), 5), n)./(n + 1).*(ZV(5).^(n)).*(FA(n)).num()	*n!*binomial(2*(n+1)/5, n)/(n+1);
+A394490	lambdan	0	n -> BI(new Q(3*(n + 1), 5), n)./(n + 1).*(ZV(5).^(n)).*(FA(n)).num()	*n!*binomial(3*(n+1)/5, n)/(n+1);
+A394491	lambdan	0	n -> BI(new Q(4*(n + 1), 5), n)./(n + 1).*(ZV(5).^(n)).*(FA(n)).num()	*n!*binomial(4*(n+1)/5, n)/(n+1);
+A394492	lambdan	0	n -> BI(new Q(4*n - 2, 3), n)./(n + 1).*(ZV(3).^(n)).*(FA(n)).num()	*n!*binomial((4*n-2)/3, n)/(n+1);
+A394493	lambdan	0	n -> BI(new Q(5*n - 1, 3), n)./(n + 1).*(ZV(3).^(n)).*(FA(n)).num()	*n!*binomial((5*n-1)/3, n)/(n+1);
+A394494	lambdan	0	n -> BI(new Q(5*n - 3, 4), n)./(n + 1).*(ZV(4).^(n)).*(FA(n)).num()	*n!*binomial((5*n-3)/4, n)/(n+1);
+A394495	lambdan	0	n -> BI(new Q(6*n - 4, 5), n)./(n + 1).*(ZV(5).^(n)).*(FA(n)).num()	*n!*binomial((6*n-4)/5, n)/(n+1);
+---- 2026-03-23 11:03:21
+A394441	lambdan	0	n -> SU(0, n, k -> SU(0, k, j -> Z_1(k - j).*(BI(k, j)).*(ZV(j).^(n - k)).*(Z2(j))))
+---- 2026-03-23 11:08:58
+A394398	lambdan	1	n -> CNT(1, n - 1, k -> (k*k - 1) % n == 0 && (n*n - 1) % k == 0)	Number of integers k, 1<= k < n, such that n|(k^2-1) and k|n^2-1
+---- 2026-03-23 11:10:56
+A394444	arrlamb	0	0	0	1	(n, k) -> SU(0, k, j -> Z_1(k - j).*(BI(k, j)).*(ZV(j).^(n)).*(Z2(j)))	Sum_{j=0..k} (-1)^(k - j) * binomial(k, j) * j^n * 2^j.	nonn,tabl,new	0..65	nyi
+A394481	lambdan	1	n -> Functions.USIGMA1.z(n).+(TAU(n)).-(TAU(RAD(n)))
+---- 2026-03-23 11:46:46
+A143396	trilambn	0	0	0	(n, k)-> BI(n, k).*(SU(0, k, t -> S2(k, t).*(ZV(t).^(n - k))))
+A211603	trilambn	2	2	0	(n, k)-> BI(n, k).*(FA(n - k - 1))
+A349454	trilambn	0	0	0	(n, k)-> BI(n, k).*(ZV(n - k - 1).^(n - k))
+---- 2026-03-23 13:29:45
+A087918	lambdan	1	n -> D002884(n)./(E087540(n))	""		a(n)=D002884(n)/E087540(n)	_	_	_
+A100565	lambdan	1	n -> (F000005(ZV(n).^(3)).+(ZV(3).*(F000005(n)).+(2)))./(6)	""		a(n)=(tau(n^3)+3*tau(n)+2)/6	_	_	_
+A130849	lambdan	1	n -> SU(1, n+1, k -> F001222(ZV(k)./(GCD(n+1, k))))	""		a(n)=Sum_{k=1..n+1}bigomega(k/gcd(n+1,k))	_	_	_
+A132396	lambdan	1	n -> (Z2(Z2(n)).+(ZV(3).^(Z2(n))).+(ZV(5).^(Z2(n))))./(19)	""		a(n)=(2^(2^n)+3^(2^n)+5^(2^n))/19	_	_	_
+A201823	lambdan	0	n -> D001764((ZV(3).^(n).-(1))./(2))	""		a(n)=D001764((3^n-1)/2)=binomial(3*(3^n-1)/2,(3^n-1)/2)/3^n	_	_	_
+A214526	multraf	1	(self, n) -> (self.s(0)).abs().+((self.s(1)).abs())	""	new A174344(), new A274923()	a(n)=abs(J174344(n))+abs(J274923(n))	_	_	_
+A216292	sintrif	1	(term, n) -> term./(10)	""	new A078494()	a(n)=floor(J078494(n)/10)	_	_	_
+A216607	lambdan	1	n -> Functions.CEIL_SQRT.z(4*n).^(2)./(4).-(n)	manual	((ZV(1)./(4)).*((-(-(F000196(4*n)))).^(2))(.-(n)	""		a(n)=floor((1/4)*ceiling(sqrt(4*n))^2)-n	_	_
+A217589	lambdan	0	n -> D030101(n +65536)./(2)	""		a(n)=floor(D030101(n+65536)/2)	_	_	_
+A229286	lambdan	0	n -> SU(0, n, k -> S2(n+k, 2*k))	""		a(n)=Sum_{k=0..n}Stirling2(n+k,2*k)	_	_	_
+A237292	sintrif	0	(term, n) -> ZV(2*n+1)./(GCD(term, 2*n+1))	""	new A165781()	a(n)=(2*n+1)/gcd(J165781(n),2*n+1)	_	_	_
+A240923	multraf	1	(self, n) -> self.s(0).-(F000203(self.s(1)))	""	new A017665(), new A017666()	a(n)=J017665(n)-sigma(J017666(n))=sigma(n)/D009194(n)-sigma(n/D009194(n))	_	_	_
+A246702	lambdan	1	n -> ZV(4*n*(n-1))./(D002326(2*n*(n - 1)))	""		a(n)=floor(4*n*(n-1)/D002326(2*n*(n-1)))	_	_	_
+A249669	lambdan	1	n -> CV(PM(n)).^(new Q(n + 1, n)).floor()		a(n)=floor(prime(n)^(1+1/n))	_	_	_
+A265390	lambdan	1	n -> E265391(n).*(E253139(n))./(E265392(n))	""		a(n)=E253139(n)*Sum_{d|n}1/F000005(d)=E265391(n)*E253139(n)/E265392(n)	_	_	_
+A265917	lambdan	1	n -> F070939(n)./(F000120(n))	""		a(n)=floor(F070939(n)/F000120(n))	_	_	_
+A266165	sintrif	1	(term, n) -> ZV(2).*(term).+(1)	""	new A001229()	a(n)=2*J001229(n)+1	_	_	_
+A270819	lambdan	1	n -> F000040(n).-(1).*(F000040(n).-(2)./(8))	""		a(n)=(prime(n)-1)*floor((prime(n)-2)/8)	_	_	_
+A279911	lambdan	0	n -> SU(0, n, k -> ZV(k)./(GCD(ZV(n).^(k), k)))	""		a(n)=Sum_{k=0..n}k/gcd(n^k,k)	_	_	_
+A289898	lambdan	1	n -> ZV(2).^(PMi(n + 1))./(SU(1, n, k -> ZV(2).^(PMi(k))))	""		a(n)=floor(2^prime(n+1)/(Sum_{k=1..n}2^prime(k)))	_	_	_
+A300821	lambdan	1	n -> SD(n, d -> F008683(ZV(n)./(d)).*(E244042(d)))	""		a(n)=Sum_{d|n}moebius(n/d)*E244042(d)	_	_	_
+A300822	lambdan	1	n -> SD(n, d -> F008683(ZV(n)./(d)).*(E300222(d)))	""		a(n)=Sum_{d|n}moebius(n/d)*E300222(d)	_	_	_
+A305551	lambdan	0	n -> SD(n, d -> BI(F000041(ZV(n)./(d)).+(ZV(d).-(1)), d))	""		a(n)=Sum_{d|n}binomial(F000041(n/d)+d-1,d)	_	_	_
+A306413	sintrif	1	(term, n) -> D002326((term.-(1))./(2))	""	new A001567()	a(n)=D002326((J001567(n)-1)/2)	_	_	_
+A308852	lambdan	1	n -> Functions.CBRT.z(FA(n).*(6))	""		a(n)=floor((6*n!)^(1/3))	_	_	_
+A318889	lambdan	1	n -> F001065(n).-(F001065(E252463(n)))	""		a(n)=F001065(n)-F001065(E252463(n))	_	_	_
+A319699	lambdan	1	n -> F001065(E252463(n))	""		a(n)=F001065(E252463(n))	_	_	_
+A319700	lambdan	1	n -> F051953(E252463(n))	""		a(n)=F051953(E252463(n))	_	_	_
+A319703	lambdan	1	n -> F003415(E252463(n))	""		a(n)=F003415(E252463(n))	_	_	_
+A320107	lambdan	1	n -> D001227(E252463(n))	""		a(n)=D001227(E252463(n))	_	_	_
+A323011	multraf	1	(self, n) -> self.s(0).-(self.s(1))	""	new A172103(), new A172104()	a(n)=J172103(n)-J172104(n)	_	_	_
+A332455	lambdan	1	n -> D006667(D088580(n))	""		a(n)=D006667(D088580(n))=D006667(1+sigma(n))	_	_	_
+A334470	lambdan	1	n -> PD(n, d -> (E253139(n)./(F000005(d))))	""		a(n)=Product_{d|n}(E253139(n)/tau(d))	_	_	_
+A337297	sintrif	1	(term, n) -> term.-(F000203(n))	""	new A064840()	a(n)=J064840(n)-F000203(n)	_	_	_
+A337542	multraf	1	(self, n) -> self.s(0).-(self.s(1))	""	new A337541(), new A337383()	a(n)=J337541(n)-J337383(n)	_	_	_
+A338434	lambdan	1	n -> F000217(F000196(n)).-(F000203(F000196(ZV(n)./(F007913(n)))))	""		a(n)=floor(sqrt(n))*(floor(sqrt(n))+1)/2-sigma(sqrt(n/F007913(n)))=F000217(F000196(n))-F000203(sqrt(n/F007913(n)))	_	_	_
+A339055	sintrif	1	(term, n) -> F000005(term.^(2))./(F000005(term))	""	new A217584()	a(n)=F000005(J217584(n)^2)/F000005(J217584(n))	_	_	_
+A340080	lambdan	1	n -> (ZV(1).+(D018804(n)))./(GCD(n, ZV(1).+(D018804(n))))	""		a(n)=(1+D018804(n))/gcd(n,1+D018804(n))	_	_	_
+A341392	sintrif	0	(term, n) -> term./(F000142(ZV(1).+(F000120(n))))	""	new A284005()	a(n)=J284005(n)/(1+F000120(n))!=J284005(n)/F000142(1+F000120(n))	_	_	_
+A345948	sintrif	1	(term, n) -> E344875(n)./(term)	""	new A345947()	a(n)=E344875(n)/J345947(n)=E344875(n)/gcd(E153151(n),E344875(n))	_	_	_
+A345949	sintrif	1	(term, n) -> E153151(n)./(term)	""	new A345947()	a(n)=E153151(n)/J345947(n)=E153151(n)/gcd(E153151(n),E344875(n))	_	_	_
+A348045	lambdan	1	n -> SD(n, d -> F008683(ZV(n)./(d)).*(E252463(d)))	""		a(n)=Sum_{d|n}F008683(n/d)*E252463(d)	_	_	_
+A348423	sintrif	1	(term, n) -> (term.+(3))./(2)	""	new A348421()	a(n)=(J348421(n)+3)/2	_	_	_
+A349349	sintrif	1	(term, n) -> E252463(n).+(term)	""	new A349348()	a(n)=E252463(n)+J349348(n)	_	_	_
+A352077	lambdan	0	n -> ComputableReals.SINGLETON.sum(1, n, k -> CV(k).^(new Q(1, 3))).floor()			a(n)=floor(Sum_{k=1..n}k^(1/3))	_	_	_
+A352257	sintrif	1	(term, n) -> ZV(n).*(term)	""	new A082647()	a(n)=n*J082647(n)	_	_	_
+A353412	lambdan	1	n -> F000265(E252463(n))	""		a(n)=F000265(E252463(n))	_	_	_
+A353416	lambdan	1	n -> D000593(E252463(n))	""		a(n)=D000593(E252463(n))	_	_	_
+A353688	sintrif	0	(term, n) -> ZV(n)./(term)	""	new A098988()	a(n)=n/J098988(n)	_	_	_
+A356247	sintrif	2	(term, n) -> (ZV(n).^(2).-(n).-(1))./(GCD(ZV(n).^(2).-(n).-(1), term))	""	new A356684()	a(n)=(n^2-n-1)/gcd(n^2-n-1,J356684(n))	_	_	_
+A357823	sintrif	1	(term, n) -> ZV(n).-(term)	""	new A080221()	a(n)=n-J080221(n)	_	_	_
+A361559	lambdan	1	n -> SU(1, PMi(n) - 1, k -> ZV(k).^(5)./(PM(n)))	""		a(n)=Sum_{k=1..prime(n)-1}floor(k^5/prime(n))	_	_	_
+A363102	lambdan	3	n -> (ZV(n).^(2).-(2))./(GCD(ZV(n).^(2).-(2), ZV(2).*(D051403(n-3)).+(ZV(n).*(D051403(n-4)))))	""		a(n)=(n^2-2)/gcd(n^2-2,2*D051403(n-3)+n*D051403(n-4))	_	_	_
+A363520	sintrif	1	(term, n) -> term./(F000196(n).^(D010052(n)))	"1,1,1,1"	new A072499()	a(n)=J072499(n)/F000196(n)^D010052(n)forn>=1	_	_	_
+A369873	sintrif	1	(term, n) -> ZV(2).*(term)	""	new A083206()	a(n)=2*J083206(n)	_	_	_
+A371092	lambdan	0	n -> F000265(3*n + 1).+(5)./(6)	""		a(n)=floor((F000265(3*n+1)+5)/6)	_	_	_
+A377565	lambdan	1	n -> ZV(n).*(E097327(n))	""		a(n)=n*E097327(n)	_	_	_
+A380122	lambdan	0	n -> E001316(E184617(n))	""		a(n)=2^F000120(E184617(n))=E001316(E184617(n))	_	_	_
+A380467	lambdan	1	n -> D359550(E380459(n))	""		a(n)=D359550(E380459(n))	_	_	_
+A382732	sintrif	0	(term, n) -> term.-(1)	""	new A382733()	a(n)=J382733(n)-1	_	_	_
+A385113	multraf	1	(self, n) -> D010051(n).+(ZV(2).*(self.s(0))).+(ZV(3).*(self.s(1))).+(ZV(4).*(self.s(2)))	"0"	new A268340(), new A354819(), new A355447()	a(1)=0,a(n)=D010051(n)+2*J268340(n)+3*J354819(n)+4*J355447(n)	_	_	_
+A385138	sintrif	1	(term, n) -> term./(E385137(n))	""	new A064987()	a(n)=J064987(n)/E385137(n)	_	_	_
+A385820	lambdan	1	n -> PR(1, n, k -> (ZV(n)./(GCD(n, k))).^(k))	""		a(n)=Product_{k=1..n}(n/gcd(n,k))^k	_	_	_
+A385989	lambdan	1	n -> ZV(n).+(D007733(n))	""		a(n)=n+D007733(n)	_	_	_
+A386432	lambdan	0	n -> SU(0, n, k -> ZV(n).^(k).*(BI(n, k)).*(F000108(k+1)))	""		a(n)=Sum_{k=0..n}n^k*binomial(n,k)*Catalan(k+1)	_	_	_
+A386668	lambdan	0	n -> SU(0, n, k -> BI(ZV(k).^(3), n-k))	""		a(n)=Sum_{k=0..n}binomial(k^3,n-k)	_	_	_
+A386821	lambdan	0	n -> SU(0, (n/2), k -> BI(4*n-2*k, n-2*k))	""		a(n)=Sum_{k=0..floor(n/2)}binomial(4*n-2*k,n-2*k)	_	_	_
+A387220	multraf	1	(self, n) -> (self.s(0).+(self.s(1)))./(2)	""	new A051132(), new A000328()	a(n)=(J051132(n)+J000328(n))/2	_	_	_
+A387345	lambdan	0	n -> SU(0, (n/4), k -> BI(n, k).*(BI(n-3*k-1, n-4*k)))	""		a(n)=Sum_{k=0..floor(n/4)}binomial(n,k)*binomial(n-3*k-1,n-4*k)	_	_	_
+A387756	lambdan	0	n -> SU(0, (n/2), k -> BI(5*n-2*k, n-2*k))	""		a(n)=Sum_{k=0..floor(n/2)}binomial(5*n-2*k,n-2*k)	_	_	_
+A387788	sintrif	2	(term, n) -> ZV(n-1).*(term)	""	new A079277()	a(n)=(n-1)*J079277(n)	_	_	_
+A387830	sintrif	1	(term, n) -> term.-(2)	""	new A063655()	a(n)=J063655(n)-2	_	_	_
+A388018	lambdan	1	n -> F276086(F000203(n)./(2))	""		a(n)=F276086(floor(sigma(n)/2))	_	_	_
+A388021	lambdan	1	n -> GCD(F276086(SIGMA(n)./(2)), F276086(n))	""		a(n)=gcd(F276086(floor(sigma(n)/2)),F276086(n))	_	_	_
+A388032	lambdan	1	n -> GCD(F276086(F000203(n)), F276086(2*n))	""		a(n)=gcd(F276086(sigma(n)),F276086(2*n))	_	_	_
+A388033	lambdan	1	n -> GCD(F276086(F000203(n)), F276086(3*n))	""		a(n)=gcd(F276086(sigma(n)),F276086(3*n))	_	_	_
+A388264	lambdan	1	n -> GCD(F276086(n), F276086(F001065(n)))	""		a(n)=gcd(F276086(n),F276086(F001065(n)))=gcd(F276086(n),E379493(n))	_	_	_
+A388274	lambdan	1	n -> E071190(n).^(D071178(F000203(n)))	""		a(n)=E071190(n)^(D071178(F000203(n)))	_	_	_
+A388281	lambdan	1	n -> F276086(n).*(F276086(F000203(n).-(n))).-(F276086(F000203(n)))	""		a(n)=F276086(n)*F276086(sigma(n)-n)-F276086(sigma(n))	_	_	_
+A388286	sintrif	1	(term, n) -> ZV(n).-(term)	""	new A389072()	a(n)=n-J389072(n)	_	_	_
+A389244	lambdan	1	n -> D057521(D002378(n))	""		a(n)=D057521(D002378(n))	_	_	_
+A390435	sintrif	1	(term, n) -> term.^(2)	""	new A052486()	a(n)=J052486(n)^2	_	_	_
+A390555	lambdan	1	n -> D049419(ZV(n).^(2))	""		a(n)=D049419(n^2)	_	_	_
+A390556	lambdan	1	n -> D051377(ZV(n).^(2))	""		a(n)=D051377(n^2)	_	_	_
+---- 2026-03-23 14:13:50
+A236043	lambdan	0	n -> D003056(ZV(10).^(n)).+(1)	F002024(ZV(10).^(n).+(1))	""		a(n)=D003056(10^n)+1=F002024(10^n+1)	_	_	_
+A278927	lambdan	0	n -> SU(0, n, k -> FA(k).*(FA(n-k)).*(Z2(k)).*(SA(n+1, n-k+1)).*(SA(n+1, k+1)))	""		a(n)=Sum_{k=0..n}k!*(n-k)!*2^k*Stirling1(n+1,n-k+1)*Stirling1(n+1,k+1)	_	_	_
