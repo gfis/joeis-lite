@@ -142,6 +142,17 @@ A389244	lambdan	1	n -> D057521(D002378(n))	""		a(n)=D057521(D002378(n))	_	_	_
 A390435	sintrif	1	(term, n) -> term.^(2)	""	new A052486()	a(n)=J052486(n)^2	_	_	_
 A390555	lambdan	1	n -> D049419(ZV(n).^(2))	""		a(n)=D049419(n^2)	_	_	_
 A390556	lambdan	1	n -> D051377(ZV(n).^(2))	""		a(n)=D051377(n^2)	_	_	_
----- 2026-03-23 14:13:50
-A236043	lambdan	0	n -> D003056(ZV(10).^(n)).+(1)	F002024(ZV(10).^(n).+(1))	""		a(n)=D003056(10^n)+1=F002024(10^n+1)	_	_	_
-A278927	lambdan	0	n -> SU(0, n, k -> FA(k).*(FA(n-k)).*(Z2(k)).*(SA(n+1, n-k+1)).*(SA(n+1, k+1)))	""		a(n)=Sum_{k=0..n}k!*(n-k)!*2^k*Stirling1(n+1,n-k+1)*Stirling1(n+1,k+1)	_	_	_
+
+A307104	sintrif	1	(term, n) -> term.*(term.-(1))./(ZV(10).^(F055642(term)))	""	new A003226()	a(n)=J003226(n)*(J003226(n)-1)/10^F055642(J003226(n))	_	_	_
+A253633	sintrif	0	(term, n) -> term.+(1)	""	new A080208()	a(n)=J080208(n)+1	_	_	_
+---- 2026-03-23 19:08:50
+A193773	lambdan	0	n -> new Q(F000005(2*n + 1), 2).ceiling()	a(n)=ceiling(F000005(2*n+1)/2)	_	_	_
+A257175	lambdan	0	n -> CV(2*n*n).+(2*n + 1).sqrt().-(CV(1))./(2).ceil()		a(n)=ceiling((sqrt(2n^2+2n+1)-1)/2)	_	_	_
+A261531	lambdan	0	n -> (n == 0) ? ZV(1) : SD(n, d -> F000010(ZV(n)./(d)).*(M007837(d)))./(n)	#n:1,1,1,2//		a(n)=(1/n)*Sum_{d|n}phi(n/d)*M007837(d)forn>0	_	_	_
+A261599	lambdan	0	n -> (n == 0) ? ZV(1) : SD(n, d -> F008683(ZV(n)./(d)).*(M007837(d)))./(n)	#n:1,1,0,1//		a(n)=(1/n)*Sum_{d|n}moebius(n/d)*M007837(d)forn>0	_	_	_
+A264906	lambdan	5	n -> ZV(n).^(2)./(GCD(ZV(n-4)./(GCD(n-4, 4)), n))	#n:25,36,49,64//		a(n)=n^2/gcd((n-4)/gcd(n-4,4),n);forn>=5	_	_	_
+A281430	lambdan	0	n -> RU(0, n, k -> new Q(FA(2*n + k), FA(k).*(ZV(3).^(k)))).num()	""		a(n)=Sum_{k=0..n}(2*n+k)!/k!*(1/3^k)	_	_	_
+A300287	lambdan	1	n -> ComputableReals.SINGLETON.sum(1, n, k -> CV(k).sqrt())./(n).floor()	""		a(n)=floor((1/n)*Sum_{k=1..n}sqrt(k))	_	_	_
+A337391	lambdan	1	n -> new Q(ZV(10).^(n - 1), ZV(n).^(3)).ceiling().*(ZV(n).^(3))	a(n)=n^3*ceiling(10^(n-1)/n^3)	_	_	_
+A382485	multraf	1	(self, n) -> new Q(self.s(0), self.s(1)).ceiling()	""	new A033677(), new A033676()	a(n)=ceiling(J033677(n)/J033676(n))	_	_	_
+A386974	lambdan	0	n -> (n <= 1) ? ZV(1) : ZV(n).^(n-1).*(n+1).*(2*n+1)./(6)	#n:1,1,5,42//		a(n)=n^(n-1)*(n+1)*(2*n+1)/6,forn>=1	_	_	_
