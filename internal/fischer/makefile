@@ -3073,16 +3073,18 @@ noncomp_long:
 #----
 # Sequences with keyword "bref", similar to finifull
 bref:
-	$(DBAT) -x "SELECT i.aseqno, '$@', i.offset1, d.data \
-		FROM asinfo i, bfinfo b, bfdata d \
+	#                                  0          1       2   3   4   5   6   7   8   9  
+	$(DBAT) -x "SELECT i.aseqno, '$@', i.offset1, d.data, '', '', '', '', '', '', '', n.name \
+		FROM asinfo i, bfinfo b, bfdata d, asname n \
 		WHERE i.aseqno = b.aseqno \
 		  AND b.aseqno = d.aseqno \
+		  AND d.aseqno = n.aseqno \
 		  AND b.bfimax - b.bfimin  + 1 <= d.termno \
 		  AND i.keyword like '%bref%' \
 		ORDER BY 1 " \
 	>        $@.tmp
 	wc -l    $@.tmp
-	make finalize
+	make finalize CC=bref
 #----
 finalize: # CC= ; insert "L" and "new Z(...)" if necessary
 	#---- finalize CC=$(CC)
