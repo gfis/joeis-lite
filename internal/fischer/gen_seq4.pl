@@ -319,6 +319,7 @@ while (<>) { # read inputfile
             $parm =~ s{MU\(}           {Functions.MOEBIUS.z\(}g;
             $parm =~ s{MUi\(}          {Functions.MOEBIUS.i\(}g;
             $parm =~ s{NPM\(}          {Functions.NEXT_PRIME.z\(}g;
+            $parm =~ s{NUN\((\w)\)}    {(($1 == 0) ? 1 : 0)}g;
             $parm =~ s{PELL\(}         {Functions.PELL.z\(}g;
             $parm =~ s{PP\(}           {Predicates.PRIME.is\(}g;
             $parm =~ s{PPM\(}          {Functions.PREV_PRIME.z\(}g;
