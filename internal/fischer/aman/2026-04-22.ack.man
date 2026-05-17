@@ -1,0 +1,122 @@
+---- 2026-04-22 14:40:21
+A089962	trinvn	0	new A071207()
+A097322	multraf	1	(self, n) -> self.s(0)./(self.s(1))	""	new A010050(), new A047690()
+A102054	trinvn	0	new A060083()
+A116508	lambdan	0	n -> BI(n*(n - 1)/2, n)	a(n) = C( C(n,2), n).
+A117972	lambdan	0	n -> new Q(FA(2*n), Z2(2*n + 1).*(Z_1(n))).num()
+A119743	trilambn	1	0	0	(n, k) -> (k == n) ? ZV(1) : FA(2*n)./(FA(2*n - 2*k - 2).*(FA(k + 1)).*(Z2(k + 1)))
+A119830	trinvn	0	new A119828()
+A119832	trinvn	0	new A119831()
+A138083	filnum	1	0	k -> PP(ZV(3).^(Z2(k)).+(1)./(2))	Numbers k such that (3^(2^k) + 1)/2 is prime
+A138103	filnum	1	1	k -> (ZUtils.digitCounts(k, 6)[1] & 1) == 1	Numbers with an odd number of 1s in base 6 expansion
+A138171	filnum	1	1	k -> ((k&1) == 1) && TAU(k).compareTo(TAU(k + 1)) > 0	Odd n where d(n) > d(n+1), where d(n) = number of positive divisors of n.	nonn	1..1000	nyi	_Leroy Quet_
+A138172	filnum	1	1	k -> ((k&1) == 0) && TAU(k).compareTo(TAU(k + 1)) < 0	Even n where d(n) < d(n+1), where d(n) = number of positive divisors of n.	nonn	1..10000	nyi	_Leroy Quet_
+A141367	poly	0	"[1],[1,0,1]"	"p1,sqrt,x,+,4,n,^,pow"
+A141368	poly	0	"[1],[1,1],[1,-1]"	"p1,p2,/,sqrt,4,n,^,pow"
+A141723	trilambn	0	0	0	(n, k) -> RU(0, n, j -> new Q(FA(2*n), FA(2*n - k - j).*(FA(j)).*(FA(k)))).num()
+A145495	lambdan	0	n -> (n == 0) ? ZV(1) : FA(6*n + 1)./(FA(n - 1).*(FA(2*n)).*(FA(3*n)).*(ZV(6*n + ((n&1) == 1 ? -1 : 1))))	!/((n-1)!*(2*n)!*(3*n)!*(6*n+(-1)^n)) for n > 0.
+A155103	trinvn	1	new A155102()
+A156036	polyza	0	"[0,-1]"	"x,<1,x,cosh,x,cos,-,/,log"	2	0	0	4
+A156254	trinvn	1	new A156241()
+A156631	polya	0	"[1]"	"x,B,2,n,^,pow"	new A155200()
+A159319	lambdan	0	n -> { final Z n3 = ZV(3).^(n); return BI(new Q(n3.*(2*n - 1).+(1), n3), n).*(ZV(3).^(n*(n + 1)))./(n3.*(n).+(1)).num() ;}	a(n) = 3^(n^2+n) * C(2*n-1 + 1/3^n, n) / (n*3^n + 1)
+A167196	trinvn	1	new A106246()
+A176078	trilambn	0	0	0	(n, k) -> FA(2*n)./(FA(n - k).*(FA(k)).^(2)).-(FA(2*n)./(FA(n).^(2))).+(1)	- (2*n)!/(n!)^2 + 1.
+A178217	lambdan	1	n -> RU(0, n, i -> new Q(BI(n, i).*(ZV(3).^(i)), ZV(2*i + 1))).*(FA(3*n))./(FA(n))./(ZV(12).^(n)).num()	a(n) = (3*n)!/(n!*12^n)*Sum_{i=0..n} binomial(n,i)*3^i/(2*i+1).
+A178535	trinvn	1	new A178534()
+A180085	polyx	0	"[1]"	"1,n,+,n,n,1,+,neg,<1,exp,+,/"	0	1
+A182411	trilambn	0	0	0	(n, k) -> FA(2*k).*(FA(2*n))./(FA(k).*(FA(n)).*(FA(n + k)))	!/(k!*n!*(k+n)!) with k=0..n, read by rows.
+A186251	polyza	0	"[1]"	"x,sec,x,cosh,pow"	0	1	0	2
+A202135	polyxa	0	"[1]"	"x,1,x,B,+,/,rev,x,/"	1	0	new A002654()
+A211213	lambdan	1	n -> QV(FA(3*n)).*(new Q(1, FA(3*n)).-(new Q(2, FA(n).*(FA(2*n)))).+(new Q(1, FA(n).^(3)))).num()	1/(3*n)!-2/(n!*(2*n)!)+1/(n!)^3). - _Peter Luschny_, Aug 13 2015
+A213953	trinvn	0	new A208891()
+A215677	polyza	0	"[1]"	"x,sech,x,cosh,pow"	0	1	0	2
+A218270	multia	0	"1,1"	(self, n) -> self.a(n - 2).^(self.a(n - 1)).+(1)	a(0)=1, a(1)=1, a(n) = a(n-2)^a(n-1)+1.	nonn	7
+A219504	multia	0	"1,1"	(self, n) -> FA(n).+(SU(1, n - 1, k -> Z_1((n - k - 1)/2).*(BI(n, k)).*(ZV(k).^(n - k)).*(self.a(k))))	a(n) = n! + Sum_{k=1..n-1} (-1)^floor((n-k-1)/2) * binomial(n,k) * k^(n-k) * a(k) for n>1 with a(0)=a(1)=1.
+A230629	multia	0	"0"	(self, n) -> self.a(n / 2).+(1).modZ(3)	a(0) = 0; thereafter a(n) = (1 + a(floor(n/2))) mod 3.	nonn	32769
+A238796	lambdan	0	n -> SU(0, n/2, k -> BI(n, 2*k).*(BI(n*(n - 1)/2, k)))	a(n) = sum( binomial(n, 2k)*binomial(binomial(n, 2), k), k=0..n/2 ).
+A240135	sintrif	1	(term, n) -> term.*(Z2(n - 3))	"1,3"	new A002808()	a(n) = composite(n)*2^(n - 3).
+A240435	filter	1	new A000108()	v -> PP(Functions.DIGIT_SUM.z(v))	Catalan numbers whose sum of digits is a prime
+A240503	filnum	0	1	k -> PP(ZV(5).^(k).-(ZV(4).^(k)).-(ZV(3).^(k)).-(ZV(2).^(k)).-(1))	Numbers k such that 5^k - 4^k - 3^k - 2^k - 1 is prime.	nonn,more	1..6	nyi	_Derek Orr_
+A240507	filnum	0	1	k -> PP(ZV(6).^(k).-(ZV(5).^(k)).-(ZV(4).^(k)).-(ZV(3).^(k)).-(ZV(2).^(k)).-(1))	Numbers k such that 6^k - 5^k - 4^k - 3^k - 2^k - 1 is prime.	nonn,more	1..14	nyi	_Derek Orr_
+A240532	filnum	0	1	k -> PP(ZV(k + 1).^(k - 1).-(k))	Numbers k such that (k+1)^(k-1) - k is prime.	nonn,more,hard	1..12	nyi	_Vincenzo Librandi_
+A240580	filnum	1	1	k -> { final Z k5 = ZV(5).^(k); return Functions.DIGIT_SUM.z(k5).compareTo(Functions.DIGIT_SUM.z(k5.*(5))) > 0; }	Numbers k such that DigitSum(5^k) > DigitSum(5^(k+1)).	nonn,base	1..1000	nyi	_K. D. Bajpai_
+A240587	filter	1	new LambdaSequence(1, n -> ZV(n).*(n).+(123456789L))	PRIME	Primes p of the form n^2 + 123456789 where 123456789 is the first zeroless pandigital number.	nonn,base	1..1111	nyi	_K. D. Bajpai_
+A240597	filnum	1	1	k -> SIGMA(k).mod(9) == k % 9	Numbers k such that sigma(k) == k (mod 9).	easy,nonn	1..10000	nyi	_Ivan N. Ianakiev_
+A240689	lambdan	1	n -> { final Z pn = PM(n).*(10); return CNT(1, 9, k -> PP(pn.+(k))); }	The number of values of the digit k for which prime(n)*10+k is prime.	nonn,base	1..10000	nyi	_Colin Barker_
+A247425	sintrif	1	(term, n) -> M005206(term)	""	new A003259()	M005206(J003259(n)).	nonn	65
+A247426	complen	1	Z.ONE	new A247425()	Complement of A247425.	nonn	60
+A261428	polyza	0	"[1],[0,0,1/2,0,1/4,0,0,0,1/8]]"	"p1,exp"	0	1	0	2
+A261429	polyza	0	"[1],[0,0,0,1/3,0,0,0,0,0,1/9]"	"p1,exp"	0	1	0	3
+A272482	sintrif	0	(term, n) -> term.*(FA(2*n))./(FA(n).^(2))./(Z2(n))	""	new A005799()	a(n) = J005799(n)/2^n * (2*n)!/(n!)^2
+A290605	arrlamb	0	0	0	-1	(n, k) -> ZV(k).^(n).*(FA(2*n))./(FA(n).*(FA(n + 1)))	A(n,k) = k^n*(2*n)!/(n!*(n + 1)!).
+A291975	polyza	0	"[1]"	"x,cos,x,cosh,+,2,/,1,-,exp"	0	1	0	4
+A291976	polyza	0	"[1]"	"1,x,cos,x,cosh,+,2,/,-,exp"	0	1	0	4
+A291981	polyx	0	"[1],[1,1]"	"x,exp,1,p1,log,-,/"	0	1
+A297179	holos	6	[[0],[1512,-1920,1054,-246,20],[-1296,1302,-505,84,-5]]	1	0	0
+A326328	polyza	0	"[1],[-3]"	"x,cosh,p1,pow"	0	1	0	2
+A343861	trilambn	0	0	0	(n, k) -> Z_1(k).*(FA(n)).*(BI(2*n, n - k))./(FA(k))	= (-1)^k * n! * binomial(2*n,n-k)/k! = (-1)^k * (2*n)! * binomial(n,k)/(k+n)!.
+A348081	lambdan	0	n -> SU(0, 4*n, k -> Z_1(k).*(ZV(2*n - k).^(6*n)).*(BI(4*n, k)))./(FA(4*n))	a(n) = (1/(4*n)!) * Sum_{k=0..4*n} (-1)^k * (2*n-k)^(6*n) * binomial(4*n,k).A297179	holos	0	[[0],[1512,-1920,1054,-246,20],[-1296,1302,-505,84,-5]]	0,0,0,0,0,1	0	0
+A354795	trinvn	0	new A354794()
+A357013	trilambn	0	0	0	(n, k) -> FA(2*n).*(FA(k))./(FA(n + k))	Triangle read by rows. T(n, k) = ((2*n)! * k!) / (n + k)!.
+A359739	lambdan	0	n -> SU(0, n/2, j2 -> BI(n, 2*j2).*(ZV(n).^(2*j2)).*(FA(2*j2))./(Z2(j2).*(FA(j2))))	a(n) = Sum_{j=0..n, j even} binomial(n, j) * oddfactorial(j/2) * n^j, where oddfactorial(n) = (2*n)! / (2^n*n!).
+A371684	multia	0	"1"	(self, n) -> ZV(1).-(SU(0, n - 1, k -> Z2(n - k).*(BI(2*n, 2*k)).*(self.a(k))))	a(n) = 1 - Sum_{k=0..n-1} 2^(n-k) * binomial(2*n,2*k) * a(k).
+A378071	ratos	0	[[0],[0,8,16],[3,-4,-4]]	4/3	0	4
+A378145	trilambn	0	0	0	(n, k) -> (k == n) ? ZV(1) : BI(2*n - k, n).*(n*(3*k + 1) - 2*k*(k + 1))./((2*n - k) * (2*n - k - 1))
+A380472	lambdan	0	n -> FA(2*n + 2).*(3 - ((n&1) == 0 ? 1 : -1))./(4)	a(n) = (2*n+2)!*(3/4-(-1)^n/4).
+A381846	lambdan	0	n -> { final Q n2 = new Q(FA(2*n), FA(n).*(FA(n + 1))); return n2.*(n2.-(1)).*(n2.*(2).-(1)).num(); }	a(n) =  (2*n)! / (n!*(n+1)!)  * ((2*n)!/(n!*(n+1)!) - 1)*(2*(2n)!/(n!(n+1)!) - 1).
+A383616	lambdan	0	n -> { final Q n2 = new Q(FA(2*n), FA(n).*(FA(n + 1))); return n2.*(n2.*(2).-(1)).num(); }	a(n) = ((2*n)! / (n!*(n+1)!)) *  (2*(2n)! / (n!*(n+1)!) - 1).
+A386965	lambdan	1	n -> SU(1, n, k -> Z_1(k + 1).*(BI(n, k)).*(FA(2*n - k)))	a(n) = Sum_{k=1..n} (-1)^(k+1) * binomial(n,k) * (2*n - k)!.
+A389288	holos	0	[[0],[8,12,-32,-48],[-8,18,17,3]]	1	0	0
+A390232	polyza	0	"[1]"	"1,2,x,sin,^2,*,+,1,4,x,sin,^2,*,-,^2,/"	0	1	0	2
+A391867	decexp	0	() -> CR.SEVEN.multiply(CR.TWO.log()).subtract(CR.FOUR).divide(CR.THREE)
+A392572	decexp	0	() -> CR.ONE_THIRD.subtract(CR.THREE.sqrt().multiply(CR.FOUR.divide(CR.THREE).log()).divide(CR.PI))
+A394015	polyza	0	"[1],[0,2],[0,4]"	"x,cos,p1,cos,*,p2,cos,/"	0	1	0	2
+A394960	holos	0	[0,8,-14,7,-1]	1,0,1,15	0	0
+A395023	polyza	0	"[1],[0,1/2]"	"2,p1,sinh,*,cosh,p1,sinh,2,p1,sinh,*,sinh,*,+"	0	1	0	2
+A395108	holos	0	[0,4,-6,0,3,-1]	1,3,7,17	0	0
+A395109	holos	0	[0,8,-8,-6,6,1,-1]	1,3,7,21	0	0
+A395134	decexp	0	() -> CR.ONE.subtract(CR.valueOf(16).divide(CR.THREE.multiply(CR.PI.pow(2))))
+A395135	decexp	0	() -> X190357.add(CR.ONE.divide(CR.FOUR))
+A395136	decexp	0	() -> CR.ONE.subtract(CR.valueOf(28).divide(CR.THREE.multiply(CR.PI.pow(2))))
+A395137	decexp	0	() -> CR.FOUR.divide(CR.THREE.multiply(CR.PI.pow(2)))
+A395184	holos	0	[0,-8,8,3,-1]	1,3,9,43	0	0
+A395202	polyza	0	"[1]"	"x,cosh,1,7,x,sinh,^2,*,+,*,1,x,sinh,^2,-,^3,/"	0	1	0	2
+A395204	polyza	0	"[1],[1,0,1],[1,0,-6,0,1]"	"p1,p2,/"	0	1	0	2
+A395206	polyza	0	"[1],[1,0,10,0,1],[1,0,-6,0,1]"	"p1,p2,^2,/"	0	1	0	2
+A395213	decexp	0	() -> CR.TWO.multiply(CR.PI.pow(2)).divide(CR.valueOf(125).multiply(CR.FIVE.subtract(CR.TWO.multiply(CR.FIVE.sqrt()))))
+A395214	decexp	0	() -> CR.valueOf(12).multiply(CR.PI.pow(2)).divide(CR.valueOf(245))
+A395216	polyza	0	"[1],[1,-1],[1,-3]"	"1,p1,p2,*,sqrt,/"	0	1	0	2
+A395238	polyza	0	"[1]"	"x,cosh,1,3,x,sinh,^2,*,-,/"	0	1	0	2
+A395239	polyza	0	"[1]"	"1,5,x,sinh,^2,*,+,1,3,x,sinh,^2,*,-,^2,/"	0	1	0	2
+A395267	decexp	0	() -> CV(new Q(1,3)).+(CV(3).sqrt().*(3)./(CR.PI.*(4)))	1/3 + 3*sqrt(3)/(4*Pi).	nonn,cons,new	0..104	nyi	_Amiram Eldar_
+A395268	decexp	0	() -> CR.ONE.subtract(X258147)
+A395272	polyza	0	"[1],[0,2],[0,5],[0,10]"	"p1,cos,p2,cos,*,p3,cos,/"	0	1	0	2
+A395274	polyza	0	"[1],[0,3],[0,4],[0,12]"	"p1,cos,p2,cos,*,p3,cos,/"	0	1	0	2
+A395282	lambdan	1	n -> SD(n, d -> MU(d).*(FI(2*n/d + 1)))	a(n) = Sum_{d|n} mu(d)*Fibonacci(2*(n/d)+1).	nonn,easy,new	1..30	nyi	_Stefano Spezia_
+A395283	decexp	1	() -> X262993.log()
+A395320	decexp	1	() -> CR.EIGHT.divide(CR.NINE).multiply(CR.SQRT2.add(CR.ONE)).multiply(CR.THREE.subtract(CR.THREE.sqrt()))
+A395323	decexp	1	() -> CR.TEN.divide(CR.THREE).multiply(X179290)
+A395324	decexp	0	() -> CR.TWO.subtract(CR.TWO.multiply(CR.TWO.multiply(CR.FIVE.sqrt()).add(CR.FIVE).divide(CR.valueOf(15)).sqrt())).sqrt()
+A395336	polyza	0	"[1],[2,-1]"	"x,exp,p1,x,exp,-,/"	0	1
+A395339	holos	0	[0,25,-19,-5,-1]	1,-1,-3,59	0	0
+A395340	polyza	0	"[1]"	"x,cosh,x,cos,^2,/"	0	1	0	2
+A395341	polyza	0	"[1]"	"x,cosh,^3,x,cos,^2,/"	0	1	0	2
+A395342	polyza	0	"[1]"	"x,cosh,^5,x,cos,^2,/"	0	1	0	2
+A395343	polyza	0	"[1],[0,1/2]"	"p1,cosh,p1,cos,/,^2"	0	1	0	2
+A395382	polyza	0	"[1]"	"1,x,cos,^4,/"	0	1	0	2
+A395383	polyza	0	"[1]"	"1,x,cos,^5,/"	0	1	0	2
+A395384	polyza	0	"[1]"	"1,x,cos,^6,/"	0	1	0	2
+A395385	polyza	0	"[1]"	"1,x,cos,^7,/"	0	1	0	2
+A395386	polyza	0	"[1]"	"x,cosh,x,cos,^3,/"	0	1	0	2
+A395387	polyza	0	"[1]"	"x,cosh,x,cos,^4,/"	0	1	0	2
+A395388	polyza	0	"[1]"	"x,cosh,x,cos,^5,/"	0	1	0	2
+A395389	polyza	0	"[1]"	"x,cosh,x,cos,^6,/"	0	1	0	2
+A395390	polyza	0	"[1]"	"x,cosh,x,cos,^7,/"	0	1	0	2
+A395391	decexp	0	() -> CR.ONE.subtract(CR.ONE.divide(CR.TWO.multiply(CR.PHI))).add(CR.PHI.log().divide(CR.PHI.pow(2)))
+A395392	decexp	1	() -> CR.FOUR.multiply(CR.PI).multiply(CR.ONE.subtract(CR.ONE.divide(CR.SQRT2)))
+A395393	decexp	0	() -> CR.THREE.multiply(CR.SQRT2).multiply(CR.ONE.add(CR.SQRT2).log()).subtract(CR.TWO).multiply(CR.PI).divide(CR.valueOf(12))
+A395394	decexp	1	() -> CR.PI.multiply(X193887)
+A395395	decexp	0	() -> CR.PHI.pow(5).subtract(CR.valueOf(11)).sqrt()
+A395397	decexp	0	() -> CR.PI.divide(CR.SIX.multiply(CR.SQRT2)).multiply(CR.EIGHT.multiply(CR.TWO.log()).subtract(CR.THREE))
+A395407	decexp	0	() -> X001620.multiply(CR.ONE.add(X001113)).subtract(X091725).subtract(X001113.multiply(CR.ZERO.subtract(X099285)))

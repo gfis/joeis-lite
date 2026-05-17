@@ -1,0 +1,97 @@
+---- 2026-05-07 23:22:29
+A245802	filnum	1	1	k -> k % Functions.DIGIT_SUM.i(8, k) == 0	(base 8)
+A249063	lambdan	1	n -> CV(n).cos().*(PI(n)).floor()	a(n) = floor(cos(n)*PrimePi(n)).
+A249073	union2	1	new LambdaSequence(1, n -> ZV(n).^(6))	new LambdaSequence(1, n -> ZV(n).^(6).*(2))		Ordered union of the sets {h^6, h >=1} and {2*k^6, k >=1}.	nonn,easy	1..1000
+A249096	union2	1	new LambdaSequence(1, n -> ZV(n).^(2).*(2))	new LambdaSequence(1, n -> ZV(n).^(2).*(3))	{2*h^2, h >=1} union {3*k^2, k >=1}, in increasing order.	nonn,easy	1..1000	nyi	_Clark Kimberling_
+A249097	union2	1	new LambdaSequence(1, n -> ZV(n).^(6))	new LambdaSequence(1, n -> ZV(n).^(6).*(3))	Ordered union of the sets {h^6, h >=1} and {3*k^6, k >=1}.	nonn,easy	1..1000	nyi	_Clark Kimberling_
+A249102	filnum	1	0	k -> Long.toString(k, 7).indexOf('1') < 0	Numbers with no 1s in base-7 expansion.	base,nonn	1..5000	nyi	_Zak Seidov_
+A249116	union2	1	new LambdaSequence(1, n -> ZV(n).^(6))	new LambdaSequence(1, n -> ZV(n).^(6).*(32))	Ordered union of the sets {h^6, h >=1} and {32*k^6, k >=1}.	nonn,easy	1..1000
+A249117	filtpos	1	1	new A249116()	v -> { final Z x = v.root(6); return x.auxiliary() == 1; }	Position of n^6 in the ordered union of {h^6, h >= 1} and {32*k^6, k >= 1}.	nonn,easy	1..10000
+A249118	filtpos	1	1	new A249116()	v -> { final Z x = v.root(6); return x.auxiliary() != 1; }	Position of 32n^6 in the ordered union of {h^6, h >=1} and {32*k^6, k >=1}.	nonn,easy	1..59
+A249243	lambdan	1	n -> CR.ONE./(CV(new Q(1, n)).+(1).^(n + 1).-(CR.E)).floor()	Floor(1/((1 + 1/n)^(n + 1)) - e).
+A249244	filtpos	1	1	new DifferenceSequence(1, new A249243())	ZERO	Numbers k such that A249243(k+1) = A249243(k).	nonn,easy	1..1000
+A249245	filtpos	1	1	new DifferenceSequence(1, new A249243())	ONE	Numbers k such that A249243(k+1) = A249243(k) + 1.	nonn,easy	1..5000
+A255909	diffs	1	new DifferenceSequence(1, new A070865())	Second difference sequence of J070865.	nonn,easy	1..10000
+A298297	filtpos	1	1	new DifferenceSequence(1, new A298296())	ONE	Numbers k such that b(k+1) = b(k) + 1, where b = J298296.	nonn,easy	1..67
+A298298	filtpos	1	1	new DifferenceSequence(1, new A298296())	v -> v.equals(ZV(2))		Numbers k such that b(k+1) = b(k) + 2, where b = J298296.	nonn,easy	1..48
+A363282	union2	1	new A000290().skip(1)	new A001844()
+A363284	union2	1	new A000290()	new A000330()
+A367211	trilambn	1	0	0	(n, k) -> BI(n + 1, k).*(F000129(n + 1 - k))	Triangular array read by rows: T(n, k) = binomial(n, k) * F000129(n - k) for 0 <= k < n.	nonn,tabl	1..55
+A376354	filtpos	1	1	new A000462()	v -> v.mod(10) == 0	Numbers that end in 0 when written in base of triangular numbers (cf. J000462).	nonn,base	1..60
+A376355	filtpos	1	1	new A000462()	v -> v.mod(10) == 1	Numbers that end in 1 when written in base of triangular numbers (cf. J000462).	base,nonn	1..59
+A391358	arrlamb	1	1	1	1	(n, k) -> PM(n).+(PM(n + k))	Rectangular array R read by falling antidiagonals: R(n,k) = prime(k) + prime(n+k).	nonn,tabl,easy	1..66
+A394656	holos	0	[0,1,-7,21,-35,35,-21,7,-1]	0,0,0,1,8,40,160	0	0
+A395164	decexp	1	() -> CR.THREE.divide(CR.EIGHT).multiply(CR.ONE.add(X332437).sqrt()).multiply(X121602.pow(2))
+A395165	decexpr	2	() -> CR.NINE.divide(CR.TWO).multiply(REALS.cot(CR.PI.divide(CR.NINE)).add(CR.THREE.sqrt()))
+A395166	decexpr	1	() -> CR.ONE.divide(CR.FOUR.multiply(REALS.sin(CR.PI.divide(CR.valueOf(18)))))
+A395167	decexpr	1	() -> CR.THREE.subtract(CR.TWO.multiply(REALS.cos(CR.PI.divide(CR.NINE)))).divide(CR.EIGHT.subtract(CR.EIGHT.multiply(REALS.cos(CR.PI.divide(CR.NINE))))).sqrt()
+A395168	decexp	0	() -> CR.ONE.add(X332437).divide(CR.TWO.add(X332437)).sqrt()
+A395169	decexpr	1	() -> REALS.acos(REALS.cot(CR.PI.divide(CR.NINE)).subtract(REALS.csc(CR.PI.divide(CR.NINE))).divide(CR.THREE.sqrt()))
+A395170	decexpr	1	() -> REALS.acos(CR.ONE.subtract(CR.FOUR.multiply(REALS.cos(CR.PI.divide(CR.NINE)))).divide(CR.THREE))
+A395431	holos	0	[0,-1,-8,-14,8,-1]	0,0,1,8,50,280	0	0
+A395461	holos	0	[0,1,-7,21,-35,35,-21,7,-1]	0,0,0,6,48,240,960	0	0
+A395463	holos	0	[0,-49,112,-78,16,-1]	1,7,97,1027	0	0
+A395476	lambdan	0	n -> ZV(n).*(n - 1).*(n - 2).*(ZV(n).*(n - 5).+(8))./(2)
+A395543	lambdan	1	n -> new Q(FA(n - 1), ZV(n).^(n)).den()	a(n) = denominator((n-1)!/n^n).	nonn,frac,new	1..21	nyi	_Stefano Spezia_
+A395544	holos	0	[0,1,-17,136,-680,2380,-6188,12376,-19448,24310,-24310,19448,-12376,6188,-2380,680,-136,17,-1]	1,2,13,170,3603,76537,1237063,14880672,138026469,1028480758,6376565693,33839690644,157221773711,651190185153,2440047906103,8372244421294,26571862674345	0	0
+A395545	arrlamb	1	1	1	1	(n, k) -> SU(0, k, i -> BI(n - i, i).*(BI(k + i, 2*i + 1)))	nonn,tabl,new	1..66	nyi	_Michel Marcus_
+A395553	holos	4	[0,-1,1,1,0,0,-2,0,0,1,1,-1]	1,4,7,12,20	0	0
+A395559	holos	0	[[0],[-125,150,-60,8],[-27,36,-12],[-3,6],[-1]]	1	0	0
+A395559	holos	0	[[0],[-125,150,-60,8],[-27,36,-12],[-3,6],[-1]]	1	0	0
+A395560	holos	0	[[0],[-25,30,-9],[-4,6],[-1]]	1	0	0
+A395560	holos	0	[[0],[-25,30,-9],[-4,6],[-1]]	1	0	0
+A395574	multia	0	"1"	(self, n) -> SU(1, (n + 1)/2, k -> Z_1(k - 1).*(ZV(2*n - 2*k + 1).^(k)).*(BI(n - k + 1, k)).*(self.a(n - k)))	a(0) = 1; a(n) = Sum_{k=1..floor((n+1)/2)} (-1)^(k-1) * (2*n-2*k+1)^k * binomial(n-k+1,k) * a(n-k).
+A395575	multia	0	"1"	(self, n) -> SU(1, (2*n + 1)/3, k -> Z_1(k - 1).*(ZV(n - k + 1).^(k)).*(BI(2*n - 2*k + 1, k)).*(self.a(n - k)))	a(0) = 1; if(n==0, 1, sum(k=1, (2*n+1)\3, (-1)^(k-1)*(n-k+1)^k*binomial(2*n-2*k+1, k)*a(n-k)));
+A395576	holos	0	[[0],[-512,576,-216,27],[-75,90,-27],[-6,9],[-1]]	1	0	0
+A395577	holos	0	[[0],[-49,56,-16],[-6,8],[-1]]	1	0	0
+A395581	holos	0	[0,-1,-1,-1,1,3,-1]	0,1,2,6,18	0	0
+A395582	holos	0	[0,-1,-1,-2,1,4,-1]	0,1,3,12,48	0	0
+A395585	holos	0	[0,-1,-1,-2,1,4,-1]	0,1,3,13,52	0	0
+A395607	holos	0	[0,1,1,0,1,-1]	1,6,36,42	0	0
+A395612	holos	0	[[0],[6720,-62976,186560,-237824,136192,-28672],[3360,-33680,109504,-155040,99008,-23296],[0,312,-1866,3651,-2835,756]]	1	0	0
+A395613	holos	0	[[0],[16166304000,-222024706560,1225102065984,-3682741263120,6830982111528,-8320249860480,6856451137872,-3850209954144,1451788645896,-351603500112,49397973120,-3058953984],[-1077753600,14107258080,-76135605264,226388042748,-418346366598,510598322028,-423864151155,240983095869,-92451271320,22890754386,-3303424863,211099689],[558835200,-8093131200,47775125448,-154463060340,308638559592,-404889982650,358976406078,-216544941684,87556426308,-22694717970,3405703374,-224818956],[0,99066240,-1125357408,5189646240,-13056733968,20134141872,-20097627408,13257652656,-5742366272,1570527808,-245868544,16784384]]	1	0	0
+A395614	holos	0	[[0],[143142817628160,-2435492225875968,17064896478953472,-67284119090675712,169668547815649280,-292871195186946048,360197302157369344,-323327218418302976,214616896532819968,-105776919684063232,38528605583687680,-10215821186629632,1913624029970432,-239607179149312,17966799847424,-609244282880],[-600664035041280,10199270635831296,-71427083443808256,281767117707749376,-711551048334331904,1231207690871999488,-1519470931076540416,1370143313693011968,-914671231680065536,453954522364746752,-166729758848561152,44642923420184576,-8458359937802240,1073108479709184,-81687571890176,2817754808320],[2141978818775040,-36493771393737216,256807071028615680,-1019274683718361728,2593115610854387072,-4526145830529354368,5642109017766135680,-5145538491518274304,3478487981923666176,-1750294401390652416,652456650993856000,-177474898433471488,34185870299333632,-4411837079275520,341726875176960,-11994496819200],[-1249301430236160,21113508617812224,-148510693419475968,592019786162488512,-1518647450245301216,2681957590597145120,-3392776108776335264,3147787561962934240,-2168892163309590272,1113721927815004352,-423958686408986752,117779087162297728,-23162564172508672,3049644087536384,-240739458558976,8600815774720],[211027179121920,-3638708954978688,26463833246792016,-109851480426224544,294472290291349996,-544116573850683656,719885444312519672,-697395533416749936,500508501223202764,-266897537415858056,105157388528808368,-30131859589024960,6090877701863440,-821523170149920,66224523808064,-2409013770880],[0,35606844025920,-540655674884640,3423486066178260,-12199344573972640,27675960664068635,-42684578880473720,46492695309539350,-36544372408985700,20929279834101475,-8725141822436540,2614966495129300,-547890661765000,76048585812500,-6272769600000,232408250000]]	1	0	0
+A395655	polya	0	"[1]"	"x,B,^3,2,x,B,-,*,3,2,x,B,*,-,^2,/"	new A001764()
+A395656	sintrif	0	(term, n) -> term./(n + 1)	""	new A395659()
+A395657	sintrif	0	(term, n) -> term./(n + 1)	""	new A395660()
+A395659	polya	0	"[1]"	"x,B,^5"	new A005810()
+A395660	polya	0	"[1]"	"x,B,^6"	new A001449()
+A395664	polya	0	"[1]"	"x,B,^5,4,3,x,B,*,-,^4,/"	new A002293()
+A395665	polya	0	"[1]"	"x,B,^6,5,4,x,B,*,-,^4,/"	new A002294()
+A395667	polya	0	"[1]"	"x,B,^8,7,6,x,B,*,-,^4,/"	new A002296()
+A395668	polya	0	"[1]"	"x,B,^5,3,2,x,B,*,-,*,5,4,x,B,*,-,^2,/"	new A002294()
+A395669	sintrif	0	(term, n) -> term./(n + 1)	""	new A395667()
+A395675	holos	0	[[0],[0,-8,16],[2,6,-8],[0,-1,1]]	1,7	0	0
+A395676	filnum	1	1	k -> k % Functions.DIGIT_SUM.i(6, k) == 0	Numbers which are divisible by the sum of their base-6 digits.	nonn,base,easy,new	1..10000	nyi	_Paolo Xausa_
+A395677	filnum	1	1	k -> k % Functions.DIGIT_SUM.i(7, k) == 0	Numbers which are divisible by the sum of their base-7 digits.	nonn,base,easy,new	1..10000	nyi	_Paolo Xausa_
+A395678	filnum	1	1	k -> k % Functions.DIGIT_SUM.i(9, k) == 0	Numbers which are divisible by the sum of their base-9 digits.	nonn,base,easy,new	1..10000	nyi	_Paolo Xausa_
+A395679	decexp	1	() -> CR.THREE.sqrt().subtract(CR.ONE.divide(CR.SQRT2))
+A395704	sintrif	0	(term, n) -> term.*(n + 1)	""	new A036829().skip(1)
+A395705	sintrif	0	(term, n) -> term.*(n + 1)	""	new A308523().skip(1)
+A395706	sintrif	0	(term, n) -> term.*(n + 1)	""	new A386367().skip(1)
+A395707	sintrif	0	(term, n) -> term.*(n + 1)	""	new A386368().skip(1)
+A395708	sintrif	0	(term, n) -> term.*(n + 1)	""	new A062236()
+A395709	sintrif	0	(term, n) -> term.*(n + 1)	""	new A386565().skip(1)
+A395710	sintrif	0	(term, n) -> term.*(n + 1)	""	new A386566().skip(1)
+A395711	sintrif	0	(term, n) -> term.*(n + 1)	""	new A386567().skip(1)
+A395735	polya	0	"[1]"	"x,B,^4"	new A001449()
+A395736	polya	0	"[1]"	"x,B,^5"	new A001449()
+A395768	mulr	1	(p, e) -> is2(p) ? Z2(e) : (isMod(4, p, 1) ? p.^(e - 1).*(p.-(1)) :  p.^(e - 1).*(p.+(1)))	a(2^e) = 2^e, a(p^e) = p^(e-1)*(p-1) if p == 1 (mod 4) and a(p^e) = p^(e-1)*(p+1) if p == 3 (mod 4)
+A395769	mulr	1	(p, e) -> is2(p) ? Z2(e) : (isMod(8, p, 1, 3) ? p.^(e - 1).*(p.-(1)) :  p.^(e - 1).*(p.+(1)))	a(2^e) = 2^e, a(p^e) = p^(e-1)*(p-1) if p == 1, 3 (mod 8) and a(p^e) = p^(e-1)*(p+1) if p == 3, 5 (mod 8)
+A395771	mulr	1	(p, e) -> is7(p) ? ZV(7).^(e) : (isMod(7, p, 1, 2, 4) ? p.^(e - 1).*(p.-(1)) :  p.^(e - 1).*(p.+(1)))	a(7^e) = 7^e, a(p^e) = p^(e-1)*(p-1) if p == 1, 2, 4 (mod 7) and a(p^e) = p^(e-1)*(p+1) if p == 3, 5, 6 (mod 7)
+A395772	mulr	1	(p, e) -> p.equals(ZV(11)) ? ZV(11).^(e) : (isMod(11, p, 1, 3, 4, 5, 9) ? p.^(e - 1).*(p.-(1)) :  p.^(e - 1).*(p.+(1)))	a(11^e) = 11^e, a(p^e) = p^(e-1)*(p-1) if p == 1, 3, 4, 5, 9 (mod 11) and a(p^e) = p^(e-1)*(p+1) if p == 2, 6, 7, 8, 10 (mod 11).
+A395773	mulr	1	(p, e) -> is3(p) ? ZV(3).^(e) : (is5(p) ? ZV(5).^(e) : isMod(15, p, 1, 2, 4, 8) ? p.^(e - 1).*(p.-(1)) : p.^(e - 1).*(p.+(1)))	a(3^e) = 3^e, a(5^e) = 5^e, a(p^e) = p^(e-1)*(p-1) if p == 1, 2, 4, 8 (mod 15) and a(p^e) = p^(e-1)*(p+1) if p == 7, 11, 13, 14 (mod 15)
+A395774	mulr	1	(p, e) -> p.equals(ZV(19)) ? ZV(19).^(e) : (isMod(19, p, 1, 4, 5, 6, 7, 9, 11, 16, 17) ? p.^(e - 1).*(p.-(1)) :  p.^(e - 1).*(p.+(1)))	a(19^e) = 19^e, a(p^e) = p^(e-1)*(p-1) if p == 1, 4, 5, 6, 7, 9, 11, 16, 17  (mod 19) and a(p^e) = p^(e-1)*(p+1) if p == 2, 3, 8, 10, 12, 13, 14, 15, 18 (mod 19)
+A395775	mulr	1	(p, e) -> is2(p) ? ZV(2).^(e) : (is5(p) ? ZV(5).^(e) : isMod(20, p, 1, 3, 7, 9) ? p.^(e - 1).*(p.-(1)) : p.^(e - 1).*(p.+(1)))	a(2^e) = 2^e, a(5^e) = 5^e, a(p^e) = p^(e-1)*(p-1) if p == 1, 3, 7, 9 (mod 20) and a(p^e) = p^(e-1)*(p+1) if p == 11, 13, 17, 19 (mod 20)
+A395776	mulr	1	(p, e) -> p.equals(ZV(23)) ? ZV(23).^(e) : (isMod(23, p, 1, 2, 3, 4, 6, 8, 9, 12, 13, 16, 18) ? p.^(e - 1).*(p.-(1)) :  p.^(e - 1).*(p.+(1)))	a(23^e) = 23^e, a(p^e) = p^(e-1)*(p-1) if p == 1, 2, 3, 4, 6, 8, 9, 12, 13, 16, 18 (mod 23) and a(p^e) = p^(e-1)*(p+1) if p == 5, 7, 10, 11, 14, 15, 17, 19, 20, 21, 22 (mod 23).kronecker(-23,.) mod 23.	nonn,easy,mult,new	1..10000	nyi	_Jianing Song_
+A395777	mulr	1	(p, e) -> is2(p) ? ZV(2).^(e) : (is3(p) ? ZV(3).^(e) : isMod(24, p, 1, 5, 7, 11) ? p.^(e - 1).*(p.-(1)) : p.^(e - 1).*(p.+(1)))	a(2^e) = 2^e, a(3^e) = 3^e, a(p^e) = p^(e-1)*(p-1) if p == 1, 5, 7, 11 (mod 24) and a(p^e) = p^(e-1)*(p+1) if p == 13, 17, 19, 23 (mod 24)kronecker(-24,.) mod 24.	nonn,easy,mult,new	1..10000	nyi	_Jianing Song_
+A395779	polya	0	"[1]"	"x,B,^3"	new A045721()
+A395780	polya	0	"[1]"	"x,B,^4"	new A045721()
+A395781	polya	0	"[1]"	"x,B,^3"	new A052203()
+A395782	polya	0	"[1]"	"x,B,^4"	new A052203()
+A395783	polyxa	0	"[1]"	"x,B,^3,>3"	3	0	new A025174()
+A395785	polyxa	0	"[1]"	"x,B,^4,>4"	4	0	new A025174()
+A395786	polya	0	"[1]"	"x,B,^3"	new A257633()
+A395787	polya	0	"[1]"	"x,B,^4"	new A257633()
+---- 2026-05-07 23:48:05
+A391357	arrlamb	1	1	1	-1	(n, k) -> PM(n).+(PM(n + k))	Rectangular array R read by falling antidiagonals: R(n,k) = prime(n) + prime(n+k).	nonn,tabl,easy	1..66

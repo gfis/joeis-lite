@@ -1,0 +1,105 @@
+---- 2026-05-10 22:06:36
+---- 2026-05-10 22:26:55
+---- 2026-05-10 22:31:43
+A084978	multia	1	"1"	(self, n) -> self.a(n - 1).+(SD(n - 1, d -> self.a(d)))	a(n+1) = 1 + Sum_{k=1..n} Sum_{d|k} a(d) or a(n+1) = a(n) + Sum_{d|n} a(d)
+A092688	polya	0	"[1],[1,-1],[1,-3]"	"x,B,p1,*,p2,/"	new A092687()
+A104970	lambdan	0	n -> (n == 0) ? ZV(1) : RU(0, n - 1, k -> QV(Z_1(k)).*(BI(2*k + 1, k + 1))./(Z2(2*k))).+(2).*(Z2(2*n - 1)).num()	a(n) = 2^(2*n-1)*(2 + Sum_{k=0..n-1} (-1)^k*binomial(2*k+1,k+1)/2^(2*k))A109253	polya	0	"[1]"	"x,2,*,B,x,B,/"	new A000142()
+A105953	holos	1	[0,5,0,0,0,0,0,-1]	1,5,6,10,12,20,24	0	0
+A108179	polya	0	"[1]"	"x,B,sqrt"	new A031137()
+A109253	polya	0	"[1],[0,2]"	"p1,B,x,B,/"	new A000142()
+A109502	arrlamb	1	0	0	1	(m, n) -> ZV(m).^(n).+(Z_1(n).*(m))./(m + 1)	T(m,n) = ((m-1)^n + (m-1)(-1)^n)/m.
+A110627	filter	0	new A083952()	(k, v) -> (k&1) == 0	bisection
+A110628	filter	0	new A083953()	(k, v) -> (k%3) == 0	trisection
+A110817	filnum	1	1	k -> new Q(SIGMA(k + 1), k).isInteger()	Numbers k such that (1/k)*sigma(k+1) is an integer.	nonn	1..6	nyi	_Joseph L. Pe_
+A110822	holos	0	[[0],[-3,1],[-45,30],[0,1]]	1	0	0
+A110824	poly	0	"[1],[1,62,1]"	"p1,sqrt"
+A110828	holos	0	[[0],[-3,1],[-381,254],[0,1]]	1	0	0
+A111581	polyxa	0	"[1],[0,0,1],[1,0,-1],[0,0,4]"	"x,B,^2,p1,B,-,2,x,*,p2,/,-,p3,/"	2	0	new A110627()
+A111582	polyxa	0	"[1],[0,0,0,1],[1,0,0,-1],[0,3,3],[0,0,9]"	"x,B,^3,p1,B,-,p3,p2,/,-,p4,/"	2	0	new A110628()
+A111583	polyxa	0	"[1],[0,0,0,0,0,1],[0,5,0,0,0,-5],[1,-1],[1,0,0,0,0,-1],[0,0,25]"	"x,B,^5,p1,B,-,p2,p3,/,p4,/,-,p5,/"	2	0	new A110631()
+A111584	polyxa	0	"[1],[0,0,0,0,0,0,0,1],[0,7,0,0,0,0,0,-7],[1,-1],[1,0,0,0,0,0,0,-1],[0,0,49]"	"x,B,^7,p1,B,-,p2,p3,/,p4,/,-,p5,/"	2	0	new A110635()
+A111585	polyxa	0	"[1],[0,0,0,0,0,0,0,0,0,0,0,1],[0,11,0,0,0,0,0,0,0,0,0,-11],[1,-1],[1,0,0,0,0,0,0,0,0,0,0,-1],[0,0,121]"	"x,B,^11,p1,B,-,p2,p3,/,p4,/,-,p5,/"	2	0	new A110644()
+A112225	polya	2	"[1],[-2,1]"	"x,2,*,B,3,+,x,B,2,*,/,p1,+"	new A000142()
+A116379	poly	1	"[0,1],[0,0,1],[0,0,0,1]"	"1,A,+,A,^2,2,/,+,p1,sub,2,/,-,A,^3,6,/,+,A,p1,sub,*,2,/,-,p2,sub,3,/,+,<1"
+A116380	poly	1	"[0,1],[0,0,1],[0,0,0,1],[0,0,0,0,1]"	"1,A,+,A,^2,2,/,+,p1,sub,2,/,-,A,^3,6,/,+,A,p1,sub,*,2,/,-,p2,sub,3,/,+,A,^4,24,/,+,A,^2,p1,sub,*,4,/,-,A,p2,sub,*,3,/,+,p1,sub,^2,8,/,+,p3,sub,4,/,-,<1"
+A118451	holos	3	[[0],[1553683108101252710400,-488369963865559007232,57529063993226821632,-3009984368971087872,59019301352374272],[31575916139143967539200,-11043024163655160692736,1444991428158415699968,-83854715978822713344,1821110984824061952],[-8357100523825326981120,3748235212143964717056,-608220946530844803072,42739224021040103424,-1104135088833036288],[-2377879694326514810880,615186922609781932032,-40587776866638102528,-790942008362139648,107649031998799872],[1159285132681013403648,-464150765625217966080,66858804218821754880,-4069196069685166080,86542782139072512],[-89716282591637606400,58471135241276694528,-12046521848081891328,1005409268526809088,-29525120525795328],[-28578951751194178560,7956246840079279104,-536092775039480832,-18207687367286784,2086308501184512],[7800095864020475520,-3235284867386542464,487278555004781568,-31109038926575616,687570573883392],[-865840444714844640,424106149691781792,-77332650183908928,6225791184617472,-186783636814848],[50695899336475488,-28288294084836720,5910731150434560,-551100124097280,19501252503552],[-1411008525965520,861866697039264,-194862324828384,19520027468784,-747081335664],[1097036868000,3571513896552,-2501584250436,526493405748,-35364540684],[912275859360,-1013823614992,418002044794,-75727228868,5084095826],[-17793633360,24340497796,-12158679304,2640424511,-211002569],[76772784,-159943300,111960310,-31988660,3198866]]	41,1380	0	0
+A120346	holos	1	[[0],[-588924000,311082000,-65668560,6924960,-364800,7680],[-7141608000,4672814400,-1203953600,153156800,-9640960,240640],[82898542080,-55113372864,14549551136,-1908389216,124466176,-3231232],[-567128251872,374496896988,-98215381022,12767677598,-821018674,20833942],[500792997384,-336894107940,87213160524,-10650829692,589167468,-10556064],[855007740360,-845590732002,325394576231,-60846074999,5509295737,-191830063],[-250919710560,75468324264,71019010820,-42388472174,8065135372,-526435738],[-426917198880,836873898408,-616679146312,218208169672,-37509277736,2522793152],[217840645440,-447025159344,359762092152,-141789395208,27338512152,-2060616504],[-26279827200,71264836800,-72731408000,35034590000,-7976324800,688133200],[0,-1586304000,3304800000,-2313360000,660960000,-66096000]]	1,2,6,23	0	0
+A120501	multia	1	"1,1,1,2"	(self, n) -> self.a(n - 2 - self.a(n - 1).intValueExact()).+(self.a(n - 3 - self.a(n - 2).intValueExact()))	If 1 <= n <= 3, a(n)=1. If n = 4, then a(n)=2. If n>4 then a(n)=a(n-2-a(n-1)) + a(n-3-a(n-2)).
+A120502	multia	1	"1,1,1,1,2"	(self, n) -> self.a(n - 3 - self.a(n - 1).intValueExact()).+(self.a(n - 4 - self.a(n - 2).intValueExact()))
+A120504	multia	1	"1,1,2,3"	(self, n) -> self.a(n - 1 - self.a(n - 1).intValueExact()).+(self.a(n - 2 - self.a(n - 2).intValueExact())).+(self.a(n - 3 - self.a(n - 3).intValueExact()))
+A120505	multia	1	"1,1,1,2,3"	(self, n) -> self.a(n - 2 - self.a(n - 1).intValueExact()).+(self.a(n - 3 - self.a(n - 2).intValueExact())).+(self.a(n - 4 - self.a(n - 3).intValueExact()))
+A120506	multia	1	"1,1,1,1,2,3"	(self, n) -> self.a(n - 3 - self.a(n - 1).intValueExact()).+(self.a(n - 4 - self.a(n - 2).intValueExact())).+(self.a(n - 5 - self.a(n - 3).intValueExact()))
+A120507	multia	1	"1,2,3,4"	(self, n) -> self.a(n - self.a(n - 1).intValueExact()).+(self.a(n - 1 - self.a(n - 2).intValueExact())).+(self.a(n - 2 - self.a(n - 3).intValueExact())).+(self.a(n - 3 - self.a(n - 4).intValueExact()))	If n=1, a(n)=1. If 2 <= n <= 4, then a(n)=n. If n>4 then a(n)=a(n-a(n-1)) + a(n-1-a(n-2)) + a(n-2-a(n-3)) + a(n-3-a(n-4)).
+A120508	multia	1	"1,1,2,3,4,4"	(self, n) -> self.a(n - 1 - self.a(n - 1).intValueExact()).+(self.a(n - 2 - self.a(n - 2).intValueExact())).+(self.a(n - 3 - self.a(n - 3).intValueExact())).+(self.a(n - 4 - self.a(n - 4).intValueExact()))	If 1 <= n <= 2, a(n)=1. If 3 <= n <= 5, then a(n)=n-1. If n>5 then a(n)=a(n-1-a(n-1)) + a(n-2-a(n-2)) + a(n-3-a(n-3)) + a(n-4-a(n-4))
+A120509	multia	1	"1,1,1,2,3,4"	(self, n) -> self.a(n - 2 - self.a(n - 1).intValueExact()).+(self.a(n - 3 - self.a(n - 2).intValueExact())).+(self.a(n - 4 - self.a(n - 3).intValueExact())).+(self.a(n - 5 - self.a(n - 4).intValueExact()))	If 1 <= n <= 2, a(n)=1. If 3 <= n <= 5, then a(n)=n-1. If n>5 then a(n)=a(n-1-a(n-1)) + a(n-2-a(n-2)) + a(n-3-a(n-3)) + a(n-4-a(n-4))
+A120510	multia	1	"1,1,1,1,2,3,4"	(self, n) -> self.a(n - 3 - self.a(n - 1).intValueExact()).+(self.a(n - 4 - self.a(n - 2).intValueExact())).+(self.a(n - 5 - self.a(n - 3).intValueExact())).+(self.a(n - 6 - self.a(n - 4).intValueExact()))	If 1 <= n <= 2, a(n)=1. If 3 <= n <= 5, then a(n)=n-1. If n>5 then a(n)=a(n-1-a(n-1)) + a(n-2-a(n-2)) + a(n-3-a(n-3)) + a(n-4-a(n-4))
+A120518	multia	1	"1"	(self, n) -> ZV(n - 1).+(self.a((n - 1)/4 + 1))	a(1) = 1; a(n) = n-1 + a(floor((n-1)/4)+1)
+A120523	prepend	1	new DifferenceSequence(1, new A120501())	1	First differences of successive meta-Fibonacci numbers A120501.	nonn	1..75	nyi	_Frank Ruskey_ and Chris Deugau (deugaucj(AT)uvic.ca)
+A120524	prepend	1	new DifferenceSequence(1, new A120502())	1	First differences of successive meta-Fibonacci numbers A120502.	nonn	1..75	nyi	_Frank Ruskey_ and Chris Deugau (deugaucj(AT)uvic.ca)
+A120526	prepend	1	new DifferenceSequence(1, new A120504())	1	First differences of successive generalized meta-Fibonacci numbers A120504.	nonn	1..10000	nyi	_Frank Ruskey_ and Chris Deugau (deugaucj(AT)uvic.ca)
+A120527	prepend	1	new DifferenceSequence(1, new A120505())	1	First differences of successive generalized meta-Fibonacci numbers A120505.	nonn	1..75	nyi	_Frank Ruskey_ and Chris Deugau (deugaucj(AT)uvic.ca)
+A120528	prepend	1	new DifferenceSequence(1, new A120506())	1	First differences of successive generalized meta-Fibonacci numbers A120506.	nonn	1..75	nyi	_Frank Ruskey_ and Chris Deugau (deugaucj(AT)uvic.ca)
+A120529	prepend	1	new DifferenceSequence(1, new A120507())	1	First differences of successive generalized meta-Fibonacci numbers A120507.	nonn	1..75	nyi	_Frank Ruskey_ and Chris Deugau (deugaucj(AT)uvic.ca)
+A120530	prepend	1	new DifferenceSequence(1, new A120508())	1	First differences of successive generalized meta-Fibonacci numbers A120508.	nonn	1..75	nyi	_Frank Ruskey_ and Chris Deugau (deugaucj(AT)uvic.ca)
+A120531	prepend	1	new DifferenceSequence(1, new A120509())	1	First differences of successive generalized meta-Fibonacci numbers A120509.	nonn	1..75	nyi	_Frank Ruskey_ and Chris Deugau (deugaucj(AT)uvic.ca)
+A120532	prepend	1	new DifferenceSequence(1, new A120510())	1	First differences of successive generalized meta-Fibonacci numbers A120510.	nonn	1..75	nyi	_Frank Ruskey_ and Chris Deugau (deugaucj(AT)uvic.ca)
+A120918	polya	0	"[1],[1,-1],[1,-9]"	"x,B,p1,*,p2,/"	new A120915()
+A120923	polya	0	"[1],[1,-1],[1,-8]"	"x,B,p1,*,p2,/"	new A120920()
+A122369	holos	0	[0,-11,37,-32,10,-1]	1,4,19,93	0	0
+A122392	holos	0	[0,3,-1]	1,2,5,15,46,139,416	0	0
+A122827	polya	1	"[0,1]"	"x,B,1,-,x,B,^2,/"	new A000142()
+A153852	polyza	1	"[1]"	"x,B,B"	0	0	1	2	new PolynomialFieldSequence(0, "[0,1]", "x,A,sub,^3,+")
+A153853	polyza	1	"[1]"	"x,B,B,B"	0	0	1	2	new PolynomialFieldSequence(0, "[0,1]", "x,A,sub,^3,+")
+A153854	polyza	1	"[1]"	"x,B,B,B,B"	0	0	1	2	new PolynomialFieldSequence(0, "[0,1]", "x,A,sub,^3,+")
+A156134	polyz	0	"[1]"	"x,cos,1,3,x,sin,^2,*,-,/"	0	1	0	2
+A158900	polya	0	"[1]"	"x,B,1,-,B"	new A000142()
+A158919	lambdan	0	n -> X058265.*(n).floor()	Beatty sequence for the tribonacci constant tau (X058265): a(n) = floor(n*tau).	nonn	0..20000	nyi	Eric Culver (weux082690(AT)yahoo.com)
+A158923	multia	1	"2"	(self, n) -> self.a(n - 1).+(CV(self.a(n - 1)).log().round())	a(1) = 2, a(n) = a(n-1) + round(log(a(n-1))) for n >= 2.	nonn	1..100000	nyi	_Daniel Forgues_
+A158948	trilambn	1	1	1	(n, k) -> ZV((k == 1) ? (n + 1)/2 : (((k&1) == 0) ? ((n + 1)&1) : (n&1)))
+A158974	lambdan	1	n -> CNT(1, n, k -> CND(k, d -> d > 1 && d < k && n%d != 0).compareTo(ZV(0)) >  0)		a(n) = number of numbers k <= n such that not all proper divisors of k are divisors of n.	nonn	1..10000	nyi	_Jaroslav Krizek_
+A158975	lambdan	1	n -> SU(1, n, k -> ZV(CND(k, d -> d > 1 && d < k && n%d != 0).compareTo(ZV(0)) == 0 ? k : 0))	a(n) = sum of numbers k <= n such that all proper divisors of k are divisors of n.	nonn	1..57	nyi	_Jaroslav Krizek_
+A158976	lambdan	1	n -> SU(1, n, k -> ZV(CND(k, d -> d > 1 && d < k && n%d != 0).compareTo(ZV(0)) >  0 ? k : 0))	a(n) = sum of numbers k <= n such that not all proper divisors of k are divisors of n.	nonn	1..57	nyi	_Jaroslav Krizek_
+A158977	lambdan	1	n -> PR(1, n, k -> ZV(CND(k, d -> d > 1 && d < k && n%d != 0).compareTo(ZV(0)) == 0 ? k : 1))	a(n) = Product of the numbers k in the range 1 <= k <= n such that the proper divisors of k are a subset of the proper divisors of n.	nonn	1..27	nyi	_Jaroslav Krizek_
+A158978	lambdan	1	n -> PR(1, n, k -> ZV(CND(k, d -> d > 1 && d < k && n%d != 0).compareTo(ZV(0)) >  0 ? k : 1))	a(n) = product of numbers k <= n such that not all proper divisors of k are divisors of n.	nonn	1..26	nyi	_Jaroslav Krizek_
+A159768	holos	1	[[0],[-30240,6066,-405,9],[-40320,8088,-540,12],[254184,-60660,4800,-126],[159180,-35061,2535,-60],[-758880,206792,-18708,562],[281214,-88820,9261,-319],[834624,-259531,26898,-929],[-1292562,440170,-49785,1871],[684006,-249837,29742,-1149],[39558,-31052,7194,-514],[-185256,101799,-18699,1152],[65214,-40840,8235,-533],[-3138,420,756,-174],[-1518,2769,-1602,291],[78,-297,324,-105],[0,-6,-6,12]]	1,1	0	0
+A159770	holos	1	[[0],[-42840,7348,-420,8],[-303144,56388,-3492,72],[-29136,3744,-120],[-717792,139296,-8976,192],[2244,-20742,2982,-108],[-372420,91486,-7590,212],[2072664,-531416,45348,-1288],[-360204,101978,-9432,286],[428892,-129638,12864,-418],[-966948,297304,-29454,926],[998340,-355318,40740,-1490],[-484878,208545,-28902,1287],[-8970,10789,-3444,317],[93654,-67803,16236,-1287],[-30930,29435,-9000,895],[3300,-4952,2160,-292],[-18,265,-222,47],[-6,3,6,-3]]	1,1	0	0
+A159773	holos	1	[[0],[-36432,4758,-207,3],[127512,-17412,792,-12],[-138600,19830,-945,15],[128940,-18047,840,-13],[-4680,3014,-279,7],[-56376,-2356,774,-26],[-977832,206516,-14142,316],[3007272,-614093,41589,-934],[-3199068,685720,-48861,1157],[2677248,-615311,46725,-1174],[2763972,-603325,44010,-1073],[-2413680,641744,-56475,1645],[-1414620,214168,-4512,-292],[12039648,-3247510,287253,-8315],[-15296712,4615649,-455040,14611],[12159960,-4134202,457539,-16415],[-4838232,1806160,-214857,8003],[906252,-376442,47259,-1633],[132996,-78665,16107,-1150],[37212,-55309,20970,-2285],[-54768,69440,-28476,3736],[13968,-27786,17022,-3204],[0,1950,-3150,1200],[0,150,0,-150]]	1,1	0	0
+A165546	polyxa	0	"[1],[0,0,1]"	"x,1,x,B,<1,rev,-,p1,/"	2	0	new A000257()
+A171078	polyz	0	"[1]"	"x,sec,^2,<1,x,tan,/,2,/"	2	0	0	2
+A213024	polya	0	"[0]"	"x,B,1,-,^2,x,^2,B,1,-,*"	new A010052()
+A216279	polya	1	"[1]"	"x,B,1,-,x,^5,B,1,-,*,4,/"	new A000122()
+A216283	polya	1	"[0,1]"	"x,B,x,^5,B,*"	new A010052()
+A216511	polya	1	"[1]"	"x,B,1,-,x,^7,B,1,-,*,4,/"	new A000122()
+A216785	polya	1	"[0,0],[0,0,1]"	"x,B,1,-,^2,p1,B,1,-,-,2,/"	new A001349()
+A266576	decexpf	1	() -> CR.PI.^(2)./(6).+(CV(2).log().^(2)./(2)).+(CrFunctions.POLYLOG.cr(2, CV(new Q(-1, 2))))	Equals Pi^2/6 + log(2)^2/2 + polylog(2, -1/2)
+A288099	parmof2	1	A063454	4
+A288100	parmof2	1	A063454	5
+A288101	parmof2	1	A063454	6
+A288102	parmof2	1	A063454	7
+A288103	parmof2	1	A063454	8
+A288104	parmof2	1	A063454	9
+A288105	parmof2	1	A063454	10
+A356086	insect2	0	new A001952()	new A022838()
+A356087	insect2	0	new A001952()	new A054406()
+A356101	insect2	1	new A000201()	new A108598()
+A356102	insect2	1	new A001950()	new A022839()
+A360395	insect2	1	new A026430()	new A360393()
+A374017	polya	0	"[1]"	"x,B,1,-,x,^11,B,1,-,*,4,/"	new A000122()
+A379406	lambdan	1	n -> { final CR r = CV(2).^(new Q(1, 4)); final CR s = CR.SQRT2; final CR t = CV(2).^(new Q(3, 4)); return r.+(t)./(s).*(n).floor().-(r./(s).*(n).floor()).-(t./(s).*(n).floor()); }	E379511(n).-(E378142(n))	r = 2^(1/4); s = 2^(1/2); t = 2^(3/4);	Table[Floor[n*(r + t)/s] - Floor[n*r/s] - Floor[n*t/s], {n, 1, 120}]
+A389304	holos	1	[0,-1,2,-1]	71,72,73,74,75,76,77,78,79,80,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,173,174	0	0
+A389483	complen	1	Z.ONE	new A389304()
+A391359	arrlamb	1	1	1	-1	(n, k) -> PM(n + 1).+(PM(n + 1 + k))./(2)	Rectangular array R read by falling antidiagonals: R(n,k) = (prime(n) + prime(n+k))/2, for n>=2, k>=1.	nonn,tabl,easy	1..67
+A394270	polya	0	"[1]"	"x,B,^3,5,4,x,B,*,-,/"	new A002294()
+A394565	polya	0	"[1]"	"x,B,^4,5,4,x,B,*,-,/"	new A002294()
+A395260	holos	1	[0,1,-5,10,-10,5,-1]	4,13,33,71,136	0	0
+A395554	holos	5	[0,1,-1,-1,0,0,1,1,1,-1,-1,-1,0,0,1,1,-1]	1,5,9,16,28,45,68,98,137,188,251,328	0	0
+A395593	holos	0	[0,1,1,0,1,-1]	1,8,64,72	0	0
+A395700	filtpos	1	1	new A181859().skip(1)	(k, v) -> v.equals(ZV(k))
+A395796	polya	0	"[1],[-1]"	"p1,x,B,/"	new A052203()
+A395797	polya	0	"[1],[-1]"	"p1,x,B,/"	new A257633()
+A395798	polya	0	"[1],[-1]"	"p1,x,B,/"	new A079589()
+A395799	polya	0	"[1],[-1]"	"p1,x,B,/"	new A394270()
+A395800	polya	0	"[1],[-1]"	"p1,x,B,/"	new A394565()
+---- 2026-05-10 23:04:36
+A120514	multia	1	"1"	(self, n) -> ZV(n - 1).+(self.a((n - 1)/3 + 1))	a(1) = 1; a(n) = n-1 + a(floor((n-1)/4)+1)	a(n) = min{j : J120503(j) = n}.	nonn	1..67	nyi	_Frank Ruskey_ and Chris Deugau (deugaucj(AT)uvic.ca)
+A319204	polyxa	0	"[0]"	"x,B,log,dif"	1	0	new A319201()

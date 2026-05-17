@@ -1,0 +1,181 @@
+---- 2026-05-17 19:33:52
+A087107	tablamb	1	0	n -> new Integer[]{0, 3*n}	(n, k) -> SU(0, k, j -> Z_1(k + j).*(BI(k, j)).*(BI(j + 3, 3).^(n)))	= Sum_{j = 0..k} (-1)^(k+j)*binomial(k,j)*binomial(j+3,3)^n.
+A087108	tablamb	1	0	n -> new Integer[]{0, 4*n}	(n, k) -> SU(0, k, j -> Z_1(k + j).*(BI(k, j)).*(BI(j + 4, 4).^(n)))	T(n,k) = Sum_{i = 0..k} (-1)^(k-i)*binomial(k,i) * binomial(i+4,4)^n.
+A087109	tablamb	1	0	n -> new Integer[]{0, 5*n}	(n, k) -> SU(0, k, j -> Z_1(k + j).*(BI(k, j)).*(BI(j + 5, 5).^(n)))	C(n,5). The p-th row (p>=1) contains a(i,p) for i=1 to 5*p-4, where a(i,p) satisfies Sum_{i=1..n} C(i+4,5)^p = 6 * C(n+5,6) * Sum_{i=1..5*p-4} a(i,p) * C(n-1,i-1)/(i+5).	easy,nonn,tabf	1..37	nyi	_Andr‚ąö¬© F. Labossi?re_
+A087110	tablamb	1	0	n -> new Integer[]{0, 6*n}	(n, k) -> SU(0, k, j -> Z_1(k + j).*(BI(k, j)).*(BI(j + 6, 6).^(n)))	C(n,6). The p-th row (p>=1) contains a(i,p) for i=1 to 6*p-5, where a(i,p) satisfies Sum_{i=1..n} C(i+5,6)^p = 7 * C(n+6,7) * Sum_{i=1..6*p-5} a(i,p) * C(n-1,i-1)/(i+6).	easy,nonn,tabf	1..34	nyi	_Andr‚ąö¬© F. Labossi?re_
+A087111	tablamb	1	0	n -> new Integer[]{0, 7*n}	(n, k) -> SU(0, k, j -> Z_1(k + j).*(BI(k, j)).*(BI(j + 7, 7).^(n)))	C(n,7). The p-th row (p>=1) contains a(i,p) for i=1 to 7*p-6, where a(i,p) satisfies Sum_{i=1..n} C(i+6,7)^p = 8 * C(n+7,8) * Sum_{i=1..7*p-6} a(i,p) * C(n-1,i-1)/(i+7).	easy,nonn,tabf	1..34	nyi	_Andr‚ąö¬© F. Labossi?re_
+A088333	multia	1	"1"	(self, n) -> self.a(n - 1).+(3).modZ(n).+(1)	a(n)=(a(n-1)+3) mod n +1;
+A090450	rowsum	0	new A090447()	.
+A091040	rowsum	1	new A091039()	(scaled second columns of (k,k)-Stirling2 arrays).
+A091413	partsun	0	new A090822().prepend(0)
+A134055	prepend	0	new RowSumSequence(0, new A363849())	1	Row sums give n+1).
+A160940	rowsum	1	new A083809()	.
+A167444	lambdan	1	n -> DF(FI(n))	Fibonacci(n)!!.	nonn	1..11	nyi	_Vladimir Joseph Stephan Orlovsky_
+A168034	filter	1	new A000040()	p -> PP(CV(p).^(CR.PHI).floor())	Primes p for which floor(p^phi) is prime, where phi is the golden ratio.	nonn	1..10000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A168035	filter	0	new A000040()	p -> PP(CV(p).^(CR.PHI).floor()) && PP(CR.PHI.^(CV(p)).floor())	Primes p for which floor(p^phi) and floor(phi^p) are prime.	nonn,less	1..8	nyi	_Vladimir Joseph Stephan Orlovsky_
+A168455	lambdan	0	n -> ZV(3).^(n).+(n).modZ(7)	3^n+n mod 7.	nonn	0..104	nyi	_Zak Seidov_
+A168501	filnum	1	0	k -> { final String ks = Long.toString(k); return ks.indexOf('2') < 0 && ks.indexOf('4') < 0 && ks.indexOf('6') < 0; }	Numbers without the decimal digits 2, 4 and 6.	nonn,base,easy,less	1..1000	nyi	_Juri-Stepan Gerasimov_
+A168517	trilambn	0	0	0	(n, k) -> BI(n, k).*(-1).+(SU(0, k, j -> Z_1(k - j).*(BI(n + 2, k - j).*(ZV(j + 1).^(n + 1)).*(1).+(BI(n + 1, k - j).*(2).*(1).*(ZV(2*j + 1).^(n))))))./(2)
+A168518	trilambn	0	0	0	(n, k) -> BI(n, k).*(-4).+(SU(0, k, j -> Z_1(k - j).*(BI(n + 2, k - j).*(ZV(j + 1).^(n + 1)).*(2).+(BI(n + 1, k - j).*(2).*(2).*(ZV(2*j + 1).^(n))))))./(2)
+A168549	trilambn	0	0	0	(n, k) -> BI(n, k).*(31).+(SU(0, k, j -> Z_1(k - j).*(BI(n + 2, k - j).*(ZV(j + 1).^(n + 1)).*(-59).+(BI(n + 1, k - j).*(2).*(15).*(ZV(2*j + 1).^(n))))))./(2)	(1/2)*( a*(1+x)^n + b*(1-x)^(n+2)*LerchPhi(x, -n-1, 1) + c*2^(n+1)*(1-x)^(n+1)*LerchPhi(x, -n, 1/2) ), a = 31, b = -59, and c = 15,
+A168551	trilambn	0	0	0	(n, k) -> BI(n, k).*(1).+(SU(0, k, j -> Z_1(k - j).*(BI(n + 2, k - j).*(ZV(j + 1).^(n + 1)).*(-1).+(BI(n + 1, k - j).*(2).*(1).*(ZV(2*j + 1).^(n))))))./(2)	(1/2)*( a*(1+x)^n + b*(1-x)^(n+2)*LerchPhi(x, -n-1, 1) + c*2^(n+1)*(1-x)^(n+1)*LerchPhi(x, -n, 1/2) ), a = 1, b = -1, and c = 1
+A168552	trilambn	0	0	0	(n, k) -> BI(n, k).*(3).+(SU(0, k, j -> Z_1(k - j).*(BI(n + 2, k - j).*(ZV(j + 1).^(n + 1)).*(-3).+(BI(n + 1, k - j).*(2).*(1).*(ZV(2*j + 1).^(n))))))./(2)	(1/2)*( a*(1+x)^n + b*(1-x)^(n+2)*LerchPhi(x, -n-1, 1) + c*2^(n+1)*(1-x)^(n+1)*LerchPhi(x, -n, 1/2) ), a = 3, b = -3, and c = 1
+A168568	filter	1	new A000040()	p -> { final Z p29 = new Z(p.toString() + "29"); return Predicates.SQUARE.is(p29) && PP(SQRT(p29)); }	Primes p such that the concatenation p//29 is a squared prime.	nonn,base	1..10000	nyi	Ulrich Krug (leuchtfeuer37(AT)gmx.de)
+A168593	polya	0	"[1]"	"x,B,1,-,/n,exp"	new A132303()
+A168599	polya	0	"[1]"	"x,B,^n,1,-,/n,exp"	new A002426()
+A168626	filnum	1	1	k -> Functions.OMEGA.i(k) > 2 && Functions.OMEGA.i(k - 1) > 2 && Functions.OMEGA.i(k + 1) > 2	(n)=omega(n)>2 && omega(n-1)>2 && omega(n+1)>2
+A168628	filnum	1	1	k -> Functions.OMEGA.i(k) == 4 && Functions.OMEGA.i(k - 1) == 4 && Functions.OMEGA.i(k + 1) == 4	Numbers n such that n and n+-1 have 4 distinct prime factors.	nonn	1..36	nyi	_Vladimir Joseph Stephan Orlovsky_
+A168629	filnum	1	1	k -> Functions.OMEGA.i(k) >= 3 && Functions.OMEGA.i(k + 1) >= 3 && Functions.OMEGA.i(2*k + 1) >= 3	Numbers n such that n,n+1 and sum of this two numbers have at least 3 distinct prime factors.	nonn	1..43	nyi	_Vladimir Joseph Stephan Orlovsky_
+A168630	filnum	1	1	k -> Functions.OMEGA.i(k) >= 4 && Functions.OMEGA.i(k + 1) >= 4 && Functions.OMEGA.i(2*k + 1) >= 4	Numbers n such that n, n+1, and the sum of those two numbers each have 4 or more distinct prime factors.	nonn	1..10000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A168638	filnum	1	1	k -> { final int ok = Functions.OMEGA.i(k); return ok == 2 || ok == 3; }	Number of distinct prime divisors of n is 2 or 3.	nonn	1..1000	nyi	_Juri-Stepan Gerasimov_
+A168645	filnum	1	1	k -> { final int ok = Functions.BIG_OMEGA.i(k); return ok == 2 || ok == 3; }	Numbers with 2 or 3 prime divisors (counted with multiplicity).	nonn	1..67	nyi	_Juri-Stepan Gerasimov_
+A168669	filnum	1	0	k -> { final Z r = ZV(36*k + 49); return Predicates.SQUARE.is(r) && PP(SQRT(r)); }	Numbers n such that sqrt(36*n+49) is primeNumbers n such that sqrt(36*n+49) is prime
+A169804	filtpos	1	1	new A074036()	(k, v) -> v.compareTo(ZV(k)) > 0	Numbers k such that J074036(k) > k.	nonn	1..59	nyi	_N. J. A. Sloane_
+A169806	filnum	0	1	k -> !Predicates.PALINDROME.is(k) && ZV(k).equals(Functions.REVERSE.z(k).+(Functions.DIGIT_PRODUCT.z(k)))	Nonpalindromic numbers k such that k = R(k) + P(k) where R(k) is reversal(k) and P(k) is the product of the digits of k.	base,nonn	1..23	nyi	_Farideh Firoozbakht_
+A171153	complen	1	Z.ONE	new A169606()
+A171700	trilambn	0	0	0	(n, k) -> BI(n, k).*((n == 0) ? ZV(0) : D077957(n - k - 1))	Triangle T : T(n,k)= F007318(n,k)*a(n-k) with a(0)=0 and a(n)= J077957(n-1) for n>0.	nonn,tabl	0..65	nyi	_Philippe Del‚ąö¬©ham_
+A171707	trilambn	0	0	0	(n, k) -> ZV(2).-(FA(k)).+(FA(n).*(2)).-(FA(n - k)).-(FA(n).*(BI(n, k)))	Triangle read by rows: T(n,k) = 2 - k! + 2*n! - (n-k)! - n!*binomial(n,k).	tabl,sign	0..100	nyi	_Roger L. Bagula_
+A171720	filter	1	new A000040()	p -> SIGMA(p.-(1)./(2)).equals(SIGMA(p.+(1)./(2)))	Primes p such that (p-1)/2 and (p+1)/2 have same sum of divisors.	nonn	1..28	nyi	Filip Jevtic (mm07006(AT)alas.math.rs), Dec 19 2009
+A171754	sintrif	1	(term, n) -> ComputableReals.SINGLETON.sinh(CV(term)).round()	""	new A000040()	Hyperbolic sine of the prime numbers, rounded to the nearest integer.	nonn	1..18	nyi	_Joost de Winter_
+A171807	filter	1	new A006567()	p -> PP(Functions.REVERSE.z(PM(p)))	Emirps (J006567) p such that R(prime(p)) is prime.	easy,nonn,less,base	1..44	nyi	_Jonathan Vos Post_
+A171814	trilambn	0	0	0	(n, k) -> BI(n, k).*(D001700(n - k))	Triangle T : T(n,k)= F007318(n,k)*J001700(n-k).	nonn,tabl	0..44	nyi	_Philippe Del‚ąö¬©ham_
+A171815	filter	1	new A171743()	v -> PP(v.+(1))	Values of J171743 that are 1 less than a prime, listed in the order in which they appear.
+A171845	filnum	1	0	k -> !PP(k) && ((!PP(k - 1) && !PP(k + 1)) || (PP(k - 1) && PP(k + 1)))	Numbers n >= 0 such that n-1 and n+1 are both primes or both nonprimes, but excluding primes.	nonn,easy	1..2000	nyi	_Juri-Stepan Gerasimov_
+A171976	filnum	0	0	k -> Predicates.SQUARE.is(Functions.DIGIT_SUM_SQUARES.z(ZV(k).^(k)))	Numbers n such that the sum of the squares of the digits of n^n is a square.
+A172157	trilambn	1	1	1	(n, k) -> (k == 1) ? ZV(-1) : new Q(1, n*n).-(new Q(1, ZV(k - 1).^(2))).num()	Triangle T(n,m) = numerator of 1/n^2 - 1/m^2, read by rows, with T(n,0) = -1.	sign,frac,easy,tabl	1..100	nyi	_Paul Curtz_
+A172176	trilambn	0	0	0	(n, k) -> ZV(1).+(ZV(n + k - n*k).*(ZV(2*n - k - n*(n - k))))	1 + (n + k - n*k)*(2*n - k - n*(n-k)), read by rows.	sign,tabl,easy	0..50	nyi	_Roger L. Bagula_
+A172177	trilambn	0	0	0	(n, k) -> ZV(1).+(FA(n).-(FA(k)).abs().*(FA(n).-(FA(n - k)).abs()))	- k!)*abs(n! - (n-k)!), read by rows.	nonn,tabl,easy	0..50	nyi	_Roger L. Bagula_
+A172181	filnum	1	1	k -> ((k&1) == 1) && (k % 6 != 1) && !PP(k)	Odd composites not of the form 6k + 1.	nonn,easy	1..57	nyi	_Juri-Stepan Gerasimov_
+A172182	filnum	1	1	k -> { final long km = k%6; return (km == 1 || km == 2) && !PP(k); }	Nonprimes of the form 6k + 1 or 6k + 2.	nonn,easy	1..57	nyi	_Juri-Stepan Gerasimov_
+A172187	filnum	1	1	k -> Predicates.SQUARE_FREE.is(k) && Predicates.SQUARE_FREE.is(k + 1) && !Predicates.SQUARE_FREE.is(2*k + 1)	Numbers k such that k and k+1 are squarefree but 2*k+1 is not
+A172195	filter	1	new A000040()	p -> PP(Functions.DIGIT_SUM.z(p).-(Functions.DIGIT_PRODUCT.z(p)).abs())	Prime numbers for which the absolute difference between the summation of its digits & the product of its digits is a prime.
+A172256	filter	1	new A000040()	p -> !PP(p.*(2).+(3)) && !PP(p.*(2).-(3))	2*p+-3 are both nonprimes.	nonn	1..1000	nyi	_Juri-Stepan Gerasimov_
+A172279	trilambn	0	0	0	(n, k) -> new Q(BI(n, k), ZV(1).+(ZV(k - n/2).^(2))).ceiling()	ceiling( binomial(n, k)/(1 + (k - floor(n/2))^2) ).	nonn,tabl	0..100	nyi	_Roger L. Bagula_
+A172281	trilambn	0	0	0	(n, k) -> new Q(BI(n, k).*(2), ZV(4).+(ZV(k - n/2).^(2))).ceiling()	ceiling( binomial(n, k)*(1+q)/( (1+q)^2 + (k - floor(n/2))^2 ) ), with q = 1, read by rows.	nonn,tabl,less,easy	0..30	nyi	_Roger L. Bagula_
+A172287	filter	1	new A000040()	p -> PP(p.*(2).-(3)) ^ PP(p.*(3).-(2))	Primes p such that exactly one of 2p-3 and 3p-2 is prime
+A172344	filnum	1	1	k -> new Q(PHI(k), k).equals(new Q(16, 29))	Numbers k such that phi(k)/k = 16/29.
+A172438	filnum	1	1	k -> TAU(k*k + 1).-(TAU(k*k)).-(1).isZero()	Numbers k such that tau(k^2+1) - tau(k^2) = 1 where the function tau(k) is the number of positive divisors of k.	nonn	1..5587	nyi	_Michel Lagneau_
+A172985	trilambn	0	0	0	(n, m) -> D049614(n)./(D049614(m).*(D049614(n - m)))	read by rows.	nonn,tabl,easy	0..82	nyi	_Roger L. Bagula_
+A173826	filter	1	new A000040()	p -> PP(p.-(SQRT(p))) && PP(p.+(SQRT(p)))	Primes p such that p-+floor(Sqrt(p)) are primes.	nonn	1..43	nyi	_Vladimir Joseph Stephan Orlovsky_
+A173827	filter	1	new A000040()	p -> PP(p.+(SQRT(p).^(2)))	Primes p such that p+(floor(Sqrt(p)))^2 is prime.	nonn	1..50	nyi	_Vladimir Joseph Stephan Orlovsky_
+A173828	filter	1	new A000040()	p -> PP(p.-(SQRT(p).^(2))) && PP(p.+(SQRT(p).^(2)))	Primes p such that p-+(floor(Sqrt(p)))^2 are primes.	nonn	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A173831	lambdan	2	n -> Functions.PREV_PRIME.z(ZV(n).^(4).-(1))	Largest prime < n^4.	nonn	2..34	nyi	_Vladimir Joseph Stephan Orlovsky_
+A173832	lambdan	2	n -> Functions.PREV_PRIME.z(ZV(n).^(5))	Largest prime < n^5.	nonn	2..30	nyi	_Vladimir Joseph Stephan Orlovsky_
+A179644	parmof2	1	A163569	4,1,1	Product of the 4th power of a prime and 2 different distinct primes (p^4*q*r).
+A179646	parmof2	1	A163569	5,2	Product of the 5th power of a prime and different distinct prime of the 2nd power (p^5*q^2).
+A179664	parmof2	1	A163569	7,1	Products of the 7th power of a prime and a distinct prime (p^7*q).
+A179666	parmof2	1	A163569	4,3	Products of the 4th power of a prime and a distinct prime of power 3 (p^4*q^3).
+A179667	parmof2	1	A163569	5,1,1	Products of the 5th power of a prime and 2 distinct primes (p^5*q*r).
+A179668	parmof2	1	A163569	8,1	Products of the 8th power of a prime and a distinct prime (p^8*q).
+A179669	parmof2	1	A163569	4,2,1	Products of form p^4*q^2*r where p, q and r are three distinct primes.
+A179670	parmof2	1	A163569	3,1,1,1	Numbers of the form p^3*q*r*s where p, q, r, and s are distinct primes.
+A179671	parmof2	1	A163569	5,3	Products of the 5th power of a prime and a distinct prime of the 3rd power (p^5*q^3).
+A179672	parmof2	1	A163569	6,1,1	Products of the 6th power of a prime and 2 distinct primes (p^6*q*r).
+A179688	parmof2	1	A163569	3,3,1	Numbers of the form p^3*q^3*r where p, q, and r are prime.
+A179689	parmof2	1	A163569	7,2	Numbers with prime signature {7,2}, i.e., of form p^7*q^2 with p and q distinct primes.
+A179690	parmof2	1	A163569	2,2,1,1	Numbers of the form p^2*q^2*r*s where p, q, r, and s are distinct primes.
+A179691	parmof2	1	A163569	5,2,1	Numbers p^5*q^2*r where p, q, r are 3 distinct primes.
+A179692	parmof2	1	A163569	9,1	Numbers of the form p^9*q where p and q are distinct primes.
+A179693	parmof2	1	A163569	4,1,1,1	Numbers of the form p^4*q*r*s where p, q, r, and s are distinct primes.
+A179695	parmof2	1	A163569	3,2,2	Numbers of the form p^3*q^2*r^2 where p, q, and r are distinct primes.
+A179696	parmof2	1	A163569	7,1,1	Numbers with prime signature {7,1,1}, i.e., of form p^7*q*r with p, q and r distinct primes.
+A179698	parmof2	1	A163569	4,3,1	Numbers of the form p^4*q^3*r where p, q, and r are distinct primes.
+A179699	parmof2	1	A163569	8,2	Numbers of the form p^8*q^2 where p and q are distinct primes.
+A179700	parmof2	1	A163569	3,2,1,1	*r*sNumbers of the form p^3*q^2*r*s where p, q, r, and s are distinct primes.
+A179702	parmof2	1	A163569	4,5	Numbers of the form p^4*q^5 where p and q are two distinct primes.
+A179703	parmof2	1	A163569	6,2,1	Numbers of the form p^6*q^2*r where p, q, and r are distinct primes.
+A179704	parmof2	1	A163569	5,1,1,1	Numbers of the form p^5*q*r*s where p, q, r, and s are distinct primes.
+A179705	parmof2	1	A163569	7,3	Numbers of the form p^7*q^3 where p and q are distinct primes.
+A179746	parmof2	1	A163569	4,2,2	Numbers of the form p^4*q^2*r^2 where p, q, and r are distinct primes.
+A179747	parmof2	1	A163569	8,1,1	Numbers of the form p^8*q*r where p, q, and r are distinct primes.
+A189975	parmof2	1	A163569	1,1,3	pqr^3 for distinct p, q, r.	nonn	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A189982	parmof2	1	A163569	1,1,1,2	, i.e., factorization p*q*r*s^2 with distinct primes p, q, r, s.	nonn	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A189983	parmof2	1	A163569	1,1,1,1,2	pqrst^2.	nonn	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A189984	parmof2	1	A163569	1,1,1,1,3	pqrst^3.	nonn	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A189985	parmof2	1	A163569	1,1,1,1,1,2	pqrstu^2.	nonn	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A189987	parmof2	1	A163569	1,6	p*q^6.	nonn	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A189988	parmof2	1	A163569	2,4	p^2*q^4.	nonn	1..1000	2023-10-19/simtr	_Vladimir Joseph Stephan Orlovsky_
+A189989	parmof2	1	A163569	1,1,1,2,2	pqrs^2t^2.	nonn	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A189990	parmof2	1	A163569	2,6	p^2*q^6.	nonn	1..1000	2025-06-01.ack/s	_Vladimir Joseph Stephan Orlovsky_
+A189991	parmof2	1	A163569	4,4	p^4*q^4.	nonn	1..1000	2025-06-16.ack/s	_Vladimir Joseph Stephan Orlovsky_
+A190011	parmof2	1	A163569	1,3,5	pq^3r^5.	nonn	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A190012	parmof2	1	A163569	1,4,4	pq^4r^4.	nonn	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A190106	parmof2	1	A163569	2,3,3	Numbers with prime factorization p^2*q^3*r^3 where p, q, and r are distinct primes.
+A190107	parmof2	1	A163569	1,1,2,4	pqr^2s^4.	nonn	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A190108	parmof2	1	A163569	1,1,3,3	p*q*r^3*s^3 (where p, q, r, s are distinct primes).	nonn	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A190109	parmof2	1	A163569	1,2,2,3	p*q^2*r^2*s^3 (where p, q, r, s are distinct primes).	nonn	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A190110	parmof2	1	A163569	1,1,1,1,4	p*q*r*s*t^4 (where p, q, r, s, t are distinct primes).	nonn	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A190111	parmof2	1	A163569	1,1,1,2,3	p*q*r*s^2*t^3 (where p, q, r, s, t are distinct primes).	nonn	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A190114	parmof2	1	A163569	2,2,5	Numbers with prime factorization p^2*q^2*r^5 where p, q, and r are distinct primes.
+A190115	parmof2	1	A163569	2,3,4	Numbers with prime factorization p^2*q^3*r^4 where p, q, and r are distinct primes.
+A190292	parmof2	1	A163569	1,1,1,6	pqrs^6.	nonn	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A190293	parmof2	1	A163569	1,1,2,5	pqr^2s^5.	nonn	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A190294	parmof2	1	A163569	1,1,3,4	pqr^3s^4.	nonn	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A190316	parmof2	1	A163569	1,1,1,1,1,1,3	pqrstuv^3.	nonn,easy	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A190319	parmof2	1	A163569	1,2,2,4	pq^2r^2s^4.	nonn	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A190320	parmof2	1	A163569	1,2,3,3	pq^2r^3s^3.	nonn	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A190377	parmof2	1	A163569	2,2,2,2	p^2*q^2*r^2*s^2 where p, q, r, and s are distinct primes.	nonn	1..1000	2025-06-01.ack/s	_Vladimir Joseph Stephan Orlovsky_
+A190378	parmof2	1	A163569	1,1,1,1,1,3	p*q*r*s*t*u^3 (where p, q, r, s, t, u are distinct primes).	nonn	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A190379	parmof2	1	A163569	1,1,2,2,2	pqr^2s^2t^2.	nonn	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A190380	parmof2	1	A163569	1,1,1,1,2,2	pqrst^2u^2.	nonn	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A190381	parmof2	1	A163569	1,1,1,1,1,1,2	pqrstuv^2.	nonn	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A190382	parmof2	1	A163569	2,2,2,3	Numbers with prime factorization p^2*q^2*r^2*s^3 where p, q, r, and s are distinct primes.
+A190383	parmof2	1	A163569	1,1,1,1,5	pqrst^5.	nonn	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A190384	parmof2	1	A163569	1,1,1,2,4	pqrs^2t^4.	nonn	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A190385	parmof2	1	A163569	1,1,1,3,3	pqrs^3t^3.	nonn	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A190386	parmof2	1	A163569	1,1,2,2,3	pqr^2s^2t^3.	nonn	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A190387	parmof2	1	A163569	1,2,2,2,2	pq^2r^2s^2t^2.	nonn	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A190388	parmof2	1	A163569	1,1,1,1,1,4	pqrstu^4.	nonn	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A190390	parmof2	1	A163569	1,1,1,1,2,3	pqrst^2u^3.	nonn	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A190391	parmof2	1	A163569	1,1,1,2,2,2	pqrs^2t^2u^2.	nonn	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A190462	parmof2	1	A163569	1,1,1,1,1,2,2	pqrstu^2v^2.	nonn	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A190464	parmof2	1	A163569	4,6	Numbers with prime factorization p^4*q^6.
+A190465	parmof2	1	A163569	5,5	p^5q^5.	nonn	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A190466	parmof2	1	A163569	1,2,7	pq^2r^7.	nonn	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A190467	parmof2	1	A163569	1,3,6	pq^3r^6.	nonn	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A190468	parmof2	1	A163569	1,4,5	pq^4r^5.	nonn	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A190469	parmof2	1	A163569	2,2,6	Numbers with prime factorization p^2*q^2*r^6 where p, q, and r are distinct primes.
+A190470	parmof2	1	A163569	2,3,5	Numbers with prime factorization p^2*q^3*r^5 where p, q, and r are distinct primes.
+A190471	parmof2	1	A163569	2,4,4	Numbers with prime factorization p^2*q^4*r^4 where p, q, and r are distinct primes.
+A190472	parmof2	1	A163569	3,3,4	Numbers with prime factorization p^3*q^3*r^4 where p, q, and r are distinct primes.
+A190473	parmof2	1	A163569	1,1,1,7	pqrs^7.	nonn	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A190474	parmof2	1	A163569	1,1,2,6	pqr^2s^6.	nonn	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A190475	parmof2	1	A163569	1,1,3,5	pqr^3s^5.	nonn	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A240936	prepend	0	new RowSumSequence(0, new A058843())	1	Row sums give
+A243676	lambdan	0	n -> (n == 0) ? ZV(1) : RU(1, n, i -> QV(BI(4*n, i - 1)).*(BI(n, i)).*(Z2(i - 1))./(n)).num()	a(n) = Sum_{i=1..n} binomial(4*n, i-1)*binomial(n, i)*2^(i-1)/n
+A245560	rowsum	0	new A144480()
+A251686	polya	0	"[1]"	"x,B,1,-,/n,3,/,exp"	new A132303()
+A256846	decexp	0	() -> CR.GAMMA.divide(CR.FOUR).subtract(CR.PI.divide(CR.EIGHT)).add(CR.TWO.log().divide(CR.FOUR)).negate()
+A266532	prepend	0	new SingleTransformSequence(0, (term, n) -> term.*(3).+(1), "", new A267700())	0	a(n) = 1 + 3*(?160720(n) - 1)/4 = 1 + 3*J267700(n-1)
+A275527	lambdan	1	n -> (n == 1) ? ZV(1) : (((n&1) == 1) ? FA(n - 1)./(2) : DF(n - 2).*(DF(n - 1).+(1))./(2))	If n odd a(n) = (n - 1)!/2. If n even a(n) = (n - 2)!!*(1 + (n - 1)!!)/2.
+A320337	rowsum	0	new A321967()	Row sums give
+A369937	filnum	1	1	k -> Predicates.SQUARE.is(JF(k).maxExponent())	Numbers whose maximal exponent in their prime factorization is square.
+A369938	filnum	1	1	k -> Long.bitCount(JF(k).maxExponent()) == 1	Numbers whose maximal exponent in their prime factorization is a power of 2.
+A369939	filnum	1	1	k -> Predicates.FIBONACCI.is(JF(k).maxExponent())	Numbers whose maximal exponent in their prime factorization is a Fibonacci number.
+A372873	trilambn	1	1	1	(n, k) -> Z2(2*k - n - 1).*(BI(n - 1, 2*(n - k)))	T(n,k) = 2^(2*k-n-1)*binomial(n-1, 2*(n-k)).
+A374589	filnum	1	1	k -> Predicates.POWER.is(JF(k).maxExponent())	Numbers whose maximum exponent in their prime factorization is a powerful number larger than 1.
+A374590	filnum	1	2	k -> (Long.bitCount(JF(k).maxExponent()) & 1L) == 0	Numbers whose maximum exponent in their prime factorization is an evil number (J001969).
+A376172	filnum	1	1	k -> (JF(k).minExponent()&1) == 0	Numbers whose prime factorization has an even minimum exponent.
+A376173	filnum	1	1	k -> { final long mine = JF(k).minExponent(); return (mine&1) == 1 && mine > 1; }	Numbers whose prime factorization has an odd minimum exponent that is larger than 1.
+A376409	partsun	0	new A376408().prepend(0)	a(n) = A048675(A376408(n)); Partial sums of A376408.
+A387219	lambdan	1	n -> ZV(n).-(D005811(n))./(2).testBit(0) ? ZV(-1) : ZV(1)	""	new A255070().skip(1)	a(n) = (-1)^A255070(n).
+A390076	decexp	0	() -> CR.FIVE.multiply(X390072).subtract(CR.FOUR.multiply(CR.PI.pow(2)).divide(CR.THREE))
+A392323	holos	0	[0,12,-12,-92,14,140,-169,293,535,-227,899,54,-1641,-317,258,263,318,-109,-66,13,-10,7,-1]	1,16,81,278,1365,7164,33858,161307,791722,3859473,18702843,90938441,442661923,2152542098,10466805572,50911253507,247627502461,1204355990572,5857651237681,28490444424887,138570638922700,673973346779694,3278051222866134	0	0
+A393982	holos	0	[0,1,1,0,1,-1]	1,7,49,56	0	0
+A394827	holos	0	[0,-1,1,1,0,0,-2,0,0,1,1,-1]	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,2,3,4,6,8,10,13	0	0
+A394873	holos	0	[0,-1,1,1,0,0,-2,0,0,1,1,-1]	0, 0, 0, 0, 0, 5, 4, 7, 9, 13, 15, 21, 24, 31, 36, 44	0	0
+A394985	holos	0	[0,1,-1,-1,0,0,1,1,1,-1,-1,-1,0,0,1,1,-1]	0,0,0,0,0,0,6,5,9,12,18,22,31,37,49,59,74,87,108,125,150,174,205	0	0
+A395583	holos	0	[0,-1,-1,-3,1,5,-1]	0,1,4,20,100	0	0
+A395586	holos	0	[0,-1,-1,-3,1,5,-1]	0,1,4,21,105	0	0
+A395594	holos	0	[0,1,1,0,1,-1]	1,9,81,90	0	0
+A395828	holos	0	[0,-42,-36,13,-1]	0,0,1,13,133,1219	0	0
+A395829	holos	0	[0,-56,-49,15,-1]	0,0,1,15,176,1849	0	0
+A395902	holos	0	[0,1,12,45,40,-45,12,-1]	0,0,0,1,12,99,688	0	0
+A395908	holos	0	[0,1,-7,21,-35,35,-21,7,-1]	0,27,175,660	0	0
+A395937	decexpr	1	() -> CR.THREE.multiply(CR.SQRT2).subtract(CR.FOUR.multiply(CR.THREE.sqrt())).add(CR.FOUR).subtract(CR.TEN.multiply(CR.TWO.log())).add(CR.valueOf(20).multiply(CR.ONE.add(CR.THREE.sqrt()).log())).divide(CR.valueOf(15)).add(REALS.asinh(CR.ONE)).subtract(CR.TWO.multiply(CR.PI).divide(CR.NINE))
+A395938	decexpr	0	() -> CR.valueOf(42).multiply(CR.SQRT2).subtract(CR.SIX.multiply(CR.THREE.sqrt())).subtract(CR.valueOf(11).multiply(CR.PI)).add(CR.valueOf(504).multiply(CR.TWO.log())).subtract(CR.valueOf(1008).multiply(CR.ONE.add(CR.THREE.sqrt()).log())).add(CR.valueOf(600).multiply(CR.TWO.add(CR.THREE.sqrt()).log())).add(CR.valueOf(18).multiply(REALS.asinh(CR.ONE))).divide(CR.valueOf(180))
+A395953	decexp	0	() -> CR.valueOf(16).divide(CR.valueOf(15).multiply(CR.PI))
+A395980	decexp	1	() -> CV(new Q(262144, 177147))	Decimal expansion of 262144/177147 = 2^18/3^11.	nonn,easy,cons,new	1..90	nyi	_Jianing Song_
+A395981	decexp	1	() -> CV(128)./(CV(5).^(new Q(11, 4)))	Decimal expansion of 128/5^(11/4).	nonn,easy,cons,new	1..90	nyi	_Jianing Song_
+A396012	holos	0	[0,-1,1,1,0,0,-2,0,0,1,1,-1]	0,0,0,0,0,0,0,1,1,3,4,8,10,16,19,27,30,38,44,54,61,73,82,96,107,123	0	0
+A396058	holos	0	[0,-1,1,1,0,0,-2,0,0,1,1,-1]	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 2, 2, 4, 5, 7, 9, 12, 14, 19, 22	0	0

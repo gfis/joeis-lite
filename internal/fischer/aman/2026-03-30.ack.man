@@ -1,0 +1,115 @@
+---- 2026-03-30 13:15:02
+A085382	sintrif	2	(term, n) -> term.+(GPF(term.-(1)))	""	new A000040()	p + F006530(p-1) where p = prime(n).
+A087040	multraf	1	(self, n) -> F006530(self.s(0)./(self.s(1)))	""	new A002808(), new A052369()
+A088534	multraf	0	(self, n) -> (n == 0) ? ZV(1) : self.s(0).+(self.s(1))./(2)	""	new A002324(), new A145377()
+A088836	lambdan	1	n -> F020639(2*n + 1).+(F006530(2*n + 1))./(2)
+A089992	sintrif	1	(term, n) -> D119288(term)	""	new A024619()
+A091372	lambdan	1	n -> CNT(1, n, m -> F001222(m).compareTo(F020639(m)) > 0)
+A091373	lambdan	1	n -> CNT(1, n, m -> F001222(m).compareTo(F020639(m)) == 0)
+A091374	lambdan	1	n -> CNT(1, n, m -> F001222(m).compareTo(F020639(m)) < 0)
+A096033	union2	1	new A001105().skip(1)	new A016754()
+A102048	sintrif	0	(term, n) -> CV(term).log()./(CV(F006530(n)).log()).floor()	"1"	new A046021()	log(J046021(n))/log(F006530(n)) for n > 1.
+A102050	lambdan	0	n -> { final Z t = ZV(10).^(1 << n).+(1); return PP(t) ? ZV(1) : LPF(t); }	1 if 10^(2^n)+1 is prime, otherwise smallest prime factor of 10^(2^n)+1.
+A108077	sintrif	1	(term, n) -> F006530(term)	""	new A027760()
+A111693	lambdan	1	n -> (n == 1) ? ZV(3) : F151800(D016754(n - 1))
+A123248	sintrif	0	(term, n) -> F006530(term)	""	new A071576().skip(3)
+A125604	lambdan	3	n -> MIN(GPF(n - 1), MIN(GPF(n), GPF(n+1)))	where lpf is the largest prime factor: lpf(k) = F006530(k).
+A129316	filnum	1	2	k -> SOPFR(k + 1).mod(SOPFR(k)).isZero()	Positive integers k such that sopfr(k) divides sopfr(k+1), where sopfr(k) is the sum of the prime factors of k, counting multiplicity.	easy,nonn	1..10000	nyi	_Walter Kehowski_
+A129317	filnum	1	3	k -> SOPFR(k).mod(SOPFR(k - 1)).isZero()	The second of the pair of consecutive integers k and k+1 such that sopfr(k) divides sopfr(k+1), where sopfr(k) is the sum of the prime factors of k, counting multiplicity.	easy,nonn	1..10000	nyi	_Walter Kehowski_
+A129318	multraf	1	(self, n) -> SOPFR(self.s(0))	""	new A129316()
+A129319	multraf	1	(self, n) -> SOPFR(self.s(0))	""	new A129317()
+A129320	multraf	1	(self, n) -> self.s(0)./(self.s(1))	""	new A129319(), new A129318()
+A129456	multia	0	"1"	(self, n) -> { final Z cp = self.a(n - 1).+(n); return CNT(0, n - 1, k -> GCD(cp, self.a(k)).equals(ZV(1))); }	. a(n) is the number of earlier terms of the sequence that are coprime to (n+a(n-1)).	nonn	0..74	nyi	_Leroy Quet_
+A129457	multia	1	"1"	(self, n) -> { final Z cp = self.a(n - 1).+(n); return CNT(1, n - 1, k -> GCD(cp, self.a(k)).equals(ZV(1))); }	; a(n) = number of earlier terms of the sequence that are coprime to (n+a(n-1)).	nonn	1..77	nyi	_Leroy Quet_
+A129492	filter	1	new A002808()	c -> ZV(2).^(c).mod(c).bitCount() == 1	Composite numbers k such that 2^k mod k is a power of 2.	easy,nonn	1..10000	nyi	_Robert G. Wilson v_
+A129821	trilambn	0	0	0	(n, k) -> (n == 0) ? ZV(1) : ZV(n - k).^(n).-(ZV(n).*(k).*(n - k)).+(ZV(k).^(n))	Triangle read by rows: T(n, k) = (n-k)^n - n*k*(n-k) + k^n, with T(0, 0) = 1.	nonn,tabl	0..50	nyi	_Roger L. Bagula_
+A129827	filnum	1	1	k ->{ final Z ph = PHI(k); return !ph.testBit(0) && Predicates.SQUARE.is(ph./(2)); }	Numbers k such that Eulers totient phi(k) divided by 2 is a perfect square.
+A129842	filter	1	new A000040()	p -> PP(p.-(3).*(p).-(2)./(2))	Primes p such that (p^2 - 3p - 2)/2 is prime.	nonn	1..230	nyi	_J. M. Bergot_
+A129888	multia	1	"10"	(self, n) -> ((n&1) == 0) ? Functions.DIGIT_SUM.z(self.a(n - 1)) : self.a(n - 2).+(self.a(n - 1))	Start with 10; write down the sum of its digits; add last two terms; repeat.	nonn,base	1..10000	nyi	_N. J. A. Sloane_
+A129896	multia	1	"1"	(self, n) -> self.a(n-1).+(CNT(1, n - 1, k -> Predicates.FIBONACCI.is(self.a(k))))	+ number of Fibonacci numbers among the first (n-1) terms of the sequence.	nonn	1..62	nyi	_Leroy Quet_
+A129900	filter	1	new A000040()	p -> PP(p.*(10).+(Functions.NEXT_PRIME.z(p)))	Primes p such that 10*p + q is a prime, where q is the smallest prime > p.	nonn	1..1000	nyi	_J. M. Bergot_
+A129901	filter	1	new A000040()	p -> PP(Functions.NEXT_PRIME.z(p).*(10).-(p))	For two consecutive primes p and q the difference 10*q - p is prime. The first of the pair of primes is listed.	nonn	1..10000	nyi	_J. M. Bergot_
+A135707	decexp	1	() -> CR.valueOf(116).subtract(CR.EIGHT.multiply(CR.SQRT2)).subtract(CR.valueOf(20).multiply(CR.FIVE.sqrt())).add(CR.valueOf(140).multiply(CR.HALF.add(CR.FIVE.sqrt().divide(CR.TWO)).log())).subtract(CR.valueOf(40).multiply(CR.ONE.add(CR.SQRT2).log())).add(CR.valueOf(80).multiply(CR.TWO.add(CR.FIVE.sqrt()).log())).add(CR.valueOf(32).log()).add(CR.TEN.multiply(CR.ZERO.subtract(CR.ONE).add(CR.FIVE.sqrt()).log())).subtract(CR.valueOf(15).multiply(CR.valueOf(123).add(CR.valueOf(55).multiply(CR.FIVE.sqrt())).log())).divide(CR.valueOf(120))
+A136002	complen	1	Z.ONE	new A136000()		x
+A136024	lambdan	1	n -> (n == 1) ? ZV(3) : Functions.PREV_PRIME.z(ZV(10).^(n)./(3))	a(n)=precprime(10^n/3)=F007917((10^n-1)/3)	_	_	_
+A157102	lambdan	2	n -> LPF(n).*(n - 1).+(1)	*(smallest prime factor of n) + 1.
+A162361	sintrif	1	(term, n) -> term./(F020639(term).*(F006530(term)))	""	new A014612()
+A171008	sintrif	1	(term, n) -> new Z(term.toString(2).replace('0', 'a').replace('1', '0').replace('a', '1'))	""	new A000040()	Write the n-th prime in binary and change all 0's to 1's and all 1's to 0's.	nonn,base	1..38	nyi	_N. J. A. Sloane_
+A171130	filter	1	new A000040()	p -> PP(SIGMA(p.+(2)))	Primes p such that sum of divisors of p+2 is prime.	nonn	1..10000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A171131	filter	0	new A000040().skip(2)	p -> PP(SIGMA(p.-(3)))	Primes p such that sum of divisors of p-3 is prime.	nonn	1..8	nyi	_Vladimir Joseph Stephan Orlovsky_
+A171139	filter	1	new A000040()	p -> PP(p.^(2).+(p).*(7).-(1))	Primes p such that 7*p^2+7*p-1 is also prime.	nonn,easy	1..1000	nyi	_Vincenzo Librandi_
+A171153	complem	1	Z.ONE	, new A169606()		x	Numbers that are not in E169606.	nonn,easy	1..65	nyi
+A171227	filtpos	0	0	new A171226()	PRIME	Numbers k such that 9 + 10^k + 9*100^k is prime.	more,nonn	1..13	nyi	_Jason Earls_
+A171240	lambdan	1	n -> { final long d = Functions.NEXT_PRIME.l(n) - n; return ZV(n).^(d).+(ZV(d).^(n)); }	a(n) = n^d+d^n where d = D013632(n) is the distance to the next prime.	nonn	1..30	nyi	_Juri-Stepan Gerasimov_
+A171247	filnum	0	0	k -> PP(ZV(200).^(k).+(ZV(20).^(k)).+(1))	Numbers k such that 1 + 20^k + 200^k is prime.	nonn,more	1..7	nyi	_Jason Earls_
+A171249	filtpos	0	0	new A171248()	PRIME	Numbers k such that 10^k*(2+3*10^k)+3 is prime.	more,nonn	1..19	nyi	_Jason Earls_
+A171267	filter	1	new A000040()	p -> p.^(Functions.DIGIT_SUM.i(p)).toString().endsWith(p.toString())	Primes p such that p^s ends with p, where s is sum of the digits of p.	base,nonn	1..107	nyi	_Farideh Firoozbakht_
+A171268	filter	0	new A000040()	p -> p.^(Functions.DIGIT_PRODUCT.i(p)).toString().endsWith(p.toString())	Primes q such that q^p ends with q, where p is the product of the digits of q.	base,nonn	1..22	nyi	_Farideh Firoozbakht_
+A171376	filnum	0	0	k -> PP(ZV(100).^(k).+(ZV(10).^(k).*(3)).+(1))	Numbers k such that 1 + 3*10^k + 100^k is prime.	more,nonn	1..23	nyi	_Jason Earls_
+A171411	filtpos	0	0	new A171410()	PRIME	Numbers k such that 1 + 5*10^k + 100^k is prime.	nonn,more	1..17	nyi	_Jason Earls_
+A171517	filter	1	new A000040()	p -> PP(p.*(2).+(11))	p such that 2*p+11 is prime.	nonn,easy	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A171518	filter	1	new A000040().skip(2)	p -> PP(p.*(3).+(8)) && PP(p.*(3).-(8))	Primes p such that 3*p-+8 are primes.	nonn	1..3000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A171530	sintrif	1	(term, n) -> new Q(term, n).den()	""	new A018252()	Denominator of (n-th nonprime/n).	nonn,frac,easy	1..72	nyi	_Jaroslav Krizek_
+A171554	filnum	1	0	k -> PP(ZV(100).^(k).+(ZV(10).^(k).*(9)).+(1))	Numbers k such that 1 + 9*10^k + 100^k is prime.	more,nonn	1..5	nyi	_Jason Earls_
+A171577	prepend	1	new A000040().skip(2)	0,1	0, 1 and primes > 3.	nonn,easy,less	1..59	nyi	_Juri-Stepan Gerasimov_, Dec 16 2009
+A171581	prepend	1	new A002808()	1,2,3	The natural numbers without primes > 3.	nonn,easy,less	1..72	nyi	_Juri-Stepan Gerasimov_, Dec 15 2009
+A171582	filter	1	new A171583()	PRIME	Numbers k such that 10^k*(4+3*10^k)+3 is prime.	more,nonn	1..9	nyi	_Jason Earls_
+A171613	lambdan	0	n ->  { final Z n2 = ZV(n).^(2); return n2.+(Functions.DIGIT_SUM.z(n2)); }	a(n) = n^2 + sum of the digits of n^2.	base,nonn	0..50	nyi	_Zak Seidov_
+A171614	filnum	1	0	k -> { final Z n2 = ZV(k).^(2); return !n2.+(Functions.DIGIT_SUM.z(n2)).testBit(0); }	Numbers n with property that (n^2 + sum of the digits of n^2) is even.	base,nonn	1..67	nyi	_Zak Seidov_
+A171615	filnum	1	1	k -> { final Z n2 = ZV(k).^(2); return  n2.+(Functions.DIGIT_SUM.z(n2)).testBit(0); }	Numbers n with property that (n^2 + sum of the digits of n^2) is odd.	base,nonn	1..65	nyi	_Zak Seidov_
+A171629	filnum	0	0	k -> { final Z k10 = ZV(10).^(k); return PP(k10.*(k10.*(3).+(5)).+(3)); }	Numbers n such that 10^n*(5+3*10^n)+3 is prime.	more,nonn	1..8	nyi	_Jason Earls_
+A171651	trilambn	0	0	0	(n, k) -> BI(n, k).*(D005773(n + 1 - k))
+A171665	filnum	1	1	k -> { final long t = Functions.TAU.l(k); return t > 4 && Functions.TAU.l(k + 1) == t; }	Numbers n such that n and n+1 have same number of divisors, and that number of divisors is larger than 4.	nonn	1..2000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A171666	filnum	1	1	k -> { final long t = Functions.TAU.l(k); return t > 4 && Functions.TAU.l(k + 1) == t && Functions.TAU.l(k + 2) == t; }	Numbers n such that n, n+1 and n+2 have the same number of divisors, and that number of divisors is larger than 4.	nonn	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A171670	trilambn	0	0	0	(n, k) -> BI(n, k).*(D005773(n - k))	0..54	nyi	_Philippe Del‚ąö¬©ham_
+A173300	holos	1	[0,4,0,0,0,-1]	1,1,2,2,4,2	0	0
+A177929	multia	1	"4"	(self, n) -> self.a(n - 1).+(F020639(self.a(n - 1).^(2).-(1))).-(1)
+A187737	lambdan	2	n -> RU(2, n, k -> new Q(LPF(k), GPF(k))).floor()	floor(sum_{1 < k <= n} p(k)/P(k)), where p(k) is the smallest prime factor of k and P(k) is the largest prime factor of k.
+A229285	lambdan	0	n -> (n == 0) ? ZV(1) : SU(0, n, k -> S2(n+k, 2*k+1))	#n:1,1,2,8//		Forn>0,a(n)=Sum_{k=0..n}Stirling2(n+k,2*k+1)	_	_	_
+A248765	lambdan	1	n -> CV(E248764(n)).^(new Q(1, 4)).floor()	a(n)=(n!/E248766(n))^(1/4)=E248764(n)^(1/4)	_	_	_
+A255941	decexp	1	() -> CR.valueOf(14).add(CR.FIVE.multiply(CR.TEN.sqrt())).divide(CR.NINE)
+A268963	multraf	0	(self, n) -> (n == 0) ? ZV(5) : self.s(0).+(self.s(1))	""	new A084161().skip(1), new A084162().skip(1)	a(n)=J084161(n)+J084162(n)	_	_	_
+A276567	insect2	1	new A006285()	new A016754()
+A278927	lambdan	0	n -> SU(0, n, k -> FA(k).*(FA(n-k)).*(Z2(k)).*(SA(n+1, n-k+1)).*(SA(n+1, k+1)))	""		a(n)=Sum_{k=0..n}k!*(n-k)!*2^k*Stirling1(n+1,n-k+1)*Stirling1(n+1,k+1)	_	_	_
+A289091	decexp	1	() -> CR.EIGHT.multiply(X076668).pow(CR.ONE.divide(CR.FIVE))
+A305552	lambdan	0	n -> (n == 0) ? ZV(1) : SD(n, d -> BI(Z2(n/d - 1).+(d - 1), d))	""		a(n)=Sum_{d|n}binomial(2^(n/d-1)+d-1,d)	_	_	_
+A307907	lambdan	2	n -> CV(n).log()./(CV(F006530(n)).log()).floor()
+A307908	lambdan	2	n -> CV(n).log()./(CV(F020639(n)).log()).ceil()
+A333373	multia	0	"1,2"	(self, n) -> self.a(n - 1).*(PM(GPF(self.a(n - 1))))	n -> n + 1 for n <= 1; thereafter a(n) = a(n-1) * prime(gpf(a(n-1))).
+A347403	lambdan	1	n -> PP(n) ? ZV(0) : F000720(F020639(n)).+(1)
+A351566	lambdan	0	n -> D119288(F276086(n))
+A376833	sintrif	1	(term, n) -> D119288(term)	""	new A120944()
+A378678	lambdan	1	n -> RU(1, n, k -> new Q(1, GPF(k))).num()	numerator(Sum_{k=1..n} 1/P(k)), where P(k) = F006530(k) is the greatest prime dividing k for k >= 2, and P(1) = 1.
+A378679	lambdan	1	n -> RU(1, n, k -> new Q(1, GPF(k))).den()	denominator(Sum_{k=1..n} 1/P(k)), where P(k) = F006530(k) is the greatest prime dividing k for k >= 2, and P(1) = 1.
+A379220	arrlamb	1	1	1	-1	(n, k) -> F000203(D016754(n - 1)).*(F000203(D016754(k - 1)))
+A379223	lambdan	1	n -> F000203(D016754(n - 1))
+A379501	lambdan	1	n -> (n == 1) ? ZV(2) : E379496(D016754(n - 1))	= D019565(1+D016754(n)) - E379495(D016754(n)).
+A384416	multia	1	"1"	(self, n) -> self.a(n - 1).*(2851130928467L).mod(ZV(10).^(15))	a(1) = 1; for n > 1, a(n) = 2851130928467*a(n-1) mod 10^15.
+A393441	holos	0	[0,1,-5,10,-10,5,-1]	1,1,7,34,109,271	0	0
+A393549	holos	1	[0,10,-1]	0,9,252,4464,62784,763920,8455680,88367040,896734080,8996734080,90000000000	0	0
+A393678	holos	0	[0,1,-1,-1,0,1,1,-1]	0,1,5,9,16	0	0
+A393679	lingf	0	1,0,2,2,2,1,1,1	1,-2,1,0,0,0,-1,2,-1					0
+A393680	holos	0	[0,1,-1,-1,0,1,1,-1]	1,3,7,12,20,28	0	0
+A393681	holos	0	[0,1,-2,1,0,0,0,-1,2,-1]	2,4,8,13,20,29,40,52	0	0
+A394071	decexpr	0	() -> CR.SEVEN.divide(CR.valueOf(24)).multiply(X178818.add(REALS.cot(X019681))).multiply(CR.FOUR.subtract(REALS.sec(X019681).pow(2)).sqrt())
+A394072	decexpr	0	() -> CR.SEVEN.divide(CR.TWO).multiply(REALS.cot(CR.PI.divide(CR.SEVEN)).add(CR.THREE.sqrt()))
+A394073	decexp	1	() -> CR.HALF.add(X362922)
+A394074	decexpr	1	() -> CR.FOUR.add(REALS.csc(CR.PI.divide(CR.valueOf(14))).pow(2)).sqrt().divide(CR.FOUR)
+A394075	decexp	0	() -> CR.ONE.add(X160389).divide(CR.TWO.add(X160389)).sqrt()
+A394342	holos	0	[0,-9,24,-22,8,-1]	1,3,17,79	0	0
+A394383	lambdan	1	n -> F006530(n).^(ZV(n)./(F006530(n)))
+A394520	lambdan	0	n -> BI(new Q(5*n + 1, 3), n)./(5*n + 1).*(ZV(3).^(n)).*(FA(n)).num()
+A394521	lambdan	0	n -> BI(new Q(6*n + 1, 3), n)./(6*n + 1).*(ZV(3).^(n)).*(FA(n)).num()
+A394522	lambdan	0	n -> BI(new Q(6*n + 1, 4), n)./(6*n + 1).*(ZV(4).^(n)).*(FA(n)).num()
+A394523	lambdan	0	n -> BI(new Q(7*n + 1, 4), n)./(7*n + 1).*(ZV(4).^(n)).*(FA(n)).num()
+A394524	lambdan	0	n -> BI(new Q(8*n + 1, 4), n)./(8*n + 1).*(ZV(4).^(n)).*(FA(n)).num()
+A394531	multia	1	"1"	(self, n) -> ZV(n).^(2*(n - 1)).-(SU(1, n - 1, k -> ZV(n).^(2*(n - 1 - k)).*(k).*(k).*(self.a(k))))
+A394557	sintrif	0	(term, n) -> term./(ZV(n + 1).^(3))	""	new A107675()
+A394596	decexp	0	() -> CR.SQRT2.multiply(CR.FIVE.add(CR.FIVE.sqrt()).sqrt()).multiply(CR.valueOf(24).multiply(CR.FIVE.sqrt()).subtract(CR.EIGHT).subtract(CR.valueOf(35).add(CR.NINE.multiply(CR.FIVE.sqrt())).multiply(CR.FIVE.log())).subtract(CR.TWO.multiply(CR.valueOf(25).add(CR.valueOf(11).multiply(CR.FIVE.sqrt()))).multiply(CR.FIVE.sqrt().subtract(CR.TWO).log()))).divide(CR.valueOf(480))
+A394597	decexp	0	() -> CR.SEVEN.divide(CR.TEN.multiply(CR.THREE.sqrt())).subtract(CR.SEVEN.divide(CR.valueOf(90))).add(CR.valueOf(19).multiply(CR.THREE.log()).divide(CR.valueOf(40))).subtract(CR.TWO.add(CR.THREE.sqrt()).log().divide(CR.valueOf(60)))
+A394598	decexp	0	() -> CR.FOUR.multiply(CR.SQRT2).multiply(CR.PI).divide(CR.THREE).add(CR.TWO.multiply(CR.TWO.subtract(CR.SQRT2).sqrt()).multiply(CR.ONE.divide(CR.FIVE).add(CR.valueOf(13).multiply(CR.SQRT2).divide(CR.valueOf(120))).subtract(CR.ONE.divide(CR.valueOf(20)).add(CR.SQRT2.divide(CR.valueOf(60))).add(CR.TWO.multiply(CR.PI).divide(CR.THREE)).multiply(CR.TWO.add(CR.SQRT2).sqrt())).subtract(CR.valueOf(14).add(CR.valueOf(91).multiply(CR.SQRT2).divide(CR.TEN)).multiply(CR.TWO.add(CR.SQRT2).log()).divide(CR.valueOf(48))).add(CR.ONE.add(CR.SEVEN.multiply(CR.SQRT2).divide(CR.TEN)).multiply(CR.TWO.subtract(CR.SQRT2).log()).divide(CR.valueOf(48))).add(CR.ONE_THIRD.subtract(CR.SQRT2.divide(CR.FOUR)).multiply(CR.TWO.add(CR.TWO.add(CR.SQRT2).sqrt()).log()).divide(CR.valueOf(20))).add(CR.valueOf(21).add(CR.valueOf(29).multiply(CR.SQRT2).divide(CR.TWO)).multiply(CR.TWO.add(CR.TWO.subtract(CR.SQRT2).sqrt()).log()).divide(CR.valueOf(40)))))
+A394599	decexp	0	() -> CR.FOUR.multiply(CR.valueOf(5125).add(CR.valueOf(2110).multiply(CR.FIVE.sqrt())).sqrt().subtract(CR.valueOf(24)).subtract(CR.valueOf(11).multiply(CR.FIVE.sqrt()))).subtract(CR.valueOf(505).add(CR.valueOf(239).multiply(CR.FIVE.sqrt())).multiply(CR.TWO.log())).subtract(CR.valueOf(30).multiply(CR.FOUR.add(CR.THREE.multiply(CR.FIVE.sqrt()))).multiply(CR.FIVE.log())).subtract(CR.valueOf(205).add(CR.valueOf(107).multiply(CR.FIVE.sqrt())).multiply(CR.ONE.add(CR.FIVE.sqrt()).log())).add(CR.valueOf(705).add(CR.valueOf(343).multiply(CR.FIVE.sqrt())).multiply(CR.THREE.add(CR.FIVE.sqrt()).log())).subtract(CR.valueOf(105).add(CR.valueOf(47).multiply(CR.FIVE.sqrt())).multiply(CR.FIVE.sqrt().add(CR.TEN.add(CR.TWO.multiply(CR.FIVE.sqrt())).sqrt()).log())).subtract(CR.valueOf(65).subtract(CR.valueOf(29).multiply(CR.FIVE.sqrt())).multiply(CR.FIVE.sqrt().add(CR.TEN.subtract(CR.TWO.multiply(CR.FIVE.sqrt())).sqrt()).log())).add(CR.FIVE.add(CR.THREE.multiply(CR.FIVE.sqrt())).multiply(CR.FIVE.subtract(CR.FIVE.sqrt()).add(CR.TWO.multiply(CR.TEN.subtract(CR.TWO.multiply(CR.FIVE.sqrt())).sqrt())).log())).divide(CR.valueOf(600))
+A394600	decexp	0	() -> CR.valueOf(504).subtract(CR.valueOf(660).multiply(CR.SQRT2)).add(CR.valueOf(396).multiply(CR.THREE.sqrt())).subtract(CR.FOUR.multiply(CR.SIX.sqrt())).add(CR.TWO.multiply(CR.THREE.add(CR.THREE.sqrt())).multiply(CR.TWO.add(CR.THREE.sqrt()).sqrt())).add(CR.SIX.multiply(CR.ONE.add(CR.valueOf(47).multiply(CR.THREE.sqrt()))).multiply(CR.TWO.subtract(CR.THREE.sqrt()).sqrt())).subtract(CR.valueOf(27).divide(CR.TWO).multiply(CR.valueOf(15).add(CR.valueOf(11).multiply(CR.THREE.sqrt()))).multiply(CR.THREE.log())).subtract(CR.FOUR.multiply(CR.valueOf(27).subtract(CR.THREE.sqrt())).multiply(CR.ONE.add(CR.SQRT2).log())).subtract(CR.FOUR.multiply(CR.THREE.sqrt()).multiply(CR.TWO.add(CR.THREE.sqrt()).log())).add(CR.TWO.multiply(CR.valueOf(666).add(CR.valueOf(397).multiply(CR.THREE.sqrt()))).multiply(CR.TWO.subtract(CR.THREE.sqrt()).log())).subtract(CR.valueOf(33).subtract(CR.valueOf(19).multiply(CR.THREE.sqrt())).multiply(CR.TWO.add(CR.TWO.add(CR.THREE.sqrt()).sqrt()).log())).add(CR.THREE.multiply(CR.valueOf(899).add(CR.valueOf(523).multiply(CR.THREE.sqrt()))).multiply(CR.TWO.add(CR.TWO.subtract(CR.THREE.sqrt()).sqrt()).log())).divide(CR.valueOf(1080).multiply(CR.SQRT2))
+A394601	decexp	0	() -> CR.THREE.sqrt().divide(CR.EIGHT).add(CR.THREE.divide(CR.valueOf(40))).add(CR.SEVEN.multiply(CR.TWO.multiply(CR.THREE.sqrt()).add(CR.THREE).log()).subtract(CR.SIX.multiply(CR.TWO.multiply(CR.THREE.sqrt()).subtract(CR.THREE).log())).divide(CR.valueOf(80)))
+A394604	decexp	1	() -> CR.PI.subtract(CR.FOUR.divide(CR.THREE)).add(CR.PI.pow(2).subtract(CR.EIGHT.multiply(CR.PI).divide(CR.THREE)).add(CR.ONE.divide(CR.NINE)).sqrt())
+A394607	decexp	0	() -> CR.FOUR.subtract(CR.valueOf(16).subtract(CR.THREE.multiply(CR.PI)).sqrt()).divide(CR.THREE)

@@ -1,0 +1,108 @@
+---- 2026-04-10 10:28:41
+A031971	lambdan	1	n -> SU(1, n, k -> ZV(k).^(n))	a(n) = Sum_{k=1..n} k^n.
+A031971	lambdan	1	n -> SU(1, n, k -> ZV(k).^(n))	a(n) = Sum_{k=1..n} k^n.
+A186243	filnum	1	1	k -> PP(6*k - 5) && PP(6*k - 1)	Numbers k such that 6*k-5 and 6*k-1 are both primes.	nonn,easy	1..10000	nyi	_Jonathan Vos Post_
+A186254	sintrif	1	(term, n) -> term.*( 2).+(1)	""	new FilterPositionSequence(1, 1, new A261302(), FilterSequence.ZERO)	a(n) =  2*b  (n)+ 1, where b(n) lists the zeros of the sequence J261302 u(n)=abs(u(n-1)-gcd(u(n-1),2*n-1)), u(1)=1.	nonn	1..27	nyi	_Benoit Cloitre_
+A186255	sintrif	1	(term, n) -> term.*( 3).+(2)	""	new FilterPositionSequence(1, 1, new A261303(), FilterSequence.ZERO)	a(n) =  3*b_3(n)+ 2, where b_3 lists the zeros of the sequence J261303: u(n+1)=abs(u(n)-gcd(u(n),3*n+2)), u(1)=1.	nonn	1..25	nyi	_Benoit Cloitre_
+A186256	sintrif	1	(term, n) -> term.*( 4).+(3)	""	new FilterPositionSequence(1, 1, new A261304(), FilterSequence.ZERO)	a(n) =  4*b_4(n)+ 3, where b_4 lists the indices of zeros of the sequence J261304: u(n) = abs(u(n-1)-gcd(u(n-1),4*n-1)), u(1) = 1.	nonn	1..23	nyi	_Benoit Cloitre_
+A186257	sintrif	1	(term, n) -> term.*( 5).+(4)	""	new FilterPositionSequence(1, 1, new A261305(), FilterSequence.ZERO)	a(n) =  5*b_5(n)+ 4, where b_5 lists the indices of zeros of the sequence J261305: u(n) = abs(u(n-1)-gcd(u(n-1),5*n-1)), u(1) = 1.	nonn	1..20	nyi	_Benoit Cloitre_
+A186258	sintrif	1	(term, n) -> term.*( 6).+(5)	""	new FilterPositionSequence(1, 1, new A261306(), FilterSequence.ZERO)	a(n) =  6*b_6(n)+ 5, where b_6 lists the indices of zeros of the sequence J261306: u(n) = abs(u(n-1)-gcd(u(n-1),6*n-1)), u(1) = 1.	nonn	1..20	nyi	_Benoit Cloitre_
+A186258	sintrif	1	(term, n) -> term.*( 6).+(5)	""	new FilterPositionSequence(1, 1, new A261306(), FilterSequence.ZERO)	a(n) =  6*b_6(n)+ 5, where b_6 lists the indices of zeros of the sequence J261306: u(n) = abs(u(n-1)-gcd(u(n-1),6*n-1)), u(1) = 1.	nonn	1..20	nyi	_Benoit Cloitre_
+A186259	sintrif	1	(term, n) -> term.*( 7).+(6)	""	new FilterPositionSequence(1, 1, new A261307(), FilterSequence.ZERO)	a(n) =  7*b_7(n)+ 6, where b_7 lists the indices of zeros of the sequence u(n) = abs(u(n-1) - gcd(u(n-1), 7n-1)), u(1) = 1.	nonn	1..20	nyi	_Benoit Cloitre_
+A186260	sintrif	1	(term, n) -> term.*( 8).+(7)	""	new FilterPositionSequence(1, 1, new A261308(), FilterSequence.ZERO)	a(n) =  8*b_8(n)+ 7, where b_8 lists the zeros of the sequence J261308: u(n+1)=|u(n)-gcd(u(n), 8n+7)|, u(1)=1.	nonn	1..20	nyi	_Benoit Cloitre_
+A186261	sintrif	1	(term, n) -> term.*( 9).+(8)	""	new FilterPositionSequence(1, 1, new A261309(), FilterSequence.ZERO)	a(n) =  9*b_9(n)+ 8, where b_9 lists the indices of zeros of the sequence J261309: u(n) = abs(u(n-1) - gcd(u(n-1), 9n-1)), u(1) = 1.	nonn	1..20	nyi	_Benoit Cloitre_
+A186263	sintrif	1	(term, n) -> term.*(10).+(9)	""	new FilterPositionSequence(1, 1, new A261310(), FilterSequence.ZERO)	a(n) = 10*b_10(n)+9, where b_10 lists the indices of zeros of the sequence J261310: u(n) = abs(u(n-1) - gcd(u(n-1), 10n-1)), u(1) = 1.	nonn	1..19	nyi	_Benoit Cloitre_
+A188145	filnum	1	0	k -> { final Z a = ARD(k); return ARD(a).-(a).-(k).isZero(); }	Solutions of the equation n" - n' - n = 0, where n' and n" are the first and second arithmetic derivatives (see F003415).	nonn,more	1..18	nyi	_Paolo P. Lava_
+A188425	filtpos	0	1	new A051037()	v -> v.bitCount() == 1	Position of 2^n in J051037 (5-smooth numbers).	nonn	0..1000	nyi	_Zak Seidov_
+A188590	lambdan	1	n -> { final CR r = CV(13).sqrt()./(2).+(new Q(3, 2)); return r.*(n + 1).floor().-(r.*(n).floor()); }	[(n+1)*r] - [n*r], where r = 3/2 + sqrt(13)/2 and [...] denotes the floor function.	nonn	1..76	nyi	_John W. Layman_
+A190993	lambdan	0	n -> { final Z f = FI(n); return f.-(SQRT(f).^(2)); }	Square excess of Fibonacci numbers.
+A229301	filnum	1	1	k -> { final long kf =   42*k; return D031971(kf).mod(kf) == k; }	n (mod 42*n).	nonn	1..1000	nyi	_Jos‚ąö¬© Mar‚ąö‚Č†a Grau Ribas_
+A229302	filnum	1	1	k -> { final long kf =    6*k; return D031971(kf).mod(kf) == k; }	n (mod 6*n).	nonn	1..67	nyi	_Jos‚ąö¬© Mar‚ąö‚Č†a Grau Ribas_
+A229303	filnum	1	1	k -> { final long kf =    2*k; return D031971(kf).mod(kf) == k; }	m (mod 2*m).	nonn	1..10000	nyi	_Jos‚ąö¬© Mar‚ąö‚Č†a Grau Ribas_
+A229305	filnum	1	1	k -> { final long kf =   42*k; return D031971(kf).mod(kf) != k; }	n (mod 42*n).	nonn	1..55	nyi	_Jos‚ąö¬© Mar‚ąö‚Č†a Grau Ribas_
+A229306	filnum	1	1	k -> { final long kf =    6*k; return D031971(kf).mod(kf) != k; }	n (mod 6*n).	nonn	1..57	nyi	_Jos‚ąö¬© Mar‚ąö‚Č†a Grau Ribas_
+A229307	filnum	1	1	k -> { final long kf =    2*k; return D031971(kf).mod(kf) != k; }	k (mod 2*k).	nonn	1..10000	nyi	_Jos‚ąö¬© Mar‚ąö‚Č†a Grau Ribas_
+A229499	filter	1	new A002385()	p -> p.mod(9) == 4
+A229876	filter	1	new A002385()	p -> p.mod(9) == 2
+A229877	filter	1	new A002385()	p -> p.mod(9) == 1
+A229879	filter	1	new A002385()	p -> p.mod(9) == 5
+A229880	filter	1	new A002385()	p -> p.mod(9) == 7
+A229881	filter	1	new A002385()	p -> p.mod(9) == 8
+A230325	lambdan	1	n -> { final Z pm2 = PM(n).^(2); return pm2.-(1).*(pm2.-(PM(n))./(2)); }
+A231470	lambdan	1	n -> { final long m = 10; for (long k = 1; k <= m; ++k) { if (Functions.GCD.l(n, n, m - k) == 1) { return ZV(m - k); }} return Z.ONE; }	Largest integer less than 10, coprime to n.	nonn,easy	1..1000	nyi	_M. F. Hasler_
+A231471	lambdan	1	n -> { final long m = 11; for (long k = 1; k <= m; ++k) { if (Functions.GCD.l(n, n, m - k) == 1) { return ZV(m - k); }} return Z.ONE; }	Largest integer less than 11 and coprime to n.	nonn,easy	1..10000	nyi	_M. F. Hasler_
+A231472	lambdan	1	n -> { final long m = 12; for (long k = 1; k <= m; ++k) { if (Functions.GCD.l(n, n, m - k) == 1) { return ZV(m - k); }} return Z.ONE; }	Largest integer less than 12 and coprime to n.	nonn,easy	1..1000	nyi	_M. F. Hasler_
+A231475	lambdan	1	n -> { final long m =  5; for (long k = 1; k <= m; ++k) { if (Functions.GCD.l(n, n, m - k) == 1) { return ZV(m - k); }} return Z.ONE; }	Largest integer less than 5 and coprime to n.	m=5) = for(k=1, m, gcd(n, m-k)==1&&return(m-k));
+A231547	filnum	1	2	k -> ZV(k).compareTo(SIGMA(k).-(SIGMA(k - 1))) < 0	Numbers n such that n < sigma(n) - sigma(n-1).	nonn	1..1000	nyi	_Jaroslav Krizek_
+A231589	lambdan	1	n -> SU(1, (n - 1)/2, k -> ZV(k).*(k).modZ(n))
+A234578	parmof2	0	A234577	3
+A234579	parmof2	0	A234577	4
+A234580	parmof2	0	A234577	5
+A234581	parmof2	0	A234577	6
+A234582	parmof2	0	A234577	7
+A234583	parmof2	0	A234577	8
+A234584	parmof2	0	A234577	9
+A234585	parmof2	0	A234577	10
+A249136	decexp	1	() -> X248916.sqrt()
+A263022	lambdan	2	n -> GCD(D031971(n - 1), n)
+A263022	lambdan	2	n -> GCD(D031971(n - 1), n)
+A365770	trilambn	0	0	0	(n, k) -> BI(n + 1, n - k).*(BI(2*n - k - 1, k))./(n + 1)
+A367024	trilambn	0	0	0	(n, k) -> BI(n, k).^(2).*(BI(2*k, k))./(2*k - 1)
+A367025	trilambn	0	0	0	(n, k) -> BI(n + 1, n - k).^(2).*(BI(2*k, k))./(k+1)
+A367178	trilambn	0	0	0	(n, k) -> BI(n, k).^(2).*(BI(2*k, k))./(k + 1)
+A367964	trilambn	0	0	0	(n, k) -> TRI(n).+(TRI(k))
+A368045	trilambn	0	0	0	(n, k) -> Functions.PYRAMIDAL.z(k).+(Functions.PYRAMIDAL.z(n))
+A369738	arrlamb	0	0	0	-1	(n, k) -> SU(0, n, j -> ZV(k).^(j).*(S1(n, j)).*(D000587(j)))
+A382287	tablamb	0	0	n -> new Integer[]{0, 2*n + 1}	(n, k) -> (k <= n) ? Functions.EULERIAN1.z(n, k) : SU(0, n, j -> Z_1(k - j).*(ZV(j + 1).^(n)).*(BI(n + 1, k - j)))	T(n,k) = Sum_{j=0..n} (-1)^(k-j) * (j+1)^n * binomial(n+1,k-j).
+A382289	tablamb	0	0	n -> new Integer[]{0, 2*n + 1}	(n, k) -> (k <= n) ? S060187(n + 1, k + 1) : SU(0, n, j -> Z_1(k - j) .*(ZV(2*j + 1).^(n)).*(BI(n + 1, k - j)))
+A388547	trilambn	1	1	1	(n, k) -> SU(1, (n + 1)/(k + 1), i -> BI(n + 1 - (k - 1)*i, 2*i))
+A388717	trilambn	1	1	1	(n, k) -> SU(1, (n + 1)/(k + 1), i -> BI(n + 1 - (k - 1)*i, 2*i).*(i))
+A391154	trilambn	0	0	0	(n, k) -> SU(0, n - k, j -> Z_1(j).*(BI(n, k)).*(BI(n - k, j)).*(ZV(n).^(BI(k + 1, 2).+(BI(j + 1, 2)).+(ZV((n - k)*(n - j))))))
+A393974	holos	0	[0,1,-19,171,-969,3876,-11628,27132,-50388,75582,-92378,92378,-75582,50388,-27132,11628,-3876,969,-171,19,-1]	0,0,0,1,220,24415,916090,19289361,273643776,2881521541,23968134480,164468815940,961160989052,4900811504446,22217385708882,90911360810270,339921510938400,1173259864289798,3770315057917136	0	0
+A394076	decexpr	1	() -> REALS.acos(REALS.cot(CR.PI.divide(CR.SEVEN)).subtract(REALS.csc(CR.PI.divide(CR.SEVEN))).divide(CR.THREE.sqrt()))
+A394077	decexpr	1	() -> REALS.acos(CR.ONE.subtract(CR.FOUR.multiply(X073052)).divide(CR.THREE))
+A394662	decexp	1	() -> CR.valueOf(32).divide(CR.NINE).pow(CR.ONE_THIRD)
+A394663	decexp	1	() -> CR.valueOf(64).divide(CR.NINE).pow(CR.ONE_THIRD)
+A394664	decexp	1	() -> CR.ONE_THIRD.multiply(CR.valueOf(92).add(CR.valueOf(26).multiply(CR.valueOf(13).sqrt())).pow(CR.ONE_THIRD))
+A394703	lambdan	1	n -> LPF(ZV(3).^(ZV(2).^(n)).+(1)./(2))	a(n) is the least prime factor of (3^(2^n)+1)/2.
+A394713	decexp	0	() -> X085548.add(X085964).divide(X013661)
+A394714	decexp	0	() -> X085964.divide(X013662)
+A394722	holos	0	[0,1,-9,36,-84,126,-126,84,-36,9,-1]	1,2,13,125,932,5161,22362,80018,246115	0	0
+A394732	multraf	0	(self, n) -> ZV(1).+(self.s(0)).+(self.s(1)).+(self.s(2)).+(self.s(3)).+(self.s(4))	"1"	new A000290(), new A349919(), new A349927(), new A349849(), new A348634()
+A394772	multia	0	"1"	(self, n) -> ZV(n - 1).*(SU(0, n - 1, k -> self.a(k).*(self.a(n - k - 1)))).+(SU(0, n - 1, i -> SU(0, n - 1 - i, j -> self.a(i).*(self.a(j)).*(self.a(n - 1 - i - j)))))
+A394778	multia	0	"1"	(self, n) -> ZV(2*n-1).*(SU(0, n - 1, k -> self.a(k).*(self.a(n - k - 1)))).+(SU(0, n - 1, i -> SU(0, n - 1 - i, j -> self.a(i).*(self.a(j)).*(self.a(n - 1 - i - j)))))
+A394779	multia	0	"1"	(self, n) -> ZV(3*n-1).*(SU(0, n - 1, k -> self.a(k).*(self.a(n - k - 1)))).+(SU(0, n - 1, i -> SU(0, n - 1 - i, j -> self.a(i).*(self.a(j)).*(self.a(n - 1 - i - j)))))
+A394780	multia	0	"1"	(self, n) -> ZV(n - 2).*(SU(0, n - 1, k -> self.a(k).*(self.a(n - k - 1)))).+(SU(0, n - 1, i -> SU(0, n - 1 - i, j -> self.a(i).*(self.a(j)).*(self.a(n - 1 - i - j)))).*(2))
+A394781	multia	0	"1"	(self, n) -> ZV(n - 3).*(SU(0, n - 1, k -> self.a(k).*(self.a(n - k - 1)))).+(SU(0, n - 1, i -> SU(0, n - 1 - i, j -> self.a(i).*(self.a(j)).*(self.a(n - 1 - i - j)))).*(3))
+A394783	trilambn	1	1	1	(n, k) -> ZV(n).^(k - 1).*(FA(k - 1))
+A394784	rowsum	1	new A394783()
+A394799	holos	0	[[0],[2,-1],[0],[-1],[1]]	1,1,1	0	0
+A394800	holos	0	[[0],[3,-1],[0],[0],[-1],[1]]	1,1,1,1	0	0
+A394801	multia	0	" 1,0,0"	(self, n) -> self.a(n - 3).*(n - 2).+(SU(1, n - 1, k -> self.a(k).*(self.a(n - 1 - k))))	a(n) = (n-2)*a(n-3) + Sum_{k=1..n-1} a(k) * a(n-1-k).
+A394802	multia	0	" 1,0,0,0"	(self, n) -> self.a(n - 4).*(n - 3).+(SU(1, n - 1, k -> self.a(k).*(self.a(n - 1 - k))))	a(n) = (n-3)*a(n-4) + Sum_{k=1..n-1} a(k) * a(n-1-k).
+A394805	decexpr	0	() -> CV(6).*(REALS.asin(CV(new Q(1, 3))))./(CR.PI)	6 * arcsin(1/3) / Pi.	nonn,cons,new	0..104	nyi	_Amiram Eldar_
+A394806	decexpr	0	() -> CV(new Q(1, 2)).+(REALS.asin(CV(new Q(1, 4))).*(5)./(CR.PI))	5 * arcsin(1/4) / Pi.	nonn,cons,new	0..104	nyi	_Amiram Eldar_
+A394807	decexpr	0	() -> CV(new Q(1, 4)).+(REALS.asin(CV(new Q(1, 4))).*(5)./(CR.PI.*(2)))	5 * arcsin(1/4) / (2*Pi).	nonn,cons,new	0..104	nyi	_Amiram Eldar_
+A394808	decexp	1	() -> CR.PI.-(CV(4)./(CR.PI))	(Pi - 4/Pi).	nonn,cons,new	1..105	nyi	_Amiram Eldar_
+A394809	decexp	0	() -> CV(12)./(CR.PI).-(CR.PI)	12/Pi - Pi.	nonn,cons,new	0..105	nyi	_Amiram Eldar_
+A394810	decexp	1	() -> CV(3).*(CR.PI).-(CV(12)./(CR.PI))	3*Pi - 12/Pi.	nonn,cons,new	1..105	nyi	_Amiram Eldar_
+A394811	decexp	1	() -> CV(2).*(CR.PI).-(CV(12)./(CR.PI))	2*Pi - 12/Pi.	nonn,cons,new	1..105	nyi	_Amiram Eldar_
+A394812	decexp	0	() -> CV(3).-(CV(24)./(CR.PI.^(2)))	/Pi^2.	nonn,cons,new	0..104	nyi	_Amiram Eldar_
+A394832	decexp	1	() -> CR.TWO.multiply(X093070).subtract(X130203)
+A394833	decexp	0	() -> CR.TWO.multiply(X130203).subtract(X130204)
+A394834	decexp	0	() -> CR.valueOf(35).divide(CR.valueOf(12).multiply(CR.PI)).add(CR.valueOf(16).divide(CR.THREE.multiply(CR.PI.pow(2)))).subtract(CR.valueOf(131).divide(CR.THREE.multiply(CR.PI.pow(3))))
+A394835	decexp	0	() -> CR.valueOf(35).divide(CR.valueOf(24).multiply(CR.PI)).subtract(CR.valueOf(32).divide(CR.THREE.multiply(CR.PI.pow(3))))
+A394836	decexp	0	() -> CR.valueOf(27).multiply(CR.FOUR.divide(CR.THREE).log()).subtract(CR.SEVEN).divide(CR.TWO)
+A394837	decexp	0	() -> CR.TWO.multiply(X091505).subtract(X093063)
+A394838	decexp	0	() -> CR.FOUR.divide(CR.THREE).subtract(CR.THREE.sqrt().divide(CR.PI)).subtract(CR.TWO.divide(CR.PI.pow(2)))
+A394839	decexp	0	() -> CR.FOUR.divide(CR.THREE).multiply(X102519)
+A394849	decexp	1	() -> CV(24)./(CR.PI.^(2).-(6))	Decimal expansion of 24/(Pi^2 - 6).	nonn,cons,new	1..100	nyi	_Stefano Spezia_
+A394869	lambdan	0	n -> (n == 0) ? ZV(0) : CV(n - 1).sqrt().+(2).*(n)./(2).floor()	a(n) = floor(n*(sqrt(n - 1) + 2)/2).	nonn,easy,new	0..60	nyi	_Stefano Spezia_
+A394874	multia	0	" 1,0"	(self, n) -> self.a(n - 1).*(n).+(self.a(n - 2)).+(SU(1, n - 1, k -> self.a(k).*(self.a(n - 1 - k))))	a(n) = n*a(n-1) + a(n-2) + Sum_{k=1..n-1} a(k)*a(n-1-k).
+A394875	multia	0	" 1,0,0"	(self, n) -> self.a(n - 1).*(n).+(self.a(n - 2)).+(self.a(n - 3)).+(SU(1, n - 1, k -> self.a(k).*(self.a(n - 1 - k))))	a(n) = n*a(n-1) + a(n-2) + a(n-3) + Sum_{k=1..n-1} a(k)*a(n-1-k).
+A394876	multia	0	" 1,0,0,0"	(self, n) -> self.a(n - 1).*(n).+(self.a(n - 2)).+(self.a(n - 3)).+(self.a(n - 4)).+(SU(1, n - 1, k -> self.a(k).*(self.a(n - 1 - k))))	a(n) = n*a(n-1) + a(n-2) + a(n-3) + a(n-4) + Sum_{k=1..n-1} a(k)*a(n-1-k).
+A394877	multia	0	"-1,0"	(self, n) -> self.a(n - 1).-(SU(1, n - 1, k -> self.a(k).*(self.a(n - 1 - k)))).*(n - 1)./(2).-(self.a(n - 2)).+(SU(1, n - 2, k -> self.a(k).*(self.a(n - 2 - k))))	, where b(n) = Sum_{k=1..n} a(k)*a(n-k).
+A394878	multia	0	"1,0,0"	(self, n) -> self.a(n - 1).+(SU(1, n - 1, k -> self.a(k).*(self.a(n - 1 - k)))).*(n - 1)./(2).+(self.a(n - 3)).-(SU(1, n - 2, k -> self.a(k).*(self.a(n - 2 - k)))).+(SU(1, n - 3, k -> self.a(k).*(self.a(n - 3 - k))))
+A394879	multia	0	"-1,0,0,0"	(self, n) -> self.a(n - 1).-(SU(1, n - 1, k -> self.a(k).*(self.a(n - 1 - k)))).*(n - 1)./(2).-(self.a(n - 4)).+(SU(1, n - 2, k -> self.a(k).*(self.a(n - 2 - k)))).-(SU(1, n - 3, k -> self.a(k).*(self.a(n - 3 - k)))).+(SU(1, n - 4, k -> self.a(k).*(self.a(n - 4 - k))))
+A394880	multia	0	"1,0,0,0,0"	(self, n) -> self.a(n - 1).+(SU(1, n - 1, k -> self.a(k).*(self.a(n - 1 - k)))).*(n - 1)./(2).+(self.a(n - 5)).-(SU(1, n - 2, k -> self.a(k).*(self.a(n - 2 - k)))).+(SU(1, n - 3, k -> self.a(k).*(self.a(n - 3 - k)))).-(SU(1, n - 4, k -> self.a(k).*(self.a(n - 4 - k)))).+(SU(1, n - 5, k -> self.a(k).*(self.a(n - 5 - k))))
+A394881	multia	0	"-1,0,0,0,0,0"	(self, n) -> self.a(n - 1).-(SU(1, n - 1, k -> self.a(k).*(self.a(n - 1 - k)))).*(n - 1)./(2).-(self.a(n - 6)).+(SU(1, n - 2, k -> self.a(k).*(self.a(n - 2 - k)))).-(SU(1, n - 3, k -> self.a(k).*(self.a(n - 3 - k)))).+(SU(1, n - 4, k -> self.a(k).*(self.a(n - 4 - k)))).-(SU(1, n - 5, k -> self.a(k).*(self.a(n - 5 - k)))).+(SU(1, n - 6, k -> self.a(k).*(self.a(n - 6 - k))))

@@ -1,0 +1,159 @@
+---- 2026-04-29 22:05:39
+A145642	sintrif	1	(term, n) -> FA(n)./(term)	""	new A248762()	Greatest 3rd-power-free divisor of n!	nonn,easy	1..1000	2024-11-22.ack/l	_Clark Kimberling_
+A213851	lambmin1	1	(n, k) -> FA(k).*(ZV(2).^(k)).compareTo(FA(n)) >= 0	1	Least k such that k!*2^k >= n!
+A213854	lambmin1	1	(n, k) -> FA(k).*(ZV(3).^(k)).compareTo(FA(n)) >= 0	1	Least k such that k!*3^k >= n!
+A213855	lambmin1	1	(n, k) -> FA(k).*(ZV(4).^(k)).compareTo(FA(n)) >= 0	1	Least k such that k!*4^k >= n!
+A213856	lambmin1	1	(n, k) -> FA(k).*(ZV(5).^(k)).compareTo(FA(n)) >= 0	1	Least k such that k!*5^k >= n!
+A213857	lambmin1	1	(n, k) -> FA(n).compareTo(ZV(3).^(k)) <= 0	1	Least k such that n! <= 3^k
+A213858	lambmin	1	(n, k) -> FA(n).compareTo(ZV(4).^(k)) <= 0	1	Least k such that n! <= 4^k
+A214045	lambmin1	1	(n, k) -> FA(n).compareTo(ZV(5).^(k)) <= 0	1	Least k such that n! <= 5^k
+A214046	lambmin1	1	(n, k) -> FA(n).compareTo(ZV(k).^(n)) <= 0	1	Least k such that n! <= k^n
+A214047	lambmin1	1	(n, k) -> QV(FA(n)).compareTo(new Q(3, 2).^(k)) <= 0	1	Least k such that n! <= (3/2)^k
+A214048	lambmin1	1	(n, k) -> CV(FA(n)).compareTo(CR.PHI.^(k)) <= 0	1	Least k such that n! <= r^k, where r = (1+sqrt(5))/2, the golden ratio
+A214049	lambmin1	1	(n, k) -> FA(n).compareTo(ZV(k).^(3)) <= 0	1	Least k such that n! <= k^3
+A214050	lambmin1	1	(n, k) -> FA(n).compareTo(FI(k)) <= 0	1	Least k such that n! <= F(k), the k-th Fibonacci number, F000045(k)
+A214051	lambmin1	1	(n, k) -> CR.PHI.+(1).^(k).compareTo(CV(FA(n))) >= 0	1	Least k such that (1+r)^k >= n!, where r = (1+sqrt(5))/2, the golden ratio
+A214052	lambmin1k	1	(n, k) -> GCD(PM(n).+(k), ZV(n - k)).compareTo(ZV(1)) > 0	1	(n, k) -> 1	Least k such that prime(n)+k and n-k have a common divisor > 1
+A214053	lambmin1k	1	(n, k) -> GCD(CR.PHI.*(n).+(k).floor(), ZV(n - k)).compareTo(ZV(1)) > 0	1	(n, k) -> 1	Least k such that floor(n*r)+k and n-k have a common divisor > 1, where r = (1+sqrt(5))/2, the golden ratio
+A214054	lambmin1k	1	(n, k) -> GCD(DF(n).+(k), ZV(n - k)).compareTo(ZV(1)) > 0	1	(n, k) -> 1	Least k such that n!!+k and n-k have a common divisor > 1
+A214055	lambmin1k	1	(n, k) -> GCD(FA(n).+(k + 2), ZV(n - k)).compareTo(ZV(1)) > 0	1	(n, k) -> 1	Least k such that n!+2+k and n-k have a common divisor > 1
+A214056	lambmin1k	1	(n, k) -> GCD(Z2(n).+(k), ZV(n - k)).compareTo(ZV(1)) > 0	1	(n, k) -> 1	Least k such that 2^n+k and n-k have a common divisor > 1
+A214057	lambmin1k	1	(n, k) -> GCD(Z2(n).+(k - 1), ZV(n - k)).compareTo(ZV(1)) > 0	1	(n, k) -> 1	Least k such that 2^n-1+k and n-k have a common divisor > 1
+A214058	lambmin1k	0	(n, k) -> GCD(ZV(3).^(n).+(k), ZV(2).^(n).-(k)).compareTo(ZV(1)) > 0	1	(n, k) -> 1	Least k such that gcd(3^n+k,2^n-k) > 1
+A214059	lambmin1k	1	(n, k) -> GCDi(n*n + k + 1, n - k) > 1	0	(n, k) -> 0	Least k such that gcd(n^2+1+k, n-k) > 1
+A214060	lambmin1k	1	(n, k) -> GCDi(2*n - 1 + k, n - k) > 1	0	(n, k) -> 0	Least k such that gcd(2*n-1+k, n-k) > 1
+A214061	lambmin1k	1	(n, k) -> GCDi(2*n - 1 + k, 2*n - k) > 1	0	(n, k) -> 0	Least k such that gcd(2*n-1+k, 2*n-k) > 1
+A214062	lambmin1k	1	(n, k) -> GCDi(2*n + k, 2*n - 1 - k) > 1	0	(n, k) -> 0	Least k such that gcd(2*n+k, 2*n-1-k) > 1
+A214069	lambmin1k	1	(n, k) -> GCD(PM(n).+(k), ZV(n - k)).equals(ZV(1))	1	(n, k) -> 1	Least k such that prime(n)+k and n-k are relatively prime
+A214072	lambmin1k	1	(n, k) -> !GCD(DF(2*n - 1).+(k), DF(2*n).-(k)).equals(ZV(1))	1	(n, k) -> 1	Least k such that (2*n-1)!!+k and (2*n)!!-k are not relatively prime
+A214448	lambmin1	1	(n, k) -> ZV(k).^(4).compareTo(FA(n)) >= 0	1	Least k such that k^4 >= n!
+A214449	lambmin1	1	(n, k) -> FA(n).compareTo(ZV(k).^(k)) <= 0	1	Least k such that n! <= k^k
+A214714	lambmin1k	1	(n, k) -> GCD(PM(n).-(k), ZV(n - k)).equals(ZV(1))	1	(n, k) -> 1	Least k such that prime(n)-k and n-k are relatively prime
+A214715	lambmin1k	1	(n, k) -> GCD(PM(n + 1).-(k), ZV(n - k)).equals(ZV(1))	1	(n, k) -> 1	Least k such that prime(n+1)-k and n-k are relatively prime
+A214721	lambmin1k	1	(n, k) -> GCDi(2*n + 1 + k, n - k) != 1	1	(n, k) -> 1	Least k such that 2*n+1+k and n-k are not relatively prime
+A214737	lambmin1k	2	(n, k) -> PM(n).+(k).mod(n - k) == 0	1	(n, k) -> 0	Least k such that n-k divides prime(n)+k
+A214741	lambmin1k	2	(n, k) -> D000201(n).+(k).mod(n - k) == 0	1	(n, k) -> 0	Least k such that n-k divides L(n)+k, where L = D000201 (lower Wythoff sequence)
+A214742	lambmin1k	2	(n, k) -> D001950(n).+(k).mod(D000201(n).-(k)).isZero()	1	(n, k) -> 0	Least k such that L(n)-k divides U(n)+k, where L = D000201 and U = D001950 (lower and upper Wythoff sequences)
+A214743	lambmin1k	2	(n, k) -> PM(n).+(PM(k)).mod(n - k) == 0	1	(n, k) -> 1	Least k such that n-k divides prime(n)+prime(k)
+A214744	lambmin1k	2	(n, k) -> PM(n).-(PM(k)).mod(n - k) == 0	1	(n, k) -> 1	Least k>0 such that n-k divides prime(n)-prime(k)
+A214751	lambmin1k	2	(n, k) -> new Q(n, 2).ceiling().+(new Q(k, 2).ceiling()).mod(n - k) == 0	1	(n, k) -> 0	Least k>0 such that n-k divides ceiling(n/2)+ceiling(k/2)
+A246357	parmof4	1	A246356	() -> CR.SQRT2.frac()	() -> CV(3).sqrt().frac()	(r, s) -> r == 0 && s == 1	d(r,k) = 0 and d(s,k) = 1, where d(x,k) = k-th binary digit of x, r = {sqrt(2)}, s = {sqrt(3)}, and { } = fractional part.	nonn,easy,base	1..1000	nyi
+A246358	parmof4	1	A246356	() -> CR.SQRT2.frac()	() -> CV(3).sqrt().frac()	(r, s) -> r == 1 && s == 0	d(r,k) = 1 and d(s,k) = 0, where d(x,k) = k-th binary digit of x, r = {sqrt(2)}, s = {sqrt(3)}, and { } = fractional part.	nonn,easy,base	1..1000	nyi
+A247324	parmof4	1	A246356	() -> CR.SQRT2.frac()	() -> CV(3).sqrt().frac()	(r, s) -> r != s	d(r,k) != d(s,k), where d(x,k) = k-th binary digit of x, r = {sqrt(2)}, s = {sqrt(3)}, and { } = fractional part.	nonn,easy,base	1..1000	nyi
+A247356	parmof4	1	A246356	() -> CR.SQRT2.frac()	() -> CV(3).sqrt().frac()	(r, s) -> r == 1 && s == 1	d(r,k) = 1 and d(s,k) = 1, where d(x,k) = k-th binary digit of x, r = {sqrt(2)}, s = {sqrt(3)}, and { } = fractional part.	nonn,easy,base	1..1115	nyi
+A247454	parmof4	1	A246356	() -> CR.SQRT2.frac()	() -> CV(3).sqrt().frac()	(r, s) -> r == s	d(r,k) = d(s,k), where d(x,k) = k-th binary digit of x, r = {sqrt(2)}, s = {sqrt(3)}, and { } = fractional part.	nonn,easy,base	1..1000	nyi
+A247455	parmof4	1	A246356	() -> CR.SQRT2.frac()	() -> CR.SQRT2.*(3).frac()	(r, s) -> r == 0 && s == 0	d(r,k) = 0 and d(s,k) = 0, where d(x,k) = k-th binary digit of x, r = {sqrt(2)}, s = {3*sqrt(2)}, and { } = fractional part.	nonn,easy,base	1..1000	nyi
+A247456	parmof4	1	A246356	() -> CR.SQRT2.frac()	() -> CR.SQRT2.*(3).frac()	(r, s) -> r == 0 && s == 1	d(r,k) = 0 and d(s,k) = 1, where d(x,k) = k-th binary digit of x, r = {sqrt(2)}, s = {3*sqrt(2)}, and { } = fractional part.	nonn,easy,base	1..500	nyi
+A247457	parmof4	1	A246356	() -> CR.SQRT2.frac()	() -> CR.SQRT2.*(3).frac()	(r, s) -> r == 1 && s == 0	d(r,k) = 1 and d(s,k) = 0, where d(x,k) = k-th binary digit of x, r = {sqrt(2)}, s = {3*sqrt(2)}, and { } = fractional part.	nonn,easy,base	1..500	nyi
+A247458	parmof4	1	A246356	() -> CR.SQRT2.frac()	() -> CR.SQRT2.*(3).frac()	(r, s) -> r == 1 && s == 1	d(r,k) = 1 and d(s,k) = 1, where d(x,k) = k-th binary digit of x, r = {sqrt(2)}, s = {3*sqrt(2)}, and { } = fractional part.	nonn,easy,base	1..1000	nyi
+A247459	parmof4	1	A246356	() -> CR.SQRT2.frac()	() -> CR.SQRT2.*(3).frac()	(r, s) -> r == s	d(r,k) = d(s,k), where d(x,k) = k-th binary digit of x, r = {sqrt(2)}, s = {3*sqrt(2)}, and { } = fractional part.	nonn,easy,base	1..1000	nyi
+A247460	parmof4	1	A246356	() -> CR.SQRT2.frac()	() -> CR.SQRT2.*(3).frac()	(r, s) -> r != s	d(r,k) != d(s,k), where d(x,k) = k-th binary digit of x, r = {sqrt(2)}, s = {3*sqrt(2)}, and { } = fractional part.	nonn,easy,base	1..500	nyi
+A247519	parmof4	1	A246356	() -> CR.PHI.frac()	() -> CR.PHI./(2).frac()	(r, s) -> r == 0 && s == 0	d(r,k) = 0 and d(s,k) = 0, where d(x,k) = k-th binary digit of x, r = {golden ratio}, s = {(golden ratio)/2}, and { } = fractional part.	nonn,easy,base	1..1000	nyi
+A247520	parmof4	1	A246356	() -> CR.PHI.frac()	() -> CR.PHI./(2).frac()	(r, s) -> r == 0 && s == 1	d(r,k) = 0 and d(s,k) = 1, where d(x,k) = k-th binary digit of x, r = {golden ratio}, s = {(golden ratio)/2}, and { } = fractional part.	nonn,easy,base	1..1000	nyi
+A247521	parmof4	1	A246356	() -> CR.PHI.frac()	() -> CR.PHI./(2).frac()	(r, s) -> r == 1 && s == 0	d(r,k) = 1 and d(s,k) = 0, where d(x,k) = k-th binary digit of x, r = {golden ratio}, s = {(golden ratio)/2}, and { } = fractional part.	nonn,easy,base	1..1000	nyi
+A247522	parmof4	1	A246356	() -> CR.PHI.frac()	() -> CR.PHI./(2).frac()	(r, s) -> r == 1 && s == 1	d(r,k) = 1 and d(s,k) = 1, where d(x,k) = k-th binary digit of x, r = {golden ratio}, s = {(golden ratio)/2}, and { } = fractional part.	nonn,easy,base	1..1000	nyi
+A247523	parmof4	1	A246356	() -> CR.PHI.frac()	() -> CR.PHI./(2).frac()	(r, s) -> r == s	d(r,k) = d(s,k), where d(x,k) = k-th binary digit of x, r = {golden ratio}, s = {(golden ratio)/2}, and { } = fractional part.	nonn,easy,base	1..2000	nyi
+A247524	parmof4	1	A246356	() -> CR.PHI.frac()	() -> CR.PHI./(2).frac()	(r, s) -> r != s	d(r,k) != d(s,k), where d(x,k) = k-th binary digit of x, r = {golden ratio}, s = {(golden ratio)/2}, and { } = fractional part.	nonn,easy,base	1..2000	nyi
+A247542	parmof4	1	A246356	() -> CR.E.frac()	() -> CR.E.inverse().frac()	(r, s) -> r == 0 && s == 0	d(r,k) = 0 and d(s,k) = 0, where d(x,k) = k-th binary digit of x, r = {e}, s = {1/e}, and { } = fractional part.	nonn,easy,base	1..1000	nyi
+A247543	parmof4	1	A246356	() -> CR.E.frac()	() -> CR.E.inverse().frac()	(r, s) -> r == 0 && s == 1	d(r,k) = 0 and d(s,k) = 1, where d(x,k) = k-th binary digit of x, r = {e}, s = {1/e}, and { } = fractional part.	nonn,easy,base	1..1000	nyi
+A247544	parmof4	1	A246356	() -> CR.E.frac()	() -> CR.E.inverse().frac()	(r, s) -> r == 1 && s == 0	d(r,k) = 1 and d(s,k) = 0, where d(x,k) = k-th binary digit of x, r = {e}, s = {1/e}, and { } = fractional part.	nonn,easy,base	1..1000	nyi
+A247545	parmof4	1	A246356	() -> CR.E.frac()	() -> CR.E.inverse().frac()	(r, s) -> r == 1 && s == 1	d(r,k) = 1 and d(s,k) = 1, where d(x,k) = k-th binary digit of x, r = {e}, s = {1/e}, and { } = fractional part.	nonn,easy,base	1..1000	nyi
+A247546	parmof4	1	A246356	() -> CR.E.frac()	() -> CR.E.inverse().frac()	(r, s) -> r == s	d(r,k) = d(s,k), where d(x,k) = k-th binary digit of x, r = {e}, s = {1/e}, and { } = fractional part.	nonn,easy,base	1..1000	nyi
+A247547	parmof4	1	A246356	() -> CR.E.frac()	() -> CR.E.inverse().frac()	(r, s) -> r != s	d(r,k) != d(s,k), where d(x,k) = k-th binary digit of x, r = {e}, s = {1/e}, and { } = fractional part.	nonn,easy,base	1..1000	nyi
+A247631	parmof4	1	A246356	() -> CR.SQRT2.frac()	() -> CV(8).sqrt().frac()	(r, s) -> r == 0 && s == 0	d(r,k) = 0 and d(s,k) = 0, where d(x,k) = k-th binary digit of x, r = {sqrt(2)}, s = {sqrt(8)}, and { } = fractional part.	nonn,easy,base	1..1181	nyi
+A247632	parmof4	1	A246356	() -> CR.SQRT2.frac()	() -> CV(8).sqrt().frac()	(r, s) -> r == 0 && s == 1	d(r,k) = 0 and d(s,k) = 1, where d(x,k) = k-th binary digit of x, r = {sqrt(2)}, s = {sqrt(8)}, and { } = fractional part.	nonn,easy,base	1..1097	nyi
+A247633	parmof4	1	A246356	() -> CR.SQRT2.frac()	() -> CV(8).sqrt().frac()	(r, s) -> r == 1 && s == 0	d(r,k) = 1 and d(s,k) = 0, where d(x,k) = k-th binary digit of x, r = {sqrt(2)}, s = {sqrt(8)}, and { } = fractional part.	nonn,easy,base	1..1096	nyi
+A247634	parmof4	1	A246356	() -> CR.SQRT2.frac()	() -> CV(8).sqrt().frac()	(r, s) -> r == 1 && s == 1	d(r,k) = 1 and d(s,k) = 1, where d(x,k) = k-th binary digit of x, r = {sqrt(2)}, s = {sqrt(8)}, and { } = fractional part.	nonn,easy,base	1..1122	nyi
+A247635	parmof4	1	A246356	() -> CR.SQRT2.frac()	() -> CV(8).sqrt().frac()	(r, s) -> r == s	d(r,k) = d(s,k), where d(x,k) = k-th binary digit of x, r = {sqrt(2)}, s = {sqrt(8)}, and { } = fractional part.	nonn,easy,base	1..1000	nyi
+A247636	parmof4	1	A246356	() -> CR.SQRT2.frac()	() -> CV(8).sqrt().frac()	(r, s) -> r != s	d(r,k) != d(s,k), where d(x,k) = k-th binary digit of x, r = {sqrt(2)}, s = {sqrt(8)}, and { } = fractional part.	nonn,easy,base	1..1000	nyi
+A247778	lambmin1	1	(n, k) -> CR.E.-(CV(1).+(new Q(1, k)).^(k)).compareTo(CV(new Q(1, n))) < 0	1	(n, k) -> 0	e - (1 + 1/k)^k < 1/n
+A247779	filtpos	1	1	new DifferenceSequence(1, new A247778())	ONE	Numbers k such that A247778(k+1) - A247778(k) = 1.	nonn,easy	1..2000
+A247780	filtpos	1	1	new DifferenceSequence(1, new A247778())	v -> v.equals(ZV(2))	Numbers k such that A247778(k+1) - A247778(k) = 2.	nonn,easy	1..1000
+A247781	lambmin1	1	(n, k) -> CR.E.inverse().-(CV(1).-(CV(new Q(1, k))).^(k)).compareTo(CV(new Q(1, n))) < 0	1	(n, k) -> 0	1/e - (1 - 1/k)^k < 1/n
+A247782	filtpos	1	1	new DifferenceSequence(1, new A247781())	ZERO	Numbers k for which A247781(k+1) = A247781(k).	nonn,easy	1..4000
+A247783	filtpos	1	1	new DifferenceSequence(1, new A247781())	ONE	Numbers k for which A247781(k+1) = 1+A247781(k).	nonn,easy	1..900
+A247785	filtpos	1	1	new DifferenceSequence(1, new A247784())	ZERO	= J247784(k).  nonn,easy       1..1000
+A247786	filtpos	1	1	new DifferenceSequence(1, new A247784())	ONE	- J247784(k) = 1.
+A247788	filter 	0	new A000040()	p -> SIGMA(p.*(2).-(1)).equals(p.-(1).*(3))	Primes p such that sigma(2p-1) = 3*(p-1).	nonn,more	1..8	nyi	_Jaroslav Krizek_
+A247789	filter	1	new A000040()	p -> PP(SIGMA(p.*(2).-(1)))	Primes p such that sigma(2p-1) is a prime q.	nonn	1..28	nyi	_Jaroslav Krizek_
+A247790	filter 	0	new A000040()	p -> PP(SIGMA(SIGMA(p.*(2).-(1))))	Primes p such that sigma(sigma(2p-1)) is a prime.	nonn,more	1..4	nyi	_Jaroslav Krizek_
+A247820	filnum	1	1	k -> PP(SIGMA(2*k - 1))	Numbers k such that sigma(2*k-1) is a prime p.	non
+A247988	lambmin1	1	(n, k) -> CR.E.-(CV(k)./(CV(FA(k)).^(new Q(1, k)))).compareTo(CV(new Q(1, n))) < 0	4	(n, k) -> 0	e - k/(k!)^(1/k) < 1/n
+A248103	lambmin1	1	(n, k) -> CV(new Q(2*k + 1, 2*k - 1).^(k)).-(CR.E).compareTo(CV(new Q(1, 2*n*n))) < 0	1	(n, k) -> 0	((2*k+1)/(2*k-1))^k - e < 1/(2*n^2)
+A248106	lambmin1	1	(n, k) -> CV(new Q(k + 1, k - 1).^(k)).-(CR.E.^(2)).compareTo(CV(new Q(1, n*n))) < 0	3	(n, k) -> 0	((k+1)/(k-1))^k - e^2 < 1/n^2
+A248111	lambmin1	1	(n, k) -> CV(new Q(k + 2, k - 2).^(k)).-(CR.E.^(4)).compareTo(CV(new Q(1, n))) < 0	18	(n, k) -> 0	((k+2)/(k-2))^k - e^4 < 1/n
+A248178	parmof5	1	A248148	() -> X079586	1	h -> new Q(ZV(1), FI(h))	n -> new Q(ZV(1), ZV(2).^(n + 1))	(n, k) -> r - sum{1/F(h), h = 1..k} < 1/2^(n+1), = X079586
+A248182	parmof5	0	A248148	() -> CV(2).+(X248897)	0	h -> new Q(ZV(1), BI(h, h/2))	n -> new Q(ZV(1), ZV(2).^(n))	(n, k) -> r - sum{1/C(h,[h/2]), h = 0..k}             < 1/2^n, where r = sum{1/C(h,[h/2]), h = 0..infinity}
+A248186	parmof5	1	A248148	() -> CV(new Q(1, 18))	1	h -> new Q(ZV(1), ZV(h).*(h + 1).*(h + 2).*(h + 3))	n -> new Q(ZV(1), ZV(n).^(3))	(n, k) -> 1/18 - Sum_{h=1..k} 1/(h*(h+1)*(h+2)*(h+3)) < 1/n^3
+A248227	parmof5	1	A248148	() -> Zeta.zeta(4)	1	h -> new Q(ZV(1), ZV(h).^(4))	n -> new Q(ZV(1), ZV(n).^(3))	(n, k) -> zeta(4)  - sum{1/h^4, h = 1..k}              < 1/n^3
+A248231	parmof5	1	A248148	() -> Zeta.zeta(5)	1	h -> new Q(ZV(1), ZV(h).^(5))	n -> new Q(ZV(1), ZV(n).^(4))	(n, k) -> zeta(5)  - Sum_{h = 1..k} 1/h^5              < 1/n^4
+A248355	lambmin1	1	(n, k) -> CR.PI.-(CR.PI./(k).sin().*(k)).compareTo(CV(new Q(1, 2*n))) < 0	1	(n, k) -> 0	Pi - k*sin(Pi/k) < 1/(2n)
+A248356	filtpos	1	1	new DifferenceSequence(1, new A248355())	ZERO	Numbers k such that A248355(k+1) = A248355(k).	nonn,easy	1..9000
+A248357	filtpos	1	1	new DifferenceSequence(1, new A248355())	ONE	Numbers k such that A248355(k+1) = A248355(k) + 1.	nonn,easy	1..300
+A248359	lambmin1	1	(n, k) -> CR.PI./(k).cos().+(new Q(1, k*n)).compareTo(CV(1)) > 0	1	(n, k) -> 0	cos(Pi/k) + 1/(k*n) > 1
+A248418	lambmin1	3	(n, k) -> ComputableReals.SINGLETON.tan(CR.PI./(k)).*(k).-(CR.PI).compareTo(CV(new Q(1, n))) < 0	6	(n, k) -> 0	k*tan(Pi/k) - Pi < 1/n
+A248419	filtpos	1	1	new DifferenceSequence(1, new A248418())	ZERO	Numbers k such that A248418(k+1) = A248418(k).	nonn,easy	1..1000
+A248420	filtpos	1	1	new DifferenceSequence(1, new A248418())	ONE	Numbers k such that A248418(k+1) = A248418(k) + 1.	nonn,easy	1..100
+A248515	lambmin1	1	(n, k) -> CV(1).-(CV(new Q(1, k)).sin().*(k)).compareTo(CV(new Q(1, n*n))) < 0	1	(n, k) -> 0	1 - k*sin(1/k) < 1/n^2
+A248559	parmof5	1	A248148	() -> CV(2).log()	1	h -> new Q(ZV(1), ZV(2).^(h).*(h))	n -> new Q(ZV(1), ZV(3).^(n))	(n, k) -> log(2)   - sum{1/(h*2^h), h = 1..k}         < 1/3^n
+A248562	parmof5	1	A248148	() -> CV(new Q(3, 2)).log()	1	h -> new Q(ZV(1), ZV(3).^(h).*(h))	n -> new Q(ZV(1), ZV(6).^(n))	(n, k) -> log(3/2) - sum{1/(h*3^h), h = 1..k}         < 1/6^n
+A248565	parmof5	1	A248148	() -> CV(new Q(4, 3)).log()	1	h -> new Q(ZV(1), ZV(4).^(h).*(h))	n -> new Q(ZV(1), ZV(8).^(n))	(n, k) -> log(4/3) - sum{1/(h*4^h), h = 1..k}         < 1/8^n
+A248610	parmof5	1	A248148	() -> CR.PI.^(2)./(18)	1	h -> new Q(ZV(1), BI(2*h, h).*(h).*(h))	n -> new Q(ZV(1), ZV(3).^(n))	(n, k) -> (Pi^2)/18 - sum{1/(h^2*C(2h,h)), h = 1..k}  < 1/3^n
+A248629	parmof5	1	A248148	() -> CV(6)	1	h -> new Q(ZV(h).^(2), ZV(2).^(h))	n -> new Q(ZV(1), ZV(3).^(n))	(n, k) -> 6 -    sum{(h^2)/2^h, h = 1..k}                < 1/3^n
+A248631	parmof5	1	A248148	() -> CV(new Q(3, 2))	1	h -> new Q(ZV(h).^(2), ZV(3).^(h))	n -> new Q(ZV(1), ZV(2).^(n))	(n, k) -> 3/2 -  sum{(h^2)/3^h, h = 1..k}              < 1/2^n
+A248633	parmof5	1	A248148	() -> CV(new Q(20, 27))	1	h -> new Q(ZV(h).^(2), ZV(4).^(h))	n -> new Q(ZV(1), ZV(8).^(n))	(n, k) -> 20/27- sum{(h^2)/4^h, h = 1..k}             < 1/8^n
+A248636	parmof5	1	A248148	() -> CV(new Q(33, 8))	1	h -> new Q(ZV(h).^(3), ZV(3).^(h))	n -> new Q(ZV(1), ZV(4).^(n))	(n, k) -> 33/8-  sum{(h^3)/3^h, h = 1..k}              < 1/4^n
+A248762	dirtraf	1	new MultiplicativeSequence(1, (p, e) -> p.^(3*(e/3)))	new A000142()	Greatest cube that divides n!.	nonn,easy	1..1000	2024-09-21.ack/l	_Clark Kimberling_
+A248763	sintrif	1	(term, n) -> term.root(3)	""	new A248762()	Greatest k such that k^3 divides n!	nonn,easy	1..1000	nyi	_Clark Kimberling_
+A248764	dirtraf	1	new MultiplicativeSequence(1, (p, e) -> p.^(4*(e/4)))	new A000142()	Greatest 4th power integer that divides n!	nonn,easy	1..1000	2024-09-21.ack/l	_Clark Kimberling_
+A248765	sintrif	1	(term, n) -> term.root(4)	""	new A248764()	Greatest k such that k^4 divides n!	nonn,easy	1..1000	2026-03-30.ack/l	_Clark Kimberling_
+A248766	sintrif	1	(term, n) -> FA(n)./(term)	""	new A248764()	Greatest 4th-power-free divisor of n!	nonn,easy	1..1000	2024-11-22.ack/l	_Clark Kimberling_
+A248767	dirtraf	1	new MultiplicativeSequence(1, (p, e) -> p.^(5*(e/5)))	new A000142()	Greatest 5th power integer that divides n!.	nonn,easy	1..1000	nyi	_Clark Kimberling_
+A248768	sintrif	1	(term, n) -> term.root(5)	""	new A248767()	Greatest k such that k^5 divides n!	nonn,easy	1..1000	nyi	_Clark Kimberling_
+A248769	sintrif	1	(term, n) -> FA(n)./(term)	""	new A248767()	Greatest 5th-power-free divisor of n!.	nonn,easy	1..1000	nyi	_Clark Kimberling_
+A248770	dirtraf	1	new MultiplicativeSequence(1, (p, e) -> p.^(6*(e/6)))	new A000142()	Greatest 6th power integer that divides n!.	nonn,easy	1..1000	nyi	_Clark Kimberling_
+A248771	sintrif	1	(term, n) -> term.root(6)	""	new A248770()	Greatest k such that k^6 divides n!	nonn,easy	1..1000	nyi	_Clark Kimberling_
+A248772	sintrif	1	(term, n) -> FA(n)./(term)	""	new A248770()	Greatest 6th-power-free divisor of n!.	nonn,easy	1..1000	nyi	_Clark Kimberling_
+A248773	dirtraf	1	new MultiplicativeSequence(1, (p, e) -> p.^(7*(e/7)))	new A000142()	Greatest 7th power integer that divides n!.	nonn,easy	1..1000	nyi	_Clark Kimberling_
+A248774	sintrif	1	(term, n) -> term.root(7)	""	new A248773()	Greatest k such that k^7 divides n!	nonn,easy	1..1000	nyi	_Clark Kimberling_
+A248775	sintrif	1	(term, n) -> FA(n)./(term)	""	new A248773()	Greatest 7th-power-free divisor of n!.	nonn,easy	1..1000	nyi	_Clark Kimberling_
+A248776	dirtraf	1	new MultiplicativeSequence(1, (p, e) -> p.^(8*(e/8)))	new A000142()	Greatest 8th power integer that divides n!	nonn,easy	1..1000	nyi	_Clark Kimberling_
+A248777	sintrif	1	(term, n) -> term.root(8)	""	new A248776()	Greatest k such that k^8 divides n!	nonn,easy	1..1000	nyi	_Clark Kimberling_
+A248778	sintrif	1	(term, n) -> FA(n)./(term)	""	new A248776()	Greatest 8th-power-free divisor of n!.	nonn,easy	1..1000	nyi	_Clark Kimberling_
+A248780	dirtraf	1	new MultiplicativeSequence(1, (p, e) -> Z.valueOf(e / 3).add(1))	new A000142()	Number of cubes that divide n!	nonn,easy	1..1000	dirtraf	_Clark Kimberling_
+A248781	dirtraf	1	new MultiplicativeSequence(1, (p, e) -> Z.valueOf(e / 4).add(1))	new A000142()	Number of integers k^4 that divide n!	nonn,easy	1..1000	nyi	_Clark Kimberling_
+A248782	dirtraf	1	new MultiplicativeSequence(1, (p, e) -> Z.valueOf(e / 5).add(1))	new A000142()	Number of integers k^5 that divide n!.	nonn,easy	1..1000	nyi	_Clark Kimberling_
+A248783	dirtraf	1	new MultiplicativeSequence(1, (p, e) -> Z.valueOf(e / 6).add(1))	new A000142()	Number of integers k^6 that divide n!.	nonn,easy	1..1000	nyi	_Clark Kimberling_
+A248784	dirtraf	1	new MultiplicativeSequence(1, (p, e) -> Z.valueOf(e / 2).add(1))	new A000178()	Number of squares that divide 1!*2!*3!*...*n!.	nonn,easy	1..1000
+A248821	dirtraf	1	new MultiplicativeSequence(1, (p, e) -> Z.valueOf(e / 3).add(1))	new A000178()	Number of cubes that divide 1!*2!*3!*...*n!.	nonn,easy	1..1000
+A248822	dirtraf	1	new MultiplicativeSequence(1, (p, e) -> Z.valueOf(e / 4).add(1))	new A000178()	Number of integers k^4 that divide 1!*2!*3!*...*n!.	nonn,easy	1..1000
+A248823	dirtraf	1	new MultiplicativeSequence(1, (p, e) -> Z.valueOf(e / 5).add(1))	new A000178()	Number of integers k^5 that divide 1!*2!*3!*...*n!.	nonn,easy	1..1000
+A248824	dirtraf	1	new MultiplicativeSequence(1, (p, e) -> Z.valueOf(e / 6).add(1))	new A000178()	Number of integers k^6 that divide 1!*2!*3!*...*n!.	nonn,easy	1..1000
+A395498	holos	0	[0,-12,16,29,-47,-15,45,-9,-13,7,-1]	0,0,0,0,4,24,120,480	0	0
+A395499	holos	0	[0,-288,696,460,-2422,935,2744,-2581,-676,1854,-656,-278,298,-101,16,-1]	0,0,0,0,0,8,104,896,5984,34520,180416,881152,4099168	0	0
+---- 2026-04-29 22:33:08
+A248149	filtpos	1	1	new DifferenceSequence(1, new A248148())	ZERO	A248148(k+1) = A248148(k).	nonn,easy	1..400
+A248187	filtpos	1	1	new DifferenceSequence(1, new A248186())	ZERO	A248186(k+1) = A248186(k).	nonn,easy	1..500
+A248188	filtpos	1	1	new DifferenceSequence(1, new A248186())	ONE	A248186(k+1) = A248186(k) + 1.	nonn,easy	1..1000
+A248195	filtpos	0	1	new DifferenceSequence(1, new A248180())	ZERO	A248180(k+1) = A248180(k).	nonn,easy	0..1500
+A248196	filtpos	0	1	new DifferenceSequence(1, new A248180())	ONE	A248180(k+1) = A248180(k) + 1.	nonn,easy	0..1500
+A248228	filtpos	1	1	new DifferenceSequence(1, new A248227())	ZERO	A248227(k+1) = A248227(k).	nonn,easy	1..300
+A248229	filtpos	1	1	new DifferenceSequence(1, new A248227())	ONE	A248227(k+1) = A248227(k) + 1.	nonn,easy	1..500
+A248232	filtpos	1	1	new DifferenceSequence(1, new A248231())	ZERO	A248231(k+1) = A248231(k).	nonn,easy	1..500
+A248233	filtpos	1	1	new DifferenceSequence(1, new A248231())	ONE	A248231(k+1) = A248231(k) + 1.	nonn,easy	1..1000
+A248356	filtpos	1	1	new DifferenceSequence(1, new A248355())	ZERO	A248355(k+1) = A248355(k).	nonn,easy	1..9000
+A248357	filtpos	1	1	new DifferenceSequence(1, new A248355())	ONE	A248355(k+1) = A248355(k) + 1.	nonn,easy	1..300
+A248419	filtpos	1	1	new DifferenceSequence(1, new A248418())	ZERO	A248418(k+1) = A248418(k).	nonn,easy	1..1000
+A248560	filtpos	1	1	new DifferenceSequence(1, new A248559())	ONE	A248559(k+1) = A248559(k) + 1.	nonn,easy	1..500
+A248561	filtpos	1	1	new DifferenceSequence(1, new A248559())	v -> v.equals(ZV(2))	A248559(k+1) = A248559(k) + 2.	nonn,easy	1..500
+A248563	filtpos	1	1	new DifferenceSequence(1, new A248562())	ONE	A248562(k+1) = A248562(k) + 1.	nonn,easy	1..400
+A248566	filtpos	1	1	new DifferenceSequence(1, new A248565())	ONE	A248565(k+1) = A248565(k) + 1.	nonn,easy	1..500
+A248567	filtpos	1	1	new DifferenceSequence(1, new A248565())	v -> v.equals(ZV(2))	A248565(k+1) = A248565(k) + 2.	nonn,easy	1..500
+A248611	filtpos	1	1	new DifferenceSequence(1, new A248610())	ZERO	A248610(k+1) = A248610(k).	nonn,easy	1..400
+A248612	filtpos	1	1	new DifferenceSequence(1, new A248610())	ONE	A248610(k+1) = A248610(k) + 1.	nonn,easy	1..1500
+A248632	filtpos	1	1	new DifferenceSequence(1, new A248631())	ZERO	A248631(k+1) = A248631(k).	nonn,easy	1..300
+A248634	filtpos	1	1	new DifferenceSequence(1, new A248633())	ONE	A248633(k+1) = A248633(k) + 1.	nonn,easy	1..500
+A248635	filtpos	1	1	new DifferenceSequence(1, new A248633())	v -> v.equals(ZV(2))	A248633(k+1) = A248633(k) + 2.	nonn,easy	1..500
+A248637	filtpos	1	1	new DifferenceSequence(1, new A248636())	ONE	A248636(k+1) = A248636(k) + 1.	nonn,easy	1..1000
+---- 2026-04-29 22:33:47
+A248564	filtpos	1	1	new DifferenceSequence(1, new A248562())	v -> v.equals(ZV(2))	A248562(k+1) = A248562(k) + 2.	nonn,easy	1..500

@@ -1,0 +1,111 @@
+---- 2026-04-27 11:00:28
+---- 2026-04-27 11:04:37
+A087612	sintrif	1	(term, n) -> SQRT(term)	""	new A059928()	A divisibility sequence derived from Lehmers polynomial x^10+x^9-x^7-x^6-x^5-x^4-x^3+x+1. Square root of the terms in J059928.
+A096986	filnum	1	1	k -> PP(FA(k).*(k).+(Functions.NEXT_PRIME.z(k)))
+A098981	polya	0	"[0,0,4],[1,-4]"	"1,p1,^2,/,x,B,p1,/,-"	new A063887()
+A106008	filter	1	new A000040()	p -> { final Z p1 = p.*( 10); return PP(p1.+(3)) && PP(p1.-(3)); }	*p - 3 and 10*p + 3 are both primes.	nonn	1..10000	nyi	_Zak Seidov_
+A106009	filter	1	new A000040()	p -> { final Z p1 = p.*(20); return PP(p1.+(3)) && PP(p1.-(3)); }	*p - 3 and 20*p + 3 are both primes.	nonn	1..10000	nyi	_Zak Seidov_
+A106010	filter	1	new A000040()	p -> { final Z p1 = p.*(40); return PP(p1.+(3)) && PP(p1.-(3)); }	*p - 3 and 40*p + 3 are both primes.	nonn	1..10000	nyi	_Zak Seidov_
+A106011	filter	1	new A000040()	p -> { final Z p1 = p.*(50); return PP(p1.+(3)) && PP(p1.-(3)); }	*p - 3 and 50*p + 3 are both primes.	nonn	1..10000	nyi	_Zak Seidov_
+A106012	filter	1	new A000040()	p -> { final Z p1 = p.*(70); return PP(p1.+(3)) && PP(p1.-(3)); }	*p - 3 and 70*p + 3 are both primes.	nonn	1..10000	nyi	_Zak Seidov_
+A106013	filter	1	new A000040()	p -> { final Z p1 = p.*(80); return PP(p1.+(3)) && PP(p1.-(3)); }	*p +- 3 are primes.	nonn	1..47	nyi	_Zak Seidov_
+A106014	filter	1	new A000040()	p -> { final Z p1 = p.*(100); return PP(p1.+(3)) && PP(p1.-(3)); }	*p +- 3 are primes.	nonn	1..10000	nyi	_Zak Seidov_
+A106016	filter	1	new A000040()	p -> { final Z p1 = p.*(14); return PP(p1.+(3)) && PP(p1.-(3)); }	*p - 3 and 14*p + 3 are both primes.	nonn	1..10000	nyi	_Zak Seidov_
+A106017	filter	1	new A000040()	p -> { final Z p1 = p.*(16); return PP(p1.+(3)) && PP(p1.-(3)); }	*p +- 3 are primes.	nonn	1..1000	nyi	_Zak Seidov_
+A106018	filter	1	new A000040()	p -> { final Z p1 = p.*(22); return PP(p1.+(3)) && PP(p1.-(3)); }	*p +- 3 are primes.	nonn	1..47	nyi	_Zak Seidov_
+A106020	filter	1	new A000040()	p -> { final Z p1 = p.*(28); return PP(p1.+(3)) && PP(p1.-(3)); }	*p +- 3 are primes.	nonn	1..47	nyi	_Zak Seidov_
+A106021	filter	1	new A000040()	p -> { final Z p1 = p.*(32); return PP(p1.+(3)) && PP(p1.-(3)); }	*p +- 3 are primes.	nonn	1..46	nyi	_Zak Seidov_
+A106022	filter	1	new A000040()	p -> { final Z p1 = p.*(2); final Z p2 = p.*(8); return PP(p1.+(3)) && PP(p1.-(3)) && PP(p2.+(3)) && PP(p2.-(3)); }	2*p +/- 3 and 8*p +/- 3 are all primes.	nonn	1..1000	nyi	_Zak Seidov_
+A106023	filter	1	new A000040()	p -> { final Z p1 = p.*(8); final Z p2 = p.*(28); final Z p3 = p.*(38); return PP(p1.+(3)) && PP(p1.-(3)) && PP(p2.+(3)) && PP(p2.-(3)) && PP(p3.+(3)) && PP(p3.-(3)); }	8*p +- 3, 28*p +- 3 and 38*p +- 3 are all primes.	nonn	1..29	nyi	_Zak Seidov_
+A106024	filter	1	new A000040()	p -> { final Z p1 = p.*(28); final Z p2 = p.*(38); final Z p3 = p.*(58); return PP(p1.+(3)) && PP(p1.-(3)) && PP(p2.+(3)) && PP(p2.-(3)) && PP(p3.+(3)) && PP(p3.-(3)); }	28*p +- 3, 38*p +- 3 and 58*p +- 3 are all primes.	nonn	1..24	nyi	_Zak Seidov_
+A106025	filter	1	new A000040()	p -> { final Z p1 = p.*(28); final Z p2 = p.*(38); final Z p3 = p.*(58); return PP(p1.+(33)) && PP(p1.-(33)) && PP(p2.+(33)) && PP(p2.-(33)) && PP(p3.+(33)) && PP(p3.-(33)); }	28*p +- 33, 38*p +- 33 and 58*p +- 33 are all primes.	nonn	1..26	nyi	_Zak Seidov_
+A106125	filtpos	0	1	new A001358()	(k, v) -> v.mod(k) == 0	Numbers k such that k divides the k-th semiprime.	nonn,hard,more	1..17	nyi	_Shyam Sunder Gupta_
+A106126	filtpos	1	1	new A001358()	(k, v) -> k == 1 || v.mod(k) == 1	Numbers k such that k-th semiprime == 1 (mod k).	hard,nonn	1..44	nyi	_Shyam Sunder Gupta_
+A106127	filtpos	1	1	new A001358()	(k, v) -> k <= 2 || v.mod(k) == 2	Numbers k such that k-th semiprime == 2 (mod k).	hard,nonn	1..33	nyi	_Shyam Sunder Gupta_
+A106129	filtpos	1	1	new A001358()	(k, v) -> k <= 2 || v.mod(k) == 4	Numbers k such that the k-th semiprime == 4 (mod k).	hard,more,nonn	1..27	nyi	_Shyam Sunder Gupta_
+A106130	filtpos	0	1	new A001358()	(k, v) -> k == 1 || v.mod(k) == 5	Numbers k such that k-th semiprime == 5 (mod k).	nonn,hard	1..31	nyi	_Shyam Sunder Gupta_
+A106131	filtpos	1	1	new A001358()	(k, v) -> k <= 4 || v.mod(k) == 6	Numbers k such that the k-th semiprime == 6 (mod k).	hard,nonn	1..41	nyi	_Shyam Sunder Gupta_
+A106132	filtpos	1	1	new A001358()	(k, v) -> k == 1 || k == 7 || v.mod(k) == 7	Numbers k such that the k-th semiprime == 7 (mod k).	hard,nonn	1..29	nyi	_Shyam Sunder Gupta_
+A106134	filtpos	0	1	new A001358()	(k, v) -> (k <= 6 && k != 2 && k != 4) || v.mod(k) == 9	Numbers k such that the k-th semiprime == 9 (mod k).	nonn,hard	1..42	nyi	_Shyam Sunder Gupta_
+A106135	filtpos	1	1	new A001358()	(k, v) -> k <= 2 || k == 4 || v.mod(k) == 10	Numbers k such that the k-th semiprime == 10 (mod k).	nonn,hard,more	1..28	nyi	_Shyam Sunder Gupta_
+A106136	filtpos	1	1	new A001358()	(k, v) -> k == 1 || k == 11 || v.mod(k) == 11	Numbers k such that the k-th semiprime == 11 (mod k).	nonn,hard	1..38	nyi	_Shyam Sunder Gupta_
+A106151	lambdan	1	n -> new Z(Long.toString(n, 2).replaceAll("10", "1"), 2)	In binary representation of n: delete one zero in each contiguous block of zeros.	nonn,base	1..10000	nyi	_Reinhard Zumkeller_
+A106212	polya	0	"[1]"	"x,B,^1/4"	new A004533()
+A106544	sintrif	1	(term, n) -> !term.testBit(0) || PP(term.-(2)) ? ZV(0) : term	""	new A000290()	Perfect squares n^2 which are not the sum of two primes (otherwise 0).	easy,nonn	1..81	nyi	_Alexandre Wajnberg_
+A106545	sintrif	1	(term, n) -> !term.testBit(0) || PP(term.-(2)) ? term : ZV(0)	""	new A000290()	a(n) = n^2 if n^2 is              the sum of two primes, otherwise a(n) = 0.	easy,nonn	1..1000	nyi	_Alexandre Wajnberg_
+A106546	sintrif	1	(term, n) -> term.equals(ZV(1)) || !term.testBit(0) || PP(term.+(2)) ? term : ZV(0)	""	new A000290()	a(n) = n^2 if n^2 is the difference of two primes, otherwise a(n) = 0.
+A106547	sintrif	1	(term, n) -> !term.testBit(0) || PP(term.+(2)) || PP(term.-(2)) ? ZV(0) : term	""	new A000290()	Perfect squares n^2 which are neither the sum nor the difference of two primes (otherwise 0).	easy,nonn	1..84	nyi	_Alexandre Wajnberg_
+A106548	multraf	1	(self, n) -> MIN(self.s(0), self.s(1))	""	new A106545(), new A106546()	sintrif	0	(term, n) -> !term.testBit(0) && PP(term.+(2)) && PP(term.-(2)) ? term : ZV(0)	""	new A000290()
+A106549	lambdan	1	n -> { final long n21 = 2*n - 1; return PP(n21) ? ZV(-1) : (Predicates.SQUARE.is(n21) ? (PP(SQRT(n21)) ? ZV(1) : ZV(0)) : ZV(0)); }	a(n) = -1 if 2*n-1 is a prime, 1 if 2*n-1 is a prime squared, or 0 otherwise.	easy,sign	1..87	nyi	_Giovanni Teofilatto_
+A106551	multraf	1	(self, n) -> self.s(0).add(self.s(1))	""	new A001358(), new A106555()	a(n) = n-th semiprime + (concatenation of its two divisors, largest divisor first).	base,easy,nonn,look	1..10000	nyi	_Eric Angelini_
+A106552	multraf	1	(self, n) -> self.s(0).+(self.s(1))	""	new A001358(), new A106556()	Semiprime + (smallest integer obtained by concatenating its two divisors).	base,easy,nonn,look	1..10000	nyi	_Eric Angelini_
+A106553	multraf	1	(self, n) -> self.s(0).+(self.s(1))	""	new A001358(), new A106557()	Semiprime + (largest integer obtained by concatenating its two divisors).	base,easy,nonn	1..53	nyi	_Eric Angelini_
+A106555	sintrif	1	(term, n) -> D084796(term)	""	new A001358()	Concatenation of the two divisors of a semiprime, largest divisor first.	base,easy,nonn	1..50	nyi	_Eric Angelini_
+A106556	sintrif	1	(term, n) -> { final Z lt = D037276(term); final Z gt = D084796(term); return (lt.compareTo(gt) < 0) ? lt : gt; }	""	new A001358()	Smallest number formed by concatenating the two factors of a semiprime.	base,easy,nonn	1..53	nyi	_Eric Angelini_
+A106557	sintrif	1	(term, n) -> { final Z lt = D037276(term); final Z gt = D084796(term); return (lt.compareTo(gt) > 0) ? lt : gt; }	""	new A001358()	Largest number that can be obtained by concatenating the two factors of the n-th semiprime.	base,easy,nonn	1..1000	nyi	_Eric Angelini_
+A106558	distinct	1	new LambdaSequence(2, n -> CR.PI./(2).sqrt().*(Functions.PRIMORIAL.z(n)).floor().+(1))	a(n)=1+floor(sqrt(Pi/2)*p(n)#).	nonn	1..12	nyi	_Pierre CAMI_
+A106562	filter	1	new A106544()	NONZERO	sintrif	0	(term, n) -> !term.testBit(0) || PP(term.-(2)) ? term : ZV(0)	""	new A000290().skip(1)	Perfect squares which are not the sum of two primes.
+A106563	sintrif	1	(term, n) -> SQRT(term)	""	new A106562()	!term.testBit(0) || PP(term.-(2)) ? term : ZV(0)	""	new A000027()	Numbers n such that n^2 is not the sum of two primes.	nonn
+A107120	filnum	0	0	m -> PI(m).equals(PM(Functions.DIGIT_PRODUCT.z(m)))	Numbers m such that pi(m) = prime(d_1*d_2*...*d_k) where d_1 d_2 ... d_k is the decimal expansion of m.	nonn,base,fini	1..31	nyi	_Farideh Firoozbakht_
+A107121	filnum	0	0	m -> ZV(m).equals(PM(PM(Functions.DIGIT_PRODUCT.z(m))))	Numbers m such that m=prime(prime(d_1*d_2*...*d_k)) where d_1 d_2 ... d_k is the decimal expansion of m.	base,fini,nonn,more	1..4	nyi	_Farideh Firoozbakht_
+A107122	filnum	0	0	m -> ZV(m).equals(PM(PM(PM(Functions.DIGIT_PRODUCT.z(m)))))	Numbers m such that m=prime(prime(prime(d_1*d_2*...*d_k))) where d_1 d_2 ... d_k is the decimal expansion of m.	nonn,base,fini,more	1..6	nyi	_Farideh Firoozbakht_, May 27 2008
+A108110	filnum	1	1	n -> PP(2*n + 3) && PP(3*n + 5) && PP(5*n + 7) && PP(7*n + 11) && PP(11*n + 13) && PP(13*n + 17)	prime(k)*n+prime(k+1), for k=1,...,6 all are primes.	nonn	1..33	nyi	_Zak Seidov_
+A108119	filnum	1	1	k -> PM(k).mod(10) == 1 && PM(k + 1).mod(10) == 1	Numbers k such that prime(k) and prime(k+1) are congruent to 1 (mod 10).	nonn	1..10000	nyi	_Zak Seidov_
+A108165	multia	1	"2"	(self, n) -> self.a(n - 1).+(D108173(n + 1)).-(D108173(n))
+A108173	lambdan	1	n -> X058265.^(2).*(n - 1).ceil().+(1)	Let beta = X058265. Sequence gives a(n) = 1 + ceiling((n-1)*beta^2).	nonn	1..60	nyi	_Roger L. Bagula_
+A108174	partsun	0	new LambdaSequence(0, n -> Predicates.SQUARE.is(n) ? ZV(-n) : ZV(n))	Partial sums of the positive integers n according to the rule: if n is square then subtract n, otherwise add n.	easy,sign	0..1000	nyi	_Cino Hilliard_
+A108176	multia	1	"1"	(self, n) -> RU(1, n/2, k -> new Q(ZV(1), self.a(n + 1 - 2*k))).*(PR(1, n/2, k -> self.a(n + 1 - 2*k))).num()	1..15	nyi	_Leroy Quet_
+A108182	partsun	1	new A080255()
+A108222	filter	1	new A000040()	p -> PP(Functions.CEIL_SQRT.z(p))	Primes p such that ceiling(sqrt(p)) = prime.	easy,nonn	1..55	nyi	_Giovanni Teofilatto_
+A108245	sintrif	2	(term, n) -> (term.mod(4) == 3) ? term.+(2) : term.-(2)	""	new A000040()	If n-th prime is 4m - 1, then a(n) = 4m + 1. If n-th prime is 4m + 1, then a(n) = 4m - 1.	nonn	2..10000	nyi	_Leroy Quet_
+A108270	filnum	1	1	k -> PP(FA(k).*(k).+(Functions.NEXT_PRIME.z(k - 1)))	Numbers k such that k*k! + (smallest prime >= k) is prime.	nonn,more	1..20	nyi	_Jorge Coveiro_
+A108282	multraf	0	(self, n) -> self.s(0).*(self.a(n - 1)).+(self.a(n - 2))	"1,2"	new A003842()	a(n) = k*a(n-1) + a(n-2) where k = J003842(a); a(0) = 1.	nonn	0..33	nyi	_Gary W. Adamson_
+A108283	trilambn	1	1	1	(n, k) -> (k == 1) ? ZV(1) : ((k == n) ? ZV(n).*(n + 1)./(2) : ZV(1).-(ZV(n - k + 1).^(k).*(ZV(k).*(k - n).+(1)))./(ZV(n - k).^(2)))	Triangle read by rows, generated from (..., 3, 2, 1).	nonn,tabl,easy	1..66	nyi	_Gary W. Adamson_
+A108301	sintrif	0	(term, n) -> Functions.DIGIT_SUM.z(term)	""	new A000215()
+A108303	filnum	1	1	k -> { final long ds = Functions.DIGIT_SUM.l(k); return PP(new Z(Long.toString(k) + D045503(k).toString())); }	Numbers n such that concatenating n and the sum of the digits of n raised to their own power (J045503) produces a prime.	base,easy,nonn	1..54	nyi	_Jason Earls_
+A108318	filnum	1	1	k -> PP(ZV(k).^(k).*(k + 1).-(1))	Numbers k such that (k+1)*k^k - 1 is prime.	more,nonn	1..13	nyi	_Ray G. Opao_
+A108321	sintrif	0	(term, n) -> !term.testBit(0) || PP(term.+(2)) ? ZV(0) : term	""	new A000290().skip(1)	a(n) = n^2 if n^2 is not the difference of two primes; otherwise a(n) = 0.	easy,nonn	0..42	nyi	_Alexandre Wajnberg_
+A108322	lambdan	1	n -> { final Z nz = new Z(ZV(n).*(n).toString(2)); return PP(nz) ? nz : ZV(0); }	"Binary prime squares": a(n) = n^2 written in base 2 and interpreted as a base-10 number, if that number is prime; a(n) = 0 otherwise.	easy,nonn,base	1..1000	nyi	_Alexandre Wajnberg_
+A108323	filter	1	new SingleTransformSequence(0, (term, n) -> new Z(term.toString(2)), "", new A000290())	PRIME	"Binary prime squares": squares whose binary expansions, read as decimal expansions, are primes.	easy,nonn,base	1..14	nyi	_Alexandre Wajnberg_
+A108324	filter	1	new A000290()	v -> PP(new Z(v.toString(2)))		"Binary prime squares": squares whose binary expansions, read as decimal expansions, are primes.	easy,nonn,base	1..35	nyi	_Alexandre Wajnberg_
+A108325	filtpos	1	0	new A000290()	v -> PP(new Z(v.toString(2)))	"Binary prime squares": values of k for which k^2, expressed in base two and read as a decimal number, is a prime.	easy,nonn,base	1..1000	nyi	_Alexandre Wajnberg_
+A108335	sintrif	0	(term, n) -> (term.signum() >= 0) ? term.modZ(4) : ZV(4 - (term.abs().mod(4))).modZ(4)	""	new A084202()	read mod 4
+A108336	sintrif	0	(term, n) -> (term.signum() >= 0) ? term.modZ(2) : ZV(2 - (term.abs().mod(2))).modZ(2)	""	new A084202()	read mod 2.
+A108340	sintrif	0	(term, n) -> term.modZ(2)	""	new A083952()	read mod 2.
+A108913	sintrif	0	(term, n) -> term.modZ(3)	""	new A083953()	read mod 3.
+A108921	sintrif	0	(term, n) -> (term.signum() >= 0) ? term.modZ(3) : ZV(3 - (term.abs().mod(3))).modZ(3)	""	new A083350()	read mod 3.
+A109737	poly	0	"[1],[1,0,0,112,30,112,0,0,1]"	"p1,sqrt"
+A111102	partsun	1	new SingleTransformSequence(1, (term, n) -> term.^(2), "", new A000002())	Cumulative sum of squares of Kolakoski sequence (J000002).
+A114410	partsun	0	new A079078()
+A141641	filnum	1	1	k -> { final long ds = Functions.DIGIT_SUM.l(k); return (ds&1) == 0 && ds >= 4 && !PP(ds); }	Digital sum of n is an even composite.
+A166923	lambdan	1	n -> Functions.DIGIT_SUM_ROOT.z(PM(n).^(2))	Digital root of prime(n)^2.
+A171985	central	1	new A026820()
+A173571	decexp	0	() -> CR.ONE.subtract(X072112.pow(2)).sqrt()
+A181473	sintrif	1	(term, n) -> Functions.DIGIT_SUM_ROOT.z(term)	""	new A064413()	Digital root of EKG sequence.
+A217206	sintrif	1	(term, n) -> term.modZ(2)	""	new A090822()	read mod 2.
+A228552	sintrif	1	(term, n) -> SQRT(term.abs())	""	new A069191()	Square root of the absolute value of J069191(n).
+A236748	filnum	1	1	k -> { final Q q = new Q(ZV(k).^(2), Functions.DIGIT_SUM.z(k)); return q.isInteger() && Predicates.SQUARE.is(q.num()); }	Positive integers k such that k^2 divided by the digital sum of k is a square.
+A236749	filnum	1	1	k -> { final Q q = new Q(ZV(k).^(2), Functions.DIGIT_SUM.z(k)); return q.isInteger() && Predicates.CUBE.is(q.num()); }		Positive integers n such that n^2 divided by the digital sum of n is a cube.
+A236750	filnum	1	1	k -> { final Q q = new Q(ZV(k).^(3), Functions.DIGIT_SUM.z(k)); return q.isInteger() && Predicates.SQUARE.is(q.num()); }	Positive integers k such that k^3 divided by the digital sum of k is a square.
+A236751	filnum	1	1	k -> { final Q q = new Q(ZV(k).^(3), Functions.DIGIT_SUM.z(k)); return q.isInteger() && Predicates.CUBE.is(q.num()); }		Positive integers n such that n^3 divided by the digital sum of n is a cube.
+A247798	central	1	new A077581()	.
+A258052	sintrif	1	(term, n) -> term./(PM(n))	""	new PartialSumSequence(1, new A073602())	a(n) = n-th cumulative sum of J073602 divided by n-th prime.
+A263896	central	1	new A075383()	.
+A267178	sintrif	1	(term, n) -> term.modZ(2)	""	new A072030()	read mod 2.
+A293318	central	0	new A028338()	, J039757 (gives absolute values) and J109692.
+A322239	central	0	new A123603()	.
+A394241	holos	0	[0,-1,3,-2,-2,3,-1]	0,0,3,8,25,50,95	0	0
+A395266	holos	0	[0,1,1,0,1,-1]	1,5,25,30	0	0
+A395435	lambdan	1	n -> SIGMA(n).-(Functions.USIGMA1.z(n)).+(TAU(RAD(n)))	a(n) = sigma(n) - usigma(n) + tau(rad(n)).
+A395465	decexp	0	() -> X388924.divide(CR.TWO)
+A395466	decexp	0	() -> CR.valueOf(69).subtract(CR.valueOf(11).multiply(CR.valueOf(33).sqrt())).divide(CR.TWO).sqrt().divide(CR.valueOf(12))
+A395467	decexp	0	() -> CR.valueOf(25).add(CR.TEN.multiply(CR.FIVE.sqrt())).add(CR.valueOf(1325).add(CR.valueOf(620).multiply(CR.FIVE.sqrt())).sqrt()).divide(CR.TWO).sqrt().divide(CR.TEN)
+A395468	decexp	0	() -> CR.valueOf(375).add(CR.valueOf(70).multiply(CR.valueOf(15).sqrt())).subtract(CR.TWO.multiply(CR.valueOf(15).multiply(CR.valueOf(3265).add(CR.valueOf(794).multiply(CR.valueOf(15).sqrt()))).sqrt())).sqrt().divide(CR.valueOf(30))
+A395469	decexpr	0	() -> REALS.asin(CR.THREE.subtract(CR.THREE.sqrt()).sqrt().divide(CR.TWO))
+A395470	decexpr	0	() -> REALS.asin(CR.NINE.subtract(CR.valueOf(33).sqrt()).sqrt().divide(CR.FOUR))
+A395471	decexpr	0	() -> REALS.asin(CR.TEN.subtract(CR.TWO.multiply(CR.FIVE.add(CR.FOUR.multiply(CR.FIVE.sqrt())).sqrt())).sqrt().divide(CR.FOUR))
+A395472	decexpr	0	() -> REALS.acos(CR.FIVE.divide(CR.THREE).sqrt().subtract(CR.ONE).add(CR.valueOf(20).divide(CR.THREE).add(CR.valueOf(20).divide(CR.THREE).sqrt()).sqrt()).divide(CR.FOUR)).divide(CR.TWO)
+A395481	holos	0	[0,12,-16,7,-1]	0,0,0,0,4,24,104,392	0	0
+A395482	holos	0	[0,-288,696,-692,362,-105,16,-1]	0,0,0,0,1,12,120,896,5544,30384	0	0
+A395483	holos	0	[0,-34560,127872,-210672,203456,-127512,54176,-15799,3122,-400,30,-1]	0,0,0,0,0,0,24,480,5984,57640,470504,3426320,22979920,144970904,872919960	0	0
+A395484	holos	0	[0,24883200,-128148480,305227008,-445952448,446917824,-325379888,177768976,-74208228,23861764,-5909837,1118106,-158683,16352,-1155,50,-1]	0,0,0,0,0,0,1,54,1764,34520,495320,5794944,58753904,536362784,4522914840,35866688640,270967688256,1969261200000,13869344791528,95206279619680,639874975302480	0	0

@@ -1,0 +1,129 @@
+---- 2026-04-17 23:28:33
+A095098	filtpos	1	0	new A014417()	v -> v.toString().endsWith("001")	Fib001 numbers: those k for which the Zeckendorf expansion J014417(k) ends with two zeros and a final one.	nonn,base	10000	_Antti Karttunen_
+A105143	binomtraf	0	new A079619()	-1	false	Binomial transform of J079619, assuming offset zero there.
+A106460	binomtraf	1	new A090039()	1	false	Binomial transform of E090039.
+A110067	filnum	1	1	k -> PP(ZV(10).^(k).+(SIGMA(k)))	Numbers k such that 10^k + sigma(k) is prime.	more,nonn	4
+A110385	multia	1	"3"	(self, n) -> self.a(n- 1).^(2).-(ZV(n - 1).^(2))
+A114310	lambdan	1	n -> FA(n - 1).*(FA(n).-(n*(n - 1)/2))	18	_Amarnath Murthy_
+A114793	multia	1	"1,1"	(self, n) -> self.a(n - 2).^(3).+(self.a(n - 1).^(2))
+A119690	lambdan	1	n -> FA(n).modZ(n*(n + 1)/2)	easy,nonn	94	_Paolo P. Lava_ and _Giorgio Balzarotti_
+A120387	lambdan	1	n -> FA(n - 1).modZ(n * (n + 1)/2)	mod b(n) where c(n) = (n-1)! and b(n) = Sum_{i=1..n} i.	easy,nonn	70	_Paolo P. Lava_
+A121366	lambdan	0	n -> Z2(n*(3*n + 5)/2)	= 2^J115067(n+1).	nonn	10	_Philippe Del‚ąö¬©ham_
+A122004	filter	1	new A000040()	p -> E123373(p.-(1)).mod(p).isZero()
+A123144	multia	1	"1"	(self, n) -> (n % 3 == 1) ? self.a(n - 1) : self.a(n - 1).*(n)	if n == 1 (mod 3), otherwise n*a(n-1).	nonn	632
+A123145	multia	1	"1"	(self, n) -> (n % 4 == 1) ? self.a(n - 1) : self.a(n - 1).*(n)	if n == 1 (mod 4), otherwise a(n) = n * a(n-1) for n >= 2.	nonn	500
+A124523	binomtraf	0	new A084239()	0	false	Binomial transform of J084239.
+A124649	filnum	1	1	k -> CNT(1, 8, i -> !Predicates.ZEROLESS.is(ZV(k).^(i))).isZero()	Numbers n such that n^i (i=1..8) are all zeroless.	nonn,base,more	5
+A127429	lambdan	0	n -> Z2(n*(n - 1)/2).-(FA(n))
+A128456	sintrif	1	(p, n) -> LPF((p.+(1)).^(p).-(1)./(p.^(2)))	""	new A000040()
+A130449	multia	0	"1"	(self, n) -> self.a(n - 1).*(ZV(4).^(n + 1)).+(1)	a(0) = 1; a(n) = 4^(n+1)*a(n-1)+1.	nonn	10
+A130589	lambdan	0	n -> FI(FI(n).-(1))	a(n) = F(F(n)-1), where F(n) = F000045(n) (the Fibonacci numbers).	easy,nonn	20
+A130693	filter	1	new A000079()	v -> v.toString().matches("[1248]+")	Powers of 2 whose digits are powers of 2.	nonn,base	5
+A131293	multia	0	"0,1"	(self, n) -> new Z(self.a(n - 2).toString() + self.a(n - 1).toString())	to get a(n); start with a(0)=0, a(1)=1, delete the leading zero. Also: concatenate Fibonacci(n) 1''s.	nonn,base	19
+A133378	multia	1	"1"	(self, n) -> GPF(self.a(n - 1).^(self.a(n - 1)).+(1))	(a(n-1)^a(n-1) + 1).	more,nonn	4
+A135408	multia	1	"1"	(self, n) -> self.a(n - 1).+(self.a(n - 1).^(self.a(n - 1)))	nonn	4
+A138354	multraf	0	(self, n) ->self.s(1).*(5).-(self.s(0))./(4)	"1"	new A201805().skip(1), PREVIOUS
+A143357	lambdan	1	n -> new Q(FA(n - 1), n*(n + 1)).floor()	Floor((n-1)!/[n(n+1)]).	nonn	26
+A143577	filtpos	1	1	new A146326()	v -> v.equals(ZV(9))
+A146327	filtpos	1	1	new A146326()	v -> v.equals(ZV(2))
+A146328	filtpos	1	1	new A146326()	v -> v.equals(ZV(3))
+A146329	filtpos	1	1	new A146326()	v -> v.equals(ZV(4))
+A146330	filtpos	1	1	new A146326()	v -> v.equals(ZV(5))
+A146331	filtpos	1	1	new A146326()	v -> v.equals(ZV(6))
+A146332	filtpos	1	1	new A146326()	v -> v.equals(ZV(7))
+A146333	filtpos	1	1	new A146326()	v -> v.equals(ZV(8))
+A146334	filtpos	1	1	new A146326()	v -> v.equals(ZV(10))
+A146335	filtpos	1	1	new A146326()	v -> v.equals(ZV(11))
+A146336	filtpos	1	1	new A146326()	v -> v.equals(ZV(12))
+A146337	filtpos	1	1	new A146326()	v -> v.equals(ZV(14))
+A146338	filtpos	1	1	new A146326()	v -> v.equals(ZV(15))
+A146339	filtpos	1	1	new A146326()	v -> v.equals(ZV(16))
+A146340	filtpos	1	1	new A146326()	v -> v.equals(ZV(17))
+A146348	filter	1	new A000040()	p -> D146326(p).equals(ZV(3))
+A146350	filter	1	new A000040()	p -> D146326(p).equals(ZV(5))
+A146351	filter	1	new A000040()	p -> D146326(p).equals(ZV(6))
+A146352	filter	1	new A000040()	p -> D146326(p).equals(ZV(7))
+A146353	filter	1	new A000040()	p -> D146326(p).equals(ZV(8))
+A146354	filter	1	new A000040()	p -> D146326(p).equals(ZV(9))
+A146355	filter	1	new A000040()	p -> D146326(p).equals(ZV(10))
+A146356	filter	1	new A000040()	p -> D146326(p).equals(ZV(11))
+A146357	filter	1	new A000040()	p -> D146326(p).equals(ZV(12))
+A146358	filter	1	new A000040()	p -> D146326(p).equals(ZV(13))
+A146359	filter	1	new A000040()	p -> D146326(p).equals(ZV(14))
+A146360	filter	1	new A000040()	p -> D146326(p).equals(ZV(15))
+A146361	filter	1	new A000040()	p -> D146326(p).equals(ZV(16))
+A146362	filter	1	new A000040()	p -> D146326(p).equals(ZV(17))
+A151611	multia	1	"4"	(self, n) -> BI(self.a(n - 1), ZV(2)).+(4)	.	nonn,easy	8
+A160686	filnum	1	1	k -> new Q(ZV(k), F000005(FI(k))).isInteger()	Numbers n such that n/F000005(F000045(n)) is an integer.	nonn,hard,more	7	_Ctibor O. Zizka_
+A166999	multia	0	"1"	(self, n) -> self.a(n - 1).+(self.a(n - 1).^(2)).+(self.a(n - 1).^(3))	for n>0 with a(0)=1.	nonn	6	_Paul D. Hanna_
+A168608	decexp	2	() -> CV(new Q(1043, 21))
+A173418	parmof2	0	A064117	CR.PHI.inverse()	 #N Primes formed by the initial digits of the decimal expansion of 1/(Golden Ratio).
+A173665	parmof2	1	A064117	new A006752().getCR().inverse()	%N Primes formed by the initial digits of the decimal expansion of 1/Catalan_s constant.
+A174277	parmof2	1	A064117	CR.PI.pow(CR.PI.inverse())	%N Primes formed by the initial digits of the decimal expansion of Pi^(1/Pi).
+A174868	prepend	0	new A007729()	0	Partial sums of Stern_s diatomic series A002487.
+A178184	lambdan	1	n -> SU(1, n, k -> Z2((k*k + 3*k)/2))	Sum 2^((k^2+3k)/2) from k=1 to n.	nonn	13	_Artur Jasinski_
+A178489	lambdan	0	n -> CV(n).pow(new Q(1, 6)).floor()	a(n) = floor(n^(1/6)):
+A193298	multia	1	"1"	(self, n) -> self.a(n - 1).compareTo(ZV(n - 1)) <= 0 ? self.a(n - 1).*(2) : self.a(n - 1).-(1)	a(n+1) = 2*a(n) if a(n) <= n; otherwise a(n+1) = a(n) - 1.	nonn	10000	_Jonathan Sondow_
+A199297	binomtraf	1	new A090426()	1	false	Binomial transform of E090426.
+A242824	parmof2	0	A064117	CR.valueOf(new Q(1, 7))	 #N Primes formed by the initial digits of the decimal expansion of 1/7, starting at the first nonzero digit in the expansion.
+A242826	parmof2	1	A064117	CR.valueOf(new Q(1, 13))	%N Primes formed by the initial digits of the decimal expansion of 1/13, starting at the first nonzero digit in the expansion.
+A242827	parmof2	1	A064117	CR.valueOf(new Q(1, 14))	%N Primes formed by the initial digits of the decimal expansion of 1/14, starting at the first nonzero digit in the expansion.
+A242828	parmof2	1	A064117	CR.valueOf(new Q(1, 17))	%N Primes formed by the initial digits of the decimal expansion of 1/17, starting at the first nonzero digit in the expansion.
+A242833	parmof2	0	A064117	CR.valueOf(new Q(1, 19))	 %N Primes formed by the initial digits of the decimal expansion of 1/19, starting at the first nonzero digit in the expansion.
+A242835	parmof2	1	A064117	CR.FIVE.sqrt().divide(10)	#N Primes formed by the initial digits of the decimal expansion of the square root of 5.
+A275717	filnum	1	1	k -> D003961(k).compareTo(D003961(k - 1)) > 0
+A275718	filnum	1	1	k -> D003961(k).compareTo(D003961(k - 1)) < 0
+A327760	lambdan	1	n -> new Z("224584605939537911").+(new Z("18135696597948930").*(n - 1))
+A333640	filtpos	1	1	new A146326()	v -> v.equals(ZV(13))
+A343494	filnum	1	1	k -> PP(TAU(k)) && PP(TAU(k + 1))	Numbers k such that tau(k) and tau(k+1) are both prime, where tau is the number of divisors function.	nonn,hard,more	5		A086858	poly
+A345998	sintrif	1	(term, n) -> term./(GCD(term, ZV(n)))	""	new A344005()	.	nonn	1..10000	nyi	_Robert Dougherty-Bliss_ and _N. J. A. Sloane_
+A345999	sintrif	1	(term, n) -> term.+(1)./(GCD(term.+(1), ZV(n)))	""	new A344005()	where m = J344005(n).	nonn	1..10000	nyi	_Robert Dougherty-Bliss_ and _N. J. A. Sloane_
+A350092	lambdan	0	n -> new A176055().getCR().pow(n).floor()	a(n) = floor(x^n) where x = 1 + sqrt(5)/2 = X176055.
+A363980	lambdan	1	n -> new Z("277699295941594831").+(new Z("38110169025918990").*(n - 1))
+A370318	binomtraf	0	new A057500().prepend(0)	0	false	Binomial transform of J057500 (if the null graph is not connected).
+A390311	holos	0	[[0],[0,-12,12],[0,-7],[1]]	1	0	0
+A393448	holos	0	[0,1,-2,0,2,-1]	1,2,10,24	0	0
+A393719	holos	1	[0,-1,8,-28,56,-70,56,-28,8,-1]	1,25,275,1734,7605,26011,74375	0	0
+A394613	holos	0	[0,1,1,0,1,-1]	1,4,16,20	0	0
+A394825	arrlamb	0	0	0	1	(n, k) -> SU(0, k, j -> BI(k, j).*(ZV(j).^(n + j)).*(ZV(1 - j).^(k - j)))	= Sum_{j=0..k} binomial(k, j) * j^(n + j) * (1 - j)^(k - j).	nonn,tabl,new	0..54	nyi
+A394829	holos	0	[0,1,-1,-2,2,1,-1]	0,8,10,34,38	0	0
+A395031	holos	0	[0,-1,4,-6,4,-1]	1,55,249,667	0	0
+A395040	lambdan	1	n -> F276085(F003415(F276086(n)))	.	nonn,base,easy,new	1..248	nyi	_Antti Karttunen_
+A395041	lambdan	2	n -> F276085(F003415(n))	, where F003415 is the arithmetic derivative and F276085 is fully additive with a(p) = p#/p.	nonn,new	2..2309	nyi	_Antti Karttunen_
+A395052	lambdan	2	n -> F006530(F276085(n))	, where F006530 gives the largest prime factor of n, and F276085 is fully additive with a(p) = p#/p.	nonn,new	2..465	nyi	_Antti Karttunen_
+---- 2026-04-19 10:14:19
+A110386	multia	1	"1,2"	(self, n) -> self.a(n - 1).^(n).-(1)./(self.a(n - 1).-(1))	a(n + 1) = a(n)^n + a(n)^(n-1) + ... + a(n)^2 + a(n) + 1 = {a(n)^(n + 1)-1}/{a(n) - 1}. easy,nonn   6
+A286286	holos	0	[[0],[3,-2],[0,2],[-1]]	0,1	0	0
+A147782	filter 	0	new A000040()	p -> PP(ZV(7).^(p).-(2))	Primes p such that 7^p - 2 is prime.    nonn,hard,more  4
+---- 2026-04-19 10:24:04
+A131612	lambdan	0	n -> (n <= 2) ? ZV(n + 1) : FI(n).^(n + 1).-(1)./(FI(n).-(1))
+A160021	lambdan	0	n -> Z.TWO.^(Z2(n)).+(33)	a(n)=2^(2^n)+33, Fermat numbers of order 33.    nonn    12
+A395092	decexp	0	() -> CV(1)./(CR.SQRT2.*(2).+(1).^(2).*(12))	Decimal expansion of 1/(12*(1 + 2*sqrt(2))^2).  nonn,cons,easy,new  0..101  nyi _Stefano Spezia_
+A395093	holos	0	[0,1,-15,105,-455,1365,-3003,5005,-6435,6435,-5005,3003,-1365,455,-105,15,-1]	1, 2, 13, 170, 3174, 51272, 613273, 5522106, 39166083, 228033502, 1126456193, 4844806594, 18514777184, 63899672916, 201812008205	0	0
+---- 2026-04-19 12:05:03
+A093149	lambdan	1	n -> (n == 1) ? ZV(4) : ZV(n).^(n + 1).+(2*n).-(3)./(n - 1)	a(1) = 4; a(n) = (n^(n+1)+2*n-3)/(n-1) for n > 1.   nonn    19  _N. J. A. Sloane_
+A093461	lambdan	1	n -> (n == 1) ? ZV(1) : ZV(n).^(n - 1).-(1).*(2)./(n - 1)	a(1)=1, a(n) = 2*(n^(n-1)-1)/(n-1) for n >= 2.  nonn    18  _Amarnath Murthy_
+A100283	lambdan	0	n -> { final CR p = X060006; return p.*(n + 1).floor().-(p.*(n).floor()).-(1); }	a(n) = floor(p*(n+1)) - floor(p*(n)) - 1 where p = Padovan plastic number = 1.324718... (cf. X060006).  nonn    105 _John Lien_
+A113909	filter	1	new A005408()	v -> !Predicates.SQUARE.is(v) && !Predicates.SQUARE.is(v.+(1))	Odd numbers which are neither squares nor one less than squares.        nonn    10000
+A115789	lambdan	0	n -> CR.PI.*(n + 1).floor().-(CR.PI.*(n).floor()).and(ZV(1))	a(n) = (floor((n+1)*Pi) - floor(n*Pi)) mod 2.   nonn,less   10001   _Hieronymus Fischer_
+A115790	lambdan	0	n -> ZV(1).-(CR.PI.*(n + 1).floor().-(CR.PI.*(n).floor()).and(ZV(1)))	a(n) = 1 - (floor((n+1)*Pi) - floor(n*Pi)) mod 2.   nonn,less   10001   _Hieronymus Fischer_
+A216369	lambdan	1	n -> D000166(n - 1).modZ(n)	a(n) = !(n-1) mod n.	nonn	10000
+A220092	lambdan	1	n -> DF(2*n - 1).+(Z_1((n - 1)*(n - 2)/2))./(2)	a(n) = ((2*n-1)!! + (-1)^((n-1)*(n-2)/2))/2.	nonn	20
+A220235	lambdan	1	n -> Z2(n).+(ZV(3).^(n)).modZ(n)	a(n) = (2^n + 3^n) modulo n.	nonn	1000
+A257531	lambdan	1	n -> Z2(n - 1).mod(n) == 1 ? ZV(1) : ZV(0)	If 2^(n-1) mod n = 1, then 1 else 0.	nonn	68101
+A261033	filnum	1	1	k -> PP(F002110(k).-(D007504(k)).-(1))	- 1 is a prime number.	nonn,more	5
+A262361	lambdan	0	n -> LU(LU(LU(n)))	a(n) = L(L(L(n))), where L(n) are Lucas numbers F000032.	nonn	6
+A275541	lambdan	0	n -> FA(n).+(DF(n + 1)./(n + 1)).-(2)	(n)! + (n + 1)!!/(n + 1) - 2.	nonn,easy	21
+A275574	lambdan	1	n -> Z_1(n).-(1).+(ZV(n).^((n + 1)/2).*(2))./(4)	((-1)^n - 1 + 2*(n^floor((n + 1)/2)))/4.	nonn,easy	700
+A308434	lambdan	0	n -> FA(n).+(DF(n))	a(n) = n! + n!!.	nonn,easy	23
+A309212	lambdan	0	n -> new Q(4, 3).^(n).round()	Nearest integer to (4/3)^n.	nonn	8004
+A325912	lambdan	0	n -> Z_1(n).*(SU(0, n, k -> Z_1(k).*(Z.TWO.pow(Z2(k)))))	a(n) = (-1)^n * Sum_{k=0..n} (-1)^k*2^(2^k).	nonn	12
+---- 2026-04-19 12:17:15
+A275587	multia	1	"0"	(self, n) -> { final Z s = SU(1, n - 1, k -> self.a(k)); return s.^(s); }	a(1) = 0; thereafter a(n) = s^s where s = Sum_{k=1..n-1} a(k).	nonn	5
+A275611	multia	0	"1"	(self, n) -> self.a(n - 1).*(self.a(n - 1).*(n).+(1))	a(0) = 1, a(n) = n * a(n-1)^2 + a(n-1).	nonn,easy	9
+A293137	lambdan	0	n -> (n == 0) ? ZV(0) : SQRT(4*n).-(1)	a(0) = 0, and a(n) = floor(2*sqrt(n)) - 1 for n >= 1.	nonn,easy	10001
+A306666	filnum	1	1	k -> Predicates.SQUARE.is(ZV(k).*(7 - 5*k +k*k).*(6 - 4*k + k*k))	Positive integers x such that x*(7-5*x+x^2)*(6-4*x+x^2) is a square.	nonn,more	5
+A330405	multia	1	"0"	(self, n) -> self.a(n - 1).^(2).+(1).modZ(n)	a(1) = 0; thereafter a(n) = (a(n-1)^2+1) mod n.	easy,nonn	10000
+---- 2026-04-19 22:53:49
+A108852	sintrif	0	(term, n) -> term.+(2)	""	new A072649().prepend(-1)	a(n) = 1+floor(arcsinh(sqrt(5)*n/2)/log(phi)). Also a(n) = A072649(n)+2.
+A395079	lambdan	0	n -> RU(0, n, k -> QV(n).^(k).*(BI(n + 1, k + 1)).*(BI(2*n + 2, k))./(n + 1)).num()	a(n) = Sum_{k=0..n} n^k * binomial(n + 1, k + 1) * binomial(2*n + 2, k) / (n + 1).  nonn,new    0..300  nyi _Peter Luschny_

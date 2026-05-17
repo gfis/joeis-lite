@@ -1,0 +1,109 @@
+---- 2026-04-13 10:54:16
+A139104	lambdan	1	n -> { final int pn = Functions.PRIME.i(n); return Z2(pn).-(1).-(SU(1, pn, i -> Z2(pn - i).*(PI(i))).+(n)./(2)); }	a(n)=2^prime(n)-1-(1/2)*(n+Sum_{i=1..prime(n)}2^(prime(n)-i)*pi(i))	_	_	_
+A143007	arrlamb	0	0	0	1	(n, k) -> SU(0, n, j -> BI(n + j, 2*j).*(BI(2*j, j).^(2)).*(BI(k + j, 2*j)))
+A158947	riet	1	f(new A156217()).skip(1)	Inverse Euler transform of J156217.
+A168540	filnum	1	1	k -> PP(ZV(k).^(3).*(100).+(27))	Natural numbers n for which 100n^3 + 27 is prime.	nonn	1..50	nyi	Eva-Maria Zschorn (e-m.zschorn(AT)zaschendorf.km3.de)
+A169595	filter	1	new A000040()	p -> SIGMA(p.+(2)).equals(SIGMA(p.-(2)))	Primes p such that sigma(p+2)=sigma(p-2).	nonn	1..200	nyi	_Vladimir Joseph Stephan Orlovsky_
+A169596	filter	1	new A000040()	p -> SIGMA(p.+(3)).equals(SIGMA(p.-(3)))	Primes p such that sigma(p+3) = sigma(p-3).	nonn	1..700	nyi	_Vladimir Joseph Stephan Orlovsky_
+A174637	lambdan	1	n -> SU(0, n-4, j -> BI(n - 1, j).*(ZV(n).^(j)).*(F000276(n - j, 2))).*(FA(n))./(4)	""		a(n)=n!/4*Sum_{l=0..n-4}binomial(n-1,l)*n^l*F000276(n-l)	_	_	_
+A193070	sintrif	1	(term, n) -> SQRT(term)	""	new A278911()	a(n)=J278911(n)^(1/2)	_	_	_
+A201685	trilambn	1	1	1	(n, k) -> BI(n - 1, k - 1).*(ZV(n).^(n - k)).*(FA(k - 1))
+A216435	lambdan	0	n -> (n <= 0) ? ZV(1) : SD(n, d -> BI(2*d - 2, d - 1)./(d).^(n/d))	a(0)=1,a(n)=Sum_{d|n}(binomial(2*d-2,d-1)/d)^(n/d)=Sum_{d|n}F000108(d-1)^(n/d)forn>=1	_	_	_
+A228946	sintrif	1	(term, n) -> Functions.CBRT.z(term)	""	new A066648()	a(n)=J066648(n)^(1/3)	_	_	_
+A236043	lambdan	0	n -> D003056(ZV(10).^(n)).+(1)	""		a(n)=D003056(10^n)+1=F002024(10^n+1)	_	_	_
+A280712	riet	1	f(new A280611()).skip(1)	Inverse Euler transform of J280611.
+A289738	filnum	1	1	k -> SIGMA(k).equals(SIGMA(2*k - 1))	Numbers k whose sum of divisors equals the sum of divisors of 2*k-1.
+A289800	polyx	0	"[1],[1,-4]"	"1,1,x,p1,sqrt,/,-,x,<1,p1,/,-,/,>1"	1	0
+A289810	polyx	0	"[1],[1,-4],[0,0,1]"	"1,1,p2,x,p1,sqrt,+,^2,/,-,x,x,p1,sqrt,+,/,-,/,>1"	1	0
+A318184	lambdan	1	n -> (n <= 2) ? ZV(1) : Z2(ZV(n).*(n-1)./(2)).*(ZV(3).^(ZV(n-1).*(n-2))).*(ZV(n).^(n-3))	""		a(n)=2^(n*(n-1)/2)*3^((n-1)*(n-2))*n^(n-3)	_	_	_
+A326084	lambdan	0	n -> RU(0, n, k -> new Q(Z2(k*k).*(BI(Z2(k), n - k)), FA(k))).*(FA(n)).num()	""		a(n)=n!*Sum_{k=0..n}2^(k^2)*binomial(2^k,n-k)/k!	_	_	_
+A329486	lambdan	1	n -> ZV(3).*(D006519(n)).+(n)./(ZV(2))	""		a(n)=3*D006519(n)/2+n/2	_	_	_
+A334919	union2	1	new TwoParameterFormSequence(1, 1, 1, (i, j) -> Z.valueOf(i + j + 3*i*j))	new TwoParameterFormSequence(1, 2, 2, (i, j) -> Z.valueOf(-i - j + 3*i*j))	i+j+4ij for i,j >= 1 together -i-j+4ij for i,j >= 2.	nonn	1..66	nyi	_Davide Rotondo_
+A335031	complen	1	Z.ONE	new A334919()
+A345447	union2	1	new TwoParameterFormSequence(1, 1, 1, (i, j) -> Z.valueOf(i + j + 2*i*j))	new TwoParameterFormSequence(1, 1, 1, (i, j) -> Z.valueOf(2 + i + j + 2*i*j))	Numbers of the form i+j+2*i*j and 2+i+j+2*i*j for i,j >= 1.
+A372070	holos	1	[0,1,-1,-2,2,1,-1]	6,10,66,78,190	0	0
+A372523	trilambn	1	1	1	(n, k) -> { if (n%k == 0) { return ZV(n/k); } else { final long qf = n/k; return new Z(Long.toString(qf) + Long.toString(n%k)); }}	n/k if k | n, else  and J051127(k, n) = n mod k.
+A380389	arrlamb	1	1	1	1	(n, k) -> { if (n%k == 0) { return ZV(n/k); } else { final Q qu = new Q(n, k); return new Z(qu.num().toString() + qu.den().toString()); }}	to n/k if k | n, else to the concatenation of the numerator and the denominator of n/k.	nonn,base,easy,look,tabl	1..11325	nyi
+A380432	filnum	1	1	k -> { final long om = Functions.OMEGA.l(k); return om > 3 && Functions.BIG_OMEGA.l(k) > om; }	Numbers k such that bigomega(k) > omega(k) > 3.	nonn,easy	1..10000	nyi	_Michael De Vlieger_
+A380498	riet	1	f(new A002110()).skip(1)	Inverse Euler transform of primorial numbers.
+A380509	union2	1	new TwoParameterFormSequence(1, 1, 1, (i, j) -> Z.valueOf(i + j + 4*i*j))	new TwoParameterFormSequence(1, 2, 2, (i, j) -> Z.valueOf(-i - j + 4*i*j))	i+j+4ij for i,j >= 1 together -i-j+4ij for i,j >= 2.	nonn	1..66	nyi	_Davide Rotondo_
+A380550	complen	1	Z.ONE	new A380549()
+A380572	complen	0	Z.ONE	new A380509()
+A393642	holos	0	[[0,0,0,0,0,-1,0,-10,0,-5],[16]]	0,1	0	0
+A393995	holos	0	[0,2,-2,2,-1]	1,2,4,6	0	0
+A394314	holos	0	[0,-24,50,-35,10,-1]	0,0,2,12,62,300	0	0
+A394534	decexp	1	() -> CR.TWO.divide(CR.THREE).multiply(CR.TWO.multiply(CR.SQRT2.add(CR.valueOf(103).multiply(CR.SQRT2).add(CR.valueOf(146)).sqrt()).add(CR.TWO)).sqrt())
+A394535	decexp	2	() -> CR.FOUR.multiply(X297701)
+A394536	decexp	1	() -> CR.ONE.divide(CR.FOUR.multiply(X232738))
+A394537	decexpr	1	() -> CR.FOUR.add(REALS.csc(CR.PI.divide(CR.valueOf(16))).pow(2)).sqrt().divide(CR.FOUR)
+A394538	decexp	0	() -> CR.ONE.add(X179260).divide(CR.TWO.add(X179260)).sqrt()
+A394582	arrlamb	1	1	1	1	(n, k) -> SU(0, 2*n + k - 2, j -> BI(2*n + k - 2, j).*(ZV(1 - n).^(2*n + k - 2 - j)).*(S2(j, 2*n - 1)))
+A394769	holos	0	[[720,-598956,2134012,-3281559,2912954,-1672444,657487,-182176,35980,-5035,486,-30,1],[-720]]	1	0	0
+A394872	trilambn	0	0	0	(n, k) -> BI(n, k).*(BI(2*n + 2, k)).*(Z2(k))./(k + 1)
+A394882	holos	1	[0,12,-4,-15,5,3,-1]	1,3,14,42	0	0
+A394883	holos	1	[[0,0,-6,5,90,155,96,20],[-360]]	1	0	0
+A394896	holos	1	[[0,0,-360,126,2863,-1323,-14385,-18711,-10518,-2772,-280],[45360]]	1	0	0
+A394899	decexp	0	() -> CR.valueOf(17).add(CR.TWO.multiply(CR.valueOf(79).sqrt())).pow(CR.ONE_THIRD).subtract(CR.THREE.divide(CR.valueOf(17).add(CR.TWO.multiply(CR.valueOf(79).sqrt())).pow(CR.ONE_THIRD))).subtract(CR.ONE).divide(CR.TWO)
+A394900	decexp	1	() -> CR.SIX.add(CR.valueOf(1674).subtract(CR.valueOf(162).multiply(CR.valueOf(79).sqrt())).pow(CR.ONE_THIRD)).add(CR.THREE.multiply(CR.TWO.multiply(CR.valueOf(31).add(CR.THREE.multiply(CR.valueOf(79).sqrt()))).pow(CR.ONE_THIRD))).divide(CR.valueOf(18))
+A394910	holos	0	[0,-36,20,-1]	1,13,121,2186	0	0
+A394911	holos	0	[0,27,-1]	12,162,2187,59049	0	0
+A394920	decexp	0	() -> X254140.divide(CR.PI)
+A394923	decexp	0	() -> X244847.add(X002390.multiply(X165954))
+A394924	decexp	0	() -> CR.E.^(new Q(-3, 2))	Decimal expansion of e^(-3/2).	nonn,cons,easy,new	0..99	nyi	_Stefano Spezia_
+A394928	polyx	0	"[0,0,3],[0,-1],[0,0,-3/2]"	"p1,exp,1,p2,exp,-,*,1,p1,lambertW,+,/"	0	1
+A394961	poly	0	"[0,1],[1,-1]"	"x,exp,1,-,exp,1,-,p1,/,*n!"
+A394964	decexp	0	() -> CR.PI.^(5)./(768)	Decimal expansion of Pi^5/768.	nonn,cons,new	0..104	nyi	_Amiram Eldar_
+A394965	decexp	0	() -> CR.PI.^(3)./(360)	Decimal expansion of Pi^3/360.	nonn,cons,new	0..105	nyi	_Amiram Eldar_
+A394966	decexp	0	() -> CR.SQRT2.+(1).log()./(CV(3).sqrt())	Decimal expansion of log(sqrt(2)+1)/sqrt(3).	nonn,cons,new	0..104	nyi	_Amiram Eldar_
+A394967	decexp	0	() -> CV(3).sqrt()./(CR.PI.*(2)).-(CV(2).log()./(CV(3).sqrt().*(4))).-(CV(new Q(1, 6)))	Decimal expansion of sqrt(3)/(2*Pi) - log(2)/(4*sqrt(3)) - 1/6.	nonn,cons,new	0..106	nyi	_Amiram Eldar_
+A394975	arrlamb	0	0	0	1	(n, k) -> RU(0, k, j -> new Q(FA(n + k).*(S2(n + j, j)), FA(k - j)))./(FA(n + 1)).num()
+A394996	decexp	0	() -> CR.E.^(new Q(-5, 6))	Decimal expansion of e^(-5/6)
+A395015	decexp	0	() -> CR.PI.-(CV(new Q(13, 6)))
+A395016	decexp	0	() -> CV(new Q(43, 30)).-(CR.PI./(6))
+A395025	poly	0	"[1],[1,-1],[0,1,-1/2]"	"p2,exp,p1,/,*n!"
+A395032	trilambn	0	0	0	(n, k) -> (k == 0) ? Z.ONE : new Q(BI(n, k).*(BI(2*n + 2, k))).*(Q.TWO.pow(k - 2))./(k + 1).num()
+A395084	multia	0	"1"	(self, n) -> SU(0, n- 1, k -> Z_1(n - k - 1).*(BI(n, k)).*(ZV(k + 3).^(2*(n - k))).*(self.a(k)))
+A395085	multia	0	"1"	(self, n) -> SU(0, n- 1, k -> Z_1(n - k - 1).*(BI(n, k)).*(ZV(k + 2).^(3*(n - k))).*(self.a(k)))
+A395086	multia	0	"1"	(self, n) -> SU(0, n- 1, k -> Z_1(n - k - 1).*(BI(n, k)).*(ZV(k + 3).^(3*(n - k))).*(self.a(k)))
+A395099	filter	1	new A062343()	p -> !Predicates.DIGIT_CONTAINS_ZERO.is(p)	Zeroless primes having digit sum 8.	nonn,base,fini,full,new	1..27	nyi	_Alois P. Heinz_
+A395100	filter	1	new A107579()	p -> !Predicates.DIGIT_CONTAINS_ZERO.is(p)	Zeroless primes having digit sum 10.	nonn,base,fini,full,new	1..90	nyi	_Alois P. Heinz_
+---- 2026-04-13 12:11:30
+A372565	lambdan	1	n -> GCD(ZV(n), GCD(SIGMA(n), D003961(n)))
+A376407	multia	0	"0"	(self, n) -> self.a(n - 1).+(D019565(self.a(n - 1)))	, where D019565 is the base-2 exp-function.	nonn	0..10	nyi	_Antti Karttunen_
+A376408	multia	0	"1"	(self, n) -> self.a(n - 1).*(D019565(self.a(n - 1)))	, where D019565 is the base-2 exp-function.	nonn	0..7	nyi	_Antti Karttunen_
+---- 2026-04-13 12:12:57
+A372538	filtpos	1	1	new A000040()	(k, p) -> Functions.DIGIT_SUM.l(2, p)*2 - Functions.DIGIT_LENGTH.l(2, p) == 1	- Numbers k such that the number of ones minus the number of zeros in the binary expansion of the k-th prime number is 1.	nonn,base	1..56	nyi	_Gus Wiseman_
+A372539	filtpos	1	1	new A000040()	(k, p) -> Functions.DIGIT_SUM.l(2, p)*2 - Functions.DIGIT_LENGTH.l(2, p) == -1	- Numbers k such that the number of ones minus the number of zeros in the binary expansion of the k-th prime number is -1.	nonn,base	1..10000	nyi	_Gus Wiseman_
+---- 2026-04-13 13:15:02
+A087018	rowsum	1	new A000045().skip(1)	Fibonacci triangle shown below.
+A143729	rowsum	1	new A143728()	.
+A151614	rowsum	0	new A156740()	.
+A151709	rowsum	0	new A156741()	.
+A272079	rowsum	0	new A238453()	.
+A327025	rowsum	0	new A327028()	.
+A343940	rowsum	1	new A077592()	. - _Ridouane Oudra_, Dec 05 2025
+A372312	rowsum	0	new A372311()	.
+A376406	multia	0	"1"	(self, n) -> D019565(SU(0, n - 1, i -> self.a(i)))	Sum_{i=0..n-1} a(i)), where D019565 is the base-2 exp-function.	nonn	0..9	nyi	_Antti Karttunen_
+A393139	rowsum	0	new A393138()	.
+---- 2026-04-13 13:40:07
+A123540	lambdan	0	n -> SU(0, n/2, k -> T123539(n, k))
+---- 2026-04-13 14:11:02
+A371883	lambdan	1	n -> CND(n, d -> ZV(d).^(n).mod(n) == d)	a(n) is the number of divisors d of n such that d^n mod n = d
+A371906	lambdan	1	n -> SU(1, Functions.PRIME_PI.i(n), k -> (((n/PMi(k))&1) == 1) ? Z2(k - 1) : ZV(0))	a(n) = sum(k=1, primepi(n), if (n\prime(k) % 2, 2^(k-1)))
+A371907	lambdan	1	n -> SU(1, Functions.PRIME_PI.i(n), k -> (((n/PMi(k))&1) == 0) ? Z2(k - 1) : ZV(0))	a(n) = sum of 2^(k-1) such that floor(n/prime(k)) is even.	nonn,easy	1..10000	nyi	_Michael De Vlieger_a(n) = sum of 2^(k-1) such that floor(n/prime(k)) is even.	nonn,easy	1..10000
+A371933	lambdan	1	n -> CV(n).log()./(CV(10).log()).*(20).round()	a(n) = 20*log_10(n)
+A372054	lambdan	0	n -> (n == 0) ? ZV(1) : PM(n).*(n + 1).+(1)	a(0)=1; thereafter a(n) = (n+1)*prime(n)+1.
+A372074	multia	1	"1"	(self, n) -> new Z(self.a(n - 1).toString() + Functions.DIGIT_SUM.z(self.a(n - 1)).toString())	a(1) = 1; thereafter a(n+1) is obtained by appending the digit-sum of a(n) to a(n).	nonn,base	1..270	nyi	_N. J. A. Sloane_
+A372075	multia	1	"1"	(self, n) -> new Z(Functions.DIGIT_SUM.z(self.a(n - 1)).toString() + self.a(n - 1).toString())	a(1) = 1; thereafter a(n+1) is obtained by prepending the digit-sum of a(n) to a(n).	nonn,base	1..270	nyi	_N. J. A. Sloane_
+A372118	arrlamb	0	0	0	1	(n, k) -> ZV(k + 2).^(n + 2).-(ZV(k + 1).^(n + 2).*(2)).+(ZV(k).^(n + 2))./(2)	for k, n >= 0 read by ascending antidiagonals.	nonn,easy,tabl	0..11324	nyi
+A372256	lambdan	1	n -> FA(n - 1)./(Z2((n - 1)/2)).+((n - 1)/2)	a(n) = (n-1)!/2^floor((n-1)/2) + floor((n-1)/2)
+A372265	lambdan	1	n -> ZV(2*n - 3).+(SQRT(FA(n).*(4).+(1)))./(2)	a(n) = floor((2*n - 3 + sqrt(1 + 4*n!))/2).	nonn	1..30	nyi	_Tanya Khovanova_ and the MIT PRIMES STEP junior group
+A372266	lambdan	2	n -> ZV(2*n - 3).+(SQRT(FA(n - 2).*(8).+(1)))./(2)	a(n) = floor((2*n - 3 + sqrt(1 + 8*(n - 2)!))/2).	nonn	2..30	nyi	_Tanya Khovanova_ and the MIT PRIMES STEP junior group
+---- 2026-04-13 14:36:29
+A346621	lambdan	1	n -> SU(1, n, x -> (Functions.OMEGA.i(x) == 2) ? ZV(x) : ZV(0))	a(n) = Sum_{ x <= n : omega(x) = 2 } x.	nonn	1..20000	nyi	_N. J. A. Sloane_
+A346622	lambdan	1	n -> CNT(1, n, x -> Functions.OMEGA.i(x) == 2 && (x&1) == 1)	a(n) = card{ x <= n : x odd and omega(x) = 2 }.	nonn	1..10000	nyi	_N. J. A. Sloane_
+A346623	lambdan	1	n -> SU(1, n, x -> (Functions.OMEGA.i(x) == 2 && (x&1) == 1) ? ZV(x) : ZV(0))	a(n) = Sum_{ x <= n : x odd and omega(x) = 2 } x.	nonn	1..20000	nyi	_N. J. A. Sloane_
+A371767	trilambn	0	0	0	(n, k) -> FA(n).*(FA(k))./(FA(n - k))	= (k! * n!)/(n - k)!.
+---- 2026-04-13 15:04:17
+A346271	multia	0	"1"	(self, n) -> self.a(n - 1).*(n).+(SU(3, n, k -> BI(n, k).^(2).*(k).*(self.a(n - k)))./(n))	a(n) = n * a(n-1) + (1/n) * Sum_{k=3..n} binomial(n,k)^2 * k * a(n-k).
+A346272	multia	0	"1,1"	(self, n) -> self.a(n - 1).*(n).+(self.a(n - 2).*(n).*(n - 1).*(n - 1)./(2)).+(SU(4, n, k -> BI(n, k).^(2).*(k).*(self.a(n - k)))./(n))	a(n) = n * a(n-1) + n * (n-1)^2 * a(n-2) / 2 + (1/n) * Sum_{k=4..n} binomial(n,k)^2 * k * a(n-k).

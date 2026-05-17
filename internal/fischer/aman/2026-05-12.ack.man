@@ -1,0 +1,110 @@
+---- 2026-05-12 21:08:02
+A084985	filter	0	new A084984().skip(1)	v -> Predicates.PALINDROME.is(v)	Palindromes in sequence J084984.	nonn,base	1..51	nyi	Meenakshi Srikanth (menakan_s(AT)yahoo.com)
+A085271	sintrif	1	(term, n) -> term.-(LPF(term))	""	new A002808()	Difference between n-th composite number and its smallest prime divisor.	easy,nonn	1..71	nyi	_Cino Hilliard_
+A085273	sintrif	1	(term, n) -> term.-(GPF(term))	""	new A002808()	Difference between n-th composite number and its largest prime divisor.	easy,nonn	1..10000	nyi	_Cino Hilliard_
+A085275	sintrif	1	(term, n) -> term.+(GPF(term))	""	new A002808()	Sum of n-th composite number and its largest prime divisor.	easy
+A085355	sintrif	1	(term, n) -> term.-(Z2(n - 1))	""	new A084321()	a(n) is the difference between J084321(n) and the (n-1)th power of 2.	nonn	1..1000	nyi	_Labos Elemer_ and _Robert G. Wilson v_
+A087129	diffs	1	new A087128()	.
+A088742	diffs	1	new A091072().prepend(0)	.
+A089732	tablamb	0	0	n -> new Integer[]{0, (n - 1)/2}	(n, k) -> (n == 0) ? ZV(1) : BI(n - k, k).*(BI(n - k, k + 1))./(n - k)	T(0, 0) = 1; T(n, k) = binomial(n-k, k)*binomial(n-k, k+1)/(n-k) for 2k <= n-1.
+A091039	trilambn	1	1	1	(n, k) -> FA(k).^(n - k + 1).*(ZV(k + 1).^(n - k + 1).-(1))./(FA(k).*(k))
+A091200	poly	0	"[1]"	"x,^5,sub,1,5,x,*,x,^5,sub,*,-,/,^1/5"
+A091586	diffs	1	new A090822()	.
+A097042	sintrif	0	(term, n) -> (n == 0) ? ZV(1) : term.*(2)	""	new A026832()
+A097884	diffs	1	new A097605()	(phi(n) divides n^2 - 1).
+A099004	diffs	1	new A081145()	.
+A099599	trilambn	0	0	0	(n, k) -> RU(k, n, i -> new Q(FA(n), FA(n - i)).*(S1(i, k))).num()	T(n,k) = Sum_{i=k..n} (n!/(n-i)!) * A048994(i,k).
+A101510	lambdan	0	n -> SU(0, n/2, k -> SU(0, n - k, i -> (i + 1) % (k + 1) == 0 ? BI(n - k, i) : ZV(0)))	a(n) = Sum_{k=0..floor(n/2)} Sum_{i=0..n-k, (k+1)|(i+1)} binomial(n-k,i).
+A101607	multia	1	"1"	(self, n) -> ((n&1) == 0) ? ZV(7).-(self.a(n/2)) : ZV((n - 1)/2).modZ(3).+(1)	a(2n) = 7 - a(n), a(2n+1) = (n-1 mod 3) + 1.A107700	polyx	0	"[0,1,1,1,0,-2]"	"A,sub,x,-,2,/,sqrt"	6
+A107042	diffs	0	new A080664()	. Next term is > 9965.
+A109967	diffs	1	new A088670().skip(1)
+A110037	sintrif	0	(term, n) -> term.*(Z_1(n/2))	""	new A090678()	a(n) = (-1)^[n/2]*A090678(n)
+A111416	diffs	0	new A000197()	.
+A116467	holos	0	[[0],[630,-174,12],[1458,-435,33],[-624,85,-1],[-1764,650,-66],[-120,184,-20],[486,-397,61],[-66,91,-21],[0,-4,2]]	1,2,2	0	0
+A118976	trilambn	1	1	1	(n, k) -> BI(n - 1, k - 1).*(BI(n, k - 1))./(k).+(BI(n - 1, k).*(BI(n, k))./(k + 1))	Triangle read by rows: T(n,k) = binomial(n-1,k-1)*binomial(n,k-1)/k + binomial(n-1,k)*binomial(n,k)/(k+1)
+A120513	parmof2	1	A120512	new A120502()	= n}.
+A120515	parmof2	1	A120512	new A120504()	= n}.
+A120516	parmof2	1	A120512	new A120505()	= n}.
+A120517	parmof2	1	A120512	new A120506()	= n}.
+A120519	parmof2	1	A120512	new A120508()	= n}.
+A120520	parmof2	1	A120512	new A120509()	= n}.
+A120521	parmof2	1	A120512	new A120510()	= n}.
+A121699	lambdan	1	n -> new Q(PM(n + 1), PM(n)).^(n).floor()	floor((prime(n+1)/prime(n))^n).	easy,nonn	1..10000	nyi	_Jason Earls_
+A121700	filtpos	1	1	new A121699()	PRIME	Numbers n such that floor((prime(n+1)/prime(n))^n) is prime.	easy,nonn	1..10000	nyi	_Jason Earls_
+A121703	holos	1	[[0],[-2640,724,-66,2],[-10560,3336,-348,12],[-50040,17054,-1935,73],[-103152,38112,-4692,192],[-223824,93473,-13002,601],[-137040,69510,-11760,660],[-35334,24194,-5508,412],[1380,138,-420,72],[1494,-1415,396,-31],[96,-168,84,-12],[0,-2,3,-1]]	1,2	0	0
+A121704	holos	1	[[0],[863040,-113338,5579,-122,1],[1456380,-199686,10258,-234,2],[-22030140,3036508,-156899,3602,-31],[-34914840,5016764,-270212,6466,-58],[241962000,-35615042,1965349,-48190,443],[341047380,-52272078,3003610,-76686,734],[-1754894700,282134384,-17007865,455638,-4577],[-2224850880,376973168,-23950368,676198,-7158],[10035646560,-1771272114,117172643,-3443130,37921],[13530583980,-2563969878,181909570,-5727186,67514],[-39420474540,7561482060,-543460883,17345682,-207439],[-63326837880,13146635604,-1021590572,35218746,-454498],[81432015600,-16886426602,1311088053,-45170846,582675],[164072218020,-37198544622,3157819322,-118958502,1677862],[-54352485660,11952827920,-977880369,35240246,-471417],[-183199974720,45920076408,-4306363928,179069358,-2785678],[-23077858560,6609612722,-705781143,33288706,-585045],[56584633140,-16022692674,1692287942,-79008606,1375558],[5182200780,-1560045900,174004223,-8498682,152779],[-11567825160,3988555044,-512123932,29027526,-612878],[-1751917200,800877690,-133393193,9656982,-257479],[1526678460,-616793530,91678974,-5920586,139482],[730813500,-397233040,79483549,-6953486,224837],[-54562560,14729088,331472,-352782,23422],[-101504160,67559098,-16673623,1807538,-72653],[-5611740,5735582,-2056474,310810,-16898],[4666140,-4249052,1413623,-204586,10915],[318360,-411828,195404,-40002,2986],[-40560,74930,-42545,9670,-775],[-180,3702,-4242,1662,-222],[-180,144,141,-126,21],[0,24,-24,-6,6]]	1,2	0	0
+A121707	filnum	1	2	k -> E121706(k).mod(ZV(k).^(3)).isZero()	Numbers n > 1 such that n^3 divides Sum_{k=1..n-1} k^n = E121706(n).	nonn	1..10000	nyi	_Alexander Adamchuk_
+A121755	lambdan	1	n -> new Q(D007504(n), F002110(n)).num()	Numerator of Sum/Product of first n primes = Numerator[ D007504[n] / F002110[n] ].	frac,nonn	1..10000	nyi	_Alexander Adamchuk_
+A121763	filnum	1	1	k -> PP(6*k - 1) && !PP(6*k + 1)	Numbers k such that 6*k-1 is prime while 6*k+1 is composite.	nonn	1..10000	nyi	_Lekraj Beedassy_
+A121817	filnum	1	0	k -> PP(23 + 36*k*(k + 1))	is prime.	nonn	1..60	nyi	_Zak Seidov_
+A121846	filnum	1	1	k -> GPF(PM(k).+(1)).equals(Z.FIVE)	Numbers m such that greatest prime divisor of (m-th prime + 1) is 5.	nonn	1..51	nyi	_Zak Seidov_
+A121850	filnum	1	1	k -> new Q(PHI(k).+(SIGMA(k)), RAD(k).^(2)).isInteger()	Numbers k such that (phi(k) + sigma(k))/rad(k)^2 is an integer, that is (phi(k) + sigma(k)) is divisible by every prime factor of k squared.	nonn	1..145	nyi	_Tanya Khovanova_
+A121859	filnum	1	1	k -> PP(FA(k).*(ZV(3).^(k)).-(1))	Numbers n such that n!*3^n - 1 is prime.	nonn	1..16	nyi	_Alexander Adamchuk_
+A121911	multia	1	"1,9,7,9"	(self, n) -> self.a(n - 1).+(self.a(n - 2)).+(self.a(n - 3)).+(self.a(n - 4)).modZ(10)	First four terms are decimal digits of 1979. Rest are found by adding four previous terms modulo 10.	easy,nonn,base	1..1560	nyi	Stephen J Sugden (ssugden(AT)gmail.com)
+A121931	filnum	0	0	k -> PP(FA(k).^(8).+(1))	Numbers k such that (k!)^8 + 1 is prime.	nonn,hard,more	1..6	nyi	_Alexander Adamchuk_
+A121943	filnum	0	1	k -> BI(2*k, k).mod(k*k) == 0	Numbers k such that the central binomial coefficient C(2k,k) is divisible by k^2.	nonn	1..10000	nyi	_Tanya Khovanova_
+A121944	filter	1	new A002808()	v -> v.-(1).and(ZV(3)).isZero() && Predicates.SQUARE.is(v.-(1))	Composite number of the form 4n^2+1.	nonn,easy	1..41	nyi	_Tanya Khovanova_
+A122101	trilambn	0	0	0	(n, k) -> SU(0, k, i -> Z_1(k - i).*(BI(k, i)).*(D000670(n - k + i)))	T(n,k) = Sum_{i=0..k} (-1)^(k-i)*binomial(k,i)*D000670(n-k+i).	easy,nonn,tabl	0..100	nyi	_Vladeta Jovovic_
+A122125	filtpos	1	1	new A122103()	PRIME	Indices n such that J122103[n] = Sum[ Prime[k]^5, {k,1,n}] is a prime.	nonn	1..43	nyi	_Alexander Adamchuk_
+A122127	filtpos	1	1	new A122102()	PRIME
+A122131	filnum	0	0	k -> PP(ZV(k).^(12).+(488669))	Numbers n such that n^12 + 488669 is prime.	nonn,easy	1..10000	nyi	_Eric W. Weisstein_
+A122148	lambdan	1	n -> RU(1, n, k -> new Q(Z_1(k + 1), PM(k).^(PM(k)))).num()	Numerator of Sum[ (-1)^(k+1) * 1/p(k)^p(k), {k,1,n}], where p(k) = Prime[k].	frac,nonn	1..7	nyi	_Alexander Adamchuk_
+A122150	lambdan	1	n -> RU(1, n, k -> new Q(Z_1(k + 1), ZV(2).^(PM(k)))).num()	Numerator of Sum[ (-1)^(k+1) * 1/2^Prime[k], {k,1,n} ].	frac,nonn	1..19	nyi	_Alexander Adamchuk_
+A122152	filter	1	new A122150()	PRIME
+A122166	filnum	1	1	k -> PP(SU(1, k, h -> ZV(h).^(h)).+(1))	Numbers k such that 1 + Sum_{h=1..k} h^h is prime 
+A122184	lambdan	0	n -> RU(0, 2*n, k -> new Q(Z_1(k), BI(2*n, k).^(3))).num()	Numerator of Sum_{k=0..2n} (-1)^k/C(2n,k)^3.	frac,nonn	0..13	nyi	_Alexander Adamchuk_
+A122208	filnum	1	1	k -> PP(D007504(k*k))	Numbers n such that the sum of the first n^2 primes J109724(n) = D007504(n^2) is a prime.	nonn	1..1000	nyi	_Alexander Adamchuk_
+A122380	filnum	1	1	k -> ZV(k).*(k).compareTo(FA(GPF(k))) > 0	Numbers k such that k^2 > P(k)!, where P(k) is the greatest prime factor of k.	nonn	1..10000	nyi	_Jonathan Sondow_
+A122414	trilambn	1	1	1	(n, k) -> PP(GCDi(n, k)) ? ZV(1) : ZV(0)	1 <= k <= n read by rows, where T(n,k) = 1 if gcd(n,k) is prime, 0 otherwise.	nonn,tabl,easy	1..105	nyi	_Klaus Brockhaus_
+A122486	lambdan	0	n -> SU(0, n, k -> SA(n, k).*(BELL(k).^(2)))	a(n) = Sum_{k=0..n} |Stirling1(n,k)|*Bell(k)^2.	{k=0..n} |Stirling1(n,k)|*Bell(k)^2.
+A122498	filter	1	new A000931()	SEMIPRIME	Padovan numbers that are semiprimes.	nonn	1..54	nyi	_Roger L. Bagula_
+A122567	sintrif	1	(term, n) -> term.modZ(4)	""	new A001097()	Twin primes modulo 4.
+A122594	multia	0	"2,5"	(self, n) -> PM(self.a(n - 1)).+(PM(self.a(n - 2)))	a(0) = 2; a(1) = 5; a(n) = prime(a(n-1)) + prime(a(n-2)) if n > 1.	nonn,more	0..16	nyi	_Carlos Alves_
+A122869	filter	1	new A000040().skip(1)	p -> LU(p.-(1)./(2)).mod(p).isZero()	Primes p that divide Lucas((p-1)/2), where Lucas is F000032.	nonn,changed	1..10000	nyi	_Alexander Adamchuk_
+A122977	diffs	1	new A074986().prepend(0)
+A123049	filnum	1	0	k -> Z2(k).+(ZV(3).^(k)).mod(k + 2) == 0	Numbers n such that (n+2) | (2^n+3^n).	nonn	1..31	nyi	_Zak Seidov_
+A123051	lambdan	1	n -> ((n&1) == 1) ? ZV(4*(n + 1)/2 - 3).^(4*(n + 1)/2 - 2) : ZV(2*n).^(2*n - 1)	a(2*n-1) = (4*n-3)^(4*n-2) and a(2*n) = (4*n)^(4*n-1), n=1,2,...	nonn	1..100	nyi	Herman Jamke (hermanjamke(AT)fastmail.fm)
+A123070	multia	0	"0,1,1,2"	(self, n) -> ZV(n + 1) .-(self.a(self.a(n - 1).intValueExact() + 1))	a(0) = 0, a(1) = 1, a(2) = 1, a(3) = 2; a(n) = (n+1) - a(a(n-1)+1) fo
+A123079	filter	1	new A001097()	p -> p.mod(4) == 1	Twin primes of form 4k+1.	nonn	1..50	nyi	_Miklos Kristof_
+A123080	filter	1	new A001097()	p -> p.mod(4) == 3	Twin primes of form 4k+3.	nonn	1..51	nyi	_Miklos Kristof_
+A123135	lambdan	1	n -> { final Z n3 = ZV(n).^(3); return n3.+(Functions.DIGIT_SUM.z(n3)); }	a(n) = n^3 plus sum of digits of n^3.	nonn,base	1..
+A123136	multia	1	"208"	(self, n) -> self.a(n - 1).+(n*(n - 1))./(n - 1)	a(n+1) = ( a(n) + n*(n+1) ) / n, with a(1) = 208.	non
+A123146	trilambn	0	0	0	(n, k) -> FA(BI(n + 1, 2))./(FA(k).*(FA(ZV(k + 1).-(BI(n + 1, 2)).abs())))	[Factorial(Binomial(n+1, 2))/(Factorial(k)*Factorial(Abs(k+1 - Binomial(n+1, 2)))): k in [0..n], n in [0..12]]
+A123147	trilambn	0	0	0	(n, k) -> FA(n + 2).*(FA(ZV(n).*(n + 1).*(2*n + 1)./(6)))./(FA(k*k).*(FA(ZV(2 + 2*k*k).-(ZV(n).*(n + 1).*(2*n + 1)./(6)).abs())))	= (n+2)!*(n*(n+1)*(2*n+1)/6)!/( (k^2)! * abs(2 + 2*k^2 - (n*(n + 1)*(2*n+1)/6))! ),
+A123153	multraf	1	(self, n) -> self.s(0).*(self.s(1))	""	new A000796(), new A000040()	a(n) = (n-th digit of Pi) times (the n-th prime number).
+A157673	diffs	1	new A157107()	.
+A160407	diffs	1	new A160406()
+A163963	diffs	1	new A080735()	.
+A171902	diffs	1	new A171901()
+A178562	diffs	0	new A178344()	.
+A248099	diffs	1	new A110387()	.
+A261890	diffs	1	new DifferenceSequence(0, new A055615())	first differences of J261869.
+A264752	diffs	1	new A106543()	.
+A264893	diffs	0	new A155043()	.
+A269735	diffs	0	new DifferenceSequence(0, new A268289().prepend(0, 0))
+A295338	diffs	1	new A072895().prepend(0)
+A295572	diffs	1	new A081881()	.
+A303843	polyxa	1	"[1],[0,0,1],[0,0,0,1]"	"x,B,x,B,^3,3,x,B,*,p1,B,*,+,2,p2,B,*,+,3,x,B,^2,*,+,3,p1,B,*,+,6,1,x,B,+,*,/,*"	1	0	new A000107()
+A317795	diffs	0	new A317794().prepend(0)
+A326899	diffs	0	new A072444().prepend(0)	 (the non-covering case).
+A333215	diffs	1	new A258026().prepend(0)	(with zero prepended).
+A356385	diffs	1	new A353654()	which is numbers with the same number of trailing 0 bits as other 0 bits.
+A358089	diffs	1	new A126706()	.
+A361298	diffs	2	new A211971().skip(1)
+A372169	diffs	0	new A006785().prepend(0, 1)
+A372191	diffs	0	new A236570().prepend(0, 0, 0, 0)
+A373360	diffs	1	new A373347()	.
+A374403	diffs	1	new A185192().prepend(0)
+A376562	diffs	1	new A375706()
+A376599	diffs	1	new A375735()
+A378972	diffs	0	new DifferenceSequence(0, new A000009())
+A379054	diffs	1	new A099862()	.
+A379055	diffs	0	new A099861()	.
+A380667	sintrif	0	(term, n) -> term./(2), "", new DifferenceSequence(0, new A020985())
+A385538	diffs	1	new A184859()	.
+A387075	diffs	1	new A386482()	.
+A387253	diffs	1	new A272885()
+A389613	diffs	1	new A389395()	.
+A389763	diffs	1	new A174973()
+A392324	holos	1	[0,-1,3,-2,-2,3,-1]	1,4,11,30,57,104	0	0
+A395767	holos	1	[0,-8,4,2,-1]	1,3,8,22	0	0
