@@ -1,0 +1,249 @@
+---- 2026-05-29 13:22:49
+A082387	parmof4	1	A082182	5	+2	7
+A105286	filnum	1	1	k -> (k == 1) || PM(k + 1).mod(k) == 1
+A105287	filnum	0	1	k -> (k == 1) || PM(k + 1).mod(k) == 2
+A105288	filnum	0	1	k -> (k <= 2) || PM(k + 1).mod(k) == 3
+A105329	filnum	1	1	k -> (k <= 2) || PM(k + 1).mod(k) == 5
+A106045	multia	0	"1"	(self, n) -> PM(PM(self.a(n - 1)).+(self.a(n - 1)))	For n >= 2, a(n) = prime[prime[a(n-1)] + a(n-1)]; a(1)=1.	nonn	1..9	nyi	_Zak Seidov_
+A106046	multia	0	"5"	(self, n) -> PM(PM(self.a(n - 1)).-(self.a(n - 1)))	For n >= 2, a(n) = prime[prime[a(n-1)] - a(n-1)]; a(1)=5.	nonn	1..7	nyi	_Zak Seidov_
+A106047	multia	0	"2"	(self, n) -> PM(PM(self.a(n - 1)).-(n - 1))	For n >= 2, a(n+1)=prime[prime[a(n)]-n]; a(1)=2.	nonn	1..8	nyi	_Zak Seidov_
+A106048	multia	1	"3"	(self, n) -> PM(self.a(n - 1)).-(n - 1)	For n >= 2, a(n+1)=prime[a(n)]-n; a(1)=3.	nonn	1..12	nyi	_Zak Seidov_
+A107580	filnum	1	1	k -> PM(k).+(k).mod(5) == 0 && PM(k + 1).+(k + 1).mod(5) == 0	Numbers n such that (n + prime(n)) and (n+1 + prime(n+1)) are divisible by 5.	easy,nonn	1..53	nyi	_Zak Seidov_
+A107581	filnum	1	1	k -> PM(k).+(k).mod(5) == 0 && PM(k + 1).+(k + 1).mod(5) == 0 && PM(k + 2).+(k + 2).mod(5) == 0	Numbers n such that (n + prime(n)), (n+1 + prime(n+1)) and (n+2 + prime(n+2)) are divisible by 5.	easy,nonn	1..44	nyi	_Zak Seidov_
+A107582	filnum	1	1	k -> PM(k).+(k).mod(5) == 0 && PM(k + 1).+(k + 1).mod(5) == 0 && PM(k + 2).+(k + 2).mod(5) == 0 && PM(k + 3).+(k + 3).mod(5) == 0	Numbers n such that (n + prime(n)), (n+1 + prime(n+1)), (n+2 + prime(n+2)) and (n+3 + prime(n+3)) are divisible by 5.	easy,nonn	1..5000	nyi	_Zak Seidov_
+A107620	lambdan	1	n -> PM(n).*(2 + (n&1))	Primes multiplied alternately by 3 and 2.	easy,nonn	1..50	nyi	_Zak Seidov_nyi_Ft__	Primes multiplied alternately by 3 and 2.	easy,nonn
+A107621	lambdan	1	n -> PM(n).*(3 - (n&1))	Primes multiplied alternately by 2 and 3.	easy,nonn	1..50	nyi	_Zak Seidov_nyi_Ft__	Primes multiplied alternately by 2 and 3.	easy,nonn
+A107622	lambdan	1	n -> PM(n).+(3 - (n&1))	Primes plus alternately 3 and 2.	easy,nonn	1..58	nyi	_Zak Seidov_nyi_Ft__	Primes plus alternately 3 and 2.	easy,nonn
+A107623	lambdan	1	n -> PM(n).+(2 + (n&1))	Primes plus alternately 2 and 3.	easy,nonn	1..59	nyi	_Zak Seidov_nyi_Ft__	Primes plus alternately 2 and 3.	easy,nonn
+A116657	filtpos	1	1	new A000040()	(k, v) -> v.mod(k) == 11 % k
+A116658	filtpos	1	1	new A000040()	(k, v) -> v.mod(k) == 13 % k
+A116659	filtpos	1	1	new A000040()	(k, v) -> v.mod(k) == 14 % k
+A116662	filtpos	1	1	new A000040()	(k, v) -> v.mod(k) == 15 % k
+A124881	primepos	0	1	1	new A124837()		 is prime.        hard,nonn       1..50   nyi     _Alexander Adamchuk_
+A125955	parmof4	1	A082182	2	+7	9
+A125956	parmof4	1	A082182	2	+9	11
+A125957	parmof4	1	A082182	2	+11	13
+A128024	parmof4	1	A082182	7	-3	4
+A128025	parmof4	1	A082182	8	-3	5
+A128026	parmof4	1	A082182	10	-3	7
+A128027	parmof4	1	A082182	11	-3	8
+A128028	parmof4	1	A082182	13	-3	10
+A128029	parmof4	1	A082182	14	-3	11
+A128030	parmof4	1	A082182	16	-3	13
+A128031	parmof4	1	A082182	17	-3	14
+A128032	parmof4	1	A082182	19	-3	16
+A128066	parmof4	1	A082182	3	+4	7
+A128067	parmof4	1	A082182	3	+7	10
+A128068	parmof4	1	A082182	3	+8	11
+A128069	parmof4	1	A082182	3	+10	13
+A128070	parmof4	1	A082182	3	+11	14
+A128071	parmof4	1	A082182	3	+13	16
+A128072	parmof4	1	A082182	3	+14	17
+A128073	parmof4	1	A082182	3	+16	19
+A128075	parmof4	1	A082182	3	+19	22
+A128335	parmof4	1	A082182	4	+5	9
+A128336	parmof4	1	A082182	6	+5	11
+A128337	parmof4	1	A082182	7	+5	12
+A128338	parmof4	1	A082182	8	+5	13
+A128339	parmof4	1	A082182	9	+5	14
+A128340	parmof4	1	A082182	11	+5	16
+A128341	parmof4	1	A082182	12	+5	17
+A128342	parmof4	1	A082182	13	+5	18
+A128343	parmof4	1	A082182	14	+5	19
+A128344	parmof4	1	A082182	7	-5	2
+A128345	parmof4	0	A082182	8	-5	3
+A128346	parmof4	1	A082182	9	-5	4
+A128347	parmof4	1	A082182	11	-5	6
+A128348	parmof4	1	A082182	12	-5	7
+A128349	parmof4	1	A082182	13	-5	8
+A128350	parmof4	0	A082182	14	-5	9
+A128351	parmof4	1	A082182	16	-5	11
+A128352	parmof4	1	A082182	17	-5	12
+A128353	parmof4	1	A082182	18	-5	13
+A128354	parmof4	1	A082182	19	-5	14
+A158845	filtpos	1	1	new A000217().skip(1)	(k, v) -> PP(new Z("1" + v.toString()))	Numbers k such that prepending 1 to the k-th triangular number produces a prime.	nonn,base	1..1000	nyi	_Zak Seidov_
+A158862	filtpos	1	0	new A000217()	(k, v) -> (k > 1) && PP(new Z("3" + v.toString()))	Numbers k such that prepending 3 to the k-th triangular number produces a prime.	base,nonn	1..47	nyi	_Zak Seidov_
+A158864	filtpos	1	0	new A000217()	(k, v) -> (k > 1) && PP(new Z("6" + v.toString()))	Numbers k such that prepending 6 to the k-th triangular number produces a prime.	base,nonn	1..1000	nyi	_Zak Seidov_
+A164770	filnum	1	1	k -> { final Z k2 = ZV(k).*(k); final Q ad = new Q(Functions.DIGIT_SUM.l(k2), Functions.DIGIT_LENGTH.l(k2)); return ad.isInteger() && ad.num().compareTo(ZV(2)) == 0; }	average digit of k^2 is 2.	base,nonn	1..2500	nyi	_Zak Seidov_
+A164771	filnum	1	1	k -> { final Z k2 = ZV(k).*(k); final Q ad = new Q(Functions.DIGIT_SUM.l(k2), Functions.DIGIT_LENGTH.l(k2)); return ad.isInteger() && ad.num().compareTo(ZV(1)) == 0; }	of k^2 is 1.	base,nonn	1..34	nyi	_Zak Seidov_
+A164772	filnum	1	1	k -> { final Z k2 = ZV(k).*(k); final Q ad = new Q(Functions.DIGIT_SUM.l(k2), Functions.DIGIT_LENGTH.l(k2)); return ad.isInteger() && ad.num().compareTo(ZV(8)) == 0; }	digit of k^2 is s=8.	base,nonn	1..23	nyi	_Zak Seidov_
+A164773	filnum	1	1	k -> { final Z k2 = ZV(k).*(k); final Q ad = new Q(Functions.DIGIT_SUM.l(k2), Functions.DIGIT_LENGTH.l(k2)); return ad.isInteger() && ad.num().compareTo(ZV(7)) == 0; }	digit of k^2 is s=7.	nonn,base	1..925	nyi	_Zak Seidov_
+A164774	filnum	1	1	k -> { final Z k2 = ZV(k).*(k); final Q ad = new Q(Functions.DIGIT_SUM.l(k2), Functions.DIGIT_LENGTH.l(k2)); return ad.isInteger() && ad.num().compareTo(ZV(5)) == 0; }	digit of k^2 is s=5.	nonn,base	1..47	nyi	_Zak Seidov_
+A164776	filnum	1	1	k -> { final Z k2 = ZV(k).*(k); final Q ad = new Q(Functions.DIGIT_SUM.l(k2), Functions.DIGIT_LENGTH.l(k2)); return ad.isInteger() && ad.num().compareTo(ZV(4)) == 0; }	digit of k^2 is s=4.	base,nonn	1..45	nyi	_Zak Seidov_
+A164778	filnum	1	1	k -> { final Z k2 = ZV(k).*(k); final Q ad = new Q(Functions.DIGIT_SUM.l(k2), Functions.DIGIT_LENGTH.l(k2)); return ad.isInteger() && ad.num().compareTo(ZV(6)) == 0; }	digit of n^2 is s=6.	base,nonn	1..1000	nyi	_Zak Seidov_
+A164782	filnum	1	1	k -> { final Z k2 = ZV(k).*(k); final Q ad = new Q(Functions.DIGIT_SUM.l(k2), Functions.DIGIT_LENGTH.l(k2)); return ad.isInteger() && ad.num().compareTo(ZV(3)) == 0; }	digit of k^2 is 3.	nonn,base	1..10000	nyi	_Zak Seidov_
+A164817	filnum	1	1	k -> { final Z k2 = ZV(k).*(k); final Q ad = new Q(Functions.DIGIT_SUM.l(k2), Functions.DIGIT_LENGTH.l(k2)); return ad.isInteger(); }	average digit of n^2 is an integer.	base,nonn	1..10000	nyi	_Zak Seidov_
+A164818	sintrif	1	(term, k) -> { final Z k2 = term.^(2); return Functions.DIGIT_SUM.z(k2)./(Functions.DIGIT_LENGTH.l(k2)); }	""	new A164817()	Integer average digit of squares.	base,nonn	1..10000	nyi	_Zak Seidov_
+A165486	sintrif	0	(term, n) -> term.^(2).*(term.signum())	""	new A165472()
+A173718	parmof4	1	A082182	9	-2	7
+A175258	filnum	0	0	k -> PP(ZV(k).*(k).+(41))	Numbers n with property that n^2+41 is prime.	nonn	0..47	nyi	_Zak Seidov_
+A175259	filnum	0	0	k -> PP(k+ 41) && PP(ZV(k).*(k).+(41))	Numbers n with property that n+41 and n^2+41 are primes.	nonn	0..44	nyi	_Zak Seidov_
+A175260	filnum	0	0	k -> PP(k+ 41) && PP(ZV(k).*(k).+(41)) && PP(ZV(k).^(3).+(41))	Numbers n with property that n+41, n^2+41 and n^3+41 are all primes.	nonn	0..35	nyi	_Zak Seidov_
+A181141	parmof4	1	A082182	8	+7	15
+A185239	parmof4	0	A082182	11	+10	21
+A187805	parmof4	1	A082182	7	+6	13
+A187819	parmof4	1	A082182	9	+8	17
+A210506	parmof4	1	A082182	11	-2	9
+A211409	parmof4	1	A082182	9	+4	13
+A213073	parmof4	1	A082182	7	-4	3
+A213176	parmof4	1	A082182	13	+4	17
+A213216	parmof4	0	A082182	12	+11	23
+A215487	parmof4	1	A082182	7	-2	5
+A216181	parmof4	1	A082182	11	-4	7
+A217095	parmof4	1	A082182	10	+9	19
+A217320	parmof4	1	A082182	13	-2	11
+A218373	parmof4	1	A082182	7	+4	11
+A221637	parmof4	1	A082182	15	+14	29
+A222265	parmof4	1	A082182	13	+2	15
+A224501	parmof4	1	A082182	11	+4	15
+A224507	parmof4	1	A082182	17	+2	19
+A224691	parmof4	1	A082182	13	-4	9
+A224984	parmof4	1	A082182	14	+13	27
+A225097	parmof4	1	A082182	13	+12	25
+A225191	parmof4	1	A082182	15	+2	17
+A225397	parmof4	1	A082182	16	+5	21
+A225807	parmof4	0	A082182	17	-2	15
+A225818	parmof4	1	A082182	19	+18	37
+A225955	parmof4	1	A082182	15	-2	13
+A227046	parmof4	1	A082182	17	+5	22
+A227049	parmof4	1	A082182	15	+4	19
+A227170	parmof4	1	A082182	16	+15	31
+A227171	parmof4	1	A082182	18	+17	35
+A227172	parmof4	1	A082182	48	+47	95
+A227173	parmof4	1	A082182	138	+137	275
+A227174	parmof4	1	A082182	140	+139	279
+A228076	parmof4	1	A082182	19	-4	15
+A228130	parmof4	1	A082182	18	+5	23
+A228225	parmof4	0	A082182	17	+3	20
+A228558	parmof4	1	A082182	17	+4	21
+A228573	parmof4	1	A082182	17	+16	33
+A228922	parmof4	1	A082182	19	+2	21
+A229542	parmof4	1	A082182	19	-2	17
+A229612	parmof4	1	A082182	19	+5	24
+A230139	parmof4	1	A082182	17	-4	13
+A231329	parmof4	1	A082182	19	+4	23
+A241246	filter	1	new A000040()	p -> Predicates.SQUARE.is(new Z(p.toString(7)))	Primes p such that the decimal expansion of its base 7 expansion converted to decimal is a square.
+A241921	parmof4	0	A082182	15	-4	11
+A259032	filnum	1	1	k -> Functions.DIGIT_SUM_ROOT.z(k).equals(Functions.DIGIT_SUM_ROOT.z(PM(k)).*(2))	Numbers k such that digital root of k is 2*(digital root of k-th prime).	nonn,base	1..10000	nyi	_Zak Seidov_
+A259040	filnum	1	1	k -> Functions.DIGIT_SUM_ROOT.z(k).equals(Functions.DIGIT_SUM_ROOT.z(PM(k)).*(3))	Numbers k such that digital root of k is 3*(digital root of k-th prime).	nonn,base	1..10000	nyi	_Zak Seidov_
+A259041	filnum	1	1	k -> Functions.DIGIT_SUM_ROOT.z(k).equals(Functions.DIGIT_SUM_ROOT.z(PM(k)).*(4))	Numbers k such that digital root of k is 4*(digital root of k-th prime).	nonn,base	1..60	nyi	_Zak Seidov_
+A259370	filnum	1	1	k -> { final Z s = SIGMA(k).^(3); return PP(s.+(1).+(s.^(2))); }	Numbers n such that 1 + sigma(n)^3 + sigma(n)^6 is prime.	easy,nonn	1..756	nyi	_Robert Price_
+A272813	filnum	1	0	k -> PP(ZV(k).-(79).*(k).+(1601))	Nonnegative numbers n such that n^2 - 79n + 1601 is prime.	nonn	1..4179	nyi	_Robert Price_
+A273010	parmof4	1	A082182	9	-7	2
+A273403	parmof4	1	A082182	10	-7	3
+A273598	parmof4	1	A082182	11	-6	5
+A273599	parmof4	1	A082182	11	-7	4
+A273600	parmof4	1	A082182	11	-8	3
+A273601	parmof4	1	A082182	11	-9	2
+A273814	parmof4	1	A082182	12	-7	5
+A283623	lambdan	1	n -> PM(n).+(PM(n + 1).+(1)./(2))	a(n) = prime(n) + (1 + prime(1 + n))/2.	nonn	1..10000	nyi	_Zak Seidov_
+A283718	filnum	1	1	k -> Functions.DIGIT_SUM.z(27*k).equals(ZV(27))	Numbers m such that sum of digits of 27*m is 27.	nonn,base	1..10000	nyi	_Zak Seidov_
+A301369	parmof4	1	A082182	9	+7	16
+A328660	parmof4	1	A082182	10	+7	17
+A338525	parmof4	1	A082182	11	+6	17
+A341061	primepos	1	1	1	new A340179()		is prime.        nonn    1..3000 nyi     _J. M. Bergot_ and _Robert Israel_
+A354084	filter	1	new A000040()	p -> p.mod(6) == p.mod(8)	Primes p such that p mod 6 = p mod 8.	nonn	1..51	nyi	_Zak Seidov_
+A362411	filtpos	1	1	new SingleTransformSequence(1, (term, n) -> new Z(term.toString(), 2), "", new A359149())	PRIME
+A375161	parmof4	1	A082182	23	-2	21
+A375236	parmof4	1	A082182	21	-2	19
+A375620	parmof4	0	A082182	20	-3	17
+A376329	parmof4	1	A082182	45	-2	43
+A376470	parmof4	1	A082182	29	-2	27
+A377031	parmof4	1	A082182	27	-2	25
+A377180	parmof4	0	A082182	43	-2	41
+A377699	parmof4	1	A082182	35	-2	33
+A377718	parmof4	1	A082182	41	-2	39
+A377779	parmof4	1	A082182	31	-2	29
+A377800	parmof4	1	A082182	33	-2	31
+A377814	parmof4	1	A082182	37	-2	35
+A377839	parmof4	1	A082182	25	-2	23
+A377856	parmof4	1	A082182	21	+2	23
+A378115	parmof4	1	A082182	23	+2	25
+A378953	parmof4	1	A082182	29	+2	31
+A379428	parmof4	1	A082182	39	+2	41
+A379429	parmof4	0	A082182	31	+2	33
+A379986	parmof4	1	A082182	20	+3	23
+A380131	parmof4	0	A082182	45	+2	47
+A380132	parmof4	1	A082182	47	+2	49
+A380253	parmof4	1	A082182	25	+2	27
+A380355	parmof4	1	A082182	47	-2	45
+A381092	parmof4	1	A082182	43	+2	45
+A381093	parmof4	1	A082182	26	-3	23
+A381200	parmof4	1	A082182	49	-2	47
+A381338	parmof4	1	A082182	22	-3	19
+A382391	parmof4	1	A082182	23	-3	20
+A382866	parmof4	0	A082182	49	+2	51
+A384736	parmof4	1	A082182	28	-3	25
+A384767	parmof4	1	A082182	29	-3	26
+A384925	parmof4	1	A082182	32	-3	29
+A384972	parmof4	1	A082182	25	-3	22
+A385064	parmof4	1	A082182	31	-3	28
+A385244	parmof4	1	A082182	33	+2	35
+A385518	parmof4	1	A082182	37	-3	34
+A385680	parmof4	0	A082182	40	-3	37
+A385684	parmof4	1	A082182	38	-3	35
+A385851	parmof4	1	A082182	34	+3	37
+A385928	parmof4	0	A082182	34	-3	31
+A385992	parmof4	1	A082182	35	-3	32
+A386281	parmof4	1	A082182	29	-4	25
+A386282	parmof4	1	A082182	31	-4	27
+A386794	parmof4	1	A082182	21	-4	17
+A386914	parmof4	1	A082182	35	+3	38
+A387390	parmof4	1	A082182	28	+3	31
+A387392	parmof4	1	A082182	29	+3	32
+A387395	parmof4	1	A082182	44	-3	41
+A387473	parmof4	1	A082182	31	+3	34
+A387474	parmof4	1	A082182	32	+3	35
+A388039	parmof4	0	A082182	37	+3	40
+A388040	parmof4	1	A082182	38	+3	41
+A388142	parmof4	1	A082182	25	+3	28
+A389222	parmof4	1	A082182	43	-3	40
+A389223	parmof4	0	A082182	41	-3	38
+A389264	parmof4	1	A082182	20	+19	39
+A389266	parmof4	1	A082182	46	-3	43
+A389283	parmof4	1	A082182	40	+3	43
+A389287	parmof4	1	A082182	41	+3	44
+A389309	parmof4	1	A082182	39	-5	34
+A389433	parmof4	1	A082182	43	+3	46
+A389767	parmof4	1	A082182	33	-4	29
+A389768	parmof4	1	A082182	35	-4	31
+A389935	parmof4	1	A082182	50	-3	47
+A390751	parmof4	0	A082182	47	+3	50
+A390757	parmof4	1	A082182	23	-4	19
+A390770	parmof4	1	A082182	43	-4	39
+A390912	parmof4	1	A082182	26	+3	29
+A391053	parmof4	1	A082182	45	-4	41
+A391596	parmof4	1	A082182	27	-4	23
+A391663	parmof4	1	A082182	23	-5	18
+A391702	parmof4	1	A082182	39	-4	35
+A391924	parmof4	0	A082182	26	-5	21
+A392052	parmof4	1	A082182	24	-5	19
+A392145	parmof4	1	A082182	28	-5	23
+A392800	parmof4	1	A082182	36	-5	31
+A392803	parmof4	1	A082182	21	-5	16
+A394344	parmof4	1	A082182	33	-5	28
+A394375	parmof4	0	A082182	29	-5	24
+A395374	parmof4	1	A082182	34	-5	29
+A395375	parmof4	1	A082182	31	-5	26
+A395417	parmof4	1	A082182	37	-5	32
+A395474	parmof4	1	A082182	32	-5	27
+A395534	parmof4	1	A082182	38	-5	33
+A395993	parmof4	0	A082182	47	-5	42
+A396042	parmof4	0	A082182	48	-5	43
+A396152	holos	0	[0,-30,-25,-25,11,-1]	0,0,0,1,11,96,756	0	0
+A396154	holos	0	[0,-30,-25,-25,-25,-25,11,-1]	0,0,0,0,0,1,11,96,756,5616,40176	0	0
+A396230	parmof4	1	A082182	49	-5	44
+A396232	holos	1	[0,-1,2,-1]	1, 3, 8, 18, 38, 58	0	0
+A396311	holos	0	[0,1,0,3,1,3,0,1,-1]	1,1,1,4,8,15,31	0	0
+A396312	holos	0	[0,1,0,0,4,2,2,6,3,3,4,0,0,1,-1]	1,1,1,1,5,12,22,38,72,148,301,593,1149	0	0
+A396313	holos	0	[0,1,0,3,0,1,-1]	1,1,1,4,7	0	0
+A396322	holos	0	[0,12,-28,11,20,-22,8,-1]	0,0,0,0,0,10,60,266,1008,3522,11700	0	0
+A396414	holos	0	[[0],[-117719759683169280,439127087579216064,1186550701460361792,-8069728527755831052,12467327487647284260,4152522234208080123,-40843497911636603871,67613908553283199266,-63178933386791779380,38766318892621968987,-16372325984815242459,4803478831174485924,-962715953207755350,125645727302622576,-9605784187727712,325358826026112],[17413079029557120,-65623427449477632,-191551511252066616,1318201678954877832,-2024379173638591650,-1260564906313970334,9031166272079723448,-15593909612220911736,15596508692423583990,-10348795095720575886,4754167662908072052,-1522531762052076324,333574585255346040,-47553036338619648,3955928917631616,-144603922678272],[-524636731382400,2089779112003680,6773972485285728,-50454062275080600,83181247209279360,74720766771592200,-521847320294206584,1004798871029557440,-1133881685475248520,851103019692729360,-441914251709817216,159436285382697120,-39140271964225440,6203828372693760,-567707282108928,22480719575040],[1152646346880,-8734827145824,-11696820996864,286242666126600,-934619820363120,421505588752752,4630370413295472,-14457764197936680,22395563370165600,-21674572032499632,13940902896025248,-6037768351218240,1731857128640640,-312954769207296,31887482886144,-1371372871680],[0,-243471876480,527191819872,3611774316976,-12988937470800,2136408351120,45899059684944,-71715254539968,14712884052000,69251921158400,-91695801016704,57309366033408,-20714252083200,4385650728960,-499758170112,23219011584]]	1,2	0	0
+A396432	holos	0	[[0],[-869856261120,4105905971904,-8291277271800,9381961353294,-6521456885805,2856894487191,-771468984855,117560595051,-7748409780],[111799638720,-594036647064,1363747308480,-1768905765774,1419112156770,-721498755726,227115801990,-40481956116,3128809680],[-1864545120,13843386768,-43458212760,75551778708,-79552071480,51919313292,-20510096400,4487318352,-416871360],[0,59137968,-185340440,-10182192,606128200,-865841808,536363680,-158547648,18282240]]	1,2,9	0	0
+A396460	parmof4	0	A082182	41	-5	36
+
+
+A379987	parmof4	0	A082182	35	+2	37	hartt
+A379988	parmof4	0	A082182	27	+2	29	hartt
+A386383	parmof4	0	A082182	22	+3	25	hartt
+A392056	parmof4	0	A082182	47	-4	43	hartt

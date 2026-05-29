@@ -1,0 +1,82 @@
+---- 2026-05-26 22:12:21
+A085104	filter	1	new A053696()	PRIME	Subsequence of J000668 U J076481 U J086122 U J165210 U B102170 U J004022 U ... (for each possible b). - _Rick L. Shepherd_, Sep 07 2009
+A087506	filter	1	new A087461()	PRIME
+A088563	filter	1	new A014976()	PRIME	(positions of '0's in decimal digits of Pi).
+A088566	filter	1	new A053746()	PRIME
+A089987	filter	1	new A262571()	PRIME
+A096207	filter	1	new A077126()	PRIME
+A096345	filter	1	new A037165()	PRIME
+A134971	filter	1	new A134970()	PRIME
+A136003	filter	1	new A136002()	PRIME
+A163867	multia	0	"1"	(self, n) -> self.a(n/3).+(self.a(2*n/3))	; a(0) = 1.	nonn	0..10000	nyi	_Reinhard Zumkeller_
+A164383	filter	1	new A002808()	c -> PP(c.-(4))	Composite numbers of the form 4 + some prime
+A164705	trilambn	0	0	0	(n, k) -> (n == 0 && k == 0) ? ZV(1) : QV(2).^(k - 1).*(BI(2*n - k, n)).ceiling()	nyi Fpt	T(n,k) = binomial(2n-k,n) * 2^(k-1), T(0,0)=1; triangle T(n,k), n>=0, 0<=k<=n, read by rows.	nonn,tabl	0..54	nyi
+A164939	filter	1	new A000040()	p -> PP(p.+(1).*(p).+(1).*(p).+(2))	These are prime numbers p such that p^3 + p^2 + p + 2 is also prime.	easy,nonn	1..1000	nyi	B. R. Becker (bbecker(AT)panda3.phys.unm.edu)
+A165318	filter	1	new A000040()	p -> TAU(p.-(1)).bitCount() == 1	Primes p where the number of divisors of p-1 is a power of 2.	nonn	1..10000	nyi	_Leroy Quet_
+A165319	filter	1	new A000040()	p -> TAU(p.+(1)).bitCount() == 1	Primes p where the number of divisors of p+1 is a power of 2.	nonn	1..20000	nyi	_Leroy Quet_
+A165320	filter	1	new A000040()	p -> TAU(p.+(1)).bitCount() != 1 && TAU(p.-(1)).bitCount() != 1	Primes p where neither the number of divisors of p+1 nor the number of divisors of p-1 is a power of 2.	nonn	1..10000	nyi	_Leroy Quet_
+A165429	multia	1	"1"	(self, n) -> SU(1, n - 1, i -> self.a(i)).^(n)	a(n) = (Sum_{i=1..n-1} a(i))^n for n >= 2.
+A165446	filter	1	new A000040()	p -> PP(REV(p).+(2))	Primes p such that (p reversed)+2 is a prime
+A165487	sintrif	0	(term, n) -> term.^(2)	""	new A165477()
+A165552	multia	1	"1"	(self, n) -> SD(n, k -> (k >= n) ? ZV(0) : self.a(k).*(k))	nyi Fto	a(1) = 1, and then a(n) is sum of k*a(k) where k<n and k divides n.
+A165562	filnum	1	0	k -> PP(ARD(k).+(k))	Numbers k for which k+k' is prime, k' bei
+A165604	filter	0	new A165601()	(k, v) -> k%3 == 0	0..81	nyi	_Antti Karttunen_
+A165605	filter	0	new A165601()	(k, v) -> k%3 == 1	0..89844	nyi	_Antti Karttunen_
+A165606	filter	0	new A165601()	(k, v) -> k%3 == 2	0..71	nyi	_Antti Karttunen_
+A165641	sintrif	0	(term, n) -> term./(E001316(n))	""	new A091137()
+A165671	filter	1	new A000040()	p -> { final Q t = new Q(p.^(2).+(2), 33); return !t.isInteger() || !PP(t.num()); }	is not prime.	nonn,less,easy	1
+A165681	filter	1	new A000040()	p -> !PP(p.*(p.-(1)).*(3).+(1))	is not prime.	nonn,easy	1..1000	nyi	_Vincenzo Librandi_
+A165682	filter	1	new A000040()	p -> PP(p.*(p.-(1)).*(3).+(1))	is also prime.	nonn,easy	1..1000	nyi	_Vincenzo Librandi_
+A165700	filnum	0	0	k -> PP(ZV(10).^(k+1).*(k).+(1))	 prime.	base,hard,more,nonn	1..6	nyi	_Farideh Firoozbakht_
+A165704	multia	0	"1"	(self, n) -> self.a(n/2).+(self.a(n/3)).+(self.a(n/5))
+A165706	multia	0	"1"	(self, n) -> self.a(n/2).+(self.a(n/5))
+A165901	multia	0	"0,1"	(self, n) -> self.a(n - 1).+(Z2(n - 3).*(self.a(n - 2)))	a(0)=0, a(1)=1, a(n) = a(n-1) + 2^(n-3)*a(n-2)
+A166101	filnum	1	1	k -> !new Q(E166100(k), D005408(k)).isInteger()	is not an integer.	nonn	1..92	nyi	_Antti Karttunen_
+A166102	filnum	1	1	k -> ((k&1) == 1) && !(new Q(E166100((k-1)/2), k).isInteger())	/k is not an integer.	nonn	1..92	nyi	_Antti Karttunen_
+A166268	filter	0	new A166050()	(k, v) -> (k&1) == 0	Bisection 2n of E166050.	nonn	0..16383	nyi	_Antti Karttunen_
+A166269	filter	0	new A166050()	(k, v) -> (k&1) == 1	Bisection 2n+1 of E166050.	sign	0..16383	nyi	_Antti Karttunen_
+A166270	filter	0	new A165460()	(k, v) -> (k&1) == 0	Bisection 2n of E165460.	nonn	0..16383	nyi	_Antti Karttunen_
+A166271	filter	0	new A165460()	(k, v) -> (k&1) == 1	Bisection 2n+1 of E165460.	nonn	0..16383	nyi	_Antti Karttunen_
+A166448	sintrif	1	(term, n) -> term.-(PM(n + 1))	""	new A007504()
+A166454	trilambn	2	2	1	(n, k) -> BI(n, k)./(2)	Triangle read by rows: T(n, k) = (1/2)*(F007318(n,k) - T047999(n,k)).	nonn,tabl	2..125	nyi	_Gary W. Adamson_
+A166457	filnum	1	1	k -> PP(k*100 + 1)	Numbers n such that n*100+1 is prime.	nonn,easy	1..
+A166458	filnum	1	1	k -> PP(k*10 - ((k&1) == 1 ? -1 : 1))	Numbers k such that 10*k - (-1)^k is prime.	nonn,easy
+A166496	sintrif	1	(term, n) -> (n == 1) ? ZV(6) : term.*(2).+(1)	""	new A000040()	Prime plus the next composite.
+A180932	filter	1	new A286624()	PRIME
+A214629	filter	1	new A185300()	PRIME
+A273976	filter	1	new A026898()	PRIME
+A278604	holos	1	[0,-1,16,-120,560,-1820,4368,-8008,11440,-12870,11440,-8008,4368,-1820,560,-120,16,-1]	0,0,0,1,56,728,5328,27876,116304,411334,1281280,3606980,9346624,22597760,51507280,111578412,231211152,460720740,886647920	0	0
+A292499	lambdan	0	n -> (n == 0) ? ZV(1) : RU(1, n - 1, m -> RQ(1, m, k -> new Q(ZV(n).^(n - k + 1).-(1), ZV(n).^(k).-(1)))).+(2).num()	2 + sum(m=1, n-1, prod(k=1, m, (n^(n-k+1)-1)/(n^k-1) ) ))}
+A317308	filter	1	new A162917()	PRIME
+A317309	filter	1	new A161983()	PRIME
+A333393	filter	1	new A333392()	PRIME
+A334092	filter	0	new A334102()	PRIME
+A346794	filter	1	new A343621()	PRIME
+A347366	filter	1	new A062198()	PRIME	Cf. J001358.
+A392227	filter	1	new A392225()	PRIME
+A393014	filter	1	new A259385()	PRIME
+A395029	holos	2	[0,-2,0,1,3,-1]	6,22,68,222	0	0
+A395804	decexp	1	() -> CR.FIVE.divide(CR.SIX).multiply(CR.TWO.multiply(CR.valueOf(650).add(CR.valueOf(290).multiply(CR.FIVE.sqrt())).sqrt()).subtract(CR.TWO.multiply(CR.FIVE.sqrt())).subtract(CR.TWO).sqrt())
+A395805	decexp	2	() -> CR.TEN.divide(X272534)
+A395806	decexpr	1	() -> CR.ONE.divide(CR.FOUR.multiply(REALS.sin(CR.PI.divide(CR.valueOf(20)))))
+A395807	decexp	1	() -> CR.ONE.add(CR.TWO.multiply(CR.FIVE.sqrt()).add(CR.valueOf(50).add(CR.valueOf(22).multiply(CR.FIVE.sqrt())).sqrt()).divide(CR.EIGHT)).sqrt()
+A395840	polyxa	0	"[1]"	"x,x,B,^2,<1,rev,/,sqrt"	1	0	new A395841()
+A395841	polyx	0	"[1]"	"x,1,A,^3,<1,+,2,A,^2,*,<2,A,dif,*,+,^2,/,rev,x,/,sqrt"	1	0
+A395946	decexp	0	() -> CR.ONE.add(X188593).divide(CR.TWO.add(X188593)).sqrt()
+A396115	lambdan	0	n -> (n <= 1) ? ZV(n + 1) : FI(ZV(n - 1).*(n + 1))./(FI(n - 1).*(FI(n + 1)))	a(n) = F((n-1)*(n+1))/(F(n-1)*F(n+1)), where F(n) is the n-th Fibonacci number F000045(n)
+A396153	holos	0	[0,-30,-25,-25,-25,11,-1]	0,0,0,0,1,11,96,756,5616	0	0
+A396227	multia	1	"1"	(self, n) -> SU(1, n - 1, k -> Z_1(k).*(self.a(k)).*((n - 1)/k))	a(1) = 1; a(n+1) = Sum_{k=1..n} (-1)^k * a(k) * floor(n/k).	sign,new	1..80	nyi	_Ilya Gutkovskiy_
+A396228	multia	1	"1"	(self, n) -> SU(1, n - 1, k -> Z_1(k).*(self.a(k)).*((n - 1)/k)).negate()	a(1) = 1; a(n+1) = -Sum_{k=1..n} (-1)^k * a(k) * floor(n/k).	sign,new	1..80	nyi	_Ilya Gutkovskiy_
+A396233	lambdan	0	n -> (n <= 2) ? ZV(1) : PELL(ZV(n - 1).*(n + 1))./(PELL(n - 1).*(PELL(n + 1)))	a(n) = P((n-1)*(n+1))/(P(n-1)*P(n+1)), where P(n) is the n-th Pell number F000129(n).	nonn,easy,new	0..52	nyi	_Alois P. Heinz_
+A396236	lambdan	0	n -> ZV(n).*(n).and(ZV(n).not())	a(n) = n^2 AND NOT n
+A396237	lambdan	0	n -> ZV(n).and(ZV(n).*(n).not())	a(n) = n AND NOT n^2.	nonn,base,easy,new	0..10000	nyi	_Mia Boudreau_
+A396273	decexp	0	() -> CR.PI.divide(CR.PI.add(CR.FOUR).pow(2)).multiply(CR.PI.divide(CR.FOUR).add(CR.ONE.divide(CR.valueOf(96))).subtract(CR.SQRT2.divide(CR.valueOf(12))).add(CR.SQRT2.subtract(CR.ONE).log().divide(CR.valueOf(12))))
+A396274	decexp	0	() -> CR.EIGHT.divide(CR.NINE).subtract(X165952)
+A396283	lambdan	1	n -> SU(1, n, k -> ZV(n%k).^(2))	a(n) = Sum_{k=1..n} (n mod k)^2.	nonn,new	1..55	nyi	_Ilya Gutkovskiy_
+A396284	lambdan	1	n -> SU(1, n, k -> ZV(n%k).^(3))	a(n) = Sum_{k=1..n} (n mod k)^3.	nonn,new	1..50	nyi	_Ilya Gutkovskiy_
+A396287	multia	0	"1"	(self, n) -> self.a(n - 1).+(self.a(n - 1).^(4))	a(n) = a(n-1) + a(n-1)^4 with a(0)=1.	nonn,easy,new	0..6	nyi	_Seiichi Manyama_
+A396326	decexp	1	() -> X334402.divide(X000796)
+A396370	decexp	1	() -> CR.HALF.multiply(CR.TWO.multiply(CR.PI).log().add(Zeta.zeta(3).divide(CR.TWO.multiply(CR.PI.pow(2)))).exp())
+A396372	decexp	1	() -> CR.PI.divide(CR.TWO).multiply(CR.valueOf(23).multiply(Zeta.zeta(3)).divide(CR.valueOf(24).multiply(CR.PI.pow(2))).subtract(Zeta.zeta(5).divide(CR.EIGHT.multiply(CR.PI.pow(4)))).exp())
+A396374	decexp	1	() -> CR.PI.divide(CR.THREE).multiply(CR.valueOf(949).multiply(Zeta.zeta(3)).divide(CR.valueOf(720).multiply(CR.PI.pow(2))).subtract(CR.valueOf(13).multiply(Zeta.zeta(5)).divide(CR.valueOf(24).multiply(CR.PI.pow(4)))).add(Zeta.zeta(7).divide(CR.valueOf(32).multiply(CR.PI.pow(6)))).exp())
+A396376	decexp	0	() -> CR.PI.divide(CR.FOUR).multiply(CR.valueOf(16399).multiply(Zeta.zeta(3)).divide(CR.valueOf(10080).multiply(CR.PI.pow(2))).subtract(CR.valueOf(2087).multiply(Zeta.zeta(5)).divide(CR.valueOf(1920).multiply(CR.PI.pow(4)))).add(CR.valueOf(31).multiply(Zeta.zeta(7)).divide(CR.valueOf(128).multiply(CR.PI.pow(6)))).subtract(Zeta.zeta(9).divide(CR.valueOf(128).multiply(CR.PI.pow(8)))).exp())
