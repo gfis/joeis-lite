@@ -7868,6 +7868,25 @@ prisuba:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.*
+pricesub: pricesub1 pricesub2
+pricesub1:
+	grep -E "(Numbers|Integers)" $(COMMON)/joeis_names.txt \
+	| grep -E 'ers [a-z] (such that|for which) ' \
+	| grep -E 'is (a )?prime' \
+	>        $@.tmp
+#	| grep -P "\tnyi" \
+#
+# J390751	FilterNu	Numbers k such that (47^k + 3^k)/50 is prime.	nonn,hard,more	1..4	2025-11-21.ack/f	_Robert Price_
+# J390757	FilterNu	Numbers k such that (23^k - 4^k)/19 is prime.	nonn,hard,more	1..7	2025-11-21.ack/f	_Robert Price_
+pricesub2:
+	grep -P " \(\d+\^[i-n] *[\+\-] *\d+\^[i-n]\)\/\d+ is" pricesub1.tmp \
+	| perl -ne \
+	' my $$line = $$_; $$line =~ m{^[A-Z](\d+)}; my $$seqno = $$1; $$line =~ m{\((\d+)\^[i-n] *([\+\-]) *(\d+)\^[i-n]\)\/(\d+)}; '\
+	' my ($$a, $$b, $$c) = ($$1, "$$2$$3", $$4); '\
+	' print join("\t", "A$$seqno", "parmof4", 0, "A082182", $$a, $$b, $$c) . "\n";' \
+	>        aman/$@.man
+	head -n4 aman/$@.man
+	wc -l    aman/$@.man
 #--
 primof:
 	grep -E "Primes of (the )?form " $(COMMON)/joeis_names.txt \
