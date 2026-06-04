@@ -1,7 +1,8 @@
 #!perl
 
 # Convert a tsv file with optional headers (DBAT output) into HTML
-# @(#) $Id$ 
+# @(#) $Id$
+# 2026-06-04: for Jnnnnnn also
 # 2026-03-26: email address with "dot"s
 # 2026-02-16: gmail
 # 2022-09-11, Georg Fischer: copied from OEIS-mat/common/html_checks.pl
@@ -23,6 +24,16 @@ if (scalar(@ARGV) == 0) { # print help and exit
   exit;
 } # print help
 
+my %colors = qw(
+  A red 
+  B lavender 
+  D lightgreen 
+  E lightgreen 
+  F lightblue 
+  J yellow 
+  M lightgreen 
+  X khaki
+  ); # starting letters
 my $edit = 0; # no edit link
 my $show = 0; # do not show in browser
 my $cat25 = 0; # no CAT25 format
@@ -68,7 +79,8 @@ while (<INF>) {
         print "<tr><th class=\"bor\">" . join("</th><th class=\"bor\">", split(/\t/, $line)) . "</th></tr>\n";
     } else {
         my @rest = map {
-            s{(A\d\d\d\d+)}{\<a href\=\"$oeis_url$1\" target\=\"_blank\"\>$1\<\/a\>}g;
+            # 1     12       2                       
+            s{([A-Z])(\d\d\d+)}{\<a href\=\"${oeis_url}A$2\" target\=\"_blank\"\><span style=\"background-color:$colors{$1}\">$1</span>$2\<\/a\>}g;
             $_
             } split(/\t/, $line);
         print "<tr><td class=\"bor\">" . join("</td><td class=\"bor\">", @rest) . "</td></tr>\n";

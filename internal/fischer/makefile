@@ -93,7 +93,7 @@ killmake:
 #----------------------------------
 # Test programs
 seqt: # A=$(A) - print data up to 260 characters
-	$(JAVA) irvine.oeis.SequenceFactory -a "Georg Fischer" -n $(NT) -o $(OFFSET) --data-length=4096  -D $(A) 2>&1   | tee x.tmp
+	$(JAVA) irvine.oeis.SequenceFactory -a "Georg Fischer" -n $(NT) -o $(OFFSET) --data-length=4096  -D "$(A)" 2>&1   | tee x.tmp
 seqte: # A=$(A) - test with errors
 	$(JAVA) irvine.test.SequenceTest   -a $(A)             -n $(NT) -o $(OFFSET)  $(BF)                2>&1
 seqdi: # A=$(A) - test the a(int) method of a DirectSequence
@@ -105,8 +105,7 @@ seqtris: # A=$(A) - print data in upper left triangle format
 seqtrir: # A=$(A) - print data in upper right triangle format
 	$(JAVA) irvine.oeis.SequenceFactory -a "Georg Fischer" -r $(NT) --row-numbers -o $(OFFSET) -R $(A) 2>&1   | tee x.tmp
 seqtest: # A=$(A) NT=$(NT) OFFSET=$(OFFSET) - print b-file
-	$(JAVA) irvine.oeis.SequenceFactory -a GFis --header -n $(NT) -o $(OFFSET) --priority=$(PRIO) -B $(A)
-#	$(JAVA) irvine.oeis.SequenceFactory -a  --header -n $(NT) -B $(A)
+	$(JAVA) irvine.oeis.SequenceFactory -a GFis --header -n $(NT) -o $(OFFSET) --priority=$(PRIO) -B "$(A)"   | tee x.tmp
 # --priority "java,gp"
 seqhelp: #
 	$(JAVA) irvine.oeis.SequenceFactory --help
@@ -122,6 +121,10 @@ uritest:
 	$(JAVA) org.teherba.common.URIReader $(URI) UTF-8
 ebtest:
 	$(RAMATH) org.teherba.ramath.sequence.JoeisExpressionBuilder -d 1 -p CR.xpat "$(POST)"
+NT=64
+getiet: # get an InverseEulerTransfrom from a PseudoSequence
+	echo -e "$(A)\teuxper\t0\t?\t" `$(JAVA) irvine.oeis.SequenceFactory -n $(NT) -D "ieuler(pseudo($(A)).skip(1))" 2>&1` | sed -e "s/ //g" \
+	| tee -a aman/`date +%Y-%m-%d`.man
 Q="-1/1"
 INIT="1"
 #--
@@ -7187,7 +7190,9 @@ aliquot2:
 #----
 period0:
 	cat $(COMMON)/bfdata.txt \
-	| perl find_period.pl -n 2 \
+	| endirect \
+	| grep -P "^A" \
+	| perl find_period.pl -n 2 -g \
 	>        $@.tmp \
 	2>       $@.rest.tmp
 	head -n4 $@.tmp

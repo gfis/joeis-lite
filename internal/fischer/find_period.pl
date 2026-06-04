@@ -86,13 +86,14 @@ while (<>) {
                 if ($debug >= 1) {
                     print "# found period \"$period\", length $perlen, $count x repeated, prefix=\"$initer\", start=$start\n";
                 }
-                if ($generate) {
+                if (0) {
+                } elsif ($generate) {
                     if (length($initer) == 0) { # pure periodic
                         $parms[$nparm] = "new PeriodicSequence($period)";
                     } else {
                         $parms[$nparm] = "new PaddingSequence(\"$initer\", \"$period\")";
                     }
-                    print        join("\t", @parms) . "\n";
+                    print            join("\t", @parms) . "\n";
                 } else {
                     $parms[$nparm] = join("\t", $initer, $period, $termlist);
                     if ($parms[$nparm] !~ m{\d{19}}) { # in range of Java long 9,223,372,036,854,775,807
