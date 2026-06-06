@@ -58,9 +58,10 @@ MATRIX=[[1,0],[0,1]]
 SC=222221210100
 NC=
 BOFS=1
-BF=
+BF= 
 WITHB=-b $(COMMON)/bfile -t $(TO)
 VERBOSE=false
+BFPATH=$(COMMON)/bfile
 PROG=$(GITS)/OEIS-prog/prog
 PRIO=java,gp
 JOPT=-Ddebug=$(D) -Xmx2800m -Xss800m -Duser.language=en -Dprog.root=$(PROG) -Doeis.verbose=$(VERBOSE) -Doeis.priority="$(PRIO)" -Doeis.timeout=$(TO)
@@ -123,7 +124,7 @@ ebtest:
 	$(RAMATH) org.teherba.ramath.sequence.JoeisExpressionBuilder -d 1 -p CR.xpat "$(POST)"
 NT=64
 getiet: # get an InverseEulerTransfrom from a PseudoSequence
-	echo -e "$(A)\teuxper\t0\t?\t" `$(JAVA) irvine.oeis.SequenceFactory -n $(NT) -D "ieuler(pseudo($(A)).skip(1))" 2>&1` | sed -e "s/ //g" \
+	echo -e "$(A)\teuxper\t0\t?\t" `$(JAVA) irvine.oeis.SequenceFactory -n $(NT) --data-length=1000 -D "ieuler(pseudo($(A)).skip(1))" 2>&1` | sed -e "s/ //g" \
 	| tee -a aman/`date +%Y-%m-%d`.man
 Q="-1/1"
 INIT="1"
