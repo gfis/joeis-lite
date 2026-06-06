@@ -1,0 +1,83 @@
+---- 2026-05-31 22:17:28
+A091156	tablamb	0	0	n -> new Integer[]{ 0, n/2 }	(n, k) -> BI(n + 1, k).*(SU(0, n - 2*k, j -> BI(k + j - 1, k - 1).*(BI(n + 1 - k, n - 2*k - j))))./(n + 1)	; seq(seq(a(n, k), k=0..floor(n/2)), n=0..15);
+A105286	filnum	1	1	k -> (k == 1) || PM(k + 1).mod(k) == 1
+A105287	filnum	0	1	k -> (k == 1) || PM(k + 1).mod(k) == 2
+A105288	filnum	0	1	k -> (k <= 2) || PM(k + 1).mod(k) == 3
+A105329	filnum	1	1	k -> (k <= 2) || PM(k + 1).mod(k) == 5
+A106045	multia	0	"1"	(self, n) -> PM(PM(self.a(n - 1)).+(self.a(n - 1)))	For n >= 2, a(n) = prime[prime[a(n-1)] + a(n-1)]; a(1)=1.	nonn	1..9	nyi	_Zak Seidov_
+A106046	multia	0	"5"	(self, n) -> PM(PM(self.a(n - 1)).-(self.a(n - 1)))	For n >= 2, a(n) = prime[prime[a(n-1)] - a(n-1)]; a(1)=5.	nonn	1..7	nyi	_Zak Seidov_
+A106047	multia	0	"2"	(self, n) -> PM(PM(self.a(n - 1)).-(n - 1))	For n >= 2, a(n+1)=prime[prime[a(n)]-n]; a(1)=2.	nonn	1..8	nyi	_Zak Seidov_
+A106048	multia	1	"3"	(self, n) -> PM(self.a(n - 1)).-(n - 1)	For n >= 2, a(n+1)=prime[a(n)]-n; a(1)=3.	nonn	1..12	nyi	_Zak Seidov_
+A107580	filnum	1	1	k -> PM(k).+(k).mod(5) == 0 && PM(k + 1).+(k + 1).mod(5) == 0	Numbers n such that (n + prime(n)) and (n+1 + prime(n+1)) are divisible by 5.	easy,nonn	1..53	nyi	_Zak Seidov_
+A107581	filnum	1	1	k -> PM(k).+(k).mod(5) == 0 && PM(k + 1).+(k + 1).mod(5) == 0 && PM(k + 2).+(k + 2).mod(5) == 0	Numbers n such that (n + prime(n)), (n+1 + prime(n+1)) and (n+2 + prime(n+2)) are divisible by 5.	easy,nonn	1..44	nyi	_Zak Seidov_
+A107582	filnum	1	1	k -> PM(k).+(k).mod(5) == 0 && PM(k + 1).+(k + 1).mod(5) == 0 && PM(k + 2).+(k + 2).mod(5) == 0 && PM(k + 3).+(k + 3).mod(5) == 0	Numbers n such that (n + prime(n)), (n+1 + prime(n+1)), (n+2 + prime(n+2)) and (n+3 + prime(n+3)) are divisible by 5.	easy,nonn	1..5000	nyi	_Zak Seidov_
+A107620	lambdan	1	n -> PM(n).*(2 + (n&1))	Primes multiplied alternately by 3 and 2.	easy,nonn	1..50	nyi	_Zak Seidov_nyi_Ft__	Primes multiplied alternately by 3 and 2.	easy,nonn
+A107621	lambdan	1	n -> PM(n).*(3 - (n&1))	Primes multiplied alternately by 2 and 3.	easy,nonn	1..50	nyi	_Zak Seidov_nyi_Ft__	Primes multiplied alternately by 2 and 3.	easy,nonn
+A107622	lambdan	1	n -> PM(n).+(3 - (n&1))	Primes plus alternately 3 and 2.	easy,nonn	1..58	nyi	_Zak Seidov_nyi_Ft__	Primes plus alternately 3 and 2.	easy,nonn
+A107623	lambdan	1	n -> PM(n).+(2 + (n&1))	Primes plus alternately 2 and 3.	easy,nonn	1..59	nyi	_Zak Seidov_nyi_Ft__	Primes plus alternately 2 and 3.	easy,nonn
+A116657	filtpos	1	1	new A000040()	(k, v) -> v.mod(k) == 11 % k
+A116658	filtpos	1	1	new A000040()	(k, v) -> v.mod(k) == 13 % k
+A116659	filtpos	1	1	new A000040()	(k, v) -> v.mod(k) == 14 % k
+A116662	filtpos	1	1	new A000040()	(k, v) -> v.mod(k) == 15 % k
+A124881	primepos	0	1	1	new A124837()		 is prime.        hard,nonn       1..50   nyi     _Alexander Adamchuk_
+A131694	primepos	1	0	0	new A008347()		x	Numbers k such that abs(S(k)) = J008347(k) is prime, where S(k) = S(k-1) + F000040(k)*(-1)^k; S(0) = 0. nonn
+A156165	primepos	1	0	0	new SingleTransformSequence(0, (term, n) -> term.+(1), "", new A114799())		x	Numbers k such that k![7]+1 is prime (n![7] = J114799(n)
+A158845	filtpos	1	1	new A000217().skip(1)	(k, v) -> PP(new Z("1" + v.toString()))	Numbers k such that prepending 1 to the k-th triangular number produces a prime.	nonn,base	1..1000	nyi	_Zak Seidov_
+A158862	filtpos	1	0	new A000217()	(k, v) -> (k > 1) && PP(new Z("3" + v.toString()))	Numbers k such that prepending 3 to the k-th triangular number produces a prime.	base,nonn	1..47	nyi	_Zak Seidov_
+A158864	filtpos	1	0	new A000217()	(k, v) -> (k > 1) && PP(new Z("6" + v.toString()))	Numbers k such that prepending 6 to the k-th triangular number produces a prime.	base,nonn	1..1000	nyi	_Zak Seidov_
+A164770	filnum	1	1	k -> { final Z k2 = ZV(k).*(k); final Q ad = new Q(Functions.DIGIT_SUM.l(k2), Functions.DIGIT_LENGTH.l(k2)); return ad.isInteger() && ad.num().compareTo(ZV(2)) == 0; }	average digit of k^2 is 2.	base,nonn	1..2500	nyi	_Zak Seidov_
+A164771	filnum	1	1	k -> { final Z k2 = ZV(k).*(k); final Q ad = new Q(Functions.DIGIT_SUM.l(k2), Functions.DIGIT_LENGTH.l(k2)); return ad.isInteger() && ad.num().compareTo(ZV(1)) == 0; }	of k^2 is 1.	base,nonn	1..34	nyi	_Zak Seidov_
+A164772	filnum	1	1	k -> { final Z k2 = ZV(k).*(k); final Q ad = new Q(Functions.DIGIT_SUM.l(k2), Functions.DIGIT_LENGTH.l(k2)); return ad.isInteger() && ad.num().compareTo(ZV(8)) == 0; }	digit of k^2 is s=8.	base,nonn	1..23	nyi	_Zak Seidov_
+A164773	filnum	1	1	k -> { final Z k2 = ZV(k).*(k); final Q ad = new Q(Functions.DIGIT_SUM.l(k2), Functions.DIGIT_LENGTH.l(k2)); return ad.isInteger() && ad.num().compareTo(ZV(7)) == 0; }	digit of k^2 is s=7.	nonn,base	1..925	nyi	_Zak Seidov_
+A164774	filnum	1	1	k -> { final Z k2 = ZV(k).*(k); final Q ad = new Q(Functions.DIGIT_SUM.l(k2), Functions.DIGIT_LENGTH.l(k2)); return ad.isInteger() && ad.num().compareTo(ZV(5)) == 0; }	digit of k^2 is s=5.	nonn,base	1..47	nyi	_Zak Seidov_
+A164776	filnum	1	1	k -> { final Z k2 = ZV(k).*(k); final Q ad = new Q(Functions.DIGIT_SUM.l(k2), Functions.DIGIT_LENGTH.l(k2)); return ad.isInteger() && ad.num().compareTo(ZV(4)) == 0; }	digit of k^2 is s=4.	base,nonn	1..45	nyi	_Zak Seidov_
+A164778	filnum	1	1	k -> { final Z k2 = ZV(k).*(k); final Q ad = new Q(Functions.DIGIT_SUM.l(k2), Functions.DIGIT_LENGTH.l(k2)); return ad.isInteger() && ad.num().compareTo(ZV(6)) == 0; }	digit of n^2 is s=6.	base,nonn	1..1000	nyi	_Zak Seidov_
+A164782	filnum	1	1	k -> { final Z k2 = ZV(k).*(k); final Q ad = new Q(Functions.DIGIT_SUM.l(k2), Functions.DIGIT_LENGTH.l(k2)); return ad.isInteger() && ad.num().compareTo(ZV(3)) == 0; }	digit of k^2 is 3.	nonn,base	1..10000	nyi	_Zak Seidov_
+A164817	filnum	1	1	k -> { final Z k2 = ZV(k).*(k); final Q ad = new Q(Functions.DIGIT_SUM.l(k2), Functions.DIGIT_LENGTH.l(k2)); return ad.isInteger(); }	average digit of n^2 is an integer.	base,nonn	1..10000	nyi	_Zak Seidov_
+A164818	sintrif	1	(term, k) -> { final Z k2 = term.^(2); return Functions.DIGIT_SUM.z(k2)./(Functions.DIGIT_LENGTH.l(k2)); }	""	new A164817()	Integer average digit of squares.	base,nonn	1..10000	nyi	_Zak Seidov_
+A165486	sintrif	0	(term, n) -> term.^(2).*(term.signum())	""	new A165472()
+A175258	filnum	0	0	k -> PP(ZV(k).*(k).+(41))	Numbers n with property that n^2+41 is prime.	nonn	0..47	nyi	_Zak Seidov_
+A175259	filnum	0	0	k -> PP(k+ 41) && PP(ZV(k).*(k).+(41))	Numbers n with property that n+41 and n^2+41 are primes.	nonn	0..44	nyi	_Zak Seidov_
+A175260	filnum	0	0	k -> PP(k+ 41) && PP(ZV(k).*(k).+(41)) && PP(ZV(k).^(3).+(41))	Numbers n with property that n+41, n^2+41 and n^3+41 are all primes.	nonn	0..35	nyi	_Zak Seidov_
+A241246	filter	1	new A000040()	p -> Predicates.SQUARE.is(new Z(p.toString(7)))	Primes p such that the decimal expansion of its base 7 expansion converted to decimal is a square.
+A259032	filnum	1	1	k -> Functions.DIGIT_SUM_ROOT.z(k).equals(Functions.DIGIT_SUM_ROOT.z(PM(k)).*(2))	Numbers k such that digital root of k is 2*(digital root of k-th prime).	nonn,base	1..10000	nyi	_Zak Seidov_
+A259040	filnum	1	1	k -> Functions.DIGIT_SUM_ROOT.z(k).equals(Functions.DIGIT_SUM_ROOT.z(PM(k)).*(3))	Numbers k such that digital root of k is 3*(digital root of k-th prime).	nonn,base	1..10000	nyi	_Zak Seidov_
+A259041	filnum	1	1	k -> Functions.DIGIT_SUM_ROOT.z(k).equals(Functions.DIGIT_SUM_ROOT.z(PM(k)).*(4))	Numbers k such that digital root of k is 4*(digital root of k-th prime).	nonn,base	1..60	nyi	_Zak Seidov_
+A259370	filnum	1	1	k -> { final Z s = SIGMA(k).^(3); return PP(s.+(1).+(s.^(2))); }	Numbers n such that 1 + sigma(n)^3 + sigma(n)^6 is prime.	easy,nonn	1..756	nyi	_Robert Price_
+A262934	filter	0	new A000040()	p -> PP(Z.TWO.^(p).+(27))	Prime p such that 2^p + 27 is also prime.	nonn,more	1..5	nyi	_Robert Price_
+A262962	filter	0	new A000040()	p -> PP(Z.TWO.^(p).+(35))	
+A272813	filnum	1	0	k -> PP(ZV(k).-(79).*(k).+(1601))	Nonnegative numbers n such that n^2 - 79n + 1601 is prime.	nonn	1..4179	nyi	_Robert Price_
+A276135	lambdan	1	n -> ZV(n - 1).^(n - (n&1)).-(1)./(n)
+A276425	polya	0	"[1]"	"x,<1,B,x,C,*"	new A109043(), new A000041()
+A283623	lambdan	1	n -> PM(n).+(PM(n + 1).+(1)./(2))	a(n) = prime(n) + (1 + prime(1 + n))/2.	nonn	1..10000	nyi	_Zak Seidov_
+A283718	filnum	1	1	k -> Functions.DIGIT_SUM.z(27*k).equals(ZV(27))	Numbers m such that sum of digits of 27*m is 27.	nonn,base	1..10000	nyi	_Zak Seidov_
+A320735	polya	0	"[1]"	"x,C,<2,1,+,x,B,*"	new A000041(), new A007582()
+A320736	polya	0	"[1]"	"x,C,<2,1,+,x,B,*"	new A000041(), new A086444()
+A340480	filter	1	new A000040()	p -> PP(p.^(8).+(1)./(2))	(k=3), J341210 (k=4),
+A341061	primepos	1	1	1	new A340179()		is prime.        nonn    1..3000 nyi     _J. M. Bergot_ and _Robert Israel_
+A341102	trilambn	3	1	1	(n, k) -> SA(n + 2, k).-(S2(n + 2, k))
+A341103	trilambn	0	0	0	(n, k) -> (n == 0) ? ZV(1) : SU(0, k, j -> BI(n + k - j, 2*k).-(BI(n + j - 1, 2*k)))
+A341183	filnum	1	1	k -> PP(ZV(30*k).^(4).+(1))	Numbers k such that (30*k)^4 + 1 is prime.
+A341224	filter	1	new A000040()	p -> PP(p.^(32).+(1)./(2))	(k=5), 
+A341224	filter	1	new A000040()	p -> PP(p.^(32).+(1)./(2))	Primes p such that (p^32 + 1)/2 is prime.
+A341229	filter	1	new A000040()	p -> PP(p.^(64).+(1)./(2))	(k=6),
+A341230	filter	1	new A000040()	p -> PP(p.^(128).+(1)./(2))	(k=7), 
+A341234	filter	1	new A000040()	p -> PP(p.^(256).+(1)./(2))	(k=8),
+A341264	filter	1	new A000040()	p -> PP(p.^(512).+(1)./(2))	Primes p such that (p^512 + 1)/2 is prime 
+A341272	filter	1	new A000040()	p -> PP(p.^(1024).+(1)./(2))	Primes p such that (p^1024 + 1)/2 is prime.	nonn
+A341275	lambdan	1	n -> RQ(0, n - 1, j -> new Q(FA(4*j  + 2), FA(n + 2*j + 1))).*(Z2(n*(n - 1)/2)).num()	a(n) = 2^(n*(n-1)/2)*Product_{j=0..n-1} (4*j+2)!/(n+2*j+1)!.
+A341275	lambdan	1	n -> RQ(0, n - 1, j -> new Q(FA(4*j  + 2), FA(n + 2*j + 1))).*(Z2(n*(n - 1)/2)).num()	a(n) = 2^(n*(n-1)/2)*Product_{j=0..n-1} (4*j+2)!/(n+2*j+1)!.
+A341312	multia	0	"1,1,1"	(self, n) -> (self.a(n - 1).testBit(0) || self.a(n - 3).testBit(0)) ? self.a(n - 1).+(self.a(n - 3)) : self.a(n - 1).+(self.a(n - 3))./(2)
+A354084	filter	1	new A000040()	p -> p.mod(6) == p.mod(8)	Primes p such that p mod 6 = p mod 8.	nonn	1..51	nyi	_Zak Seidov_
+A357367	trilambn	0	0	0	(n, k) -> BI(n - 1, k - 1).*(BI(n + k, k)).*(FA(n))
+A362411	filtpos	1	1	new SingleTransformSequence(1, (term, n) -> new Z(term.toString(), 2), "", new A359149())	PRIME
+A386789	trilambn	0	0	0	(n, k) -> BI(n - 1, k - 1).*(BI(n + k, k))
+A396152	holos	0	[0,-30,-25,-25,11,-1]	0,0,0,1,11,96,756	0	0
+A396154	holos	0	[0,-30,-25,-25,-25,-25,11,-1]	0,0,0,0,0,1,11,96,756,5616,40176	0	0
+A396232	holos	1	[0,-1,2,-1]	1, 3, 8, 18, 38, 58	0	0
+A396311	holos	0	[0,1,0,3,1,3,0,1,-1]	1,1,1,4,8,15,31	0	0
+A396312	holos	0	[0,1,0,0,4,2,2,6,3,3,4,0,0,1,-1]	1,1,1,1,5,12,22,38,72,148,301,593,1149	0	0
+A396313	holos	0	[0,1,0,3,0,1,-1]	1,1,1,4,7	0	0
+A396322	holos	0	[0,12,-28,11,20,-22,8,-1]	0,0,0,0,0,10,60,266,1008,3522,11700	0	0
+A396414	holos	0	[[0],[-117719759683169280,439127087579216064,1186550701460361792,-8069728527755831052,12467327487647284260,4152522234208080123,-40843497911636603871,67613908553283199266,-63178933386791779380,38766318892621968987,-16372325984815242459,4803478831174485924,-962715953207755350,125645727302622576,-9605784187727712,325358826026112],[17413079029557120,-65623427449477632,-191551511252066616,1318201678954877832,-2024379173638591650,-1260564906313970334,9031166272079723448,-15593909612220911736,15596508692423583990,-10348795095720575886,4754167662908072052,-1522531762052076324,333574585255346040,-47553036338619648,3955928917631616,-144603922678272],[-524636731382400,2089779112003680,6773972485285728,-50454062275080600,83181247209279360,74720766771592200,-521847320294206584,1004798871029557440,-1133881685475248520,851103019692729360,-441914251709817216,159436285382697120,-39140271964225440,6203828372693760,-567707282108928,22480719575040],[1152646346880,-8734827145824,-11696820996864,286242666126600,-934619820363120,421505588752752,4630370413295472,-14457764197936680,22395563370165600,-21674572032499632,13940902896025248,-6037768351218240,1731857128640640,-312954769207296,31887482886144,-1371372871680],[0,-243471876480,527191819872,3611774316976,-12988937470800,2136408351120,45899059684944,-71715254539968,14712884052000,69251921158400,-91695801016704,57309366033408,-20714252083200,4385650728960,-499758170112,23219011584]]	1,2	0	0
+A396432	holos	0	[[0],[-869856261120,4105905971904,-8291277271800,9381961353294,-6521456885805,2856894487191,-771468984855,117560595051,-7748409780],[111799638720,-594036647064,1363747308480,-1768905765774,1419112156770,-721498755726,227115801990,-40481956116,3128809680],[-1864545120,13843386768,-43458212760,75551778708,-79552071480,51919313292,-20510096400,4487318352,-416871360],[0,59137968,-185340440,-10182192,606128200,-865841808,536363680,-158547648,18282240]]	1,2,9	0	0

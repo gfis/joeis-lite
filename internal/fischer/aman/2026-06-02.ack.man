@@ -1,0 +1,145 @@
+---- 2026-06-02 21:56:46
+A094565	trilambn	1	1	1	(n, k) -> FI(2*k).*(FI(2*n - 2*k + 1))	Table[Fibonacci[2*k]*Fibonacci[2*n-2*k+1], {n, 12}, {k, n}]//Flatten
+A094571	trilambn	0	0	0	(n, k) -> FI(k).^(2).+(FI(n - k).^(2))	Row n: F(0)^2+F(n)^2, F(1)^2+F(n-1)^2, F(2)^2+F(n-2)^2, ..., F(n)^2+F(0)^2
+A155006	filter	1	new A000040()	p -> { final long d = 2; final Z q = p.*(d); return PP(p.-(d).*(p.+(d)).-(q)) && PP(p.-(d).*(p.+(d)).+(q)); }	Primes p such that (p-2)*(p+2)-+2*p are primes.	nonn	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A155007	filter	1	new A000040()	p -> { final long d = 3; final Z q = p.*(d); return PP(p.-(d).*(p.+(d)).-(q)) && PP(p.-(d).*(p.+(d)).+(q)); }	Primes p such that (p-3)*(p+3)-+3*p are primes.	nonn	1..45	nyi	_Vladimir Joseph Stephan Orlovsky_
+A155008	filter	1	new A000040()	p -> { final long d = 4; final Z q = p.*(d); return PP(p.-(d).*(p.+(d)).-(q).abs()) && PP(p.-(d).*(p.+(d)).+(q)); }	Primes p such that (p-a)*(p+a)-+a*p are primes,a=4.	nonn	1..46	nyi	_Vladimir Joseph Stephan Orlovsky_
+A155009	filter	1	new A000040()	p -> { final long d = 5; final Z q = p.*(d); return PP(p.-(d).*(p.+(d)).-(q).abs()) && PP(p.-(d).*(p.+(d)).+(q).abs()); }	Primes p such that (p-a)*(p+a)-+a*p are primes,a=5.	nonn	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A155021	filnum	0	0	k -> { final long a = 5; return k == 0 || PP(ZV(k).^(a).+(a)) && PP(ZV(k).^(a).-(a)); }	Values of n such that n^a-+a are primes, a=5.	nonn	1..36	nyi	_Vladimir Joseph Stephan Orlovsky_
+A155022	filnum	0	0	k -> { final long a = 7; return k == 0 || PP(ZV(k).^(a).+(a)) && PP(ZV(k).^(a).-(a)); }	Values of n such that n^a-+a are primes, a=7.	nonn	1..35	nyi	_Vladimir Joseph Stephan Orlovsky_
+A155023	filnum	0	0	k -> { final long a =11; return k == 0 || PP(ZV(k).^(a).+(a)) && PP(ZV(k).^(a).-(a)); }	Values of n such that n^a-+a are primes, a=11.	nonn	1..26	nyi	_Vladimir Joseph Stephan Orlovsky_
+A155841	filter	1	new LambdaSequence(1, n -> { final long q = 3; final long pl = Functions.PRIME.l(n); return Z2(pl).+(pl*q); })	PRIME	Primes of the form q*p+2^p where p is prime, q=3.
+A155842	filter	1	new LambdaSequence(1, n -> { final long q = 5; final long pl = Functions.PRIME.l(n); return Z2(pl).+(pl*q); })	PRIME	Primes of the form q*p+2^p where p is prime, q=5.
+A155843	filter	1	new LambdaSequence(1, n -> { final long q = 9; final long pl = Functions.PRIME.l(n); return Z2(pl).+(pl*q); })	PRIME	Primes of the form q*p+2^p where p is prime, q=9.
+A155844	filter	1	new LambdaSequence(1, n -> { final long q = 13; final long pl = Functions.PRIME.l(n); return Z2(pl).+(pl*q); })	PRIME	Primes of the form q*p+2^p where p is prime, q=13.
+A161863	filnum	1	1	k -> { final long a = 3; return PP(ZV(k).^(2).+(k + a)) && PP(ZV(k).^(2).+(k - a)); }	Numbers k such that k^2+k+3 and k^2+k-3 are both prime.	nonn,easy	1..10000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A161864	filnum	1	1	k -> { final long a = 5; return PP(ZV(k).^(2).+(k + a)) && PP(ZV(k).^(2).+(k - a)); }	Numbers n such that n^2+n+5 and n^2 + n - 5 are both prime.	nonn,easy	1..10000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A161866	filnum	1	1	k -> { final long a = 7; return PP(ZV(k).^(2).+(k + a)) && PP(ZV(k).^(2).+(k - a)); }	Numbers k such that k^2+k+7 and k^2+k-7 are both prime.	nonn,easy	1..10000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A184532	tablamb	1	0	n -> new Integer[]{1, (3*n + 3)*n}	(n, h) -> CR.ONE./(CV(h).+(ZV(n).^(3)).^(new Q(1, 3)).frac()).floor()	Array, read by rows:  T(n,h)=floor[1/{(h+n^3)^(1/3)}], where h=1,2,...,3n^2+3n and {}=fractional part.	nonn,tabf	1..162
+A184776	sintrif	1	(term, n) -> PI(term)	""	new A184774()	Numbers m such that prime(m) is of the form floor(k*sqrt(2)); complement of A184779.	nonn	1..10000
+A184779	sintrif	1	(term, n) -> PI(term)	""	new A184777()	Numbers m such that prime(m) is of the form 2k + floor(k*sqrt(2)); complement of A184776.	nonn	1..10000
+A184793	sintrif	1	(term, n) -> PI(term)	""	new A095280()	Numbers m such that prime(m) is of the form floor(k*r), where r=(1+sqrt(5))/2; complement of E180736.	nonn	1..97
+A184795	sintrif	1	(term, n) -> PI(term)	""	new A095281()	Numbers m such that prime(m) is of the form floor(k*s), where s=(3+sqrt(5))/2; complement of A184793.	nonn	1..72
+A184798	sintrif	1	(term, n) -> PI(term)	""	new A184796()	Numbers m such that prime(m) is of the form floor(k*sqrt(3)); complement of A184801.	nonn	1..93
+A184801	sintrif	1	(term, n) -> PI(term)	""	new A184799()	Numbers m such that prime(m) is of the form floor(ks), where s=(3+sqrt(3))/2; complement of A184778.	nonn	1..102
+A184804	sintrif	1	(term, n) -> PI(term)	""	new A184802()	Numbers m such that prime(m) is of the form floor(k*sqrt(5)); complement of A184807.	nonn	1..99
+A184807	sintrif	1	(term, n) -> PI(term)	""	new A184805()	Numbers m such that prime(m) is of the form floor(k*s), where s=(5+sqrt(5))/4; complement of A184804.	nonn	1..99
+A184810	sintrif	1	(term, n) -> PI(term)	""	new FilterSequence(1, new A184808(), v -> PP(v))	Numbers m such that prime(m) has the form floor(k*r), where r=sqrt(2/3); complement of A184811.	nonn	1..105
+A184811	sintrif	1	(term, n) -> PI(term)	""	new FilterSequence(1, new A184809(), v -> PP(v))	Numbers m such that prime(m) has the form floor(r*k), where r=sqrt(3/2); complement of A184810.	nonn	1..91
+A184815	sintrif	1	(term, n) -> PI(term)	""	new FilterSequence(1, new A184812(), v -> PP(v))	Numbers m such that prime(m) is of the form k+floor(ks/r)+floor(kt/r), where r=sqrt(2), s=sqrt(3), t=sqrt(5).	nonn	1..5000
+A184816	sintrif	1	(term, n) -> PI(term)	""	new FilterSequence(1, new A184813(), v -> PP(v))	Numbers m such that prime(m) is of the form k+floor(kr/s)+floor(kt/s), where r=sqrt(2), s=sqrt(3), t=sqrt(5).	nonn	1..5000
+A184817	sintrif	1	(term, n) -> PI(term)	""	new FilterSequence(1, new A184814(), v -> PP(v))	Numbers m such that prime(m) is of the form k+floor(kr/t)+floor(ks/t), where r=sqrt(2), s=sqrt(3), t=sqrt(5).	nonn	1..5000
+A184855	sintrif	1	(term, n) -> PI(term)	""	new A077545()	Numbers m such that prime(m) is of the form (k*e); complement of A184858.	nonn	1..94
+A184855	sintrif	1	(term, n) -> PI(term)	""	new A077545()	Numbers m such that prime(m) is of the form (k*e); complement of A184858.	nonn	1..94
+A184858	complen	1	Z.ONE	new A184855()	Numbers m such that prime(m) is of the form floor(k*e/(e-1)); complement of A184855.	nonn	1..106
+A184861	sintrif	1	(term, n) -> PI(term)	""	new A184859()	Numbers m such that prime(m) is of the form floor(nr+h), where r=(1+sqrt(5))/2 and h=1/2; complement of A184864.	nonn	1..105
+A184864	sintrif	1	(term, n) -> PI(term)	""	new A184862()	Numbers m such that prime(m) is of the form floor(n+nr-r/2), where r=(1+sqrt(5))/2; complement of A184861.	nonn	1..92
+A184867	sintrif	1	(term, n) -> PI(term)	""	new A184865()	Numbers m such that prime(m) is of the form floor(1/2+k*sqrt(2)).  Complement of A184870.	nonn	1..10000
+A184870	sintrif	1	(term, n) -> PI(term)	""	new A184868()	Numbers m such that prime(m) is of the form floor[(k-1/2)*(2+2^(1/2))+1/2]; complement of A184867.	nonn	1..10000
+A184874	sintrif	1	(term, n) -> PI(term)	""	new FilterSequence(1, new A184871(), v -> PP(v))	Numbers m such that prime(m) is of the form k+floor(ks/r)+floor(kt/r), where r=log(2), s=log(3), t=log(5).	nonn	1..100
+A184875	sintrif	1	(term, n) -> PI(term)	""	new FilterSequence(1, new A184872(), v -> PP(v))	Numbers m such that prime(m) is of the form k+floor(kr/s)+floor(kt/s), where r=log(2), s=log(3), t=log(5).	nonn	1..95
+A184876	sintrif	1	(term, n) -> PI(term)	""	new FilterSequence(1, new A184873(), v -> PP(v))	Numbers m such that prime(m) is of the form k+floor(kr/t)+floor(ks/t), where r=log(2), s=log(3), t=log(5).	nonn	1..83
+A185547	complen	1	Z.ONE	new A185546()	Numbers not of the form floor((1/2)(n+1)^(3/2)); complement of J185546.	nonn	1..5000
+A185550	complen	1	Z.ONE	new A185549()	Numbers not of the form ceiling(n^(3/2)); complement of J185549.	nonn	1..10000
+A185598	complen	1	Z.ONE	new A185597()	Numbers not of the form floor(n^(3/2)-n^(1/2)); complement of J185597.	nonn	1..5000
+A185600	complen	1	Z.ONE	new A185599()	Numbers not of the form floor(n^(3/2) - n^(1/2)); complement of J185599.	nonn	1..5000
+A185602	complen	1	Z.ONE	new A185601()	Numbers not of the form floor(n^(3/2))-floor(n^(1/2))-n; complement of J185601.	nonn,easy	1..5000
+A185725	arrlamb	1	1	1	-1	(n, k) -> (n <= k) ? ZV(k - 1).^(2).+(2*n - 1) : ZV(n - 1).^(2).+(2*k)
+A185728	arrlamb	1	1	1	-1	(n, k) -> (n <  k) ? ZV(k - 1).^(2).+(n) : ((n == k) ? ZV(n).^(2) : ZV(n).^(2).-(k))	if n<k; T(n,n)=n^2; T(n,k)=n^2-k if n>k.
+A186150	parmof6	1	A186148	new Q(-1, 8)	new Q(1, 4)	new Q(1)	3	2	Rank of (1/4)n^3 when {(1/4)i^3: i>=1} and {j^2>: j>=1}
+A186151	parmof6	1	A186149	new Q(-1, 8)	new Q(1, 4)	new Q(1)	3	2	Rank of n^2 when {(1/4)i^3: i>=1} and {j^2>: j>=1} are j
+A186152	parmof6	1	A186148	new Q(1, 16)	new Q(1, 8)	new Q(1)	3	2	Rank of (1/8)n^3 when {(1/8)i^3: i>=1} and {j^2>: j>=1}
+A186153	parmof6	1	A186149	new Q(1, 16)	new Q(1, 8)	new Q(1)	3	2	Rank of n^2 when {(1/8)i^3: i>=1} and {j^2>: j>=1} are j
+A186154	parmof6	1	A186148	new Q(-1, 16)	new Q(1, 8)	new Q(1)	3	2	Rank of (1/8)n^3 when {(1/8)i^3: i>=1} and {j^2>: j>=1}
+A186155	parmof6	1	A186149	new Q(-1, 16)	new Q(1, 8)	new Q(1)	3	2	Rank of n^2 when {(1/8)i^3: i>=1} and {j^2>: j>=1} are j
+A194195	tablamb	1	1	n -> new Integer[]{1, 2*n - 1}, (n, k) -> (k > n) ? ZV(2*n - k) : ZV(n)
+A194258	tablamb	1	1	n -> new Integer[]{1, 2*n - 1}, (n, k) -> (k < n) ? ZV(k) : ZV(n)
+A213922	arrlamb	1	1	1	-1	(n, k) -> (n >= k) ? ZV(n).^(2).-(2*k - 2) : ZV(k).^(2).-(2*n - 1)	T(n,k)=n^2-2k+2 if n>=k; T(n,k)=k^2-2n+1 if n<k.
+A292636	lambdan	1	n -> { final CR r = CV(3).-(CR.SQRT2); final CR s = CV(3).+(CR.SQRT2); return r.*(n)./(s).floor().+(n); }	Table[n + Floor[n*r/s], {n, 1, z}]  (* A292636 *)	Rank of (3-r)*n when all the numbers (3-r)*j and (3+r)*k, where r = sqrt(2), j>=1, k>=1, are jointly ranked.	nonn,easy	1..1000
+A292637	lambdan	1	n -> { final CR r = CV(3).-(CR.SQRT2); final CR s = CV(3).+(CR.SQRT2); return s.*(n)./(r).floor().+(n); }	Table[n + Floor[n*s/r], {n, 1, z}]  (* A292637 *)	Rank of (3+r)*n when all the numbers (3-r)*j and (3+r)*k, where r = sqrt(2), j>=1, k>=1, are jointly ranked.	nonn,easy	1..1000
+A292638	lambdan	1	n -> { final CR r = CV(3).-(CV(5).sqrt()); final CR s = CV(3).+(CV(5).sqrt()); return r.*(n)./(s).floor().+(n); }	Rank of (3-r)*n when all the numbers (3-r)*j and (3+r)*k, where r = sqrt(5), j>=1, k>=1, are jointly ranked.	nonn,easy	1..1000
+A292639	lambdan	1	n -> { final CR r = CV(3).-(CV(5).sqrt()); final CR s = CV(3).+(CV(5).sqrt()); return s.*(n)./(r).floor().+(n); }	Rank of (3+r)*n when all the numbers (3-r)*j and (3+r)*k, where r = sqrt(5), j>=1, k>=1, are jointly ranked.	nonn,easy	1..1000
+A292640	lambdan	1	n -> { final CR r = CV(4).-(CR.SQRT2); final CR s = CV(4).+(CR.SQRT2); return r.*(n)./(s).floor().+(n); }	Rank of (4-r)*n when all the numbers (4-r)*j and (4+r)*k, where r = sqrt(2), j>=1, k>=1, are jointly ranked.	nonn,easy	1..1000
+A292641	lambdan	1	n -> { final CR r = CV(4).-(CR.SQRT2); final CR s = CV(4).+(CR.SQRT2); return s.*(n)./(r).floor().+(n); }	Rank of (4+r)*n when all the numbers (4-r)*j and (4+r)*k, where r = sqrt(2), j>=1, k>=1, are jointly ranked.	nonn,easy	1..1000
+A292642	lambdan	1	n -> { final CR r = CV(5).-(CR.SQRT2); final CR s = CV(5).+(CR.SQRT2); return r.*(n)./(s).floor().+(n); }	Rank of (5-r)*n when all the numbers (5-r)*j and (5+r)*k, where r = sqrt(2), j>=1, k>=1, are jointly ranked.	nonn,easy	1..1000
+A292643	lambdan	1	n -> { final CR r = CV(5).-(CR.SQRT2); final CR s = CV(5).+(CR.SQRT2); return s.*(n)./(r).floor().+(n); }	Rank of (5+r)*n when all the numbers (5-r)*j and (5+r)*k, where r = sqrt(2), j>=1, k>=1, are jointly ranked.	nonn,easy	1..1000
+A292644	lambdan	1	n -> { final CR r = CV(6).-(CR.SQRT2); final CR s = CV(6).+(CR.SQRT2); return r.*(n)./(s).floor().+(n); }	Rank of (6-r)*n when all the numbers (6-r)*j and (6+r)*k, where r = sqrt(2), j>=1, k>=1, are jointly ranked.	nonn,easy	1..1000
+A292645	lambdan	1	n -> { final CR r = CV(6).-(CR.SQRT2); final CR s = CV(6).+(CR.SQRT2); return s.*(n)./(r).floor().+(n); }	Rank of (6+r)*n when all the numbers (6-r)*j and (6+r)*k, where r = sqrt(2), j>=1, k>=1, are jointly ranked.	nonn,easy	1..1000
+A292646	lambdan	1	n -> { final CR r = CR.E; final CR s = CR.E.+(1); return r.*(n)./(s).floor().+(n); }	Rank of e*n when all the numbers e*j and (e+1)*k, for j>=1, k>=1, are jointly ranked.	nonn,easy	1..1000
+A292647	lambdan	1	n -> { final CR s = CR.E; final CR r = CR.E.+(1); return r.*(n)./(s).floor().+(n); }	Rank of (e+1)*n when all the numbers e*j and (e+1)*k, for j>=1, k>=1, are jointly ranked.	nonn,easy	1..1000
+A292649	lambdan	1	n -> { final CR s = CR.PI; final CR r = CR.PI.+(1); return r.*(n)./(s).floor().+(n); }	Rank of (Pi+1)*n when all the numbers Pi*j and (Pi+1)*k, for j>=1, k>=1, are jointly ranked.	nonn,easy	1..1000
+A292650	lambdan	1	n -> { final CR r = CR.E; final CR s = CR.PI; return r.*(n)./(s).floor().+(n); }	Rank of n*e when all the numbers j*e and k*Pi, for j>=1, k>=1, are jointly ranked.	nonn,easy	1..1000
+A292651	lambdan	1	n -> { final CR s = CR.E; final CR r = CR.PI; return r.*(n)./(s).floor().+(n); }	Rank of n*Pi when all the numbers j*e and k*Pi, for j>=1, k>=1, are jointly ranked.	nonn,easy	1..1000
+A292652	lambdan	1	n -> { final CR r = CV(1).cos(); final CR s = CV(1).sin(); return r.*(n)./(s).floor().+(n); }	Rank of n*cos(1) when all the numbers j*cos(1) and k*sin(1), for j>=1, k>=1, are jointly ranked.	nonn,easy	1..1000
+A292653	lambdan	1	n -> { final CR s = CV(1).cos(); final CR r = CV(1).sin(); return r.*(n)./(s).floor().+(n); }	Rank of n*sin(1) when all the numbers j*cos(1) and k*sin(1), for j>=1, k>=1, are jointly ranked.	nonn,easy	1..1000
+A292654	lambdan	1	n -> { final CR r = CV(1); final CR s = CR.E; final CR t = CR.PI; return r.*(n)./(s).floor().+(r.*(n)./(t).floor()).+(n); }	r = 1; s = E; t = Pi; Table[n + Floor[n*r/s] + Floor[n*r/t], {n, 1, z}]  (* A292654 *)
+A292655	lambdan	1	n -> { final CR r = CV(1); final CR s = CR.E; final CR t = CR.PI; return s.*(n)./(r).floor().+(s.*(n)./(t).floor()).+(n); }	Rank of n*e when all the numbers h, j*e, k*Pi, for h>=1, j>=1, k>=1, are jointly ranked. T.	nonn,easy	1..1000
+A292656	lambdan	1	n -> { final CR r = CV(1); final CR s = CR.E; final CR t = CR.PI; return t.*(n)./(r).floor().+(t.*(n)./(s).floor()).+(n); }	Rank of n*Pi when all the numbers h, j*e, k*Pi, for h>=1, j>=1, k>=1, are jointly ranked.	nonn,easy	1..1000
+A292657	lambdan	1	n -> { final CR r = CV(1); final CR s = CV(1).cos(); final CR t = CV(1).sin(); return r.*(n)./(s).floor().+(r.*(n)./(t).floor()).+(n); }	Rank of n when all the numbers h, j*cos(1), k*sin(1), for h>=1, j>=1, k>=1, are jointly ranked.	nonn,easy	1..1000
+A292658	lambdan	1	n -> { final CR r = CV(1); final CR s = CV(1).cos(); final CR t = CV(1).sin(); return s.*(n)./(r).floor().+(s.*(n)./(t).floor()).+(n); }	Rank of n*cos(1) when all the numbers h, j*cos(1), k*sin(1), for h>=1, j>=1, k>=1, are jointly ranked.	nonn,easy	1..1000
+A292659	lambdan	1	n -> { final CR r = CV(1); final CR s = CV(1).cos(); final CR t = CV(1).sin(); return t.*(n)./(r).floor().+(t.*(n)./(s).floor()).+(n); }	Rank of n*sin(1) when all the numbers h, j*cos(1), k*sin(1), for h>=1, j>=1, k>=1, are jointly ranked.	nonn,easy	1..1000
+A292660	lambdan	1	n -> { final CR r = CR.SQRT2; final CR s = CV(3).sqrt(); final CR t = CV(5).sqrt(); return r.*(n)./(s).floor().+(r.*(n)./(t).floor()).+(n); }	Rank of n*sqrt(2) when all the numbers h*sqrt(2), j*sqrt(3), k*sqrt(5), for h>=1, j>=1, k>=1, are jointly ranked.	nonn,easy	1..1000
+A292661	lambdan	1	n -> { final CR r = CR.SQRT2; final CR s = CV(3).sqrt(); final CR t = CV(5).sqrt(); return s.*(n)./(r).floor().+(s.*(n)./(t).floor()).+(n); }	Rank of n*sqrt(3) when all the numbers h*sqrt(2), j*sqrt(3), k*sqrt(5), for h>=1, j>=1, k>=1, are jointly ranked.	nonn,easy	1..1000
+A292662	lambdan	1	n -> { final CR r = CR.SQRT2; final CR s = CV(3).sqrt(); final CR t = CV(5).sqrt(); return t.*(n)./(r).floor().+(t.*(n)./(s).floor()).+(n); }	Rank of n*sqrt(5) when all the numbers h*sqrt(2), j*sqrt(3), k*sqrt(5), for h>=1, j>=1, k>=1, are jointly ranked.	nonn,easy	1..1000
+A292663	lambdan	1	n -> { final CR r = CR.E; final CR s = CR.E.-(1); return s.*(n)./(r).floor().+(n); }		Rank of n*(e-1) when all the numbers j*(e+1) and k*e, for j>=1, k>=1, are jointly ranked.	nonn,easy	1..1000
+A292664	lambdan	1	n -> { final CR r = CR.E; final CR s = CR.E.-(1); return r.*(n)./(s).floor().+(n); }		Rank of n*e when all the numbers j*(e+1) and k*e, for j>=1, k>=1, are jointly ranked.	nonn,easy	1..1000
+A292665	lambdan	1	n -> { final CR r = CR.E.-(1); final CR s = CR.E.+(1); return r.*(n)./(s).floor().+(n); }		Rank of n*(e-1) when all the numbers j*(e-1) and k*(e+1), for j>=1, k>=1, are jointly ranked.	nonn,easy	1..1000
+A292666	lambdan	1	n -> { final CR r = CR.E.-(1); final CR s = CR.E.+(1); return s.*(n)./(r).floor().+(n); }		Rank of n*(e+1) when all the numbers j*(e-1) and k*(e+1), for j>=1, k>=1, are jointly ranked.	nonn,easy	1..1000
+A292956	arrlamb	1	1	1	-1	(n, m) -> { final CR r = CR.SQRT2; return SU(1, CV(m - 1).*(n)./(r).+(n).floor().intValueExact(), k -> CV(1).-(r).+(r.+(m - 1).*(n)./(k)).floor()); }	T(n,m) = rank of n*(r+m) when all the numbers k*(r+h), where r = sqrt(2), k>=1, h>=0, are jointly ranked.	nonn,easy,tabl	1..60
+A292957	arrlamb	1	1	1	-1	(n, m) -> { final CR r = CV(3).sqrt(); return SU(1, CV(m - 1).*(n)./(r).+(n).floor().intValueExact(), k -> CV(1).-(r).+(r.+(m - 1).*(n)./(k)).floor()); }	T(n,m) = rank of n*(r+m) when all the numbers k*(r+h), where r = sqrt(3), k>=1, h>=0, are jointly ranked.	nonn,easy,tabl	1..60
+A292958	arrlamb	1	1	1	-1	(n, m) -> { final CR r = CV(5).sqrt(); return SU(1, CV(m - 1).*(n)./(r).+(n).floor().intValueExact(), k -> CV(1).-(r).+(r.+(m - 1).*(n)./(k)).floor()); }	T(n,m) = rank of n*(r+m) when all the numbers k*(r+h), where r = sqrt(5), k>=1, h>=0, are jointly ranked.	nonn,easy,tabl	1..60
+A292959	arrlamb	1	1	1	-1	(n, m) -> { final CR r = CR.PHI; return SU(1, CV(m - 1).*(n)./(r).+(n).floor().intValueExact(), k -> CV(1).-(r).+(r.+(m - 1).*(n)./(k)).floor()); }	T(n,m) = rank of n*(r+m) when all the numbers k*(r+h), where r = (1+sqrt(5))/2 (the golden ratio), k>=1, h>=0, are jointly ranked.	nonn,easy,tabl	1..60
+A292960	arrlamb	1	1	1	-1	(n, m) -> { final CR r = CR.PHI.^(2); return SU(1, CV(m - 1).*(n)./(r).+(n).floor().intValueExact(), k -> CV(1).-(r).+(r.+(m - 1).*(n)./(k)).floor()); }	T(n,m) = rank of n*(r+m) when all the numbers k*(r+h), where r = ((1+sqrt(5))/2)^2, k>=1, h>=0, are jointly ranked.	nonn,easy,tabl	1..60
+A292961	arrlamb	1	1	1	-1	(n, m) -> { final CR r = CR.PHI.-(1); return SU(1, CV(m - 1).*(n)./(r).+(n).floor().intValueExact(), k -> CV(1).-(r).+(r.+(m - 1).*(n)./(k)).floor()); }	T(n,m) = rank of n*(r+m) when all the numbers k*(r+h), where r = -1+(1+sqrt(5))/2, k>=1, h>=0, are jointly ranked.	nonn,easy,tabl	1..60
+A292962	arrlamb	1	1	1	-1	(n, m) -> { final CR r = CV(2).log(); return SU(1, CV(m - 1).*(n)./(r).+(n).floor().intValueExact(), k -> CV(1).-(r).+(r.+(m - 1).*(n)./(k)).floor()); }	T(n,m) = rank of n*(r-1+m) when all the numbers k*(r+h), where r = log(2), k>=1, h>=0, are jointly ranked.	nonn,easy,tabl	1..60
+A292963	arrlamb	1	1	1	-1	(n, m) -> { final CR r = CR.E; return SU(1, CV(m - 1).*(n)./(r).+(n).floor().intValueExact(), k -> CV(1).-(r).+(r.+(m - 1).*(n)./(k)).floor()); }	T(n,m) = rank of n*(e + m) when all the numbers k*(e+h), for k>=1, h>=0, are jointly ranked.	nonn,easy,tabl	1..60
+A292964	arrlamb	1	1	1	-1	(n, m) -> { final CR r = CR.E.inverse(); return SU(1, CV(m - 1).*(n)./(r).+(n).floor().intValueExact(), k -> CV(1).-(r).+(r.+(m - 1).*(n)./(k)).floor()); }	T(n,m) = rank of n*(1/e + m) when all the numbers k*(1/e+h), for k>=1, h>=0, are jointly ranked.	nonn,easy,tabl	1..60
+A292965	arrlamb	1	1	1	-1	(n, m) -> { final CR r = CR.PI; return SU(1, CV(m - 1).*(n)./(r).+(n).floor().intValueExact(), k -> CV(1).-(r).+(r.+(m - 1).*(n)./(k)).floor()); }	T(n,m) = rank of n*(Pi + m) when all the numbers k*(Pi+h), for k >= 1, h >= 0, are jointly ranked.	nonn,easy,tabl	1..60
+A293052	arrlamb	1	1	1	-1	(n, m) -> { final CR r = CV(3).sqrt(); return SU(1, CV(m - 1)./(r).floor().intValueExact() + n, k -> CV(n - k).*(r).floor().+(m)); }	T(n,m) = rank of n*sqrt(3)+m when all the numbers k*sqrt(3)+h, for k >= 1, h >= 0, are jointly ranked.	nonn,easy,tabl	1..60
+A293054	arrlamb	1	1	1	-1	(n, m) -> { final CR r = CV(5).sqrt(); return SU(1, CV(m - 1)./(r).floor().intValueExact() + n, k -> CV(n - k).*(r).floor().+(m)); }	T(n,m) = rank of n*sqrt(5)+m when all the numbers k*sqrt(5)+h, for k >= 1, h >= 0, are jointly ranked.	nonn,easy,tabl	1..60
+A293056	arrlamb	1	1	1	-1	(n, m) -> { final CR r = CV(2).log();  return SU(1, CV(m - 1)./(r).floor().intValueExact() + n, k -> CV(n - k).*(r).floor().+(m)); }	T(n,m) = rank of n*log(2)+m when all the numbers k*log(2)+h, for k >= 1, h >= 0, are jointly ranked.	nonn,easy,tabl	1..60
+A319088	lambdan	1	n -> SU(1, n, k -> D007425(k).*(k).*(k))	a(n) = Sum_{k=1..n} k^2*tau_3(k), where tau_3 is A007425.
+A320733	convprod	0	1,1	new A000041(), new HolonomicRecurrence(0, "[0,2,-1]", "1,0,1", 0, 0) 
+A320734	convprod	0	1,1	new A000041(), new HolonomicRecurrence(0, "[0,3,-1]", "1,0,1", 0, 0)
+A320735	convprod	0	1,1	new A000041(), new HolonomicRecurrence(0, "[0,-8,6,-1]", "1,0,1,3", 0, 0)
+A320736	convprod	0	1,1	new A000041(), new HolonomicRecurrence(0, "[0,30,-31,10,-1]", "1,0,1,3,10", 0, 0)
+A320737	convprod	0	1,1	new A000041(), new HolonomicRecurrence(0, "[0, -144, 180, -80, 15, -1]", "1,0,1,3,10,37", 0, 0)
+A320738	convprod	0	1,1	new A000041(), new HolonomicRecurrence(0, "[0,840,-1198,651,-169,21,-1]", "1,0,1,3,10,37,151", 0, 0)
+A320739	convprod	0	1,1	new A000041(), new HolonomicRecurrence(0, "[0,-5760,9072,-5684,1820,-315,28,-1]", "1,0,1,3,10,37,151,674", 0,0)
+A320740	convprod	0	1,1	new A000041(), new HolonomicRecurrence(0, "[0,45360,-77292,53964,-20089,4320,-538,36,-1]", "1,0,1,3,10,37,151,674,3263", 0, 0)
+A320741	convprod	0	1,1	new A000041(), new HolonomicRecurrence(0, "[0,-403200,732960,-557864,233100,-58674,9135,-861,45,-1]", "1,0,1,3,10,37,151,674,3263,17007", 0, 0)
+A373081	holos	1	[0,1,0,0,0,0,-99,0,0,0,0,99,0,0,0,0,-1]	1,3,10,21,91,120,300,990,2080,8911,11781,29403,97020,203841,873181	0	0
+A373081	holos	1	[0,1,0,0,0,0,-99,0,0,0,0,99,0,0,0,0,-1]	1,3,10,21,91,120,300,990,2080,8911,11781,29403,97020,203841,873181	0	0
+A382161	holos	1	[0,-1000000000,1000000001,-1]	1,1111111111	0	0
+A382161	holos	1	[0,-1000000000,1000000001,-1]	1,1111111111	0	0
+A394572	holos	0	[0,-8,4,2,-1]	0,1,4,14	0	0
+A396151	holos	0	[0,-4,10,-10,5,-1]	1,3,9,21	0	0
+A396155	holos	0	[0,-30,-25,-25,-25,-25,-25,11,-1]	0,0,0,0,0,0,1,11,96,756,5616,40176,279936	0	0
+A396201	holos	0	[0,1,-1,-1]	1,3	0	0
+A396202	decexp	0	() -> CR.valueOf(22).divide(CR.valueOf(27).add(CR.SEVEN.multiply(CR.FIVE.sqrt())))
+A396436	decexp	0	() -> X352324.log()
+A396437	decexp	0	() -> CR.FOUR.multiply(CR.SQRT2).multiply(CR.PI).divide(CR.FIVE.multiply(CR.FIVE.add(CR.FIVE.sqrt()).sqrt())).log()
+A396438	decexp	0	() -> CR.SIX.multiply(CR.SQRT2).multiply(CR.PI).divide(CR.FIVE.multiply(CR.FIVE.add(CR.FIVE.sqrt()).sqrt())).log()
+A396440	decexp	0	() -> X094888.divide(CR.TEN).log()
+A396441	decexp	0	() -> CR.THREE.multiply(CR.PI).divide(CR.FIVE.multiply(CR.PHI)).log()
+A396442	decexp	0	() -> CR.SEVEN.multiply(CR.FIVE.sqrt().subtract(CR.ONE)).multiply(CR.PI).divide(CR.TEN).log()
+A396443	decexp	1	() -> CR.NINE.multiply(CR.FIVE.sqrt().add(CR.ONE)).multiply(CR.PI).divide(CR.TEN).log()
+A396444	decexp	0	() -> X053510.subtract(X002391)
+A396445	decexp	1	() -> X016628.add(X053510).subtract(X002391)
+A396473	holos	0	[0,-2,4,2,-1]	1,2,4	0	0
+A396474	holos	0	[0,-2,2,0,7,2,-1]	1,2,4,22,72	0	0
+A396475	holos	0	[0,-10,20,8,11,2,-1]	1,2,4,38,136	0	0
+A396509	lambdan	0	n -> (n == 0) ? ZV(1) : ZV(4*n + 2).^(n - 1).*(2)	a(n) = 2 * (4*n+2)^(n-1)
+A396516	holos	0	[0,-4,4,-26,88,28,17,2,-1]	1,2,4,70,264,1980,10708	0	0
+A396553	filnum	1	1	k -> PHI(F002322(k)).bitCount() == 1	Numbers k such that EulerPhi(psi(k)) is a power of 2, where psi = F002322 is the reduced totient function.	nonn,new	1..10000	nyi	_Jianing Song_
+A396554	filnum	1	1	k -> PHI(F002322(k)).bitCount() != 1	Numbers k such that EulerPhi(psi(k)) is not a power of 2, where psi = F002322 is the reduced totient function.	nonn,new	1..59	nyi	_Jianing Song_
+A396555	filter	1	new A000040()	p -> PHI(p.-(1)).bitCount() != 1	Primes p such that EulerPhi(p-1) is not a power of 2.	nonn,new	1..60	nyi	_Jianing Song_
+A396556	polyx	0	"[0,1]"	"x,lambertW,neg,lambertW,lambertW,neg"	0	1
+A396557	polyx	0	"[0,1]"	"x,neg,lambertW,neg,lambertW,neg,lambertW,neg"	0	1
+A396558	polyx	0	"[0,1]"	"x,neg,lambertW,lambertW,neg,lambertW"	0	1
+A396582	holos	0	[0,4,-2,-1]	1,6	0	0
+A396584	holos	0	[0,5,0,-1]	1,7	0	0
+A396589	lambdan	0	n -> RU(0, n, k -> QV(k + 1).*(QV(2*k + 1).^(k - 1)).*(QV(2*n - k + 1).^(n - k - 1)).*(BI(n, k))).num()	a(n) = Sum_{k=0..n} (k+1) * (2*k+1)^(k-1) * (2*n-k+1)^(n-k-1) * binomial(n,k).
+A396590	lambdan	0	n -> RU(0, n, k -> QV(k + 1).*(QV(3*k + 1).^(k - 1)).*(QV(3*n - 2*k + 1).^(n - k - 1)).*(BI(n, k))).num()	a(n) = Sum_{k=0..n} (k+1) * (3*k+1)^(k-1) * (3*n-2*k+1)^(n-k-1) * binomial(n,k).
+A396592	lambdan	0	n -> RU(0, n, k -> QV(k + 1).*(QV(4*k + 1).^(k - 1)).*(QV(4*n - 3*k + 1).^(n - k - 1)).*(BI(n, k))).num()	a(n) = Sum_{k=0..n} (k+1) * (4*k+1)^(k-1) * (4*n-3*k+1)^(n-k-1) * binomial(n,k).
+A396628	parmof4	0	A082182	+22	-5	17

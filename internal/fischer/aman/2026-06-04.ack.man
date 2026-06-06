@@ -1,0 +1,81 @@
+---- 2026-06-05 00:28:54
+A101428	convprod	0	1,1	new A010054(), new A010052()
+A108482	euxper	0	7	1,0,-1,-1,0,1,0	1	,1,0,-1,-1,0,1,0
+A131995	polya	0	"[1],[1,-1]"	"x,B,x,C,*,p1,*"	new A018819(), new A062051()
+A137702	filter	1	new A000040().skip(1)	p -> { final long d = 2; final Q q = new Q(p.-(1), d); return q.isInteger() && PP(p.+(q.num())) && PP(p.-(q.num())); }	Prime numbers p such that p +- ((p-1)/2) are primes.	nonn,easy	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A137703	filter	1	new A000040().skip(2)	p -> { final long d = 3; final Q q = new Q(p.-(1), d); return q.isInteger() && PP(p.+(q.num())) && PP(p.-(q.num())); }	Prime numbers p such that p +- ((p-1)/3) are primes.	nonn,easy	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A137705	filter	1	new A000040().skip(2)	p -> { final long d = 4; final Q q = new Q(p.-(1), d); return q.isInteger() && PP(p.+(q.num())) && PP(p.-(q.num())); }	Prime numbers p such that p +- ((p-1)/4) are primes.	nonn,easy	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A137714	filter	1	new A000040().skip(3)	p -> { final long d = 5; final Q q = new Q(p.-(1), d); return q.isInteger() && PP(p.+(q.num())) && PP(p.-(q.num())); }	Prime numbers p such that p +- ((p-1)/5) are primes.	nonn,easy	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A137724	filter	1	new A000040().skip(3)	p -> { final long d = 6; final Q q = new Q(p.-(1), d); return q.isInteger() && PP(p.+(q.num())) && PP(p.-(q.num())); }	Prime numbers p such that p +- ((p-1)/6) are primes.	nonn,easy	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A137770	filter	1	new A000040().skip(7)	p -> { final long d = 7; final Q q = new Q(p.-(1), d); return q.isInteger() && PP(p.+(q.num())) && PP(p.-(q.num())); }	Prime numbers p such that p +- ((p-1)/7) are primes.	nonn,easy	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A137771	filter	1	new A000040().skip(7)	p -> { final long d = 8; final Q q = new Q(p.-(1), d); return q.isInteger() && PP(p.+(q.num())) && PP(p.-(q.num())); }	Prime numbers p such that p +- ((p-1)/8) are primes.	nonn,easy	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A209457	eulerx	0			new PaddingSequence("1,-2,0,0, 0,-1,0,0", "1,-1,0,0")		,1,-1,0,0,1,-1,0,0,1,-1,0,0,1,-1,0,0,1,-1,0,0,1,-1,0,0,1,-1,0,0,1,-1,0,0,1,-1,0,0,1,-1,0,0,1,-1,0,0,1,-1,0,0,1,-1,0,0
+A264400	polya	0	"[1]"	"x,B,x,C,*"	new A325939(), new A000041()
+A279108	filnum	1	1	k -> !Predicates.PALINDROME.is(k) && GPF(k).equals(GPF(REV(k)))	Numbers n such that greatest prime dividing n = greatest prime dividing R(n), where R(n) is the digit reversal of n and n is a nonpalindromic number.	nonn,base	1..2337	nyi	_Ilya Gutkovskiy_
+A280195	polya	0	"[1]"	"1,1,x,B,x,-,-,/"	new A010055()
+A280242	polya	0	"[1]"	"x,B,x,-,^2"	new A010055()
+A280243	polya	0	"[1]"	"x,B,x,-,^3"	new A010055()
+A280289	filnum	1	0	k -> F000041(k).testBit(0) && !F000009(k).testBit(0)	Numbers n such that number of partitions of n is odd and number of partitions of n into distinct parts is even.	nonn,easy	1..75	nyi	_Ilya Gutkovskiy_
+A280290	filnum	1	0	k -> !F000041(k).testBit(0) && !F000009(k).testBit(0)	Numbers n such that number of partitions of n is even and number of partitions of n into distinct parts is even.	nonn,easy	1..73	nyi	_Ilya Gutkovskiy_
+A280543	polya	0	"[1]"	"1,1,x,-,x,B,x,-,-,/"	new A010055()
+A280618	polya	0	"[1]"	"x,B,1,-,^2"	new A010057()
+A280719	convprod	0	6	new CharacteristicFunction(0, new A000384())
+A280860	euxper	0	12	1,0,-1,1,1,-1,1,1,-1,0,1,-1	1
+A281781	eulerx	0			new A181983().skip(1)			1,-2,3,-4,5,-6,7,-8,9,-10,11,-12,13,-14,15,-16,
+A282135	polya	1	"[1]"	"x,B,^3"	new A064911()
+A283165	multia	0	"0,1"	(self, n) -> ((n&1) == 0) ? self.a(n / 2).*(2) : self.a(n / 2).*(2).+(self.a(n /2 + 1).testBit(0) ? -1 : 1)	a(2*n) = 2*a(n), a(2*n+1) = 2*a(n) + (-1)^a(n+1).	nonn	0..10000	nyi	_Ilya Gutkovskiy_
+A283187	multia	0	"0,1"	(self, n) -> ((n&1) == 0) ? self.a(n / 2).*(2) : self.a(n / 2).+(self.a(n /2 + 1).testBit(0) ? -1 : 1)		a(2*n) = 2*a(n), a(2*n+1) = a(n) + (-1)^a(n+1).	nonn,hear	0..10000	nyi	_Ilya Gutkovskiy_
+A283764	multia	0	"0,1"	(self, n) -> ((n&1) == 0) ? SIGMA(self.a(n / 2)) : SIGMA(self.a(n / 2).+(self.a(n / 2 + 1)))	a(2*n) = sigma(a(n)), a(2*n+1) = sigma(a(n)+a(n+1)).	nonn	0..89	nyi	_Ilya Gutkovskiy_
+A284467	eulerx	0			new A186111()			1,-3,3,-2,5,-9,7,-4,9,-15,11,-6,13,-21,15,-8,17
+A285742	multia	0	"0,1"	(self, n) -> ((n&1) == 0) ? PM(self.a(n / 2)) : PM(self.a(n / 2)).+(PM(self.a(n / 2 + 1)))	a(2*n+1) = prime(a(n)) + prime(a(n+1)).	nonn	0..60	nyi	_Ilya Gutkovskiy_
+A285743	multia	0	"0,1"	(self, n) -> ((n&1) == 0) ? PM(self.a(n / 2)) : PM(self.a(n / 2).+(self.a(n / 2 + 1)))	a(2*n+1) = prime(a(n)+a(n+1)).	nonn,look	0..500	nyi	_Ilya Gutkovskiy_
+A326859	polyxa	0	"[1]"	"x,B,x,C,*"	0	1	egf(new A088994()), egf(new A294506())
+A326860	polyxa	0	"[1]"	"x,B,x,C,*"	0	1	egf(new A326857()), egf(new A326755())
+A326861	polyxa	0	"[1]"	"x,B,x,C,*"	0	1	egf(new A326756()), egf(new A326858())
+A326862	polyxa	0	"[1]"	"x,B,x,C,*"	0	1	egf(new A326779()), egf(new A326855())
+A326863	polyxa	0	"[1]"	"x,B,x,C,*"	0	1	egf(new A326780()), egf(new A326856())
+A340453	euxper	0	5	1,0,0,1,-2	1		,1,0,0,1,-2,1,0,0,1,-2,1,0,0,1
+A340454	euxper	0	5	0,1,1,0,-2	1		,0,1,1,0,-2,0,1,1,0,-2,0,1,1,0
+A340455	euxper	0	4	-1,2,2,-1,-2	1
+A340456	euxper	0	4	2,-1,-1,2,-2	1
+A341507	poly	0	"[1],[1,-1,-1],[1,-2,1],[1,-2],A9"	"p1,p2,/,p3,/,1,p2,/,x,B,*,-"
+A346020	multia	1	"1,0,1"	(self, n) -> SU(1, n - 3, k -> SD(k, d -> self.a(d).*(d)).*(self.a(n - k)))./(n - 3)	a(1) = 1, a(2) = 0, a(3) = 1; a(n) = (1/(n - 3)) * Sum_{k=1..n-3} ( Sum_{d|k} d * a(d) ) * a(n-k).
+A346030	multia	1	"0,1,1"	(self, n) -> SU(1, n - 3, k -> SD(k, d -> self.a(d).*(d)).*(self.a(n - k)))./(n - 3)	a(1) = 0, a(2) = 1, a(3) = 1; a(n) = (1/(n - 3)) * Sum_{k=1..n-3} ( Sum_{d|k} d * a(d) ) * a(n-k).
+A346031	multia	1	"1,0,1"	(self, n) -> SU(1, n - 3, k -> SD(k, d -> self.a(d).*(d).*(Z_1(k/d + 1))).*(self.a(n - k)))./(n - 3)	a(1) = 1, a(2) = 0, a(3) = 1; a(n) = (1/(n - 3)) * Sum_{k=1..n-3} ( Sum_{d|k} (-1)^(k/d+1) * d * a(d) ) * a(n-k).
+A346032	multia	1	"0,1,1"	(self, n) -> SU(1, n - 3, k -> SD(k, d -> self.a(d).*(d).*(Z_1(k/d + 1))).*(self.a(n - k)))./(n - 3)	a(1) = 0, a(2) = 1, a(3) = 1; a(n) = (1/(n - 3)) * Sum_{k=1..n-3} ( Sum_{d|k} (-1)^(k/d+1) * d * a(d) ) * a(n-k).
+A347895	polyxa	0	"[1]"	"x,sin,x,B,*,exp"	0	1	egf(new A318249())
+A347896	polyxa	0	"[1]"	"x,cos,x,B,*,exp"	0	1	egf(new A318249())
+A347897	polyxa	0	"[1]"	"x,tan,x,B,*,exp"	0	1	egf(new A318249())
+A354277	multia	1	"0"	(self, n) -> QV(1).-(RD(n, d -> (d == 1 || d == n) ? QV(0) : QV(FA(d)).^(-n/d).*(self.a(d)).*(d))).*(FA(n - 1)).num()	a(1) = 0; a(n) = (n-1)! * (1 - Sum_{d|n, 1 < d < n} d * d!^(-n/d) * a(d))
+A354278	multia	1	"0"	(self, n) -> QV(1).-(RD(n, d -> (d == 1 || d == n) ? QV(0) : new Q(self.a(d), FA(d)).^(n/d).*(d))).*(FA(n - 1)).num()	a(1) = 0; a(n) = (n-1)! * (1 - Sum_{d|n, 1 < d < n} d * (a(d)/d!)^(n/d)).A356554	polyxa	0	"[1]"	"x,B,x,pow"	0
+A355358	euxper	0	13	1,0,1,1,0,0,0,0,1,1,0,1,0	1		,
+A355359	euxper	0	13	0,1,0,0,1,1,1,1,0,0,1,0,0	1	,
+A356554	polyxa	0	"[1]"	"x,B,x,pow"	0	1	new A000219()
+A356576	polyxa	0	"[1]"	"x,B,x,pow"	0	1	egf(new A298906())
+A356587	polyxa	0	"[1]"	"x,B,x,pow"	0	1	new A023881()
+A361008	convprod	0	1,1	new A263149(), new A263150()
+A361535	convprod	0	6,-4	new A000041(), new A081362()
+A363062	multia	1	"1,-1"	(self, n) -> SU(1, n - 2, k -> SD(k, d -> self.a(d).*(d)).*(self.a(n - k)))./(n - 2)	a(1) = 1, a(2) = -1; a(n) = (1/(n - 2)) * Sum_{k=1..n-2} ( Sum_{d|k} d * a(d) ) * a(n-k).
+A363087	multia	1	"1,-1"	(self, n) -> SU(1, n - 2, k -> SD(k, d -> self.a(d).*(d).*(Z_1(k/d + 1))).*(self.a(n - k)))./(n - 2)	a(1) = 1, a(2) = -1; a(n) = (1/(n - 2)) * Sum_{k=1..n-2} ( Sum_{d|k} (-1)^(k/d+1) * d * a(d) ) * a(n-k).
+A374900	euxper	0	7	2,-1,0,0,-1,2,-2	1	,
+A375061	euxper	0	5	1,-2,-2,1,2	1	,
+A375062	euxper	0	5	-2,1,1,-2,2	1	,
+A375063	euxper	0	5	-1,0,0,-1,2	1	,
+A375064	euxper	0	5	0,-1,-1,0,2	1	,
+A375106	euxper	0	7	1,0,0,0,0,1,-2	1	,
+A375107	euxper	0	7	0,0,1,1,0,0,-2	1	,
+A375108	euxper	0	7	-1,0,2,2,0,-1,-2	1	,
+A375148	euxper	0	7	1,1,-1,-1,1,1,-2	1	,
+A375149	euxper	0	7	1,-1,1,1,-1,1,-2	1	,
+A375150	euxper	0	7	0,1,0,0,1,0,-2	1	,0,1,
+A375158	euxper	0	7	0,2,-1,-1,2,0,-2	1	,
+A375159	euxper	0	7	-1,1,1,1,1,-1,-2	1	,
+A391524	convprod	1	3	new A391525()
+A391525	poly	0	"[1]"	"1,A,^3,<1,+,A,^6,<3,1,A,^3,<1,+,^3,*,sub,*"
+A395421	holos	0	[0,1,-1,-2,2,1,-1]	0,0,0,14,20,48,60,102	0	0
+A395968	rpt	0	f(new A000598().skip(1))
+A396156	holos	0	[0,-30,-25,-25,-25,-25,-25,-25,11,-1]	0,0,0,0,0,0,0,1,11,96,756,5616,40176,279936,1912896	0	0
+A396492	holos	1	[0,-1,10,-45,120,-210,252,-210,120,-45,10,-1]	16,1476,30616,294616,1797600,8101916,29421896,90882416,247563056,609880500	0	0
+A396517	decexp	1	() -> CR.EIGHT.multiply(X101465)
+A396518	decexp	2	() -> CR.valueOf(24).multiply(X101465)
+A396652	holos	0	[0,1,-1,-2,2,1,-1]	0,0,0,10,12,32,36,66	0	0

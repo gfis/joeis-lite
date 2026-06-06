@@ -1,0 +1,52 @@
+---- 2026-06-05 14:32:06
+A231947	polya	0	"[1]"	"x,B,^2,x,C,*,3,/"	new A004016(), new A005882()
+A244263	decexp	1	() -> CR.ONE.+(X244262.^(2).inverse()).sqrt()	Beta = sqrt(1 + 1/theta^2) Cf. A244262.
+A244347	decexp	0	() -> CR.ONE./(X076414.^(4))
+A244350	decexp	1	() -> X076414./(CR.PI).^(4)
+A246878	multia	0	"1"	(self, n) -> SU(Functions.DIGIT_LENGTH.i(2, n) - 1, n - 1, k -> self.a(k))	a(0) = 1, then a(n) = Sum_{k = floor(log_2(n)) .. n - 1} a(k).
+A274912	arrlamb	0	1	1	1	(n, k) -> ((n&1) == 1) ? ZV(((k&1) == 1) ? 0 : 2) : ZV(((k&1) == 1) ? 1 : 3)
+A274913	arrlamb	1	1	1	1	(n, k) -> ((n&1) == 1) ? ZV(((k&1) == 1) ? 1 : 3) : ZV(((k&1) == 1) ? 2 : 4)
+A278545	arrlamb	1	1	1	1	(n, k) -> (n == 1 && k == 1) ? ZV(3) : ((n == 1 || k == 1) ? ZV(5) : ZV(8))
+A295831	eulerx	0			new HolonomicRecurrence(0, "[0,-1,0,0,0,2,0,0,0,-1]", "1,1,2,1,3,3", 0, 0)
+A295832	eulerx	0			new HolonomicRecurrence(0, "[0,-1,0,0,0,2,0,0,0,-1]", "1,0,2,2,3,1", 0, 0)
+A321344	eulerx	0			new LambdaSequence(1, n -> { final long e = 3; if (n == 1) { return ZV(e + 1); } else { final Z m = ZV(n); final Z p = ZV(e).^(Functions.VALUATION.i(m, e)); return !p.equals(m) ? ZV(0) : p.*(e); }})
+A321345	eulerx	0			new LambdaSequence(1, n -> { final long e = 4; if (n == 1) { return ZV(e + 1); } else { final Z m = ZV(n); final Z p = ZV(e).^(Functions.VALUATION.i(m, e)); return !p.equals(m) ? ZV(0) : p.*(e); }})
+A321354	eulerx	0			new LambdaSequence(1, n -> { final long e = 3; if (n == 1) { return ZV(e); } else { final Z m = ZV(((n&1) != 0) ? n : n/2); final Z p = ZV(e).^(Functions.VALUATION.i(m, e)); return !p.equals(m) ? ZV(0) : p.*(e).*((n&1) == 1 ? 1 : -1); }})
+A321355	eulerx	0			new LambdaSequence(1, n -> { if (Long.bitCount(n) != 1) { return Z.ZERO; } else { final int v = Functions.VALUATION.i(n, 2); return ((v&1) == 1) ? Z2(v + 1).negate() : Z2(v + 2); }})
+A321357	eulerx	0			new LambdaSequence(1, n -> { final long e = 5; if (n == 1) { return ZV(e); } else { final Z m = ZV(((n&1) != 0) ? n : n/2); final Z p = ZV(e).^(Functions.VALUATION.i(m, e)); return !p.equals(m) ? ZV(0) : p.*(e).*((n&1) == 1 ? 1 : -1); }})
+---- 2026-06-05 23:13:58
+A096770	multia	1	"1,1"	(self, n) -> SU(1, n - 1, k -> SD(k, j -> self.a(j)).*(PT(n - 1 - k)))	a(n+1) = sum{k=1 to n} (sum{j|k} a(j)) * p(n-k), where p(k) is the number of partitions of k (A000041).
+A120381	lambdan	0	n -> PT(BELL(n))
+A120379	lambdan	0	n -> PT(Functions.CATALAN.z(n))
+---- 2026-06-05 23:50:02
+A162468	filnum	1	1	k -> k == 1 || F000009(k).mod(k) == 1	Integers n such that F000009(n) (the number of partitions of n into distinct parts) == 1 (mod n).
+A288126	filter	0	new A024940()	(k, v) -> Predicates.TRIANGULAR.is(k)	a(n) = A024940(A000217(n)).
+A324236	polyxa	0	"[1]"	"1,1,x,B,1,-,-,/"	0	1	egf(new A000041())
+A324237	polyxa	0	"[1]"	"1,1,x,B,1,-,-,/"	0	1	egf(new A000009())
+A285087	filnum	0	1	k -> PP(PT(k*k - 1))	Numbers n such that the number of partitions of n^2-1 is prime.
+A285088	filnum	0	0	k -> PP(PT(k*(k + 1)/2))	Numbers n such that the number of partitions of n(n+1)/2 (=F000041(F000217(n))) is prime.
+---- 2026-06-05 23:57:35
+---- 2026-06-06 13:24:46
+A394826	holos	1	[0,-1,4,-6,4,-1]	1,6,20,47	0	0
+---- 2026-06-06 13:26:15
+A396637	holos	0	[0,2,-1,-4,4,-1]	1,4,12,30,68	0	0
+A396638	holos	0	[0,-1,-3,0,3,-1]	1,4,12,36,96	0	0
+---- 2026-06-06 13:26:47
+A256987	decexp	1	() -> Zeta.zeta(5).add(CR.PI.pow(2).divide(CR.SIX).multiply(Zeta.zeta(3)))
+A256988	decexp	2	() -> CR.TEN.multiply(Zeta.zeta(5)).add(CR.PI.pow(2).divide(CR.SIX).multiply(Zeta.zeta(3)))
+---- 2026-06-06 13:28:58
+A393072	decexp	1	() -> CR.valueOf(19).multiply(Zeta.zeta(6)).divide(CR.valueOf(24)).add(Zeta.zeta(3).pow(2))
+A393484	decexp	1	() -> CR.FIVE.multiply(Zeta.zeta(3).pow(2)).subtract(CR.valueOf(101).multiply(Zeta.zeta(6)).divide(CR.valueOf(24))).divide(CR.TWO)
+A394397	decexp	1	() -> CR.valueOf(227).multiply(Zeta.zeta(6)).divide(CR.valueOf(24)).subtract(CR.THREE.multiply(Zeta.zeta(3).pow(2))).divide(CR.TWO)
+A394645	decexp	1	() -> CR.valueOf(41).multiply(Zeta.zeta(6)).divide(CR.valueOf(12)).add(CR.TWO.multiply(Zeta.zeta(3).pow(2)))
+A395398	decexp	1	() -> CR.valueOf(19).multiply(Zeta.zeta(3)).multiply(Zeta.zeta(4)).divide(CR.TWO).subtract(CR.TWO.multiply(Zeta.zeta(2)).multiply(Zeta.zeta(5))).subtract(CR.SEVEN.multiply(Zeta.zeta(7)))
+A395478	decexp	1	() -> CR.TWO.multiply(Zeta.zeta(2)).multiply(Zeta.zeta(5)).add(CR.THREE.multiply(Zeta.zeta(3)).multiply(Zeta.zeta(4)).divide(CR.FOUR)).subtract(CR.valueOf(51).multiply(Zeta.zeta(7)).divide(CR.valueOf(16)))
+A395618	decexp	0	() -> Zeta.zeta(3).divide(CR.FOUR).subtract(CR.TWO.log().pow(3).divide(CR.THREE))
+A396733	decexp	0	() -> Zeta.zeta(4).subtract(CR.TWO.log().multiply(Zeta.zeta(3))).add(CR.TWO.log().pow(4).divide(CR.THREE)).divide(CR.TWO)
+A396737	decexp	0	() -> CR.valueOf(59).multiply(Zeta.zeta(5)).divide(CR.valueOf(32)).subtract(Zeta.zeta(2).multiply(Zeta.zeta(3)).divide(CR.TWO))
+A396738	decexp	0	() -> CR.FIVE.multiply(Zeta.zeta(2)).multiply(Zeta.zeta(3)).divide(CR.EIGHT).subtract(CR.valueOf(11).multiply(Zeta.zeta(5)).divide(CR.valueOf(32)))
+A396739	decexp	0	() -> CR.THREE.multiply(Zeta.zeta(2)).multiply(Zeta.zeta(3)).divide(CR.FOUR).subtract(CR.valueOf(21).multiply(Zeta.zeta(5)).divide(CR.valueOf(32)))
+A396740	decexp	0	() -> CR.TWO.multiply(Zeta.zeta(5)).subtract(CR.THREE.multiply(Zeta.zeta(2)).multiply(Zeta.zeta(3)).divide(CR.EIGHT)).subtract(CR.SEVEN.multiply(CR.TWO.log()).multiply(Zeta.zeta(4)).divide(CR.EIGHT))
+---- 2026-06-06 16:47:05
+A392562	decexp	1	() -> X197140.-(1).inverse()	Equals 1/(A197140 - 1)
+A396439	decexp	1	() -> CR.EIGHT.multiply(CR.SQRT2).multiply(CR.PI).divide(CR.FIVE.multiply(CR.FIVE.subtract(CR.FIVE.sqrt()).sqrt())).log()
