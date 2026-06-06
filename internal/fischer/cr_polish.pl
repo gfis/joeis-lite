@@ -1,7 +1,8 @@
 #!perl
 
 # Polish CR expressions
-# @(#) $Id$
+# @(#) $Id$ 
+# 2026-06-06: polyGamma(n,q) -> zetaHurwitz(n+1, q); *RH=80
 # 2025-02-07: $parm1 =~ s{CR\.valueOf\((\d{6})\)\.getCR}{X$1\.getCR}g; *KFF=1
 # 2021-07-16, Georg Fischer: copied from de_zeta.pl
 #
@@ -91,6 +92,7 @@ sub polish {
         # ---- general polishing ----
         $parm1 =~ s{\.gamma\(\)\.log\(\)}{\.lnGamma\(\)}g;
         $parm1 =~ s{\.pow\(CR\.valueOf\((\-?\d+|mN)\)\)}{\.pow\($1\)}g; # pow(int)
+        $parm1 =~ s{\(1\+CR\.valueOf\((\d|10)\)}{"(" . (1+$1)}eg;
         $parm1 =~ s{CR\.valueOf\((\d{6})\)\.getCR\(\)}{X$1}g;
         $parm1 =~ s{CR\.valueOf\((\d|10)\)}{CR\.$anum[$1]}g;
         $parm1 =~ s{CR\.ONE\.divide\(CR\.TWO\)}{CR\.HALF}g;

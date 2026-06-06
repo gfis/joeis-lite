@@ -1,5 +1,6 @@
 # CR.xpat - Mapping table seqdb -> irvine.math.cr.CR infix expression generation
 # @(#) $Id$
+# 2026-06-06: polyGamma; *RH=80
 # 2025-02-07: all trigon. functions in REALS.; *KFF=1
 # 2021-07-27: Gamma, lnGamma
 # 2021-07-19: root
@@ -127,6 +128,9 @@ arcsch)	func	1	REALS.acsch(
 
 zeta)	func	1	Zeta.zeta(	1
 Zeta)	func	1	Zeta.zeta(	1
+polygamma)	func	2	Zeta.zetaHurwitz(1+	1
+polyGamma)	func	2	Zeta.zetaHurwitz(1+	1
+PolyGamma)	func	2	Zeta.zetaHurwitz(1+	1
 
 omega)	func	1	Functions.OMEGA.z(
 sigma)	func	1	Functions.SIGMA.z(
