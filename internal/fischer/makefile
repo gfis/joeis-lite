@@ -126,6 +126,9 @@ NT=64
 getiet: # get an InverseEulerTransfrom from a PseudoSequence
 	echo -e "$(A)\teuxper\t0\t?\t" `$(JAVA) irvine.oeis.SequenceFactory -n $(NT) --data-length=1000 -D "ieuler(pseudo($(A)).skip(1))" 2>&1` | sed -e "s/ //g" \
 	| tee -a aman/`date +%Y-%m-%d`.man
+getiwt: # get an InverseEulerTransfrom from a PseudoSequence
+	echo -e "$(A)\twexper\t0\t?\t" `$(JAVA) irvine.oeis.SequenceFactory -n $(NT) --data-length=1000 -D "iweigh(pseudo($(A)).skip(1))" 2>&1` | sed -e "s/ //g" \
+	| tee -a aman/`date +%Y-%m-%d`.man
 Q="-1/1"
 INIT="1"
 #--
@@ -2975,6 +2978,22 @@ eisenprod:
 	head -n4 $@.gen
 	wc -l    $@.gen $@.*tmp
 #	| grep -vE "A288472|A288989|A289981|A290009|A290010|A290049|A290050" \
+#
+#----
+hmize: # TARGET= htmlize the result of a grep
+	wc -l        $(TARGET).tmp
+	perl htmlize.pl $(TARGET).tmp > $(TARGET).html
+	chmod 755    $(TARGET).html
+	cmd /c start $(TARGET).html
+	e            $(TARGET).tmp
+#----
+getiewt: # getiet and getiwt for all nyi names with "Number of partitions of n"
+	grep -P "Number of partitions of n" $(COMMON)/joeis_names.txt | grep -P "\tnyi" \
+	| cut -b1-7 > $@.tmp
+	wc -l    $@.tmp
+	rm -f $@.i*
+	cat $@.tmp | xargs -innn make -s getiet A=nnn | tee -a $@.iet.tmp
+	cat $@.tmp | xargs -innn make -s getiwt A=nnn | tee -a $@.iwt.tmp
 #----
 convinv:
 	cp -v $(COMMON)/$@.tmp $@.gen
