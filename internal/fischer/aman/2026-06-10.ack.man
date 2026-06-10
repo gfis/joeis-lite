@@ -1,0 +1,77 @@
+---- 2026-06-10 20:40:59
+---- 2026-06-10 21:17:16
+---- 2026-06-10 21:17:59
+A063169	lambdan	1	n -> D001865(n).*(n)
+A091237	rultraf	1	new A039702()	. If the two initial 1.s are omitted, this is the RUNS transform of E100672. - _N. J. A. Sloane_, Jan 11 2025
+A100943	decexp	1	() -> CR.E.*(4).+(1).sqrt().+(1)./(2)	(1 + sqrt(4e + 1))/2
+A110091	lambdan	0	n -> { final long n3 = n%3; return ZV((n3 == 1) ? 1 : n/3*2 + 1); }	a(3*k) = 2*k+1, a(3*k+1) = 1, a(3*k+2) = 2*k+1.
+A134859	filtpos	1	0	new A003714()	(k, v) -> k == 1 || v.toString(2).endsWith("001")	Also numbers with suffix string 001,
+A134861	filtpos	1	0	new A003714()	(k, v) -> k == 2 || v.toString(2).endsWith("0010")	Also numbers with suffix string 0010, when written in Zeckendorf representation (with leading zero.s for the first term). - _A.H.M. Smeets_, Mar 20 2024
+A134863	filtpos	1	0	new A003714()	v -> v.toString(2).endsWith("1010")	Also numbers with suffix string 1010, when written in Zeckendorf representation. - _A.H.M. Smeets_, Mar 24 2024
+A139764	sintrif	1	(term, n) -> FI(Functions.VALUATION.i(term, 2) + 2)	""	new A003714()
+A143298	decexp	1	() -> X091518.divide(CR.TWO)
+A165276	sintrif	1	(term, n) -> ZV(term.and(ZV(0x55555555555555L)).bitCount())	""	new A003714()	Number of even-indexed Fibonacci numbers in the Zeckendorf representation of n.
+A165277	sintrif	1	(term, n) -> ZV(term.and(ZV(0xaaaaaaaaaaaaaaL)).bitCount())	""	new A003714()	Number of odd-indexed Fibonacci numbers in the Zeckendorf representation of n.
+A182569	filtpos	1	0	new A003714()	(k, v) -> v.bitCount() == 2 && PP(k)	Primes that have two terms in their Zeckendorf representation.
+A182570	filtpos	1	0	new A003714()	(k, v) -> v.bitCount() == 3 && PP(k)	Primes that have three terms in their Zeckendorf representation.
+A182571	filtpos	1	0	new A003714()	(k, v) -> v.bitCount() == 4 && PP(k)	Primes that have four terms in their Zeckendorf representation.
+A182572	filtpos	1	0	new A003714()	(k, v) -> v.bitCount() == 5 && PP(k)	Primes that have five terms in their Zeckendorf representation.
+A182573	filtpos	1	0	new A003714()	(k, v) -> v.bitCount() == 6 && PP(k)	Primes that have six terms in their Zeckendorf representation.
+A249489	lambdan	0	n -> RU(0, n, k -> RU(0, k, j -> QV(k - 2*j).^(n).*(BI(k, j).*(ZV(k).^(n))))./(Z2(k))).num()	a(n) = Sum_{k=0..n} Sum_{j=0..k} binomial(k, j) * k^n * (k-2*j)^n / 2^k.
+A277937	lambdan	0	n -> { final String[] rs = Long.toString(n, 2).split("0+"); int sum = 0; for (String s: rs) { if (s.length() == 1) { ++sum; }}; return ZV(sum); }	Number of runs of 1s of length 1 in the binary expansion of n.
+A291649	rpt	0	f(new LambdaSequence(1, n -> Predicates.SQUARE.is(n) ? ZV(-n) : ZV(0))).g(-1)	1,0,0,4,0,0,0,0,9,0,0,0,0,0,0,16,0,0,0,0,0,0,0,0,25,0,0,0,0,0,0,0,0,0,0,36,0,0,0,0,0,0,0,0,0,0,0,0,49,0,0,0,0,0,0,0,0,0,0,0,0,0,0,64
+A318930	rultraf	1	new A279620()
+A381234	rultraf	1	new A000319()
+A382113	sintrif	0	(term, n) -> D022290(F006068(term))	""	new A003714()
+A382627	decexp	0	() -> CR.ONE.divide(X103814)
+A390074	decexp	0	() -> CR.EIGHT.multiply(CR.PI.pow(4).add(CR.valueOf(96).multiply(X175572)))
+A390075	decexp	0	() -> CR.EIGHT.multiply(CR.PI.pow(4).subtract(CR.valueOf(96).multiply(X175572)))
+A396258	decsolv	1	() -> x.^(6).*(64).-(x.^(4).*(672)).+(x.^(2).*(1764)).-(CV(189))		2.440	2.441	64*x^6 - 672*x^4 + 1764*x^2 - 189
+A396259	decsolv	1	() -> x.^(6).*(64).-(x.^(4).*(672)).+(x.^(2).*(1764)).-(CV(1183))		1.022	1.023	64*x^6 - 672*x^4 + 1764*x^2 - 1183
+A396260	decsolv	1	() -> x.^(3).*(8).-(x.*(42)).-(CV(7))		2.370	2.371	8*x^3 - 42*x - 7 = 0	nonn,cons,easy	1..10000	nyi
+A396261	decsolv	1	() -> x.^(6).*(64).-(x.^(4).*(672)).+(x.^(2).*(1764)).-(CV(1323))		1.175	1.176	64*x^6 - 672*x^4 + 1764*x^2 - 1323
+A396264	filnum	1	1	j -> SD(j, d -> (d >= j) ? ZV(0) : Z_1(d).*(d)).equals(ZV(j))	Numbers j such that Sum_{d|j, d < j} (-1)^d * d is equal to j
+A396299	rultraf	0	new A005606()	(initial letter of English name for n).	nonn,new	0..49	nyi	_N. J. A. Sloane_
+A396519	decexp	1	() -> CV(12).*(CR.SQRT2.*(2).-(CV(6).sqrt()))	12*(2*sqrt(2) - sqrt(6)).	nonn,cons,easy,new	1..10000	nyi	_Paolo Xausa_
+A396520	decexp	1	() -> CV(16).*(CV(3).+(CV(3).sqrt().*(2)).-(CR.SQRT2.*(4)))./(3)	16*(3 + 2*sqrt(3) - 4*sqrt(2))/3.	nonn,cons,easy,new	1..10000	nyi	_Paolo Xausa_
+A396599	filnum	1	1	k -> ((k&1) == 1) && new Q(Functions.SIGMA.z(2, k), k).isInteger()	Odd numbers k where sigma_2(k)/k is an integer.
+A396660	decexp	0	() -> CV(9).+(CV(5).sqrt().*(2))./(180)	Decimal expansion of (9 + 2*sqrt(5))/180.	nonn,cons,new	0..105	nyi	_Amiram Eldar_
+A396661	decexp	0	() -> CV(97).+(CR.SQRT2.*(52))./(2304)	Decimal expansion of (97 + 52*sqrt(2))/2304.	nonn,cons,new	0..105	nyi	_Amiram Eldar_
+A396662	decexp	0	() -> CV(745).+(CV(5).sqrt().*(262))./(18000)	Decimal expansion of (745 + 262*sqrt(5))/18000.	nonn,cons,new	0..105	nyi	_Amiram Eldar_
+A396663	decexp	0	() -> CR.PI.*(9)./(77)	Decimal expansion of 9*Pi/77.	nonn,cons,new	0..104	nyi	_Amiram Eldar_
+A396678	lambdan	1	n -> SU(1, n, k -> ZV(n).^(n - k).*(BI(n - 1, k - 1)).*(E396677(k)))	a(n) = Sum_{k=1..n} n^(n-k) * binomial(n-1,k-1) * A396677(k).
+A396678	lambdan	1	n -> SU(1, n, k -> ZV(n).^(n - k).*(BI(n - 1, k - 1)).*(E396677(k)))	a(n) = Sum_{k=1..n} n^(n-k) * binomial(n-1,k-1) * A396677(k).
+A396679	lambdan	1	n -> SU(1, n, k -> ZV(n).^(n - k).*(BI(n - 1, k - 1)).*(E001865(k)))	a(n) = Sum_{k=1..n} n^(n-k) * binomial(n-1,k-1) * A396677(k).
+A396680	lambdan	1	n -> SU(1, n, k -> ZV(n).^(n - k).*(BI(n - 1, k - 1)).*(E396679(k)))	a(n) = Sum_{k=1..n} n^(n-k) * binomial(n-1,k-1) * A396679(k).
+A396683	sintrif	0	(term, n) -> TAU(term)	""	new A006863()	a(n) is the number of divisors of J006863(n).	nonn,easy,new	0..10000	nyi	_Jianing Song_
+A396706	decsolv	0	() -> x.^(3).*(5).-(x.^(2).*(15)).+(CV(4))		0.574	0.575	5*x^3-15*x^2+4.
+A396713	lambdan	1	n -> SU(1, n, k -> ZV(n).^(n - k).*(BI(n - 1, k - 1)).*(E396712(k)))	a(n) = Sum_{k=1..n} n^(n-k) * binomial(n-1,k-1) * A396712(k)
+A396745	polyxa	1	"[0,1]"	"1,x,B,neg,exp,-"	0	1	egf(new A396677())
+A396791	lambdan	0	n -> RU(1, 2*n - 1, k -> new Q(FA(k).*(2).*(S2(2*n - 1, k)), k + 1)).num()	a(n) = Sum_{k=1..2*n-1} 2*k!*Stirling2(2*n-1,k)/(k+1).
+A396803	polyx	1	"[0,1]"	"A,sub,sub,exp,<1"	2	1
+A396804	polyx	1	"[0,1]"	"A,sub,sub,sub,exp,<1"	0	1
+A396805	polyx	1	"[0,1]"	"A,sub,sub,sub,sub,exp,<1"	0	1
+A396806	polyx	1	"[0,1]"	"A,sub,sub,sub,sub,sub,exp,<1"	0	1
+A396819	decexp	0	() -> CV(18).-(CV(5).sqrt()).*(new Q(2, 45))
+A396820	decexp	0	() -> CR.valueOf(2833).add(CR.valueOf(2031).multiply(CR.SQRT2)).divide(CR.valueOf(4032).add(CR.valueOf(2880).multiply(CR.SQRT2)))
+A396821	decexp	0	() -> CV(3755).-(CV(5).sqrt().*(262))./(4500)
+A396822	decexp	1	() -> CR.valueOf(228).add(CR.valueOf(11).multiply(CR.SEVEN.sqrt())).divide(CR.valueOf(84).add(CR.FOUR.multiply(CR.SEVEN.sqrt())))
+A396858	holos	0	[[0,0,8,0,8,0,4,0,3,0,0,0,1],[-24]]	0	0	0
+A396861	holos	0	[[0,0,0,0,0,0,0,0,24,0,0,0,20,0,0,0,15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],[-60]]	0	0	0
+A396869	sintrif	1	(term, n) -> term.*(4).-(SQRT(term.*(4)).^(2))	""	new A246655()	a(n) = 4*q - floor(2*sqrt(q))^2, where q = J246655(n).	nonn,easy,new	1..10000	nyi	_Jianing Song_
+A396870	lambdan	0	n -> ZV(3).^(2*n + 1).*(4).-(CV(3).^(new Q(2*n + 1, 2)).*(2).floor().^(2))	a(n) = 4*3^(2*n+1) - floor(2*3^(n+1/2))^2.	nonn,new	0..500	nyi	_Jianing Song_
+A396871	lambdan	0	n -> ZV(5).^(2*n + 1).*(4).-(CV(5).^(new Q(2*n + 1, 2)).*(2).floor().^(2))	a(n) = 4*5^(2*n+1) - floor(2*5^(n+1/2))^2.	nonn,new	0..500	nyi	_Jianing Song_
+A396872	lambdan	0	n -> ZV(7).^(2*n + 1).*(4).-(CV(7).^(new Q(2*n + 1, 2)).*(2).floor().^(2))	a(n) = 4*7^(2*n+1) - floor(2*7^(n+1/2))^2.	nonn,new	0..500	nyi	_Jianing Song_
+A396880	decexp	0	() -> X001113.multiply(X153805)
+A396881	decexpr	1	() -> CR.SIX.pow(CR.ONE_THIRD).exp().add(CR.TWO.multiply(CR.ZERO.subtract(CR.SIX.pow(CR.ONE_THIRD).divide(CR.TWO)).exp()).multiply(REALS.cos(CR.THREE.pow(CR.FIVE.divide(CR.SIX)).divide(CR.TWO.pow(CR.TWO.divide(CR.THREE)))))).divide(CR.THREE)
+A396887	holos	0	[[0],[-1,1],[0],[-3,1],[-1]]	0,0,1	0	0
+A396891	polya	0	"[1]"	"x,B,x,C,*"	new A001157(), new A000219()
+A396899	parmof4	0	A082182	27	4	31	Numbers k such that (27^k + 4^k)/31 is prime.
+---- 2026-06-10 21:25:24
+A396358	lambdan	0	n -> (n <= 1) ? ZV(n + 1) : F001045(ZV(n).^(2).-(1))./(F001045(n - 1).*(F001045(n + 1)))	a(n) = J((n-1)*(n+1))/(J(n-1)*J(n+1)), where J(n) is the n-th Jacobsthal number F001045(n).	nonn,easy,new	0..58	nyi	_Alois P. Heinz_
+---- 2026-06-10 21:35:01
+---- 2026-06-10 21:45:51
+---- 2026-06-10 21:46:40
+A396099	polyx	1	"[0,1,1]"	"x,A,sub,A,sub,sub,*,+"	2	0
+A396100	polyx	1	"[0,1,1],[0,0,1]"	"p1,sub,sub,x,/,p1,sub,sub,sub,+"	2	0
+A396146	holos	0	[[0],[-3,2],[1,-1],[1,-2],[0,1]]	1,1,4,18	0	1
