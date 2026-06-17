@@ -294,6 +294,7 @@ while (<>) { # read inputfile
             $parm =~ s{FFAC\(}         {Functions.FALLING_FACTORIAL.z\(}g;
             $parm =~ s{FM\(}           {Functions.MULTIFACTORIAL.z\(}g;
             $parm =~ s{FI\(}           {Functions.FIBONACCI.z\(}g;
+            $parm =~ s{FSIT\(}         {FactorUtils.iterate\(}g;
             $parm =~ s{GCDi\(}         {Functions.GCD.i\(}g;
             $parm =~ s{GCD\(}          {Functions.GCD.z\(}g;
             $parm =~ s{GD\(}           {GaussianIntegers.SINGLETON.sumdiv\(}g;
