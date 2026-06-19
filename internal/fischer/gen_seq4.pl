@@ -746,6 +746,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WStirling\.}                   ) { $imports{"irvine.math.z.Stirling"}                        = $itype; }
     if ($line =~ m{\WStringUtils\.}                ) { $imports{"irvine.util.string.StringUtils"}                = $itype; }
     if ($line =~ m{\WTranspose}                    ) { $imports{"irvine.oeis.triangle.Transpose"}                = $itype; }
+    if ($line =~ m{\WTreeSet}                      ) { $imports{"java.util.TreeSet"                            } = $itype; }
     if ($line =~ m{\WTupleTransformSequence\(}     ) { $imports{"irvine.oeis.transform.TupleTransformSequence" } = $itype; }
     if ($line =~ m{\WTwoParameterFormSequence\(}   ) { $imports{"irvine.oeis.TwoParameterFormSequence"         } = $itype; }
     if ($line =~ m{\WUnaryCRFunction}              ) { $imports{"irvine.math.cr.UnaryCRFunction"}                = $itype; }
