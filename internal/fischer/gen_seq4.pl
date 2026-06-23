@@ -363,6 +363,7 @@ while (<>) { # read inputfile
             $parm =~ s{SA\(([^\)]+)\)} {Functions.STIRLING1.z\($1\)\.abs\(\)}g;
             $parm =~ s{S2\(}           {Functions.STIRLING2.z\(}g;
             $parm =~ s{TAU\(}          {Functions.TAU.z(}g;
+            $parm =~ s{TAUl\(}         {Functions.TAU.l(}g;
             $parm =~ s{TRI\(}          {Functions.TRIANGULAR.z(}g;
             $parm =~ s{ZE\(}           {Zeta.zeta\(}g;
             $parm =~ s{ZH\(}           {Zeta.zetaHurwitz\(}g;
