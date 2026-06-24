@@ -1,0 +1,93 @@
+---- 2026-06-21 21:26:51
+---- 2026-06-21 21:55:45
+---- 2026-06-21 22:32:13
+A087790	partsun	0	new A085068()			Partial sums of A085068.
+A108405	filnum	1	1	k -> { final Z u = GPF(k); return PP(FSIT(k, ZV(0), (x, p, e) -> x.+(SU(1, e, i -> p.^(u))))); }	Numbers n such that a^u + b^u + c^u + ... is prime,    tion of n and u is the largest prime dividing n.
+A108697	filnum	1	1	k -> { final Z u = Functions.DIGIT_NZ_PRODUCT.z(k); return PP(FSIT(k, ZV(0), (x, p, e) -> x.+(SU(1, e, i -> p.^(u))))); }	Numbers n such that a^r + b^r + c^r + ... is prime,    tion of n and r is the product of the nonzero digits of n.
+A108703	filnum	1	1	k -> { final Z u = Functions.DIGIT_SUM.z(k); return PP(FSIT(k, ZV(0), (x, p, e) -> x.+(SU(1, e, i -> p.^(u))))); }	Numbers n such that a^s + b^s + c^s + ... is prime,    tion of n and s is the digital sum of n.
+A108705	filnum	0	1	k -> Predicates.SQUARE.is(FSIT(k, ZV(0), (x, p, e) -> x.+(SU(1, e, i -> p.^(k)))))			Numbers n such that a^n + b^n + c^n + ... is a square, tion of n.
+A108777	filnum	0	1	k -> { final Z u = REV(k); return PP(FSIT(k, ZV(0), (x, p, e) -> x.+(SU(1, e, i -> p.^(u))))); }	Numbers m such that a^t + b^t + c^t + ... is prime,    tion of m with multiplicity and t is the reversal of m.
+A109279	filnum	1	1	k -> { final Z u = Functions.DIGIT_MAX.z(k); return PP(FSIT(k, ZV(0), (x, p, e) -> x.+(SU(1, e, i -> p.^(u))))); }	Numbers n such that a^d + b^d + c^d + ... is prime,    tion of n and d is the largest digit of n.
+A111244	partsun	1	new A084385()			Partial sums of A084385.
+A113645	filnum	1	2	k -> { final Z bo = F001222(k); return FSIT(k, ZV(0), (x, p, e) -> x.+(bo.compareTo(p) >= 0 ? 0 : 1)).isZero(); }	Numbers k such that sum of exponents in prime factorization of k (i.e., F001222(k)) is >= each prime divisor of k.
+A115568	fsiter	1	1	(x, p, e) -> (Predicates.FIBONACCI.is(e) && ZV(e).compareTo(x) > 0 ? ZV(e) : x)	Maximal Fibonacci exponent in prime factorization of n, or 1 if there is no Fibonacci exponent.
+A116912	fsiter	1	1	(x, p, e) -> { final long p6 = p.mod(6); if (p6 == 1) { return p.+(4).^(e).*(x); } else if (p6 == 5) { return p.-(4).^(e).*(x); } else { return p.^(e).*(x); }}	In prime factorization of n replace all primes of form k*6+1 with k*6+5 and primes of form k*6+5 with k*6+1.
+A119713	partsun	0	new A377809().prepend(0)
+A123391	fsiter	1	0	(x, p, e) -> x.+(PP(e) ? e : 0)	a(n) = sum of exponents that are primes in the prime factorization of n.
+A124438	filnum	1	2	k -> !FSIT(k, ZV(0), (x, p, e) -> x.+(k % e != 0 ? 1 : 0)).isZero()	Numbers that are not divisible by at least one of the (positive) exponents in their prime factorization.
+A125070	fsiter	1	0	(x, p, e) -> x.+(!PP(e) ? 1 : 0)	a(n) = number of nonzero exponents in the prime factorization of n which are not primes.
+A125071	fsiter	1	0	(x, p, e) -> x.+(!PP(e) ? e : 0)	a(n) = sum of the exponents in the prime factorization of n which are not primes.
+A125073	fsiter	1	0	(x, p, e) -> x.+(Predicates.TRIANGULAR.is(e) ? e : 0)	a(n) = sum of the exponents in the prime factorization of n which are triangular numbers.
+A127668	lambdan	2	n -> new Z(FSIT(n, "", (x, p, e) -> { final StringBuilder sb = new StringBuilder(x); final String es = PI(p).toString(); for (int i = 0; i < e; ++i) { sb.insert(0, es); } return sb.toString(); }))	Concatenated indices of primes in prime factorization of n.
+A132705	lambdan	0	n -> (n <= 1) ? ZV(n + 2) : FSIT(n, ZV(1), (x, p, e) -> x.*(p.+(2).^(e)))	For an integer n with prime factorization (p_1)*(p_2)*(p_3)* ... *(p_k), a(n) = (p_1+2)*(p_2+2)*(p_3+2)* ... *(p_k+2).
+A134599	fsiter	1	0	(x, p, e) -> x.+(Functions.DIGIT_SUM.z(3, p).*(e))	If p_1*p_2*p_3* ... *p_m = n is the unique prime factorization of n, then a(n) = Sum_{k=1..m} ds_3(p_k), where ds_3 is the digital sum base 3.
+A135369	lambdan	0	n -> (n <= 1) ? ZV(n + 1) : FSIT(FA(n), ZV(0), (x, p, e) -> x.+(p).+(e))	a(0)=1, a(1)=2; thereafter, let n! = p(1)^b(1)...p(r)^b(r) be the prime factorization of n!. Then a(n) = Sum_{i=1..r} (p(i) + b(i)).
+A135718	fsiter	2	-1	(x, p, e) -> x.equals(ZV(-1)) ? p.^(e + 1) : MIN(x, p.^(e + 1))	If n = product{p=primes, p|n} p^b(n,p), where each b(n,p) is a positive integer, then a(n) = the minimum value of a p^(b(n,p)+1) where p is a prime that divides n.
+A136176	fsiter	1	0	(x, p, e) -> x.+(n%e == 0 ? 1 : 0)	Number of exponents in the prime factorization of n which divide n.
+A136177	fsiter	1	0	(x, p, e) -> x.+(GCDi(n, e) == 1 ? 1 : 0)	Number of exponents in the prime factorization of n that are coprime to n.
+A137257	filnum	1	1	k -> !FSIT(k, ZV(0), (x, p, e) -> x.+(GCDi(k, e) != 1 ? 1 : 0)).isZero()	A number k is included if there is at least one (nonzero) exponent in the prime factorization of k that is not coprime to k.
+A139316	filnum	1	2	k -> F008472(k).mod(F001222(k)).isZero()	An integer k, k>=2, is in the sequence if F001222(k) (the sum of the exponents in the prime factorization of k) divides F008472(k) (the sum of the distinct primes dividing k).
+A139393	lambdan	1	n -> (n == 1) ? ZV(0) : Functions.DIGIT_SORT_ASCENDING.z(FSIT(n, ZV(0), (x, p, e) -> x.*(10).+(e)))	a(n) = Sum_{i=1..m} e(i) * 10^(m-i) where e(1) <= ... <= e(m) are the nonzero exponents in the prime factorization of n: a representation of the prime signature of n.
+A141231	filnum	1	2	k -> FSIT(k, ZV(0), (x, p, e) -> x.+(!p.equals(ZV(2)) && ZUtils.isPrimitiveRoot(Z.TWO, p) ? 0 : 1)).isZero()	Positive integers whose prime factorizations contain only primes from J001122.
+A142594	sintrif	0	(term, n) -> FSIT(term, ZV(1), (x, p, e) -> x.*(e))	""	new A141900()	Product of exponents in prime factorization of J141900(n).
+A144146	filnum	1	1	k -> k == 1 || FSIT(k, ZV(0), (x, p, e) -> x.+(GCDi(e, k) != 1 ? 1 : 0)).isZero()	A positive integer k is included if every nonzero exponent in the prime factorization of k is coprime to k.
+A144972	filnum	1	1	k -> k == 1 || FSIT(k, ZV(0), (x, p, e) -> x.+(e >= 6 ? 1 : 0)).isZero()	Power-6-free numbers: numbers whose exponents in their prime factorization are all less than 6.
+A144976	filnum	1	2	k -> { final FactorSequence fs = Jaguar.factor(k); return !fs.isSquareFree() && k % fs.maxExponent() == 0; }	Nonsquarefree numbers k such that k is divisible by the maximal exponent in the prime factorization of k.
+A145541	filnum	1	2	k -> FSIT(k, 0L, (x, p, e) -> x += (e == 1 ? 1 : 0)) == Functions.DIGIT_SUM.l(2, k)	A positive integer n is included if (the number of 1s in the binary representation of n) = (the number of exponents equal to 1 in the prime factorization of n).
+A151932	lambdan	1	n -> Z2(2*n).*(FA(n).^(2)).*(FSIT(2*n, ZV(1), (x, p, e) -> x.*(BI(2*e,e))))	a(n) = 2^(2*n)*(n!)^2*Product_{e_k} binomial(2*e_k, e_k) where 2n = Product p_k^e_k is the prime factorization of 2n.
+A153038	lambdan	1	n -> FSIT(n, ZV(1), (x, p, e) -> x.*(PR(1, e, j -> ZV(1).-(p.^(j)))))	For n with prime factorization n = p_1^{r_1}*...*p_s^{r_s} the n-th term is a(n) = Product_{k=1..s} Product_{j=1..r_k} (1 - p_k^j).
+A162742	lambdan	1	n -> FSIT(n, ZV(1), (x, p, e) -> x.*(Functions.REVERSE.z(2, p).^(e)))	Reverse digits in the binary representation of each prime base in the prime factorization of n.
+A162870	filter	1	new A000040()	q -> FSIT(q.-(1), 0L, (x, p, e) -> x + (e == 3 ? 1 : 0)) > 0L && FSIT(q.+(1), 0L, (x, p, e) -> x + (e == 3 ? 1 : 0)) > 0L	Primes p such that p-1 and p+1 each contain at least one cubed prime in their prime factorization.
+A162872	filter	1	new A000040()	q -> FSIT(q.-(1), 0L, (x, p, e) -> x + (e == 2 ? 1 : 0)) > 0L && FSIT(q.+(1), 0L, (x, p, e) -> x + (e == 2 ? 1 : 0)) > 0L	Primes p such that p-1 and p+1 each contain at least one squared prime in their prime factorization.
+A163831	sintrif	1	(term, n) -> term.-(FSIT(term, ZV(0), (x, p, e) -> x.+(Functions.PRIME_PI.z(p).*(e))))	""	new A002808()		a(n) is the n-th composite minus the sum of the indices of the primes in its prime factorization.
+A178345	lambdan	0	n -> QV(ZV(2).^(SU(1, n, k -> ZV(n/k)).longValueExact()))./(RU(0, n, m -> QV(1)./(FA(m).*(FA(2*n-m+1)))).*(FA(n).^(2))).num()	""
+A182120	filnum	1	1	k -> (k == 1) || FSIT(k, 0L, (x, p, e) -> x + (e % 3 == 2 ? 0 : 1)) == 0L	Numbers for which the canonical prime factorization contains only exponents which are congruent to 2 modulo 3.
+A183623	holos	1	[0,-24,50,-35,10,-1]	19,87,355,1383	0	0
+A183633	holos	1	[0,36,-36,11,-1]	44,340,2300	0	0
+A183663	holos	1	[0,435456000,-460771200,212981040,-56441868,9450292,-1036669,74500,-3382,88,-1]	231,5215,100935,1803007,30722151,508151455,8242978695,131986793407,2094954565671	0	0
+A188654	filnum	0	2	k -> !D051903(k).equals(F001221(k))
+A195165	multia	0	"2"	(self, n) -> new Z(FSIT(self.a(n - 1), self.a(n - 1).toString(), (x, p, e) -> x + p.toString() + Integer.toString(e)))	Starting with 2, successively concatenate the numbers in the prime factorization of a(n-1), including both the prime and its exponent.
+A197917	filnum	1	1	k -> (k == 1) || FSIT(k, 0L, (x, p, e) -> x + (D006218(e).testBit(0) ? 1 : 0)) == 0L	Suppose n has prime factorization n=p1^a1*p2^a2*...*pk^ak and that D(n) is D006218, then n has all D(ai) even.
+A206296	multia	0	"1,2"	(self, n) -> D003961(self.a(n - 1)).*(self.a(n - 2))	a(0) = 1, a(1) = 2, and for n > 1, a(n) = D003961(a(n-1)) * a(n-2).
+A214857	partsun	0	new A214856()			Partial sums of A214856.
+A242378	arrlamb	0	0	0	-1	(n, k) -> (k ==0) ? ZV(0) : FSIT(k, ZV(1), (x, p, e) -> x.*(PM(PI(p).+(n)).^(e)))	Square array read by antidiagonals: to obtain A(i,j), replace each prime factor prime(k) in prime factorization of j with prime(k+i)./
+A242422	filnum	1	1	k -> Predicates.TRIANGULAR.is(FSIT(k, ZV(0), (x, p, e) -> x.+(PI(p).*(e))))	Numbers in whose prime factorization the indices of primes sum to a triangular number.
+A242423	filnum	1	1	k -> !Predicates.TRIANGULAR.is(FSIT(k, ZV(0), (x, p, e) -> x.+(PI(p).*(e))))	Numbers in whose prime factorization the indices of primes do not sum to a triangular number.
+A243256	multraf	0	(self, n) -> self.s(0).min(self.s(1))	""	new A190993(), new A216223()
+A368107	filtpos	1	2	new A381204()	v -> v.compareTo(ZV(1)) > 0
+A377278	trilambn	1	1	1	(n, k) -> (k == n) ? Z2(n).-(1) : Z2(k).-(1).*(Z2(k + 1).-(1))	= (2^k - 1) * (2^(k+1) - 1) for 1 <= k < n; T(n, n) = 2^n - 1.
+A377802	trilambn	1	1	1	(n, k) -> ZV(n + 1).^(2).*(2).+(7).-(Z_1(n))./(8).-(k)	Triangle read by rows: T(n, k) = (2 * (n+1)^2 + 7 - (-1)^n) / 8 - k.
+A377809	trilambn	1	1	1	(n, k) -> ZV(n + 3).*(n)./(2)	k*(k+3)/2 appears k times.
+A378200	arrlamb	1	1	1	1	(n, k) -> ZV(k + n - 1).^(2).+(Z_1(n).*(k - n + 1)).+(Z_1(k).*(1 - k - n)).+(Z_1(k + n).*(1- k - n).+(2))./(2)	Square array read by upward antidiagonals: T(n,k) = ((k + n - 1)^2 + (k - n + 1)*(-1)^n + (1 - k - n)*(-1)^k + (1 - k - n)*(-1)^(k + n) + 2)/2.
+A381204	lambdan	2	n -> { final TreeSet<Z> ts = new TreeSet<>(); return FSIT(n, ZV(-1), (x, p, e) -> { if (x.equals(ZV(-1))) { return ts.add(p) ? GCD(p, ts.add(ZV(e)) ? e : e) : p; } else { final Z y = GCD(x, ts.add(p) ? p : x); return GCD(y, ts.add(ZV(e)) ? ZV(e) : y); }}); }	gcd of the elements of the set of bases and exponents in the prime factorization of n.
+A394246	holos	0	[0,1,-1,-1,1,0,0,-1,1,1,-1]	0,1,1,3,4,8,9,14,16,22	0	0
+A396650	trigf	0	1,0,4,0,0,0	1,0,1,-1,0,0				0
+A396651	trigf	0	1,0,3,0,0,0	1,0,-1,-1,0,0				0
+A396811	lingf	0	0,0,1,2,2,0,1	1,-1,-1,1,-1,1,1,-1					0
+A396812	lingf	0	0,1,1,0,2,1,1	1,-1,-1,1,-1,1,1,-1					0
+A396813	lingf	0	0,1,0,2,2,1	1,-1,-1,1,-1,1,1,-1					0
+A396814	lingf	0	0,1,1,2,0,1,1	1,-1,-1,1,-1,1,1,-1					0
+A396834	holos	0	[0,1,-1,-1,1,0,0,-1,1,1,-1]	0,0,1,2,4,5,9,11,16,19,25	0	0
+A397108	holos	0	[0,1,-1,-2,2,1,-1]	0,1,3,6,12,17	0	0
+A397109	holos	0	[0,1,0,-1,-1,0,1,-1,0,1,1,0,-1]	0,0,1,1,6,6,11,13,20,20,33,33,44	0	0
+A397110	holos	0	[0,1,0,-1,-1,0,1,-1,0,1,1,0,-1]	0,1,2,2,6,6,11,14,21,21,33,33	0	0
+A397225	decexp	0	() -> CR.THREE.multiply(CR.TWO.log()).multiply(Zeta.zeta(2)).divide(CR.TWO).subtract(CR.FIVE.multiply(Zeta.zeta(3)).divide(CR.EIGHT))
+A397226	decexp	0	() -> CR.valueOf(15).multiply(CR.TWO.log()).multiply(Zeta.zeta(4)).divide(CR.EIGHT).add(CR.THREE.multiply(Zeta.zeta(2)).multiply(Zeta.zeta(3)).divide(CR.FOUR)).subtract(CR.valueOf(59).multiply(Zeta.zeta(5)).divide(CR.valueOf(32)))
+A397227	decexp	0	() -> CR.valueOf(63).multiply(CR.TWO.log()).multiply(Zeta.zeta(6)).divide(CR.valueOf(32)).add(CR.valueOf(15).multiply(Zeta.zeta(2)).multiply(Zeta.zeta(5)).divide(CR.valueOf(16))).add(CR.THREE.multiply(Zeta.zeta(3)).multiply(Zeta.zeta(4)).divide(CR.FOUR)).subtract(CR.valueOf(377).multiply(Zeta.zeta(7)).divide(CR.valueOf(128)))
+A397228	decexp	0	() -> CR.valueOf(255).multiply(CR.TWO.log()).multiply(Zeta.zeta(8)).divide(CR.valueOf(128)).add(CR.valueOf(63).multiply(Zeta.zeta(2)).multiply(Zeta.zeta(7)).divide(CR.valueOf(64))).add(CR.THREE.multiply(Zeta.zeta(3)).multiply(Zeta.zeta(6)).divide(CR.FOUR)).add(CR.valueOf(15).multiply(Zeta.zeta(4)).multiply(Zeta.zeta(5)).divide(CR.valueOf(16))).subtract(CR.valueOf(2039).multiply(Zeta.zeta(9)).divide(CR.valueOf(512)))
+A397229	decexp	0	() -> X318741.divide(CR.PI)
+A397233	holos	0	[0,1,0,1,1,0,0,0,-1]	1,0,0,0,1,1,0	0	0
+A397234	holos	0	[0,1,1,0,-1,1,1,-1]	1,1,2,2,3,4	0	0
+A397235	holos	0	[0,1,-1,1,2,-1]	1,2,5,11	0	0
+A397236	holos	0	[0,1,0,2,1,1,0,0,-1]	1,0,0,1,1,2,1	0	0
+A397237	holos	0	[0,1,2,1,-1,2,-1]	1,2,3,5,11	0	0
+A397269	holos	0	[0,-1,1,3,-3,-3,3,1,-1]	0,0,0,4,5,20,23,56,62,120	0	0
+A397270	holos	0	[0,-1,1,3,-3,-3,3,1,-1]	0,0,0,10,21,60,95,182,254,408	0	0
+A397288	decexp	0	() -> CR.valueOf(13).multiply(Zeta.zeta(3)).divide(CR.EIGHT).subtract(CR.TWO.log().multiply(Zeta.zeta(2)))
+A397289	decexp	0	() -> CR.valueOf(91).multiply(Zeta.zeta(5)).divide(CR.valueOf(32)).subtract(CR.THREE.multiply(Zeta.zeta(2)).multiply(Zeta.zeta(3)).divide(CR.FOUR)).subtract(CR.TWO.log().multiply(Zeta.zeta(4)))
+A397290	decexp	0	() -> CR.valueOf(505).multiply(Zeta.zeta(7)).divide(CR.valueOf(128)).subtract(CR.valueOf(15).multiply(Zeta.zeta(2)).multiply(Zeta.zeta(5)).divide(CR.valueOf(16))).subtract(CR.THREE.multiply(Zeta.zeta(3)).multiply(Zeta.zeta(4)).divide(CR.FOUR)).subtract(CR.TWO.log().multiply(Zeta.zeta(6)))
+A397291	decexp	0	() -> CR.valueOf(2551).multiply(Zeta.zeta(9)).divide(CR.valueOf(512)).subtract(CR.valueOf(63).multiply(Zeta.zeta(2)).multiply(Zeta.zeta(7)).divide(CR.valueOf(64))).subtract(CR.THREE.multiply(Zeta.zeta(3)).multiply(Zeta.zeta(6)).divide(CR.FOUR)).subtract(CR.valueOf(15).multiply(Zeta.zeta(4)).multiply(Zeta.zeta(5)).divide(CR.valueOf(16))).subtract(CR.TWO.log().multiply(Zeta.zeta(8)))
+---- 2026-06-21 22:49:11
+A207481	filnum	1	1	k -> (k == 1) || FSIT(k, 0L, (x, p, e) -> x + (ZV(e).compareTo(p) <= 0 ? 0L : 1L)) == 0L	Numbers such that e <= p for all p^e in their prime factorization, p prime.
+A211484	filnum	1	1	k -> { final FactorSequence fs = Jaguar.factor(k); return (fs.omega() & 1) == 0 && FSIT(k, 0L, (x, p, e) -> x + (e%3 == 1 ? 0 : 1)) == 0L; }	Numbers for which the canonical prime factorization contains only an even number of exponents, all of which are congruent to 1 modulo 3.
+A211485	filnum	1	1	k -> { final FactorSequence fs = Jaguar.factor(k); return k == 1 || (fs.omega() & 1) == 1 && FSIT(k, 0L, (x, p, e) -> x + (e%3 == 1 ? 0 : 1)) == 0L; }	Numbers for which the canonical prime factorization contains only an odd number of exponents, all of which are congruent to 1 modulo 3.

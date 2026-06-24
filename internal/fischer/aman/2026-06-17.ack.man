@@ -1,0 +1,106 @@
+---- 2026-06-17 15:11:31
+A118472	decexp	1	() -> CR.FOUR.add(CR.valueOf(253589820).add(CR.valueOf(283748).multiply(CR.valueOf(462).sqrt())).divide(CR.valueOf(491993569)))
+A125029	fsiter	1	0	(x, p, e) -> (e == 1 || PP(e)) ? x.+(1) : x	a(n) = number of exponents in the prime factorization of n that are noncomposite.
+A125030	fsiter	1	0	(x, p, e) -> (e == 1 || PP(e)) ? x.+(e) : x	a(n) = sum of exponents in the prime factorization of n that are noncomposite.
+A139297	sintrif	1	(term, n) -> Z.TWO.pow(term.*(2).-(1))./(2).-(1)	""	new A000668()	a(n)=2^(2*J000668(n)-1)/2-1=B139296(n)-1	_	_	_
+A139299	sintrif	1	(term, n) -> Z.TWO.pow(term.*(2).-(1))./(4).-(1)	""	new A000668()	a(n)=2^(2*J000668(n)-1)/4-1=J139294(n)/4-1=J139298(n)-1	_	_	_
+A139301	sintrif	1	(term, n) -> Z.TWO.pow(term.*(2).-(1))./(8).-(1)	""	new A000668()	a(n)=(2^(2*J000668(n)-1)/8)-1=(J139294(n)/8)-1	_	_	_
+A139303	sintrif	1	(term, n) -> Z.TWO.pow(term.*(2).-(1))./(16).-(1)	""	new A000668()	a(n)=(2^(2*J000668(n)-1)/16)-1=(J139294(n)/16)-1	_	_	_
+A173146	filnum	0	1	k -> SIGMA(PHI(k)).equals(RAD(k))	sigma(phi(n))=rad(n)
+A173499	lambdan	1	n -> ZV(n-1).^(n)./(n)	""		a(n)=floor((n-1)^n/n)
+A183649	holos	1	[0,120,-274,225,-85,15,-1]	115525,205001,431125,1037585,2764525	0	0
+A183649	lambdan	1	n -> ZV(5).*(ZV(5).^(n)).+(ZV(504).*(ZV(4).^(n))).+(ZV(5796).*(ZV(3).^(n))).+(ZV(24276).*(Z2(n))).+(47544)	""		a(n)=5*5^n+504*4^n+5796*3^n+24276*2^n+47544	_	_	_
+A183650	lambdan	1	n -> ZV(5).*(ZV(5).^(n)).+(ZV(1016).*(ZV(4).^(n))).+(ZV(18150).*(ZV(3).^(n))).+(ZV(105340).*(Z2(n))).+(266114)	""		a(n)=5*5^n+1016*4^n+18150*3^n+105340*2^n+266114	_	_	_
+A183651	lambdan	1	n -> ZV(5).*(ZV(5).^(n)).+(ZV(2040).*(ZV(4).^(n))).+(ZV(55980).*(ZV(3).^(n))).+(ZV(446580).*(Z2(n))).+(1448520)	""		a(n)=5*5^n+2040*4^n+55980*3^n+446580*2^n+1448520	_	_	_
+A183659	lambdan	1	n -> ZV(6).*(ZV(6).^(n)).+(ZV(630).*(ZV(5).^(n))).+(ZV(7728).*(ZV(4).^(n))).+(ZV(36414).*(ZV(3).^(n))).+(ZV(95088).*(Z2(n))).+(140070)	""		a(n)=6*6^n+630*5^n+7728*4^n+36414*3^n+95088*2^n+140070	_	_	_
+A183668	lambdan	1	n -> ZV(7).*(ZV(7).^(n)).+(ZV(372).*(ZV(6).^(n))).+(ZV(3010).*(ZV(5).^(n))).+(ZV(10808).*(ZV(4).^(n))).+(ZV(24486).*(ZV(3).^(n))).+(ZV(39004).*(Z2(n))).+(39962)	""		a(n)=7*7^n+372*6^n+3010*5^n+10808*4^n+24486*3^n+39004*2^n+39962	_	_	_
+A183669	lambdan	1	n -> ZV(7).*(ZV(7).^(n)).+(ZV(756).*(ZV(6).^(n))).+(ZV(9660).*(ZV(5).^(n))).+(ZV(48552).*(ZV(4).^(n))).+(ZV(142632).*(ZV(3).^(n))).+(ZV(280140).*(Z2(n))).+(341796)	""		a(n)=7*7^n+756*6^n+9660*5^n+48552*4^n+142632*3^n+280140*2^n+341796	_	_	_
+A183670	lambdan	1	n -> ZV(7).*(ZV(7).^(n)).+(ZV(1524).*(ZV(6).^(n))).+(ZV(30250).*(ZV(5).^(n))).+(ZV(210680).*(ZV(4).^(n))).+(ZV(798342).*(ZV(3).^(n))).+(ZV(1927804).*(Z2(n))).+(2796194)	""		a(n)=7*7^n+1524*6^n+30250*5^n+210680*4^n+798342*3^n+1927804*2^n+2796194	_	_	_
+A183678	lambdan	1	n -> ZV(8).*(ZV(8).^(n)).+(ZV(434).*(ZV(7).^(n))).+(ZV(3612).*(ZV(6).^(n))).+(ZV(13510).*(ZV(5).^(n))).+(ZV(32648).*(ZV(4).^(n))).+(ZV(58506).*(ZV(3).^(n))).+(ZV(79924).*(Z2(n))).+(73502)	""		a(n)=8*8^n+434*7^n+3612*6^n+13510*5^n+32648*4^n+58506*3^n+79924*2^n+73502	_	_	_
+A183679	lambdan	1	n -> ZV(8).*(ZV(8).^(n)).+(ZV(882).*(ZV(7).^(n))).+(ZV(11592).*(ZV(6).^(n))).+(ZV(60690).*(ZV(5).^(n))).+(ZV(190176).*(ZV(4).^(n))).+(ZV(420210).*(ZV(3).^(n))).+(ZV(683592).*(Z2(n))).+(730002)	""		a(n)=8*8^n+882*7^n+11592*6^n+60690*5^n+190176*4^n+420210*3^n+683592*2^n+730002	_	_	_
+A212695	decexp	0	() -> CR.NINE.add(CR.valueOf(11).sqrt()).divide(CR.valueOf(35))
+A231230	filnum	1	1	k -> { final FactorSequence fs =Jaguar.factor(k); return FSIT(fs, Z.ZERO, (x, p, e) -> x.+(p)).equals(FSIT(fs, Z.ZERO, (x, p, e) -> x.+(e)).^(2)); }	Numbers k such that, in the prime factorization of k, the sum of the primes equals the squared sum of exponents.
+A231231	filnum	1	1	k -> { final FactorSequence fs =Jaguar.factor(k); return FSIT(fs, Z.ZERO, (x, p, e) -> x.+(p).+(e)).equals(FSIT(fs, Z.ONE, (x, p, e) -> x.*(e))) ; }	Numbers m such that, in the prime factorization of m, the product of the exponents equals the sum of prime factors and exponents.
+A231293	filnum	1	1	k -> { final FactorSequence fs =Jaguar.factor(k); return FSIT(fs, Z.ZERO, (x, p, e) -> x.+(p).+(e)).equals(FSIT(fs, Z.ONE, (x, p, e) -> x.*(p))) ; }	Numbers m such that, in the prime factorization of m, the product of the prime factors equals the sum of prime factors and exponents.
+A236772	lambdan	1	n -> RU(1, n, i -> new Q(ZV(n).^(i), ZV(i))).floor()	a(n)=floor(Sum_{i=1..n}n^i/i)
+A238446	sintrif	1	(term, n) -> term.-(1)	""	new PrependSequence(1, new A038791(), 1)
+A242624	decexp	0	() -> CR.ZERO.subtract(X085361).exp()
+A245254	decexp	0	() -> CR.E.multiply(X085291)
+A249747	multraf	1	(self, n) -> F002110(n).*(self.s(0))./(self.s(1))	""	new A054272(), new A001248()	a(n)=floor((F002110(n)*J054272(n))/J001248(n))
+A251758	sintrif	2	(term, n) -> ZV(n).^(2)./(term)	""	new A078730()	a(n)=floor(n^2/J078730(n))	_
+A257296	lambdan	0	n -> F007953(n).*(ZV(10).^(F055642(n).-(1)))./(F055642(n))	""		a(n)=floor(F007953(n)/F055642(n)*10^(F055642(n)-1))
+A259015	lambdan	4	n -> QV(2).^(n - 7).*(QV(n).^(n - 9)).*(n - 4).*(ZV(8*n).-(128).*(n).+(828).*(n).-(2930).*(n).+(7404).*(n).-(17523).*(n).+(41527).*(n).-(114302).*(n).+(204960))./(6).num()
+A259017	lambdan	4	n -> QV(2).^(n - 7).*(QV(n).^(n - 9)).*(n - 4).*(ZV(8*n).-(140).*(n).+(1010).*(n).-(3913).*(n).+(9201).*(n).-(15662).*(n).+(34500).*(n).-(120552).*(n).+(221760))./(6).num()
+A276309	lambdan	1	n -> PM(n+3).-(PM(n+2))./(PM(n+1).-(PM(n)))	a(n)=floor((prime(n+3)-prime(n+2))/(prime(n+1)-prime(n)))
+A278049	lambdan	1	n -> SU(1, n, k -> F000010(k)).*(3).-(1)	""		a(n)=3*(Sum_{k=1..n}phi(k))-1	_	_	_
+A283808	filnum	1	1	k -> ZV(k).mod(PHI(PHI(k))).isZero()	Numbers k such that phi(phi(k)) divides k, where phi(k) is A000010(k).
+A286366	multraf	1	(self, n) -> ZV(2).*(self.s(0)).+(self.s(1)./(4))	""	new A286365(), new A072400()	a(n)=2*J286365(n)+floor(J072400(n)/4)	_	_	_
+A286458	multraf	1	(self, n) -> ZV(2).+((self.s(2).+(self.s(3))).^(2)).-(self.s(2)).-(ZV(3).*(self.s(3)))./(2)	""	new A286448(), new A286449(), new A286448(), new A286449()	a(n)=(1/2)*(2+((J286448(n)+J286449(n))^2)-J286448(n)-3*J286449(n))	Compound filter: a(n) = P(A286448(n), A286449(n)), where P(n,k) is sequence A000027 used as a pairing function.
+A286467	multraf	1	(self, n) -> ZV(2).+((self.s(2).+(self.s(3))).^(2)).-(self.s(2)).-(ZV(3).*(self.s(3)))./(2)	""	new A101296(), new A286545(), new A101296(), new A286545()	a(n)=(1/2)*(2+((J101296(n)+J286545(n))^2)-J101296(n)-3*J286545(n))	Compound filter (prime signature of n & prime signature of the n-th Fibonacci number): a(n) = P(A101296(n), A286545(n)), where P(n,k) is sequence A000027 used as a pairing function.
+A286888	lambdan	2	n -> PM(n).-(2)./(n-1)	a(n)=floor((prime(n)-2)/(n-1))	_	_	_		Floor of the average gap between consecutive primes among the first n primes, for n > 1.
+A287319	lambdan	1	n -> ((Z2(ZV(3).^(n-1).+(n)).-(ZV(3).^(n).+(Z2(n)))))./(ZV(3).^(n)).+(1)	a(n)=((2^(3^(n-1)+n)-3^n+2^n))/3^n
+A289189	lambdan	1	n -> SQRT(4*n + 9).+(3)./(2)	a(n)=floor((sqrt(4*n+9)+3)/2)	_	_	_		Upper bound for certain restricted sumsets.
+A292602	lambdan	0	n -> D005940(n + 1)./(4)	""		a(n)=floor(D005940(1+n)/4)	_	_	_
+A295254	lambdan	0	n -> RU(0, n, k -> new Q(FA(k).*(BI(2*k + 1, k)), 2*k+1).*(T136630(n, k))).num()	""		a(n)=Sum_{k=0..n}k!*binomial(2*k+1,k)/(2*k+1)*T136630(n,k)	_	_	_
+A299200	fsiter	1	1	(x, p, e) -> x.*(F000041(PI(p)).^(e))
+A322072	lambdan	1	n -> SU(1, n, k -> ZV(n).^(k).*(2)./(ZV(k).^(k)))	a(n)=Sum_{k=1..n} floor(2*n^k/k^k)	Row sums of the triangle A322071.
+A322122	lambdan	1	n -> SU(2, n-1, k -> new Q(ZV(3).^(2*n + 1), Z2(2*k + 3)).-(new Q(7, 8)).floor().+(1))	""		a(n)=Sum_{k=2..n-1}(floor(3^(2n+1)/2^(2k+3)-7/8)+1)	_	_	_
+A333884	lambdan	0	n -> Functions.CBRT.z(n).+(1).^(3).-(n)	a(n)=floor(n^(1/3)+1)^3-n	_	_	_		Difference between smallest cube > n and n.
+A335438	sintrif	1	(term, n) -> D000188(term).-(1)./(2)	""	new A335437()	a(n)=floor((D000188(J335437(n))-1)/2)	_	_	_
+A336448	sintrif	0	(term, n) -> ZV(4).*(term)	""	new PrependSequence(0, new A078797(), 0)	a(n)=4*J078797(n)
+A339026	lambdan	1	n -> SU(2, n, j -> PHI(j).*(ZV(n).^(2)./(ZV(j).^(2))))	""		a(n)=Sum_{j=2..n} phi(j)*floor(n^2/j^2)
+A344514	lambdan	1	n -> SU(1, n, k -> ZV(n)./(ZV(k).^(2)).^(k))	""		a(n)=Sum_{k=1..n}floor(n/k^2)^k	_	_	_
+A344675	lambdan	1	n -> SU(1, n, k -> ZV(n).^(3)./(ZV(k).^(3)))	""		a(n)=Sum_{k=1..n}floor(n^3/k^3)	_	_	_
+A357977	fsiter	1	1	(x, p, e) -> x.*(PM(F000041(PI(p))).^(e))	Replace prime(k) with prime(A000041(k)) in the prime factorization of n.
+A357978	fsiter	1	1	(x, p, e) -> x.*(PM(F000009(PI(p))).^(e))	Replace prime(k) with prime(A000009(k)) in the prime factorization of n.
+A357980	fsiter	1	1	(x, p, e) -> x.*(PM(F000720(PI(p))).^(e))	Replace prime(k) with prime(A000720(k)) in the prime factorization of n, assuming prime(0) = 1.
+A357982	fsiter	1	1	(x, p, e) -> x.*(F000009(PI(p)).^(e))
+A357984	fsiter	1	1	(x, p, e) -> x.*(F000720(PI(p)).^(e))	Replace prime(k) with A000720(k) in the prime factorization of n.
+A358551	sintrif	1	(term, n) -> term.+(1)	""	new A072643().prepend(1)	a(n)=J072643(n)+1
+A360738	sintrif	1	(term, n) -> term.-(1)	""	new PrependSequence(1, new A084740(), 2)	a(n)=J084740(n)-1
+A372842	lambdan	2	n -> ZV(n+1).^(n-1).*(3).-(ZV(n-1).^(n-1))./(4)	""		a(n)=(3/4)*(n+1)^(n-1)-(1/4)*(n-1)^(n-1)	_	_	_
+A372843	lambdan	3	n -> ZV(n+1).^(n-1).*(2).-(ZV(2*n-1).*(ZV(n-2).^(n-2)))./(3)	""		a(n)=(2/3)*(n+1)^(n-1)-(1/3)*(2*n-1)*(n-2)^(n-2)	_	_	_
+A372844	lambdan	4	n -> ZV(n+1).^(n-1).*(5).-(ZV(13).*(ZV(n).^(2)).-(ZV(26*n)).+(9).*(ZV(n-3).^(n-3)))./(8)	""		a(n)=(5/8)*(n+1)^(n-1)-(1/8)*(13*n^2-26*n+9)*(n-3)^(n-3)	_	_	_
+A372845	lambdan	5	n -> ZV(n+1).^(n-1).*(18).-(ZV(n).^(3).*(118).-(ZV(n).^(2).*(531)).+(659*n - 192).*(ZV(n-4).^(n-4)))./(30)	""		a(n)=(3/5)*(n+1)^(n-1)-(1/30)*(118*n^3-531*n^2+659*n-192)*(n-4)^(n-4)	_	_	_
+A375032	fsiter	1	0	(x, p, e) -> ((e&1) == 1 && ZV(e).compareTo(x) > 0 ? ZV(e) : x)	The maximum odd exponent in the prime factorization of n, or 0 if no such exponent exists.
+A375033	fsiter	1	0	(x, p, e) -> ((e&1) == 0 && ZV(e).compareTo(x) > 0 ? ZV(e) : x)	The maximum even exponent in the prime factorization of n, or 0 if no such exponent exists.
+A375034	lambdan	1	n -> E375032(n).-(E375033(n))
+A375849	lambdan	2	n -> E375032(FA(n))	""		a(n)=E375032(n!)	The maximum odd exponent in the prime factorization of n!.
+A375850	lambdan	0	n -> E375033(FA(n))	""		a(n)=E375033(n!)	The maximum even exponent in the prime factorization of n!, or 0 if no such exponent exists.
+A381497	multraf	1	(self, n) -> self.s(0).-(self.s(1)).+(n <= 1 ? 1 : 0)	""	new A067392(), new A381498()	a(n)=J067392(n)-J381498(n)
+A381954	lambdan	1	n -> FSIT(n, Z.ZERO, (x, p, e) -> (ZV(e).compareTo(x) > 0 && GCDi(e, n) == 1) ? ZV(e) : x)	The maximum exponent in the prime factorization of n that is coprime to n, or 0 if no such exponent exists.
+A382626	decsolv	0	() -> CV(1).-(x).-(x.^(2)).-(x.^(3)).-(x.^(4))		0.518	0.519	1-x-x^2-x^3-x^4.
+A392108	lambdan	1	n -> { final Z high = new Z("194706290651"); final Z result = FSIT(n, high, (x, p, e) -> (e >= 2 && p.compareTo(x) < 0) ? p : x); return result.equals(high) ? ZV(0) : result; }	a(n) = smallest prime with exponent > 1 in the prime factorization of n, or 0 if no such prime exists.
+A392109	fsiter	1	0	(x, p, e) -> (e >= 2 && p.compareTo(x) > 0) ? p : x	a(n) = largest prime with exponent > 1 in the prime factorization of n, or 0 if no such prime exists.
+A394978	lambdan	0	n -> (n <= 0) ? ZV(-1) : BI(3*n-3, n-1).*(6).-(BI(3*n-2, n-1).*(2))./(n)	a(n)=(1/n)*(6*binomial(3*n-3,n-1)-2*binomial(3*n-2,n-1)) forn>0	_	_	_		Expansion of -1/(Sum_{k>=0} binomial(3*k+1,k) * x^k).
+A395903	holos	0	[0,1,-9,36,-84,126,-126,84,-36,9,-1]	448448,4643520,18905280,56615360,142418880,318416448,652527680,1249469760,2264834880	0	0
+A396262	lambdan	1	n -> (n == 1) ? ZV(0) : SD(n, d -> d < Functions.CEIL_SQRT.l(n) ? Z_1(n/d).*(d).*(d) : ZV(0))	Sum_{d|n, d < sqrt(n)} (-1)^(n/d) * d^2.	sign	1..70	nyi	_Ilya Gutkovskiy_
+A396772	holos	0	[0,-1,3,-4,3,-1]	0,-1,1,4,6	0	0
+A396833	lambdan	0	n -> SU(0, n/2, k -> BI(n, k).*(BI(2*k, k)).*(BI(k, n-2*k)))	""		a(n)=Sum_{k=0..floor(n/2)}binomial(n,k)*binomial(2*k,k)*binomial(k,n-2*k)	_	_	_
+A396890	polya	0	"[1]"	"x,B,x,C,*"	new A000290(), new A000219()
+A396895	lambdan	1	n -> { final Z p = PM(n); return p.*(4).-(CV(p).sqrt().*(2).floor().^(2)); }	a(n) = 4*p - floor(2*sqrt(p))^2, where p = prime(n).	nonn,easy,new	1..10000	nyi	_Jianing Song_
+A396904	lambdan	1	n -> BI(B242733(n), 2).-(B242732(n))	""		a(n)=binomial(B242733(n),2)-B242732(n)	_	_	_
+A396941	decexp	0	() -> CR.FOUR.divide(CR.THREE.multiply(CR.PI)).subtract(CR.SEVEN.divide(CR.valueOf(24)))
+A396943	decexp	0	() -> CR.EIGHT.divide(CR.NINE.multiply(CR.PI)).subtract(CR.TWO.multiply(CR.TWO.log()).divide(CR.THREE.multiply(CR.PI))).subtract(CR.ONE.divide(CR.valueOf(36)))
+A396984	parmof4	0	A082182	44	-5	39	Numbers k such that (44^k - 5^k)/39 is prime.	nonn,hard,more,new	1..4	nyi	_Robert Price_
+A396996	polyx	1	"[0,1]"	"A,sub,sub,exp,int"	0	1
+A396997	polyxa	0	"[1]"	"x,B,exp"	0	1	egf(new A396996())
+A397003	decexp	1	() -> CR.SEVEN.multiply(Zeta.zeta(6)).divide(CR.FOUR).subtract(Zeta.zeta(3).pow(2).divide(CR.TWO))
+A397004	decexp	1	() -> CR.FOUR.multiply(Zeta.zeta(7)).subtract(Zeta.zeta(2).multiply(Zeta.zeta(5))).subtract(Zeta.zeta(3).multiply(Zeta.zeta(4)))
+A397005	decexp	1	() -> CR.NINE.multiply(Zeta.zeta(8)).divide(CR.FOUR).subtract(Zeta.zeta(3).multiply(Zeta.zeta(5)))
+A397006	decexp	1	() -> CR.FIVE.multiply(Zeta.zeta(9)).subtract(Zeta.zeta(2).multiply(Zeta.zeta(7))).subtract(Zeta.zeta(3).multiply(Zeta.zeta(6))).subtract(Zeta.zeta(4).multiply(Zeta.zeta(5)))
+A397007	decexp	1	() -> CR.valueOf(11).multiply(Zeta.zeta(10)).divide(CR.FOUR).subtract(Zeta.zeta(3).multiply(Zeta.zeta(7))).subtract(Zeta.zeta(5).pow(2).divide(CR.TWO))
+A397009	decexp	0	() -> CR.valueOf(377).multiply(Zeta.zeta(7)).divide(CR.valueOf(128)).subtract(CR.SEVEN.multiply(Zeta.zeta(3)).multiply(Zeta.zeta(4)).divide(CR.EIGHT)).subtract(Zeta.zeta(2).multiply(Zeta.zeta(5)).divide(CR.TWO))
+A397010	decexp	0	() -> CR.valueOf(2039).multiply(Zeta.zeta(9)).divide(CR.valueOf(512)).subtract(CR.SEVEN.multiply(Zeta.zeta(4)).multiply(Zeta.zeta(5)).divide(CR.EIGHT)).subtract(CR.valueOf(31).multiply(Zeta.zeta(3)).multiply(Zeta.zeta(6)).divide(CR.valueOf(32))).subtract(Zeta.zeta(2).multiply(Zeta.zeta(7)).divide(CR.TWO))
+A397013	polyx	0	"[1],[1,-23],[30,-6],[1,-1]"	"p1,p2,p3,log,*,-,p3,^5,/"	0	1
+A397014	decexp	0	() -> X072364.multiply(X073229.subtract(CR.ONE))
+A397039	prepend	0	new ConvolutionProduct(0, "1,1", new A000005(), new A000219())	0
+A397040	prepend	0	new ConvolutionProduct(0, "1,1", new A000005(), new A026007())	0
+A397041	prepend	0	new ConvolutionProduct(0, "1,1", new A000005(), new A156616())	0
+A397043	prepend	0	new ConvolutionProduct(0, "1,1", new A000005(), new A023871())	0
+A397048	trilambn	0	0	0	(n, k) -> RU(0, k, i -> new Q(Z_1(i).*(BI(k, i)).*(ZV(n + i).^(n)).*(Z_1(k)), FA(k))).num()
+A397056	prepend	0	new ConvolutionProduct(0, "1,1", new A000203(), new A026007())	0
+A397057	prepend	0	new ConvolutionProduct(0, "1,1", new A000203(), new A156616())	0
+A397061	polya	0	"[1]"	"x,B,^2"	new A305082()
+A397062	polya	0	"[1]"	"x,B,^2"	new A305102()
+A397077	polya	0	"[1]"	"x,B,x,C,*"	new A305082(), new A006128()

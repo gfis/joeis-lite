@@ -1,0 +1,98 @@
+---- 2026-06-23 22:01:20
+---- 2026-06-23 22:30:56
+---- 2026-06-23 22:31:50
+---- 2026-06-23 22:34:41
+---- 2026-06-23 22:48:58
+---- 2026-06-23 23:00:36
+---- 2026-06-23 23:24:20
+---- 2026-06-23 23:32:58
+A140831	filnum	1	2	k -> { final Z high = ZV(19470629L); return FSIT(k, ZV(0), (x, p, e) -> x.isZero() ? p.^(e) : (p.^(e).compareTo(x) >= 0 ? p.^(e) : high)).equals(high); }	Numbers in whose canonical prime factorization the powers of the primes do not form an increasing sequence.
+A145450	filnum	1	1	k -> { final Q x = new Q(k, TAU(k)); return x.isInteger() && Predicates.SQUARE.is(x.num()); }	Numbers k such that k/A000005(k) is a square.
+A163830	sintrif	1	(term, n) -> term.-(FSIT(term, ZV(1), (x, p, e) -> x.*(Functions.PRIME_PI.z(p).^(e))))	""	new A002808()		The n-th composite minus the product of the indices of the primes in its prime factorization.
+A209291	lambdan	1	n -> SU(1, n, i -> { final long d = TAUl(i); return ZV(1L + i/d - (i%d == 0L ? i/d : i/d + 1)).*(i); })	a(n) = Sum_{i=1..n} i*(1 + floor(i/d(i)) - ceiling(i/d(i))) where d(n) is the number of divisors of n
+A212177	sintrif	1	(term, n) -> FSIT(term, ZV(0), (x, p , e) -> x.+((e >= 2) ? 1 : 0))	""	new A013929()	Number of exponents >= 2 in the canonical prime factorization of the n-th nonsquarefree number (J013929(n)).
+A212178	sintrif	1	(term, n) -> FSIT(term, ZV(0), (x, p , e) -> x.+((e >= 2) ? 1 : 0))	""	new A025487()	Number of exponents >= 2 in canonical prime factorization of J025487(n) (first integer of each prime signature).
+A212185	sintrif	1	(term, n) -> FSIT(term, ZV(0), (x, p , e) -> x.+((e >= 2) ? 1 : 0))	""	new A002182()
+A220218	filnum	1	1	k -> k == 1 || FSIT(k, 0L, (x, p, e) -> x + (PP(e + 1) ? 0 : 1)) == 0L	Numbers where all exponents in its prime factorization are one less than a prime.
+A220219	insect2	1	new A025487()	new A220218()	Products of primorials where all exponents in its prime factorization are one less than a prime.
+A226176	filter	1	new A014574()	v -> v.mod(TAU(v)).isZero()
+A227324	lambdan	1	n -> (n == 1) ? ZV(1) : FSIT(n, ZV(1), (x, p, e) -> x.*(PM(PI(p).-(1).xor(ZV(1)).+(1)).^(((e - 1) ^ 1)+1)))	prime( bitxor( primepi(p)-1, 1)+1)^(bitxor(e-1, 1)+1)) Result of changing both the prime indices and the exponents in the prime factorization of n: increment odd values, decrement even values.
+A227815	filter	1	new A002808()	v -> v.mod(new Z(FSIT(v, "", (x, p, e) -> x + Integer.toString(e)))).isZero()	Composite numbers n divisible by their concatenated exponents in prime factorization.
+A235524	insect2	1	new A033950()	new A081381()
+A242031	filnum	1	1	k -> k == 1 || FSIT(k, 0L, (x, p, e) -> (x == 0L) ? e : (e <= x ? e : -1L)) != -1L	Numbers n such that prime factorization n = p_1^k_1*p_2^k_2*...*p_r^k_r satisfies k_1 >= k_2 >= ... >= k_r.
+A254315	lambdan	2	n -> Functions.DISTINCT_DIGIT_COUNT.z(new Z(FSIT(n, "", (x, p, e) -> x + p.toString() + (e == 1 ? "" : Integer.toString(e)))))	Number of distinct digits in the prime factorization of n (counting terms of the form p^1 as p).
+A260046	filter	1	new A002808()	v -> Functions.DIGIT_SORT_DESCENDING.z(2, v).equals(Functions.DIGIT_SORT_DESCENDING.z(2, new Z(FSIT(v, "", (x, p, e) -> x + p.toString(2) + (e > 1 ? Integer.toString(e, 2) : "")), 2)))	Composites whose prime factorization in base 2 is an anagram of the number in base 2.
+A260047	filter	1	new A002808()	v -> Functions.DIGIT_SORT_DESCENDING.z(3, v).equals(Functions.DIGIT_SORT_DESCENDING.z(3, new Z(FSIT(v, "", (x, p, e) -> x + p.toString(3) + (e > 1 ? Integer.toString(e, 3) : "")), 3)))	Composites whose prime factorization in base 3 is an anagram of the number in base 3.
+A260048	filter	1	new A002808()	v -> Functions.DIGIT_SORT_DESCENDING.z(4, v).equals(Functions.DIGIT_SORT_DESCENDING.z(4, new Z(FSIT(v, "", (x, p, e) -> x + p.toString(4) + (e > 1 ? Integer.toString(e, 4) : "")), 4)))	Composites whose prime factorization in base 4 is an anagram of the number in base 4.
+A260049	filter	1	new A002808()	v -> Functions.DIGIT_SORT_DESCENDING.z(5, v).equals(Functions.DIGIT_SORT_DESCENDING.z(5, new Z(FSIT(v, "", (x, p, e) -> x + p.toString(5) + (e > 1 ? Integer.toString(e, 5) : "")), 5)))	Composites whose prime factorization in base 5 is an anagram of the number in base 5.
+A260050	filter	1	new A002808()	v -> Functions.DIGIT_SORT_DESCENDING.z(6, v).equals(Functions.DIGIT_SORT_DESCENDING.z(6, new Z(FSIT(v, "", (x, p, e) -> x + p.toString(6) + (e > 1 ? Integer.toString(e, 6) : "")), 6)))	Composites whose prime factorization in base 6 is an anagram of the number in base 6.
+A260051	filter	1	new A002808()	v -> Functions.DIGIT_SORT_DESCENDING.z(7, v).equals(Functions.DIGIT_SORT_DESCENDING.z(7, new Z(FSIT(v, "", (x, p, e) -> x + p.toString(7) + (e > 1 ? Integer.toString(e, 7) : "")), 7)))	Composites whose prime factorization in base 7 is an anagram of the number in base 7.
+A260052	filter	1	new A002808()	v -> Functions.DIGIT_SORT_DESCENDING.z(8, v).equals(Functions.DIGIT_SORT_DESCENDING.z(8, new Z(FSIT(v, "", (x, p, e) -> x + p.toString(8) + (e > 1 ? Integer.toString(e, 8) : "")), 8)))	Composites whose prime factorization in base 8 is an anagram of the number in base 8.
+A260053	filter	1	new A002808()	v -> Functions.DIGIT_SORT_DESCENDING.z(9, v).equals(Functions.DIGIT_SORT_DESCENDING.z(9, new Z(FSIT(v, "", (x, p, e) -> x + p.toString(9) + (e > 1 ? Integer.toString(e, 9) : "")), 9)))	Composites whose prime factorization in base 9 is an anagram of the number in base 9.
+A262981	filtpos	0	1	new A005179()	(k, v) -> v.mod(k) == 0
+A267143	filter	1	new A000040().skip(1)	q -> FSIT(q.-(1), QV(0), (x, p, e) -> x.+(new Q(ZV(e), p))).isInteger()	Primes q such that Sum_(q-1; i=1..m) e(i)/p(i) is an integer k, where the prime factorization of n is Product_(n; i=1..m) p(i)^e(i).
+A272818	filnum	1	1	k -> { final FactorSequence fs = Jaguar.factor(k); return FSIT(fs, ZV(0), (x, p, e) -> x.+(p)).+(FSIT(fs, ZV(1), (x, p, e) -> x.*(p))).equals(FSIT(fs, ZV(0), (x, p, e) -> x.+(e)).+(FSIT(fs, ZV(1), (x, p, e) -> x.*(e)))); }	Numbers such that (sum + product) of all their prime factors equals (sum + product) of all exponents in their prime factorization.
+A279070	filnum	1	2187	k -> FSIT(k, "", (x, p, e) -> x + "*" + p.toString() + (e == 1 ? "" : "^" + Integer.toString(e))).length() - 1 < Functions.DIGIT_LENGTH.i(k)	Compact numbers:
+A281291	filnum	1	1	k -> { final Z r = FA(k).*(2); return !r.mod(TAU(r)).isZero(); }	Numbers k such that 2*k! is not a refactorable number.
+A281294	filter	1	new A033950()	v -> { final Z r = v.*(2).+(1); return r.mod(TAU(r)).isZero(); }	Refactorable numbers k such that 2*k + 1 is also a refactorable number.
+A281447	filter	0	new A033950()	v -> { final Z r = v.*(3).+(1); return r.mod(TAU(r)).isZero(); }	Refactorable numbers n such that 3*n + 1 is also a refactorable number.
+A287763	filnum	1	1	k -> E230625(k).compareTo(k) < 0	where E230625 is the concatenation of the prime factorization written in binary, converted back to decimal.
+A287874	lambdan	1	n -> (n == 1) ? ZV(1) : new Z(FSIT(n, "", (x, p, e) -> x + p.toString(2) + (e == 1 ? "" : Integer.toString(e, 2))))	Concatenate prime factorization as in A080670, but write everything in binary.
+A290107	lambdan	1	n -> { if (n == 1) { return ZV(1); } final TreeSet<Integer> ts = new TreeSet<>(); return FSIT(n, ZV(1), (x, p, e) -> x.*(ts.add(e) ? e : 1)); }	a(n) = product of distinct exponents in the prime factorization of n.
+A293439	lambdan	1	n -> (n == 1) ? ZV(0) : FSIT(n, ZV(0), (x, p, e) -> x.+((Functions.DIGIT_SUM.i(2, e) & 1) == 1 ? 1 : 0))	Number of odious exponents in the prime factorization of n.
+A308494	filter	1	new A033950().skip(2)	v -> v.mod(TAU(v.-(1))).isZero()	Refactorable numbers k such that the number of divisors of k-1 also divides k.
+A318046	multia	1	"1"	(self, n) -> FSIT(n, ZV(1), (x, p, e) -> x.*(self.a(Functions.PRIME_PI.i(p)).^(e))).+(1)	a(1) = 1 and if n > 1 has prime factorization n = prime(x_1)^y_1 * ... * prime(x_k)^y_k then a(n) = 1 + a(x_1)^y_1 * ... * a(x_k)^y_k.
+A318573	lambdan	1	n -> (n == 1) ? ZV(0) : FSIT(n, QV(0), (x, p, e) -> x.+(new Q(e, Functions.PRIME_PI.l(p)))).num()	If n = Product prime(x_i)^y_i is the prime factorization of n, then a(n) is the numerator of Sum y_i/x_i.
+A318574	lambdan	1	n -> (n == 1) ? ZV(1) : FSIT(n, QV(0), (x, p, e) -> x.+(new Q(e, Functions.PRIME_PI.l(p)))).den()	If n = Product prime(x_i)^y_i is the prime factorization of n, then a(n) is the denominator of Sum y_i/x_i.
+A319225	lambdan	1	n -> { if (n == 1) { return ZV(1); } final FactorSequence fs = Jaguar.factor(n); final long om = fs.bigOmega(); return D056239(n).*(FA(om >= 1 ? om - 1 : 0))./(FSIT(fs, ZV(1), (x, p, e) -> x.*(FA(e)))); }	* (Omega(n) - 1)! / Product c_i! where c_i is the multiplicity of prime(i) in the prime factorization of n.
+A322448	filnum	1	1	k -> FSIT(k, 0L, (x, p, e) -> x + (e > 1 && !PP(e) ? 1 : 0)) != 0L	Numbers whose prime factorization contains at least one composite exponent.
+A322449	filnum	1	1	k -> FSIT(k, 0L, (x, p, e) -> x + (e <= 1 || PP(e) ? 1 : 0)) == 0L	Numbers whose prime factorization contains only composite exponents.
+A322797	filter	1	new A033950()	v -> Predicates.SQUAREFUL.is(v)
+A323024	filnum	1	1	k -> F001221(D181819(k)).equals(3)	Numbers with exactly three distinct exponents in their prime factorization, or three distinct parts in their prime signature.
+A323025	filnum	1	1	k -> F001221(D181819(k)).equals(4)	Numbers with exactly four distinct exponents in their prime factorization, or four distinct parts in their prime signature.
+A323055	filnum	1	1	k -> F001221(D181819(k)).equals(2)	Numbers with exactly two distinct exponents in their prime factorization, or two distinct parts in their prime signature.
+A349224	filnum	1	1	k -> D033634(k).equals(D033634(k + 1))
+A353638	lambdan	1	n -> ((n&1) == 1 && D064989(SIGMA(n)).compareTo(D064989(n)) < 0) ? ZV(1) : ZV(0)	, otherwise 0.
+A356061	filnum	1	1	k -> { final Z r = Functions.DIGIT_SUM.z(k); return r.mod(TAU(r)).isZero(); }	Numbers whose sum of digits is a refactorable number.
+A356413	filnum	1	1	k -> (k == 1) || FSIT(k, 0L, (x, p, e) -> x + (((e&1) == 0) ? e : -e)) == 0L	Numbers with an equal sum of the even and odd exponents in their prime factorizations.
+A357979	fsiter	1	1	(x, p, e) -> x.*(PM(E357977(PI(p))).^(e))	Second MTF-transform of F000041. Replace prime(k) with prime(A357977(k)) in the prime factorization of n.
+A369427	lambdan	1	n -> n == 1 ? ZV(0) : ZV(FSIT(n, 0L, (x, p, e) -> x + (e == 2 ? 1 : 0)))	The number of exponents in the prime factorization of n that are equal to 2.
+A375931	lambdan	1	n -> { if (n == 1) { return ZV(1); } final FactorSequence fs = Jaguar.factor(n); final long max = fs.maxExponent(); return FSIT(n, ZV(1), (x, p, e) -> x.*(e == max ? p.^(e) : ZV(1))); }	The product of the prime powers in the prime factorization of n that have an exponent that is equal to the maximum exponent in this factorization.
+A375933	lambdan	1	n -> { final FactorSequence fs = Jaguar.factor(n); final long max = fs.maxExponent(); return ZV(max == 1 ? 0 : FSIT(fs, 0L, (x, p, e) -> (e < max & e > x) ? e : x)); }	The second-largest exponent in the prime factorization of n, or 0 if it does not exist.
+A375934	filtpos	1	1	new A375933()	ONE
+A376170	filnum	1	1	k -> { if (k == 1) { return true; } final long max = FSIT(k, 0L, (x, p, e) -> (e >= 2 ? (e > x ? e : x) : 19470629L)); return max > 0 && (max&1) == 0; }	numbers whose prime factorization exponents are all larger than 1 and their maximum is even.
+A376171	filnum	1	1	k -> { final long max = FSIT(k, 0L, (x, p, e) -> (e >= 2 ? (e > x ? e : x) : 19470628L)); return max > 0 && (max&1) == 1; }	numbers whose prime factorization exponents are all larger than 1 and their maximum is even.
+A376251	filnum	1	1	k -> { final FactorSequence fs = Jaguar.factor(k); final long max = fs.maxExponent(); final long second = FSIT(fs, 0L, (x, p, e) -> (e < max & e > x) ? e : x); return second > 0L && second == max - 1; }	Numbers that have a second-largest exponent in their prime factorization and it is smaller by 1 than the largest exponent.
+A380692	filnum	1	1	k -> { if (k == 1) { return true; } final FactorSequence fs = Jaguar.factor(k); return fs.leastPrimeFactor().compareTo(ZV(fs.maxExponent())) > 0; }	Numbers k such that the least prime dividing k is larger than the maximum exponent in the prime factorization of k; a(1) = 1 by convention.
+A380693	filnum	1	1	k -> { if (k == 1) { return true; } final FactorSequence fs = Jaguar.factor(k); return fs.leastPrimeFactor().compareTo(ZV(fs.maxExponent())) >= 0; }	Numbers k such that the least prime dividing k is larger than or equal to the maximum exponent in the prime factorization of k; a(1) = 1 by convention.
+A380694	filnum	1	1	k -> { final FactorSequence fs = Jaguar.factor(k); return PI(fs.leastPrimeFactor()).compareTo(ZV(fs.maxExponent())) > 0; }	Numbers k such that the prime index of the least prime dividing k is larger than the maximum exponent in the prime factorization of k.
+A380695	filnum	1	1	k -> { if (k == 1) { return true; } final FactorSequence fs = Jaguar.factor(k); return PI(fs.leastPrimeFactor()).compareTo(ZV(fs.maxExponent())) >= 0; }	Numbers k such that the prime index of the least prime dividing k is larger than or equal to the maximum exponent in the prime factorization of k; a(1) = 1 by convention.
+A381825	filnum	1	1	k -> k == 1 || FSIT(k, 0L, (x, p, e) -> x + (p.testBit(0) && e > 1 && (e&1) == 1 ? 0 : 1)) == 0L	whose prime factorization has only odd primes and odd exponents that are larger than 1 (except for 1 whose prime factorization is empty).
+A381950	filnum	1	1	k -> k == 1 || ((k&1) == 1 && (FSIT(k, 0L, (x, p, e) -> (e > x ? e : x)) & 1) == 0)	Odd numbers whose prime factorization has an even maximum exponent.
+A381951	filter	1	new A013929()	v -> v.testBit(0) && (Jaguar.factor(v).maxExponent() & 1) == 1	Nonsquarefree odd numbers whose prime factorization has an odd maximum exponent.
+A381956	filnum	1	1	k -> k == 1 || ((FSIT(k, 0L, (x, p, e) -> (e > x ? e : x)) ^ k) & 1L) == 1L	Numbers k such that k and the maximum exponent in the prime factorization of k have opposite parities.
+A382065	filnum	1	1	k -> k == 1 || FSIT(k, 0L, (x, p, e) -> x + (e % Functions.TAU.i(e) == 0 ? 0 : 1)) == 0L	Exponentially refactorable numbers: numbers whose exponents in their canonical prime factorization are all refactorable numbers (J033950).
+A382266	lambdan	2	n -> { final FactorSequence fs = Jaguar.factor(n); return QV(fs.omega())./(FSIT(fs, QV(0), (x, p, e) -> x.+(new Q(1, e)))).num(); }	Numerator of the harmonic mean of the exponents in the prime factorization of n.
+A382267	lambdan	2	n -> { final FactorSequence fs = Jaguar.factor(n); return QV(fs.omega())./(FSIT(fs, QV(0), (x, p, e) -> x.+(new Q(1, e)))).den(); }	Denominator of the harmonic mean of the exponents in the prime factorization of n.
+A382423	sintrif	1	(term, n) -> ZV(FSIT(term, 0L, (x, p, e) -> x + (e == 2 ? 1 : 0)))	""	new A046100()	The number of exponents in the prime factorization of n-th biquadratefree number that are equal to 2.
+A382424	sintrif	1	(term, n) -> ZV(FSIT(term, 0L, (x, p, e) -> x + (e == 3 ? 1 : 0)))	""	new A046100()	The number of exponents in the prime factorization of n-th biquadratefree number that are equal to 3.
+A382787	sintrif	1	(term, n) -> ZV(FSIT(term, 1L, (x, p, e) -> x * e))	""	new A335275()	The product of exponents in the prime factorization of the numbers whose prime factorization contains exponents that are either 1 or even.
+A383397	filnum	1	1	k -> { if (k == 1) { return true; } final Z high = ZV(194706290630L); return !FSIT(k, ZV(0), (x, p, e) -> { final Z pe = p.^(e); return pe.compareTo(x) > 0 ? pe : high; }).equals(high); }		Numbers in whose canonical prime factorization the powers of the primes form a strictly increasing sequence.
+A384815	lambdan	1	n -> n == 1 ? ZV(0) : FSIT(n, ZV(0), (x, p, e) -> x.+(ZV(e).^(3)))	Sum of the cubes of the exponents in the prime factorization of n.
+A387820	filnum	1	1	k -> ZV(k).mod(D033634(k)).isZero()	Numbers k such that J033634(k) divides k.
+A388306	filnum	1	1	k -> !Predicates.SQUARE.is(k) && ZV(k).mod(GPF(k).^(2)).isZero()	Numbers that are not square but divisible by the square of their largest prime factor.k is term <=> k has canonical prime factorization p1^e1 *...* pj^ej with ej >= 2 and some ei in e1...ej is odd.
+A390250	filnum	1	1	k -> FSIT(k, ZV(0), (x, p, e) -> x.isZero() ? p.-(1).*(e) : (x.equals(p.-(1).*(e)) ? x : ZV(-1))).compareTo(ZV(0)) > 0	Numbers m>1 such that e_1 * (p_1 - 1) = ... = e_s * (p_s - 1), where p_1^e_1 * ... * p_s^e_s is the prime factorization of m.
+A390372	mulr	1	(p, e) -> ZV(1).+(p.^(2*((e - 1)/2) + 2).-(1).*(p)./(p.^(2).-(1))).-(e % 4 == 2 ? p.^(e/2) : ZV(0))	a(p^e) = 1 + (p^(2*floor((e-1)/2)+2) - 1)*p / (p^2-1) - [e == 2 (mod 4)] * p^(e/2)
+A390437	filnum	1	1	k -> k == 1 || FSIT(k, 0L, (x, p, e) -> x + (e % 3 == 0 ? 1 : 0)) == 0L	Numbers whose prime factorization exponents are not divisible by 3.
+A390438	filnum	1	1	k -> k == 1 || FSIT(k, 0L, (x, p, e) -> x + (e % 4 == 0 ? 1 : 0)) == 0L	Numbers whose prime factorization exponents are not divisible by 4.
+A390439	filnum	1	1	k -> k == 1 || FSIT(k, 0L, (x, p, e) -> x + ((e == 1 || PP(e)) ? 0 : 1)) == 0L	Exponentially noncomposite numbers: numbers whose prime factorization exponents are all noncomposites.
+A390440	filnum	1	1	k -> k == 1 || FSIT(k, 0L, (x, p, e) -> x + (GCDi(e, 6) == 1 ? 0 : 1)) == 0L	Exponentially 5-rough numbers: numbers whose prime factorization exponents are all coprime to 6.
+A390441	filnum	1	1	k -> k == 1 || FSIT(k, 0L, (x, p, e) -> x + (e == 2 || e == 3 ? 1 : 0)) == 0L	Numbers whose prime factorization exponents are neither 2 nor 3.
+A392065	lambdan	1	n -> { if (n == 1) { return ZV(1); } final long num = FSIT(n, 0L, (x, p, e) -> x + (e == 1 ? 1 : 0)); return ZV(num == 0L ? 1L : num); }	a(n) = number of primes with unit exponent in the prime factorization of n, or 1 if no such primes exist.
+A394256	filter	1	new A268335()	v -> Jaguar.factor(v).maxExponent() % 4 == 1	Exponentially odd numbers whose maximum exponent in their prime factorization is congruent to 1 mod 4.
+A396927	holos	0	[0,-1,-1,3,-1]	1,6,20,54	0	0
+A397280	lambdan	0	n -> RU(n % 3 == 0 ? n/3 : n/3 + 1, n/2, k -> new Q(FA(3*k), FA(k)).*(S2(k, 3*k - n)))./(n + 1).num()	a(n) = (1/(n+1)) * Sum_{k=ceiling(n/3)..floor(n/2)} (3*k)!/k! * Stirling2(k,3*k-n).
+A397281	lambdan	0	n -> RU(n % 4 == 0 ? n/4 : n/4 + 1, n/3, k -> new Q(FA(4*k), FA(k)).*(S2(k, 4*k - n)))./(n + 1).num()	a(n) = (1/(n+1)) * Sum_{k=ceiling(n/4)..floor(n/3)} (4*k)!/k! * Stirling2(k,4*k-n).
+A397282	lambdan	0	n -> RU(n % 3 == 0 ? n/3 : n/3 + 1, n/2, k -> new Q(FA(3*k), FA(k)).*(SA(k, 3*k - n)))./(n + 1).num()	a(n) = (1/(n+1)) * Sum_{k=ceiling(n/3)..floor(n/2)} (3*k)!/k! * Stirling2(k,3*k-n).
+A397283	lambdan	0	n -> RU(n % 4 == 0 ? n/4 : n/4 + 1, n/3, k -> new Q(FA(4*k), FA(k)).*(SA(k, 4*k - n)))./(n + 1).num()	a(n) = (1/(n+1)) * Sum_{k=ceiling(n/3)..floor(n/2)} (3*k)!/k! * Stirling2(k,3*k-n).
+A397287	trilambn	0	0	0	(n, k) -> (n == 0) ? ZV(1) : ZV(k + n).^(n - 1).*(k)	for n > 0 and T(0, k) = 1.	nonn,tabl,new	0..44	nyi	_Peter Luschny_
