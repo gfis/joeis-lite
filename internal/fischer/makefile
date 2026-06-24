@@ -249,8 +249,10 @@ diff_joeis:
 	| grep -vP "oeis/a|\$\d+\." | cut -f9 | sed -e "s/.class/.java/" | tee $@.tmp \
 	| xargs -innn diff -ws -C0 ../../../joeis/src/nnn ../../src/nnn \
 	>> $@.tmp
-diffx:
-	diff -wsy --suppress-common-lines ../../../joeis/src/irvine/oeis/transform/RationalProductTransform.java ../../src/irvine/oeis/transform/RationalProductTransform.java || :
+diff2: # P=oeis/transform/RationalProductTransform
+	diff -wsy --suppress-common-lines ../../../joeis/src/irvine/$(P).java ../../src/irvine/$(P).java || :
+	ls -al ../../../joeis/src/irvine/$(P).java ../../src/irvine/$(P).java 
+	echo "../../src/irvine/$(P).java"  | clip
 diffpfs:
 	diff -wy --suppress-common-lines ../../../joeis/src/irvine/oeis/PolynomialFieldSequence.java    ../../src/irvine/oeis      || :
 	diff -wy --suppress-common-lines ../../../joeis/internal/irvine/oeis/PolynomialFieldTest.java   ../../internal/irvine/oeis || :
