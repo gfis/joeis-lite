@@ -1,0 +1,102 @@
+---- 2026-06-24 23:03:52
+A085802	filnum	1	1	k -> Predicates.SEMIPRIME.is(Functions.DIGIT_SUM.z(k))	Numbers whose sum of digits is a semiprime.
+A085803	filter	1	new A001358()	v -> Predicates.SEMIPRIME.is(Functions.DIGIT_SUM_SQUARES.z(v))	Semiprimes whose digits squared sum to a semiprime.
+A086102	filnum	1	5	k -> PP(new Z(Long.toString(PM(k).mod(100)) + PM(k + 1).toString().substring(0, 2)))	Concatenation of last two digits of p(n) and first two digits of p(n+1) is prime; values of such n in the sequence.
+A086816	sintrif	1	(term, n) -> ZV(6).*(term).-(1)	""	new A166119()	a(n)=6*J166119(n)-1	_	_	_
+A088349	sintrif	1	(term, n) -> (term.-(1))./(6)	""	new A085249()	a(n)=(J085249(n)-1)/6	_	_	_
+A091788	multia	1	"1,2,2"	(self, n) -> self.a(n - 1).*(Functions.DIGIT_NZ_PRODUCT.z(self.a(n - 1)))	a(n) = a(n-1)*product of nonzero digits of a(n-1) (n >= 4). - _Emeric Deutsch_, Apr 15 2005
+A092383	lambdan	0	n -> ((n&1) == 1) ? Functions.DIGIT_SUM.z(n) : Functions.DIGIT_SUM.z(2*n)	Sum of digits of n if n odd, else sum of digits of 2n.
+A092384	lambdan	0	n -> ((n&1) == 0) ? Functions.DIGIT_SUM.z(n) : Functions.DIGIT_SUM.z(2*n)	Sum of digits of n if n even, else sum of digits of 2n.
+A092934	sintrif	1	(term, n) -> (Z2(n).*(term)./(D001147(n)))	""	new A057003()	a(n)=floor(2^n*J057003(n)/D001147(n))	_	_	_
+A093462	lambdin	1	n -> ZV(2).*(ZV(n).^(n-1).-(1))./(ZV(n-1).^(2))	1		a(1)=1,a(n)=2(n^(n-1)-1)/(n-1)^2	_	_	_
+A095402	lambdin	1	n -> FSIT(n, ZV(0), (x, p, e) -> x.+(Functions.DIGIT_SUM.z(p)))	0	Sum of digits of all distinct prime factors of n.
+A095403	lambdin	1	n -> Functions.DIGIT_SUM.z(n).-(FSIT(n, ZV(0), (x, p, e) -> x.+(Functions.DIGIT_SUM.z(p))))	1	Sum of digits of n minus the sum of digits of all distinct prime factors of n.
+A095407	lambdin	1	n -> FSIT(n, ZV(0), (x, p, e) -> x.+(Functions.DIGIT_LENGTH.z(p)))	0	Total number of decimal digits of all distinct prime factors of n.
+A095408	lambdin	1	n -> FSIT(n, ZV(0), (x, p, e) -> x.+(Functions.DIGIT_LENGTH.z(p))).-(Functions.DIGIT_LENGTH.z(n))	-1	Total number of decimal digits in all distinct prime factors of n minus number of digits in n.
+A095409	filnum	1	1	k -> FSIT(k, ZV(0), (x, p, e) -> x.+(Functions.DIGIT_LENGTH.z(p))).compareTo(Functions.DIGIT_LENGTH.z(k)) < 0	Numbers k such that total number of decimal digits of all distinct prime factors of k is smaller than number of digits of k.
+A095410	filnum	1	1	k -> FSIT(k, ZV(0), (x, p, e) -> x.+(Functions.DIGIT_LENGTH.z(p))).compareTo(Functions.DIGIT_LENGTH.z(k)) == 0	Numbers n such that total number of decimal digits of all distinct prime factors of n equals the number of digits of n.
+A095411	filnum	1	1	k -> FSIT(k, ZV(0), (x, p, e) -> x.+(Functions.DIGIT_LENGTH.z(p))).compareTo(Functions.DIGIT_LENGTH.z(k)) > 0	Numbers k such that total number of decimal digits of all distinct prime factors of k is larger than the number of digits of k.
+A095413	sintrif	1	(term, n) -> (n == 1) ? ZV(0) : FSIT(term, ZV(0), (x, p, e) -> x.+(Functions.DIGIT_LENGTH.z(p)))	""	new A002275()		Total number of decimal digits of all distinct prime factors of the n-th repunit.
+A095414	sintrif	1	(term, n) -> (n == 1) ? ZV(-1) : FSIT(term, ZV(0), (x, p, e) -> x.+(Functions.DIGIT_LENGTH.z(p))).-(n)	""	new A002275()		Excess of total number of distinct prime factor digits of n-th repunit over n, the number of digits of n-th repunit itself.
+A095417	sintrif	1	(term, n) -> (n == 1) ? ZV(0) : FSIT(term, ZV(0), (x, p, e) -> x.+(Functions.DIGIT_SUM.z(p)))	""	new A002275()		Sum of all decimal digits of distinct prime factors for n-th repunit.
+A095418	sintrif	1	(term, n) -> (n == 1) ? ZV(-1) : FSIT(term, ZV(0), (x, p, e) -> x.+(Functions.DIGIT_SUM.z(p))).-(n)	""	new A002275()		Excess of sum of all decimal digits of distinct prime factors for n-th repunit over corresponding digit-sum for repunit itself (which is n).
+A095861	lambdan	1	n -> ((F000196(2*n-1).-(1))./(2))	""		a(n)=floor((sqrt(2*n-1)-1)/2)	_	_	_
+A097494	lambdan	1	n -> (F000040(n+1).*(F000040(n+2))./(F000040(n)))	""		a(n)=floor(prime(n+1)*prime(n+2)/prime(n))	_	_	_
+A102890	lambdan	1	n -> CV(n).^(new Q(2, 3)).*(3).ceil()	a(n)=ceiling(3*n^(2/3))	_	_	_		A102889(n) is at least a(n).
+A107281	multia	0	"1,1,2"	(self, n) -> Functions.DIGIT_SORT_ASCENDING.z(self.a(n - 1).+(self.a(n - 2)).+(self.a(n - 3)))	a(0) = 1, a(1) = 1, a(2) = 2 and for n>1: a(n+1) = SORT[a(n) + a(n-1) + a(n-2)]
+A107613	filnum	1	1	k -> Long.toString(k).matches("[0149]+") && Functions.PRIME.z(k).toString().matches("[0149]+")		Numbers n such that both n and prime(n) consist of square digits (0,1,4,9).
+A107624	filnum	1	1	k -> Long.toString(k).matches("[04689]+") && Functions.PRIME.z(k).toString().matches("[04689]+")		Numbers n such that every digit of n and n-th prime contains a loop (only digits 0,4,6,8,9 in n and n-th prime).
+A107625	filter	1	new A000040()	p -> p.toString().matches("[04689]+") && PI(p).toString().matches("[04689]+")	Every digit of prime and its index contains a loop (only digits 0,4,6,8,9 in prime and its index).
+A107627	filnum	0	1	k -> Long.toString(k).matches("[04689]+") && Predicates.SQUARE.is(k) && Functions.SQRT.z(k).toString().matches("[04689]+")	 Numbers n such that every digit of n and sqrt(n) contains a loop (only digits 0,4,6,8,9 in n and sqrt(n)).
+A107679	filnum	1	1	k -> Functions.DIGIT_SUM.l(ZV(k).^(3)) == 8L	Numbers n such that sum of digits of n^3 is 2^3 = 8.
+A112985	lambdin	0	n -> Z.TWO.pow(Z.TWO.modPow(n, n - 1))	1, 4, 1	2^(2^n mod n-1)
+A113472	sintrif	1	(term, n) -> F000040(term.+(1)).-(F000040(term))	""	new A113451()	a(n)=prime(J113451(n)+1)-prime(J113451(n))	_	_	_
+A113623	filter	1	new A002473()	v -> v.toString().matches("[12357]+")	7-smooth numbers containing only noncomposite digits (1,2,3,5,7).
+A113624	filter	1	new A002473()	v -> v.toString().matches("[04689]+")	7-smooth numbers containing only composite digits (0,4,6,8,9).
+A113761	filnum	1	1	k -> { final Z t = TAU(k); return t.equals(Functions.DIGIT_SUM.z(k)) && t.equals(Functions.DIGIT_PRODUCT.z(k)); }	Numbers k such that the number of divisors of k equals both the sum and the product of digits of k in base 10.
+A113865	lambdan	0	n -> Functions.DIGIT_LENGTH.z(F000110(n))	Number of digits of Bell number F000110(n).
+A113904	multia	1	"1"	(self, n) -> self.a(n - 1).+(Functions.DIGIT_SUM.z(self.a(n - 1)).*(n - 1))	a(n) = a(n-1)+(n-1)*s(n-1), where s(n) stands for the sum of the digits of n.
+A115734	filnum	0	1	k -> ZV(k).^(2).toString().indexOf(PM(k).toString()) >= 0	 Numbers k such that the digits of k^2 include the digits of the k-th prime as substring.
+A115735	filter	0	new A000040()	p -> PI(p).^(2).toString().indexOf(p.toString()) >= 0	Primes p whose digits are a substring of the digits of pi(p)^2.
+A115736	filter	0	new A000040()	p -> PI(p).^(3).toString().indexOf(p.toString()) >= 0	Primes p whose digits are a substring of the digits of pi(p)^3.
+A115737	filnum	0	1	k -> ZV(k).^(3).toString().indexOf(PM(k).toString()) >= 0	 Numbers k such that the digits of k^3 include the digits of the k-th prime as a substring.
+A115738	filnum	0	1	k -> PP(k) && ZV(k).^(2).toString().indexOf(Long.toString(k)) >= 0	 k is prime and digits of k^2 include digits of k as substring.
+A115739	filnum	0	1	k -> PP(k) && ZV(k).^(3).toString().indexOf(Long.toString(k)) >= 0	 n is prime and digits of n^3 include digits of n as substring.
+A115761	filnum	1	1	k -> REV(ZV(k).^(2)).toString().indexOf(Long.toString(k)) >= 0	Numbers k such that the digits of k^2, reversed, include the digits of k as a substring.
+A115762	filnum	1	1	k -> REV(ZV(k).^(3)).toString().indexOf(Long.toString(k)) >= 0	Numbers k such that the digits of k^3, reversed, include the digits of k as substring.
+A115763	filter	0	new A000040()	p -> REV(p.^(2)).toString().indexOf(p.toString()) >= 0	Primes p such that the digits of p^2, reversed, include the digits of p as a substring.
+A115764	filter	0	new A000040()	p -> REV(p.^(3)).toString().indexOf(p.toString()) >= 0	Primes p such that the digits of p^3, reversed, include the digits of p as a substring.
+A117062	filter	0	new A000384()	v -> Predicates.POLYGONAL.is(6, Functions.DIGIT_SUM.z(v))	Hexagonal numbers for which the sum of the digits is also a hexagonal number.
+A117063	filter	1	new A000384()	v -> Predicates.POLYGONAL.is(6, Functions.DIGIT_PRODUCT.z(v))	Hexagonal numbers for which the product of the digits is also a hexagonal number.
+A117064	filter	1	new A000384()	v -> Predicates.POLYGONAL.is(6, Functions.DIGIT_SUM.z(v)) && Predicates.POLYGONAL.is(6, Functions.DIGIT_PRODUCT.z(v))		Hexagonal numbers for which both the sum of the digits and the product of the digits are also hexagonal numbers.
+A117082	filter	0	new A000567()	v -> Predicates.POLYGONAL.is(8, Functions.DIGIT_SUM.z(v))	Octagonal numbers for which the sum of the digits is also an octagonal number.
+A117083	filter	0	new A000567()	v -> Predicates.POLYGONAL.is(8, Functions.DIGIT_PRODUCT.z(v))	Octagonal numbers for which the product of the digits is also an octagonal number.
+A117084	filter	0	new A000567()	v -> Predicates.POLYGONAL.is(8, Functions.DIGIT_SUM.z(v)) && Predicates.POLYGONAL.is(8, Functions.DIGIT_PRODUCT.z(v))		Octagonal numbers for which both the sum and the product of the digits is also an octagonal number.
+A117404	filter	1	new A000217()	v -> Predicates.SQUARE.is(Functions.DIGIT_SUM.z(v))	Triangular numbers for which the sum of the digits is a square.
+A117512	filter	1	new A000217()	v -> Predicates.PRIME.is(Functions.DIGIT_SUM.z(v))	Triangular numbers for which the sum of the digits is a prime number.
+A119901	lambdan	0	n -> CV(3).^(new Q(2*n + 1, 2)).floor().*(2).+(1)	a(n)=2*Floor(3^((2n+1)/2))+1	_	_	_		Difference between two consecutive squares enclosing 3^(2n+1).
+A121948	sintrif	1	(term, n) -> (term./(n))	""	new A014612()	a(n)=floor((n-th3-almostprime)/n)=floor(J014612(n)/n)	_	_	_
+A122216	lambdan	0	n -> PR(1, (n/2 + ((n&1) == 0 ? 0 : 1)), k -> ZV(2*k).^(BI(n, 2*k-1)))	""		a(n)=Product_{k=1..ceiling(n/2)}(2k)^binomial(n,2k-1)	_	_	_
+A124421	lambdan	0	n -> SU(0, (n/2), j -> S2((n/2), j).*(ZV(j).^((n/2 + ((n&1) == 0 ? 0 : 1)))))	""		a(n)=Sum_{j=0..floor(n/2)}Stirling2(floor(n/2),j)*j^ceiling(n/2)	_	_	_
+A124423	lambdan	0	n -> SU(0, (n/2 + ((n&1) == 0 ? 0 : 1)), j -> S2((n/2 + ((n&1) == 0 ? 0 : 1)), j).*(ZV(j).^(n/2)))	""		a(n)=Sum_{j=0..ceiling(n/2)}Stirling2(ceiling(n/2),j)*j^floor(n/2)	_	_	_
+A124425	lambdan	0	n -> SU(0, (n/2), k -> S2((n/2), k).*(S2((n/2 + ((n&1) == 0 ? 0 : 1)), k)).*(FA(k)))	""		a(n)=Sum_{k=0..floor(n/2)}Stirling2(floor(n/2),k)*Stirling2(ceiling(n/2),k)*k!	_	_	_
+A137926	lambdan	1	n -> SD(n, d -> F000203(ZV(n)./(d)).*(F008683(d).*(GCD(d, F000005(n)))))	""		a(n)=Sum_{d|n}sigma(n/d)*mu(d)*gcd(d,tau(n))	_	_	_
+A168421	sintrif	1	(term, n) -> F000040(F000720(term).+(1).-(n))	""	new A104272()	a(n)=prime(primepi(J104272(n))+1-n)	_	_	_
+A168425	sintrif	1	(term, n) -> F000040(F000720(term).+(1))	""	new A104272()	a(n)=prime(primepi(J104272(n))+1)	_	_	_
+A175591	multraf	1	(self, n) -> self.s(0).-(self.s(1))	""	new A175582(), new A083207()	a(n)=J175582(n)-J083207(n)	_	_	_
+A194217	multraf	1	(self, n) -> self.s(0).-(self.s(1))	""	new A104272(), new A080359()	a(n)=J104272(n)-J080359(n)	_	_	_
+A194943	sintrif	2	(term, n) -> (term./(n))	""	new A085420()	a(n)=floor(J085420(n)/n)	_	_	_
+A227568	lambdan	0	n -> CV(new Q(n, 3)).sqrt().*(2).floor()	a(n)=floor(2*sqrt(n/3))	_	_	_
+A233739	sintrif	1	(term, n) -> term.-(F000040(2*n))	""	new A104272()	a(n)=J104272(n)-F000040(2n)	_	_	_
+A238546	lambdin	1	n -> F000041(n).-(F000041((n/2 + ((n&1) == 0 ? 0 : 1))))	1,1		a(n)=p(n)-p(ceiling(n/2))=F000041(n)-F000041(ceiling(n/2)),forn>1	_	_	_
+A241842	multraf	1	(self, n) -> self.s(0).-(self.s(1))	""	new A001349(), new A064731()	a(n)=J001349(n)-J064731(n)	_	_	_
+A245797	lambdan	1	n -> Z2(ZV(n).*(n-1)./(2)).-(M059167(n))	""		a(n)=2^(n*(n-1)/2)-M059167(n)	_	_	_
+A247100	lambdan	0	n -> ZV(1).+(SU(1, (n/2 + ((n&1) == 0 ? 0 : 1)), k -> BI(n+1, 2*k).*(F000110(k))))	""		a(n)=1+Sum_{k=1..ceiling(n/2)}binomial(n+1,2k)*Bell(k)	_	_	_
+A280729	sintrif	1	(p, n) -> p.-(1)./(2).+(PHI(p.-(1)))	""	new A000040().skip(1)	(p-1)/2 + phi(p-1) as p runs through the odd primes.
+A287874	lambdin	1	n -> new Z(FSIT(n, "", (x, p, e) -> x + p.toString(2) + (e == 1 ? "" : Integer.toString(e, 2))))	1	Concatenate prime factorization as in A080670, but write everything in binary.
+A320426	sintrif	1	(term, n) -> term.-(n).+(1)	""	new A187106()	a(n)=J187106(n)-n+1=J084422(n)-n	_	_	_
+A321017	lambdan	1	n -> (F000720(n)./(2))	""		a(n)=floor(pi(n)/2)	_	_	_
+A332552	multraf	2	(self, n) -> self.s(0).-(self.s(1))	""	new A082184(), new A082183()	a(n)=J082184(n)-J082183(n)	_	_	_
+A332711	lambdin	0	n -> (ZV(n+1).^(n).-(Z2(n)))./(n-1)	0,1,5		a(n)=((n+1)^n-2^n)/(n-1)forn>=2	_	_	_
+A348848	multraf	1	(self, n) -> ZV(2).*(self.s(0)).+(self.s(1))	""	new A234007(), new A346800()	a(n)=2*J234007(n)+J346800(n)	_	_	_
+A350252	sintrif	0	(term, n) -> D000670(n).-(term)	""	new A345194()	a(n)=D000670(n)-J345194(n)	_	_	_
+A363454	lambdan	0	n -> SU(0, (n/2), k -> S2((n/2), k).*(S2((n/2 + ((n&1) == 0 ? 0 : 1)), k)))	""		a(n)=Sum_{k=0..floor(n/2)}Stirling2(floor(n/2),k)*Stirling2(ceiling(n/2),k)	_	_	_
+A363472	lambdan	0	n -> SU(0, (n/2), k -> ZV(k).*(S2((n/2), k)).*(S2((n/2 + ((n&1) == 0 ? 0 : 1)), k)).*(FA(k)))	""		a(n)=Sum_{k=0..floor(n/2)}k*Stirling2(floor(n/2),k)*Stirling2(ceiling(n/2),k)*k!	_	_	_
+A374325	sintrif	1	(term, n) -> term.^(2)	""	new A374326()	a(n)=J374326(n)^2	_	_	_
+A375010	lambdan	3	n -> F000040(n-1).-(((F000040(n-2).+(F000040(n-1)).+(F000040(n)))./(3)))	""		a(n)=prime(n-1)-floor((prime(n-2)+prime(n-1)+prime(n))/3)	_	_	_
+A377899	lambdan	1	n -> ((ZV(n).-(F000720(n)))./(2))	""		a(n)=floor((n-F000720(n))/2)	_	_	_
+A378070	lambdan	0	n -> BI(n - 1, n/2 + ((n&1) == 0 ? 0 : 1)).*(BI(n-1, n/2 + ((n&1) == 0 ? 0 : 1) - 1))	""		a(n)=binomial(n-1,ceiling(n/2))*binomial(n-1,ceiling(n/2)-1)	_	_	_
+A382425	multraf	1	(self, n) -> self.s(0).+(self.s(1))	""	new A382423(), new A382424()	a(n)=J382423(n)+J382424(n)	_	_	_
+A383147	sintrif	1	(term, n) -> D000593(n).-(term)	""	new A379379()	a(n)=D000593(n)-J379379(n)	_	_	_
+A387130	multraf	0	(self, n) -> self.s(0).-(self.s(1))	""	new A386388(), new A383904()	a(n)=J386388(n)-J383904(n)	_	_	_
+A387224	lambdin	3	n -> M004149(n).-(M004149(n-2)).-(ZV(2).*(M004149(n-3)))	0,1,1,4,8,17		a(n)=M004149(n)-M004149(n-2)-2*M004149(n-3)forn>=5	_	_	_
+A387826	sintrif	1	(term, n) -> term./(D033634(term))	""	new A387820()	a(n)=J387820(n)/D033634(J387820(n))	_	_	_
+A389956	multraf	1	(self, n) -> self.s(0).*(self.s(1))	""	new A389765(), new A389957()	a(n)=J389765(n)*J389957(n)	_	_	_
+A391414	lambdin	1	n -> (ZV(n-1).^(n).+(ZV(n+1).^(n)))./(2)	1,3,16,184,2696,47466,979776,23059204,567108864		a(n)=((n-1)^n+(n+1)^n)/2=J062024(n)forn>=9	_	_	_
+A395361	sintrif	0	(term, n) -> (n <= 6) ? term : new Z(term.toString().substring(0, 2))	""	new A000045()		For n <= 6, a(n) = Fibonacci(n); for n >= 7, delete all except the leftmost two digits of Fibonacci(n).
+A396829	sintrif	1	(term, n) -> term.-(n).+(1)	"3,5"	new A007684()	a(n)=J007684(n)-n+1,forn>=2	_	_	_
+A397187	lambdan	1	n -> (ZV(n+1).^(F000040(n)).-(ZV(n).^(F000040(n))).-(1))./(F000040(n))	""		a(n)=((n+1)^prime(n)-n^prime(n)-1)/prime(n)	_	_	_
+A397321	lambdan	0	n -> RU(0, n/4, k -> new Q(FA(2*n-4*k).*(S2(k, n - 4*k)), FA(k)))./(n + 1).num()	""		a(n) = sum(k=0, n\4, (2*n-4*k)!*stirling(k, n-4*k, 2)/k!)/(n+1)	_	_	_
+A397322	lambdan	0	n -> RU(0, n/4, k -> new Q(FA(2*n-4*k).*(SA(k, n - 4*k)), FA(k)))./(n + 1).num()	""		a(n) = sum(k=0, n\4, (2*n-4*k)!*abs(stirling(k, n-4*k, 1))/k!)/(n+1)	_	_	_
+A397359	multraf	0	(self, n) -> self.s(0).-(self.s(1))	""	new A001883(), new A075851()	a(n)=J001883(n)-J075851(n)	_	_	_
+A397360	multraf	0	(self, n) -> self.s(0).-(self.s(1))	""	new A075851(), new A075852()	a(n)=J075851(n)-J075852(n)	_	_	_

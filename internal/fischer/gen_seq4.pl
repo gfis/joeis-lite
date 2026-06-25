@@ -343,6 +343,8 @@ while (<>) { # read inputfile
             $parm =~ s{REV\(}          {Functions.REVERSE.z\(}g;
             $parm =~ s{RFAC\(}         {Functions.RISING_FACTORIAL.z\(}g;
             $parm =~ s{RP\(}           {Rationals.SINGLETON.sopf\(}g;
+            $parm =~ s{ROL2\(}         {Functions.ROTATE_LEFT.z\(2\, }g;
+            $parm =~ s{ROR2\(}         {Functions.ROTATE_RIGHT.z\(2\, }g;
             $parm =~ s{RQ\(}           {Rationals.SINGLETON.product\(}g;
             $parm =~ s{RQD\(}          {Rationals.SINGLETON.productdiv\(}g;
             $parm =~ s{RR\(}           {Functions.REVERSE.z\(}g;
