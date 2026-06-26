@@ -1,4 +1,4 @@
----- 2026-06-25 18:49:29
+---- 2026-06-26 08:54:21
 A139706	lambdin	1	n -> { String s = Long.toString(n, 2); final int l = s.length(); s = s + s; int i = l; while (s.charAt(--i) == '0'); return new Z(s.substring(i, i + l), 2) ; }	1	Take n in binary. Rotate the binary digits to the left until a 1 once again appears as the leftmost digit. Convert back into decimal for a(n).
 A139707	lambdin	1	n -> { String s = Long.toString(n, 2); final int l = s.length(); s = s + s; int i = l; while (s.charAt(--i) == '0'); return new Z(s.substring(i, i + l), 10) ; }	1	Take n in binary. Rotate the binary digits to the left until a 1 once again appears as the leftmost digit. a(n) is result written in binary.
 A139708	lambdin	1	n -> { String s = Long.toString(n, 2); final int l = s.length(); s = s + s; final int i = s.indexOf('1', 1); return new Z(s.substring(i, i + l), 2) ; }	1	Take n in binary. Rotate the binary digits to the right until a 1 once again appears as the leftmost digit. Convert back into decimal for a(n).
@@ -24,3 +24,12 @@ A385700	filnum	1	0	k -> Functions.ROTATE_LEFT.z(10, k).mod(4) == 0	Numbers such 
 A385701	filnum	1	0	k -> Functions.ROTATE_LEFT.z(10, k).mod(6) == 0	Numbers such that when the leftmost digit is moved to the units place the result is divisible by 6.
 A385702	filnum	1	0	k -> Functions.ROTATE_LEFT.z(10, k).mod(7) == 0	Numbers such that when the leftmost digit is moved to the units place the result is divisible by 7.
 A385703	filnum	1	0	k -> Functions.ROTATE_LEFT.z(10, k).mod(8) == 0	Numbers such that when the leftmost digit is moved to the units place the result is divisible by 8.
+A387726	lambdan	1	n -> D057521(F000203(n))	nonn	1..10000	nyi	_Antti Karttunen_
+A387727	filnum	1	1	k -> D387726(k).compareTo(ZV(k)) >= 0	Numbers k such that the powerful part of the sum of divisors of k (A387726) is greater than or equal to k.	nonn	1..10000	nyi	_Antti Karttunen_
+A387728	filnum	1	1	k -> D387726(k).compareTo(ZV(k)) <  0	Numbers k such that the powerful part of the sum of divisors of k (A387726) is less than k.	nonn	1..10000	nyi	_Antti Karttunen_
+A396317	holos	0	[0,1,-9,36,-84,126,-126,84,-36,9,-1]	0,0,0,0,246,4150,31500,155820,586040,1818936,4895100,11797500,26037990	0	0
+A397113	holos	0	[0,1,-1,-2,2,1,-1]	0,-1,1,-2,4,-1	0	0
+A397115	holos	1	[0,-1,-14,12,4,-1]	1,8,45,262	0	0
+A397116	holos	1	[0,-1,-14,12,4,-1]	2,12,72,404	0	0
+A397117	holos	1	[0,-1,-14,12,4,-1]	1,8,50,283	0	0
+recur A273050	filnum	0	0	k -> ROL2(k).xor(ROR2(k)).equals(ZV(k))	Numbers k such that (rol(k) XOR ror(k)) = k,
