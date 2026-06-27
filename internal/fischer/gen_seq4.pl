@@ -273,6 +273,7 @@ while (<>) { # read inputfile
             $parm =~ s{qBI\(}          {Binomial.gaussianBinomial\(}g;
             $parm =~ s{BI\(}           {Binomial.binomial\(}g;
             $parm =~ s{BIN\(}          {Functions.BINOMIAL.z\(}g;
+            $parm =~ s{BOM\(}          {Functions.BIG_OMEGA.l\(}g;
             $parm =~ s{BS\(}           {BernoulliSequence}g;
             $parm =~ s{CAT\(}          {Functions.CATALAN.z\(}g;
             #               (1      1  2      2 )
@@ -353,6 +354,7 @@ while (<>) { # read inputfile
             $parm =~ s{SDA\(}          {Functions.DIGIT_SORT_ASCENDING.z\(}g;
             $parm =~ s{SDD\(}          {Functions.DIGIT_SORT_DESCENDING.z\(}g;
             $parm =~ s{SEM\(}          {Predicates.SEMIPRIME.is\(}g;
+            $parm =~ s{SF\(}           {Predicates.SQUARE_FREE.is\(}g;
 #           $parm =~ s{Sigma\(([^\)]+)\)}{Jaguar.factor($1).sigma()}g;
             $parm =~ s{\bSIGMA\(}      {Functions.SIGMA1.z(}g;
             $parm =~ s{SOPFR\(}        {Functions.SOPFR.z\(}g;
