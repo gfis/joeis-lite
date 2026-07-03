@@ -276,6 +276,7 @@ while (<>) { # read inputfile
             $parm =~ s{BOM\(}          {Functions.BIG_OMEGA.l\(}g;
             $parm =~ s{BS\(}           {BernoulliSequence}g;
             $parm =~ s{CAT\(}          {Functions.CATALAN.z\(}g;
+            $parm =~ s{CBRT\(}         {Functions.CBRT.z\(}g;
             #               (1      1  2      2 )
             $parm =~ s{CEIL\(([^\,]+)\,([^\)]+)\)}  {\($1\%$2 == 0 ? $1\/$2 \: $1\/$2 \+ 1\)}g;
             $parm =~ s{CESQ\(}         {Functions.CEIL_SQRT.z\(}g;
@@ -284,7 +285,8 @@ while (<>) { # read inputfile
             $parm =~ s{CNT\(}          {Integers.SINGLETON.count\(}g;
             $parm =~ s{CONC\(}         {ZUtils.concatenate\(}g;
             $parm =~ s{CORE\(}         {Functions.CORE.z\(}g;
-            $parm =~ s{DL\(}           {Functions.DIGIT_LENGTH.l\(}g;
+            $parm =~ s{DIGIT\(}        {ZUtils.iterate\(}g;
+            $parm =~ s{DL\(}           {Functions.DIGIT_LENGTH.i\(}g;
             $parm =~ s{\bF\.}          {Functions.}g;
             $parm =~ s{EUL\(}          {S173018\(}g;
             $parm =~ s{EUL1\(}         {Functions.EULERIAN1.z\(}g;

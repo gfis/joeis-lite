@@ -419,6 +419,11 @@ manpass: # move passed from ./manual to ./manack
 	grep -P  "\AA\d+\t([5-9]|\d\d+)\tFATO\t" man.fail.log | cut -b1-7 >> $@.grep.tmp
 	cat $@.grep.tmp | xargs -innn mv -v manual/nnn.java manack
 #--
+as: # build a sorted, uniq file with today's (passing) A-numbers
+	grep -vP "^\-\-\-\-" aman/$(TODAY).ack.man | sort | uniq -w7 > $@.tmp
+	echo ---- `date +%Y-%m-%d%t%T` > aman/$(TODAY).ack.man
+	cat      $@.tmp               >> aman/$(TODAY).ack.man
+	wc -l    $@.tmp
 today: # build a file with today's (passing) A-numbers
 	grep -P "^A\d+" aman/$(TODAY).ack.man | cut -b1-7 | sed -e "s/\r//" -e "s/^/\^/" | sort \
 	>        $@.txt
