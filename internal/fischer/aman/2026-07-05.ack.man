@@ -1,0 +1,113 @@
+---- 2026-07-05 11:45:07
+A094934	filter	0	new A030302()	(k, v) -> PP(k)
+A096607	filter	1	new A096605()	(k, v) -> (k&1) == 0	a(n) = J096605(2*n).
+A111123	sintrif	0	(term, n) -> { final int[] dc = ZUtils.digitCounts(term); return ZV(dc[2]); }	""	new A054349()	Number of 2s in n-th "Kolakoski" string defined in A054349.
+A111124	sintrif	0	(term, n) -> { final int[] dc = ZUtils.digitCounts(term); return ZV(dc[1]); }	""	new A054349()	Number of 1s in n-th "Kolakoski" string defined in A054349.
+A123273	multia	0	"1"	(self, n) -> CNT(0, n - 1, k -> GCD(self.a(k), self.a(k/2)).isOne())	a(0) = 1; a(n) = the number of earlier terms, a(k), where gcd(a(k), a(floor(k/2))) = 1.
+A125890	lambdan	1	n -> Zeta.zeta(3).^(n).floor()	Floor(Zeta(3)^n).	nonn	1..56	nyi	_Artur Jasinski_
+A125891	lambdan	1	n -> Zeta.zeta(5).^(n).floor()	Floor(Zeta(5)^n).	nonn	1..89	nyi	_Artur Jasinski_
+A126848	lambdan	1	n -> CV(n).^(new Q(5, 11)).*(2).floor(256)		a(n) = floor(2*n^(5/11)).
+A134992	lambdan	2	n -> CV(3*n)./(CV(n).log().*(CR.TWO)).round()	a(n) = round(3*n/2*log(n)).
+A134993	lambdan	2	n -> CV(3*n)./(CV(n + 1).log().*(CR.TWO)).round()	Round(3n/2log(n+1)).
+A134994	lambdan	2	n -> CV(3*n)./(CV(n).log().*(CR.TWO)).floor()	a(n) = floor(3n/2log(n)).
+A134995	lambdan	2	n -> CV(3*n)./(CV(n + 1).log().*(CR.TWO)).floor()	a(n) = floor(3n/2log(n+1)).
+A146562	filtpos	1	1	new A064353()	(k, v) -> ((k&1) == 1 && !v.equals(ZV(1)) || (k&1) == 0 && !v.equals(ZV(3)))	A064353(n) is generally 1 if n is odd and 3 if n is even.
+A176146	sintrif	1	(term, n) -> term./(10)	""	new A001358()	a(n) = n-th-semiprime without last digit.
+A179527	charfunc	1	new A083207()	Characteristic function of Zumkeller numbers (J083207).
+A220658	tablamb	0	0	n -> new Integer[]{ 0, D084558(n).intValueExact() }	(n, k) -> ZV(n)	Irregular table, where the n-th row consists of D084558(n)+1 copies of n.
+A225593	lambdan	1	n -> CV(n)./(CR.E).round()	The integer closest to n/e.
+A226033	lambdan	1	n -> CV(n)./(CV(new Q(1, 2*n)).+(1).exp()).round()	Round(n * exp(-1 - 1/(2n))), an approximation to the number of daughters to wait before picking in the sultan''s dowry problem (Better that A225593).
+A229790	sintrif	0	(term, n) -> CV(term).pow(new Q(1, 3)).round()	""	new A003215()
+A253903	charfunc	0	new A000330()	(square pyramidal numbers)
+A262872	polya	0	"[1],[1,-1],D010052"	"x,B,x,C,*,p1,/"	new J010057()
+A262874	polya	0	"[1],[1,-1]"	"x,B,x,C,*,x,D,*,p1,/"	new D010052(), new J010057(), new J374016()
+A268240	sintrif	0	(term, n) -> term.and(ZV(1))	""	new A046816()	Pascal''s tetrahedron of trinomial coefficients (J046816) read mod 2.
+A269268	parmof3	1	A064353	1	5	Kolakoski-(1,5) sequence: a(n) is length of n-th run.   nonn,easy       1..10000        nyi     _Vincenzo Librandi_
+A269348	parmof3	1	A064353	1	6	Kolakoski-(1,6) sequence: a(n) is length of n-th run.   nonn,easy       1..10000        nyi     _Vincenzo Librandi_
+A269349	parmof3	1	A064353	1	7	Kolakoski-(1,7) sequence: a(n) is length of n-th run.   nonn,easy       1..10000        nyi     _Vincenzo Librandi_
+A269350	parmof3	1	A064353	1	8	Kolakoski-(1,8) sequence: a(n) is length of n-th run.   nonn,easy       1..10000        nyi     _Vincenzo Librandi_
+A269351	parmof3	1	A064353	1	9	Kolakoski-(1,9) sequence: a(n) is length of n-th run.   nonn,easy       1..10000        nyi     _Vincenzo Librandi_
+A269352	parmof3	1	A064353	1	10	Kolakoski-(1,10) sequence: a(n) is length of n-th run.  nonn,easy       1..74   nyi     _Vincenzo Librandi_
+A294448	sintrif	1	(term, n) -> term.negate()	""	new A088568()
+A296084	lambdin	1	n -> IV[SIGMA(n).-(1).mod(TAUl(n) - 1) == 0L]	0	a(1) = 0 and for n > 1, a(n) = 1 if tau(n)-1 divides sigma(n)-1, 0 otherwise. Here tau = F000005, sigma = F000203.
+A304569	trilambn	1	1	1	(n, k) -> IV[FSIT(k, 0L, (x, p, e) -> x + (ZV(n).mod(p).isZero() ? 0 : 1)) == 0L]	Triangle read by rows: T(n,k) = 1 if k | n^e with e >= 0, otherwise T(n,k) = 0 (1 <= k <= n).
+A304571	trilambn	1	1	1	(n, k) -> IV[GCDi(n, k) > 1 && n%k != 0]	Triangle read by rows: T(n,k) = 1 if gcd(k,n) > 1 and n mod k != 0.
+A307064	polya	0	"[1]"	"1,1,x,B,/,-"	new A006882()
+A307240	polyxa	0	"[1]"	"x,x,B,/"	1	0	new A008836()---- 2026-07-04 09:58:02
+A308806	polya	0	"[1]"	"1,x,B,x,C,-,/"	new CharacteristicFunction(0, new A014633()), new CharacteristicFunction(0, new A014632())
+A308849	polyxa	0	"[1]"	"1,x,B,/"	0	1	egf(new A001405())
+A308850	polyxa	0	"[1]"	"1,x,B,/"	0	1	egf(new A001700())
+A316832	sintrif	0	(term, n) -> (term.equals(2) || term.equals(3)) ? ZV(0) : term	""	new A316831()	, replace 2's and 3's with 0s.
+A326072	multraf	1	(self, n) -> IV[self.s(0).signum() != self.s(1).signum()]	""	new A325977(), new A325978()	a(n) = 0 if sign(J325977(n)) = sign(J325978(n)), otherwise a(n) = 1.
+A327974	multraf	1	(self, n) -> self.s(0).xor(self.s(1))	""	new A051023(), PREVIOUS	a(n) = J051023(n) XOR J051023(n-1), where J051023 gives the middle column of rule-30 1-D cellular automaton, when started from a lone 1 cell.
+A329098	polya	0	"[1]"	"1,1,x,B,+,/"	new CharacteristicFunction(0, new A246655())	G.f.: 1 / (1 + Sum_{k>=1} x^J246655(k)).
+A330548	sintrif	0	(term, n) -> !term.isZero() ? ZV(1) : term	""	new A036262()	(J036262) and replace all nonzero entries with 1''s.
+A330549	sintrif	0	(term, n) -> !term.isZero() ? ZV(0) : ZV(1)	""	new A036262()	(J036262) and replace all nonzero entries with 0''s and all 0''s with 1''s.
+A331168	lambdan	1	n -> ZV((D122111(n).compareTo(n) <= 0) ? 1 : 0)	, then a(n) = 1, otherwise a(n) = 0.
+A331169	lambdan	1	n -> IV[D122111(n).compareTo(n) < 0]	, then a(n) = 1, otherwise a(n) = 0.
+A331281	lambdan	1	n -> ZV((D061395(n).compareTo(F001222(n)) <= 0) ? 1 : 0)	, then a(n) = 1, otherwise a(n) = 0.
+A331282	lambdan	1	n -> IV[D061395(n).compareTo(F001222(n)) < 0]	, then a(n) = 1, otherwise a(n) = 0.
+A342892	lambdin	0	n -> { final Long bit = Long.lowestOneBit(n) << 2; return IV[((n & bit) ^ bit) != 0L]; }	1	a(n) is the complement of the bit two places to the left of the least significant "1" in the binary expansion of n.
+A343429	polya	0	"[1]"	"1,x,B,/"	new A028296()
+A344748	filnum	0	0	m -> DIGIT(m, 0L, (x, d, e) -> x + (ZV(m).*(e + 1).mod(10) == d ? 0 : 1)) == 0L	Numbers m with decimal expansion (d_k, ..., d_1) such that d_i = m * i mod 10 for i = 1..k.
+A344749	filnum	0	0	m -> DIGIT(m, 0L, (x, d, e) -> x + (ZV(m).^(e + 1).mod(10) == d ? 0 : 1)) == 0L	Numbers m with decimal expansion (d_k, ..., d_1) such that d_i = m ^ i mod 10 for i = 1..k.
+A344822	filnum	0	0	m -> { final int len = Functions.DIGIT_LENGTH.i(m); return DIGIT(m, 0L, (x, d, e) -> x + (ZV(m).*(len - e).mod(10) == d ? 0 : 1)) == 0L; }	Numbers m with decimal expansion (d_1, ..., d_k) such that d_i = m * i mod 10 for i = 1..k.
+A344823	filnum	0	0	m -> { final int len = Functions.DIGIT_LENGTH.i(m); return DIGIT(m, 0L, (x, d, e) -> x + (ZV(m).^(len - e).mod(10) == d ? 0 : 1)) == 0L; }	Numbers m with decimal expansion (d_1, ..., d_k) such that d_i = m ^ i mod 10 for i = 1..k.
+A344885	sintrif	1	(term, n) -> term.equals(E344878(n)) ? ZV(1) : ZV(0)	""	new A011772()	a(n) = 1 if J011772(n) is equal to E344878(n), otherwise 0; characteristic function of A344979.
+A345950	lambdin	1	n -> { final Z dn = D002034(n); return IV[TAU(n).-(2).equals(CND(n, d -> d != 1 && Long.valueOf(d) != n && D002034(d).compareTo(dn) < 0))]; }	1	a(n) = 1 if for all proper divisors d of n, D002034(d) < D002034(n), otherwise 0.
+A349167	lambdan	1	n -> IV[GCD(SIGMA(n), D003961(n)).isOne()]	a(n) = 1 if sigma(n) and D003961(n) are relatively prime, otherwise 0.
+A349221	trilambn	1	1	1	(n, k) -> IV[BI(n - 1, k - 1).mod(k) == 0]	Triangle read by rows: T(n, k) = 1 if k divides binomial(n-1, k-1), T(n, k) = 0 otherwise (n >= 1, 1 <= k <= n).
+A349297	trilambn	1	1	1	(n, k) -> IV[(n&1) == 0 && (k&1) == 0 || n%3 == 0 && k%3 == 0]	Triangle T(n,k) = 1 if both n and k are even or if n and k are divisible by 3.
+A353370	lambdan	1	n -> IV[FSIT(n, 0L, (x, p, e) -> x + (PI(p).testBit(0) ? -e : e)) == 0L]	a(n) = 1 if the prime factorization of n contains as many even as odd prime indices, when counted with multiplicity, otherwise 0.
+A353482	lambdan	1	n -> IV[n%4 == 1 && Predicates.SEMIPRIME.is(n) && Predicates.SQUARE_FREE.is(n)]	a(n) = 1 if n is a squarefree semiprime of the form 4k+1, otherwise 0.
+A353491	lambdin	1	n -> IV[D032742(n).mod(4) == 1]	1	a(n) = 1 if the largest proper divisor of n is of the form 4k+1, otherwise 0.
+A353492	lambdin	1	n -> IV[D032742(n).mod(4) == 3]	0	a(n) = 1 if the largest proper divisor of n is of the form 4k+3, otherwise 0.
+A353513	lambdan	0	n -> IV[E328572(n).mod(4) == 3]	is of the form 4m+3, and 0 otherwise.
+A353514	lambdan	0	n -> IV[E328572(2*n).mod(4) == 3]	is of the form 4m+3, and 0 otherwise.
+A353528	lambdan	1	n -> IV[D053669(n)  .mod(4) == 1]	is of the form 4m+1, otherwise a(n) = 0.
+A353529	lambdan	1	n -> IV[D053669(n)  .mod(4) == 3]	is of the form 4m+3, otherwise a(n) = 0.
+A354028	lambdan	1	n -> IV[Predicates.PRIME_POWER.is(n) && n%4 == 3]	a(n) = 1 if n is a prime power of the form 4m+3, otherwise 0.
+A354030	lambdan	1	n -> IV[n == 1 || Predicates.PRIME_POWER.is(n) && n%4 == 1]	a(n) = 1 if n is either 1 or a prime power of the form 4m+1, otherwise 0.
+A359605	sintrif	1	(term, n) -> IV[term.equals(ZV(1))]	""	new A355690()	is positive (+1), otherwise 0.
+A359606	sintrif	1	(term, n) -> IV[term.equals(ZV(-1))]	""	new A355690()	is negative (-1), otherwise 0.
+A360130	lambdan	1	n -> IV[Predicates.TRIANGULAR.is(D003961(n))]	is a triangular number, otherwise 0, where D003961 is fully multiplicative with a(p) = nextprime(p).
+A361113	sintrif	1	(term, n) -> IV[!term.testBit(0)]	""	new A361102()	is even, otherwise 0.
+A362927	sintrif	1	(term, n) -> term.-(2)	""	new A064353()	Subtract 2 from the terms of the Kolakoski-(1,3) sequence J064353.      sign    1..105  nyi     _N. J. A. Sloane_
+A362928	sintrif	1	(term, n) -> term.-(2).negate()	""	new A064353()	Subtract 2 from the terms of the Kolakoski-(1,3) sequence J064353 and negate the result.        sign    1..105  nyi     _N. J. A. Sloane_
+A363714	filtpos	1	1	new A363711()	v -> v.compareTo(1) > 0	Numbers k such that J363711(k) > 1.
+A366289	sintrif	1	(term, n) -> IV[term.isZero()]	""	new A365711()	is zero, 0 otherwise.
+A369070	lambdan	1	n -> IV[FSIT(n, 0L, (x, p, e) -> x + (ZV(e).mod(p).isZero() ? 1 : 0)) > 0L]	a(n) = 1 if there is at least one prime power p^e in the prime factorization of n such that p|e, otherwise 0.
+A369655	lambdan	0	n -> { final Z a2 = ARD(n); return IV[a2.testBit(0) && ARD(a2).testBit(0)]; }	a(n) = 1 if n'' is odd and also n'''' is odd, otherwise 0, where n'' stands for the arithmetic derivative, F003415.
+A372456	lambdan	1	n -> IV[CV(n).tan().abs().compareTo(CR.ONE) > 0]	a(n) = 1 if abs(tan(n)) > 1, 0 otherwise.
+A373993	lambdan	1	n -> IV[ZV(n - 1).mod(TAU(n)).isZero()]	a(n) = 1 if the number of divisors of n divides n-1, otherwise 0.
+A374036	lambdan	0	n -> IV[!E328845(n).testBit(0) && ! E328846(n).testBit(0)]	a(n) = 1 if E328845(n) and E328846(n) are both even, otherwise 0, where E328845 and E328846 are the first and second Fibonacci-based variants of the arithmetic derivative.
+A374045	lambdan	0	n -> IV[!E328845(n).testBit(0)]	a(n) = 1 if E328845(n) is even, otherwise 0, where E328845 is the first Fibonacci based variant of arithmetic derivative.
+A374048	lambdan	0	n -> IV[!E328846(n).testBit(0)]	a(n) = 1 if E328846(n) is even, otherwise 0, where E328846 is the second Fibonacci based variant of arithmetic derivative.
+A374117	lambdan	0	n -> IV[E328768(n).mod(3) == 0 && E328845(n).mod(3) == 0]	a(n) = 1 if E328768(n) and E328845(n) are both multiples of 3, otherwise 0, where E328768 is the first primorial based variant and E328845 is the first Fibonacci-based variant of the arithmetic derivative, respectively.
+A378449	charfunc	1	new A083209()	: a(n) = 1 if there is exactly one subset of the divisors of n such that the complement has the same sum, otherwise 0.
+A378661	charfunc	0	new A083211()	a(n) = 1 if n is abundant and is not Zumkeller, otherwise 0.
+A379474	lambdan	1	n -> ZV(FSIT(n, 0L, (x, p, e) -> { final long pm8 = p.mod(8); return x + ((pm8 == 1 && e%4 == 1 || pm8 == 5 && e%4 == 3) ? 1 :  0); }))
+A379475	lambdan	1	n -> IV[E372565(n).compareTo(1) > 0]	a(n) = 1 if E372565(n) > 1, otherwise 0, where E372565(n) is the greatest common divisor of n, sigma(n) and D003961(n).
+A379728	diffs	1	new A014577(), true	Absolute value of first differences of paperfolding sequence J014577.
+A379952	lambdan	0	n -> IV[(n&1) == 1 || Predicates.SQUARE.is(n)]	a(n) = 1 if n is an odd number or a perfect square, otherwise 0.
+A380536	lambdan	1	n -> IV[ZV(n).mod(E351566(n)).isZero()]	a(n) = 1 if n is a multiple of E351566(n), otherwise 0, where E351566 is the radix prime of the second least significant nonzero digit in the primorial base expansion of n, or 1 if there is no such digit.
+A385055	lambdan	1	n -> IV[n == 1 || E076479(n).equals(MU(D067029(n)))]
+A395053	lambdan	1	n -> IV[GPF(F276085(n)).compareTo(GPF(n)) > 0]	a(n) = 1 if the greatest prime dividing F276085(n) is larger than the greatest prime dividing n, otherwise 0, where F276085 is fully additive with a(p) = p#/p. a(1) = 0 by convention.
+A397326	lambdan	0	n -> SU(0, n, j -> Z_1(j).*(BI(n, j)).*(D001006(2*n - j).^(2)))	a(n) = Sum_{j=0..n} (-1)^j*binomial(n, j) * D001006(2*n - j)^2.	nonn,new	0..17	nyi	_Peter Luschny_
+A397472	holos	0	[[0],[-4096,20480,-40960,40960,-20480,4096],[16,-104,280,-400,320,-128],[0,0,0,0,0,1]]	1,16	0	0
+A397496	trilambn	1	1	1	(n, k) -> ZUtils.concatenate(n, n + 1 - k, i -> ZV(i))	Triangle read by rows: T(n, k) is the concatenation of numbers from n down to k, n >= k >= 1.	nonn,base,tabl,new	1..10011	nyi	_Michael S. Branicky_
+A397588	poly	1	"[0,1]"	"x,A,^2,<1,dif,+"
+A397629	filnum	1	1	k -> { final Z fl = CV(k).log()./(CR.THREE.log()).floor(); return !fl.isZero() && ZV(k).mod(fl).isZero(); }	Numbers m such that m mod floor(log_3(m)) = 0.
+---- 2026-07-05 12:37:09
+A141053	lambdan	0	n -> Functions.LEADING_DIGIT.z(FI(5*n + 3))	Most-significant decimal digit of Fibonacci(5n+3).
+A231560	lambdan	2	n -> ComputableReals.SINGLETON.sum(2, n, i -> CV(i).log().*(i).inverse()).floor()	Floor(sum_{i=2..n} 1/(i*log(i))).
+A245473	lambdan	1	n -> CV(2).pow(CV(n).log()).round()	Nearest integer to 2^log(n).
+A260816	lambdan	0	n -> D000195(F000108(n))	floor(log(Catalan(n))).
+A261585	sintrif	0	(term, n) -> Functions.DIGIT_LENGTH.z(60, term)	""	new A000045()	Number of sexagesimal digits of Fibonacci numbers in base-60 representation.
+A355703	lambdan	1	n -> BI(n, CV(n).log().floor().intValueExact())	binomial(n, floor(log(n))).
+A225626	filter	0	new A000040()	p -> PP(D000195(p).+(p.^(2)))	Primes p such that floor(log(p)) + p^2 is prime.
+A101429	lambdan	0	n -> Functions.DIGIT_SUM.z(Z.TWO.pow(Z.TEN.pow(n)))	Sum of digits of (2^(10^n)).
+---- 2026-07-05 12:50:54
+A134817	multia	1	"1"	(self, n) -> self.a(n - 1).*(Functions.DIGIT_LENGTH.z(self.a(n - 1))).+(1)	n -> a(n-1)*floor(log(a(n-1)) + 1) + 1.
+A235044	partsun	0	new CharacteristicFunction(new A091214()).prepend(0)	Partial sums of the characteristic function of J091214.
+A263023	lambdan	1	n -> { final CR lpm = CV(PM(n)).log(); return lpm./(CV(PM(n + 1)).log().-(lpm)).floor(); }	floor(log(prime(n))/(log(prime(n+1)) - log(prime(n)))).

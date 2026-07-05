@@ -1,0 +1,150 @@
+---- 2026-07-02 22:22:35
+A063850	parmof2	0	A112512	1
+A106479	polyxa	0	"[1]"	"1,x,B,x,/,/"	1	0	new A000010()
+A106480	polyxa	0	"[1]"	"1,x,B,x,/,x,B,-,/"	1	0	new A000010()
+A109925	polya	1	"[1]"	"x,B,x,C,*"	new A010051(), new A209229()
+A112513	parmof2	1	A112512	3
+A112514	parmof2	1	A112512	4
+A112515	parmof2	1	A112512	5
+A113871	convprod	0	-1	new A001044()
+A114039	convprod	0	-1	new A055555()
+A119384	lambdan	1	n -> Functions.TENS_COMPLEMENT.z(FA(n))	Tens complement of the factorials.
+A121233	filnum	0	1	k -> Predicates.PALINDROME.is(k) && Predicates.SQUARE.is(Functions.TENS_COMPLEMENT.z(k))	Palindromes whose tens complements are squares.
+A121304	polya	2	"[1]"	"x,B,1,x,B,-,^2,/"	new A010051(), new A209229()
+A121993	filnum	1	1	k -> Functions.LOOK_AND_SAY.z(k).compareTo(k) < 0	Numbers k that yield a smaller number a(k) under the "Look and Say" function J045918.	easy,nonn,base	1..10000	_Sergio Pimentel_
+A127175	filter	1	new A000040()	p -> PP(A007651.lookAndSayMethodB(p))	Primes whose "Look And Say" descriptions from left to right (in the sense of method B, i.e., digit-indication followed by frequency) are also primes.	base,nonn	1..50	_Lekraj Beedassy_
+A127176	filter	1	new A000040()	p -> PP(Functions.LOOK_AND_SAY.z(p)) && PP(A007651.lookAndSayMethodB(p))	Primes with prime "Look And Say" descriptions from left to right (irrespective of method A or method B).	base,nonn	1..46	_Lekraj Beedassy_
+A127177	filter	1	new A000040()	p -> PP(Functions.LOOK_AND_SAY.z(REV(p)))	Primes whose "Look And Say" descriptions from right to left (in the sense of method A, i.e., frequency followed by digit-indication) are also primes.	nonn,base	1..47	_Lekraj Beedassy_
+A127178	filter	1	new A000040()	p -> PP(A007651.lookAndSayMethodB(REV(p)))	Primes whose "Look And Say" descriptions from right to left (in the sense of method B, i.e., digit-indication followed by frequency) are also primes.	nonn,base	1..51	_Lekraj Beedassy_
+A127179	filter	1	new A000040()	p -> PP(Functions.LOOK_AND_SAY.z(REV(p))) && PP(A007651.lookAndSayMethodB(REV(p)))		Primes with prime "Look And Say" descriptions from right to left (irrespective of method A or method B).	nonn,base	1..40	_Lekraj Beedassy_
+A130233	polya	0	"[1],[1,-1]"	"x,B,p1,/,1,-"	new A010056()
+A130235	partsun	0	new A130233()	a(n) = Sum_{k=0..n} A130233(k)
+A136633	polyxa	0	"[1]"	"x,x,B,x,/,/,rev,x,/"	1	0	new A000142()
+A136654	polyxa	0	"[1]"	"x,x,B,/,rev,x,/"	1	0	new A006125()
+A145737	lambdan	1	n -> new Q(FA(n).*(3*n).*(n + 1), 2*(2*n + 1)).den()	Denominator(n!*3*n*(n+1)/(2*(2*n+1)))	Denominator(n!*(Sum_{k=1..n} k^3)/(Sum_{k=1..n} k^2))
+A157136	polyxa	0	"[1]"	"x,x,B,/,rev,x,/"	1	0	new A010052()
+A158081	multia	1	"333"	(self, n) -> Functions.LOOK_AND_SAY.z(self.a(n - 1))	Look and Say sequence: describe the previous term! (method A - initial term is 333).	nonn	1..23	_Danny Rorabaugh_
+A163767	lambdan	1	n -> FSIT(n, ZV(1), (x, p, e) -> x.*(BI(n + e - 1, e)))	return prod(comb(n+e-1, e) for e in factorint(n).values())
+A175362	polya	0	"[1]"	"x,B,1,-,2,*,1,+,^2"	new A010057()
+A175365	polya	0	"[1]"	"x,B,1,-,2,*,1,+,^3"	new A010057()
+A175372	polya	0	"[1]"	"x,B,1,-,2,*,1,+,^2"	new A374016()	G.f.: (1 + 2*Sum_{j>=1} x^(j^4))^2.
+A175375	polya	0	"[1]"	"x,B,1,-,2,*,1,+,^3"	new A374016()	G.f.: ( 1 + 2*Sum_{j>0} x^(j^4) )^3.
+A175376	polya	0	"[1],[1,-1]"	"x,B,1,-,2,*,1,+,^3,p1,/"	new A374016()	G.f.: (1 + 2*Sum_{j>0} x^(j^4))^3/(1-x). - _Robert Israel_, May 01 2019
+A178956	polyxa	0	"[1]"	"1,x,B,/"	1	0	egf(new A000108())
+A178957	polyxa	0	"[1]"	"1,x,B,/"	1	4	egf(new A000108())
+A183612	polyxa	1	"[1]"	"x,B,x,/,log,n,*"	1	0	new A001044()
+A185694	polya	0	"[1]"	"1,1,x,B,+,/"	new A008683()
+A190790	polya	0	"[1]"	"A,<1,B,1,+"	new A001227()
+A204541	filter	1	new A001358()	v -> SEM(Functions.LOOK_AND_SAY.z(v))	Semiprimes with semiprime "look and say" descriptions.	easy,nonn	1..55	_Robert G. Wilson v_
+A205802	polyxa	0	"[1]"	"1,x,B,-1,n,^,*,/"	0	1	egf(new A010052())
+A208834	multia	1	"373"	(self, n) -> Functions.LOOK_AND_SAY.z(self.a(n - 1))	Look and say sequence starting with 373.	nonn,easy,base	1..8	_Alonso del Arte_
+A211207	polyxa	0	"[1],[1/2]"	"x,x,B,2,/,>1,p1,+,<1,rev,/"	1	0	new A000142()
+A214900	convprod	0	3,1	new A010052(), new A374016()
+A217283	polya	0	"[1]"	"1,x,B,1,-,neg,/"	new A316341()
+A218001	polyxa	1	"[1]"	"x,x,B,-,rev"	1	0	new A010051()
+A219331	polya	1	"[1]"	"x,B,log,*n"	new A006456()
+A222012	polyxa	0	"[1],[1/2]"	"x,x,B,x,/,1,+,2,/,/,rev,x,/"	1	0	new A000142()
+A223027	polya	0	"[1]"	"x,B,1,-,4,*,^1/2"	new A010052()
+A224362	polya	0	"[1]"	"x,B,x,C,*"	new A010054(), new A010051()
+A224678	polya	1	"[1]"	"1,x,B,1,-,-,log,neg,*n"	new A010054()
+A247148	filter	1	new A000040()	p -> Functions.LOOK_AND_SAY.z(p).mod(p).isZero()	Primes p that divide LS(p), where LS is the "Look and Say" function (J045918).	nonn,more,hard,base	1..4	_G. L. Honaker, Jr._
+A260664	polya	0	"[1]"	"x,B,x,C,/"	new A133042(), new A000041()
+A269257	filter	1	new A000040()	p -> PP(p.+(16)) && PP(p.+(64)) && PP(p.+(256))
+A269258	filter	1	new A000040()	p -> PP(p.+(16)) && PP(p.+(64)) && PP(p.+(256)) && PP(p.+(1024))
+A269259	filter	1	new A000040()	p -> PP(p.+(16)) && PP(p.+(64)) && PP(p.+(256)) && PP(p.+(1024)) && PP(p.+(4096))
+A269859	filter	1	new A000040()	p -> PP(p.+(16)) && PP(p.+(64)) && PP(p.+(256)) && PP(p.+(1024)) && PP(p.+(4096)) && PP(p.+(16384))
+A270203	filter	1	new A000040()	p -> PP(p.+(16)) && PP(p.+(64)) && PP(p.+(256)) && PP(p.+(1024)) && PP(p.+(4096)) && PP(p.+(16384)) && PP(p.+(65536))
+A279480	filnum	1	1	k -> PP(k + 1) && PP(ZV(k).^(4).+(1))	Numbers k such that k+1 and k^4+1 are primes.	nonn	1..1000	nyi	_Ely Golden_
+A279765	filter	1	new A000040()	p -> PP(p.+(24)) && PP(p.+(48))	Primes p such that p+24 and p+48 are also primes.	nonn	1..10000	nyi	_Gerhard Kirchner_
+A280724	polya	0	"[1],[1,-1],[1,-2,1]"	"1,p1,/,x,B,p2,/,+,<1,1,+"	new A225569()
+A280917	polya	0	"[1],[1,-1]"	"1,p1,x,B,-,/"	new A010051()
+A281809	polya	1	"[0,1]"	"x,B,1,-,1,x,B,1,-,-,^2,/"	new A010057()
+A281810	polya	1	"[0,1]"	"x,B,1,-,1,x,B,1,-,-,^2,/"	new A010054()
+A281811	polya	1	"[0,1]"	"x,B,1,x,B,-,^2,/"	new A209229()
+A281812	polya	1	"[0,1]"	"x,B,1,x,B,-,^2,/"	new A008966()
+A281853	polya	1	"[0,1],[0,0,1]"	"x,B,p1,-,1,x,B,p1,-,-,^2,/"	new A010051()
+A282432	polya	1	"[0,1]"	"x,B,x,C,*,<1"	new A010051(), new A225569()
+A282947	polya	0	"[1]"	"x,B,x,C,*"	new A075802(), new CharacteristicFunction(0, new A006881())
+A283760	polya	1	"[0,1]"	"x,B,x,C,1,-,*"	new A010051(), new A010057()
+A283763	polya	0	"[1]"	"x,B,x,C,*"	new CharacteristicFunction(1, new A005100()), new CharacteristicFunction(0, new A005101())	G.f.: (Sum_{i>=1} x^J005100(i))*(Sum_{j>=1} x^J005101(j)).
+A283763	polya	0	"[1]"	"x,B,x,C,*"	new CharacteristicFunction(1, new A005100()), new CharacteristicFunction(0, new A005101())	G.f.: (Sum_{i>=1} x^J005100(i))*(Sum_{j>=1} x^J005101(j)).
+A283929	polya	0	"[1]"	"x,B,x,C,*"	new CharacteristicFunction(1, new A001097()), new CharacteristicFunction(0, new A006881())	G.f.: (Sum_{k>=1} x^J001097(k))*(Sum_{k>=1} x^J006881(k)).
+A286224	polya	0	"[1]"	"1,1,x,B,-,/"	new CharacteristicFunction(1, new A030230())
+A286225	polya	0	"[1]"	"1,1,x,B,-,/"	new CharacteristicFunction(1, new A030231())
+A286226	polya	0	"[1]"	"1,1,x,B,-,/"	new CharacteristicFunction(1, new A026424())
+A286227	polya	0	"[1]"	"1,1,x,B,-,/"	new CharacteristicFunction(1, new A028260())
+A286971	polya	0	"[1]"	"x,B,x,C,*"	new CharacteristicFunction(1, new A030229()), new CharacteristicFunction(0, new A030059())	G.f.: (Sum_{i>=1} x^J030229(i))*(Sum_{j>=1} x^J030059(j)).
+A287299	polya	0	"[1]"	"x,B,x,C,*"	new CharacteristicFunction(1, new A246547()), new CharacteristicFunction(0, new A000469())	G.f.: (Sum_{k>=1} x^J246547(k))*(Sum_{k>=1} x^J000469(k)).
+A293892	rgs1	1	new A083722()
+A296617	polyxa	0	"[1]"	"1,x,B,x,/,/"	1	0	new A000312()
+A296715	polyxa	0	"[1]"	"1,x,B,/"	1	0	new A000312()
+A299153	filnum	1	1	k -> PP(SIGMA(k)) && PP(SIGMA(ZV(k).^(3)))	Numbers k such that sigma(k) and sigma(k^3) are both primes.	nonn	1..10203	nyi	_Jaroslav Krizek_
+A299156	filtpos	1	0	new A000073()	(k, v) -> k > 0 && v.mod(k*(k + 1)) == 0	Numbers k such that k*(k+1) divides tribonacci(k) (J000073(k)).	nonn	1..10000	nyi	_Seiichi Manyama_
+A302199	polyxa	0	"[1]"	"1,x,B,/"	1	1	egf(new A000041())
+A302791	rgs1	1	new SingleTransformSequence(1, (term, n) -> D046523(term), "", new A302024())	D046523(J302024(n)).
+A304291	filnum	1	4	k -> !PP(k) && FSIT(k, 0L, (x, p, e) -> x + (ZV(k).mod(p).isZero() ? ((ZV(k - 1).mod(p.-(1)).isZero() && ZV(k + 1).mod(p.+(1)).isZero()) ? 0 : 1) : 0)) == 0L	Composite numbers k such that for all primes p dividing k, p-1 divides k-1 and p+1 divides k+1.	nonn	1..1000	nyi	_Paolo P. Lava_
+A304292	filter	1	new A000040()	p -> { final Z q = Functions.NEXT_PRIME.z(p); final Z r = Functions.NEXT_PRIME.z(q); return PP(p.+(q.^(2)).+(r.^(3))); }	Primes p such that p + q^2 + r^3 is also prime, where p, q and r are consecutive primes.	nonn,easy	1..1000	nyi	_Paolo P. Lava_
+A304294	filnum	1	1	k -> { final Z sk = SIGMA(k); return !SD(k, d -> sk.equals(SIGMA(k + d)) ? ZV(1) : ZV(0)).isZero(); }	Numbers k having at least one divisor d such that sigma(k) = sigma(k+d).	nonn,easy	1..50	nyi	_Paolo P. Lava_
+A304295	filnum	1	1	k -> { final Z sk = SIGMA(k); return !SD(k, d -> sk.equals(SIGMA(k - d)) ? ZV(1) : ZV(0)).isZero(); }	Numbers k having at least one divisor d such that sigma(k) = sigma(k-d).	nonn,easy	1..10000	nyi	_Paolo P. Lava_
+A304372	filter	1	new A000040()	p -> { final Z pmp = PM(p); return PP(pmp.+(p).+(1)) && PP(pmp.-(p).-(1)); }	Primes p such that prime(p) + p + 1 and prime(p) - p - 1 are both prime.
+A304390	filter	1	new A000040()	p -> PP(p.^(2).+(REV(p).^(2)))	Prime numbers p such that p squared + (p reversed) squared is also prime.
+A304431	multia	0	"0"	(self, n) -> MIN(self.a((n - 1)/2).*(2), self.a((n - 1)/3).*(3)).+(1)	a(n+1) = 1 + min( 2*a(floor(n/2)), 3*a(floor(n/3)) ), with a(0) = 0.
+A304447	polya	0	"[0]"	"x,B,x,C,*,2,n,*,pow"	new A000009(), new A000041()
+A304448	polya	0	"[0]"	"x,B,x,C,*,n,n,*,pow"	new A000009(), new A000041()
+A304484	lambdan	1	n -> D033270(n).*(D033270(2*n))
+A304873	polya	0	"[1]"	"x,B,x,C,/"	new LambdaSequence(0, n -> Functions.PARTITIONS.z(n).pow(4)), new A000041()
+A304877	polya	0	"[1]"	"x,B,x,C,/"	new A304990(), new A000009()
+A304878	polya	0	"[1]"	"x,B,x,C,/"	new LambdaSequence(0, n -> Functions.DISTINCT_PARTITIONS.z(n).pow(3)), new A000009()
+A304916	filtpos	0	0	new A000984()	v -> TAU(v).bitCount() == 1	Numbers k such that the number of divisors of the k-th central binomial coefficient is a power of 2.	nonn,hard,more	1..14	nyi	_Jon E. Schoenfield_
+A304987	polya	0	"[1]"	"x,B,x,C,/"	new A000041(), new A304990()	G.f.: Sum_{k>=0} F000041(k)   * x^k / Sum_{k>=0} F000009(k)^2*x^k
+A304988	polya	0	"[1]"	"x,B,x,C,/"	new A001255(), new A000009()
+A304989	polya	0	"[1]"	"x,B,x,C,/"	new A001255(), new A304990()	G.f.: Sum_{k>=0} F000041(k)^2 * x^k / Sum_{k>=0} F000009(k)^2 * x^k.
+A304992	polya	0	"[1]"	"x,B,x,C,/"	new A133042(), new A000009()	^3 / ^1
+A305049	polya	0	"[1]"	"1,1,x,B,-,/"	new A163767()
+A305350	polya	0	"[1]"	"x,B,x,C,/"	new A304990(), new A000041()	G.f.: Sum_{k>=0} F000009(k)^2 * x^k / Sum_{k>=0} F000041(k)  *x^k
+A308846	polyxa	0	"[1]"	"1,x,B,/"	0	1	egf(new A001006())
+A308940	polyxa	0	"[1]"	"1,1,x,B,-,/"	0	1	egf(new A000045())
+A319682	rgs1	1	new A300832()
+A320018	rgs1	1	new A320017()
+A329099	polya	0	"[1]"	"1,1,x,B,+,/"	new A008966()
+A334027	lambdan	1	n -> (n == 1) ? ZV(10) : Functions.LOOK_AND_SAY.z(new Z(FSIT(n, "", (x, p, e) -> x + Integer.toString(e))))	"Look and say" the concatenated exponents in the prime factorization of n.
+A337632	trilambn	1	1	0	(n, k) -> CNT(0, n - 1, m -> ZV(m).modPow(k, n).equals(m % n))	= sum(m=0, n-1, Mod(m, n)^k == Mod(m, n));
+A337633	trilambn	1	1	0	(n, k) -> CNT(0, n - 1, m -> ZV(m).pow(k).+(m).mod(n) == 0)	m^k + m == 0 (mod n),
+A352529	polya	0	"[1]"	"1,x,B,/"	new A374016()
+A352530	polya	0	"[1]"	"1,x,B,/"	new CharacteristicFunction(0, new A000584())
+A359747	filnum	1	1	k -> Predicates.DISTINCT_EXPONENTS.is(ZV(k + 1).*(k))	Numbers k such that k*(k+1) has in its canonical prime factorization mutually distinct exponents.
+A361979	polya	0	"[1]"	"1,x,B,/"	new CharacteristicFunction(0, new A000384())	Expansion of 1 / Sum_{k>=0} x^(k*(2*k - 1)).
+A362427	polya	0	"[1]"	"1,1,x,B,x,-,-,/"	new A075802()
+A363054	multia	1	"20"	(self, n) -> Functions.LOOK_AND_SAY.z(self.a(n - 1))	Look and say sequence: describe the previous term (method A, starting with 20).	nonn,base	1..21	_Julia Zimmerman_
+A363711	polya	1	"[1]"	"x,B,1,-,x,C,1,-,*"	new A010052(), new A374016()
+A363712	polya	1	"[1]"	"x,B,1,-,x,C,1,-,*"	new A010057(), new A374016()
+A363713	polya	1	"[1]"	"x,B,1,-,x,C,1,-,*"	new A010052(), new CharacteristicFunction(0, new A000584())
+A363738	polya	0	"[1],[1,1]"	"1,1,x,B,p1,-,-,/"	new A010057()
+A363748	polya	0	"[1],[1]"	"1,1,x,B,p1,-,-,/"	new A374016()
+A363749	polya	0	"[1],[1]"	"1,1,x,B,p1,-,-,/"	new CharacteristicFunction(0, new A000584())
+A363780	polya	0	"[1]"	"1,x,B,/,n,^"	new A010052()
+A363781	polya	0	"[1]"	"1,x,B,/,n,^"	new A010057()
+A369092	filnum	1	1	k -> Functions.LOOK_AND_SAY.z(k).toString().indexOf(k.toString()) >= 0	Numbers which are a substring of their own "Look and Say" description (cf. J045918).	nonn,base	1..171	_Scott R. Shannon_
+A369132	filnum	1	1	k -> k.toString().indexOf(Functions.LOOK_AND_SAY.z(k).toString()) >= 0	Numbers whose "Look and Say" description (cf. J045918) is a substring of the number.	nonn,base	1..56	_Scott R. Shannon_
+A378789	filter	1	new A000290().skip(1)	v -> { final Z d1 = TAU(v); final Z d2 =  TAU(PM(v).+(v).-(1)); return d1.mod(d2.*(2)).isOne(); }	isok(k)=my(d_1=numdiv(k),d_2=numdiv(k+prime(k)-1));d_1%(2*d_2)==1;
+A378792	filter	1	new A000290().skip(1)	v -> { final Z d1 = TAU(v); final Z d2 =  TAU(PM(v).-(v).+(1)); return d1.mod(d2.*(2)).isOne(); }	isok(k)=my(d_1=numdiv(k),d_2=numdiv(prime(k)-k+1));d_1%(2*d_2)==1;
+A378794	filter	1	new A000290().skip(1)	v -> { final Z d1 = TAU(v); final Z d2 = TAU(v.+(1).*(v).-(1)); return d1.mod(d2.*(2)).isOne(); }	isok(k)=my(d_1=numdiv(k),d_2=numdiv(k^2+k-1));d_1%(2*d_2)==1;
+A396569	holos	0	[0,2,4,3,-1]	0,1,4,16	0	0
+A397302	holos	0	[0,2,4,3,-1]	1,2,10	0	0
+A397507	lambdan	0	n -> SU(0, n, k -> BI(4*n + 2*k - 3, k).-(BI(4*n + 2*k - 3, k - 1)))
+A397508	lambdan	0	n -> SU(0, n, k -> BI(5*n + 2*k - 3, k).-(BI(5*n + 2*k - 3, k - 1)))
+A397509	lambdan	0	n -> SU(0, n, k -> BI(n + 2 * k - 3, k))
+A397510	lambdan	0	n -> SU(0, n, k -> BI(2*n + 2*k - 3, k))
+A397511	lambdan	0	n -> SU(0, n, k -> BI(3*n + 2*k - 3, k))
+A397512	lambdan	0	n -> SU(0, n, k -> BI(4*n + 2*k - 3, k))
+A397513	lambdan	0	n -> SU(0, n, k -> BI(5*n + 2*k - 3, k))
+A397514	lambdan	0	n -> SU(0, n, k -> BI(3*n + 2*k - 3, k - 1))
+A397515	lambdan	0	n -> SU(0, n, k -> BI(4*n + 2*k - 3, k - 1))
+A397516	lambdan	0	n -> SU(0, n, k -> BI(5*n + 2*k - 3, k - 1))
+A397535	lambdan	0	n -> SU(0, n, k -> BI(n + 3*k - 4, k))
+A397536	lambdan	0	n -> SU(0, n, k -> BI(n + 4*k - 5, k))
+A397537	lambdan	0	n -> SU(0, n, k -> BI(n + 5*k - 6, k))
+A397538	lambdan	0	n -> SU(0, n, k -> BI(2*n + 3*k - 4, k))
+A397539	lambdan	0	n -> SU(0, n, k -> BI(2*n + 4*k - 5, k))
+A397540	lambdan	0	n -> SU(0, n, k -> BI(2*n + 5*k - 6, k))
+A397541	lambdan	0	n -> SU(0, n, k -> BI(2*n + 3*k, k))

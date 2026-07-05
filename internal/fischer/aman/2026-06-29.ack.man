@@ -1,0 +1,16 @@
+---- 2026-06-29 11:48:55
+---- 2026-06-29 13:18:11
+---- 2026-06-29 13:25:48
+---- 2026-06-29 19:22:56
+A397328	rowsum	0	new A397329()
+A397329	trilambn	0	0	0	(n, k) -> RU(0, k, j -> new Q(2*n + 1 + 2*j, 2).^(n).*(BI(k, j)).*(Z_1(k - j))).*(Z2(n - k))./(FA(k)).num()	2^(n - k) * P(n, k, 1/2) where P(n, k, x) = (1/k!) * Sum_{j=0..k}((-1)^(k - j) * binomial(k, j) * (n + x + j)^n).	non
+A397330	rowsum	0	new A397331()
+A397331	trilambn	0	0	0	(n, k) -> RU(0, k, i -> new Q(Z_1(i).*(BI(k, i)).*(ZV(n + i - 1).^(n)).*(Z_1(k)), FA(k))).num()	P(n, k, -1)                          where P(n, k, x) = (1/k!) * Sum_{j=0..k}((-1)^(k - j) * binomial(k, j) * (n + x + j)^n).	nonn,tabl,n
+A397332	rowsum	0	new A397333()
+A397333	trilambn	0	0	0	(n, k) -> RU(0, k, i -> new Q(Z_1(i).*(BI(k, i)).*(ZV(n + i + 1).^(n)).*(Z_1(k)), FA(k))).num()	P(n, k, 1)                           where P(n, k, x) = (1/k!) * Sum_{j=0..k}((-1)^(k - j) * binomial(k, j) * (n + x + j)^n).	nonn,tabl,n
+A397346	poly	0	"[1],[1,1]"	"p1,A,1,-,x,*,2,*,A,dif,A,dif,dif,<1,+,*,A,/,+,A,dif,^2,<2,2,*,A,^2,/,+"
+A397381	lambdan	0	n -> SU(0, n, k -> BI(n + 2*k, 3*k).*(BI(n + 3*k, k).+(BI(n + 3*k, k - 1))))	nonn,new	0..20	nyi	_Seiichi Manyama_
+A397382	lambdan	0	n -> SU(0, n, k -> BI(n + 3*k, 4*k).*(BI(n + 4*k, k).+(BI(n + 4*k, k - 1))))	nonn,new	0..18	nyi	_Seiichi Manyama_
+A397384	lambdan	0	n -> SU(0, n, k -> BI(n + 2*k, 3*k).*(BI(n + 3*k, k - 1)))	nonn,new	0..20	nyi	_Seiichi Manyama_
+A397385	lambdan	0	n -> SU(0, n, k -> BI(n + 3*k, 4*k).*(BI(n + 4*k, k - 1)))	nonn,new	0..19	nyi	_Seiichi Manyama_
+A397449	multia	0	"1"	(self, n) -> SU(0, n - 1, k -> self.a(k).*(ZV(-2).^(k)))	a(n) = Sum_{k=0..n-1} a(k)*(-2)^k, with a(0) = 1.	sign,easy,new	0..16	nyi	_Thomas Scheuerle_

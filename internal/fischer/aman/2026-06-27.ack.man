@@ -1,0 +1,128 @@
+---- 2026-06-27 22:40:09
+A088068	filter	1	new A000290()	v -> !Predicates.SQUARE_FREE.is(v.+(1)) && !Predicates.SQUARE_FREE.is(v.-(1))	Squares sandwiched between two numbers divisible by squares.
+A088069	filter	1	new A000578()	v -> !Predicates.CUBE_FREE.is(v.+(1)) && !Predicates.CUBE_FREE.is(v.-(1))	Cubes sandwiched between two numbers divisible by cubes > 1.
+A091932	filter	1	new A000040()	p -> PP(p.clearBit(p.bitLength() - 1))	Primes that remain prime when their leading digit in binary representation is replaced by 0.
+A110187	filnum	1	1	k -> { final FactorSequence fs = Jaguar.factor(k); return fs.bigOmega() == 3L &&  GCD(fs.sopfr(), ZV(k)).isOne(); }	p * q * r relatively prime to p+q+r.
+A110188	filnum	1	1	k -> { final FactorSequence fs = Jaguar.factor(k); return fs.bigOmega() == 3L && !GCD(fs.sopfr(), ZV(k)).isOne(); }	p * q * r not relatively prime to p+q+r.
+A110227	filnum	1	1	k -> { final FactorSequence fs = Jaguar.factor(k); return fs.bigOmega() == 4L &&  GCD(fs.sopfr(), ZV(k)).isOne(); }	p * q * r * s relatively prime to p + q + r + s.
+A110228	filnum	1	1	k -> { final FactorSequence fs = Jaguar.factor(k); return fs.bigOmega() == 4L && !GCD(fs.sopfr(), ZV(k)).isOne(); }	p * q * r * s not relatively prime to p + q + r + s.
+A110229	filnum	1	1	k -> { final FactorSequence fs = Jaguar.factor(k); return fs.bigOmega() == 5L &&  GCD(fs.sopfr(), ZV(k)).isOne(); }	p * q * r * s * t relatively prime to p + q + r + s + t.
+A110230	filnum	1	1	k -> { final FactorSequence fs = Jaguar.factor(k); return fs.bigOmega() == 5L && !GCD(fs.sopfr(), ZV(k)).isOne(); }	p * q * r * s * t not relatively prime to p + q + r + s + t.
+A110231	filnum	1	1	k -> { final FactorSequence fs = Jaguar.factor(k); return fs.bigOmega() == 6L &&  GCD(fs.sopfr(), ZV(k)).isOne(); }	p * q * r * s * t * u relatively prime to p+q+r+s+t+u.
+A110232	filnum	1	1	k -> { final FactorSequence fs = Jaguar.factor(k); return fs.bigOmega() == 6L && !GCD(fs.sopfr(), ZV(k)).isOne(); }	p * q * r * s * t * u not relatively prime to p+q+r+s+t+u.
+A110289	filnum	1	1	k -> { final FactorSequence fs = Jaguar.factor(k); return fs.bigOmega() == 7L &&  GCD(fs.sopfr(), ZV(k)).isOne(); }	p*q*r*s*t*u*v relatively prime to p+q+r+s+t+u+v.
+A110290	filnum	1	1	k -> { final FactorSequence fs = Jaguar.factor(k); return fs.bigOmega() == 7L && !GCD(fs.sopfr(), ZV(k)).isOne(); }	p*q*r*s*t*u*v not relatively prime to p+q+r+s+t+u+v.
+A110296	filnum	1	1	k -> { final FactorSequence fs = Jaguar.factor(k); return fs.bigOmega() == 8L &&  GCD(fs.sopfr(), ZV(k)).isOne(); }	p*q*r*s*t*u*v*w relatively prime to p+q+r+s+t+u+v+w.
+A110297	filnum	1	1	k -> { final FactorSequence fs = Jaguar.factor(k); return fs.bigOmega() == 8L && !GCD(fs.sopfr(), ZV(k)).isOne(); }	p*q*r*s*t*u*v*w not relatively prime to p+q+r+s+t+u+v+w.
+A111153	filter	1	new A001358()	v -> BOM(v) == 2 && BOM(v.*(2).+(1)) == 2	Sophie Germain semiprimes: semiprimes n such that 2n+1 is also a semiprime;
+A111173	filnum	1	1	k -> BOM(k) == 3 && BOM(k * 2 + 1) == 3	Sophie Germain 3-almost primes;
+A111176	filter	1	new A014613()	v -> BOM(v.*(2).+(1)) == 4	Sophie Germain 4-almost primes.
+A112998	filnum	1	1	k -> PP(k) && BOM(k + 1) == 2 && BOM(k + 2) == 3	Numbers n such that n, n+1 and n+2 are 1,2,3-almost primes.
+A113000	filnum	1	1	k -> PP(k) && BOM(k + 1) == 2 && BOM(k + 2) == 3 && BOM(k + 3) == 4	Numbers k such that k, k+1, k+2 and k+3 are 1,2,3,4-almost primes.
+A113008	filnum	1	1	k -> PP(k) && BOM(k + 1) == 2 && BOM(k + 2) == 3 && BOM(k + 3) == 4 && BOM(k + 4) == 5	Numbers k such that k, k+1, k+2, k+3 and k+4 are respectively 1,2,3,4,5-almost primes.
+A113150	filter	1	new A000040()	k -> BOM(k.+(1)) == 2 && BOM(k.+(2)) == 3 && BOM(k.+(3)) == 3 && BOM(k.+(4)) == 5 && BOM(k.+(5)) == 6	Primes p such that p+1, p+2, p+3, p+4, p+5 are resp. 2-, 3-, 4-, 5-, 6-almost primes.
+A113789	filnum	1	1	k -> BOM(k) == 3 && BOM(k + 1) == 3 && BOM(k + 2) == 3	Numbers n such that n, n+1 and n+2 are products of exactly 3 primes.
+A115971	multia	0	"0"	(self, n) -> self.a(LongUtils.floorLog2(n)).isZero() ? ZV(1) : self.a(n ^Long.highestOneBit(n))	if a(A000523(n)) is 0, then a(n) = 1, otherwise a(n) = a(n-(2^A000523(n))) = a(A053645(n)).
+A116436	filnum	1	1	k -> new Z("1" + Long.toString(k) + "1").mod(k) == 0	Numbers m which when sandwiched between two 1s give a multiple of m.	base,nonn	1..1441	nyi	_Giovanni Resta_
+A116437	filnum	1	1	k -> new Z("2" + Long.toString(k) + "2").mod(k) == 0	Numbers k which when sandwiched between two 2s give a multiple of k.	base,nonn	1..2921	nyi	_Giovanni Resta_
+A116438	filnum	1	1	k -> new Z("3" + Long.toString(k) + "3").mod(k) == 0	Numbers k which when sandwiched between two 3s give a multiple of k.	base,nonn	1..3170	nyi	_Giovanni Resta_
+A116439	filnum	1	1	k -> new Z("4" + Long.toString(k) + "4").mod(k) == 0	Numbers k which when sandwiched between two 4s give a multiple of k.	base,nonn	1..4735	nyi	_Giovanni Resta_
+A116440	filnum	1	1	k -> new Z("5" + Long.toString(k) + "5").mod(k) == 0	Numbers k which when sandwiched between two 5s give a multiple of k.	base,nonn	1..3294	nyi	_Giovanni Resta_
+A116441	filnum	1	1	k -> new Z("6" + Long.toString(k) + "6").mod(k) == 0	Numbers k which when sandwiched between two 6s give a multiple of k.	base,nonn	1..6573	nyi	_Giovanni Resta_
+A116442	filnum	1	1	k -> new Z("7" + Long.toString(k) + "7").mod(k) == 0	Numbers k which when sandwiched between two 7s give a multiple of k.	base,nonn	1..3001	nyi	_Giovanni Resta_
+A116443	filnum	1	1	k -> new Z("8" + Long.toString(k) + "8").mod(k) == 0	Numbers k which when sandwiched between two 8s give a multiple of k.	base,nonn	1..6504	nyi	_Giovanni Resta_
+A116444	filnum	1	1	k -> new Z("9" + Long.toString(k) + "9").mod(k) == 0	Numbers k which when sandwiched between two 9s give a multiple of k.	base,nonn	1..5016	nyi	_Giovanni Resta_
+A116478	multia	1	"1"	(self, n) -> SU(1, n - 1, k -> ZV(n)./(self.a(k)))	a(1) = 1. a(n) = Sum_{k=1..n-1} floor(n/a(k)).
+A116534	multia	0	"1,2"	(self, n) -> { final Z x = self.a(n - 1); return x.testBit(0) ? x.+(1)./(2) : new Z(self.a(n - 2).toString() + x.toString())./(2); }	Start with 1 and 2; if number is even concatenate with last number and divide by 2, if it is odd add 1 and divide by 2.
+A116549	multia	0	"1"	(self, n) -> self.a(LongUtils.floorLog2(n)).+(self.a(n ^Long.highestOneBit(n)))	For n > 0: a(n) = a(D000523(n)) + a(D053645(n)). - _Reinhard Zumkeller_, Aug 27 2014
+A116552	multia	0	"1,3,4"	(self, n) -> { if ((n&1) == 1) { final long m = n/2; return self.a(m).*(3); } else { final long m = (n - 2)/2; return self.a(m).*(4).+(self.a(m - 1)); }}	a(2*n+1) = 3*a(n), a(2*n+2) = 4*a(n) + a(n-1).	nonn,easy	0..2500	nyi	_Roger L. Bagula_
+A116553	multia	0	"1,5,6"	(self, n) -> { if ((n&1) == 1) { final long m = n/2; return self.a(m).*(5); } else { final long m = (n - 2)/2; return self.a(m).*(6).+(self.a(m - 1)); }}	a(2*n+1) = 5*a(n), a(2*n+2) = 6*a(n) + a(n-1).	nonn,easy	0..2500	nyi	_Roger L. Bagula_
+A116554	multia	0	"1,7,8"	(self, n) -> { if ((n&1) == 1) { final long m = n/2; return self.a(m).*(7); } else { final long m = (n - 2)/2; return self.a(m).*(8).+(self.a(m - 1)); }}	a(2*n+1) = 7*a(n), a(2*n+2) = 8*a(n) + a(n-1).	nonn,easy	0..2500	nyi	_Roger L. Bagula_
+A116555	multia	0	"1,9,10"	(self, n) -> { if ((n&1) == 1) { final long m = n/2; return self.a(m).*(9); } else { final long m = (n - 2)/2; return self.a(m).*(10).+(self.a(m - 1)); }}	a(2*n+1) = 9*a(n), a(2*n+2) = 10*a(n) + a(n-1).	nonn,easy	0..2500	nyi	_Roger L. Bagula_
+A116570	lambdan	0	n -> (n&1) == 0 ? PM(n/2 + 1).*(PM(n/2 + 2)) : PM((n + 1)/2 + 1)	a(2*n) = prime(n+1) * prime(n+2), a(2*n-1) = prime(n+1).	nonn,less	0..5000	nyi	_Roger L. Bagula_
+A116589	lambdan	0	n -> { final boolean sq = Predicates.SQUARE.is(n); return SU(Functions.SQRT.l(n) + (sq ? 0 : 1), n, i -> ZV(i)).-(SU(1L, Functions.SQRT.l(n), i -> ZV(i))); }	a(n) = Sum{sqrt(n) < i <= n} i - Sum{1 <= i < sqrt(n)} i.	nonn	1..1000	nyi	_N. J. A. Sloane_
+A116660	insect2	1	new A075658()	new A067028()
+A116661	insect2	1	new A114522()	new A063989()
+A116893	filnum	0	1	k -> GCD(FA(k).+(1), ZV(k).^(k).+(1)).compareTo(1) > 0	Numbers k such that gcd(k!+1, k^k+1) > 1.	easy,nonn	1..10000	nyi	_Giovanni Resta_
+A116943	lambdan	0	n -> { final Z n2 = Z2(n); final int[] dc = ZUtils.digitCounts(n2, 5); return ZV(dc[4] + dc[3] - (n2.mod(5) == 3 ? 1 : 0)); }	Number of 4s digits plus non-final 3s digits 3 base 5 expansion of 2^n.
+A116945	filnum	1	1	k -> { if ((k&1) == 0) { return false; } final Z v = ZV(k).*(k).+(1)./(2); return PP(v) && PP(v.^(2).+(1)./(2)); }	Numbers in both J002731(n) and J002731(J002731(n)).	easy,nonn	1..10000	nyi	_Jonathan Vos Post_
+A116999	filnum	1	1	k -> PP(Z2(k).-(PM(k).^(2)))	Numbers k such that 2^k - prime(k)^2 is prime.
+A117001	lambdan	1	n -> { final boolean sq = Predicates.SQUARE.is(n); return SD(n, d -> (Functions.SQRT.l(n) < d) ? Functions.JACOBI.z(2, d).*(d) : ZV(0)).-(SD(n, d -> (d < Functions.SQRT.l(n) + (sq ? 0 : 1)) ? Functions.JACOBI.z(2, d).*(d) : ZV(0))); }	Sum_{d|n, sqrt(n) < d <= n} Jacobi(2,d)*d - Sum_{d|n, 1 <= d < sqrt(n)} Jacobi(2,d)*d.	sign	1..78	nyi	_N. J. A. Sloane_
+A117051	filnum	1	0	k -> Predicates.POLYGONAL.is(9, k) && Predicates.POLYGONAL.is(9, Functions.DIGIT_SUM.z(k))	Enneagonal numbers whose sum of digits is also enneagonal.	base,nonn	1..10000	nyi	Luc Stevens (lms022(AT)yahoo.com)
+A117052	filnum	1	0	k -> Predicates.POLYGONAL.is(9, k) && Predicates.POLYGONAL.is(9, Functions.DIGIT_PRODUCT.z(k))	Enneagonal numbers for which the product of the digits is also an enneagonal number.	base,nonn	1..10000	nyi	Luc Stevens (lms022(AT)yahoo.com)
+A117053	filnum	0	0	k -> Predicates.POLYGONAL.is(9, k) && Predicates.POLYGONAL.is(9, Functions.DIGIT_SUM.z(k)) && Predicates.POLYGONAL.is(9, Functions.DIGIT_PRODUCT.z(k))	Enneagonal numbers for which both the sum of the digits and the product of the digits are also enneagonal numbers.	base,nonn	0..1000	nyi	Luc Stevens (lms022(AT)yahoo.com)
+A117055	filnum	1	0	k -> Predicates.PALINDROME.is(k) && Predicates.PALINDROME.is(Functions.DIGIT_PRODUCT.z(k))	Palindromes for which the product of the digits is also a palindrome.	nonn,base	1..52	nyi	Luc Stevens (lms022(AT)yahoo.com)
+A117056	filnum	1	0	k -> Predicates.PALINDROME.is(k) && Predicates.PALINDROME.is(Functions.DIGIT_PRODUCT.z(k)) && Predicates.PALINDROME.is(Functions.DIGIT_SUM.z(k))	Palindromes for which both the sum of the digits and the product of the digits are also palindromes.	base,nonn	1..10000	nyi	Luc Stevens (lms022(AT)yahoo.com)
+A117057	filnum	0	1	k -> Predicates.PALINDROME.is(k) && (Long.toString(k).indexOf('0') < 0) && ZV(k).mod(Functions.DIGIT_PRODUCT.z(k)).isZero()	Palindromes which are divisible by the product of their digits.	base,nonn	1..221	nyi	Luc Stevens (lms022(AT)yahoo.com)
+A117101	filnum	1	4	k -> Functions.NEXT_PRIME.z(5*k).compareTo(Functions.NEXT_PRIME.z(k).*(5)) > 0 && !PP(k)	Numbers k such that nextprime(5*k) > 5*nextprime(k) and k is composite.	easy,nonn	1..10000	nyi	Mohammed Bouayoun (mohammed.bouayoun(AT)sanef.com)
+A117123	lambdan	1	n -> { final Z nz = ZV(n); return nz.-(Functions.DIGIT_LENGTH.l(2, nz) - Functions.DIGIT_SUM.l(2, nz)); }	n minus the number of 0s in binary expansion of n.	easy,nonn,base	1..73	nyi	_Robert G. Wilson v_
+A117124	filnum	1	1	k -> Predicates.PALINDROME.is(k*37)	Numbers that when multiplied by 37 produce a palindrome number.	nonn,base	1..52	nyi	_Paolo P. Lava_ and _Giorgio Balzarotti_
+A117203	filnum	1	1	k -> (k&1) == 1 && SF(k) && SF((k - 1)/2)	Predicates.Odd squarefree positive integers k such that (k-1)/2 is also squarefree.	nonn	1..10000	nyi	_Leroy Quet_
+A117204	filnum	1	1	k -> SF(k) && SF(2*k + 1)	Squarefree positive integers k such that 2*k+1 is also squarefree.	nonn	1..10000	nyi	_Leroy Quet_
+A117205	filnum	1	1	k -> (k&1) == 1 && SF(k) && SF((k + 1)/2)	Odd squarefree positive integers k such that (k+1)/2 is also squarefree.	nonn	1..10000	nyi	_Leroy Quet_
+A117206	filnum	1	1	k -> SF(k) && SF(2*k - 1)	Squarefree positive integers k such that 2*k-1 is also squarefree.	nonn	1..10000	nyi	_Leroy Quet_
+A117228	filnum	1	1	k -> Long.toString(k).indexOf('0') < 0 && Predicates.PALINDROME.is(k) && ZV(k).mod(Functions.DIGIT_SUM.z(k)).isZero() && ZV(k).mod(Functions.DIGIT_PRODUCT.z(k)).isZero()	Palindromes which are divisible by the product and by the sum of their digits.	base,nonn	1..91	nyi	_Giovanni Resta_
+A117282	filter	0	new A066531()	v -> v.mod(10) != 0	 not ending in 0.	nonn,base	1..10000	nyi	_Lekraj Beedassy_
+A117296	filnum	1	1	k -> Predicates.PALINDROME.is(PHI(k))		Numbers n for which phi(n) is a palindrome.	base,nonn	1..2000	nyi	Luc Stevens (lms022(AT)yahoo.com)
+A117306	filnum	0	1	k -> { final int[] dc = ZUtils.digitCounts(Z2(k), 3); return dc[0] == dc[1] && dc[1] == dc[2]; }	Numbers k such that the counts of 0s, 1s and 2s are the same in the ternary expansion of 2^k.	nonn,base,more	1..7	nyi	Mohammed Bouayoun (Mohammed.bouayoun(AT)sanef.com)
+A117307	filnum	1	1	k -> { final Z ph = PHI(k); return PP(ph.^(2).+(ph).+(1)); }	Numbers for which (phi(n))^2+phi(n)+1 is a prime number.	nonn	1..10000	nyi	Luc Stevens (lms022(AT)yahoo.com)
+A117308	filnum	1	1	k -> { final Z ph = PHI(k); return Predicates.PALINDROME.is(ph.^(2).+(ph).+(1)); }	Numbers k for which phi(k)^2 + phi(k) + 1 is a palindrome.	base,nonn	1..48	nyi	Luc Stevens (lms022(AT)yahoo.com)
+A117360	filnum	1	1	k -> Functions.BIG_OMEGA.l(k) == Functions.BIG_OMEGA.l(2*k + 1)	Numbers m such that m and 2*m+1 have the same number of prime factors.	nonn	1..10000	nyi	_Reinhard Zumkeller_
+A117364	lambdan	1	n -> { if (n == 1) { return ZV(1); } final Z t = GPF(n); return t.equals(ZV(2)) ? ZV(1) : Functions.PREV_PRIME.z(t); }	a(n) = largest prime less than the largest prime dividing n (or 1 if there is no such prime).	nonn	1..87	nyi	_Leroy Quet_
+A117365	lambdan	1	n -> { if (n == 1) { return ZV(1); } final Z t = LPF(n); return t.equals(ZV(2)) ? ZV(1) : Functions.PREV_PRIME.z(t); }	a(n) = largest prime less than the smallest prime dividing n (or 1 if there is no such prime).	nonn	1..10000	nyi	_Leroy Quet_
+A117367	lambdan	1	n -> { final Z t = LPF(n); return Functions.NEXT_PRIME.z(t); }	a(n) = smallest prime greater than the smallest prime dividing n.	nonn	1..10000	nyi	_Leroy Quet_
+A117522	filnum	1	1	k -> PP(Functions.LUCAS.z(2*k + 1))	Numbers k such that L(2*k + 1) is prime, where L(m) is a Lucas number.	nonn,hard	1..59	nyi	_Parthasarathy Nambi_
+A117595	filnum	1	1	k -> PP(Functions.FIBONACCI.z(2*k - 1))	Numbers n such that F(2*n - 1) is prime, where F(m) is a Fibonacci number.	nonn	1..41	nyi	_Parthasarathy Nambi_
+A117638	filnum	1	1	k -> ZV(k).mod(Functions.DIGIT_SUM_ROOT.z(PHI(k))).isZero()	Numbers k for which the digital root of phi(k) divides k.	nonn,base	1..10000	nyi	Luc Stevens (lms022(AT)yahoo.com)
+A117674	filter	1	new A000040()	p -> Predicates.TRIANGULAR.is(Functions.DIGIT_SUM.z(p))	Prime numbers whose sum of digits is a triangular number.	nonn,base	1..10000	nyi	Luc Stevens (lms022(AT)yahoo.com)
+A117677	lambdin	1	n -> TAU(n*n).-(2)	0, 1	a(n) = number of divisors of n^2 (excluding 1 and n^2).	easy,nonn	1..1000	nyi	Mark Taggart (mt2612f(AT)aol.com)
+A117678	filter	1	new A000290()	v -> Predicates.SQUARE.is(Functions.DIGIT_PRODUCT_ROOT.z(v))	Squares for which the multiplicative digital root is also a square.	nonn,easy,base	1..5000	nyi	Luc Stevens (lms022(AT)yahoo.com)
+A117682	filter	1	new A000040()	p -> Predicates.TRIANGULAR.is(Functions.DIGIT_PRODUCT.z(p))	Prime numbers for which the product of the digits is a triangular number.	nonn,base	1..53	nyi	Luc Stevens (lms022(AT)yahoo.com)
+A117683	trilambn	1	1	1	(n,k) -> D049614(n)./(D049614(k).*(D049614(n - k)))	, read by rows.	nonn,tabl	1..50	nyi	_Roger L. Bagula_
+A117684	rowsum	1	new A117683()	Row sums of A117683.	nonn	1..1000	nyi	_Roger L. Bagula_
+A117685	filter	0	new A000290()	v -> Predicates.CUBE.is(Functions.DIGIT_SUM.z(v))	Squares for which the sum of the digits are cubes.	nonn,base	0..1000	nyi	Luc Stevens (lms022(AT)yahoo.com)
+A117686	filter	0	new A000290()	v -> Predicates.CUBE.is(Functions.DIGIT_PRODUCT.z(v))	Squares for which the product of the digits are cubes.	nonn,base	0..41	nyi	Luc Stevens (lms022(AT)yahoo.com)
+A117687	filter	0	new A000290()	v -> { final Z dp = Functions.DIGIT_PRODUCT.z(v); return Predicates.CUBE.is(Functions.DIGIT_SUM.z(v)) && Predicates.CUBE.is(dp); }	Squares for which both the sum of the digits and the product of the digits are cubes.	nonn,base	0..31	nyi	Luc Stevens (lms022(AT)yahoo.com)
+A122198	multia	0	"0"	(self, n) -> { final long h = Long.highestOneBit(n); return E122155(self.a(n ^h).+(h)); }		a(0)=0, otherwise a(n) = E122155(D053644(n)+a(D053645(n))).
+A124057	filnum	1	1	k -> BOM(k) == 3 && BOM(k + 1) == 3 && BOM(k + 2) == 3 && BOM(k + 3) == 3		Numbers n such that n, n+1, n+2 and n+3 are products of exactly 3 primes.
+A124729	filnum	1	1	k -> BOM(k) == 5 && BOM(k + 1) == 5 && BOM(k + 2) == 5 && BOM(k + 3) == 5	Numbers k such that k, k+1, k+2 and k+3 are products of 5 primes.
+A201147	filter	1	new A000040()	k -> PP(k) && BOM(k.-(1)) == 2 && BOM(k.-(2)) == 3	Numbers n such tNumbers m such that m, m-1 and m-2 are 1,2,3-almost primes respectively.
+A201220	filter	1	new A000040()	k -> PP(k) && BOM(k.-(1)) == 2 && BOM(k.-(2)) == 3 && BOM(k.-(3)) == 4	Numbers m such that m, m-1, m-2 and m-3 are 1,2,3,4-almost primes respectively.
+A211162	filnum	1	1	k -> BOM(k) == 5 && BOM(2*k + 1) == 5		Numbers n that are products of exactly 5 primes, such that 2*n + 1 are also products of exactly 5 primes. By analogy with
+A243499	multia	0	"1"	(self, n) -> D023416(n).+(1).*(self.a(n ^ Long.highestOneBit(n)))	a(n) = (1 + D023416(n))*a(D053645(n)) for n > 0 with a(0) = 1.
+A247114	filter	1	new A000040()	k -> BOM(k.+(1)) == 4 && BOM(k.-(1)) == 4	Primes sandwiched between 4-almost primes (J014613).
+A253919	filtpos	1	1	new A014613()	v -> Predicates.SQUARE_FREE.is(v)	positions of squarefree numbers in A014613.
+A255200	filnum	1	1	k -> BOM(TRI(k)) == 3 && BOM(TRI(k + 1)) == 3 && BOM(TRI(k + 2)) == 3	Numbers n such that triangular numbers T(n), T(n+1) and T(n+2) are 3-almost primes.
+A258159	filnum	1	3	k ->{ final long d = k ^ Long.highestOneBit(k); return d != 0 && D004526(k).mod(d) == 0L; }	Numbers n such that D053645(n) (n with the most significant binary digit removed) divides D004526(n) (n with the least significant binary digit removed).
+A270438	sintrif	0	(term, n) -> Z.TWO.pow(Functions.DIGIT_SUM.z(2, n).-(MIN(ZV(1), term)))	""	new A014081()	a(n) = 2^(F000120(n) - min(1, J014081(n))). [Davis & Webb]
+A295607	sintrif	1	(term, n) -> D053645(term)	""	new A001567()	a(n) = D053645(J001567(n)).
+A303993	filnum	0	1	k -> { final Z t = SIGMA(k); return !CND(k, d -> ZV(d).^(3).equals(t)).isZero(); }	Numbers whose sum of divisors is the fifth power of one of their divisors.
+A303994	filnum	0	1	k -> { final Z t = SIGMA(k); return !CND(k, d -> ZV(d).^(4).equals(t)).isZero(); }	Numbers whose sum of divisors is the fifth power of one of their divisors.
+A303995	filnum	0	1	k -> { final Z t = SIGMA(k); return !CND(k, d -> ZV(d).^(5).equals(t)).isZero(); }	Numbers whose sum of divisors is the fifth power of one of their divisors.
+A303996	filnum	1	1	k -> { final Z t = SIGMA(k); return !CND(k, d -> ZV(d).^(6).equals(t)).isZero(); }	Numbers whose sum of divisors is the sixth power of one of their divisors.
+A303999	filnum	0	1	k -> { final Z t = SIGMA(k); return !CND(k, d -> ZV(d).^(7).equals(t)).isZero(); }	Numbers whose sum of divisors is the seventh power of one of their divisors.
+A304000	filnum	0	1	k -> { final Z t = SIGMA(k); return !CND(k, d -> ZV(d).^(8).equals(t)).isZero(); }	Numbers whose sum of divisors is the eighth power of one of their divisors.
+A346422	multraf	0	(self, n) -> self.s(0).+(1).*(self.a(n ^ Long.highestOneBit(n)))	"1"	new A014081()	a(n) = (1 + J014081(n))*a(D053645(n)) for n > 0 with a(0) = 1.
+A360841	filter	0	new A014574()	v -> FSIT(v, 0L, (x, p, e) -> x + ((e < 4) ? 1 : 0)) == 0L	-full numbers (J036967) sandwiched between twin primes.
+A360842	filter	0	new A014574()	v -> FSIT(v, 0L, (x, p, e) -> x + ((e < 5) ? 1 : 0)) == 0L	-full numbers (J069492) sandwiched between twin primes.
+A360843	filter	0	new A014574()	v -> FSIT(v, 0L, (x, p, e) -> x + ((e < 6) ? 1 : 0)) == 0L	-full numbers (J069493) sandwiched between twin primes.    
+A366600	multraf	0	(self, n) -> self.s(0).+(1).*(self.a(n ^ Long.highestOneBit(n)))	"1"	new A033264()	a(n) = (1 + J033264(n))*a(D053645(n)) for n > 0 with a(0) = 1.
+A371602	filter	1	new A001235()	v -> Predicates.SQUARE_FREE.is(v.+(1)) && Predicates.SQUARE_FREE.is(v.-(1))	Taxicab numbers that are sandwiched between squarefree numbers.
+A372296	filter	1	new A001235()	v -> !Predicates.SQUARE_FREE.is(v.+(1)) && !Predicates.SQUARE_FREE.is(v.-(1))	Taxicab numbers that are sandwiched between nonsquarefree numbers.
+A372848	filter	1	new A001235()	v -> SEM(v.+(1)) && SEM(v.-(1))	Taxicab numbers that are sandwiched between semiprimes.
+A373077	filter	1	new A001597()	v -> Predicates.SQUARE_FREE.is(v.+(1)) && Predicates.SQUARE_FREE.is(v.-(1))	Perfect powers that are sandwiched between squarefree numbers.
+A375378	multraf	0	(self, n) -> self.s(0).^(self.a(n ^ Long.highestOneBit(n)))	"1"	new A065120()	a(n) = J065120(n)^a(D053645(n)) for n >= 1.
+A375379	multraf	0	(self, n) -> self.s(0).+(1).^(self.a(n ^ Long.highestOneBit(n)))	"1"	new A065120()	a(n) = (J065120(n)+1)^a(D053645(n)) for n >= 1.
+A380855	multia	0	"1,0"	(self, n) -> self.a(n ^ Long.highestOneBit(n)).-(self.a((n - 1) ^ Long.highestOneBit(n - 1)))	a(n) = a(D053645(n)) - a(D053645(n-1)) for n > 1.
+A380937	filter	1	new A052486()	v -> SEM(v.+(1)) && SEM(v.-(1))
+A397107	holos	0	[0,1,-1,-2,2,1,-1]	0,2,3,9,12,22	0	0
+A397324	lambdan	0	n -> SU(0, n, j -> ZV(n).^(j).*(S1(n, j)).*(BI(n + j, n)))	a(n) = Sum_{j=0..n} Stirling1(n, j) * binomial(n + j, n) * n^j.	nonn,new	0..300	nyi	_Peter Luschny_
+A397325	lambdan	0	n -> SU(0, n, j -> ZV(n).^(j).*(S2(n, j)).*(BI(n + j, n)))	a(n) = Sum_{j=0..n} Stirling2(n, j) * binomial(n + j, n) * n^j.	nonn,new	0..300	nyi	_Peter Luschny_
+A397380	holos	0	[[0],[240,-320,-2836,6804,-4860,972],[-504,1640,7618,-23328,17982,-3888],[1704,-4116,-21174,63423,-51030,12393],[-1440,3728,15826,-49815,41310,-10449],[0,-932,566,2916,-3402,972]]	1,5,37	0	0
+A397383	holos	0	[[0],[1824,-10256,27672,-37636,25380,-8100,972],[-6048,34892,-98106,136234,-93906,30942,-3888],[11424,-73170,220797,-337218,256770,-92340,12393],[-7200,43874,-148803,250930,-203580,76140,-10449],[0,4660,-1560,-12310,15336,-6642,972]]	0,1	0	0
+A397386	holos	0	[[0],[-17031168,225699840,-1181598720,3283473920,-5441791232,5683829760,-3821126400,1642944000,-434400000,64000000,-4000000],[80898048,-1065051648,5533156608,-15267728768,25182640960,-26263675200,17704680000,-7672920000,2058000000,-310000000,20000000],[-149022720,1943553024,-10002047616,27427333632,-45166339520,47276749200,-32165466000,14151990000,-3876750000,600000000,-40000000],[127733760,-1642321152,8397768960,-23071564688,38361440120,-40821699000,28400907000,-12838515000,3626250000,-580000000,40000000],[-127733760,1728002304,-9402544704,27610227952,-49057056860,55607627400,-41012425875,19542551250,-5783812500,963593750,-68828125],[0,-17031168,182057472,-769962048,1726194032,-2294207160,1895384400,-981519000,309150000,-54000000,4000000]]	1	0	0
+A397400	arrlamb	0	0	0	1	(n, k) -> QV(k).^(n - k).*(RU(0, k, j -> QV(k).^(j).*(S1(k, j)).*(BI(n + j, k)))).num()	A(n, k) = k^(n - k) * Sum_{j=0..k} Stirling1(k, j)*binomial(n+j, k) * k^j.
+A397420	arrlamb	0	0	0	1	(n, k) -> SU(0, k, j -> ZV(k).^(j).*(S1(k, j)).*(BI(n + j, k)))	A(n, k) = Sum_{j=0..k} Stirling1(k, j) * binomial(n+j, k) * k^j.	nonn,tabl,new	0..11324	nyi
+A397421	trilambn	0	0	0	(n, k) -> BI(n + k, n).*(S2(n, k)).*(ZV(n).^(k))	nonn,tabl,new	0..11475	nyi	_Peter Luschny_
+A397422	trilambn	0	0	0	(n, k) -> BI(n + k, n).*(SA(n, k)).*(ZV(n).^(k))	nonn,tabl,new	0..11475	nyi	_Peter Luschny_
+A397423	lambdan	0	n -> SU(0, n, j -> ZV(n).^(j).*(SA(n, j)).*(BI(n + j, n)))	a(n) = Sum_{j=0..n} abs(Stirling1(n, j)) * binomial(n + j, n) * n^j.	nonn,new	0..16	nyi	_Vaclav Kotesovec_

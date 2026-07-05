@@ -1,0 +1,100 @@
+---- 2026-06-30 21:47:22
+?old A397048	trilambn	0	0	0	(n, k) -> RU(0, k, i -> new Q(Z_1(i).*(ZV(n + i).^(n)).*(BI(k, i)).*(Z_1(k)), FA(k))).num()
+A086684	lambdan	1	n -> FA(n).-(FSIT(n, ZV(0), (x, p, e) -> x.+(FA(p).^(e))))
+A111800	multia	1	"1"	(self, n) -> FSIT(n, ZV(0), (x, p, e) -> x.+(self.a(Functions.PRIME_PI.i(p)).+(self.a(e)))).+(1)	1+add(a(pi(i[1]))+a(i[2]), i=ifactors(n)[2])
+A118138	lambdan	2	n -> FSIT(n, ZV(0), (x, p, e) -> x.+(FA(p).*(e)))	a(n) = SUM[p|n] p!. a(n) = SUM[i=1..k] e_i * (p_i)!
+A126272	lambdin	1	n -> FSIT(n, ZV(1), (x, p, e) -> x.*(PM(PI(p).+(2)).^(e + 2)))	27	if n = Product p_i^e_i, n>1, then a(n) = Product p_{i+2}^{e_i+2}.
+A126849	lambdan	1	n -> (n == 1) ? ZV(1) : SD(n, d -> FSIT(d, 0L, (x, p, e) -> x + (PP(e) ? 0 : 1)) == 0L ? ZV(d) : ZV(0)).-(1)	sum_{d|n, d=product p_j^r_j, all r_j prime} d.
+A127185	trilambn	1	1	1	(n, m) -> { final int g = GCDi(n, m); return ZV(BOM(n/g) + BOM(m/g)); }	= A001222(n/g)+A001222(m/g) where g=gcd(n,m)=A050873(n,m).
+A129108	lambdan	0	n -> FSIT(FA(n), ZV(1), (x, p, e) -> x.*(ZV(n).mod(p).testBit(0) ? ZV(1) : p.^(e)))	If n! = Product p_i^e_i, then a(n) = Product{p_i^e_i : n has even remainder mod p_i}. - _Charl
+A182471	lambdan	1	n -> (n == 1) ? ZV(0) : FSIT(n, ZV(0), (x, p, e) -> x.+(p).+(e))./(2*Functions.OMEGA.i(n))		If n = Product (p_j^k_j), j=1 to m, then a(n) = Floor( Sum (p_j + k_j) / 2m ) (a(1) = 0 by convention).
+A182938	lambdan	1	n -> FSIT(n, ZV(1), (x, p, e) -> x.*(BI(p, e)))	If n = Product (p_j^e_j) then a(n) = Product (binomial(p_j, e_j)).
+A202094	holos	1	[0,1,-2,-6,14,14,-42,-14,70,0,-70,14,42,-14,-14,6,2,-1]	324,1296,3600,10000,22500,50625,99225,194481,345744,614656,1016064,1679616,2624400,4100625,6125625,9150625	0	0
+A202095	holos	1	[0,1,-2,-8,18,27,-72,-48,168,42,-252,0,252,-42,-168,48,72,-27,-18,8,2,-1]	720,3600,12000,40000,105000,275625,617400,1382976,2765952,5531904,10160640,18662400,32076000,55130625,89842500,146410000,228399600,356303376,535927392,806105664	0	0
+A202096	holos	1	[0,1,-2,-10,22,44,-110,-110,330,165,-660,-132,924,0,-924,132,660,-165,-330,110,110,-44,-22,10,2,-1]	1600,10000,40000,160000,490000,1500625,3841600,9834496,22127616,49787136,101606400,207360000,392040000,741200625,1317690000,2342560000,3958926400,6690585616,10837642816,17555190016,27429984400,42859350625,64923040000,98344960000	0	0
+A202097	holos	1	[0,1,-2,-12,26,65,-156,-208,572,429,-1430,-572,2574,429,-3432,0,3432,-429,-2574,572,1430,-429,-572,208,156,-65,-26,12,2,-1]	3000,22500,105000,490000,1715000,6002500,17287200,49787136,124467840,311169600,698544000,1568160000,3234330000,6670805625,12847477500,24743290000,45032787800,81959673796,142244061960,246869859600,411449766000,685749610000,1103691680000,1776355840000,2773290240000,4329728640000,6581187532800,10003405049856	0	0
+A202098	holos	1	[0,1,-2,-14,30,90,-210,-350,910,910,-2730,-1638,6006,2002,-10010,-1430,12870,0,-12870,1430,10010,-2002,-6006,1638,2730,-910,-910,350,210,-90,-30,14,2,-1]	5625,50625,275625,1500625,6002500,24010000,77792400,252047376,700131600,1944810000,4802490000,11859210000,26683222500,60037250625,125262905625,261351000625,512247961225,1004006004001,1866953313225,3471607400625,6171746490000,10971993760000,18762758560000,32085427360000,53039175840000,87677004960000,140672883513600,225701826437376,352659103808400,551029849700625,840844857155625,1283088519050625	0	0
+A258750	decexp	1	() -> CR.THREE.divide(CR.TWO).multiply(CR.PI).multiply(Zeta.zeta(3))
+A258752	decexp	3	() -> CR.valueOf(45).divide(CR.TWO).multiply(CR.PI).multiply(Zeta.zeta(5)).add(CR.FIVE.divide(CR.FOUR).multiply(CR.PI.pow(3)).multiply(Zeta.zeta(3)))
+A258851	lambdan	0	n -> (n <= 1) ? ZV(0) : FSIT(n, QV(0), (x, p, e) -> x.+(new Q(Functions.PRIME_PI.z(p).*(e), p))).*(n)      .num()	n * Sum e_j * pi(p_j)/p_j for n = Product p_j^e_j with pi = F000720.
+A266005	filnum	1	1	k -> FSIT(k, 0L, (x, p, e) -> x + (ZV(k).mod(p.^(e).-(1)).isZero() ? 0 : 1)) == 0L	Numbers n = p_1^s_1...p_m^s_m such that (p_i^s_i - 1) | n for all 0<i<=m.
+A270140	filnum	1	1	k -> FSIT(k, 0L, (x, p, e) -> x + (ZV(k)./(p.^(e)).mod(p).equals(p.-(1)) ? 0 : 1)) == 0L	Numbers k such that k/p_i^r_i == -1 (mod p_i) for all i = 1,...,m, where k = p_1^r_1 .... p_m^r_m.
+A274222	filnum	1	1	k -> FSIT(k, 0L, (x, p, e) -> x + (ZV(k)./(p.^(e)).mod(p).isOne() ? 0 : 1)) == 0L	Numbers k = p_1^s_1...p_m^s_m such that k/p_i^s_i == 1 (mod p_i) for all 0 < i <= m.
+A286875	lambdan	1	n -> (n == 1) ? ZV(0) : FSIT(n, ZV(0), (x, p, e) -> x.+(e >= 2 ? p.^(e) : ZV(0)))	Sum (k_j >= 2, p_j^k_j).
+A292815	filnum	1	1	k -> !Predicates.SQUARE_FREE.is(k) && Functions.OMEGA.l(k) >= 2 && FSIT(k, 0L, (x, p, e) -> x + (ZV(k - 1).mod(p.^(e).-(1)).isZero() ? 0 : 1)) == 0L	Nonsquarefree numbers n = p_1^s_1...p_m^s_m (m > 1) such that (p_i^s_i - 1) | n-1 for all 0 < i <= m.
+A304037	lambdan	1	n -> (n == 1) ? ZV(0) : FSIT(n, ZV(0), (x, p, e) -> x.+(PI(p).^(e)))	Sum (pi(p_j)^k_j), where pi() = F000720.
+A304194	filnum	1	1	k -> ZV(k).equals(FSIT(k, ZV(1), (x, p, e) -> x.*(PI(p).*(p))))	k = Product (p_j^e_j) = Product (pi(p_j)*p_j), where pi() = F000720.
+A304251	lambdan	1	n -> (n == 1) ? ZV(0) : FSIT(n, ZV(0), (x, p, e) -> x.+(PM(p).^(e)))	Sum (prime(p_j)^k_j).
+A304253	filnum	1	1	k -> ZV(k).equals(FSIT(k, ZV(0), (x, p, e) -> x.+(PM(p).^(e))))	k = Product (p_j^e_j) = Sum (prime(p_j)^e_j).
+A304410	filnum	1	1	k -> ZV(k).equals(FSIT(k, ZV(1), (x, p, e) -> x.*(p.*(e + 1))))	k = Product (p_j^e_j) = Product (p_j*(e_j + 1)).
+A322177	lambdan	1	n -> (n == 1) ? ZV(0) : FSIT(n, ZV(0), (x, p, e) -> x.+(PM(p).^(PM(e))))	Sum (prime(p_j)^prime(k_j)).
+A328768	lambdan	0	n -> (n <= 1) ? ZV(0) : FSIT(n, QV(0), (x, p, e) -> x.+(new Q(F002110(F000720(p).-(1)).*(e), p))).*(n).num()	n * Sum e_j * A276085(p_j)/p_j
+A328769	lambdan	0	n -> (n <= 1) ? ZV(0) : FSIT(n, ZV(0), (x, p, e) -> x.+(Functions.PRIMORIAL.z(p).*(e)./(p))).*(n)	n * Sum e_j * (p_j)#/p_j for n = Product p_j^e_j with (p_j)# = F034386(p_j).
+A328771	lambdan	0	n -> D276150(D328768(n))
+A328845	lambdan	0	n -> (n <= 1) ? ZV(0) : FSIT(n, QV(0), (x, p, e) -> x.+(new Q(Functions.FIBONACCI.z(p).*(e), p))).*(n)     .num()	n * Sum e_j * A000045(p_j)/p_j for n = Product p_j^e_j.
+A328846	lambdan	0	n -> (n <= 1) ? ZV(0) : FSIT(n, QV(0), (x, p, e) -> x.+(new Q(Functions.FIBONACCI.z(Functions.PRIME_PI.z(p).+(2)).*(e), p))).*(n).num()	n * Sum e_j * F000045(2+F000720(p_j))/p_j for n = Product p_j^e_j.
+A328878	lambdan	1	n -> FSIT(n, ZV(1), (x, p, e) -> x.*(PM(p)))	If n = Product (p_j^k_j) then a(n) = Product (prime(p_j)).
+A328879	lambdan	1	n -> FSIT(n, ZV(1), (x, p, e) -> x.*(PI(p).+(1)))	If n = Product (p_j^k_j) then a(n) = Product (pi(p_j) + 1), where pi = F000720.
+A328880	multia	1	"1"	(self, n) -> FSIT(n, ZV(1), (x, p, e) -> x.*(self.a(Functions.PRIME_PI.i(p)).+(1)))	If n = Product (p_j^k_j) then a(n) = Product (a(pi(p_j)) + 1), where pi = F000720, with a(1) = 1.
+A328892	lambdan	1	n -> FSIT(n, ZV(0), (x, p, e) -> x.+(Z2(e - 1)))	If n = Product (p_j^k_j) then a(n) = Sum (2^(k_j - 1)).
+A329026	filnum	0	12	k -> ZV(k).equals(new Z(FSIT(k, "", (x, p, e) -> x = x + PI(p).toString())))	Numbers k such that k = Product(p_j^e_j) = concatenation(pi(p_j)), where pi = F000720.
+A332385	lambdan	1	n -> (n == 1) ? ZV(0) : FSIT(n, ZV(0), (x, p, e) -> x.+(PI(p).^(2)))	Sum (pi(p_j)^2), where pi = F000720.
+A332411	lambdan	1	n -> (n == 1) ? ZV(0) : FSIT(n, ZV(0), (x, p, e) -> x.+(ZV(n).^(PI(p).-(1))))	Sum (n^(pi(p_j) - 1)), where pi = F000720.
+A332422	lambdan	1	n -> (n == 1) ? ZV(0) : FSIT(n, ZV(0), (x, p, e) -> x.+(PI(p).*(PI(p).+(1).testBit(0) ? -1 : 1)))	Sum ((-1)^(pi(p_j) + 1) * pi(p_j)), where pi = F000720.
+A332424	lambdan	1	n -> (n == 1) ? ZV(0) : FSIT(n, ZV(0), (x, p, e) -> x.+(p.*(PI(p).+(1).testBit(0) ? -1 : 1)))	Sum ((-1)^(pi(p_j) + 1) * p_j), where pi = F000720.
+A332425	lambdan	1	n -> (n == 1) ? ZV(0) : FSIT(n, ZV(0), (x, p, e) -> x.+(p.*(e).*(PI(p).+(1).testBit(0) ? -1 : 1)))	Sum ((-1)^(pi(p_j) + 1) * p_j * k_j), where pi = F000720.
+A333698	lambdan	1	n -> (n == 1) ? ZV(0) : FSIT(n, ZV(0), (x, p, e) -> x.+(PHI(PI(p))))	Sum (phi(pi(p_j))).
+A335403	lambdan	1	n -> FSIT(n, ZV(0), (x, p, e) -> x.+(PM(p).*(e)))	If n = Product_{i=1..k} p_i^e_i then a(n) = Sum_{i=1..k} e_i * prime(p_i).
+A341837	lambdan	1	n -> (n == 1) ? ZV(1) : FSIT(n, ZV(1), (x, p, e) -> x.*(Z_1(e).*(BI(n, e))))	Product ((-1)^k_j * binomial(n, k_j)).
+A343923	lambdan	1	n -> (n == 1) ? ZV(0) : FSIT(n, ZV(0), (x, p, e) -> x.+(p.-(e).abs()))	Sum (abs(p_j-k_j)) (a(1) = 0 by convention).
+A344499	arrlamb	0	0	0	-1	(r, n) -> SU(0, n, k -> FA(k).*(ZV(r).^(k)).*(S2(n, k)))
+A344878	lambdan	1	n -> FSIT(n, ZV(1), (x, p, e) -> LCM(x, p.^(e + (p.equals(ZV(2)) ? 1 : 0)).-(1)))
+A346009	lambdan	1	n -> FSIT(n, QV(0), (x, p, e) -> x.+(new Q(e, e + 1))).num()	a(n) = Sum_{i} e_i/(e_i + 1).
+A346012	lambdan	1	n -> FSIT(n, QV(0), (x, p, e) -> x.+(new Q(e -1 , 2*(e + 1)))).num()	f(n) = Sum_{i} (e_i - 1)/(2*(e_i + 1)).
+A346403	sintrif	1	(term, n) -> (n == 1) ? ZV(1) : SIGMA(term)	""	new A052409()
+A367202	lambdan	1	n -> FSIT(n, QV(0), (x, p, e) -> x.+(new Q(RAD(n), p).^(e))).num()	If n = Product(p_i^e_i), a(n) = Sum_{i = 1..k}(rad(n)/p_i)^e_i, where rad is F007947.
+A369661	filnum	1	1	k -> { final Z a = ARD(k); return a.mod(4) == 2 && F276085(a).mod(4) == 3; }	k whose arithmetic derivative k' is congruent to 2 modulo 4 and F276085(k') is congruent to 3 modulo 4.
+A369662	filnum	1	1	k -> { final Z a = ARD(k); return a.mod(4) == 2 && F276085(a).mod(4) == 1; }	k whose arithmetic derivative k' is congruent to 2 modulo 4 and F276085(k') is congruent to 1 modulo 4.
+A372620	lambdan	1	n -> (n == 1) ? ZV(0) : FSIT(n, ZV(0), (x, p, e) -> x.+(PI(p).*(p)))	Sum (pi(p_j) * p_j), where pi = F000720.
+A373991	lambdan	0	n -> (n <= 1) ? ZV(1) : FSIT(n, QV(0), (x, p, e) -> x.+(new Q(Functions.PRIMORIAL.z(p).*(e), p.^(2)))).*(n).num().mod(3) == 0 ? ZV(1) : ZV(0)
+A373992	filnum	1	0	k -> D328768(k).mod(3) == 0
+A374031	lambdan	1	n -> GCD(F276085(n), D328768(n))	where F276085 is the primorial base log-function, and ?328768 is the first primorial based variant of arithmetic derivative.
+A374034	lambdan	1	n -> D276150(GCD(F276085(n), D328768(n)))	where D276150 is the digit sum in primorial base, F276085 is the primorial base log-function, and ?328768 is the first primorial based variant of arithmetic derivative.
+A374123	lambdan	0	n -> D328768(n).modZ(360)	where ?328768 is the first primorial based variant of the arithmetic derivative.
+A374212	lambdan	2	n -> Functions.VALUATION.z(D328768(n), Z.TWO)
+A374213	lambdan	2	n -> Functions.VALUATION.z(D328768(n), Z.THREE)
+A375932	lambdan	1	n -> { final FactorSequence fs = Jaguar.factor(n); final int me = fs.maxExponent(); return FSIT(n, ZV(1), (x, p, e) -> x.*(p.^(e*(e < me ? 1 : 0)))); }	Product_{i} p_i^(e_i * [e_i < max_{j} e_j]), where [] is the Iverson bracket.
+A376140	lambdan	1	n -> { final FactorSequence fs = Jaguar.factor(n); final int me = fs.maxExponent(); return (n == 1) ? ZV(0) : FSIT(fs, ZV(1), (x, p, e) -> x.*(e + (e < me ? 1 : 0))); }	Product_{i} (e_i + [e_i < Max_{i}(e_i)]).
+A377878	filnum	1	1	k -> F276085(k).mod(3125) == 0
+A379042	decexp	1	() -> CR.ZERO.subtract(CR.SEVEN.multiply(CR.PI.pow(3)).divide(CR.valueOf(108))).subtract(CR.TWO.multiply(CR.PI.pow(2)).multiply(CR.THREE.divide(CR.TWO).log()).divide(CR.THREE.multiply(CR.THREE.sqrt()))).subtract(CR.ONE_THIRD.multiply(CR.PI).multiply(CR.TWO.log().pow(2))).add(CR.TWO.divide(CR.THREE).multiply(CR.PI).multiply(CR.TWO.log()).multiply(CR.THREE.log())).subtract(CR.ONE_THIRD.multiply(CR.PI).multiply(CR.THREE.log().pow(2))).add(CR.THREE.divide(CR.TWO).log().multiply(Zeta.zetaHurwitz(2,CR.ONE_THIRD)).divide(CR.THREE.sqrt())).negate()
+A379141	lambdan	1	n -> (n == 1) ? ZV(0) : FSIT(n, QV(0), (x, p, e) -> x.+(new Q(1, e))).num()	numerator of Sum 1/k_j.
+A379457	lambdan	1	n -> (n == 1) ? ZV(1) : FSIT(n, ZV(1), (x, p, e) -> x.*(p.root(e)))	Product (floor(p_j^(1/k_j))).
+A380206	decexp	1	() -> CR.ONE.divide(CR.valueOf(108)).multiply(CR.ZERO.subtract(CR.valueOf(11).multiply(CR.PI.pow(3))).add(CR.valueOf(24).multiply(CR.THREE.sqrt()).multiply(CR.PI.pow(2)).multiply(CR.THREE.divide(CR.TWO).log())).subtract(CR.valueOf(180).multiply(CR.PI).multiply(CR.THREE.divide(CR.TWO).log().pow(2))).subtract(CR.valueOf(36).multiply(CR.THREE.sqrt()).multiply(CR.THREE.divide(CR.TWO).log()).multiply(Zeta.zetaHurwitz(2,CR.ONE_THIRD)))).negate()
+A381013	lambdan	1	n -> (n == 1) ? ZV(1) : FSIT(n, ZV(1), (x, p, e) -> x.*(PT(p.^(e))))	Product partition(p_j^k_j).
+A381014	lambdan	1	n -> (n == 1) ? ZV(0) : FSIT(n, ZV(0), (x, p, e) -> x.+(PT(p.^(e))))	Sum partition(p_j^k_j).
+A381588	lambdan	1	n -> (n == 1) ? ZV(1) : FSIT(n, ZV(1), (x, p, e) -> x.*(LCM(p, ZV(e))))	Product (lcm(p_j, k_j)), with a(1) = 1.
+A381613	lambdan	1	n -> (n == 1) ? ZV(1) : FSIT(n, ZV(1), (x, p, e) -> x.*(MIN(p, ZV(e))))	Product (min(p_j, k_j)), with a(1) = 1.
+A381614	lambdan	1	n -> (n == 1) ? ZV(1) : FSIT(n, ZV(1), (x, p, e) -> x.*(MAX(p, ZV(e))))	Product (max(p_j, k_j)), with a(1) = 1.
+A381958	lambdan	1	n -> (n == 1) ? ZV(0) : FSIT(n, QV(0), (x, p, e) -> x.+(new Q(1, PI(p)))).num()	numerator of Sum (1/pi(p_j)).
+A381959	lambdan	1	n -> (n == 1) ? ZV(1) : FSIT(n, QV(0), (x, p, e) -> x.+(new Q(1, PI(p)))).den()	denominator of Sum (1/pi(p_j)).
+A382331	lambdan	1	n -> (n == 1) ? ZV(0) : FSIT(n, ZV(0), (x, p, e) -> x.+(Z_1(e).*(p))).negate()	-Sum ((-1)^k_j * p_j).
+A382477	lambdan	1	n -> (n == 1) ? ZV(0) : FSIT(n, ZV(0), (x, p, e) -> x.+(Z_1(e).*(p).*(e))).negate()	-Sum ((-1)^k_j * k_j * p_j).
+A383954	lambdan	1	n -> FSIT(n, ZV(1), (x, p, e) -> x.*(PHI(p.^(e)).-(1)))	a(n) = Product_{i} (phi(p_i^e_i)-1) where n = Product_{i} p_i^e_i and phi is the Euler phi function.
+A384816	lambdan	1	n -> (n == 1) ? ZV(0) : FSIT(n, ZV(0), (x, p, e) -> x.+(PI(p).^(3)))	Sum (pi(p_j)^3), where pi = F000720.
+A387635	lambdan	0	n -> SU(0, n - 1, k -> BI(2*n, k).^(2))	a(n) = Sum_{k=0..n-1} binomial(2*n, k)^2.A387635	holos	0	[[0],[-6,32,-32],[0,-1,2]]	0,1	0	0
+A391450	lambdin	0	n -> SU(1, n/3, m -> BI(2*m - 1, m - 1).*(2).*(BI(n - 2*m - 1, m - 1))).+(SU(1, (n - 1)/3, m -> BI(2*m, m).*(BI(n-2*m-2, m - 1)))).+(SU(1, (n - 2)/3, m -> BI(2*m, m - 1).*(BI(n-2*m - 2, m))))	1, 1
+A391866	filnum	1	0	k -> D008966(k).isZero() && D359550(k).equals(ZV(1)) && F276085(k).mod(D003557(k)).isZero()	{k such that D008966(k) = 0, D359550(k) = 1 and D003557(k) | F276085(k)}.
+A391927	filnum	1	1	k -> ARD(F276085(k)).compareTo(k) >= 0	{k such that F003415(F276085(k)) >= k}.
+A391938	filnum	1	0	k -> D359550(k).equals(ZV(1)) && ARD(F276085(k)).compareTo(k) >= 0	{k such that D359550(k) = 1 and F003415(F276085(k)) >= k}.
+A396257	holos	0	[0,-2,5,-1]	1,12,54	0	0
+A396835	holos	0	[0,1,-1,-1,1,0,0,-1,1,1,-1]	0,1,1,2,4,6,9,12,16,19	0	0
+A397156	decexp	1	() -> CR.valueOf(58).add(CR.valueOf(41).multiply(CR.SQRT2)).sqrt().divide(CR.THREE)
+A397157	decexp	2	() -> CR.TWO.multiply(CR.valueOf(22).add(X391952).sqrt())
+A397158	decexp	0	() -> CR.NINE.divide(CR.valueOf(28)).add(CR.valueOf(13).divide(CR.valueOf(28).multiply(CR.SQRT2))).sqrt()
+A397159	decexp	1	() -> CR.HALF.add(CR.THREE.divide(CR.FOUR.multiply(CR.SQRT2))).sqrt()
+A397160	decexp	1	() -> CR.FIVE.add(CR.SEVEN.divide(CR.SQRT2)).sqrt()
+A397161	decexpr	0	() -> REALS.acos(X101465)
+A397162	decexpr	1	() -> REALS.acos(CR.ONE.subtract(CR.SQRT2).divide(CR.TWO))
+A397163	decexpr	1	() -> REALS.acos(CR.ONE.subtract(CR.EIGHT.sqrt()).divide(CR.SEVEN))
+A397378	decexp	0	() -> CR.valueOf(15).multiply(Zeta.zeta(4)).divide(CR.valueOf(32)).add(CR.SEVEN.multiply(CR.TWO.log()).multiply(Zeta.zeta(3)).divide(CR.valueOf(16))).subtract(CR.THREE.multiply(CR.TWO.log().pow(2)).multiply(Zeta.zeta(2)).divide(CR.EIGHT))
+A397491	holos	0	[0,-1,14,-91,364,-1001,2002,-3003,3432,-3003,2002,-1001,364,-91,14,-1]	0,0,3,584,24582,447144,4784137,35490480,201375756,931086384,3663003663,12645682104,39191650322,110943262488,290738012181,712891966432	0	0
