@@ -25,7 +25,7 @@ if (scalar(@ARGV) == 0) { # print help and exit
 } # print help
 
 my %colors = qw(
-  A red 
+  A salmon 
   B lavender 
   D lightgreen 
   E lightgreen 

@@ -1,39 +1,56 @@
----- 2026-07-05 11:45:07
+---- 2026-07-05 22:25:37
+A071820	parmof5	1	A064353	2	3	2	3	Kolakoski-(2,3) sequence: a(n) is length of n-th run.
+A071907	parmof5	1	A064353	1	4	1	4	Kolakoski-(1,4) sequence: a(n) is length of n-th run.
+A071928	parmof5	1	A064353	2	4	2	3	Kolakoski-(2,4) sequence: a(n) is length of n-th run.
+A071942	parmof5	1	A064353	3	4	3	2	Kolakoski-(3,4) sequence: a(n) is length of n-th run.
+A074803	parmof5	1	A064353	4	2	0	3	Kolakoski-(4,2) sequence: a(n) is length of n-th run.
+A074804	parmof5	1	A064353	3	2	0	2	Kolakoski-(3,2) sequence: a(n) is length of n-th run.
 A094934	filter	0	new A030302()	(k, v) -> PP(k)
 A096607	filter	1	new A096605()	(k, v) -> (k&1) == 0	a(n) = J096605(2*n).
+A101429	lambdan	0	n -> Functions.DIGIT_SUM.z(Z.TWO.pow(Z.TEN.pow(n)))	Sum of digits of (2^(10^n)).
 A111123	sintrif	0	(term, n) -> { final int[] dc = ZUtils.digitCounts(term); return ZV(dc[2]); }	""	new A054349()	Number of 2s in n-th "Kolakoski" string defined in A054349.
 A111124	sintrif	0	(term, n) -> { final int[] dc = ZUtils.digitCounts(term); return ZV(dc[1]); }	""	new A054349()	Number of 1s in n-th "Kolakoski" string defined in A054349.
 A123273	multia	0	"1"	(self, n) -> CNT(0, n - 1, k -> GCD(self.a(k), self.a(k/2)).isOne())	a(0) = 1; a(n) = the number of earlier terms, a(k), where gcd(a(k), a(floor(k/2))) = 1.
 A125890	lambdan	1	n -> Zeta.zeta(3).^(n).floor()	Floor(Zeta(3)^n).	nonn	1..56	nyi	_Artur Jasinski_
 A125891	lambdan	1	n -> Zeta.zeta(5).^(n).floor()	Floor(Zeta(5)^n).	nonn	1..89	nyi	_Artur Jasinski_
 A126848	lambdan	1	n -> CV(n).^(new Q(5, 11)).*(2).floor(256)		a(n) = floor(2*n^(5/11)).
+A134817	multia	1	"1"	(self, n) -> self.a(n - 1).*(Functions.DIGIT_LENGTH.z(self.a(n - 1))).+(1)	n -> a(n-1)*floor(log(a(n-1)) + 1) + 1.
 A134992	lambdan	2	n -> CV(3*n)./(CV(n).log().*(CR.TWO)).round()	a(n) = round(3*n/2*log(n)).
 A134993	lambdan	2	n -> CV(3*n)./(CV(n + 1).log().*(CR.TWO)).round()	Round(3n/2log(n+1)).
 A134994	lambdan	2	n -> CV(3*n)./(CV(n).log().*(CR.TWO)).floor()	a(n) = floor(3n/2log(n)).
 A134995	lambdan	2	n -> CV(3*n)./(CV(n + 1).log().*(CR.TWO)).floor()	a(n) = floor(3n/2log(n+1)).
+A141053	lambdan	0	n -> Functions.LEADING_DIGIT.z(FI(5*n + 3))	Most-significant decimal digit of Fibonacci(5n+3).
 A146562	filtpos	1	1	new A064353()	(k, v) -> ((k&1) == 1 && !v.equals(ZV(1)) || (k&1) == 0 && !v.equals(ZV(3)))	A064353(n) is generally 1 if n is odd and 3 if n is even.
 A176146	sintrif	1	(term, n) -> term./(10)	""	new A001358()	a(n) = n-th-semiprime without last digit.
 A179527	charfunc	1	new A083207()	Characteristic function of Zumkeller numbers (J083207).
 A220658	tablamb	0	0	n -> new Integer[]{ 0, D084558(n).intValueExact() }	(n, k) -> ZV(n)	Irregular table, where the n-th row consists of D084558(n)+1 copies of n.
 A225593	lambdan	1	n -> CV(n)./(CR.E).round()	The integer closest to n/e.
+A225626	filter	0	new A000040()	p -> PP(D000195(p).+(p.^(2)))	Primes p such that floor(log(p)) + p^2 is prime.
 A226033	lambdan	1	n -> CV(n)./(CV(new Q(1, 2*n)).+(1).exp()).round()	Round(n * exp(-1 - 1/(2n))), an approximation to the number of daughters to wait before picking in the sultan''s dowry problem (Better that A225593).
 A229790	sintrif	0	(term, n) -> CV(term).pow(new Q(1, 3)).round()	""	new A003215()
+A231560	lambdan	2	n -> ComputableReals.SINGLETON.sum(2, n, i -> CV(i).log().*(i).inverse()).floor()	Floor(sum_{i=2..n} 1/(i*log(i))).
+A235044	partsun	0	new CharacteristicFunction(new A091214()).prepend(0)	Partial sums of the characteristic function of J091214.
+A245473	lambdan	1	n -> CV(2).pow(CV(n).log()).round()	Nearest integer to 2^log(n).
 A253903	charfunc	0	new A000330()	(square pyramidal numbers)
-A262872	polya	0	"[1],[1,-1],D010052"	"x,B,x,C,*,p1,/"	new J010057()
-A262874	polya	0	"[1],[1,-1]"	"x,B,x,C,*,x,D,*,p1,/"	new D010052(), new J010057(), new J374016()
+A260816	lambdan	0	n -> D000195(F000108(n))	floor(log(Catalan(n))).
+A261585	sintrif	0	(term, n) -> Functions.DIGIT_LENGTH.z(60, term)	""	new A000045()	Number of sexagesimal digits of Fibonacci numbers in base-60 representation.
+A262872	polya	0	"[1],[1,-1]"	"x,B,x,C,*,p1,/"	new A010052(), new A010057()
+A262874	polya	0	"[1],[1,-1]"	"x,B,x,C,*,x,D,*,p1,/"	new A010052(), new A010057(), new A374016()
+A263023	lambdan	1	n -> { final CR lpm = CV(PM(n)).log(); return lpm./(CV(PM(n + 1)).log().-(lpm)).floor(); }	floor(log(prime(n))/(log(prime(n+1)) - log(prime(n)))).
 A268240	sintrif	0	(term, n) -> term.and(ZV(1))	""	new A046816()	Pascal''s tetrahedron of trinomial coefficients (J046816) read mod 2.
-A269268	parmof3	1	A064353	1	5	Kolakoski-(1,5) sequence: a(n) is length of n-th run.   nonn,easy       1..10000        nyi     _Vincenzo Librandi_
-A269348	parmof3	1	A064353	1	6	Kolakoski-(1,6) sequence: a(n) is length of n-th run.   nonn,easy       1..10000        nyi     _Vincenzo Librandi_
-A269349	parmof3	1	A064353	1	7	Kolakoski-(1,7) sequence: a(n) is length of n-th run.   nonn,easy       1..10000        nyi     _Vincenzo Librandi_
-A269350	parmof3	1	A064353	1	8	Kolakoski-(1,8) sequence: a(n) is length of n-th run.   nonn,easy       1..10000        nyi     _Vincenzo Librandi_
-A269351	parmof3	1	A064353	1	9	Kolakoski-(1,9) sequence: a(n) is length of n-th run.   nonn,easy       1..10000        nyi     _Vincenzo Librandi_
-A269352	parmof3	1	A064353	1	10	Kolakoski-(1,10) sequence: a(n) is length of n-th run.  nonn,easy       1..74   nyi     _Vincenzo Librandi_
+A269268	parmof5	1	A064353	1	5	1	5	Kolakoski-(1,5) sequence: a(n) is length of n-th run.   nonn,easy       1..10000        nyi     _Vincenzo Librandi_
+A269348	parmof5	1	A064353	1	6	1	6	Kolakoski-(1,6) sequence: a(n) is length of n-th run.   nonn,easy       1..10000        nyi     _Vincenzo Librandi_
+A269349	parmof5	1	A064353	1	7	1	7	Kolakoski-(1,7) sequence: a(n) is length of n-th run.   nonn,easy       1..10000        nyi     _Vincenzo Librandi_
+A269350	parmof5	1	A064353	1	8	1	8	Kolakoski-(1,8) sequence: a(n) is length of n-th run.   nonn,easy       1..10000        nyi     _Vincenzo Librandi_
+A269351	parmof5	1	A064353	1	9	1	9	Kolakoski-(1,9) sequence: a(n) is length of n-th run.   nonn,easy       1..10000        nyi     _Vincenzo Librandi_
+A269352	parmof5	1	A064353	1	10	1	10	Kolakoski-(1,10) sequence: a(n) is length of n-th run.  nonn,easy       1..74   nyi     _Vincenzo Librandi_
+A292621	multia	1	"1,2"	(self, n) -> self.a(n - 1).+(self.a(D000195(n).intValueExact()))	a(n-1) + a(floor(log(n))) with a(1) = 1, a(2) = 2.
 A294448	sintrif	1	(term, n) -> term.negate()	""	new A088568()
 A296084	lambdin	1	n -> IV[SIGMA(n).-(1).mod(TAUl(n) - 1) == 0L]	0	a(1) = 0 and for n > 1, a(n) = 1 if tau(n)-1 divides sigma(n)-1, 0 otherwise. Here tau = F000005, sigma = F000203.
 A304569	trilambn	1	1	1	(n, k) -> IV[FSIT(k, 0L, (x, p, e) -> x + (ZV(n).mod(p).isZero() ? 0 : 1)) == 0L]	Triangle read by rows: T(n,k) = 1 if k | n^e with e >= 0, otherwise T(n,k) = 0 (1 <= k <= n).
 A304571	trilambn	1	1	1	(n, k) -> IV[GCDi(n, k) > 1 && n%k != 0]	Triangle read by rows: T(n,k) = 1 if gcd(k,n) > 1 and n mod k != 0.
 A307064	polya	0	"[1]"	"1,1,x,B,/,-"	new A006882()
-A307240	polyxa	0	"[1]"	"x,x,B,/"	1	0	new A008836()---- 2026-07-04 09:58:02
+A307240	polyxa	0	"[1]"	"x,x,B,/"	1	0	new A008836()
 A308806	polya	0	"[1]"	"1,x,B,x,C,-,/"	new CharacteristicFunction(0, new A014633()), new CharacteristicFunction(0, new A014632())
 A308849	polyxa	0	"[1]"	"1,x,B,/"	0	1	egf(new A001405())
 A308850	polyxa	0	"[1]"	"1,x,B,/"	0	1	egf(new A001700())
@@ -68,6 +85,7 @@ A353528	lambdan	1	n -> IV[D053669(n)  .mod(4) == 1]	is of the form 4m+1, otherwi
 A353529	lambdan	1	n -> IV[D053669(n)  .mod(4) == 3]	is of the form 4m+3, otherwise a(n) = 0.
 A354028	lambdan	1	n -> IV[Predicates.PRIME_POWER.is(n) && n%4 == 3]	a(n) = 1 if n is a prime power of the form 4m+3, otherwise 0.
 A354030	lambdan	1	n -> IV[n == 1 || Predicates.PRIME_POWER.is(n) && n%4 == 1]	a(n) = 1 if n is either 1 or a prime power of the form 4m+1, otherwise 0.
+A355703	lambdan	1	n -> BI(n, CV(n).log().floor().intValueExact())	binomial(n, floor(log(n))).
 A359605	sintrif	1	(term, n) -> IV[term.equals(ZV(1))]	""	new A355690()	is positive (+1), otherwise 0.
 A359606	sintrif	1	(term, n) -> IV[term.equals(ZV(-1))]	""	new A355690()	is negative (-1), otherwise 0.
 A360130	lambdan	1	n -> IV[Predicates.TRIANGULAR.is(D003961(n))]	is a triangular number, otherwise 0, where D003961 is fully multiplicative with a(p) = nextprime(p).
@@ -96,18 +114,16 @@ A395053	lambdan	1	n -> IV[GPF(F276085(n)).compareTo(GPF(n)) > 0]	a(n) = 1 if the
 A397326	lambdan	0	n -> SU(0, n, j -> Z_1(j).*(BI(n, j)).*(D001006(2*n - j).^(2)))	a(n) = Sum_{j=0..n} (-1)^j*binomial(n, j) * D001006(2*n - j)^2.	nonn,new	0..17	nyi	_Peter Luschny_
 A397472	holos	0	[[0],[-4096,20480,-40960,40960,-20480,4096],[16,-104,280,-400,320,-128],[0,0,0,0,0,1]]	1,16	0	0
 A397496	trilambn	1	1	1	(n, k) -> ZUtils.concatenate(n, n + 1 - k, i -> ZV(i))	Triangle read by rows: T(n, k) is the concatenation of numbers from n down to k, n >= k >= 1.	nonn,base,tabl,new	1..10011	nyi	_Michael S. Branicky_
+A397544	decexpr	1	() -> REALS.csc(CR.PI.divide(CR.TEN)).pow(3).multiply(REALS.sin(CR.PI.divide(CR.FIVE))).divide(CR.FOUR)
+A397552	lambdan	0	n -> FA(n).mod(PT(n))	a(n) = n! mod F000041(n), where F000041 is the partition function.	nonn,easy,new	0..54	nyi	_Ois‚ąö‚Č†n Flynn-Connolly_
 A397588	poly	1	"[0,1]"	"x,A,^2,<1,dif,+"
 A397629	filnum	1	1	k -> { final Z fl = CV(k).log()./(CR.THREE.log()).floor(); return !fl.isZero() && ZV(k).mod(fl).isZero(); }	Numbers m such that m mod floor(log_3(m)) = 0.
----- 2026-07-05 12:37:09
-A141053	lambdan	0	n -> Functions.LEADING_DIGIT.z(FI(5*n + 3))	Most-significant decimal digit of Fibonacci(5n+3).
-A231560	lambdan	2	n -> ComputableReals.SINGLETON.sum(2, n, i -> CV(i).log().*(i).inverse()).floor()	Floor(sum_{i=2..n} 1/(i*log(i))).
-A245473	lambdan	1	n -> CV(2).pow(CV(n).log()).round()	Nearest integer to 2^log(n).
-A260816	lambdan	0	n -> D000195(F000108(n))	floor(log(Catalan(n))).
-A261585	sintrif	0	(term, n) -> Functions.DIGIT_LENGTH.z(60, term)	""	new A000045()	Number of sexagesimal digits of Fibonacci numbers in base-60 representation.
-A355703	lambdan	1	n -> BI(n, CV(n).log().floor().intValueExact())	binomial(n, floor(log(n))).
-A225626	filter	0	new A000040()	p -> PP(D000195(p).+(p.^(2)))	Primes p such that floor(log(p)) + p^2 is prime.
-A101429	lambdan	0	n -> Functions.DIGIT_SUM.z(Z.TWO.pow(Z.TEN.pow(n)))	Sum of digits of (2^(10^n)).
----- 2026-07-05 12:50:54
-A134817	multia	1	"1"	(self, n) -> self.a(n - 1).*(Functions.DIGIT_LENGTH.z(self.a(n - 1))).+(1)	n -> a(n-1)*floor(log(a(n-1)) + 1) + 1.
-A235044	partsun	0	new CharacteristicFunction(new A091214()).prepend(0)	Partial sums of the characteristic function of J091214.
-A263023	lambdan	1	n -> { final CR lpm = CV(PM(n)).log(); return lpm./(CV(PM(n + 1)).log().-(lpm)).floor(); }	floor(log(prime(n))/(log(prime(n+1)) - log(prime(n)))).
+A397630	decexp	1	() -> CR.valueOf(329).multiply(Zeta.zeta(7)).divide(CR.valueOf(16)).subtract(CR.NINE.multiply(Zeta.zeta(2)).multiply(Zeta.zeta(5)).divide(CR.TWO)).subtract(CR.SIX.multiply(Zeta.zeta(3)).multiply(Zeta.zeta(4)))
+A397631	decexp	1	() -> CR.NINE.multiply(Zeta.zeta(2)).multiply(Zeta.zeta(5)).divide(CR.TWO).subtract(CR.THREE.multiply(Zeta.zeta(3)).multiply(Zeta.zeta(4)).divide(CR.TWO)).subtract(CR.valueOf(51).multiply(Zeta.zeta(7)).divide(CR.valueOf(16)))
+A397632	decexp	1	() -> CR.valueOf(185).multiply(Zeta.zeta(7)).divide(CR.EIGHT).add(CR.FIVE.multiply(Zeta.zeta(2)).multiply(Zeta.zeta(5))).subtract(CR.valueOf(43).multiply(Zeta.zeta(3)).multiply(Zeta.zeta(4)).divide(CR.TWO))
+A397633	decexp	1	() -> CR.valueOf(131).multiply(Zeta.zeta(7)).divide(CR.valueOf(16)).subtract(CR.FIVE.multiply(Zeta.zeta(2)).multiply(Zeta.zeta(5)).divide(CR.TWO)).subtract(CR.THREE.multiply(Zeta.zeta(3)).multiply(Zeta.zeta(4)).divide(CR.TWO))
+A397634	decexp	1	() -> CR.valueOf(83).multiply(Zeta.zeta(7)).divide(CR.EIGHT).subtract(CR.valueOf(11).multiply(Zeta.zeta(2)).multiply(Zeta.zeta(5)).divide(CR.TWO)).add(Zeta.zeta(3).multiply(Zeta.zeta(4)).divide(CR.FOUR))
+A397635	decexp	1	() -> CR.FIVE.multiply(Zeta.zeta(2)).multiply(Zeta.zeta(5)).add(CR.valueOf(19).multiply(Zeta.zeta(3)).multiply(Zeta.zeta(4)).divide(CR.TWO)).subtract(CR.valueOf(155).multiply(Zeta.zeta(7)).divide(CR.EIGHT))
+A397636	decexp	2	() -> CR.valueOf(83).multiply(Zeta.zeta(7)).divide(CR.valueOf(16)).subtract(CR.FIVE.multiply(Zeta.zeta(2)).multiply(Zeta.zeta(5)).divide(CR.TWO)).add(CR.valueOf(27).multiply(Zeta.zeta(3)).multiply(Zeta.zeta(4)).divide(CR.TWO))
+A397637	decexp	3	() -> CR.valueOf(2051).multiply(Zeta.zeta(7)).divide(CR.valueOf(16)).add(CR.valueOf(57).multiply(Zeta.zeta(2)).multiply(Zeta.zeta(5)).divide(CR.TWO)).add(CR.valueOf(33).multiply(Zeta.zeta(3)).multiply(Zeta.zeta(4)))
+A397638	decexp	1	() -> CR.FIVE.multiply(Zeta.zeta(3)).multiply(Zeta.zeta(4)).add(CR.valueOf(13).multiply(Zeta.zeta(2)).multiply(Zeta.zeta(5)).divide(CR.TWO)).subtract(CR.valueOf(217).multiply(Zeta.zeta(7)).divide(CR.valueOf(16)))
