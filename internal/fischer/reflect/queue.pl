@@ -1,7 +1,8 @@
 #!perl
 
 # Read a list of A-numbers and pack all sources into one file
-# @(#) $Id$
+# @(#) $Id$ 
+# 2026-07-07: unpack omits lines that start with "//%"
 # 2023-08-23: -s
 # 2023-07-11, Georg Fischer
 #
@@ -68,7 +69,8 @@ if (0) {
     my $change = "";
     while (<>) { # read inputfile
         s{\s+\Z}{}; # chompr
-        my $line = $_;
+        my $line = $_; 
+        next if $line =~ m{\A\/\/\%}; # starts with "//%" - Java comment introduced by subset.pl
         my ($sep, $nseqno);
         if (0) {
         } elsif ($line =~ m{\A$separator}) {
