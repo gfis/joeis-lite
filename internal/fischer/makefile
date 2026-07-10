@@ -559,7 +559,11 @@ info: # compare CC= with joeis_names.txt
 	# ---- $@ CC=$(CC)
 	cut -f1 $(CC).gen > info.tmp
 	make seq LIST=info.tmp
-	$(DBAT) "SELECT s.aseqno, j.superclass FROM seq s LEFT JOIN joeis j ON s.aseqno = j.aseqno;" \
+	$(DBAT) "SELECT s.aseqno, i.author, j.superclass \
+	    FROM seq s \
+	    LEFT JOIN asinfo i ON i.aseqno = s.aseqno \
+	    LEFT JOIN joeis  j ON j.aseqno = i.aseqno \
+	    ORDER BY 1" \
 	>        $(CC).inf
 	head -n4 $(CC).inf
 	wc -l    $(CC).inf
