@@ -706,6 +706,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WGroupFactory}                 ) { $imports{"irvine.math.group.GroupFactory"               } = $itype; }
     if ($line =~ m{\WHankelTransformSequence}      ) { $imports{"irvine.oeis.transform.HankelTransformSequence"} = $itype; }
     if ($line =~ m{\WHolonomicRecurrence}          ) { $imports{"irvine.oeis.recur.HolonomicRecurrence"}         = $itype; }
+    if ($line =~ m{\WIllegalArgumentException}     ) { $imports{"java.lang.IllegalArgumentException"}            = $itype; }
     if ($line =~ m{\WIntegerPartition}             ) { $imports{"irvine.math.partitions.IntegerPartition"}       = $itype; }
     if ($line =~ m{\WIntegerUtils\.}               ) { $imports{"irvine.math.IntegerUtils"}                      = $itype; }
     if ($line =~ m{\WIntegers\.}                   ) { $imports{"irvine.math.z.Integers"}                        = $itype; }

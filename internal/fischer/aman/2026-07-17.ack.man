@@ -1,9 +1,32 @@
----- 2026-07-17 09:42:35
+---- 2026-07-17 22:18:03
+A063882	hofstadt	1	a(n - a(n - 1)) + a(n - a(n - 4))	1,1,1,1
+A086835	hofstadt	1	a( (n - a(n-1))*((n&1)) + a(n-1)*(1 - ((n&1))) ) + a( (n - a(n-2))*((n&1)) + (n - a(n-1))*(1 - ((n&1))) )	1,1
+A088387	lambdin	1	n -> { final FactorSequence fs = Jaguar.factor(n); final Z peMax = FSIT(fs, ZV(0), (x, p, e) -> p.^(e).compareTo(x) > 0 ? p.^(e) : x); return FSIT(fs, ZV(0), (x, p, e) -> (p.^(e).equals(peMax) ? p : x)); }	1	Prime corresponding to largest prime power factor of n, a(1)=1.
+A092569	lambdin	0	n -> { final long hm1 = Long.highestOneBit(n) - 1; return ZV((n ^ hm1) ^ 1); }	0,1,2,3	Permutation of integers a(a(n)) = n. In binary representation of n, transformation of inner bits, 1 <-> 0, gives binary representation of a(n).
+A092570	filter	1	new A000040()	p -> PP(D092569(p))
+A143028	filnum	1	1	n -> { long k = n - 1; long m = 2; long r = k % m; k /= m; while (r != 0) { ++m; r = k % m; k /= m;} return VAL(k + 1, m) + 2 == 2 ; }
+A143029	filnum	1	1	n -> { long k = n - 1; long m = 2; long r = k % m; k /= m; while (r != 0) { ++m; r = k % m; k /= m;} return VAL(k + 1, m) + 2 == 3 ; }
+A143030	filnum	1	1	n -> { long k = n - 1; long m = 2; long r = k % m; k /= m; while (r != 0) { ++m; r = k % m; k /= m;} return VAL(k + 1, m) + 2 == 4 ; }
+A143031	filnum	1	1	n -> { long k = n - 1; long m = 2; long r = k % m; k /= m; while (r != 0) { ++m; r = k % m; k /= m;} return VAL(k + 1, m) + 2 == 5 ; }
+A143032	filnum	1	1	n -> { long k = n - 1; long m = 2; long r = k % m; k /= m; while (r != 0) { ++m; r = k % m; k /= m;} return VAL(k + 1, m) + 2 == 6 ; }
+A143033	filnum	1	1	n -> { long k = n - 1; long m = 2; long r = k % m; k /= m; while (r != 0) { ++m; r = k % m; k /= m;} return VAL(k + 1, m) + 2 == 7 ; }
+A143034	filnum	1	1	n -> { long k = n - 1; long m = 2; long r = k % m; k /= m; while (r != 0) { ++m; r = k % m; k /= m;} return VAL(k + 1, m) + 2 == 8 ; }
+A143035	filnum	1	1	n -> { long k = n - 1; long m = 2; long r = k % m; k /= m; while (r != 0) { ++m; r = k % m; k /= m;} return VAL(k + 1, m) + 2 == 9 ; }
+A143036	filnum	1	1	n -> { long k = n - 1; long m = 2; long r = k % m; k /= m; while (r != 0) { ++m; r = k % m; k /= m;} return VAL(k + 1, m) + 2 == 10; }
+A147665	hofstadt	0	a(a(n - 1)) + (n%3 != 2 ? a(a(n/3)) : a(n - a(n/3)))	0,1,1	r(3*k) = a(a(k)), r(3*k+1) = a(a(k)) and r(3*k+2) = a(n-a(k)), with a(0) = 0 and a(1) = a(2) = 1.
+A147952	hofstadt	0	a(a(n - 2)) + (n%3 != 2 ? a(a(n/3)) : a(n - a(n/3)))	0,1,1	r(n)   = a(a(floor(n/3))) when n == 0 or 1 (mod 3) and = a(n - a(floor(n/3))) when n == 2 (mod 3).
+A147954	hofstadt	0	(n <= 5) ? a(a(n-1)) + a(n-a(n-1)) : a(a(n-1)) + (n % 6 != 5 ? a(a(n/6)) : a(n - a(n/6)))	0,1,1	r(n) = a(a(floor(n/6))) for n == 0, 1, 2, 3, 4 (mod 6), and r(n) = a(n - a(floor(n/6))) for n == 5 (mod 6).
+A161189	lambdan	1	n -> { long k = n - 1; long m = 2; long r = k % m; k /= m; while (r != 0) { ++m; r = k % m; k /= m;} return Functions.VALUATION.z(k + 1, m).+(2); }
+A163325	lambdan	0	n -> DIGIT(n, 9, ZV(0), (x, d, e) -> x.+(ZV(3).^(e).*(d % 3)))	a(n) = fromdigits(digits(n, 9)%3, 3)	Pick digits at the even distance from the least significant end of the ternary expansion of n, then convert back to decimal.
+A163326	lambdan	0	n -> DIGIT(n, 9, ZV(0), (x, d, e) -> x.+(ZV(3).^(e).*(d / 3)))	a(n) = fromdigits(digits(n, 9)\3, 3)	Pick digits at the odd distance from the least significant end of the ternary expansion of n, then convert back to decimal.
+A163327	lambdan	0	n -> new Z(StringUtils.translate(ZV(n).toString(9), "012345678", "036147258"), 9)	Self-inverse permutation of integers: swap the odd- and even-positioned digits in the ternary expansion of n, then convert back to decimal.
 A163777	filnum	1	1	k -> k % 2 ==0 && PP(2*k + 1) && Functions.ORDER.z(2*k + 1, 2).equals(2*k)
 A163779	filnum	1	1	k -> k % 4 ==1 && PP(2*k + 1) && Functions.ORDER.z(2*k + 1, 2).equals(2*k)
 A163781	filnum	1	1	k -> k % 4 >=2 && PP(2*k + 1) && Functions.ORDER.z(2*k + 1, 2).equals(k%2 == 1 ? k : 2*k)
 A193303	filnum	1	1	k -> SF(ZV(k)./(ZV(3).^(VAL(k, 3))))
 A193304	filnum	1	1	k -> SF(ZV(k)./(ZV(5).^(VAL(k, 5))))
+A199343	lambdan	0	n -> ZV(n).+((n % 10 < 9) ? ZV(1) : ZV(10).^(VAL(n + 1, 10) - 1).*(9))	a(n)= n+if(n%10<9,1,9*10^(valuation(n+1,10)-1))
+A199344	lambdan	0	n -> ZV(10).^(VAL(n + 1, 10)).+(n)
 A216829	lambdan	1	n -> Functions.ORDER.z(3*(2*n-1), 2)./(2)
 A217469	lambdan	1	n -> Functions.ORDER.z(5*n+1, 5)
 A217852	lambdan	1	n -> Functions.ORDER.z(5*n-1, 5)
@@ -12,11 +35,25 @@ A225838	filnum	1	1	k -> ZV(k)./(Z2(VAL(k, 2)).*(ZV(3).^(VAL(k, 3)))).mod(6)  == 
 A225857	filnum	1	1	k -> ZV(k)./(Z2(VAL(k, 2)).*(ZV(3).^(VAL(k, 3)))).mod(4)  == 1
 A225858	filnum	1	1	k -> ZV(k)./(Z2(VAL(k, 2)).*(ZV(3).^(VAL(k, 3)))).mod(4)  == 3
 A226367	lambdan	1	n -> { final Z p = PM(n); return Functions.ORDER.z(p, Functions.NEXT_PRIME.z(p.+(1))); }	vector(80, n, p = prime(n); znorder(Mod(nextprime(p+1), p)))
+A240807	hofstadt	0	(a(n-1) > n-1 || a(n-2) > n-2) ? null : a(n-1-a(n-1))+a(n-2-a(n-2))	-1,-1,2	unless in which case the sequence terminates.
+A240808	hofstadt	0	(a(n-1) > n-1 || a(n-2) > n-2) ? null : a(n-1-a(n-1))+a(n-2-a(n-2))	2,1,0	unless in which case the sequence terminates.
+A244478	hofstadt	0	(a(n-1) > n-1 || a(n-2) > n-2) ? null : a(n-1-a(n-1))+a(n-2-a(n-2))	2,0,2	unless in which case the sequence terminates.
+A244483	hofstadt	0	(a(n-1) > n-1 || a(n-2) > n-2) ? null : a(n-1-a(n-1))+a(n-2-a(n-2))	3,1,0	unless in which case the sequence terminates.
 A246489	sintrif	1	(p, n) -> (n <= 2) ? ZV(0) : Functions.ORDER.z(p, 12)	""	new A000040()	forprime(p=5,10^3,print1(znorder(Mod(12,p)),", ")); \
 A249345	lambdan	0	n -> SU(0, n, k -> Functions.VALUATION.z(BI(n, k), 5))
 A249347	lambdan	0	n -> SU(0, n, k -> Functions.VALUATION.z(BI(n, k), 7))
+A277366	filter	0	new A002808()	v -> v.-(1).^(2).mod(PHI(v).*(Functions.CARMICHAEL_LAMBDA.z(v))).isZero()	Composite numbers k such that phi(k)*lambda(k) divides (k-1)^2, where phi(k) = F000010(k) and lambda(k) = F002322(k).
+A277389	filnum	0	1	k -> ZV(k - 1).^(2).mod(Functions.CARMICHAEL_LAMBDA.z(k).^(3)).isZero()	Numbers k such that lambda(k)^3 divides (k-1)^2, where lambda(k) = F002322(k).
+A284053	multia	0	"9,20,5,5,20,9,20,5,5,20,9,5,10,10,20"   	(self, n) -> { if (n < 2) { return ZV(0); } final long n1 = n - self.a(n-1).longValueExact(); final long n2 = n - self.a(n-2).longValueExact(); return (n1 < 0 ? ZV(0) : self.a(n1)).+(n2 < 0 ? ZV(0) : self.a(n2)); } 	a(n) = a(n-a(n-1)) + a(n-a(n-2)).
+A284054	multia	0	"7,26,8,8,8,8,8,26,7,8,16,16,16,16,16,26"	(self, n) -> { if (n < 2) { return ZV(0); } if(n > 1670) { throw new IllegalArgumentException("implementation limit n = 1670 reached"); }final long n1 = n - self.a(n-1).longValueExact(); final long n2 = n - self.a(n-2).longValueExact(); return (n1 < 0 ? ZV(0) : self.a(n1)).+(n2 < 0 ? ZV(0) : self.a(n2)); } 	a(n) = a(n-a(n-1)) + a(n-a(n-2)).
+A317686	hofstadt	1	() -> a(D063882(n).intValueExact()) + a(n-D063882(n).intValueExact())	1,1	where t = J063882
+A318910	lambdan	0	n -> ((n&1) == 0) ? BI(n, n/2) : CV(Z2(2*n).*(FA(n/2).^(2)))./(CR.PI.*(FA(n))).round()	round((2^(4n+2)*(n!)^2)/(Pi*(2n+1)!))
+A322512	trilambn	1	1	1	(n, k) -> Functions.VALUATION.z(S1(n, k), 2)
 A341090	mulr	1	(p, e) -> { final Z q = REV(p); return PP(q) ? q.^(e) : p.^(e); }	Fully multiplicative: for any prime p, if the reversal of p in base 10, say q, is prime, then a(p) = q, otherwise a(p) = p.
 A355731	mulr	1	(p, e) -> TAU(PI(p)).^(e)	Completely multiplicative with a(prime(k)) = tau(k), where tau = F000005. - _Andrew Howroyd_, Nov 06 2025
+A356992	lambdan	2	n -> ZV(n).-(D356988(n - D356988(n - D356988(n - D356988(n - D356988(n - D356988(n).longValueExact()).longValueExact()).longValueExact()).longValueExact()).longValueExact()))	n - b(n - b(n - b(n - b(n - b(n - b(n)))))) for n >= 2, where b(n) = J356988(n)
+A356994	lambdan	1	n -> ZV(n).-(D356988(D356988(D356988(n))))	b(b(b(n))), where b(n) = J356988(n)
+A356998	lambdan	2	n -> D356988(n).-(D356988(n - D356988(n).longValueExact()))	a(n) = b(n) - b(n - b(n)) for n >= 2, where b(n) = A356988(n).
 A365683	mulr	1	(p, e) -> p.^(D070321(e).longValueExact())
 A365684	mulr	1	(p, e) -> p.^(D067535(e).longValueExact())
 A366244	mulr	1	(p, e) -> p.^(e & 0x55555555)	Multiplicative with a(p^e) = p^J063694(e).
@@ -32,16 +69,12 @@ A374203	lambdan	2	n -> Functions.VALUATION.z(E328845(n), 3)
 A374205	lambdan	2	n -> Functions.VALUATION.z(E328845(n), 5)
 A386468	lambdin	1	n -> D070321(Jaguar.factor(n).maxExponent())	0	for n >= 2.
 A392278	lambdin	1	n -> D067535(Jaguar.factor(n).maxExponent())	0	for n >= 2.
----- 2026-07-17 09:52:58
-A199344	lambdan	0	n -> ZV(10).^(VAL(n + 1, 10)).+(n)
-A322512	trilambn	1	1	1	(n, k) -> Functions.VALUATION.z(S1(n, k), 2)
----- 2026-07-17 10:11:27
-A143028	filnum	1	1	n -> { long k = n - 1; long m = 2; long r = k % m; k /= m; while (r != 0) { ++m; r = k % m; k /= m;} return VAL(k + 1, m) + 2 == 2 ; }
-A143029	filnum	1	1	n -> { long k = n - 1; long m = 2; long r = k % m; k /= m; while (r != 0) { ++m; r = k % m; k /= m;} return VAL(k + 1, m) + 2 == 3 ; }
-A143030	filnum	1	1	n -> { long k = n - 1; long m = 2; long r = k % m; k /= m; while (r != 0) { ++m; r = k % m; k /= m;} return VAL(k + 1, m) + 2 == 4 ; }
-A143031	filnum	1	1	n -> { long k = n - 1; long m = 2; long r = k % m; k /= m; while (r != 0) { ++m; r = k % m; k /= m;} return VAL(k + 1, m) + 2 == 5 ; }
-A143032	filnum	1	1	n -> { long k = n - 1; long m = 2; long r = k % m; k /= m; while (r != 0) { ++m; r = k % m; k /= m;} return VAL(k + 1, m) + 2 == 6 ; }
-A143033	filnum	1	1	n -> { long k = n - 1; long m = 2; long r = k % m; k /= m; while (r != 0) { ++m; r = k % m; k /= m;} return VAL(k + 1, m) + 2 == 7 ; }
-A143034	filnum	1	1	n -> { long k = n - 1; long m = 2; long r = k % m; k /= m; while (r != 0) { ++m; r = k % m; k /= m;} return VAL(k + 1, m) + 2 == 8 ; }
-A143035	filnum	1	1	n -> { long k = n - 1; long m = 2; long r = k % m; k /= m; while (r != 0) { ++m; r = k % m; k /= m;} return VAL(k + 1, m) + 2 == 9 ; }
-A143036	filnum	1	1	n -> { long k = n - 1; long m = 2; long r = k % m; k /= m; while (r != 0) { ++m; r = k % m; k /= m;} return VAL(k + 1, m) + 2 == 10; }
+A393842	holos	1	[0,1,-13,78,-286,715,-1287,1716,-1716,1287,-715,286,-78,13,-1]	0,0,0,36,20700,1219980,22557444,226534448,1541819664,7987574700,33772336620,121971280068,388337820156	0	0
+A396953	holos	0	[0,1,-2,-3,4,-1]	1,8,35,118,353	0	0
+A396990	decexp	2	() -> CV(512)./(CR.PI.*(15))	512/(15*Pi)
+A397918	decexp	2	() -> CV(4096)./(CR.PI.*(35))
+A397919	decexp	3	() -> CV(131072)./(CR.PI.*(315))
+---- 2026-07-17 22:20:09
+A356993	lambdan	2	n -> D356988(n - D356988(n - D356988(n - D356988(n).longValueExact()).longValueExact()).longValueExact())	b(n - b(n - b(n - b(n)))) for n >= 2, where b(n) = J356988(n)
+---- 2026-07-17 22:23:41
+A356991	lambdan	2	n -> D356988(n).+(D356988(n - D356988(n).longValueExact()))	b(n) + b(n - b(n)) for n >= 2, where b(n) = A356998(n)
