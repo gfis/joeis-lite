@@ -371,6 +371,7 @@ while (<>) { # read inputfile
             $parm =~ s{TAU\(}          {Functions.TAU.z(}g;
             $parm =~ s{TAUl\(}         {Functions.TAU.l(}g;
             $parm =~ s{TRI\(}          {Functions.TRIANGULAR.z(}g;
+            $parm =~ s{VAL\(}          {Functions.VALUATION.i(}g;
             $parm =~ s{ZE\(}           {Zeta.zeta\(}g;
             $parm =~ s{ZH\(}           {Zeta.zetaHurwitz\(}g;
             #               1      1    2      2  3    3  with "))"

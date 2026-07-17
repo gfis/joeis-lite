@@ -1,0 +1,109 @@
+---- 2026-07-16 18:31:47
+A086335	hofstadt	1	a((n - a(n-1))*(1-(n&1))+a(n-1)*((n&1))) + a((n - a(n-2))*(1-(n&1)) +(n-a(n-1))*((n&1)))	1,1
+A139686	sintrif	1	(term, n) -> Functions.ORDER.z(term,  2)	""	new A014663()
+A152307	filter	1	new A000040().skip(1)	p -> { final Q fr = new Q(p.-(1), 7); return fr.isInteger() && fr.num().equals(Functions.ORDER.z(p, 2)); }	Vec(select(p->((p!=2) && (znorder(Mod(2, p)) == (p-1)/7)), primes(10000))) \\ _Michel Marcus_, Feb 09 2015
+A152308	filter	1	new A000040().skip(1)	p -> { final Q fr = new Q(p.-(1), 8); return fr.isInteger() && fr.num().equals(Functions.ORDER.z(p, 2)); }	Vec(select(p->((p!=2) && (znorder(Mod(2, p)) == (p-1)/8)), primes(10000))) \\ _Michel Marcus_, Feb 09 2015
+A152309	filter	1	new A000040().skip(1)	p -> { final Q fr = new Q(p.-(1), 9); return fr.isInteger() && fr.num().equals(Functions.ORDER.z(p, 2)); }	Vec(select(p->((p!=2) && (znorder(Mod(2, p)) == (p-1)/9)), primes(10000))) \\ _Michel Marcus_, Feb 09 2015
+A152310	filter	1	new A000040().skip(1)	p -> { final Q fr = new Q(p.-(1), 10); return fr.isInteger() && fr.num().equals(Functions.ORDER.z(p, 2)); }	Vec(select(p->((p!=2) && (znorder(Mod(2, p)) == (p-1)/10)), primes(10000))) \\ _Michel Marcus_, Feb 09 2015
+A152311	filter	1	new A000040().skip(1)	p -> { final Q fr = new Q(p.-(1), 11); return fr.isInteger() && fr.num().equals(Functions.ORDER.z(p, 2)); }	Vec(select(p->((p!=2) && (znorder(Mod(2, p)) == (p-1)/11)), primes(20000))) \\ _Michel Marcus_, Feb 09 2015
+A175019	hofstadt	0	a(n-a(n-2)) + 2	1,1
+A216833	lambdan	1	n -> Functions.ORDER.z(3*(2*n-1), 2)
+A217469	lambdan	1	n -> Functions.ORDER.z(5*n + 1, 5)	5 (mod 5*n + 1).
+A217852	lambdan	1	n -> Functions.ORDER.z(5*n - 1, 5)	5 (mod 5*n - 1).
+A226295	lambdan	1	n -> Functions.ORDER.z(PM(n + 1), PM(n))	the n-th prime modulo the (n+1)th prime.
+A226367	lambdan	1	n -> Functions.ORDER.z(PM(n), PM(n + 1))	the (n+1)-st prime modulo the n-th prime.
+A241992	decexp	1	() -> CR.SEVEN.multiply(Zeta.zeta(3)).divide(CR.FOUR.multiply(CR.PI.pow(2))).add(CR.ONE.divide(CR.FOUR)).exp()
+A243905	lambdan	2	n -> Functions.ORDER.z(PM(n).^(2), 2)	2 modulo prime(n)^2 for n >= 2.
+A247588	lambdan	1	n -> SU(0, n - Functions.SQRT.i(n*n/2) - 1, j -> ZV(n - j).-(Functions.SQRT.z((2*n - j)*j)))	sum(j=0, n - sqrtint(n*n\2) - 1, n - j - sqrtint(2*j*n - j*j))
+A267501	hofstadt	1	a(n-a(n-1)) + a(n-a(n-2)) + a(n-a(n-3))	1,1,1
+A281130	hofstadt	1	a(n-2) < a(n - 1) ? a(n-1-a(n-1)) : 2*a(n-1)	1,1
+A284006	hofstadt	1	a(a(n - Functions.VALUATION.i(2*n, 2))) + a(n-a(n - Functions.VALUATION.i(2*n, 2)))	1,1	with a(1) = a(2) = 1, where D001511(n) = 1 + exponent of the highest power of 2 dividing n
+A284007	hofstadt	1	() -> a(a(n-D002487(n).intValueExact())) + a(n-a(n-D002487(n).intValueExact()))	1,1	with a(1) = a(2) = 1, where D002487 = Stern-Brocot sequence
+A284374	hofstadt	1	Functions.PREV_PRIME.i((a(n-a(n-1)) + a(n-a(n-2))) + 1)	1,1
+A284383	hofstadt	1	() -> a(n-a(n-1)) + a(n-a(n-2)) - (PP(a(n-a(n-1)) + a(n-a(n-2))) ? 1 : 0)	1,2,3	for n > 3.
+A287476	hofstadt	0	((n&1) == 0) ? a(n/2-a(n/2)) : a(n/2-a(n/2)) + a(n/2-a(n/2+1))	1,1
+A318281	hofstadt	1	a(n-1) != a(n-2) ? a(n-1-a(n-1)) : a(n-1) + 3	1,1,1,1
+A324475	hofstadt	1	a(n-a(n-1)) + a(n-1-a(n-2)-a(n-2-a(n-2))) + a(n-2-a(n-3)-a(n-3-a(n-3)) - a(n-3-a(n-3)-a(n-3-a(n-3))))	1,2,3	. - _Nathan Fox_, Mar 09 2019 (This formula assumes that a(0) = 0. - _R√©my Sigrist_, Mar 14 2021)
+A330631	hofstadt	1	a(n - 1) > a(n - 2) ? a(n-1-a(n-1))+1 : 2*a(n - 1)	1,1
+A339929	hofstadt	1	a(n-2-a(n - 1)*a(n - 1)) + 1	0,0	, starting with a(1) = a(2) = 0.
+A339930	hofstadt	1	a(n-3-a(n - 1)*a(n - 1)) + 1	0,0,0	, starting with a(1) = a(2) = a(3) = 0.
+A339931	hofstadt	1	a(n-4-a(n - 1)*a(n - 1)) + 1	0,0,0,0	, starting with a(1) = a(2) = a(3) = a(4) = 0.
+A339932	hofstadt	1	a(n-5-a(n - 1)*a(n - 1)) + 1	0,0,0,0,0	, starting with a(1) = a(2) = a(3) = a(4) = a(5) = 0.
+A340134	hofstadt	1	a(n-1-2*a(n-1)) + 1	0,0
+A363469	lambdan	1	n -> Functions.ORDER.z(PM(n).*(2).+(1), 2)	2 modulo 2*prime(n)+1.
+A373230	hofstadt	1	a(n-a(n-1)) + a(n-a(n-2)) + a(n-a(n-3))	1,2,3,4,5,6,7,8,9,10
+A373231	hofstadt	1	a(n-a(n-1)) + a(n-a(n-2)) + a(n-a(n-3))	1,2,3,4,5,6,7,8,9,10,11
+A373232	hofstadt	1	a(n-a(n-1)) + a(n-a(n-2)) + a(n-a(n-3))	1,2,3,4,5,6,7,8,9,10,11,12
+A373233	hofstadt	1	a(n-a(n-1)) + a(n-a(n-2)) + a(n-a(n-3))	1,2,3,4,5,6,7,8,9,10,11,12,13
+A380482	sintrif	1	(p, n) -> { final int k = -3; return (p.*(7).+(k).mod(p).isZero()) ? ZV(0) : Functions.ORDER.z(p, -3); }	""	new A000040()	a(n,{k=-3}) = my(p = prime(n)); if(k%p==0, 0, znorder(Mod(k,p)))	a(n, {k=-3}) = my(p = prime(n)); if(k%p==0, 0, znorder(Mod(k, p)))
+A380531	sintrif	1	(p, n) -> { final int k = -4; return (p.*(7).+(k).mod(p).isZero()) ? ZV(0) : Functions.ORDER.z(p, -4); }	""	new A000040()	a(n,{k=-4}) = my(p = prime(n)); if(k%p==0, 0, znorder(Mod(k,p)))
+A380532	sintrif	1	(p, n) -> { final int k = -5; return (p.*(7).+(k).mod(p).isZero()) ? ZV(0) : Functions.ORDER.z(p, -5); }	""	new A000040()	a(n,{k=-5}) = my(p = prime(n)); if(k%p==0, 0, znorder(Mod(k,p)))
+A380533	sintrif	1	(p, n) -> { final int k = -6; return (p.*(7).+(k).mod(p).isZero()) ? ZV(0) : Functions.ORDER.z(p, -6); }	""	new A000040()	a(n,{k=-6}) = my(p = prime(n)); if(k%p==0, 0, znorder(Mod(k,p)))
+A380540	sintrif	1	(p, n) -> { final int k = -7; return (p.*(7).+(k).mod(p).isZero()) ? ZV(0) : Functions.ORDER.z(p, -7); }	""	new A000040()	a(n,{k=-7}) = my(p = prime(n)); if(k%p==0, 0, znorder(Mod(k,p)))
+A380541	sintrif	1	(p, n) -> { final int k = -8; return (p.*(7).+(k).mod(p).isZero()) ? ZV(0) : Functions.ORDER.z(p, -8); }	""	new A000040()	a(n,{k=-8}) = my(p = prime(n)); if(k%p==0, 0, znorder(Mod(k,p)))
+A380542	sintrif	1	(p, n) -> { final int k = -9; return (p.*(7).+(k).mod(p).isZero()) ? ZV(0) : Functions.ORDER.z(p, -9); }	""	new A000040()	a(n,{k=-9}) = my(p = prime(n)); if(k%p==0, 0, znorder(Mod(k,p)))
+A381924	lambdan	1	n -> Functions.ORDER.z(PM(n), n)	n mod prime(n).
+A385192	filter	1	new A000040()	p -> !p.equals(ZV(5)) && Functions.ORDER.z(p,  5).testBit(0)	(base  5),
+A385193	sintrif	1	(term, n) -> Functions.ORDER.z(term,  5)	""	new A385192()
+A385220	filter	1	new A000040()	p -> !p.equals(ZV(3)) && Functions.ORDER.z(p,  3).testBit(0)	(base  3),
+A385221	filter	1	new A000040()	p -> !p.equals(ZV(2)) && Functions.ORDER.z(p,  4).testBit(0)	(base  4),
+A385223	filter	1	new A000040()	p -> !p.equals(ZV(3)) && Functions.ORDER.z(p, -3).testBit(0)	(base -3),
+A385224	filter	1	new A000040()	p -> !p.equals(ZV(2)) && Functions.ORDER.z(p, -4).testBit(0)	(base -4),
+A385225	filter	1	new A000040()	p -> !p.equals(ZV(5)) && Functions.ORDER.z(p, -5).testBit(0)	(base -5).
+A385226	sintrif	1	(term, n) -> Functions.ORDER.z(term,  3)	""	new A385220()
+A385227	sintrif	1	(term, n) -> Functions.ORDER.z(term,  4)	""	new A385221()
+A385228	sintrif	1	(term, n) -> Functions.ORDER.z(term, -2)	""	new A163183()
+A385229	sintrif	1	(term, n) -> Functions.ORDER.z(term, -3)	""	new A385223()
+A385230	sintrif	1	(term, n) -> Functions.ORDER.z(term, -4)	""	new A385224()
+A385231	sintrif	1	(term, n) -> Functions.ORDER.z(term, -5)	""	new A385225()
+A389666	decexp	0	() -> CR.ZERO.subtract(X240984.log())
+A393808	lambdan	1	n -> SU(1, n, k -> GCD(ZV(k).^(4), n))	""		a(n) = sum(k=1, n, gcd(k^4, n))	_	_	_
+A394186	lambdan	0	n -> SU(0, n, k -> BI(n+k, 2*k).*(BI(n+2*k, k).-(BI(n+2*k, k-1))))	""		a(n) = sum(k=0, n, binomial(n+k, 2*k)*(binomial(n+2*k, k)-binomial(n+2*k, k-1)))	_	_	_
+A394505	holos	0	[0,-14417920,45088768,-1540096,-97222656,190476288,-274194432,-178987008,752222208,-638431232,356229120,639173632,-1345886208,1093624320,-1071929856,-499472448,1587255168,-944858752,1157648640,-215541856,-904734832,460709040,-438178096,252040032,218725008,-135716524,61429300,-50360392,-24737752,23277162,-4448141,2326772,1531933,-1565997,184000,33001,-61753,34611,250,-2047,358,-179,22,7,-1]	1,32,225,1062,7164,55213,367869,2451527,16899444,117097007,796748754,5462709376,37429241689,256967743675,1758182066515,12061301181094,82613086585407,566546891562158,3880797538118024,26609057791613799,182311670360675823,1249839553416068949,8564126233616221126,58706459814149106183,402298736709835404354,2757553472056848774162,18897655596361260189507,129528767308081372192097,887696083227174360784785,6084306626834210060925574,41698306638198552973576915,285797057746579715397821120,1958714503579387209750719354,13424729632165663279083940389,92007434921946828346249009385,630600200040264064401724194621,4321893845028627697270520035046,29621234539518306963571632589801,203013475314513413417811852274708,1391401707725566421374371947887344,9536200462452030918746205250420145,65358507029582599134484695366330337,447946043027240338266873288401252357,3070095286338721549311952577016495240	0	0
+A395557	lambdan	0	n -> SU(0, n, k -> BI(3*n+2*k, k))	""		a(n) = sum(k=0, n, binomial(3*n+2*k, k))	_	_	_
+A395801	lambdan	0	n -> SU(0, n, k -> BI(n+2*k, 3*k).*(BI(n+3*k, k).-(BI(n+3*k, k-1))))	""		a(n) = sum(k=0, n, binomial(n+2*k, 3*k)*(binomial(n+3*k, k)-binomial(n+3*k, k-1)))	_	_	_
+A396286	lambdan	0	n -> SU(0, n, k -> BI(n+3*k, 4*k).*(BI(n+4*k, k).-(BI(n+4*k, k-1))))	""		a(n) = sum(k=0, n, binomial(n+3*k, 4*k)*(binomial(n+4*k, k)-binomial(n+4*k, k-1)))	_	_	_
+A396577	lambdan	0	n -> SU(0, n, k -> BI(3*n+2*k-3, k).-(BI(3*n+2*k-3, k-1)))	""		a(n) = sum(k=0, n, binomial(3*n+2*k-3, k)-binomial(3*n+2*k-3, k-1))	_	_	_
+A396691	lambdan	0	n -> SU(0, n, k -> BI(4*n+2*k, k))	""		a(n) = sum(k=0, n, binomial(4*n+2*k, k))	_	_	_
+A396901	lambdan	1	n -> SU(1, n, k -> GCD(ZV(k).^(4), ZV(n).^(2)))	""		a(n) = sum(k=1, n, gcd(k^4, n^2))	_	_	_
+A396903	lambdan	1	n -> SU(1, n, k -> GCD(ZV(k).^(4), ZV(n).^(3)))	""		a(n) = sum(k=1, n, gcd(k^4, n^3))	_	_	_
+A397543	decsolv	2	() -> CV(3125).-(x.^(2).*(625)).+(x.^(4))		24.89	24.90	x^4 - 625*x^2 + 3125
+A397586	holos	0	[0,1,1,1,1,0,1,-1]	1,1,1,2,4,7,11	0	0
+A397608	decexp	2	() -> CR.TWO.multiply(CR.valueOf(97).add(CR.valueOf(56).multiply(CR.THREE.sqrt()))).sqrt()
+A397609	decexp	2	() -> CR.SIX.multiply(CR.valueOf(24).add(CR.valueOf(14).multiply(CR.THREE.sqrt())).sqrt())
+A397610	decexp	1	() -> CR.FOUR.add(CR.SEVEN.divide(CR.THREE.sqrt())).sqrt().divide(CR.TWO)
+A397611	decexp	1	() -> CR.FIVE.add(CR.THREE.multiply(CR.THREE.sqrt())).sqrt().divide(CR.TWO)
+A397612	decexp	1	() -> CR.valueOf(26).add(CR.valueOf(15).multiply(CR.THREE.sqrt())).sqrt()
+A397613	decexpr	0	() -> REALS.acos(CR.SEVEN.subtract(CR.valueOf(27).sqrt()).divide(2))
+A397614	decexpr	1	() -> REALS.acos(CR.ONE.subtract(CR.THREE.sqrt()).divide(2))
+A397733	lambdan	1	n -> SU(1, n, k -> GCD(ZV(k).^(5), n))	""		a(n) = sum(k=1, n, gcd(k^5, n))	_	_	_
+A397738	decexp	0	() -> X060294.multiply(X395062)
+A397750	holos	0	[0,1,0,0,-3,0,0,3,0,0,-1]	1,1,2,1,3,3,1,6,4	0	0
+A397751	holos	0	[0,1,0,0,-3,0,0,3,0,0,-1]	3,0,2,3,2,5,3,7,8	0	0
+A397758	decexp	0	() -> CR.TWO.multiply(X381651)
+A397759	decexp	1	() -> CR.TWO.multiply(X152651)
+A397760	decexp	0	() -> CR.PI.pow(6).divide(CR.valueOf(216)).subtract(CR.THREE.multiply(Zeta.zeta(3).pow(2)))
+A397761	decexp	0	() -> Zeta.zeta(3).pow(2).subtract(CR.valueOf(61).multiply(CR.PI.pow(6)).divide(CR.valueOf(45360)))
+A397762	decexp	0	() -> CR.valueOf(11).multiply(Zeta.zeta(3)).multiply(Zeta.zeta(4)).divide(CR.FOUR).subtract(CR.TWO.multiply(Zeta.zeta(2)).multiply(Zeta.zeta(5)))
+A397768	lambdin	0	n -> DIGIT(n, ZV(0), (x, d, e) -> x.+(Z2(d)))	1	a(n) = sum of powers of 2 where the exponents are the digits of n.	nonn,base,easy,look,new	0..10000	nyi	_Paolo Xausa_
+A397792	holos	2	[0,1,0,-4,-2,6,2,-1]	1,6,16,63,206,735	0	0
+A397793	holos	2	[0,1,0,-4,-2,6,2,-1]	2,4,19,58,214,722	0	0
+A397802	polyx	0	"[1]"	"1,2,x,exp,-,/,1,-,sinh"	0	1
+A397803	multia	0	"1"	(self, n) -> self.a(n - 1).^(3).*(2)	a(n+1) = 2*a(n)^3, a(0) = 1.
+A397812	holos	1	[0,2,11,-4,6,2,-1]	0,1,0,3,4,27	0	0
+A397818	decexp	1	() -> X002163.multiply(X160509).divide(CR.TWO)
+A397819	decexp	1	() -> X160509.divide(CR.TWO)
+A397833	holos	0	[0,2,-5,4,-5,4,-1]	0,0,0,0,1	0	0
+A397834	holos	0	[0,2,-5,4,-5,4,-5,4,-1]	0,0,0,0,0,0,1	0	0
+A397835	holos	0	[0,3,-1,-9,6,-1,-9,6,-1]	0,0,0,0,0,0,1	0	0
+A397837	holos	0	[0,-1,0,3,-1,0,3,-1]	1,3,9,27,81,243	0	0
+A397857	poly	0	"[1],[0,1,3,3,1],[0,1,1]"	"1,p1,p2,sub,*,+"
+A397858	poly	0	"[1],[0,1,2,1]"	"1,p1,sub,<1,+"
+A397859	poly	0	"[1],[0,1,1],[0,1,2,1]"	"1,p1,p2,sub,*,+"
+A397860	poly	0	"[1],[0,1,3,3,1],[0,1,2,1]"	"1,p1,p2,sub,*,+"
+A397861	poly	0	"[1],[0,1,3,3,1]"	"1,p1,sub,<1,+"
+A397862	poly	0	"[1],[0,1,3,3,1],[0,1,1]"	"1,p2,p1,sub,*,+"
+A397863	poly	0	"[1],[0,1,3,3,1],[0,1,2,1]"	"1,p2,p1,sub,*,+"
+A397881	polyx	0	"[1],[0,2]"	"1,x,exp,<1,p1,exp,<1,sub,*,+"	0	1
+A397882	polyx	0	"[1],[0,2]"	"1,p1,exp,<1,p1,exp,<1,sub,*,+"	0	1
+A397894	polyx	0	"[1],[0,-1]"	"1,p1,exp,<1,x,exp,<1,sub,*,+"	0	1

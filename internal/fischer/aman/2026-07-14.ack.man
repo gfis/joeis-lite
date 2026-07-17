@@ -1,0 +1,142 @@
+---- 2026-07-14 19:56:41
+A087817	hofstadt	1	a(a(a(n-1)))+a(n-a(n-1))	1,1
+A087823	hofstadt	1	a(a(a(n-2))) + a(n-a(n-2))	1,1
+A087834	hofstadt	1	a(a(a(n-1))) + a(n -1- a(n-2))	1,1
+A087836	hofstadt	1	a(a(a(a(n-1)))) + a(n - a(n-1))	1,1		with a(1)=a(2)=1
+A087838	hofstadt	1	a(a(a(a(n-2))))+ a(n - a(n-2))	1,1
+A087839	hofstadt	1	a(a(a(a(a(n-2))))) + a(n - a(n-2))	1,1
+A087847	hofstadt	1	a(Math.abs(n - a(n-1))) + a(a(a(Math.abs(n - a(n-4)))))	1,1,1,1
+A087876	hofstadt	1	Functions.PRIME_PI.i(Functions.PRIME_PI.i(n-2)) + a(n - a(n-2))	1,1
+A088990	deldel	0	new ZeroSpacedSequence(0, new A000384(), 1).skip(1)	new ZeroSpacedSequence(0, new A000384().skip(1), 1)	[0, 1, 0, 6, 0, 15, 0, 28, 0, 45, 0, 66, 0, ...]	[1, 0, 6, 0, 15, 0, 28, 0, 45, 0, 66, 0, ...]	where DELTA is the operator defined in J084938.
+A092038	lambdin	1	n -> ZV(n/4).+(ZV((n-1)/4)).+(2)	1	for n>1. multia	0	"1"	(self, n) -> self.a(n - 1).+(self.a(n - 1).and(ZV(1)).^(ZV(n - 1).mod(self.a(n - 1))))	a(n+1) = a(n) + (a(n) mod 2)^(n mod a(n)), a(1) = 1.
+A093878	hofstadt	1	a(a(a(n-1))) + a(n-a(a(n-1)))	1,1
+A095769	hofstadt	1	a(a(a(a(n-1))))+a(n-a(a(a(n-1))))	1,1
+A095773	hofstadt	1	1 + a(n - a(a(a(n-1))))	1
+A098435	deldel10	1	new SingleTransformSequence(0, (term, n) -> term.negate(), "", new A008794().skip(1))	new A000035().skip(1)	[0,-1,-1,-4,-4,-9,-9,-16,-16,-25,...]	[1,0,1,0,1,0,1,0,1,0,...]	= 1; 0,1; 0,-1,1; 0,2,-3,1; 0,-8,13,-6,1; 0,56,-92,45,-10,1; ... where DELTA is the operator defined in J084938. - _Philippe Del√©ham_, Aug 30 2006
+A099208	mulr	1	(p, e) -> PM(PI(p).+(e -1))
+A099394	deldel	0	new ZeroSpacedSequence(0, new A008574().skip(1), 1)	new A004526().skip(2)	[4,0,8,0,12,0,16,0,20,0,24,0,28,0,...]	[1,1,2,2,3,3,4,4,5,5,6,6,...]	where DELTA is the operator defined in J084938. - _Philippe Del√©ham_, Jun 04 2009
+A099613	trilambn	1	2	2	(n, k) -> new Q(n + 1, n).^(k).-(new Q(n + k, n)).num()	Numerator of (1+1/n)^k - (1+k/n), 2<=k<=n, triangle read by rows.	1..44	nonn,tabl,frac	_Reinhard Zumkeller_
+A099614	trilambn	1	2	2	(n, k) -> new Q(n - 1, n).^(k).-(new Q(n - k, n)).num()	Numerator of (1-1/n)^k - (1-k/n), 2<=k<=n, triangle read by rows.	1..44	nonn,tabl,frac	_Reinhard Zumkeller_
+A100721	hofstadt	0	n - a(a(a(a(a(a(n-1))))))	0
+A103136	deldel	0	new LambdaSequence(0, n -> ((n&1) == 1) ? Z.NEG_ONE : Z.valueOf(-2), -1)	new A000007()	[ -1, -1, -2, -1, -2, -1, -2, -1, -2, ... ]	[ 1, 0, 0, 0, 0, 0, 0, 0, ... ]	where DELTA is the operator defined in J084938; the unsigned version is given by ( 1, 1, 2, 1, 2, 1, 2, 1, 2, ...) DELTA ( 1, 0, 0, 0, 0, 0, 0, 0, ... ). - _Philippe Del√©ham_, Jul 08 2005
+A105477	trilambn	1	1	1	(n, k) -> SU(0, n - k, j -> BI(k,j).*(BI(n - 2*j - 1, k - j - 1)))
+A106742	hofstadt	1	a(a(a(a(a(n - a(n-1)))))) + a(n - a(n-2))	1,1		with a(1) = a(2) = 1
+A107436	hofstadt	1	a(a(a(a(a(n-1))))) + a(n-a(n-1))	1,1		a(1) = a(2) = 1
+A129710	tablamb	0	0	n -> new Integer[] {0, n/2}	(n, k) -> (n == 0) ? ZV(1) : BI(n - k, k).+(BI(n - k - 1, k))	for n >= 1 and 0 <= k <= floor(n/2).
+A130847	deldel	0	new A000027()	new A266223().adjust(1,1)	[1,2,3,4,5,6,7,8,9,10,...]	[1,1,6,6,15,15,28,28,...]	where DELTA is the operator defined in J084938 .
+A133156	tablamb	0	0	n -> new Integer[] {0, n/2}	(n, m) -> (n == 0) ? ZV(1) : BI(n - m, m).*(Z_1(m)).*(Z2(n - 2*m))	t[n_, m_] = (-1)^m*Binomial[n - m, m]*2^(n - 2*m);	Table[Table[t[n, m], {m, 0, Floor[n/2]}], {n, 0, 10}];	Flatten[%] (
+A135414	hofstadt	1	n - a(a(n-2))	1,1
+A138467	hofstadt	1	n - a(a(n-1))/3	1
+A140575	trilambn	0	0	0	(n, k) -> (k == 0) ? ZV((n & 1) == 0 ? 0 : 2) : ((k == n) ? ZV(-1) : BI(n, k).*((n&1) != (k&1) ? 1 : -1))
+A141343	deldel	0	new LambdaSequence(0,n -> Z.NEG_ONE, 0, 2)	new A000007()	[0, 2, -1, -1, -1, -1, -1, -1, -1, ...]	[1, 0, 0, 0, 0, 0, 0, ...]	where DELTA is the operator defined in J084938. - _Philippe Del√©ham_, Nov 15 2008
+A157783	deldel	0	new A122006().skip(1)	new LambdaSequence(0, n -> ((n&1) == 0) ? ZV(3).^(n/2).negate() : ZV(0))	[1,q-1,q^2,q^3-q,q^4,q^5-q^2,q^6,q^7-q^3,q^8,...]	[ -1,0,-q,0,-q^2,0,-q^3,0,-q^4,0,...]	(for q=3)=(1,2,9,24,81,234,729,2160,6561,...) DELTA ( -1,0,-3,0,-9,0,-27,0,-81,0,-243,0,...) where DELTA is the operator defined in J084938; see J122006 and D000244. - _Philippe Del√©ham_, Mar 09 2009
+A157784	deldel	0	new LambdaSequence(0, n -> (n == 0) ? ZV(1) : Z2(n - 1).*(Z2(n + 1).-((n + 2) % 2)))	new LambdaSequence(0, n -> ((n&1) == 0 ? ZV(4).^(n/2).negate() : ZV(0)))	[1,q-1,q^2,q^3-q,q^4,q^5-q^2,q^6,q^7-q^3,q^8,...]	[ -1,0,-q,0,-q^2,0,-q^3,0,-q^4,0,...]	(for q=4)=(1,3,16,60,256,1008,4096,16320,65536,261888,...) DELTA ( -1,0,-4,0,-16,0,-64,0,-256,0,-1024,0,...) where DELTA is the operator defined in J084938. - _Philippe Del√©ham_, Mar 10 2009
+A157785	deldel	0	new LinearRecurrence(0, new long[] {-4,-2,-2}, new long[] {1,-3,4})	new LambdaSequence(0, n -> ((n&1) == 0) ? ZV(-2).^(n/2).negate() : ZV(0))	[-1, 0, -q, 0, -q^2, 0, -q^3, 0, -q^4, 0, ...]	(for q=-2) = (1, -3, 4, -6, 16, -36, 64,...) DELTA ( -1, 0, 2, 0, -4, 0, 8, 0, -16, 0, ...) where DELTA is the operator defined in J084938. - _Philippe Del√©ham_, Mar 10 2009
+A157832	deldel	0	new LinearRecurrence(new long[] {-25,5,5 }, new long[] {1,4,25})	new LambdaSequence(0, n -> ((n&1) == 0) ? ZV(5).^(n/2).negate() : ZV(0))	[-1,0,-q,0,-q^2,0,-q^3,0,-q^4,0,...]	(for q=5)= (1,4,25,120,625,3100,15625,...) DELTA ( -1,0,-5,0,-25,0,-125,0,-625,0,...) where DELTA is the operator defined in J084938. - _Philippe Del√©ham_, Mar 10 2009
+A157963	deldel	0	new A007179().skip(1)	new LambdaSequence(0, n -> ((n&1) == 0) ? ZV(2).^(n/2).negate() : ZV(0))	[-1,0,-q,0,-q^2,0,-q^3,0,-q^4,0,-q^5,0,...]	(for q=2) = (1,1,4,6,16,28,64,...) DELTA ( -1,0,-2,0,-4,0,-8,0,-16,0,...) where DELTA is the operator defined in J084938.
+A163801	hofstadt	0	n - a(a(n-2))	0,1		with a(0)=0, a(1)=1
+A171481	hofstadt	0	a(a(n-1)) + a(n - a(n-1) - 2)	0,1,1		with a(0) = 0, a(1) = a(2) = 1
+A171482	hofstadt	0	a(a(n-1)) + a(n - a(n-1) - 2)	1,1,1		with a(0) = a(1) = a(2) = 1
+A174697	hofstadt	0	a(a(n-1)/2)+a(n-a(n-1)/2)	1,1,1,1,2
+A175387	sintrif	1	(term, n) -> term.-(term./(2))	""	new A004001()
+A178770	hofstadt	0	a(a(n-1)) + a(n-a(n-3))	1,1,1,1,1
+A188440	deldel0	0	new A000007().adjust(1,1,0,-1)	new A000007().adjust(1,0,2,-2)	[1, 0, -1, 0, 0, 0, 0, 0, 0, 0, ...]	[0, 2, -2, 0, 0, 0, 0, 0, 0, 0, ...]	where DELTA is the operator defined in J084938. - _Philippe Del√©ham_, Apr 09 2012
+A249037	parmof2	1	A249036	0b000	Number of even terms in first n terms of A249036
+A249038	parmof2	1	A249036	0b010	Number of odd terms in first n terms of A249036
+A249039	parmof2	1	A249036	0b101	a(1)=1, a(2)=2; thereafter a(n) = a(n-1) + a(n-1-(number of even terms so far)) + a(n-1-(number of odd terms so far)).3
+A249040	parmof2	1	A249036	0b100	Number of even terms in first n terms of A249039
+A249041	parmof2	1	A249036	0b110	Number of odd terms in first n terms of A249039
+A258758	trilambn	0	0	0	(n, k) -> BI(n + k - 1, k).*(BI(2*n - 1, n - k))
+A262675	filnum	1	1	k -> k == 1 || FSIT(k, 0L, (x, p, e) -> x + ((Integer.bitCount(e) & 1) == 0 ? 0 : 1)) == 0L	Exponentially evil numbers.
+A270428	filnum	1	1	k -> k == 1 || FSIT(k, 0L, (x, p, e) -> x + ((Integer.bitCount(e) & 1) == 1 ? 0 : 1)) == 0L	Exponentially odious numbers:
+A285757	hofstadt	1	a(n - a(n - 2)) + a(n - a(n - 8))	1,2,3,4,5,6,7,8,9
+A285758	hofstadt	1	a(n-a(n-2)) + a(n-a(n-8))	1,2,2,2,2,2,2,2,3		a(i) = 2 for 2 <= i <= 8, and a(9) = 3
+A285760	hofstadt	1	a(n - 2 - a(n - 1)) + a(n - 2 - a(n - 4))	1,1,2,2
+A285761	hofstadt	1	a(n-4-a(n-1)) + a(n-4-a(n-4))	1,2,3,3,3,4,4,4,5,5
+A285762	hofstadt	1	a(n-12-a(n-3)) + a(n-12-a(n-12))	1,2,3,4,5,6,7,8,9,9,9,9,9,9,9,10,11,12,12,12,12,12,12,12,13,14,15,15,15,15,15,15,15
+A285763	hofstadt	1	a(a(n - 2)) + a(n - a(n - 2))	1,2,2,2,3		with a(1) = 1, a(2) = a(3) = a(4) = 2, a(5) = 3
+A285764	hofstadt	1	a(a(n-3)) + a(n-a(n-3))	1,2,3,3,3,3,4,5,6
+A296816	hofstadt	1	a(a(n-1)) + a(n-a(n-2))	1,1,1
+A301517	filtpos	1	1	new A162296()	(k, v) -> { final Q quot = new Q(v, E048250(k)); return quot.isInteger() && quot.compareTo(QV(1)) >= 0; }
+A302128	hofstadt	1	a(a(n-2)) + a(n-a(n-1))	1,1,1
+A303219	hofstadt	1	a(n-a(n-2)) + a(n-a(n-4)) + a(n-a(n-6))	1,2,3,4,5,6,7,8,9,10,11
+A305557	hofstadt	1	n - a(a(n-2)) - a(n-a(n-2))	1,1
+A305845	hofstadt	1	a(a(n-2)) + a(n-a(n-2))	1,1,1
+A307654	mulr	1	(p, e) -> ZV(1).-(p.^(p))
+A309430	hofstadt	1	a(n-a(n-1)) + a(n-a(n-4))	1, 2, 2, 3, 4, 4, 5		with a(n) = ceiling(2*n/3) for n <= 7
+A316388	hofstadt	1	a(Functions.PHI.i(n)) + a(n - Functions.PHI.i(n))	1,1,1		with a(1) = a(2) = a(3) = 1
+A316434	hofstadt	1	a(Functions.PRIME_PI.i(n)) + a(n - Functions.PRIME_PI.i(n))	1,1	with a(1) = a(2) = 1
+A316626	hofstadt	1	a(n-2*a(n-1))+a(n-1-2*a(n-2))	1,1,1
+A316627	hofstadt	1	a(n+1-a(n-1))+a(n-a(n-2))	2,3
+A316628	hofstadt	1	a(n-a(n-1))+a(n-1-a(n-2)-a(n-2-a(n-2)))	1,2,2,3
+A316942	hofstadt	1	n - a(Functions.PRIME_PI.i(n)) - a(n-Functions.PRIME_PI.i(n))	1,1		with a(1) = a(2) = 1, where pi = F000720
+A317442	hofstadt	1	() -> a(D000195(n).intValueExact()) + a(n-D000195(n).intValueExact())	1,1		where t = D000195
+A320297	hofstadt	0	a(n-1-a(a(a(n-1)))) + a(a(a(a(n-1))))	0,1		a(n) = n for n < 2
+A321753	mulr	1	(p, e) -> PI(p).+(1).testBit(0) ? (((e&1) == 1) ? ZV(-1) : ZV(1)) : ZV(1)	(-1)^(1 + k). - _Andrew Howroyd_, Nov 22 2025
+A329615	lambdin	1	n -> FSIT(E108951(n), Z.NEG_ONE, (x, p, e) -> (x.equals(Z.NEG_ONE) ? ZV(e) : x.and(ZV(e))))	0	Bitwise-AND of exponents of prime factors of E108951(n), where E108951 is fully multiplicative with a(prime(i)) = prime(i)# = Product_{i=1..i} F000040(i)
+A329616	lambdan	1	n -> FSIT(E108951(n), ZV(0), (x, p, e) -> x.or(ZV(e)))	Bitwise-OR of exponents of prime factors of  E108951(n), where E108951 is fully multiplicative with a(prime(i)) = prime(i)# = Product_{i=1..i} F000040(i)
+A329647	lambdan	1	n -> FSIT(E108951(n), ZV(0), (x, p, e) -> x.xor(ZV(e)))	Bitwise-XOR of exponents of prime factors of E108951(n), where E108951 is fully multiplicative with a(prime(i)) = prime(i)# = Product_{i=1..i} F000040(i)
+A335664	hofstadt	1	() -> Functions.SQRT.i(PM(n)) - Functions.SQRT.i(PM(SU(1, n - 1, k -> ZV(a(k.intValue())))))	1	) with a(1) = 1, where f = A000006
+A335841	mulr	1	(p, e) -> is2(p) ? ZV(e + 1) : ZV(e + 1).^(2)	a(2^e) = e+1, and a(p^e) = (e+1)^2 for an odd prime p
+A335989	filter	1	new A301517()	v -> !P268335(v)	that are not exponentially odd numbers (A268335).
+A336095	hofstadt	1	() -> a(Functions.SQRT.i(PM(n))) + a(n-Functions.SQRT.i(PM(n)))	1, 1	(f = A000006)
+A342187	filnum	1	1	k -> !P268335(k) && !P268335(k + 1)	Numbers k such that both k and k+1 are not exponentially odd numbers.
+A348963	mulr	1	(p, e) -> SD(e, d -> p.^(e - d))
+A351447	filnum	1	1	k -> E003958(SIGMA(k)).equals(E003958(k).*(2))	, where E003958 is multiplicative with a(p^e) = (p-1)^e and sigma is the sum of divisors function
+A354760	hofstadt	0	a(n - Functions.DIGIT_SUM.i(Functions.DIGIT_SORT_ASCENDING.z(n).mod(10))) + 1	0
+A356988	hofstadt	1	n - a(a(n - a(a(a(n-1)))))	1		with a(1) = 1
+A356989	hofstadt	1	n - a(a(a(n - a(a(a(a(n-1)))))))	1		with a(1) = 1
+A356990	hofstadt	1	n - a(a(a(a(n - a(a(a(a(a(n-1)))))))))	1		with a(1) = 1
+A357853	mulr	1	(p, e) -> F000009(PI(p).+(1)).^(e)
+A359587	mulr	1	(p, e) -> D008578(D329697(p).+(1)).^(e)
+A362594	filter	1	new A268335()	v -> !Predicates.SQUARE_FREE.is(v) && !Predicates.PRIME_POWER.is(v)	Exponentially odd numbers that are neither squarefree nor prime powers.
+A366905	mulr	1	(p, e) -> { int se = 0; int k = 0; while (++k <= e) { if (k > se && (Integer.bitCount(k) & 1) == 1) { se = k; }} return p.^(se); }	p^max{k=1..e, k odious}
+A366906	mulr	1	(p, e) -> { int se = 0; int k = 0; while (++k <= e) { if (k > se && (Integer.bitCount(k) & 1) == 0) { se = k; }} return p.^(se); }	p^max{k=1..e, k evil}
+A367203	mulr	1	(p, e) -> p.^(e - 1).+(p.^(2*(e/2)))
+A367695	filnum	1	1	k -> P268335(k) && P268335(k + 1)	Numbers k such that k and k+1 are both exponentially odd numbers (A268335).
+A367696	filnum	1	1	k -> P270428(k) && P270428(k + 1)	Numbers k such that k and k+1 are both exponentially odious numbers (?270428).
+A367698	mulr	1	(p, e) -> { int se = 0; int k = 0; while (++k <= e) { if (k > se && (Integer.bitCount(k) & 1) == 1) { se = k; }} return p.^(e - se); }	p^(e-s(e)), s(e) = max({k=1..e, k odious})
+A367699	mulr	1	(p, e) -> { int se = 0; int k = 0; while (++k <= e) { if (k > se && (Integer.bitCount(k) & 1) == 0) { se = k; }} return p.^(e - se); }	p^(e-s(e)), s(e) = max({k=1..e, k evil})
+A367802	sintrif	1	(term, n) -> term.^(2)	""	new A270428()
+A367803	sintrif	1	(term, n) -> term.^(2)	""	new A262675()
+A367931	sintrif	1	(term, n) -> term./(n)	""	new A367933()
+A367932	sintrif	1	(term, n) -> term./(n)	""	new A367934()
+A367933	mulr	1	(p, e) -> { int k = e; while ((Integer.bitCount(k) & 1L) != 1) { ++k; } return p.^(k); }	min{k >= e, k is odious}
+A367934	mulr	1	(p, e) -> { int k = e; while ((Integer.bitCount(k) & 1L) != 0) { ++k; } return p.^(k); }	min{k >= e, k is evil}
+A368332	mulr	1	(p, e) -> (p.compareTo(e) > 0 ? ZV(1) : ZV(e + 2).-(p))
+A371285	mulr	1	(p, e) -> E275700(PI(p)).^(e)
+A383030	filtpos	1	1	new A268335()	v -> !v.testBit(0)	Indices of the even terms in the sequence of exponentially odd numbers.
+A383031	filtpos	1	1	new A268335()	v -> Predicates.SQUARE_FREE.is(v)	Indices of the squarefree terms in the sequence of exponentially odd numbers.
+A385042	mulr	1	(p, e) -> D209229(e).+(1)
+A385135	mulr	1	(p, e) -> p.^(e).+((p.^(e + 1).-(((e&1) == 1) ? ZV(1) : p))./(p.^(2).-(1)))	if e is odd, and p^e + (p^(e+1) - p)/(p^2-1) if e is even
+A386471	mulr	1	(p, e) -> SU(0, Functions.SQRT.i(e), k -> p.^(k*k))	Sum_{k=0..floor(sqrt(e))} p^(k^2)
+A387110	mulr	1	(p, e) -> FA(e).*(BI(F000041(PI(p)), e))
+A387115	mulr	1	(p, e) -> FA(e).*(BI(F000009(PI(p)), e))
+A387120	mulr	1	(p, e) -> FA(e).*(BI(F000005(PI(p)), e))
+A387133	mulr	1	(p, e) -> FA(e).*(BI(F000041(p), e))
+A387298	mulr	1	(p, e) -> ZV((e*e) % 3).*(Z_1((e-1) / 3))
+A387327	mulr	1	(p, e) -> F000041(p).^(e)	for prime p. - _Andrew Howroyd_, Nov 10 2025
+A387710	filnum	1	1	k -> E003959(k).compareTo(2*k) < 0	< 2*k, where E003959 is multiplicative with a(p^e) = (p+1)^e
+A390663	mulr	1	(p, e) -> p.^(e + 1 + ((3*e + 3 - e) % 3)).-(1)./(p.-(1))
+A390665	mulr	1	(p, e) -> p.^(e + ((3*e + 3 - e) % 3)).+(1)
+A391186	mulr	1	(p, e) -> { final long pm8 = p.mod(8); return (pm8 == 5 || pm8 == 7) ? p.^(2*(e/2)) : p.^(e); }	(2*floor(e/2)) if p == 5 or 7 (mod 8), and p^e otherwise.
+A391187	mulr	1	(p, e) -> { final long pm8 = p.mod(8); return (pm8 == 5 || pm8 == 7) ? p.^(e & 1) : ZV(1); }	p.^(e mod 2) if p == 5 or 7 (mod 8), and a(p^e) = 1 otherwise
+A392085	mulr	1	(p, e) -> p.^((e&1) == 0 ? e/2 : (e + 1)/2).-(1)
+A392087	mulr	1	(p, e) -> p.^(e + (e % 2)).-(1)
+A392166	mulr	1	(p, e) -> (p.+(1)).*(p.^((e-1)/2))
+A392168	mulr	1	(p, e) -> (p.+(1)).*(p.^(e - (1 - e % 2)))
+A392169	mulr	1	(p, e) -> (p.+(1)).*(p.^(e - (1 - (3*e + 3 - e) % 3)))
+A392447	mulr	1	(p, e) -> D001511(e)
+A392448	mulr	1	(p, e) -> SU(0, Functions.VALUATION.i(e, 2), k -> p.^(Z2(k)))	where v_2(e) = D007814(e) is the 2-adic valuation of e
+A392449	mulr	1	(p, e) -> F034444(e).-(D068068(e))
+A392451	mulr	1	(p, e) -> F000120(e).+(1)
+A392452	mulr	1	(p, e) -> F000120(e)
+A392598	mulr	1	(p, e) -> p.compareTo(11) <= 0 ? p.^(e) : ZV(1)	p^e if p <= 11 and 1 otherwise.
+A393020	holos	1	[[0],[8503056],[-9447840],[-18666045],[241026354],[-10620315],[-106483572],[-8809074],[-4838076],[-669006],[-39708],[-2649],[-102],[1]]	425,53117,6689805,842216265,106035147621,13349861280333,1680752272444173,211607284330395225,26641429510340049489,3354165092840945600997,422290533099011820109713,53166522638373814048240521,6693683395449992415563405421,842737030279038311792600033037	0	0
+A394938	lambdan	2	n -> D000523(2*n - 1).+(D000523(ZV(2*n - 1).-(Z.TWO.pow(D000523(2*n - 2).-(1))))).+(2)	+ 2
+A395540	lambdin	1	n -> D000523(n).+(D000523(ZV(n).-(Z.TWO.pow(D000523(n - 1).-(1))))).+(3)	2,4	floor(log_2(n)) + floor(log_2(n - 2^(floor(log_2(n - 1)) - 1))) + 3
+A395948	lambdin	0	n -> Z2(n - 2).*(Z2(n - 1).-(n&1))	0
+A396095	holos	0	[0,-12,36,-36,12]	1,1,4,19,110	0	1
+A396336	mulr	1	(p, e) -> ZV(e - 1).*(p.-(1))
+A396689	holos	1	[0,-1,0,98,0,-1]	21,119,2059,11661	0	0
+A397461	holos	0	[0,-64,832,-3120,4816,-3468,2156,-1697,-93,884,-274,29,-1]	3,1175,37935,780495,13277235,204605927,2980041263,41961830399,578751842795,7880615412799,106455838015359	0	0

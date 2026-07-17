@@ -1,0 +1,97 @@
+---- 2026-07-15 19:18:28
+A086525	hofstadt	1	a(( a(n-2))*(1-(n&1))+a(n-1)*((n&1))) + a((n - a(n-2))*(1-(n&1))+(n-a(n-1))*((n&1)))	1,1
+A086841	hofstadt	1	a((a(n-2))*(n&1)+a(n-1)*(1-(n&1))) + a((n - a(n-2))*(n&1)+(n-a(n-1))*(1-(n&1)))	1,1
+A087777	hofstadt	1	a(n - a(n-2)) + a(n - a(n-4))	1,1,1,1
+A087826	hofstadt	1	a(n-a(n-1)) + a(a(n-a(n-2)))	1,1
+A087831	hofstadt	0	a(Math.abs(n-a(n-1))) + a(a(Math.abs(n-a(n-4))))	1,1,1,1,1	if n>4, a(n) = 1 otherwise.
+A087842	hofstadt	1	a(a(a(n - a(n-1)))) + a(n - a(n-2))	1,1
+A087843	hofstadt	1	a(n - a(n-1)) + a(a(a(n - a(n-2))))	1,1	.
+A087844	hofstadt	1	a(a(a(Math.min(n-1, Math.abs(n - a(n-1)))))) + a(Math.abs(n - a(n-3)))	1,1,1,2
+A087846	hofstadt	1	a(a(a(Math.abs(n - a(n-1))))) + a(Math.abs(n - a(n-4)))	1,1,1,1
+A087850	hofstadt	1	a(a(a(a(a(n-1))))) + Math.abs(2*a(n-1)-n)	1,1	.
+A088461	hofstadt	1	new Q(n-a(a(a(n-1))), 2).ceiling().intValueExact()	1
+A103847	lambdan	1	n -> (n > 100) ? ZV(n - 10) : ZV(91)	McCarthy_s 91 Function: a(n) = n-10 if n>100, otherwise a(n) = a(a(n+11)).
+A106733	hofstadt	1	a(a(a(a(n - a(n-1))))) + a(n - a(n-2))	1,1	with a(1) = a(2) = 1.
+A110897	hofstadt	0	1 + a(n - a(n-1)) - (n - a(n-1)) % 2 + (n - a(n-2)) % 3	0,1
+A110898	hofstadt	0	1 + a(n - a(n-1)) - (n - a(n-1)) % 3 + (n - a(n-2)) % 4	0,1
+A113885	hofstadt	0	a(a(a(n-2))) + a(n-a(n-1))	1,1	a(0) = a(1) = 1
+A125204	multia	0	"0,1"	(self, n) -> self.a(n-1).+(self.a(Long.valueOf(self.a(n-1).mod(n)).intValue()))		for n>=2.
+A134679	hofstadt	1	a(n-a(n-1))+a(n-a(n-6))	1,1,1,1,1,1
+A143089	hofstadt	0	a(n - a(n-1)) + a(2*n/3)	1,1
+A143092	hofstadt	0	a(n - a(n - 1)) + a(a(2*n/3))	1,1
+A145465	hofstadt	0	a(n-1) + a((a(n-1) - 1) % n)	2,2
+A156253	hofstadt	1	() -> a(n-GCDi(a(a(n-1)), 2)) + 1	1	. - _Jon Maiga_, May 16 2023
+A163873	hofstadt	0	n - a(a(n-2))	0,0	with a(0) = a(1) = 0.
+A163874	hofstadt	0	n-a(a(n-3))	0,0,0	with a(0) = a(1) = a(2) = 0.
+A163875	hofstadt	0	n-a(a(n-4))	0,0,0,0	with a(0)=a(1)=a(2)=a(3)=0.
+A165565	hofstadt	0	n - a(a(a(n-3)))	0,0,0	with a(0)=a(1)=a(2)=0.
+A178665	poly	0	"[1]"	"1,x,^3,+,1,x,^15,+,*,1,x,^23,+,*,1,x,^27,+,*,1,x,^35,+,*,1,x,^39,+,*,1,x,^47,+,*,1,x,^59,+,*"
+A178677	hofstadt	0	((n&1) == 0) ? a(n/2) : a(a((n-1)/2)) + a(n - a((n-1)/2))	0,1,1
+A178771	hofstadt	0	((n&1) == 0) ? a(n/2) : a(a((n - 1)/2)) + a(n - a(( n - 3)/2))	0,1,1,1
+A185137	hofstadt	1	a(a(a(n-1))) + a(n - a(a(-3+n)))	1,1,1,1,1,1	if n>6, otherwise a(n) = 1.
+A193358	hofstadt	0	a(n-a(n-2))+2	1,2
+A209384	hofstadt	0	a(a(a(n - 1))) + a(n - a(a(n - 1)))	0,1,1,1,1,1,1	a(0) = 0, a(1) = a(2) = a(3) = a(4) = a(5) = a(6) = 1.
+A209869	hofstadt	1	a(a(n-1)) + a(n - a(n-2)) - a(a(n-3)) + a(a(n-5))	1,1,1,1,1,1,1,1,1,1,1,1,1,1,1	, with a(1) to a(15) = 1.
+A215525	multia	0	"1,1"	(self, n) -> self.a(n-1).+(self.a(Long.valueOf(self.a(n-2).mod(n)).intValue()))	1,1
+A215526	multia	0	"1,1"	(self, n) -> self.a(n-2).+(self.a(Long.valueOf(self.a(n-1).mod(n)).intValue()))	1,1
+A249569	hofstadt	1	a(n-a(n-1)) + a(n-a(a(n-2)))	1,1	.
+A268176	multia	0	"1,1"	(self, n) -> self.a(n-1).+(self.a(Long.valueOf(self.a(n-1).-(1).mod(n)).intValue()))	1,1
+A272610	hofstadt	1	a(n-a(n-1)) + a(n-a(n-2))	5,9,4,6
+A274055	hofstadt	1	a(n-a(n-1)) + a(n-a(n-2))	1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42
+A278066	hofstadt	1	a(n-a(n-1)) + a(n-a(n-2))	5,2
+A278067	hofstadt	1	a(n-a(n-1)) + a(n-a(n-2))	37,2
+A278068	hofstadt	1	a(n-a(n-1)) + a(n-a(n-2))	57,2
+A283422	hofstadt	1	a(n-a(n-1)-1) + a(n-a(n-2)-4)	1,1,0,1
+A283426	hofstadt	1	a(n-a(n-2)-1) + a(n-a(n-4)-2)	1,1,1,1
+A283893	hofstadt	1	a(n-a(n-1)) + a(n-a(n-2))	3,2
+A283894	hofstadt	1	a(n-a(n-1)) + a(n-a(n-2))	17,2
+A283895	hofstadt	1	a(n-a(n-1)) + a(n-a(n-2))	41,2
+A284397	hofstadt	1	Functions.PREV_PRIME.i(a(a(n-1)) + a(n-a(n-2)-1) + 1)	1,2
+A284412	hofstadt	1	Functions.PREV_PRIME.i(a(a(n-1)) + a(n-a(n-1)) + 1)	1,2
+A284511	hofstadt	1	a(a(n-1)-1) + a(n-a(n-2))	1,2,2	for n > 3.
+A284520	hofstadt	1	a(a(n-1)-1) + a(n-a(n-3)-1)	1,2,2,2	for n > 4.
+A284523	hofstadt	1	a(a(n-1)-1) + a(n-a(n-3)-1)	1,1,2	for n > 3.
+A284644	hofstadt	1	a(n-a(n-1)) + a(n-a(n-2))	2,2,1
+A285507	hofstadt	1	a(a(n-2)-1) + a(n-a(n-3)-1)	1,1,2,2	for n > 4.
+A285509	hofstadt	1	a(a(n-1)-1) + a(n-a(n-3))	1,2,2,2	for n > 4.
+A285578	hofstadt	1	a(a(n-2)) + a(n-a(n-4)-2)	2,1,2,2	for n > 4.
+A285582	hofstadt	1	a(a(n-3)-1) + a(n-a(n-4)-1)	1,2,2,2	for n > 4.
+A285588	hofstadt	1	a(a(n-3)-1) + a(n-a(n-5)-2)	1,1,2,2,2	for n > 5.
+A287155	hofstadt	1	a(a(n-1)) + a(n-a(n-1))	1,2,2,2	for n > 4.
+A287292	hofstadt	1	a(n-a(n-1)+1) + a(n-a(n-2)-1)	1,2
+A287354	hofstadt	1	a(n-a(n-1)+1) + a(n-a(n-2)+2)	1,2,3,4,5,6
+A287422	hofstadt	1	n - a(a(n-1)) - a(n-a(n-1))	1,1	for n > 2.
+A287477	hofstadt	0	((n&1) == 0) ? n/2 - a(a(n/2)) : a(n/2-a(n/2)) + a(n/2-a(n/2+1))	0,1
+A287597	hofstadt	0	((n&1) == 0) ? n/2 - a(a(n/2)) : a(a(n/2)) + a(a(n/2+1))	0,1
+A287601	hofstadt	0	((n&1) == 0) ? n/2 - a(a(n/2)) : a(a(n/2)) + a(n/2-a(n/2))	1,1
+A287635	hofstadt	1	a(a(n-4)) + a(n-a(n-3))	1,1,1,1	for n > 4.
+A287643	hofstadt	1	a(a(n-3)) + a(n-a(n-6))	1,1,1,1,1,1	for n > 6.
+A287654	hofstadt	1	a(a(n-1)) + a(a(n-a(n-1)) + a(n-a(n-2)))	1,2,2,2	for n > 4.
+A287707	hofstadt	1	a(a(n-1)) + a(a(n-a(n-1)) + a(n-a(n-2)))	1,2,3,2,2	for n > 5.
+A287771	hofstadt	1	a(a(a(n-1)) + a(n-a(n-1))) + a(n-a(n-2))	1,1,1	for n > 3.
+A289256	hofstadt	1	a(n-a(n-1)) + a(n-a(n-3)-1)	2,2,2
+A292351	hofstadt	1	a(n-a(n-1)) + a(n-a(n-2)) + a(n-a(n-3))	1,1,3,4,4
+A294354	hofstadt	1	a(n-a(n-1)) + a(n-a(n-2))	2,4,2,2
+A296413	hofstadt	1	a(n-a(n-1)) + a(n-a(n-2)) + a(n-a(n-3))	1,1,1,4,3
+A296421	hofstadt	1	a(n-a(n-1)) + a(n-a(n-2)) + a(n-a(n-3))	1,2,3,4,4,6,6
+A296440	hofstadt	1	a(n-a(n-1)) + a(n-a(n-2)) + a(n-a(n-3))	2,3,3,4,6,6
+A296690	hofstadt	1	a(n-a(n-1)) + a(n-a(n-2)) + a(n-a(n-3))	2,2,2,4,5,5
+A304590	hofstadt	1	a(n-a(n-3)) + a(n-a(n-6))	1,1,1,2,1,3
+A308576	hofstadt	0	a(n-1) + a(a(n-1) % n) + 1	1	, a(0) = 1.
+A308818	hofstadt	0	a(a(n-1) % n) + a(a(n-2) % n)	2,3	with a(0)=2 and a(1)=3.
+A308936	hofstadt	1	a(n-a(n-1)) + a(n-a(n-2)) + a(n-a(n-3))	1, 2, 3, 4, 4, 5, 6, 7, 8
+A309560	hofstadt	1	a(n-a(n-1)) + a(n-a(n-2)) + a(n-a(n-3)) + a(n-a(n-4))	1,1,2,3,5,6,6,7	1,1
+A309567	hofstadt	1	a(n-a(n-1)) + a(n-a(n-4))	4,2,5,3,1
+A309636	hofstadt	1	a(n-a(n-1)) + a(n-a(n-4))	3,1,4,2,5,3
+A309650	hofstadt	1	a(n-a(n-2)) + a(n-a(n-3))	3,1,4,2
+A309704	hofstadt	1	a(n-a(n-1)) + a(n-a(n-4))	3,4,5,4,5,6
+A320063	hofstadt	0	a(n-1-a(a(n-1))) + a(a(a(n-1)))	0,1	for n > 1, a(n) = n for n < 2.
+A330615	hofstadt	0	a(a(n - 1) % n) + a(a(n - 2) % n)	1,1	.
+A335855	hofstadt	1	a(a(n-1)) + a(n/a(n-1))	2,2,2,2	with a(1) = a(2) = a(3) = a(4) = 2.
+A340224	hofstadt	1	a(n-1-a(n-1)*(a(n-1)-1)/2) + 1	0
+A350126	hofstadt	0	(a(a(n-1)) % 2) + a(n-2)	0,1	with a(0) = 0 and a(1) = 1.
+A350127	hofstadt	0	a(a(n-1)) % 3 + a(n-2)	0,1	with a(0) = 0 and a(1) = 1.
+A373227	hofstadt	1	a(n-a(n-1)) + a(n-a(n-2)) + a(n-a(n-3))	1,2,3,4,5,6,7	1,1
+A373228	hofstadt	1	a(n-a(n-1)) + a(n-a(n-2)) + a(n-a(n-3))	1,2,3,4,5,6,7,8	1,1
+A373229	hofstadt	1	a(n-a(n-1)) + a(n-a(n-2)) + a(n-a(n-3))	1,2,3,4,5,6,7,8,9	1,1
+A379183	hofstadt	1	n - a(a(n-2))	0,1,1	for n>3.

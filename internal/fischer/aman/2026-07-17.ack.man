@@ -1,0 +1,47 @@
+---- 2026-07-17 09:42:35
+A163777	filnum	1	1	k -> k % 2 ==0 && PP(2*k + 1) && Functions.ORDER.z(2*k + 1, 2).equals(2*k)
+A163779	filnum	1	1	k -> k % 4 ==1 && PP(2*k + 1) && Functions.ORDER.z(2*k + 1, 2).equals(2*k)
+A163781	filnum	1	1	k -> k % 4 >=2 && PP(2*k + 1) && Functions.ORDER.z(2*k + 1, 2).equals(k%2 == 1 ? k : 2*k)
+A193303	filnum	1	1	k -> SF(ZV(k)./(ZV(3).^(VAL(k, 3))))
+A193304	filnum	1	1	k -> SF(ZV(k)./(ZV(5).^(VAL(k, 5))))
+A216829	lambdan	1	n -> Functions.ORDER.z(3*(2*n-1), 2)./(2)
+A217469	lambdan	1	n -> Functions.ORDER.z(5*n+1, 5)
+A217852	lambdan	1	n -> Functions.ORDER.z(5*n-1, 5)
+A225837	filnum	1	1	k -> ZV(k)./(Z2(VAL(k, 2)).*(ZV(3).^(VAL(k, 3)))).mod(6)  == 1
+A225838	filnum	1	1	k -> ZV(k)./(Z2(VAL(k, 2)).*(ZV(3).^(VAL(k, 3)))).mod(6)  == 5
+A225857	filnum	1	1	k -> ZV(k)./(Z2(VAL(k, 2)).*(ZV(3).^(VAL(k, 3)))).mod(4)  == 1
+A225858	filnum	1	1	k -> ZV(k)./(Z2(VAL(k, 2)).*(ZV(3).^(VAL(k, 3)))).mod(4)  == 3
+A226367	lambdan	1	n -> { final Z p = PM(n); return Functions.ORDER.z(p, Functions.NEXT_PRIME.z(p.+(1))); }	vector(80, n, p = prime(n); znorder(Mod(nextprime(p+1), p)))
+A246489	sintrif	1	(p, n) -> (n <= 2) ? ZV(0) : Functions.ORDER.z(p, 12)	""	new A000040()	forprime(p=5,10^3,print1(znorder(Mod(12,p)),", ")); \
+A249345	lambdan	0	n -> SU(0, n, k -> Functions.VALUATION.z(BI(n, k), 5))
+A249347	lambdan	0	n -> SU(0, n, k -> Functions.VALUATION.z(BI(n, k), 7))
+A341090	mulr	1	(p, e) -> { final Z q = REV(p); return PP(q) ? q.^(e) : p.^(e); }	Fully multiplicative: for any prime p, if the reversal of p in base 10, say q, is prime, then a(p) = q, otherwise a(p) = p.
+A355731	mulr	1	(p, e) -> TAU(PI(p)).^(e)	Completely multiplicative with a(prime(k)) = tau(k), where tau = F000005. - _Andrew Howroyd_, Nov 06 2025
+A365683	mulr	1	(p, e) -> p.^(D070321(e).longValueExact())
+A365684	mulr	1	(p, e) -> p.^(D067535(e).longValueExact())
+A366244	mulr	1	(p, e) -> p.^(e & 0x55555555)	Multiplicative with a(p^e) = p^J063694(e).
+A366245	mulr	1	(p, e) -> p.^(e & 0xAAAAAAAA)	Multiplicative with a(p^e) = p^J063695(e).
+A366308	mulr	1	(p, e) -> Z2(Integer.bitCount(e & 0x55555555))	Multiplicative with a(p^e) = 2^J139351(e).	Z.valueOf(Long.bitCount(mN & 0x55555555L))
+A366309	mulr	1	(p, e) -> Z2(Integer.bitCount(e & 0xAAAAAAAA))	Multiplicative with a(p^e) = 2^J139352(e).
+A372257	lambdan	0	n -> ZV(n & 3).xor(ZV(n).testBit(VAL(n/2+1, 2)+2) ? 1 : 0)
+A372258	lambdan	0	n -> ZV(n & 1).xor(ZV(n).testBit(VAL(n/2+1, 2)+2) ? 1 : 0)
+A372683	lambdan	0	n -> D067535(Z2(n))
+A372889	lambdan	0	n -> D070321(Z2(n))
+A374202	lambdan	2	n -> Functions.VALUATION.z(E328845(n), 2)
+A374203	lambdan	2	n -> Functions.VALUATION.z(E328845(n), 3)
+A374205	lambdan	2	n -> Functions.VALUATION.z(E328845(n), 5)
+A386468	lambdin	1	n -> D070321(Jaguar.factor(n).maxExponent())	0	for n >= 2.
+A392278	lambdin	1	n -> D067535(Jaguar.factor(n).maxExponent())	0	for n >= 2.
+---- 2026-07-17 09:52:58
+A199344	lambdan	0	n -> ZV(10).^(VAL(n + 1, 10)).+(n)
+A322512	trilambn	1	1	1	(n, k) -> Functions.VALUATION.z(S1(n, k), 2)
+---- 2026-07-17 10:11:27
+A143028	filnum	1	1	n -> { long k = n - 1; long m = 2; long r = k % m; k /= m; while (r != 0) { ++m; r = k % m; k /= m;} return VAL(k + 1, m) + 2 == 2 ; }
+A143029	filnum	1	1	n -> { long k = n - 1; long m = 2; long r = k % m; k /= m; while (r != 0) { ++m; r = k % m; k /= m;} return VAL(k + 1, m) + 2 == 3 ; }
+A143030	filnum	1	1	n -> { long k = n - 1; long m = 2; long r = k % m; k /= m; while (r != 0) { ++m; r = k % m; k /= m;} return VAL(k + 1, m) + 2 == 4 ; }
+A143031	filnum	1	1	n -> { long k = n - 1; long m = 2; long r = k % m; k /= m; while (r != 0) { ++m; r = k % m; k /= m;} return VAL(k + 1, m) + 2 == 5 ; }
+A143032	filnum	1	1	n -> { long k = n - 1; long m = 2; long r = k % m; k /= m; while (r != 0) { ++m; r = k % m; k /= m;} return VAL(k + 1, m) + 2 == 6 ; }
+A143033	filnum	1	1	n -> { long k = n - 1; long m = 2; long r = k % m; k /= m; while (r != 0) { ++m; r = k % m; k /= m;} return VAL(k + 1, m) + 2 == 7 ; }
+A143034	filnum	1	1	n -> { long k = n - 1; long m = 2; long r = k % m; k /= m; while (r != 0) { ++m; r = k % m; k /= m;} return VAL(k + 1, m) + 2 == 8 ; }
+A143035	filnum	1	1	n -> { long k = n - 1; long m = 2; long r = k % m; k /= m; while (r != 0) { ++m; r = k % m; k /= m;} return VAL(k + 1, m) + 2 == 9 ; }
+A143036	filnum	1	1	n -> { long k = n - 1; long m = 2; long r = k % m; k /= m; while (r != 0) { ++m; r = k % m; k /= m;} return VAL(k + 1, m) + 2 == 10; }
