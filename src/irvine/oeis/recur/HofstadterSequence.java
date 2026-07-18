@@ -31,13 +31,13 @@ public abstract class HofstadterSequence extends AbstractSequence implements Dir
   public HofstadterSequence(final int offset, final int... inits) {
     super(offset);
     mN = 0;
-    mLimit = -1;
+    mLimit = -1; // standard for most sequences: a(n) = 0 if n < 0
     mA = new ArrayList<>();
     while (mN < offset) {
       mA.add(0);
       ++mN;
     }
-    --mN;
+    --mN; // now mN = offset - 1
     for (int i = 0; i < inits.length; ++i) {
       mA.add(inits[i]);
     }
@@ -66,18 +66,7 @@ public abstract class HofstadterSequence extends AbstractSequence implements Dir
    * @return mA.get(n)
    */
   public Z a(final long n) { 
-  	return Z.valueOf(a(Long.valueOf(n).intValue()));
-/*
-    if (n <= mLimit) {
-      return Z.ZERO;
-    }    
-    int aLen = mA.size();
-    while(n >= aLen) {
-      mA.add(compute(aLen ++));
-    }
-    // now n < mA.size() 
-    return Z.valueOf(mA.get(Long.valueOf(n).intValue()));
-*/
+    return Z.valueOf(a(Long.valueOf(n).intValue()));
   }
 
   /**
@@ -86,9 +75,9 @@ public abstract class HofstadterSequence extends AbstractSequence implements Dir
    * @return mA.get(n)
    */
   public int a(final int n) {
-    if (n <= mLimit) {
-      return 0;
-    }    
+    if (mLimit > 0 && n <= 0) {
+      return n <= -mLimit ? 0 : mLimit + n;
+    }
     if (n < mInitLen) {
       return mA.get(n);
     }
@@ -101,8 +90,9 @@ public abstract class HofstadterSequence extends AbstractSequence implements Dir
   }
 
   /**
-   * Set a non-standard limit.
-   * @param lim new limit
+   * Set a non-standard, negated limit.
+   * This implements the rule a(n) = max(0, n + lim) for n &lt;= 0, ...
+   * @param lim new negated limit
    */
   protected void setLimit(final int lim) {
     mLimit = lim;
@@ -110,17 +100,6 @@ public abstract class HofstadterSequence extends AbstractSequence implements Dir
 
   @Override
   public Z next() {
-  	return Z.valueOf(a(++mN));
-  /*
-    final int result;
-    ++mN;
-    if (mN < mInitLen) {
-      result = mA.get(mN);
-    } else {
-      result = compute(mN);
-      mA.add(result);
-    }
-    return Z.valueOf(result);
-  */
+    return Z.valueOf(a(++mN));
   }
 }

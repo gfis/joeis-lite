@@ -2,6 +2,7 @@
 
 # Generate source in internal/fischer/manual
 # @(#) $Id$
+# 2026-07-18: $GITS; edit with "e filename"; -e rseqno; long mN
 # 2024-04-20: -dir
 # 2023-09-23: "private int mN;" again
 # 2023-08-30: AbstractSequence, no getOffset
@@ -15,18 +16,18 @@
 # 2021-06-26, Georg Fischer: copied from gen_linrec.pl
 #
 #:# Usage:
-#:#   perl genman.pl [-d debug] [-dir] [-e] [-n] [-p v1,v2...] [-cp aseqno] [-s] [-t] [-u] [A]seqno
-#:#   -cp copy from - to
-#:#   -dir implements DirectSequence
-#:#   -e   generate "extends ..."
-#:#   -h   generate a subclass of HolonomicRecurrence
-#:#   -m   generate a subclass of MemorySequence
-#:#   -n   generate ++mN
-#:#   -p   v1,v2... names of parameters
-#:#   -s   generate while loop for a subsequence
-#:#   -t   generate a subclass of Triangle
-#:#   -u   generate a subclass of UpperLeftTriangle
-#:#   Writes ./manual/aseqno.java and starts uedit64 with it.
+#:#   perl genman.pl [-d debug] [-dir] [-e rseqno] [-m] [-n] [-p p1,p2...] [-cp aseqno] [-s] [-t] [-u] [A]seqno
+#:#   -cp           copy from - to
+#:#   -dir          implements DirectSequence
+#:#   -e rseqno     generate "extends ..."
+#:#   -h            generate a subclass of HolonomicRecurrence
+#:#   -m            generate a subclass of MemorySequence
+#:#   -n            generate ++mN
+#:#   -p   p1,p2... names of parameters
+#:#   -s            generate while loop for a subsequence
+#:#   -t            generate a subclass of Triangle
+#:#   -u            generate a subclass of UpperLeftTriangle
+#:#   Writes ./manual/aseqno.java and edits it with "e file"
 #--------------------------------------------------------
 use strict;
 use integer;
@@ -40,14 +41,16 @@ if (scalar(@ARGV) == 0) {
     print `grep -E "^#:#" $0 | cut -b3-`;
     exit;
 }
-my $basedir   = "../../../OEIS-mat/common";
+my $GITS       =  $ENV{'GITS'};
+my $basedir   = "$GITS/OEIS-mat/common";
 my $copy      = "";
 my $debug     = 0;
 my $direct    = 0; # whether "implements DirectSequence"
-my $joeisdir  = "../../../joeis/src/irvine/oeis";
+my $joeisdir  = "$GITS/joeis/src/irvine/oeis";
 my $namesfile = "$basedir/names";
 my @pnames    = ();
 my $extends   = 0; # whether to generate "extends ..."
+my $rseqno    = "A000000";
 my $holonomic = 0; # whether to generate "extends HolonomicRecurrence;"
 my $memory    = 0; # whether to generate "extends MemorySequence;"
 my $withn     = 0; # whether to generate ++mN
@@ -77,6 +80,10 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
         if (0) {
         } elsif ($opt   =~ m{e}) {
             $extends   = 1;
+            $rseqno    = shift(@ARGV); 
+            print `cmd /c start https://oeis.org/$rseqno`; 
+            my $rno = lc(substr($rseqno, 0, 4));
+            print `e $joeisdir/$rno/$rseqno.java`;
         } elsif ($opt   =~ m{h}) {
             $holonomic = 1;
         } elsif ($opt   =~ m{m}) {
@@ -97,6 +104,7 @@ if (scalar(@ARGV) <= 0) {
 my $aseqno = shift(@ARGV);
 $aseqno =~ s{\D*(\d+)}{$1};
 $aseqno = sprintf("A%06d", $aseqno);
+print `cmd /c start https://oeis.org/$aseqno`;
 if (length($copy) > 0) {
     &copyseq($copy, $aseqno);
 } else {
@@ -157,8 +165,6 @@ sub output {
     $tarname =~ s{\>}{\&gt;}g;
     $tarname =~ s{\'}{\&apos;}g;
     $tarname =~ s{\"}{\&quot;}g;
-    substr($tarname, 8) =~ m{(A\d\d+)};
-    my $rseqno = $1 || "A";
     #---------
     print TAR <<"GFis"; # package and imports
 package irvine.oeis.$apack;
@@ -211,11 +217,11 @@ GFis
     }
     print TAR " {\n";
     if ($withn) {
-        print TAR "\n  private int mN;\n";
+        print TAR "\n  private long mN;\n";
     }
     foreach $pname (@pnames) { # member properties
         if ($pname ne "offset") {
-            print TAR "  private int m" . ucfirst($pname) . ";\n";
+            print TAR "  private long m" . ucfirst($pname) . ";\n";
         }
     } # foreach member property
     #--------
@@ -224,7 +230,7 @@ GFis
   /** Construct the sequence. */
   public $aseqno() {
 GFis
-    if (0) {
+    if (0) { # switch for various constructor types
     } elsif ($holonomic) {
         my $rec = `grep $aseqno holref.txt`;
         $rec =~ s{\s+\Z}{};
@@ -252,8 +258,8 @@ GFis
             $sep = ", ";
         }
         print TAR ");\n";
+        # ---- start
         print TAR <<"GFis";
-    }
   }
 
   /**
@@ -261,26 +267,28 @@ GFis
 GFis
         # print TAR "    super($off);\n";
         foreach $pname (@pnames) {
-            print TAR "   * \@param $pname \n";
-        }
+            print TAR "   * \@param $pname" . ($pname eq "offset" ? " first index" : "") . "\n";
+        } # foreach
         print TAR "   */\n";
         print TAR "  public $aseqno";
         $sep = "(";
         foreach $pname (@pnames) {
-            print TAR "${sep}final int $pname";
+            print TAR "${sep}final " . ($pname eq "offset" ? "int" : "long") . " $pname";
             $sep = ", ";
-        }
+        } # foreach
         print TAR ") {\n    super(offset);\n";
+        # ---- end
     } else { # without generic constructor
-    }
+    } # switch for various constructor types
+
     if ($withn) { # retrieve offset
         my $offset = 0;
         my $info = `grep -E \"\^$aseqno\" $basedir/asinfo.txt`;
         if ($info =~ m{^$aseqno\s+(\d+)}) {
             $offset = $1;
         }
-        $offset--;
-        print TAR "    mN = $offset;\n";
+        # $offset--;
+        print TAR "    mN = offset - 1;\n";
     }
     foreach $pname (@pnames) {
         if ($pname ne "offset") {
@@ -368,6 +376,6 @@ GFis
 }
 GFis
     close(TAR);
-    print `uedit64 $tarfile`;
+    print `e $tarfile`;
 } # output
 __DATA__
