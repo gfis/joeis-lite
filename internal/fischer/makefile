@@ -806,7 +806,7 @@ potential2:
 potential3:
 	ls -tclr *.gen | tail -n7 | cut -b47- | sed -e "s/\.gen//" | xargs -l -innn make CC=nnn gener
 #--------
-robots:
+robot0:
 	# prelude
 	rm -f   robot.gen
 	make purge
