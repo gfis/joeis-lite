@@ -1,0 +1,125 @@
+---- 2026-07-18 13:42:00
+
+A063882	hofstadt	1	a(n - a(n - 1)) + a(n - a(n - 4))	1,1,1,1
+A086835	hofstadt	1	a( (n - a(n-1))*((n&1)) + a(n-1)*(1 - ((n&1))) ) + a( (n - a(n-2))*((n&1)) + (n - a(n-1))*(1 - ((n&1))) )	1,1
+A088387	lambdin	1	n -> { final FactorSequence fs = Jaguar.factor(n); final Z peMax = FSIT(fs, ZV(0), (x, p, e) -> p.^(e).compareTo(x) > 0 ? p.^(e) : x); return FSIT(fs, ZV(0), (x, p, e) -> (p.^(e).equals(peMax) ? p : x)); }	1	Prime corresponding to largest prime power factor of n, a(1)=1.
+A092569	lambdin	0	n -> { final long hm1 = Long.highestOneBit(n) - 1; return ZV((n ^ hm1) ^ 1); }	0,1,2,3	Permutation of integers a(a(n)) = n. In binary representation of n, transformation of inner bits, 1 <-> 0, gives binary representation of a(n).
+A092570	filter	1	new A000040()	p -> PP(D092569(p))
+A111822	parmof2	0	A111827	5
+A111832	parmof2	0	A111827	7
+A111837	parmof2	0	A111827	8
+A143028	filnum	1	1	n -> { long k = n - 1; long m = 2; long r = k % m; k /= m; while (r != 0) { ++m; r = k % m; k /= m;} return VAL(k + 1, m) + 2 == 2 ; }
+A143029	filnum	1	1	n -> { long k = n - 1; long m = 2; long r = k % m; k /= m; while (r != 0) { ++m; r = k % m; k /= m;} return VAL(k + 1, m) + 2 == 3 ; }
+A143030	filnum	1	1	n -> { long k = n - 1; long m = 2; long r = k % m; k /= m; while (r != 0) { ++m; r = k % m; k /= m;} return VAL(k + 1, m) + 2 == 4 ; }
+A143031	filnum	1	1	n -> { long k = n - 1; long m = 2; long r = k % m; k /= m; while (r != 0) { ++m; r = k % m; k /= m;} return VAL(k + 1, m) + 2 == 5 ; }
+A143032	filnum	1	1	n -> { long k = n - 1; long m = 2; long r = k % m; k /= m; while (r != 0) { ++m; r = k % m; k /= m;} return VAL(k + 1, m) + 2 == 6 ; }
+A143033	filnum	1	1	n -> { long k = n - 1; long m = 2; long r = k % m; k /= m; while (r != 0) { ++m; r = k % m; k /= m;} return VAL(k + 1, m) + 2 == 7 ; }
+A143034	filnum	1	1	n -> { long k = n - 1; long m = 2; long r = k % m; k /= m; while (r != 0) { ++m; r = k % m; k /= m;} return VAL(k + 1, m) + 2 == 8 ; }
+A143035	filnum	1	1	n -> { long k = n - 1; long m = 2; long r = k % m; k /= m; while (r != 0) { ++m; r = k % m; k /= m;} return VAL(k + 1, m) + 2 == 9 ; }
+A143036	filnum	1	1	n -> { long k = n - 1; long m = 2; long r = k % m; k /= m; while (r != 0) { ++m; r = k % m; k /= m;} return VAL(k + 1, m) + 2 == 10; }
+A147665	hofstadt	0	a(a(n - 1)) + (n%3 != 2 ? a(a(n/3)) : a(n - a(n/3)))	0,1,1	r(3*k) = a(a(k)), r(3*k+1) = a(a(k)) and r(3*k+2) = a(n-a(k)), with a(0) = 0 and a(1) = a(2) = 1.
+A147952	hofstadt	0	a(a(n - 2)) + (n%3 != 2 ? a(a(n/3)) : a(n - a(n/3)))	0,1,1	r(n)   = a(a(floor(n/3))) when n == 0 or 1 (mod 3) and = a(n - a(floor(n/3))) when n == 2 (mod 3).
+A147954	hofstadt	0	(n <= 5) ? a(a(n-1)) + a(n-a(n-1)) : a(a(n-1)) + (n % 6 != 5 ? a(a(n/6)) : a(n - a(n/6)))	0,1,1	r(n) = a(a(floor(n/6))) for n == 0, 1, 2, 3, 4 (mod 6), and r(n) = a(n - a(floor(n/6))) for n == 5 (mod 6).
+A161189	lambdan	1	n -> { long k = n - 1; long m = 2; long r = k % m; k /= m; while (r != 0) { ++m; r = k % m; k /= m;} return Functions.VALUATION.z(k + 1, m).+(2); }
+A163325	lambdan	0	n -> DIGIT(n, 9, ZV(0), (x, d, e) -> x.+(ZV(3).^(e).*(d % 3)))	a(n) = fromdigits(digits(n, 9)%3, 3)	Pick digits at the even distance from the least significant end of the ternary expansion of n, then convert back to decimal.
+A163326	lambdan	0	n -> DIGIT(n, 9, ZV(0), (x, d, e) -> x.+(ZV(3).^(e).*(d / 3)))	a(n) = fromdigits(digits(n, 9)\3, 3)	Pick digits at the odd distance from the least significant end of the ternary expansion of n, then convert back to decimal.
+A163327	lambdan	0	n -> new Z(StringUtils.translate(ZV(n).toString(9), "012345678", "036147258"), 9)	Self-inverse permutation of integers: swap the odd- and even-positioned digits in the ternary expansion of n, then convert back to decimal.
+A163777	filnum	1	1	k -> k % 2 ==0 && PP(2*k + 1) && Functions.ORDER.z(2*k + 1, 2).equals(2*k)
+A163779	filnum	1	1	k -> k % 4 ==1 && PP(2*k + 1) && Functions.ORDER.z(2*k + 1, 2).equals(2*k)
+A163781	filnum	1	1	k -> k % 4 >=2 && PP(2*k + 1) && Functions.ORDER.z(2*k + 1, 2).equals(k%2 == 1 ? k : 2*k)
+A193303	filnum	1	1	k -> SF(ZV(k)./(ZV(3).^(VAL(k, 3))))
+A193304	filnum	1	1	k -> SF(ZV(k)./(ZV(5).^(VAL(k, 5))))
+A199343	lambdan	0	n -> ZV(n).+((n % 10 < 9) ? ZV(1) : ZV(10).^(VAL(n + 1, 10) - 1).*(9))	a(n)= n+if(n%10<9,1,9*10^(valuation(n+1,10)-1))
+A199344	lambdan	0	n -> ZV(10).^(VAL(n + 1, 10)).+(n)
+A216829	lambdan	1	n -> Functions.ORDER.z(3*(2*n-1), 2)./(2)
+A217469	lambdan	1	n -> Functions.ORDER.z(5*n+1, 5)
+A217852	lambdan	1	n -> Functions.ORDER.z(5*n-1, 5)
+A225837	filnum	1	1	k -> ZV(k)./(Z2(VAL(k, 2)).*(ZV(3).^(VAL(k, 3)))).mod(6)  == 1
+A225838	filnum	1	1	k -> ZV(k)./(Z2(VAL(k, 2)).*(ZV(3).^(VAL(k, 3)))).mod(6)  == 5
+A225857	filnum	1	1	k -> ZV(k)./(Z2(VAL(k, 2)).*(ZV(3).^(VAL(k, 3)))).mod(4)  == 1
+A225858	filnum	1	1	k -> ZV(k)./(Z2(VAL(k, 2)).*(ZV(3).^(VAL(k, 3)))).mod(4)  == 3
+A226367	lambdan	1	n -> { final Z p = PM(n); return Functions.ORDER.z(p, Functions.NEXT_PRIME.z(p.+(1))); }	vector(80, n, p = prime(n); znorder(Mod(nextprime(p+1), p)))
+A240807	hofstadt	0	(a(n-1) > n-1 || a(n-2) > n-2) ? null : a(n-1-a(n-1))+a(n-2-a(n-2))	-1,-1,2	unless in which case the sequence terminates.
+A240808	hofstadt	0	(a(n-1) > n-1 || a(n-2) > n-2) ? null : a(n-1-a(n-1))+a(n-2-a(n-2))	2,1,0	unless in which case the sequence terminates.
+A244478	hofstadt	0	(a(n-1) > n-1 || a(n-2) > n-2) ? null : a(n-1-a(n-1))+a(n-2-a(n-2))	2,0,2	unless in which case the sequence terminates.
+A244483	hofstadt	0	(a(n-1) > n-1 || a(n-2) > n-2) ? null : a(n-1-a(n-1))+a(n-2-a(n-2))	3,1,0	unless in which case the sequence terminates.
+A246489	sintrif	1	(p, n) -> (n <= 2) ? ZV(0) : Functions.ORDER.z(p, 12)	""	new A000040()	forprime(p=5,10^3,print1(znorder(Mod(12,p)),", ")); \
+A249345	lambdan	0	n -> SU(0, n, k -> Functions.VALUATION.z(BI(n, k), 5))
+A249347	lambdan	0	n -> SU(0, n, k -> Functions.VALUATION.z(BI(n, k), 7))
+A277366	filter	0	new A002808()	v -> v.-(1).^(2).mod(PHI(v).*(Functions.CARMICHAEL_LAMBDA.z(v))).isZero()	Composite numbers k such that phi(k)*lambda(k) divides (k-1)^2, where phi(k) = F000010(k) and lambda(k) = F002322(k).
+A277389	filnum	0	1	k -> ZV(k - 1).^(2).mod(Functions.CARMICHAEL_LAMBDA.z(k).^(3)).isZero()	Numbers k such that lambda(k)^3 divides (k-1)^2, where lambda(k) = F002322(k).
+A283882	hofstamx	1	67	a(n-a(n-1)) + a(n-a(n-2))
+A283884	hofstamx	1	193	a(n-a(n-1)) + a(n-a(n-2)) + a(n-a(n-3))
+A283885	hofstamx	1	3442	a(n-a(n-1)) + a(n-a(n-2)) + a(n-a(n-3))
+A283888	hofstamx	1	27298	a(n-a(n-1)) + a(n-a(n-2)) + a(n-a(n-3))
+A283889	hofstamx	1	10000	a(n-a(n-1)) + a(n-a(n-2)) + a(n-a(n-3)) + a(n-a(n-4))
+A283890	hofstamx	1	10001	a(n-a(n-1)) + a(n-a(n-2)) + a(n-a(n-3)) + a(n-a(n-4))
+A283891	hofstamx	1	10000	a(n-a(n-1)) + a(n-a(n-2)) + a(n-a(n-3)) + a(n-a(n-4)) + a(n-a(n-5)) + a(n-a(n-6)) + a(n-a(n-7))
+A283892	hofstamx	1	10001	a(n-a(n-1)) + a(n-a(n-2)) + a(n-a(n-3)) + a(n-a(n-4)) + a(n-a(n-5)) + a(n-a(n-6)) + a(n-a(n-7))
+A284053	multia	0	"9,20,5,5,20,9,20,5,5,20,9,5,10,10,20"   	(self, n) -> { if (n < 2) { return ZV(0); } final long n1 = n - self.a(n-1).longValueExact(); final long n2 = n - self.a(n-2).longValueExact(); return (n1 < 0 ? ZV(0) : self.a(n1)).+(n2 < 0 ? ZV(0) : self.a(n2)); } 	a(n) = a(n-a(n-1)) + a(n-a(n-2)).
+A292880	lambdan	1	n -> RU(4, n + 3, k -> new Q(BI(k, 4).+(BI(k, 5).*(10)).+(BI(k, 6).*(15)), FA(n + 3 - k))).*(FA(n)).num()	n! * Sum_{k=4..n+3} (binomial(k,4)+10*binomial(k,5)+15*binomial(k,6))/(n+3-k)!.
+A317686	hofstadt	1	() -> a(D063882(n).intValueExact()) + a(n-D063882(n).intValueExact())	1,1	where t = J063882
+A318910	lambdan	0	n -> ((n&1) == 0) ? BI(n, n/2) : CV(Z2(2*n).*(FA(n/2).^(2)))./(CR.PI.*(FA(n))).round()	round((2^(4n+2)*(n!)^2)/(Pi*(2n+1)!))
+A322512	trilambn	1	1	1	(n, k) -> Functions.VALUATION.z(S1(n, k), 2)
+A333812	parmof2	1	A145403	7	of J064298.
+A341090	mulr	1	(p, e) -> { final Z q = REV(p); return PP(q) ? q.^(e) : p.^(e); }	Fully multiplicative: for any prime p, if the reversal of p in base 10, say q, is prime, then a(p) = q, otherwise a(p) = p.
+A355731	mulr	1	(p, e) -> TAU(PI(p)).^(e)	Completely multiplicative with a(prime(k)) = tau(k), where tau = F000005. - _Andrew Howroyd_, Nov 06 2025
+A356991	lambdan	2	n -> D356988(n).+(D356988(n - D356988(n).longValueExact()))	b(n) + b(n - b(n)) for n >= 2, where b(n) = A356998(n)
+A356992	lambdan	2	n -> ZV(n).-(D356988(n - D356988(n - D356988(n - D356988(n - D356988(n - D356988(n).longValueExact()).longValueExact()).longValueExact()).longValueExact()).longValueExact()))	n - b(n - b(n - b(n - b(n - b(n - b(n)))))) for n >= 2, where b(n) = J356988(n)
+A356993	lambdan	2	n -> D356988(n - D356988(n - D356988(n - D356988(n).longValueExact()).longValueExact()).longValueExact())	b(n - b(n - b(n - b(n)))) for n >= 2, where b(n) = J356988(n)
+A356994	lambdan	1	n -> ZV(n).-(D356988(D356988(D356988(n))))	b(b(b(n))), where b(n) = J356988(n)
+A356998	lambdan	2	n -> D356988(n).-(D356988(n - D356988(n).longValueExact()))	a(n) = b(n) - b(n - b(n)) for n >= 2, where b(n) = A356988(n).
+A358811	parmof2	1	A358810	6	of J212796.
+A358812	parmof2	1	A358810	7	of J212796.
+A358813	parmof2	1	A358810	8	of J212796.
+A358814	parmof2	1	A358810	9	of J212796.
+A358815	parmof2	1	A358810	10	of J212796.
+A365683	mulr	1	(p, e) -> p.^(D070321(e).longValueExact())
+A365684	mulr	1	(p, e) -> p.^(D067535(e).longValueExact())
+A366244	mulr	1	(p, e) -> p.^(e & 0x55555555)	Multiplicative with a(p^e) = p^J063694(e).
+A366245	mulr	1	(p, e) -> p.^(e & 0xAAAAAAAA)	Multiplicative with a(p^e) = p^J063695(e).
+A366308	mulr	1	(p, e) -> Z2(Integer.bitCount(e & 0x55555555))	Multiplicative with a(p^e) = 2^J139351(e).	Z.valueOf(Long.bitCount(mN & 0x55555555L))
+A366309	mulr	1	(p, e) -> Z2(Integer.bitCount(e & 0xAAAAAAAA))	Multiplicative with a(p^e) = 2^J139352(e).
+A372257	lambdan	0	n -> ZV(n & 3).xor(ZV(n).testBit(VAL(n/2+1, 2)+2) ? 1 : 0)
+A372258	lambdan	0	n -> ZV(n & 1).xor(ZV(n).testBit(VAL(n/2+1, 2)+2) ? 1 : 0)
+A372683	lambdan	0	n -> D067535(Z2(n))
+A372889	lambdan	0	n -> D070321(Z2(n))
+A374202	lambdan	2	n -> Functions.VALUATION.z(E328845(n), 2)
+A374203	lambdan	2	n -> Functions.VALUATION.z(E328845(n), 3)
+A374205	lambdan	2	n -> Functions.VALUATION.z(E328845(n), 5)
+A386468	lambdin	1	n -> D070321(Jaguar.factor(n).maxExponent())	0	for n >= 2.
+A392278	lambdin	1	n -> D067535(Jaguar.factor(n).maxExponent())	0	for n >= 2.
+A393842	holos	1	[0,1,-13,78,-286,715,-1287,1716,-1716,1287,-715,286,-78,13,-1]	0,0,0,36,20700,1219980,22557444,226534448,1541819664,7987574700,33772336620,121971280068,388337820156	0	0
+A394096	holos	0	[0,6,-23,34,-24,8,-1]	1,3,12,40,117,327	0	0
+A396953	holos	0	[0,1,-2,-3,4,-1]	1,8,35,118,353	0	0
+A396990	decexp	2	() -> CV(512)./(CR.PI.*(15))	512/(15*Pi)
+A397752	holos	1	[0,-1,0,2,1,1,0,-3,-2,-1,-1,3,1,-1]	0,0,1,1,2,2,4,6,11,18,34,59,112	0	0
+A397847	parmof4	0	A082182	47	4	51	(47^k + 4^k)/51 is prime.	nonn,hard,more,new	1..4	nyi	_Robert Price_
+A397855	decexp	0	() -> X203129./(CR.PI./(2).*(3).^(new Q(1, 3)))	gamma(5/3)/(3*Pi/2)^(1/3)
+A397856	decexp	0	() -> CR.PI.^(2).*(16)./(X073006.^(3)).-(57).*(X397855./(27))	gamma(5/3)/(3*Pi/2)^(1/3)
+A397867	decexpr	2	() -> CR.SEVEN.multiply(CR.ONE.add(CR.TWO.multiply(REALS.cos(CR.PI.divide(CR.SEVEN))))).multiply(REALS.cot(CR.PI.divide(CR.valueOf(14)))).multiply(REALS.csc(CR.PI.divide(CR.valueOf(14))).pow(2)).divide(CR.valueOf(24).multiply(CR.TWO.multiply(CR.ONE.add(REALS.cos(CR.PI.divide(CR.SEVEN)))).sqrt()))
+A397868	decexpr	2	() -> CR.SEVEN.divide(CR.FOUR).multiply(REALS.csc(CR.PI.divide(CR.valueOf(14))).pow(2)).multiply(CR.ONE.subtract(CR.TWO.multiply(REALS.sin(CR.THREE.multiply(CR.PI).divide(CR.valueOf(14))))).add(CR.FOUR.multiply(REALS.cos(CR.PI.divide(CR.SEVEN)))).sqrt())
+A397869	decexpr	1	() -> REALS.sin(CR.PI.divide(CR.SEVEN)).multiply(CR.THREE.subtract(CR.TWO.multiply(REALS.cos(CR.PI.divide(CR.SEVEN)))).multiply(CR.FOUR.subtract(REALS.sec(CR.PI.divide(CR.valueOf(14))).pow(2))).sqrt()).divide(CR.FOUR.multiply(CR.FOUR.add(REALS.sin(CR.THREE.multiply(CR.PI).divide(CR.valueOf(14)))).subtract(CR.FIVE.multiply(REALS.cos(CR.PI.divide(CR.SEVEN))))))
+A397870	decexpr	1	() -> REALS.csc(CR.PI.divide(CR.valueOf(14))).multiply(CR.ONE.add(X160389).sqrt()).divide(CR.FOUR)
+A397871	decexpr	1	() -> REALS.cot(CR.PI.divide(CR.valueOf(14))).multiply(REALS.csc(CR.PI.divide(CR.valueOf(14)))).divide(CR.TWO)
+A397872	decexpr	1	() -> REALS.csc(CR.PI.divide(CR.valueOf(14))).pow(2).divide(CR.FOUR)
+A397873	decexpr	0	() -> REALS.acos(CR.TWO.subtract(REALS.sin(CR.PI.divide(CR.valueOf(14)))).add(CR.THREE.multiply(REALS.sin(CR.THREE.multiply(CR.PI).divide(CR.valueOf(14))))).subtract(CR.THREE.multiply(REALS.cos(CR.PI.divide(CR.SEVEN)))))
+A397874	decexpr	1	() -> REALS.acos(CR.HALF.subtract(X073052))
+A397875	decexpr	1	() -> REALS.acos(CR.ONE.add(CR.ONE.divide(X073052.subtract(CR.THREE.divide(CR.TWO)))))
+A397918	decexp	2	() -> CV(4096)./(CR.PI.*(35))
+A397919	decexp	3	() -> CV(131072)./(CR.PI.*(315))
+A397941	decexp	0	() -> CR.valueOf(49).multiply(Zeta.zeta(2)).multiply(Zeta.zeta(3)).subtract(CR.valueOf(93).multiply(Zeta.zeta(5))).divide(CR.EIGHT)
+A397942	decexp	0	() -> CR.valueOf(31).multiply(Zeta.zeta(5)).divide(CR.TWO).subtract(CR.EIGHT.multiply(Zeta.zeta(2)).multiply(Zeta.zeta(3)))
+A397943	decexp	0	() -> CR.SEVEN.multiply(CR.TWO.log().pow(2)).multiply(Zeta.zeta(3)).divide(CR.TWO).subtract(CR.valueOf(45).multiply(CR.TWO.log()).multiply(Zeta.zeta(4)).divide(CR.EIGHT)).add(CR.valueOf(31).multiply(Zeta.zeta(5)).divide(CR.EIGHT)).subtract(CR.SEVEN.multiply(Zeta.zeta(2)).multiply(Zeta.zeta(3)).divide(CR.EIGHT))
+A397947	poly	0	"[1],[0,0,0,1],[1,-3,3,-1],[1,-4,6,-4,1]"	"1,p1,p2,/,sub,<1,p3,/,+"
+A397948	poly	0	"[1],[0,0,0,0,1],[1,-3,3,-1],[1,-4,6,-4,1]"	"1,p1,p3,/,sub,<1,p2,/,+"
+A397993	multia	1	"1"	(self, n) -> SU(1, n - 1, k -> ZV(2).^(n - 1 - k).*(SA(n, k)).*(self.a(k)))	a(n+1) = Sum_{k=1..n} 2^(n-k) * |Stirling1(n+1,k)| * a(k).
+A397994	multia	1	"1"	(self, n) -> SU(1, n - 1, k -> ZV(3).^(n - 1 - k).*(SA(n, k)).*(self.a(k)))	a(n+1) = Sum_{k=1..n} 3^(n-k) * |Stirling1(n+1,k)| * a(k).
+A397995	multia	1	"1"	(self, n) -> SU(1, n - 1, k -> ZV(4).^(n - 1 - k).*(SA(n, k)).*(self.a(k)))	a(n+1) = Sum_{k=1..n} 3^(n-k) * |Stirling1(n+1,k)| * a(k).
+A397996	multia	1	"1"	(self, n) -> SU(1, n - 1, k -> ZV(2).^(n - 1 - k).*(S2(n, k)).*(self.a(k)))	a(n+1) = Sum_{k=1..n} 2^(n-k) * Stirling2(n+1,k) * a(k).
+A397997	multia	1	"1"	(self, n) -> SU(1, n - 1, k -> ZV(3).^(n - 1 - k).*(S2(n, k)).*(self.a(k)))	a(n+1) = Sum_{k=1..n} 3^(n-k) * Stirling2(n+1,k) * a(k).
+A397998	multia	1	"1"	(self, n) -> SU(1, n - 1, k -> ZV(4).^(n - 1 - k).*(S2(n, k)).*(self.a(k)))	a(n+1) = Sum_{k=1..n} 4^(n-k) * Stirling2(n+1,k) * a(k).
+A397999	multia	1	"1"	(self, n) -> SU(1, n - 1, k -> ZV(2).^(n - 1 - k).*(SA(n - 1, k)).*(self.a(k)))	a(n+1) = Sum_{k=1..n} 2^(n-k) * |Stirling1(n,k)| * a(k).
+A398000	multia	1	"1"	(self, n) -> SU(1, n - 1, k -> ZV(3).^(n - 1 - k).*(SA(n - 1, k)).*(self.a(k)))	a(n+1) = Sum_{k=1..n} 3^(n-k) * |Stirling1(n,k)| * a(k).
+A398001	multia	1	"1"	(self, n) -> SU(1, n - 1, k -> ZV(2).^(n - 1 - k).*(S2(n - 1, k)).*(self.a(k)))		a(n+1) = Sum_{k=1..n} 2^(n-k) * Stirling2(n+1,k) * a(k).
+A398002	multia	1	"1"	(self, n) -> SU(1, n - 1, k -> ZV(3).^(n - 1 - k).*(S2(n - 1, k)).*(self.a(k)))		a(n+1) = Sum_{k=1..n} 3^(n-k) * Stirling2(n+1,k) * a(k).

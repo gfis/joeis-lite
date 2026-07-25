@@ -1,0 +1,74 @@
+---- 2026-07-25 18:06:05
+A087178	sintrif	1	(p, n) -> D002426(p).-(1)./(p.*(p).*(2))	""	new A000040().skip(2)	((1/2)/p^2)*(T(p)-1)
+A104405	sintrif	0	(term, n) -> term.+(term.abs().*(3)).modZ(3)	""	new A084203()	(the cube root of J083953) read mod 3.	nonn	0..66	nyi	_N. J. A. Sloane_ and _Nadia Heninger_
+A109187	trilambn	0	0	0	(n, k) -> BI(n, k).*(BI(n - k, (n-k)/2)).*(Z_1(n - k).+(1))./(2)
+A117399	holoscj	1	[[0],[2,-3,0,1],[0,4,-1,-1],[-2,-1,1]]	1,1,2	1	0	(n^3+6*n^2+9*n+4)*a(n)+(-n^3-7*n^2-12*n-4)*a(n+1)+(n^2+3*n)*a(n+2) = 0
+A118352	polyx	0	"[1],[1,-3],[1,-7]"	"p1,p1,p2,*,sqrt,+,<1,2,/,p1,/,rev,x,/,^2"	1	0
+A118353	polyx	0	"[1],[1,-3],[1,-7]"	"p1,p1,p2,*,sqrt,+,<1,2,/,p1,/,rev,x,/,^3"	1	0
+A134185	hanktraf	0	new A134184()	, 1	.
+A140098	beatty2	1	() -> CR.ONE.+(X058265.inverse())	a(n) = [n*(1+1/t)], where t = tribonacci constant (A058265);
+A165343	hanktraf	0	new A001044()	, 1	rminants based on J001044(n)=(n!)^2 : a(n)=det(J001044(i+j-2))=det(((i+j-2)!)^2), i,j=1,2...n. Hankel transform of J001044.
+A167752	hanktraf	0	new A167750()	, 1	.
+A167753	hanktraf	0	new A167751()	, 1	.
+A175954	lambdin	0	n -> D001006(n).+(D142150(n).*(D001006(n/2 - 1))).+(SD(n, d -> (d >= n) ? ZV(0) : PHI(n/d).*(D002426(d))))./(n)	1	a(n) = (1/n) * (A001006(n) + A142150(n) * A001006(n/2-1) + Sum{d|n, d<n} totient(n/d) * A002426(d)). -
+A179089	lambdan	1	n -> { final Z dn = D002426(n); final Z dn1 = D002426(n - 1); return dn.+(dn1).*(dn1.*(3).-(dn))./(4); }	a(n) = (J002426(n)+J002426(n-1))*(3*J002426(n-1)-J002426(n))/4.
+A179100	lambdan	1	n -> SU(0, n - 1, k -> D002426(k).^(2).*(8*k + 5))./(n)	a(n) = (1/n) * Sum_{k=0..n-1} (8k+5) T_k^2, where T_0, T_1, ... are ce
+A184820	lambdan	1	n -> { final CR cn = CV(n); final CR t = X058265; return cn.+(cn./(t)).floor().+(cn./(t.^(2)).floor()); }	, where t is the tribonacci constant.	X058265
+A184821	lambdan	1	n -> { final CR cn = CV(n); final CR t = X058265; return cn.+(cn.*(t)).floor().+(cn./(t).floor()); }	, where t is the tribonacci constant.	nonn	1..128	nyi	_Paul D. Hanna_
+A184822	lambdan	1	n -> { final CR cn = CV(n); final CR t = X058265; return cn.+(cn.*(t)).floor().+(cn.*(t.^(2)).floor()); }	, where t is the tribonacci constant.	nonn	1..124	nyi	_Paul D. Hanna_
+A184823	lambdan	1	n -> { final CR cn = CV(n); final CR t = X086088; return cn.+(cn./(t)).floor(512).+(cn./(t.^(2)).floor(512)).+(cn./(t.^(3)).floor(512)); }	, where t is the tetranacci constant.	nonn	1..117	nyi	_Paul D. Hanna_
+A184824	lambdan	1	n -> { final CR cn = CV(n); final CR t = X086088; return cn.+(cn.*(t)).floor().+(cn./(t).floor()).+(cn./(t.^(2)).floor()); }	, where t is the tetranacci constant.	nonn	1..110	nyi	_Paul D. Hanna_
+A184825	lambdan	1	n -> { final CR cn = CV(n); final CR t = X086088; return cn.+(cn.*(t)).floor().+(cn.*(t.^(2)).floor()).+(cn./(t).floor()); }	, where t is the tetranacci constant.	nonn	1..106	nyi	_Paul D. Hanna_
+A184826	lambdan	1	n -> { final CR cn = CV(n); final CR t = X086088; return cn.+(cn.*(t)).floor().+(cn.*(t.^(2)).floor()).+(cn.*(t.^(3)).floor()); }	, where t is the tetranacci constant.
+A184835	lambdan	1	n -> { final CR cn = CV(n); final CR t = X103814; return cn.+(cn./(t)).floor().+(cn./(t.^(2)).floor()).+(cn./(t.^(3)).floor()).+(cn./(t.^(4)).floor()); }	, where t is the pentanacci constant.	nonn	1..117	nyi	_Paul D. Hanna_
+A184836	lambdan	1	n -> { final CR cn = CV(n); final CR t = X103814; return cn.+(cn.*(t)).floor().+(cn./(t).floor()).+(cn./(t.^(2)).floor()).+(cn./(t.^(3)).floor()); }	, where t is the pentanacci constant.	nonn	1..110	nyi	_Paul D. Hanna_
+A184837	lambdan	1	n -> { final CR cn = CV(n); final CR t = X103814; return cn.+(cn.*(t)).floor().+(cn.*(t.^(2)).floor()).+(cn./(t).floor()).+(cn./(t.^(2)).floor()); }	, where t is the pentanacci constant.	nonn	1..106	nyi	_Paul D. Hanna_
+A184838	lambdan	1	n -> { final CR cn = CV(n); final CR t = X103814; return cn.+(cn.*(t)).floor().+(cn.*(t.^(2)).floor()).+(cn.*(t.^(3)).floor()).+(cn./(t).floor()); }	, where t is the pentanacci constant.	nonn	1..97	nyi	_Paul D. Hanna_
+A184839	lambdan	1	n -> { final CR cn = CV(n); final CR t = X103814; return cn.+(cn.*(t)).floor().+(cn.*(t.^(2)).floor()).+(cn.*(t.^(3)).floor()).+(cn.*(t.^(4)).floor()); }	, where t is the pentanacci constant.	nonn	1..1000	nyi	_Paul D. Hanna_
+A186037	lambdan	0	n -> { final Z dn = D002426(n).+(1); return ZV(dn./(new Q(dn, ZV(2).^(n)).num()).bitLength() - 1); }	a(n) = log_3(A002426(n)/numerator(A002426(n)/3^n)).
+A186038	lambdan	0	n -> { final Z dn = D002426(n); return Functions.DIGIT_LENGTH.z(3, dn./(new Q(dn, ZV(3).^(n)).num())).-(1); }	a(n) = log_3(A002426(n)/numerator(A002426(n)/3^n)).
+A186039	sintrif	0	(term, n) -> term.testBit(0) ? ZV(-1) : ZV(1)	""	new A186038()
+A186040	hanktraf	0	new A186039()	, 1
+A193382	poly	0	"[1],[1,1],[1,-1],[1,0,0,0,4],[1,-2,2]"	"p1,2,/,p2,p3,sqrt,*,2,/,p4,/,+"
+A193383	poly	2	"[1],[1,0,0,0,4],[1,-2,2]"	"x,2,/,1,p1,sqrt,p2,/,-,*"
+A193384	holoscj	0	[[0],[-9600,23840,-22384,10400,-2560,320,-16],[704,-1680,1464,-592,112,-8],[320,-800,724,-296,56,-4],[96,-368,358,-148,28,-2],[0,0,96,-128,62,-13,1]]	1,1,1,2,1	0	0	(-16*n^6-64*n^5+160*n^3+16*n^2-96*n)*a(n)+(-8*n^5-48*n^4-80*n^3-8*n^2+48*n)*a(n+1)+(-4*n^5-24*n^4-40*n^3-12*n^2)*a(n+2)+(-2*n^5-12*n^4-20*n^3-10*n^2)*a(n+3)+(n^6+11*n^5+42*n^4+64*n^3+32*n^2)*a(n+4) = 0
+A201826	lambdan	0	n -> SU(0, n, m -> D002426(m).*(SA(n, m)))	a(n) = Sum_{m=0..n} J002426(m)*|Stirling1(n,m)|. - _Zhuorui He_, Sep 24 2025
+A204060	lambdan	1	n -> Predicates.SQUARE.is(n) ? FI(n) : ZV(0)
+A208602	lambdan	1	n -> SD(n, d -> PHI(n/d).*(D002426(d)))./(n)	a(n) = (1/n) * Sum_{d | n} totient(n/d) * A002426(d)
+A209614	lambdan	1	n -> Predicates.CUBE.is(n) ? FI(n) : ZV(0)
+A222080	holos	0	[[0],[9,-12,4],[2,-4],[1]]	1	0	0
+A222081	convprod	0	1/2	new A222080()
+A229739	sintrif	1	(q, n) -> { final Z q2 = q.*(q); return q2.*(q2.+(q.*(2)).-(1))./(2); }	""	new A000961()	a(n) = q^2*(q^2+2*q-1)/2, where q = n-th prime power J000961(n).	nonn	1..39	nyi	_N. J. A. Sloane_
+A229810	poly	1	"[0,1]"	"x,5,1,2,A,*,+,*,<2,1,3,A,*,+,*,1,6,A,^2,*,-,^2,/,+"
+A229812	poly	1	"[0,1]"	"x,1,A,+,<2,2,*,1,A,3,*,+,*,1,A,^2,3,*,-,^2,/,+"
+A229813	poly	1	"[0,1]"	"x,3,1,A,+,*,<2,1,2,A,*,+,*,1,2,A,^2,*,-,^2,/,+"
+A230741	holoscj	0	[[0],[1,-1],[5,-6,1],[2],[3,2,-1],[-3,1]]	1,1,4,15	0	0
+A295198	sintrif	0	(term, n) -> (n == 0) ? ZV(1) : term.-(D002426(n)).+(SD(n, d -> PHI(n/d).*(D002426(d))))./(n)	""	new A005043()	lambdan	0	n -> a(n) = (1/n) * (J005043(n) - J002426(n) + Sum_{d|n} phi(n/d) * J002426(d)).
+A327751	arrlamb	0	0	0	-1	(n, k) -> SU(0, k, j -> Z_1(k - j).*(BI(k, j)).*(D002426(j).^(n)))
+A329475	lambdan	0	n -> SU(0, n, k -> BI(n, k).^(2).*(D002426(k)).*(D002426(n - k)))	where T(k) = J002426(k) is the coefficient of x^k in the expansion of (x^2+x+1)^k.
+A341965	poly	0	"[1]"	"1,A,^2,<2,-,1,2,A,<1,*,+,*,1,2,A,<1,*,-,^3,/"
+A341966	poly	0	"[1]"	"1,A,^2,<2,-,1,2,A,<1,*,-,*,1,3,A,<1,*,-,^3,/"
+A341967	polyx	0	"[1],[1,-1],[1,-2],[1,-3],[1,-4]"	"p4,^3,<1,p1,p2,*,p3,*,/,rev,x,/"	1	0
+A341968	poly	0	"[1]"	"1,A,<1,+,1,A,<1,2,*,+,*,1,A,<1,3,*,+,*,1,A,<1,4,*,+,*"
+A361763	polya	1	"[0,1]"	"x,B,^3,<1"	new A361762()
+A361765	polya	1	"[0,1]"	"x,B,^5,<1"	new A361764()
+A365574	poly	0	"[1],[1,-2],[0,0,-3],[0,0,2,-4],[0,0,0,2,4]"	"1,p2,A,^2,*,+,p3,A,^3,*,+,p4,A,^4,*,+,p1,/"
+A369360	lambdan	3	n -> ZV(3).^(n).-(D002426(n).*(3))./(2).-(D002426(n - 1).*(2)).+(D001006(n - 1).*(2))	a(n) = (3^n - 3*J002426(n))/2 - 2*J002426(n-1) + 2*D001006(n-1).
+A376827	trilambn	0	0	0	(n, k) -> BI(n, k).*(D002426(n))
+A385912	holoscj	1	[[0],[-6,183,-879,1377,-675],[0,52,2,-154,100]]	1,8	1	0
+A386649	lambdan	0	n -> PR(0, n, k -> D002426(k))	a(n) = Product_{k=0..n} J002426(k) for n >= 0.
+A387325	lambdan	0	n -> { final int t = VAL(n + 1, 2); final long h = n >> (t + 1); return ZV(t).shiftLeft(h + 1).+(Z2(h)).-(1); }	a(n) = my(t=valuation(n+1, 2), h=n>>(t+1)); t<<(h+1)+2^h-1
+A394501	holos	1	[0,1,-1,-2,2,1,-1,0,0,-2,2,4,-4,-2,2,0,0,1,-1,-2,2,1,-1]	2,4,4,8,12,19,26,40,50,73,88,122,142,190,217,283,317,403,448,556,612,747,816,984,1066	0	0
+A395269	polyx	1	"[0,1]"	"1,A,sub,sub,sub,sub,+,int"	0	1
+A396719	holos	1	[0,5,59,-162,-30,17,-1]	1,14,142,1774,23694,327406	0	0
+A397977	holos	0	[0,1,-2,0,2,-1]	0,3,9,20	0	0
+A397978	holos	0	[0,1,-3,4,-4,3,-1]	0,1,5,12,21	0	0
+A397979	holos	0	[0,1,-3,4,-4,3,-1]	0,2,6,12,21	0	0
+A397980	holos	0	[0,1,-2,1,-1,2,-1]	0,1,5,11,19	0	0
+A397981	holos	0	[0,1,-2,1,-1,2,-1]	0,2,5,11,20	0	0
+A397982	holos	0	[0,1,-2,1,-1,2,-1]	0,1,6,13,22	0	0
+---- 2026-07-25 18:06:42
+---- 2026-07-25 18:07:35
+A397310	decexp	1	() -> CR.PI.multiply(X334380)
+A398076	decexp	0	() -> CR.valueOf(23).multiply(Zeta.zeta(2)).multiply(Zeta.zeta(3)).divide(CR.EIGHT).subtract(CR.valueOf(69).multiply(Zeta.zeta(5)).divide(CR.valueOf(16))).add(CR.SEVEN.multiply(CR.TWO.log().pow(2)).multiply(Zeta.zeta(3)).divide(CR.FOUR)).subtract(CR.valueOf(45).multiply(CR.TWO.log()).multiply(Zeta.zeta(4)).divide(CR.valueOf(16)))
+A398122	decexp	1	() -> CR.SEVEN.multiply(Zeta.zeta(2)).multiply(Zeta.zeta(7)).add(CR.TWO.multiply(Zeta.zeta(3)).multiply(Zeta.zeta(6))).add(CR.FOUR.multiply(Zeta.zeta(4)).multiply(Zeta.zeta(5))).subtract(CR.valueOf(35).multiply(Zeta.zeta(9)).divide(CR.TWO))

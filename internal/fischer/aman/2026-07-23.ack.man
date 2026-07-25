@@ -1,0 +1,80 @@
+---- 2026-07-23 22:23:00
+A094217	diffs	1	new A093878()
+A094585	trilambn	1	1	1	(n, k) -> FI(n + 3).-(FI(n + 3 - k))
+A095770	diffs	1	new A095769()
+A096342	filter	1	new A126199()	PRIME	a(n) = prime(n)*prime(n+1) + prime(n) + prime(n+1).
+A099227	filter	1	new A099225()	PRIME	Numbers of the form m^k+k, with m and k > 1.
+A099228	filter	1	new A057897()	PRIME	Numbers which can be written as m^k-k, with m, k > 1.
+A100274	filter	1	new A100294()	PRIME	Numbers of the form a^5 + b^4 with a, b > 0.
+A105474	trigf	0	1,0,0,-1,0,0	1,0,-2,-1,-1,0,0,0,0,0				0			Triangle read by rows: T(n,k) is number of compositions of n into k parts when each odd part can be of two kinds.
+A111406	lambdan	0	n -> PI(PI(n + 1)).-(PI(PI(n)))	a(n) = f(f(n+1)) - f(f(n)),
+A112266	filter	1	new A112265()	PRIME
+A112500	trisum2	0	1	-1	A112502	A112504					Triangle of column sequences with a certain o.g.f. pattern.
+A116545	partsun	1	new A115568()			Partial sums of A115568.
+A117808	filter	1	new A001570().adjust(1, 3)	PRIME	. - _Joerg Arndt_, Dec 30 2023
+A136007	filter	1	new A136005()	PRIME
+A139122	filter	1	new A139102()	PRIME
+A160995	multraf	2	(self, n) -> self.s(0).min(self.s(1))	""	new A096014(), new A135718()
+A166449	filter	1	new A166448()	PRIME
+A175255	filter	1	new A111153()	SQUARE
+A175363	partsun	0	new A175362()			Partial sums of A175362.
+A175366	partsun	0	new A175365()			Partial sums of A175365.
+A175373	partsun	0	new A175372()			Partial sums of A175372.
+A177008	filter	1	new A173235()	PRIME
+A179528	partsun	1	new A179527()			Partial sums of A179527: a(n) = SUM(A179527(k): 1<=k<=n);
+A182963	polya	0	"[1]"	"x,B,1,-,/n,exp"	new A183235()
+A183241	polya	0	"[1]"	"x,B,1,-,/n,exp"	new A183240()
+A214555	lingf	0	495,0,-495000	1,-1111,112110,-1111000,1000000					0
+A214556	lingf	0	6174,-53550,45000	1,-111,1110,-1000					0
+A219908	filter	1	new A219907()	PRIME
+A228699	filter	1	new A228698()	PRIME
+A234101	filter	1	new A234099()	PRIME
+A234104	filter	1	new A234102()	PRIME
+A266970	filter	1	new A300381()	PRIME
+A275764	polyxa	0	"[1]"	"x,B,x,B,pow"	0	1	egf(new A274377())
+A285863	polyx	0	"[1],[0,3]"	"p1,p1,exp,1,-,/"	1	1
+A306445	polyxa	0	"[1]"	"x,exp,x,exp,^2,x,exp,1,-,B,*,+"	0	1	egf(new A001035())
+A325103	partsun	0	new A115378().prepend(0)			Partial sums of A115378.
+A340474	polyxa	0	"[1]"	"x,B,exp"	0	1	egf(new A396557())
+A354847	polyxa	0	"[1]"	"x,B,x,exp,*"	0	1	egf(new A001035())
+A354871	multraf	1	(self, n) -> self.s(0).gcd(self.s(1))	""	new A056239(), new A258851()
+A360514	polyx	0	"[1]"	"1,x,sinh,+,x,cosh,x,sinh,<1,-,/"	0	1
+A374035	multraf	0	(self, n) -> self.s(0).gcd(self.s(1))	""	new A328845(), new A328846()
+A374116	multraf	0	(self, n) -> self.s(0).gcd(self.s(1))	""	new A328768(), new A328845()
+A379184	sintrif	1	(term, n) -> term.and(ZV(1))	""	new A379183()
+A379274	sintrif	1	(term, n) -> term.and(ZV(1))	""	new A135414()
+A379275	sintrif	0	(term, n) -> term.and(ZV(1))	""	new A163801()
+A383287	sintrif	1	(term, n) -> term.mod(4) == 0 ? ZV(1) : ZV(0)	""	new A276075()	a(n) = 1 if J276075(n) is a multiple of 4, otherwise 0, where J276075 is fully additive with a(p) = PrimePi(p)!.
+A392206	polyx	1	"[0,1],[0,-2]"	"1,p1,lambertW,3,*,2,/,exp,1,p1,lambertW,3,*,+,*,-,9,/,rev"	1	1
+A392208	polyx	1	"[0,1],[0,-3]"	"1,p1,lambertW,4,*,3,/,exp,1,p1,lambertW,4,*,+,*,-,16,/,rev"	1	1
+A392372	polyx	0	"[1]"	"x,1,A,<1,-,log,dif,<1,neg,exp"	0	1
+A393073	lingf	0	0,0,0,1,-1	1,-2,-1,0,3,2,1					0
+A393750	polyxa	0	"[0,1]"	"x,x,B,rev,/"	1	0	new A393751()
+A393751	polyx	1	"[0,1]"	"x,A,^3,3,/,dif,dif,<1,+"	1	0
+A393851	poly	1	"[0,1]"	"x,A,^2,2,/,dif,dif,<2,+"
+A394239	polyxa	0	"[1]"	"x,B,exp"	0	1	egf(new A396556())
+A394995	holos	0	[[0],[1],[0],[-1],[0,1],[0,-1]]	1,1,1,1,7	0	1
+A395376	polyxa	0	"[1]"	"x,B,exp"	0	1	egf(new A396558())
+A396797	poly	1	"[0,1]"	"x,A,sub,sub,A,sub,sub,sub,*,+"
+A396798	poly	1	"[0,1]"	"x,A,sub,sub,sub,A,sub,sub,sub,sub,*,+"
+A396807	poly	1	"[0,1]"	"x,A,sub,sub,sub,sub,A,sub,sub,sub,sub,sub,*,+"
+A396900	polyx	0	"[1]"	"1,x,exp,x,exp,<1,sub,*,<1,+"	0	1
+A396914	polyx	0	"[1]"	"1,2,x,exp,-,/,1,-,cosh"	0	1
+A396916	polyx	0	"[1],[0,2]"	"1,p1,exp,x,exp,<1,sub,*,<1,+"	0	1
+A396920	polyxa	0	"[1]"	"x,B,exp"	0	1	egf(new A396803())
+A396921	polyxa	0	"[1]"	"x,B,exp"	0	1	egf(new A396804())
+A396922	polyxa	0	"[1]"	"x,B,exp"	0	1	egf(new A396805())
+A396965	polyxa	0	"[1]"	"1,x,B,<1,+"	0	1	egf(new A397882())
+A397118	holos	1	[0,-1,-14,12,4,-1]	2,15,87,500	0	0
+A397119	holos	1	[0,-1,-14,12,4,-1]	4,25,147,832	0	0
+A397120	holos	1	[0,1,15,3,-1]	1,4,25	0	0
+A397268	holos	0	[0,1,-1,-2,2,1,-1]	0,2,1,7,4	0	0
+A397497	filter	1	new A397496()	PRIME
+A397681	decexp	0	() -> CV(63).*(Zeta.zeta(3))./(64).+(CR.PI./(64).+(CV(2).log().*(new Q(3, 32))).*(CR.PI).+(X006752.*(new Q(-3, 4))).*(CR.PI))	.	63*zeta(3)/64 + Pi^3/64 + 3*Pi^2*log(2)/32 - 3*Pi*G/4, where G is Catalans constant (A006752).
+A397757	holos	1	[0,-1,1,0,0,1,-1]	6, 9, 14, 17, 21, 24, 29, 32, 36, 40, 44, 47, 51	0	0
+A397973	lingf	0	0,2,1,1,1	1,-2,1,-1,2,-1					0
+A397974	holos	0	[0,1,-2,1,-1,2,-1]	0,1,5,12,20	0	0
+A397975	holos	0	[0,1,-2,1,-1,2,-1]	0,2,6,12,21	0	0
+A397976	holos	0	[0,1,-2,0,2,-1]	0,2,9,19	0	0
+A398083	holos	0	[0,1,-1,0,1,-1,0,1,-1]	1,2,4,8,16,32,64	0	0
+A398084	holos	0	[0,1,-1,0,0,0,0,1,-1]	1,3,9,27,8,24,72	0	0
