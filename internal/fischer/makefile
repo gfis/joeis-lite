@@ -7921,6 +7921,8 @@ pricesub2:
 	' my $$line = $$_; $$line =~ m{^[A-Z](\d+)}; my $$seqno = $$1; $$line =~ m{\((\d+)\^[i-n] *([\+\-]) *(\d+)\^[i-n]\)\/(\d+)}; '\
 	' my ($$a, $$b, $$c) = ($$1, "$$2$$3", $$4); '\
 	' print join("\t", "A$$seqno", "parmof4", 0, "A082182", $$a, $$b, $$c) . "\n";' \
+	| endirect \
+	| sed -e "s/J082182/A082182/g" \
 	>        aman/pricesum.man
 	head -n4 aman/pricesum.man
 	wc -l    aman/pricesum.man
