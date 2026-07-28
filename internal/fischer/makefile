@@ -424,7 +424,7 @@ as: # build a sorted, uniq file with today's (passing) A-numbers
 	grep -vP "^\-\-\-\-" aman/$(TODAY).ack.man | sort | uniq -w7 > $@.tmp
 	echo ---- `date +%Y-%m-%d%t%T` > aman/$(TODAY).ack.man
 	cat      $@.tmp               >> aman/$(TODAY).ack.man
-	wc -l    $@.tmp
+	grep -P "^A"  $@.tmp | wc -l
 today: # build a file with today's (passing) A-numbers
 	grep -P "^A\d+" aman/$(TODAY).ack.man | cut -b1-7 | sed -e "s/\r//" -e "s/^/\^/" | sort \
 	>        $@.txt
