@@ -1,0 +1,38 @@
+---- 2026-07-29 14:28:16
+A090612	filnum	1	2	k -> Predicates.SQUARE.is(PM(k).-(1)./(2))	Numbers k such that the k-th prime is of the form 2*j^2 + 1.	nonn	1..1525	nyi	_Ray Chandler_
+A090613	filnum	1	1	k -> PM(k).mod(7) == 3	Numbers k such that the k-th prime is congruent to 3 mod 7.	nonn	1..56	nyi	_Ray Chandler_
+A090683	trilambn	0	0	0	(n, k) -> BI(n, k).*(S2(n, k))	Triangle read by rows, defined by T(n,k) = C(n,k)*S2(n,k)
+A090718	parmof3	2	A065720	128	10	Let p run through the primes; write p in base 10 and then interpret it in base 128 getting a number q; if q is prime then adjoin q to the sequence.	base,nonn	2..1000	nyi	_Cino Hilliard_
+A090719	parmof3	1	A065720	256	10	Primes whose representation in base 256 can be interpreted as a decimal prime.	base,nonn	1..10000	nyi	_Cino Hilliard_
+A090722	lambdan	4	n -> { final long m = 10L - PM(n).mod(10); return ZV(m <= 3 ? (m + 1) / 2 : (m == 7 ? 3 : 0)); }	a(n) = if 10 - Mod(Prime(n),10) == {1,3,7,9} respectively then {1,2,3,0}.	nonn	4..108	nyi	_Roger L. Bagula_
+A090725	filter	1	new A000040()	p -> !p.toString(16).matches(".*\\D.*")	has no alphabetic characters.	base,nonn	1..1000	nyi	_Cino Hilliard_
+A090738	filnum	1	1	k -> PP(new Z(ZV(k).*(k).toString() + ZV(k +1).^(2).toString()))	Integers n such that the concatenation of n^2 and (n+1)^2 is prime.	nonn,base	1..10000	nyi	Alex Kontorovich (alexk(AT)math.columbia.edu)
+A285602	lambdin	0	n -> RQ(1, n, i -> { final Z p2 = PM(i).^(2); return new Q(p2.+(1), p2.-(1)); }).num()	1	a(n) is the numerator of b(n) = Product_{i=1..n} (prime(i)^2 + 1)/(prime(i)^2 - 1). nonn,frac 0..284
+A285603	lambdin	0	n -> RQ(1, n, i -> { final Z p2 = PM(i).^(2); return new Q(p2.+(1), p2.-(1)); }).den()	1	a(n) is the denominator of b(n) = Product_{i=1..n} (prime(i)^2 + 1)/(prime(i)^2 - 1). nonn,frac 0..284
+A290404	polya	0	"[1]"	"1,x,B,-,x,B,^2,+,^3"	new A115977()
+A335096	lambdan	0	n -> RU(1, n, k -> new Q(ZV(1), ZV(2*k + 1).^(n))).*(DF(2*n + 1).^(n)).num()	(Sum_{k=1..n} 1/(2*k+1)^n). nonn 0..8
+A342972	trilambn	0	0	0	(n, k) -> RQ(0, n - 1, j -> new Q(BI(n + j, k), BI(k + j, k))).num()	Triangle T(n,k) read by rows: T(n,k) = Product_{j=0..n-1} binomial(n+j,k)/binomial(k+j,k). nonn,tabl 0..50
+A359399	multia	1	"1"	(self, n) -> SU(2, n, k -> ZV(k).*(self.a(n/k)))
+A359479	multia	1	"1"	(self, n) -> SU(2, n, k -> Z_1(k).*(k).*(self.a(n/k)))
+A363783	polya	1	"[0,1]"	"x,B,log,*n"	new A010057()
+A363784	polya	1	"[0,1]"	"x,B,log,*n"	new A374016()
+A387934	arrlamb	0	0	0	-1	(n, k) -> SU(0, n, j -> BI(n, j).*(BI(k*n + j, j)))
+A388052	arrlamb	0	0	0	-1	(n, k) -> SU(0, n, j -> BI(n, j).*(BI(k*n + j + 1, n)))
+A392207	polyx	1	"[0,1,1],[0,0,0,1],[0,0,1]"	"p1,A,^3,2,*,<1,+,sub,p2,A,^2,<1,+,sub,/"	3	0
+A394268	multia	0	"1"	(self, n) -> SU(0, n - 1, k -> Z_1(n - k - 1).*(BI(n, k)).*(ZV(k + 2).^(2*(n - k))).*(self.a(k)))	Sum_{k=0..n-1} (-1)^(n-k-1) * binomial(n,k) * (k+2)^(2*(n-k)) * a(k).	nonn	0..220	nyi	_Seiichi Manyama_
+A394478	polyz	0	"[1]"	"x,cosh,^2,x,cos,/"	0	1	0	2
+A395195	holos	1	[[0],[108108,-103464,32832,-3456],[12572,-9396,1764],[648,-300],[17]]	1,2,14	0	0
+A395666	polyx	0	"[1]"	"1,x,exp,<1,sub,<1,+"	0	1
+A396063	polyx	1	"[0,1]"	"1,1,A,A,dif,*,-,^2,/,int"	0	1
+A396746	polyxa	1	"[0,1]"	"1,x,B,neg,exp,-"	0	1	egf(new A396678())
+A396748	poly	0	"[1],[0,0,1],[1,-2,1],[1,-3,3,-1]"	"1,p1,p2,/,sub,<1,p3,/,+"
+A397035	poly	0	"[1],[0,0,1],[1,-2,1],[1,-1]"	"1,p1,p2,/,sub,p3,^4,/,<1,+"
+A397064	poly	1	"[0,1],[0,0,0,1],[1,-2]"	"x,p1,sub,-,p2,/"
+A397144	poly	1	"[0,1],[0,1,-1]"	"p1,rev,p1,rev,sub,^3,+"
+A397146	poly	1	"[0,1],[0,1,-1]"	"p1,rev,p1,rev,sub,^4,+"
+A397147	poly	1	"[0,1],[0,1,0,-1]"	"p1,rev,p1,rev,sub,^2,+"
+A397149	poly	1	"[0,1],[0,1,0,-1]"	"p1,rev,p1,rev,sub,^4,+"
+A397213	poly	1	"[0,1],[1,-2],[0,0,0,0,1]"	",x,p2,sub,-,p1,/"
+A397274	poly	1	"[0,1],[1,-3],[0,0,0,1]"	",x,p2,sub,-,p1,/"
+A398364	lambdan	0	n -> SU(0, n/7, k -> BI(2*k, k).*(BI(n - 5*k, 2*k)))
+A398365	lambdan	0	n -> SU(0, n/8, k -> BI(2*k, k).*(BI(n - 6*k, 2*k)))

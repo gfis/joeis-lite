@@ -1,0 +1,103 @@
+---- 2026-07-28 23:16:44
+
+A088350	sintrif	1	(term, n) -> (term.-(5))./(24)	"0,1"	new A088349()	a(n)=(J088349(n)-5)/24	_	_	_
+A093316	sintrif	1	(term, n) -> term.-(n)	"5,1"	new A085653()	a(n)=J085653(n)-n	_	_	_
+A093996	multraf	0	(self, n) -> self.s(0).-(self.s(1))	"1"	new A093998(), new A093997()	a(n)=J093998(n)-J093997(n)	_	_	_
+A094785	trilambn	1	1	1	(n, k) -> (n == k) ? FA(3*n).*(2)./(FA(2*n + 1).*(FA(n + 1))) : FA(n).*(6).*(4*k + 3).*(BI(3*k - 1, k - 3))./(FA(k + 2).*(2*k + 3))	T(n, k) = 6*(4*k+3)*n!*binomial(3*k-1, k-3)/((2*k+3)*(k+2)!) for k<n; T(n, n)=2*(3*n)!/((2*n+1)!*(n+1)!)
+A095396	lambdan	1	n -> ((n&1) == 0) ? Functions.CBRT.z(ZV(n).^(2)) : Functions.SQRT.z(ZV(n).^(3))	Forevenn:a(n)=F048766(n^2),foroddn:a(n)=F000196(n^3)	_	_	_		Modified juggler map: for even numbers: a(n) = floor(n^(2/3)) and for odd n: a(n) = floor(n^(3/2)) = floor(sqrt(n^3)).
+A101863	lambdan	1	n -> CR.PHI.*(n).floor().^(2).+(ZV(n).*(n))	"1,2"		a(n)=n^2+floor(n*(1+sqrt(5))/2)^2	_	_	_
+A104162	multraf	0	(self, n) -> ZV(1).+(self.s(0)).-(self.s(1))	"1"	new A130233(), new A130234()	a(n)=1+J130233(n)-J130234(n)forn>0	_	_	_
+A108240	filnum	1	0	k -> { final Z x = ZV(10).^(k); return PP(x.^(2).+(x.*(5)).-(1)); }	is prime.	more,nonn	1..14	nyi	_Jason Earls_
+A114450	lambdan	0	n -> RU(1, 2*n, k -> new Q(1, k)).*(FA(2*n))./(2*n + 1).num()	a(n)=(2n)!*(sum{k=1...2n}1/k)/(2n+1).
+A117005	lambdan	1	n -> E117000(n).-(E117001(n))	"1,1"		a(n)=E117000(n)-E117001(n)	_	_	_
+A119650	filnum	0	1	k -> PP(Z2(67).-(1).*(ZV(10).^(k)).+(Z2(257).-(1)))	 is prime.	more,nonn	1..12	nyi	_Jason Earls_, Jul 06 2008
+A119742	partsun	1	new A068188()		x
+A121877	filnum	1	1	k -> PP(ZV(5).^(k).-(ZV(3).^(k))./(2))	is prime.	nonn,hard,more	1..20	nyi	_Alexander Adamchuk_, Oct 08 2006
+A122042	filnum	1	1	k -> { final Q x = new Q(Z2(k).+(k), k + 2); return x.isInteger() && PP(x.num()); }	is prime.	nonn,more	1..5	nyi	_Zak Seidov_
+A123704	filnum	1	1	k -> PP(ZV(5).^(PM(k)).-(ZV(3).^(PM(k)))./(2))	is prime, where p = prime(k).	nonn,more	1..20	nyi	_Alexander Adamchuk_
+A125207	polyxa	1	"[0,1]"	"x,B,1,-,x,B,1,-,exp,*"	0	1	egf(new A001187())
+A135919	lambdan	0	n -> CV(7).+(CV(20).^(n).*(21).+(ZV(8).^(n).*(38)).-(59).*(48)./(133).+(1).sqrt())./(2).floor()	"0"		a(n)=floor((7+sqrt(1+48*(21*20^n+38*8^n-59)/133))/2)	_	_	_
+A137737	lambdan	1	n -> ((n&1) == 1) ? ZV(0) : FA(n).^(3)./(FA(n/2).^(2))./(Z2(n)).+(FA(n))./(2*n)	"0,0"		Foroddn,a(n)=0.Forevenn,a(n)=(n!^3/(n/2)!^2/2^n+n!)/(2n)	_	_	_
+A137749	lambdan	1	n -> FA(2*n).^(3)./(FA(n).^(2))./(Z2(2*n)).+(FA(2*n))./(4*n)	a(n) = ((2n)!^3 / n!^2 / 2^(2n) + (2n)!) / (4n).
+A137942	lambdan	0	n -> RU(0, 2*n, j -> new Q(BI(2*n, j).*(BI(4*n, j)).*(ZV(-6).^(j)), FA(j).*(BI(2*j, j)).*(BI(8*n, 2*j)))).*(FA(8*n))./(ZV(24).^(2*n)).num()	((8*n)!/(24)^(2*n))*Sum_{j=0..2*n} ( b(2*n, j)*b(4*n, j)*(-6)^j )/( j! * b(2*j, j)*b(8*n, 2*j) ),
+A138016	lambdan	1	n -> SU(1, n, k -> D003422((k&1) == 0 ? k/2 : (k + 1)/2))		a(n)=Sum_{k=1..n}D003422(ceiling(k/2))	_	_	_		Row sums of triangle A138015.
+A140317	lambdan	1	n -> ZV(n).^(2).*(new Q(ZV(10).^(n - 1), ZV(n).^(2)).ceiling())	"1,2"		a(n)=n^2*ceiling(10^(n-1)/n^2)	_	_	_
+A144968	lambdan	0	n -> CV(n + 1).^(new Q(3, 2)).ceil().-(CV(n).^(new Q(3, 2)).ceil())			a(n)=ceiling((n+1)^(3/2))-ceiling(n^(3/2))	_	_	_
+A155802	filnum	1	1	k -> { final Q x = new Q(ZV(5).^(k).+(Z2(k)).-(1), 12); return x.isInteger() && PP(x.num()); }	is prime.	nonn,more	1..15	nyi	_Zak Seidov_
+A169602	filnum	0	0	k -> PP(ZV(10).^(k).-(1).^(2).+(2))	 is prime.	more,nonn	1..17	nyi	_Jason Earls_
+A171686	filnum	0	0	k -> PP(ZV(10).^(k).^(4).+(ZV(10).^(k).+(1).^(4)))	 is prime.	more,nonn	1..7	nyi	_Jason Earls_
+A174322	lambdin	1	n -> { final Z lim = ZV(10).^(n); Z k = lim./(10); while (k.compareTo(lim) < 0 && TAUl(k) !=  4) { k = k.add(1); } return k.equals(lim) ? ZV(0) : k; }	6	4
+A175733	lambdin	1	n -> { final Z lim = ZV(10).^(n); Z k = lim./(10); while (k.compareTo(lim) < 0 && TAUl(k) !=  3) { k = k.add(1); } return k.equals(lim) ? ZV(0) : k; }	4	  3
+A175734	lambdan	1	n -> { final int e =  2; final Z r = Functions.PREV_PRIME.z(CV(10).^(new Q(n, e)).ceil()).^(e); return r.compareTo(ZV(10).^(n - 1)) < 0 ? ZV(0) : r; }	3 A175734(n)=precprime(sqrtint(10^n))^2
+A179575	lingf	1	0,85831,-2092658,23577305,-162864256,771410500,-2653646370,6847836400,-13495695085,20475380646,-23909786235,21310755338,-14236138944,6899602992,-2290436784,465753888,-43742592	1,-30,415,-3514,20386,-85924,272198,-661180,1244717,-1822478,2068955,-1802474,1181760,-563888,184752,-37152,3456					0
+A179576	lingf	1	0,641302,-21552446,340270364,-3354750662,23154031774,-118847445990,470385384128,-1468664759443,3669915513224,-7402000150054,12097128649196,-16016182360025,17104477485700,-14603751396044,9822245907584,-5085389200944,1954432616256,-524810159424,87835663872,-6894388224	1,-40,750,-8764,71575,-434244,2030608,-7494136,22168911,-53083024,103450582,-164382924,212617033,-222655300,186963852,-123968128,63397936,-24105792,6412608,-1064448,82944					0
+A181185	filnum	1	1	k -> PP(Z2(k).-(1).*(FA(k)).+(1))	is prime.	more,nonn	1..21	nyi	_Jason Earls_
+A181733	sintrif	1	(term, n) -> E139708(n).-(term)	"1,1"	new A092323()	a(n)=E139708(n)-J092323(n)	_	_	_
+A182647	lambdan	1	n -> { final int e =  4; final Z r = Functions.PREV_PRIME.z(CV(10).^(new Q(n, e)).ceil()).^(e); return r.compareTo(ZV(10).^(n - 1)) < 0 ? ZV(0) : r; }	largest n-digit number with exactly  5	Table[Prime[PrimePi[10^(n/4)]]^4, {n, 2, 50}]
+A182648	lambdin	1	n -> { final Z lim = ZV(10).^(n - 1); Z k = lim.*(10).-(1); while (k.compareTo(lim) > 0 && TAUl(k) != 4) { k = k.subtract(1); } return k; }	8	largest n-digit number with exactly  4
+A182671	lambdin	1	n -> { final Z lim = ZV(10).^(n); Z k = lim./(10); while (k.compareTo(lim) < 0 && TAUl(k) !=  6) { k = k.add(1); } return k.equals(lim) ? ZV(0) : k; }	0	6
+A182672	lambdin	1	n -> { final Z lim = ZV(10).^(n - 1); Z k = lim.*(10).-(1); while (k.compareTo(lim) > 0 && TAUl(k) != 6) { k = k.subtract(1); } return k; }	0	largest n-digit number with exactly  6
+A182674	lambdan	1	n -> { final int e =  6; final Z r = Functions.PREV_PRIME.z(CV(10).^(new Q(n, e)).ceil()).^(e); return r.compareTo(ZV(10).^(n - 1)) < 0 ? ZV(0) : r; }	largest n-digit number with exactly  7
+A182675		1	1	n -> { final Z lim = ZV(10).^(n); Z k = lim./(10); while (k.compareTo(lim) < 0 && TAUl(k) !=  8) { k = k.add(1); } return k; }	0	8
+A182676	lambdin	1	n -> { final Z lim = ZV(10).^(n - 1); Z k = lim.*(10).-(1); while (k.compareTo(lim) > 0 && TAUl(k) != 8) { k = k.subtract(1); } return k; }	0	largest n-digit number with exactly  8
+A182677	lambdin	1	n -> { final Z lim = ZV(10).^(n); Z k = lim./(10); while (k.compareTo(lim) < 0 && TAUl(k) !=  9) { k = k.add(1); } return k.equals(lim) ? ZV(0) : k; }	0	  9
+A182678	lambdin	0	n -> { final Z lim = ZV(10).^(n - 1); Z k = lim.*(10).-(1); while (k.compareTo(lim) > 0 && TAUl(k) != 9) { k = k.subtract(1); } return k; }	0	largest n-digit number with exactly  9
+A182679	lambdin	1	n -> { final Z lim = ZV(10).^(n); Z k = lim./(10); while (k.compareTo(lim) < 0 && TAUl(k) != 10) { k = k.add(1); } return k.equals(lim) ? ZV(0) : k; }	0	10
+A182680	lambdin	1	n -> { final Z lim = ZV(10).^(n - 1); Z k = lim.*(10).-(1); while (k.compareTo(lim) > 0 && TAUl(k) !=10) { k = k.subtract(1); } return k; }	0	largest n-digit number with exactly 10
+A182681		1	1	n -> { final Z lim = ZV(10).^(n); Z k = lim./(10); while (k.compareTo(lim) < 0 && TAUl(k) != 11) { k = k.add(1); } return k; }	0	11
+A182682	lambdan	1	n -> { final int e = 10; final Z r = Functions.PREV_PRIME.z(CV(10).^(new Q(n, e)).ceil()).^(e); return r.compareTo(ZV(10).^(n - 1)) < 0 ? ZV(0) : r; }	largest n-digit number with exactly 11
+A182683	lambdin	1	n -> { final Z lim = ZV(10).^(n); Z k = lim./(10); while (k.compareTo(lim) < 0 && TAUl(k) != 12) { k = k.add(1); } return k.equals(lim) ? ZV(0) : k; }	0	12
+A182684	lambdin	1	n -> { final Z lim = ZV(10).^(n - 1); Z k = lim.*(10).-(1); while (k.compareTo(lim) > 0 && TAUl(k) !=12) { k = k.subtract(1); } return k; }	0	largest n-digit number with exactly 12
+A182686	lambdan	1	n -> { final int e = 12; final Z r = Functions.PREV_PRIME.z(CV(10).^(new Q(n, e)).ceil()).^(e); return r.compareTo(ZV(10).^(n - 1)) < 0 ? ZV(0) : r; }	largest n-digit number with exactly 13
+A188936	filnum	1	1	k -> PP(Z2(k).+(3).^(2).-(8))	is prime.	nonn,more	1..39	nyi	_N. J. A. Sloane_
+A209250	filnum	0	1	k -> PP(Z2(64).-(189).*(ZV(10).^(k)).+(1))	 is prime.	nonn,more	1..18	nyi	_Edward A. Trice_
+A297419	filnum	1	1	k -> { final Q x = new Q(ZV(10).^(2*k).-(ZV(10).^(k).*(2)).+(4), 12); return x.isInteger() && PP(x.num()); }	is prime.
+A297421	filnum	0	1	k -> { final Q x = new Q(ZV(10).^(2*k).+(ZV(10).^(k).*(2)).+(4),  4); return x.isInteger() && PP(x.num()); }	is prime.	
+A305836	filnum	0	0	k -> PP(Z2(k).-(1).^(4).+(2))	is prime.	nonn,more	1..
+A309411	parmof4	1	A082182	44	+1	45	 is prime.	nonn,bref,hard,more	1..2	nyi	_Paul Bourdelais_
+A316360	filnum	1	1	k -> PP(Z2(k).-(2).^(2).-(3))	is prime.	nonn,more	1..27	nyi	_Patrick C. Schneider_
+A339191	partprod	1	new A006881()		Partial products of squarefree semiprimes (A006881)
+A345402	parmof4	1	A082182	42	-1	41	 is prime.	nonn,hard,more,bref	1..3	nyi	_Paul Bourdelais_
+A347138	parmof4	1	A082182	100	+1	101	 is prime.	nonn,hard,more	1..5	nyi	_Paul Bourdelais_
+A348170	parmof4	1	A082182	35	-1	34	 is prime.	nonn,bref,hard,more	1..3	nyi	_Paul Bourdelais_
+A350036	parmof4	1	A082182	81	+1	82	 is prime.	nonn,hard,more	1..9	nyi	_Paul Bourdelais_
+A355722	poly	0	"[1],[1,1]"	"A,dif,<2,2,*,A,^2,<1,3,*,+,1,+,p1,/"
+A355723	poly	0	"[1],[1,3]"	"A,dif,<2,2,*,A,^2,<1,5,*,+,1,+,p1,/"
+A355724	poly	0	"[1],[1,5]"	"A,dif,<2,2,*,A,^2,<1,7,*,+,1,+,p1,/"
+A355725	poly	0	"[1],[1,7]"	"A,dif,<2,2,*,A,^2,<1,9,*,+,1,+,p1,/"
+A355794	poly	0	"[1],[1,-1]"	"A,dif,<2,3,*,A,^2,<1,2,*,+,1,+,p1,/"
+A355795	poly	0	"[1],[1,2]"	"A,dif,<2,3,*,A,^2,<1,5,*,+,1,+,p1,/"
+A355796	poly	0	"[1],[1,5]"	"A,dif,<2,3,*,A,^2,<1,8,*,+,1,+,p1,/"
+A355797	poly	0	"[1],[1,8]"	"A,dif,<2,3,*,A,^2,<1,11,*,+,1,+,p1,/"
+A366680	parmof4	1	A082182	34	+1	35	 is prime.	nonn,bref,hard,more	1..3	nyi	_Paul Bourdelais_
+A376064	multraf	0	(self, n) -> self.s(0).-(self.s(1))	""	new A000798(), new A001035()	a(n)=J000798(n)-J001035(n)	_	_	_
+A394267	parmof4	1	A082182	42	-5	37
+A395460	parmof4	1	A082182	21	+4	25
+A396280	holos	1	[0,-1,4,-6,4,-1]	2,8,32,128,432,1024,2000	0	0
+A396626	parmof4	1	A082182	23	+5	28
+A396629	parmof4	0	A082182	24	+5	29
+A396780	parmof4	1	A082182	27	+5	32
+A397937	holos	0	[0,-7,1,7,-1]	0,1,12	0	0
+A397969	holos	1	[0,1,-6,12,-2,-27,36,0,-36,27,2,-12,6,-1]	0,0,3,107,1271,7865,33451,111723,314835,781977,1761163,3668051, 7165463, 13268417	0	0
+A397970	holos	1	[0,1,-6,12,-2,-27,36,0,-36,27,2,-12,6,-1]	0,0,1,23,508,4232,21375,79461,240694,629070,1470933,3151835, 6294616, 11861948	0	0
+A397972	holos	0	[0,1,-2,1,-1,2,-1]	0,1,4,9,15,23	0	0
+A397985	holos	0	[0,1,-3,4,-4,3,-1]	0,3,9,18,31	0	0
+A397986	holos	0	[0,1,-2,2,-3,3,-2,2,-1]	0,0,2,6,10,15,22	0	0
+A397987	holos	0	[0,1,-2,1,-1,2,-1,1,-2,1,-1,2,-1]	0,1,3,6,11,16,23,31,40,50,61	0	0
+A397989	holos	0	[0,1,-2,1,0,0,0,-1,2,-1]	0,1,3,7,12,18,25,34	0	0
+A397990	holos	0	[0,1,-2,0,2,-1]	0,2,4,9	0	0
+A398246	holos	0	[0,10,-9,3,7,-1]	1,8,57,416	0	0
+A398247	holos	0	[0,-192,-8,-72,94,2,-90,19,13,-1]	1,16,216,3021,41953,583464,8112115,112792703	0	0
+A398249	decexp	1	() -> CR.TWO.multiply(X076788)
+A398251	decexp	1	() -> CR.TWO.multiply(X099217)
+A398273	holos	1	[0,32,0,0,0,0,0,0,0,-80,0,0,0,0,0,0,0,80,0,0,0,0,0,0,0,-40,0,0,0,0,0,0,0,10,0,0,0,0,0,0,0,-1]	1,4,2,58,26,760,232,16,2,220,18,2686,198,31580,2402,64,4,1320,64,20368,884,285096,12888,192,8,5296,184,99784,3136,1631280,53104,512,16,17696,480,394592,9792,7382368,188672,1280, 32, 53184, 1184,1370720,28192,28877248,608864	0	0
+A398290	holos	0	[[0],[0,-162,135,-27],[18,-333,324,-81],[24,-204,243,-81],[6,-32,52,-26],[0,0,-1,1]]	1,6	0	0
+A398291	lambdan	0	n -> SU(0, n, k -> FA(3*k).*(BI(4*k, n - k))./(FA(k).^(3)))	a(n) = Sum_{k=0..n} (3*k)!/k!^3 * binomial(4*k,n-k). 1/(1 - (1 + x*y*z)*(x*(1 + x*y*z) + y + z)).	nonn,new	0..17	nyi	_Seiichi Manyama_
+A398292	holos	0	[[0],[-6720,6848,4416,-6592,2304,-256],[-10080,9792,9216,-14208,5760,-768],[-3256,2580,6142,-9445,4602,-767],[52,-432,1319,-1828,1143,-254],[0,0,0,2,-3,1]]	1,24,2544	0	0
+A398293	holos	0	[[0],[0,-10472,-1208,27520,-20960,5632,-512],[0,-23072,-9728,78784,-64256,19456,-2048],[-144,-14304,-17616,79872,-70464,24576,-3072],[-192,-1176,-11268,33066,-31971,13299,-2046],[-48,524,-2170,4460,-4798,2540,-508],[0,0,0,-2,7,-7,2]]	1,24,2568	0	0
+A398294	lambdan	0	n -> SU(0, n, k -> FA(4*k).*(BI(3*k, n - k))./(FA(k).^(4)))	a(n) = Sum_{k=0..n} (4*k)!/k!^4 * binomial(3*k,n-k). 1/(1 - (1 + x*y*z*w)*(x + y + z) - w).	nonn,new	0..14	nyi	_Seiichi Manyama_
+A398295	lambdan	0	n -> SU(0, n, k -> FA(4*k).*(BI(4*k, n - k))./(FA(k).^(4)))	a(n) = Sum_{k=0..n} (4*k)!/k!^4 * binomial(4*k,n-k). 1/(1 - (1 + x*y*z*w)*(x + y + z + w)).	nonn,new	0..14	nyi	_Seiichi Manyama_
+A398296	lambdan	0	n -> SU(0, n, k -> FA(4*k).*(BI(5*k, n - k))./(FA(k).^(4)))	a(n) = Sum_{k=0..n} (4*k)!/k!^4 * binomial(5*k,n-k). 1/(1 - (1 + x*y*z*w)*(x*(1 + x*y*z*w) + y + z + w)).	nonn,new	0..14	nyi	_Seiichi Manyama_
+A398306	parmof4	1	A082182	26	+5	31
+A398308	parmof4	1	A082182	25	+4	29
+A174336	lambdin	1	n -> { final Z lim = ZV(10).^(n); Z k = lim./(10); while (k.compareTo(lim) < 0 && TAUl(k) !=  5) { k = k.add(1); } return k.equals(lim) ? ZV(0) : k; }	0	  5
