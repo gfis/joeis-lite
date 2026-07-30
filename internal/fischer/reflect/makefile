@@ -2,6 +2,7 @@
 
 # makefile for reflections about jOEIS programs
 # @(#) $Id$
+# 2026-07-30: vector
 # 2025-05-06: knopre
 # 2023-06-17, Georg Fischer
 #
@@ -124,8 +125,9 @@ diff_joeis_list: # compare with $(COMMON)
 	wc       $@.tmp
 #========
 K=
-vector:                dirimp     dirseq     dirarr     hasram known funct     conjec     # prepare for and create file vector.txt for the classification of all A-numbers
-	grep -h -P "[B-Z]" dirimp.txt dirseq.txt dirarr.txt              funct.txt conjec.txt | cut -b9 | sort | uniq -c
+vector:                 dirimp     dirseq     dirarr     hasram known funct     conjec     # prepare for and create file vector.txt for the classification of all A-numbers
+	grep -h -P "^[A-Z]" dirimp.txt dirseq.txt dirarr.txt              funct.txt conjec.txt \
+	| sort | uniq -c
 	perl build_vector.pl $(K)
 	cut -b1-1024 vector.txt
 	ls -al       vector.txt
@@ -387,7 +389,7 @@ offsort: # sort offin.tmp with superclasses ASC
 	sort -k5.1 -k1.1 offin.tmp | sed -e "s/\r//" > offin.srt
 offin: # create table 'offin'
 	$(DBAT) -f offin.create.sql
-	grep -E "^A[0-9]" offin.tmp | sed -e "s/ //g" \
+	grep -E "^A[0-9]" offin.tmp | grep -v "skipped because" | sed -e "s/ //g" \
 	| $(DBAT) -r offin
 	$(DBAT) -4 offin
 	$(DBAT) -n offin
