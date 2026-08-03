@@ -714,6 +714,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WIntegersModMul\(}             ) { $imports{"irvine.math.group.IntegersModMul"             } = $itype; }
     if ($line =~ m{\WInverse\b}                    ) { $imports{"irvine.oeis.triangle.Inverse"  }                = $itype; }
     if ($line =~ m{\WJaguar\.}                     ) { $imports{"irvine.factor.factor.Jaguar"   }                = $itype; }
+    if ($line =~ m{\WLaguerrePolynomials}          ) { $imports{"irvine.math.polynomial.LaguerrePolynomials"   } = $itype; }
     if ($line =~ m{\WLambdaSequence}               ) { $imports{"irvine.oeis.LambdaSequence"                   } = $itype; }
     if ($line =~ m{\WLambdaArray}                  ) { $imports{"irvine.oeis.triangle.LambdaArray"             } = $itype; }
     if ($line =~ m{\WLeastPrimeFactorizer}         ) { $imports{"irvine.factor.factor.LeastPrimeFactorizer"}     = $itype; }

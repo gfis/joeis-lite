@@ -1,0 +1,104 @@
+---- 2026-08-02 22:22:46
+A090612	filnum	1	2	k -> Predicates.SQUARE.is(PM(k).-(1)./(2))	Numbers k such that the k-th prime is of the form 2*j^2 + 1.	nonn	1..1525	nyi	_Ray Chandler_
+A090613	filnum	1	1	k -> PM(k).mod(7) == 3	Numbers k such that the k-th prime is congruent to 3 mod 7.	nonn	1..56	nyi	_Ray Chandler_
+A090683	trilambn	0	0	0	(n, k) -> BI(n, k).*(S2(n, k))	Triangle read by rows, defined by T(n,k) = C(n,k)*S2(n,k)
+A090718	parmof3	2	A065720	128	10	Let p run through the primes; write p in base 10 and then interpret it in base 128 getting a number q; if q is prime then adjoin q to the sequence.	base,nonn	2..1000	nyi	_Cino Hilliard_
+A090719	parmof3	1	A065720	256	10	Primes whose representation in base 256 can be interpreted as a decimal prime.	base,nonn	1..10000	nyi	_Cino Hilliard_
+A090722	lambdan	4	n -> { final long m = 10L - PM(n).mod(10); return ZV(m <= 3 ? (m + 1) / 2 : (m == 7 ? 3 : 0)); }	a(n) = if 10 - Mod(Prime(n),10) == {1,3,7,9} respectively then {1,2,3,0}.	nonn	4..108	nyi	_Roger L. Bagula_
+A090725	filter	1	new A000040()	p -> !p.toString(16).matches(".*\\D.*")	has no alphabetic characters.	base,nonn	1..1000	nyi	_Cino Hilliard_
+A090738	filnum	1	1	k -> PP(new Z(ZV(k).*(k).toString() + ZV(k +1).^(2).toString()))	Integers n such that the concatenation of n^2 and (n+1)^2 is prime.	nonn,base	1..10000	nyi	Alex Kontorovich (alexk(AT)math.columbia.edu)
+A248731	lambdan	0	n -> Functions.DIGIT_LENGTH.z(PT(ZV(5).^(n)))
+A248733	lambdan	0	n -> Functions.DIGIT_LENGTH.z(PT(ZV(6).^(n)))
+A285602	lambdin	0	n -> RQ(1, n, i -> { final Z p2 = PM(i).^(2); return new Q(p2.+(1), p2.-(1)); }).num()	1	a(n) is the numerator of b(n) = Product_{i=1..n} (prime(i)^2 + 1)/(prime(i)^2 - 1). nonn,frac 0..284
+A285603	lambdin	0	n -> RQ(1, n, i -> { final Z p2 = PM(i).^(2); return new Q(p2.+(1), p2.-(1)); }).den()	1	a(n) is the denominator of b(n) = Product_{i=1..n} (prime(i)^2 + 1)/(prime(i)^2 - 1). nonn,frac 0..284
+A290404	polya	0	"[1]"	"1,x,B,-,x,B,^2,+,^3"	new A115977()
+A293443	mulr	1	(p, e) -> D019565(DirectSequence.create(0, new A193231()).a(e))
+A308317	mulr	1	(p, e) -> { final int k = Functions.PRIME_PI.i(p); return DirectSequence.create(1, new A005117()).a(e + 1).^(Z2(k - 1)); }	a(prime(k)^e) = J005117(e+1)^(2^(k-1)).
+A318465	mulr	1	(p, e) -> Z.TWO.pow(DirectSequence.create(0, new A007895()).a(e))	Multiplicative with a(p^e) = 2^J007895(e),
+A318469	mulr	1	(p, e) -> D019565(DirectSequence.create(0, new A003714()).a(e))
+A318470	mulr	1	(p, e) -> DirectSequence.create(0, new A260443()).a(e)	.
+A331109	mulr	1	(p, e) -> Z.TWO.pow(DirectSequence.create(0, new A112310()).a(e))	Multiplicative with a(p^e) = 2^J112310(e).
+A335096	lambdan	0	n -> RU(1, n, k -> new Q(ZV(1), ZV(2*k + 1).^(n))).*(DF(2*n + 1).^(n)).num()	(Sum_{k=1..n} 1/(2*k+1)^n). nonn 0..8
+A342972	trilambn	0	0	0	(n, k) -> RQ(0, n - 1, j -> new Q(BI(n + j, k), BI(k + j, k))).num()	Triangle T(n,k) read by rows: T(n,k) = Product_{j=0..n-1} binomial(n+j,k)/binomial(k+j,k). nonn,tabl 0..50
+A351655	mulr	1	(p, e) -> DirectSequence.create(0, new A000073()).a(e + 2)	Multiplicative with a(p^e) = J000073(e+2).
+A351656	mulr	1	(p, e) -> DirectSequence.create(0, new A000078()).a(e + 3)	Multiplicative with a(p^e) = J000078(e+3).
+A352500	convprod	-4	2	new A352476()
+A359399	multia	1	"1"	(self, n) -> SU(2, n, k -> ZV(k).*(self.a(n/k)))
+A359411	mulr	1	(p, e) -> DirectSequence.create(1, new A246600()).a(e)	.
+A359479	multia	1	"1"	(self, n) -> SU(2, n, k -> Z_1(k).*(k).*(self.a(n/k)))
+A363783	polya	1	"[0,1]"	"x,B,log,*n"	new A010057()
+A363784	polya	1	"[0,1]"	"x,B,log,*n"	new A374016()
+A365682	mulr	1	(p, e) -> ZV(1).+(SU(1, e, k -> !SF(k) ? ZV(0) : p.^(k)))	k=1..e, k squarefree} p^k.
+A366901	mulr	1	(p, e) -> DirectSequence.create(0, new A115384()).a(e).+(1)
+A366902	mulr	1	(p, e) -> DirectSequence.create(0, new A159481()).a(e)	.
+A370256	mulr	1	(p, e) -> DirectSequence.create(0, new A103221()).a(e)	.
+A374014	convprod	0	16	new A374016()
+A374024	filnum	1	1	k -> { final long p = Functions.DIGIT_SUM.l(k); return p == Functions.DIGIT_SUM.l(k*k) && PP(p); }	Integers k such that digsum(k) = digsum(k^2) = p, where p is prime and digsum(i) = F007953(i).	nonn,base	1..45	nyi	_Gonzalo Mart‚ąö‚Č†nez_
+A376887	mulr	1	(p, e) -> DirectSequence.create(0, new A227154()).a(e)	.
+A383867	mulr	1	(p, e) -> ZV(1).+(SD(e, d -> !SF(d) ? ZV(0) : p.^(d)))
+A384912	mulr	1	(p, e) -> DirectSequence.create(0, new A073576()).a(e)	.
+A384913	mulr	1	(p, e) -> DirectSequence.create(0, new A003107()).a(e)	.
+A384914	mulr	1	(p, e) -> DirectSequence.create(0, new A001156()).a(e)	.
+A385006	mulr	1	(p, e) -> p.^(e + 1 > 4 ? 4 : e + 1).-(1)./(p.-(1))
+A385043	lambdan	1	n -> SD(n, d -> (GCDi(d, n/d) == 1 && FSIT(d, 0L, (x, p, e) -> x + (Integer.bitCount(e) == 1 ? 0 : 1)) == 0 ? ZV(d) : ZV(0)))
+A385136	mulr	1	(p, e) -> (e == 1) ? p : p.^(e + 1).-(p.^(e)).+(p.^(e - 2)).-(1)./(p.-(1))	a(p) = p and a(p^e) = (p^(e+1) - p^e + p^(e-2) - 1)/(p-1) for e >= 2.
+A385418	mulr	1	(p, e) -> DirectSequence.create(0, new A000929()).a(e)	.
+A386469	mulr	1	(p, e) -> p.^(DirectSequence.create(0, new A048760()).a(e))
+A386470	lambdan	1	n -> CND(n, d -> (FSIT(d, 0L, (x, p, e) -> x + (Predicates.SQUARE.is(e) ? 0 : 1)) == 0L))	(p, e) -> DirectSequence.create(1, new A048760()).a(e).+(1)	The number of divisors of n whose exponents in their prime factorization are squares.
+A387934	arrlamb	0	0	0	-1	(n, k) -> SU(0, n, j -> BI(n, j).*(BI(k*n + j, j)))
+A388052	arrlamb	0	0	0	-1	(n, k) -> SU(0, n, j -> BI(n, j).*(BI(k*n + j + 1, n)))
+A390370	mulr	1	(p, e) -> ((e&1) == 0) ? ZV(1) : ZV(1).+(p.*(Functions.INFINITARY_SIGMA1.z(p.^(e - 1)).+(p.^(e - 1))))	1 + p * isigma(p^(e-1)) if e is odd, where isigma(n) = J049417(n).
+A390371	mulr	1	(p, e) -> (e == 2) ? ZV(1) : p.^(e + (e&1) - 1)	a(p^2) = 1, and a(p^e) = p^(e + (e mod 2) - 1) for e != 2.
+A390689	mulr	1	(p, e) -> isMod(4, p, 3) ? p.^(2*(e/2 + 1)).-(1)./(p.*(p).-(1)) : p.^(e + 1).-(1)./(p.-(1))	(p^(2*(floor(e/2) + 1)) - 1)/(p^2 - 1) if p == 3 (mod 4), and (p^(e+1) - 1)/(p - 1) otherwise.
+A390690	mulr	1	(p, e) -> isMod(3, p, 2) ? p.^(2*(e/2 + 1)).-(1)./(p.*(p).-(1)) : p.^(e + 1).-(1)./(p.-(1))	(p^(2*(floor(e/2) + 1)) - 1)/(p^2 - 1) if p == 2 (mod 3), and (p^(e+1) - 1)/(p - 1) otherwise.
+A390691	mulr	1	(p, e) -> isMod(3, p, 2) ? p.^(2*(e/2)) : p.^(e)	p^(2*floor(e/2)) if p == 2 (mod 3), and p^e otherwise.
+A390692	mulr	1	(p, e) -> isMod(3, p, 2) ? p.^(e&1) : ZV(1)	p^(e mod 2) if p == 2 (mod 3), and a(p^e) = 1 otherwise.
+A390694	mulr	1	(p, e) -> isMod(3, p, 2) ? p.^(e + (e&1)) : p.^(e)	p^(e + (e mod 2)) if p == 2 (mod 3), and a(p^e) = p^e otherwise.
+A390752	mulr	1	(p, e) -> p.-(1).*(p.^((e - 1)/2))
+A390754	mulr	1	(p, e) -> p.-(1).*(p.^(e - 1 + (2*e + 3) % 3))	(p-1) * p^(e - 1 + ((3-e) mod 3)).
+A390863	mulr	1	(p, e) -> ZV(1).+(SU(1, e, k -> p.^(k - 1).*((k & e) == k ? 1 : 0)).*(p.-(1)))	1 + (p-1) * Sum_{k=1..e} [bitand(k, e) == k] * p^(k-1), where [] is the Iverson bracket, and bitand is the bitwise AND function (J004198).
+A390865	mulr	1	(p, e) -> ZV(1).+(RD(e, d -> (d < e) ? QV(p).^(e - d - 1) : QV(0)).*(p.-(1)).num())	1 + (p-1) * Sum_{d|e, d<e} p^(e-d-1).
+A390867	mulr	1	(p, e) -> ((e&1) == 1) ? p.^(e) : p.^(e).-(p.-(1).*(p.^(e/2 - 1)))	p^e if e is odd, and a(p^e) = p^e - (p-1)*p^(e/2 - 1) if e is even.
+A391183	mulr	0	(p, e) -> isMod(8, p, 5, 7) && ((e&1) == 1) ? ZV(0) : ZV(1)	0 if p == 5 or 7 (mod 8) and e is odd, and a(p^e) = 1 otherwise.
+A391184	mulr	1	(p, e) -> isMod(8, p, 5, 7) ? ZV(e/2 + 1) : ZV(e + 1)	floor(e/2) + 1 if p == 5 or 7 (mod 8), and a(p^e) = e+1 otherwise.
+A391185	mulr	1	(p, e) -> isMod(8, p, 5, 7) ? p.^(2*(e/2 + 1)).-(1)./(p.*(p).-(1)) : p.^(e + 1).-(1)./(p.-(1))	(p^(2*(floor(e/2) + 1)) - 1)/(p^2 - 1) if ...  and (p^(e+1) - 1)/(p - 1) otherwise.
+A392088	mulr	1	(p, e) -> p.^(e + (2*e + 3) % 3).-(1)	p^(e + ((3-e) mod 2)) - 1.
+A392207	polyx	1	"[0,1,1],[0,0,0,1],[0,0,1]"	"p1,A,^3,2,*,<1,+,sub,p2,A,^2,<1,+,sub,/"	3	0
+A392450	mulr	1	(p, e) -> Z.TWO.pow(D056169(e))	J056671(e) (the number of squarefree unitary divisors of e).
+A394268	multia	0	"1"	(self, n) -> SU(0, n - 1, k -> Z_1(n - k - 1).*(BI(n, k)).*(ZV(k + 2).^(2*(n - k))).*(self.a(k)))	Sum_{k=0..n-1} (-1)^(n-k-1) * binomial(n,k) * (k+2)^(2*(n-k)) * a(k).	nonn	0..220	nyi	_Seiichi Manyama_
+A394478	polyz	0	"[1]"	"x,cosh,^2,x,cos,/"	0	1	0	2
+A395195	holos	1	[[0],[108108,-103464,32832,-3456],[12572,-9396,1764],[648,-300],[17]]	1,2,14	0	0
+A395666	polyx	0	"[1]"	"1,x,exp,<1,sub,<1,+"	0	1
+A396063	polyx	1	"[0,1]"	"1,1,A,A,dif,*,-,^2,/,int"	0	1
+A396746	polyxa	1	"[0,1]"	"1,x,B,neg,exp,-"	0	1	egf(new A396678())
+A396748	poly	0	"[1],[0,0,1],[1,-2,1],[1,-3,3,-1]"	"1,p1,p2,/,sub,<1,p3,/,+"
+A397035	poly	0	"[1],[0,0,1],[1,-2,1],[1,-1]"	"1,p1,p2,/,sub,p3,^4,/,<1,+"
+A397064	poly	1	"[0,1],[0,0,0,1],[1,-2]"	"x,p1,sub,-,p2,/"
+A397136	mulr	1	(p, e) -> (e == 1) ? ZV(2) : ((e == 2) ? p : ZV(0))	a(p) = 2, a(p^2) = p, and a(p^e) = 0 for e >= 3. - _Amiram Eldar_, Jul 21 2026
+A397144	poly	1	"[0,1],[0,1,-1]"	"p1,rev,p1,rev,sub,^3,+"
+A397146	poly	1	"[0,1],[0,1,-1]"	"p1,rev,p1,rev,sub,^4,+"
+A397147	poly	1	"[0,1],[0,1,0,-1]"	"p1,rev,p1,rev,sub,^2,+"
+A397149	poly	1	"[0,1],[0,1,0,-1]"	"p1,rev,p1,rev,sub,^4,+"
+A397213	poly	1	"[0,1],[1,-2],[0,0,0,0,1]"	",x,p2,sub,-,p1,/"
+A397238	mulr	1	(p, e) -> (e == 1) ? ZV(1) : ((e == 2) ? p : ZV(0))	a(p) = 1, a(p^2) = p, and a(p^e) = 0 for e >= 3. - _Amiram Eldar_, Jul 21 2026
+A397274	poly	1	"[0,1],[1,-3],[0,0,0,1]"	",x,p2,sub,-,p1,/"
+A397412	mulr	1	(p, e) -> (e == 1) ? ZV(0) : p	a(p) = 0, and a(p^e) = p for e >= 2. - _Amiram Eldar_, Jul 22 2026
+A398148	mulr	1	(p, e) -> (e == 1) ? p.-(1) : p.*(2).-(1).*(p.^(e - 1))	a(p) = p-1, and a(p^e) = (2*p-1)*p^(e-1) for e >= 2. - _Amiram Eldar_, Jul 22 2026
+A398161	filnum	1	1	k -> FSIT(k, 0L, (x, p, e) -> x + (e != 1 && (e&1) == 1 ? 1 : 0)) == 0L && FSIT(k + 1, 0L, (x, p, e) -> x + (e != 1 && (e&1) == 1 ? 1 : 0)) == 0L	Numbers k such that every exponent in the prime factorizations of both k and k+1 is either 1 or even.	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+A398162	filter	1	new A268335()	k -> FSIT(k.+(1), 0L, (x, p, e) -> x + (e != 1 && (e&1) == 1 ? 1 : 0)) == 0L	Exponentially odd numbers k such that the prime factorization exponents of k+1 are either 1 or even.	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+A398163	filnum	1	1	k -> FSIT(k, 0L, (x, p, e) -> x + (e == 2 ? 1 : 0)) == 0L && FSIT(k + 1, 0L, (x, p, e) -> x + (e == 2 ? 1 : 0)) == 0L	Numbers k such that neither k nor k+1 has an exponent that equals 2 in their prime factorization.	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+A398164	filnum	1	1	k -> FSIT(k, 0L, (x, p, e) -> x + (SF(e) ? 0 : 1)) == 0L && FSIT(k + 1, 0L, (x, p, e) -> x + (SF(e) ? 0 : 1)) == 0L	Numbers k such that both    k and k+1 are both exponentially squarefree numbers.	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+A398165	filnum	1	1	k -> FSIT(k, 0L, (x, p, e) -> x + (Integer.bitCount(e) == 1 ? 0 : 1)) == 0L && FSIT(k + 1, 0L, (x, p, e) -> x + (Integer.bitCount(e) == 1 ? 0 : 1)) == 0L	Numbers k such that all the exponents in the prime factorizations of k and k+1 are powers of 2.	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+A398166	filnum	1	1	k -> FSIT(k, 0L, (x, p, e) -> x + (Predicates.SQUARE.is(e) ? 0 : 1)) == 0L && FSIT(k + 1, 0L, (x, p, e) -> x + (Predicates.SQUARE.is(e) ? 0 : 1)) == 0L	Numbers k such that all the exponents in the prime factorizations of k and k+1 are squares.	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+A398167	filnum	1	1	k -> Predicates.SQUARE_FREE.is(k) && Predicates.CUBE_FREE.is(k + 1)	Squarefree numbers k such that k+1 is cubefree.	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+A398168	filnum	1	1	k -> Predicates.SQUARE_FREE.is(k + 1) && Predicates.CUBE_FREE.is(k)	Cubefree numbers k such that k+1 is squarefree.	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+A398169	filter	1	new A005117()	v -> P268335(v.+(1))	Squarefree numbers k such that k+1 is an exponentially odd number.	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+A398170	filter	1	new A268335()	k -> SF(k.+(1))	Exponentially odd numbers numbers k such that k+1 is squarefree.	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+A398264	filnum	1	1	k -> { final Z lpfk = LPF(k); return ZV(k).mod(lpfk.^(2)).isZero() && !ZV(k).mod(lpfk.^(3)).isZero(); }	Numbers divisible by the square but not the cube of their least prime factor.	nonn,easy,new	1..10000	nyi	_Peter Munn_
+A398364	lambdan	0	n -> SU(0, n/7, k -> BI(2*k, k).*(BI(n - 5*k, 2*k)))
+A398365	lambdan	0	n -> SU(0, n/8, k -> BI(2*k, k).*(BI(n - 6*k, 2*k)))
+A398418	parmof4	0	A082182	29	5	34	Numbers k such that (29^k + 5^k)/34 is prime.	nonn,hard,more,new	1..6	nyi	_Robert Price_
+A398419	parmof4	0	A082182	49	3	52	Numbers k such that (49^k + 3^k)/52 is prime.	nonn,hard,more,new	1..8	nyi	_Robert Price_
+A398420	parmof4	0	A082182	50	3	53	Numbers k such that (50^k + 3^k)/53 is prime.	nonn,hard,more,new	1..5	nyi	_Robert Price_
+A398451	recval	0	new A398183()			x
+A398452	recpos	1	new A398183()	, 3, false		x
