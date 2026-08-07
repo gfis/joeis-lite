@@ -1,0 +1,103 @@
+---- 2026-08-06 22:20:12
+A094082	declamb	1	1	k -> new Q(FA(k), ZV(k).^(k))	Decimal expansion of Sum_{n>=1} (n!/n^n).
+A096250	declamb	1	1	k -> new Q(ZV(1), ZV(k).^(PM(k)))	Decimal expansion of Sum_{n>=1} 1/n^prime(n).
+A098688	declamb	1	1	k -> new Q(FI(k), ZV(k).^(k))	Decimal expansion of Sum_{n>0} Fibonacci(n)/(n^n)
+A098990	declamb	1	1	k -> new Q(PM(k), Z2(k))	Decimal expansion of Sum_{n>=1} prime(n)/(2^n).
+A100084	declamb	1	1	k -> new Q(ZV(1), ZV(k).^(FA(k)))	Decimal expansion of Sum_{n>0} 1/(n^(n!)).
+A100085	declamb	1	1	k -> new Q(ZV(1), FA(k).^(FA(k)))	Decimal expansion of Sum_{n>0} 1/(n!^n!).
+A100124	declamb	0	1	k -> new Q(ZV(1), FA(PM(k)))	Decimal expansion of Sum_{n>0} 1/prime(n)!.
+A100125	declamb	0	1	k -> new Q(k, Z2(k*k))	Decimal expansion of Sum_{n>0} n/(2^(n^2)).
+A100126	declamb	0	1	k -> new Q(k, FA(PM(k)))	Decimal expansion of Sum_{n>0} n/(prime(n)!).
+A100127	declamb	1	1	k -> new Q(PM(k), FA(k))	Decimal expansion of Sum_{n>0} prime(n)/n!.
+A100128	declamb	0	1	k -> new Q(ZV(1), ZV(k).*(PM(k).^(k)))	Decimal expansion of Sum_{n>0} 1/(n*prime(n)^n).
+A100634	multia	1	"0"	(self, n) -> self.a(n - 1).+(PP(n) ? Z2(n - 1) : ZV(0))
+A117871	declamb	1	1	k -> new Q(ZV(1), E092143(k))
+A121103	multia	1	"1"	(self, n) -> REV(self.a(n - 1).+(n == 0 ? ZV(1) : DIGIT(self.a(n - 1), ZV(0), (x, d, e) -> x.+(FA(d)))))	the reversal of (a(n-1) + sfd(a(n-1))), where sfd(n)= sum of factorials of the digits of n.      base
+A132797	declamb	0	1	k -> new Q(ZV(1), ZV(5).^(PM(k)))
+A132800	declamb	0	1	k -> new Q(ZV(1), ZV(3).^(PM(k)))
+A132806	declamb	0	1	k -> new Q(ZV(1), ZV(4).^(PM(k)))
+A132817	declamb	0	1	k -> new Q(ZV(1), ZV(6).^(PM(k)))
+A132822	declamb	0	1	k -> new Q(ZV(1), ZV(7).^(PM(k)))
+A134877	declamb	1	1	k -> new Q(ZV(1), DF(k).^(DF(k)))
+A134878	declamb	1	1	k -> new Q(ZV(1), ZV(k).^(2).^(ZV(k).^(2)))
+A134879	declamb	1	1	k -> new Q(ZV(1), ZV(k).^(3).^(ZV(k).^(3)))
+A134880	declamb	0	1	k -> new Q(ZV(1), ZV(2).^(k).^(ZV(2).^(k)))
+A134883	declamb	0	1	k -> new Q(ZV(1), ZV(k).^(k).+(1))
+A135608	declamb	0	2	k -> new Q(ZV(1), ZV(k).^(k + 1))
+A153386	declamb	1	1	k -> new Q(ZV(1), FI(2*k))	Decimal expansion of Sum_{n>=1} 1/Fibonacci(2*n).
+A153387	declamb	1	1	k -> new Q(ZV(1), FI(2*k - 1))	Decimal expansion of Sum_{n>=1} 1/Fibonacci(2*n-1).
+A153415	declamb	0	1	k -> new Q(ZV(1), LU(2*k))	Decimal expansion of Sum_{n>=1} 1/F000032(2*n).
+A153416	declamb	1	0	k -> new Q(ZV(1), LU(2*k + 1))	Decimal expansion of Sum_{n>=0} 1/F000032(2*n+1).
+A178745	declamb	0	1	k -> new Q(ZV(1), Z.TWO.^(PT(k)))	Decimal expansion of Sum_{k>=1} 1/2^Partition(k).
+A190648	declamb	0	1	k -> new Q(Z_1(k + 1), FI(k).^(2))	Decimal expansion of Sum_{k>=1} (-1)^(k+1)/Fibonacci(k)^2.
+A192014	declamb	0	1	k -> new Q(ZV(1), ZV(3).^(k).*(ZV(2).^(ZV(3).^(k))))	Decimal expansion of Sum_{k>=1} 1/(3^k * 2^(3^k)).
+A210453	declamb	0	1	k -> new Q(ZV(1), BI(3*k, k).*(k))	Decimal expansion of Sum_{n>=1} 1/(n*binomial(3*n,n)).
+A214869	declamb	0	1	k -> new Q(FA(k), FA(2*k))	Decimal expansion of Sum_{n>=1} n!/(2*n)!.
+A215578	declamb	1	1	k -> new Q(ZV(1), ZV(k).^(ZV(k).^(k)))	Decimal expansion of Sum_{n>=1} 1/n^(n^n).
+A215633	declamb	1	1	k -> new Q(ZV(1), ZV(k).^(ZV(k).^(PM(k))))	Decimal expansion of Sum_{n>=1} 1/n^(n^prime(n)).
+A217702	declamb	1	0	k -> new Q(ZV(1), FA(k).+(1))	Decimal expansion of Sum_{n>=0} 1/(1+n!).
+A222411	polyx	0	"[1]"	"x,x,exp,1,-,/,^3/2,x,2,/,exp,*"	1	0
+A222412	polyx	0	"[1]"	"x,x,exp,1,-,/,^3/2,x,2,/,exp,*"	1	4
+A227919	filter	1	new A000040()	p -> PP(p./(10))	Primes which remain prime when rightmost digit is removed.
+A281682	declamb	1	2	k -> new Q(ZV(1), D000166(k))
+A287013	declamb	1	0	k -> new Q(ZV(1), F000178(k))
+A326324	lambdan	0	n -> SU(0, n, k -> Functions.EULERIAN1.z(n, k).*(ZV(5).^(k)))	seq(add(combinat:-eulerian1(n, k)*5^k, k=0..n), n=0..20);
+A328122	holos	1	[[0],[568512,-826032,476320,-136240,19328,-1088],[525168,-651136,300248,-61064,4624],[205272,-198155,62788,-6545],[13194,-8878,1428],[320,-85]]	1,3,36	0	0
+A344144	declamb	1	0	k -> new Q(F000108(k), FA(k))
+A346044	declamb	1	0	k -> new Q(ZV(1), E138534(k))
+A346404	declamb	1	1	k -> new Q(D003418(k), FA(k))
+A346406	declamb	1	1	k -> new Q(TAU(k), D003418(k))
+A357053	declamb	1	1	k -> new Q(ZV(k), FI(2*k))	{k>=1} k/Fibonacci(2*k).
+A357054	declamb	0	1	k -> new Q(Z_1(k + 1).*(k), FI(2*k))
+A357145	declamb	1	1	k -> new Q(ZV(1), D003422(k))
+A360958	declamb	0	1	k -> new Q(ZV(1), FI(3*k))	{i>=1} 1/Fibonacci(3*i).
+A362887	multia	0	"0"	(self, n) -> self.a(n - 1).xor(Z.TWO.pow(PM(n)).-(1))	Bits[Xor](a(n-1), 2^ithprime(n)-1))
+A365987	multia	1	"1"	(self, n) -> new Q(self.a(n - 1).*(10), 3).ceiling()	a(n) = ceiling(a(n-1)/3*10), starting a(1) = 1.
+A368567	holos	0	[[0],[-320376,-251091,357156,-81729],[-29526,55062,-37206,4374],[0,16536,-40804,12108],[0,5512,4864,-648]]	1,1,2	0	0
+A370364	lambdan	0	n -> RU(0, n - 1, j -> new Q(Z_1(n - j + 1).*(BI(n, j)).*(FA(n*j)), FA(j).*(FA(n).^(j)))).num()	/(j!*n!^j), j=0..n-1):~~seq(a(n), n=0..10);		2024-02-17 15:25:47	13
+A370367	lambdan	0	n -> RU(0, n, j -> new Q(Z_1(n - j).*(BI(n, j)).*(FA(n*j)), FA(j).*(FA(n).^(j)))).num()	/(j!*n!^j), j=0..n):~~seq(a(n), n=0..10);		2024-02-17 17:41:20	13
+A371136	declamb	1	1	k -> new Q(ZV(1), FI(FA(k)))	{k>=1} 1/Fibonacci(k!).
+A371137	declamb	1	1	k -> new Q(ZV(1), LU(FA(k)))	{k>=1} 1/Lucas(k!).
+A371411	holos	0	[[0],[-72,228,-192,48],[-2,10,-16,8],[0,1,0,-1]]	1,1	0	0
+A372102	holos	0	[[0],[-1,1],[1,-1],[-2,1],[3],[-2]]	1,1,1,2	0	0
+A372907	declamb	1	1	k -> new Q(Z2(k).-(1), ZV(3).^(k).-(1))	{k>=1} (2^k - 1)/(3^k - 1).
+A372908	declamb	1	0	k -> new Q(Z2(k).+(1), ZV(3).^(k).+(1))	{k>=0} (2^k + 1)/(3^k + 1).
+A372909	declamb	1	0	k -> new Q(Z2(k).+(1), ZV(4).^(k).+(1))	{k>=0} (2^k + 1)/(4^k + 1).
+A372910	declamb	1	0	k -> new Q(ZV(3).^(k).+(1), ZV(6).^(k).+(1))	{k>=0} (3^k + 1)/(6^k + 1).
+A372911	declamb	1	0	k -> new Q(ZV(4).^(k).+(1), ZV(8).^(k).+(1))	{k>=0} (4^k + 1)/(8^k + 1).
+A378514	lambdan	1	n -> { final Z m = Z2(n).-(1); return new Q(m.-(PHI(m)), ZV(2)).ceiling(); }
+A381536	holos	0	[[0],[0,-2,3,18,-27],[8]]	1	0	0
+A382865	multia	0	"0"	(self, n) -> self.a(n - 1).xor(ZV(n - 1)).xor(ZV(2*n - 1)).xor(ZV(2*n))	Xor(Xor(a(n-1), n-1), 2*n-1), 2*n))
+A385572	holos	0	[[0],[-12,4],[22,-8],[-12,5],[5,-3],[-4,3],[1,-1]]	1,2,3,4,7	0	0
+A389311	holos	0	[[0],[-24,76,-64,16],[-2,8,-10,4],[0,1,-1]]	1,1	0	0
+A389602	holos	0	[[0],[-36,45,-9],[0],[-34,6,10],[28,8],[-30,-11,-1]]	1,1,1,2	0	0
+A391398	holos	1	[[0],[200,-120,16],[-196,148,-24],[62,-66,12],[-53,55,-10],[23,-36,8],[0,7,-2]]	1,1,3,6	0	0
+A393178	holos	0	[[0],[-80640,81312,-27216,3024],[21000,-26380,10882,-1474],[-1541,2603,-1431,233],[22,-72,62,-12]]	1,2,14	0	0
+A397936	holos	0	[0,-7,1,7,-1]	0,5,36	0	0
+A397983	holos	0	[0,1,-2,1,-1,2,-1]	0,2,6,13,23	0	0
+A398046	holos	0	[0,1,-3,4,-4,4,-4,4,-4,3,-1]	0,1,4,10,18,28,41,56,73	0	0
+A398056	holos	0	[0,1,-2,1,0,0,-1,2,-1]	0,1,6,13,22,35,49	0	0
+A398057	holos	0	[0,1,-2,1,0,0,-1,2,-1]	0,2,7,14,23,35,50	0	0
+A398058	holos	0	[0,1,-2,1,-1,2,-1]	0,2,8,18,31	0	0
+A398059	holos	0	[0,1,-2,1,-1,2,-1]	0,3,9,18,32	0	0
+A398060	holos	0	[0,1,-2,1,0,0,-1,2,-1]	0,1,4,10,18,28,40	0	0
+A398187	trilambn	0	0	0	(n, k) -> RU(0, n - k, j -> new Q(FA(n - k), FA(j)).*(ZV(n).^(j))).num()	T(n, k) = Sum_{j=0..n-k} ((n - k)! / j!) * n^j.	nonn,tabl,easy,new	0..140	nyi	_Peter Luschny_
+A398188	rowsum	0	new A398187()	nyi Fto	a(n) = Sum_{k=0..n} A398187(n, k).	nonn,new	0..19	nyi	_Peter Luschny_
+A398189	trilambn	0	0	0	(n, k) -> Functions.VALUATION.z(RU(0, n - k, j -> new Q(FA(n - k), FA(j)).*(ZV(n).^(j))).num(), Z.TWO)	T(n, k) = v2(A398187(n, k)) where v2(m) is the 2-adic valuation of m.	nonn,tabl,new	0..90	nyi	_Peter Luschny_
+A398190	lambdan	0	n -> RU(0, n, j -> new Q(ZV(2*n).^(j), FA(j))).*(FA(n)).num()	a(n) = n! * Sum_{j=0..n} (2*n)^j / j!.
+A398191	lambdan	0	n -> RU(0, n, j -> new Q(ZV(n + 4).^(j), FA(j))).*(FA(n)).num()	a(n) = n! * Sum_{j=0..n} (n + 4)^j / j!. Column 4 of A398187.	nonn,new	0..18	nyi	_Peter Luschny_
+A398278	holos	1	[0,6,-36,75,-73,31,6,-15,7,-1]	6,33,138,533,2003,7453,27643,102432	0	0
+A398279	holos	1	[0,192,-288,-1968,6460,-8056,5545,-2752,901,313,-569,273,-39,-21,10,-1]	10,78,533,3568,23686,156614,1034875,6838570,45195326,298694196,1974057701,13046401324,86222721672,569839688506	0	0
+A398309	holos	0	[0,2,2,-1]	1,0,3,0	0	0
+A398518	lambdan	1	n -> PR(1, n, k -> D014963(n/k))		nyi Fto	a(n) = Product_{k=1..n} M(floor(n/k)), where M = D014963
+A398520	lambdan	1	n -> SU(1, n, k -> TAU(n/k))	tau(floor(n/k)), where tau(n) = F000005(n) is the number of divisors of n.	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+A398522	lambdan	1	n -> SU(1, n, k -> D007425(n/k))	tau_3(floor(n/k)), where tau_3 = D007425 is the 3rd Piltz function.	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+A398524	lambdan	1	n -> SU(1, n, k -> MU(n/k).^(2))	mu(floor(n/k))^2, where mu = F008683 is the M‚ąö‚ąābius function.	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+A398526	lambdan	1	n -> SU(1, n, k -> Predicates.CUBE_FREE.is(n/k) ? Z.ONE : Z.ZERO)	J212793(floor(n/k)).	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+A398528	lambdan	1	n -> SU(1, n, k -> Functions.OMEGA.z(n/k))	omega(floor(n/k)), where omega(n) = F001221(n) is the number of distinct primes dividing n.	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+A398530	lambdan	1	n -> SU(1, n, k -> Functions.USIGMA0.z(n/k))	f(floor(n/k)), where f(n) = F034444(n) is the number of unitary divisors (or squarefree divisors) of n.	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+A398585	decexp	0	() -> CR.valueOf(35).multiply(Zeta.zeta(3)).divide(CR.valueOf(64)).add(CR.THREE.multiply(CR.TWO.log()).multiply(Zeta.zeta(2)).divide(CR.valueOf(16)))
+A398586	decexp	0	() -> CR.valueOf(35).multiply(Zeta.zeta(3)).divide(CR.valueOf(64)).subtract(CR.FIVE.multiply(CR.TWO.log()).multiply(Zeta.zeta(2)).divide(CR.valueOf(32))).add(CR.TWO.log().pow(3).divide(CR.valueOf(48)))
+A398619	etaprod	0	[1,1;2,1;6,1;3,-3]		Expansion of eta(q) * eta(q^2) * eta(q^6) / eta(q^3)^3 in powers of q.	sign,new	0..50	nyi	_James Sellers_
+A398620	etaprod	0	[2,1;3,1;6,1;1,-2;9,-1]		Expansion of eta(q^2) * eta(q^3) * eta(q^6) / (eta(q)^2 * eta(q^9)) in powers of q.	nonn,new	0..41	nyi	_James Sellers_
+A398625	decexp	1	() -> CR.EIGHT.multiply(X173624)

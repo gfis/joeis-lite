@@ -1,0 +1,131 @@
+---- 2026-08-04 19:39:20
+A030241	holos	0	[0,1,0,0,0,0,0,0,0,-1]	1,2,3,4,4,4,3,2	0	0
+A086885	trilambn	1	1	1	(i, j) -> SU(0, j, k -> FA(k).*(BI(i, k)).*(BI(j, k)))	= Sum_{k=0..j} k!*binomial(i, k)*binomial(j, k)
+A087030	lambdan	1	n -> Functions.NEXT_PRIME.z(n).*(2).-(n)	2*nextprime(n+1)-n /* _Charles R Greathouse IV_, Oct 03 2013 */
+A087031	filnum	0	1	k -> PP(Functions.NEXT_PRIME.z(k).*(2).-(k))	Select[Range[400],PrimeQ[2*NextPrime[#]-#]&] (* _Harvey P. Dale_, Jul 02 2018 *)
+A087037	lambdan	0	n -> { Z x = ZV(1); while (!PP(x.^(x).+(n))) { x = x.+(1); } return x; }	a(n) = {my(x = 1); while (!isprime(x^x+n), x++); x;} /* _Michel Marcus_, Mar 20 2018 */
+A087617	multia	0	"1"	(self, n) -> SU(0, n - 1, k -> Z2(4*k + 1).*(D000364(k + 1)).*(self.a(n - 1 - k)))./(n)	Gabcke sequence: a(0)=1; (n+1) a(n+1) = Sum_{k=0..n} 2^(4k+1) |E(2k+2)| a(n-k), where |E(2k+2)| are Euler numbers (E(2k)=(-1)^k J000364(k)).
+A095679	filnum	1	0	k -> Predicates.PRIME.is(ZV(k).^(2).+(Functions.DIGIT_SORT_ASCENDING.z(k).modZ(10)))	Numbers k such that k^2 + largest digit of k is prime.  base,easy,nonn  1..54   nyi     _Jason Earls_
+A095815	lambdan	1	n -> Functions.DIGIT_SORT_ASCENDING.z(n).modZ(10).+(n)	a(n) = n + largest digit of n.  base,easy,nonn  1..10000        nyi     _Jason Earls_
+A095825	filnum	1	0	k -> Predicates.SQUARE.is(Functions.DIGIT_SORT_ASCENDING.z(k).mod(10) + k)	Numbers k such that k + largest digit of k is a square. base,easy,nonn  1..49   nyi     _Jason Earls_
+A095826	filnum	1	0	k -> Predicates.TRIANGULAR.is(Functions.DIGIT_SORT_ASCENDING.z(k).mod(10) + k)	Numbers k such that k + largest digit of k is a triangular number.      base,easy,nonn  1..1000 nyi     _Jason Earls_
+A095919	filnum	1	1	k -> Predicates.PALINDROME.is(FA(Functions.DIGIT_SORT_ASCENDING.z(k).mod(10)).+(k))	Numbers k such that k + (largest digit of k)! is a palindrome.  base,easy,nonn  1..51   nyi     _Jason Earls_
+A095920	filnum	1	0	k -> { final Z zk = FA(Functions.DIGIT_SORT_ASCENDING.z(k).mod(10)).+(k); return Predicates.PALINDROME.is(zk) && PP(zk); }	Numbers k such that k + (largest digit of k)! is a palindromic prime.   base,nonn       1..500  nyi     _Jason Earls_
+A095927	filnum	1	0	k -> Predicates.SQUARE.is(FA(Functions.DIGIT_SORT_ASCENDING.z(k).mod(10)).+(k))	Numbers k such that k + (largest digit of k)! is a square.      base,easy,nonn  1..1000 nyi     _Jason Earls_
+A095966	filnum	1	0	k -> Predicates.SQUARE.is(Functions.DIGIT_SORT_ASCENDING.z(k).mod(10) * k)	Numbers k such that k * (largest digit of k) is a square.       base,easy,nonn  1..54   nyi     _Jason Earls_
+A095976	filnum	1	0	k -> PP(Functions.DIGIT_SORT_ASCENDING.z(k).mod(10) + Functions.DIGIT_SORT_ASCENDING.z(k + 1).mod(10))	Numbers k such that (largest digit of k) + (largest digit of k+1) is prime.     base,easy,nonn  1..10000        nyi     _Jason Earls_
+A095984	filnum	1	0	k -> Predicates.PALINDROME.is(Functions.DIGIT_SORT_ASCENDING.z(k).mod(10) * k)	Numbers k such that k * (largest digit of k) is a palindrome.   base,easy,nonn  1..1000 nyi     _Jason Earls_
+A095985	filnum	1	0	k -> Predicates.TRIANGULAR.is(Functions.DIGIT_SORT_ASCENDING.z(k).mod(10) * k)	Numbers k such that k * (largest digit of k) is a triangular number.    base,easy,nonn  1..49   nyi     _Jason Earls_
+A096083	filnum	1	0	k -> Predicates.SQUARE.is(Functions.DIGIT_SUM_SQUARES.z(k).+(Functions.DIGIT_SORT_ASCENDING.z(k).mod(10)))	Numbers k such that the sum of the squared digits of k plus the largest digit of k is a square. base,easy,nonn  1..54   nyi     _Jason Earls_
+A096128	filnum	1	0	k -> PP(REV(k).+(Functions.DIGIT_SORT_ASCENDING.z(k).mod(10)))	Numbers k with the property that reversing the digits and adding the largest digit produces a prime.    base,easy,nonn  1..1000 nyi     _Jason Earls_
+A096311	filnum	1	0	k -> TAUl(k) == Functions.DIGIT_SORT_ASCENDING.z(k).mod(10)	Numbers whose number of divisors equals the largest digit.      base,easy,nonn  1..54   nyi     _Jason Earls_
+A096312	filnum	1	1	k -> Functions.BIG_OMEGA.l(k) == Functions.DIGIT_SORT_ASCENDING.z(k).mod(10)		Numbers n such that number of prime divisors (counting multiplicity) = largest digit.   base,easy,nonn  1..53   nyi     _Jason Earls_
+A096913	filnum	1	0	k -> Predicates.SQUARE.is(Functions.DIGIT_SORT_ASCENDING.z(k).modZ(10).^(Functions.DIGIT_SORT_DESCENDING.z(k).mod(10)).+(k))	Numbers k such that (largest digit of k)^(smallest digit of k) + k is a square. base,easy,nonn  1..1000 nyi     _Jason Earls_
+A097153	lambdan	1	n -> REV(n).-(Functions.DIGIT_SORT_ASCENDING.z(n).mod(10))	Reversal of n minus largest digit of n. base,easy,nonn  1..75   nyi     _Jason Earls_
+A097386	filnum	1	0	k -> Predicates.PRIME.is(Functions.DIGIT_SORT_ASCENDING.z(k).modZ(10).^(Functions.DIGIT_SORT_DESCENDING.z(k).mod(10)).+(k))		Numbers n such that (largest digit of n)^(smallest digit of n) + n is prime.    base,easy,nonn  1..55   nyi     _Jason Earls_
+A097387	filnum	1	0	k -> Predicates.PRIME.is(Functions.DIGIT_SORT_ASCENDING.z(k).modZ(10).^(Functions.DIGIT_SORT_DESCENDING.z(k).mod(10)).+(k)) && Predicates.PRIME.is(Functions.DIGIT_SORT_ASCENDING.z(k + 1).modZ(10).^(Functions.DIGIT_SORT_DESCENDING.z(k + 1).mod(10)).+(k + 1))
+A101799	lambdan	0	n -> LaguerrePolynomials.p(0, n + 1, QV(-1)).*(FA(n + 1)).*(PR(0, n, p -> FA(p).^(2))).num()	a(n) = product( (p!)^2,p=0..n )*(n+1)!*LaguerreL(n+1,0,-1), n=0,1..., where LaguerreL(n,lambda,x) are generalized Laguerre polynomials; a(n)=A055209(n)*A002720(n+1);.
+A103910	trinv	1	A010048
+A104033	trilambn	0	0	0	(n, k) -> Z_1(n - k).*(D000364(n - k)).*(BI(2*n + 1,2*k + 1))	A103327(n,k) = binomial(2*n+1,2*k+1)
+A106467	trinv	0	A106465
+A107045	ratrinv	0	new A079901()	(n, k) = n^k.
+A107046	ratridv	0	new A079901()	(n, k) = n^k.
+A107889	trinv	0	A107876
+A108220	filtpos	1	0	new A109016()	(k, v) -> k != 0 && Predicates.SQUARE.is(v)	Numbers n such that concatenating n and the sum of factorials of the digits of n produces a square.     base,nonn       1..27   nyi     _Jason Earls_
+A108241	filtpos	1	0	new A109016()	v -> Predicates.TRIANGULAR.is(v)	Numbers n such that concatenating n and the sum of factorials of the digits of n produces a triangular number.  base,nonn       1..30   nyi     _Jason Earls_
+A108257	filtpos	1	0	new A109016()	v -> Predicates.PRIME.is(v)	Numbers k such that concatenating k and the sum of factorials of the digits of k produces a prime.      base,nonn       1..10000        nyi     _Jason Earls_
+A109016	lambdan	0	n -> new Z(Long.toString(n) + (n == 0 ? "1" : DIGIT(n, ZV(0), (x, d, e) -> x.+(FA(d))).toString()))	Concatenate n and the sum of factorials of the digits of n.     base,easy,nonn  0..37   nyi     _Jason Earls_
+A110242	trilambn	0	0	0	(n, k) -> (n == 0) ? ZV(1) : Functions.JACOBI.z(n, 2*n - 2*k + 1)	= if(k<=n, Jacobi(n, 2n-2k+1), 0).
+A110245	trinv	0	A110242
+A110250	trinv	0	A110247
+A110271	trinv	0	A104698
+A110292	trinv	0	A110291
+A110321	trilambn	0	0	0	(n, k) -> FA(n).*(Functions.JACOBSTHAL.z(n - k + 1))./(FA(k))	= n!*J(n-k+1)/k!, where J(n)=A001045(n).
+A110324	trinv	0	A110321	A number triangle related to the Jacobsthal numbers.
+A110330	trinv	0	A110327
+A111195	lambdan	0	n -> SU(0, n, k -> BI(2*n +1, 2*k + 1).*(D000364(k)))./(Z2(n))	a(n) = 2^(-n) * Sum_{k=0..n} binomial(2*n+1, 2*k+1) * J000364(k).
+A111596	trinv	0	A271703	The matrix inverse of the unsigned Lah numbers A271703.
+A117442	trinv	0	A117440
+A117941	trinv	0	A117939
+A117945	trinv	0	A117944
+A118229	trinv	1	A054431
+A119879	trinv	0	A119467
+A121113	holos	1	[[0],[15288,-23618,13377,-3283,294],[-33180,55874,-35098,9744,-1008],[-4080,6256,-3884,1176,-144],[0,-114,302,-160,24]]	0,0,6	0	0	(294*n^4+245*n^3-294*n^2-245*n)*a(n)+(-1008*n^4-2352*n^3-1834*n^2-490*n)*a(n+1)+(-144*n^4-552*n^3-1076*n^2-848*n-180
+A121114	holos	1	[[0],[1470,-3577,3087,-1127,147],[-2632,7140,-7112,3108,-504],[-1032,1744,-976,336,-72],[144,138,-56,-38,12]]	0,0,0,1	1	0	(147*n^4+637*n^3+882*n^2+392*n)*a(n)+(-504*n^4-2940*n^3-6356*n^2-6048*n-2128)*a(n+1)+(-72*n^4-528*n^3-1840*n^2-2816*
+A121116	holos	1	[[0],[1470,-3577,3087,-1127,147],[-2632,7140,-7112,3108,-504],[-1032,1744,-976,336,-72],[144,138,-56,-38,12]]	0,0,1,15	0	0
+A121435	trinv	0	A122175	, where T122175(n,k) = C( k*(k+1)/2 + n-k, n-k) for n>=k>=0.
+A121436	trinv	0	A122176	, where T122176(n,k) = C( k*(k+1)/2 + n-k + 1, n-k) for n>=k>=0.
+A121437	trinv	0	A122177	, where T122177(n,k) = C( k*(k+1)/2 + n-k + 2, n-k) for n>=k>=0.
+A121438	trinv	0	A122178	, where T122178(n,k) = C( n*(n+1)/2 + n-k - 1, n-k) for n>=k>=0.
+A121753	multia	1	"1,1"	(self, n) -> self.a(n - 1).*(1+2*((n - 2)/2)).-(self.a(n - 2).*(((n - 1)/2)*((n - 2)/2) - 1))	for n>=3, a(1)=1, a(2)=1.
+A121754	multia	1	"0,1"	(self, n) -> self.a(n - 1).*(2*n - 3).-(self.a(n - 2).*(n - 1).*(n - 3)).+(FA(n - 2).*(n - 2 + (((n - 1)&1) == 0 ? n - 1 : 0)))	for n>=3; a(1)=0, a(2)=1.
+A125027	triprodn	1	new A007318()	new A000027()
+A129685	trinv	0	A129684
+A131758	trilambn	0	0	0	(n, m) -> RU(0, m, k -> LaguerrePolynomials.p(0, n, QV(m - k + 1)).*(BI(n + 1, k)).*(Z_1(k))).*(Z_1(n)).*(FA(n)).num()	a[n_, m_] := (-1)^n *n!*Sum[(-1)^k*Binomial[n+1, k]*LaguerreL[n, m-k+1], {k, 0, m}]; Table[a[n, m], {n, 0, 8}, {m, 0, n}] // Flatten (* _Jean-Fran?ois Alcover_, Apr 23 2014 *)
+A132013	trinv	0	A094587
+A132014	trinv	0	A132159
+A135594	lambdan	0	n -> SU(0, n, i -> BI(n, i).*(D000364(i)).*(Z_1(n - i)))./(Z2(n))	a(n) = (1/2^n) * Sum_{i=0..n} (-1)^(n-i) * binomial(n,i) * J000364(i).
+A141681	trinv	1	A141680	.
+A154926	trinv	1	A154921	. Signs in columns as in sequence E153881.
+A159971	trinv	0	A159965
+A168239	lambdan	2	n -> { long c = 0; Z map = ZV(n); while (!map.equals(ZV(14))) { map = SD(map, d -> Functions.DIGIT_SORT_ASCENDING.z(d).modZ(10)); ++c; } return ZV(c); }	sum of largest digit of all divisors of n ()
+A168573	filtpos	1	2	new A168239()	ONE
+A176702	trinv	1	A134541	.
+A177978	trinv	1	A134540	. Cf. ?177517.
+A180959	trilambn	0	0	0	(n, k) -> SU(0, n, j -> BI(n, j).*(BI(n - j, 2*(k - j))).*(D000364(k - j)))	T(n,k) = Sum_{j=0..n} C(n,j)*C(n-j,2(k-j))*E_(k-j), E_n = J000364(n).
+A209928	lambdan	1	n -> PI(GPF(PD(n, d -> PM(Functions.DIGIT_SORT_ASCENDING.z(d).mod(10)))))	Largest digit of all divisors of n.
+A215534	trinv	0	A088956	.
+A230338	multia	0	"1"	(self, n) -> CV(self.a(n - 1).^(2).*(21).+(4)).sqrt().*(self.a(n - 1)).floor()	Recurrence equation: a(0) = 1 and a(n) = a(n-1)*sqrt(21*a(n-1)^2 + 4) for n >= 1.
+A241242	multraf	0	(self, n) -> self.s(0).-(self.s(1)).*(Z_1(n + 1))	"0"	new A000182().skip(1), new A000364().skip(1)	a(n) = (-1)^(n+1) * (J000182(n+1) - J000364(n+1)). - _Dani
+A253286	arrlamb	0	0	0	1	(n, k) -> (n == 0 ? ZV(1) : LaguerrePolynomials.p(1, n - 1, QV(-k)).*(k).*(FA(n - 1)).num())	A(n, k) = k*(n-1)!*LaguerreL(n-1, 1, -k) with A(0, k) = 1.
+A256325	lambdan	0	n -> RU(0, n - 1, k -> LaguerrePolynomials.p(1, k, QV(k - n + 1)).*(FA(k)).*(n - k -1)).num()	a(n) = Sum_{k=0..n-1} (n-k-1)* k! * LaguerreL(k, 1, k-n+1). - _G. C. Greubel_, Feb 23 2021
+A271705	trilambn	0	0	0	(n, k) -> SU(k, n, j -> BI(n, j).*(T271703(j, k)))	T(n,k) = Sum_{j=0..n} C(n,j)*L(j,k)	trinv	0	A059110	(matrix inverse).
+A289192	arrlamb	0	0	0	-1	(n, k) -> RU(0, n, i -> new Q(ZV(k).^(i), FA(i)).*(BI(n, i))).*(FA(n)).num()	n! * Sum_{i=0..n} k^i/i! * binomial(n,i).
+A293985	arrlamb	0	0	0	-1	(n, k) -> LaguerrePolynomials.p(k - 1, n, QV(-1)).*(FA(n)).num()	= n! * LaguerreL(n, k-1, -1). (End)
+A295381	arrlamb	0	0	0	-1	(n, k) -> LaguerrePolynomials.p(0, n, QV(k)).*(FA(n)).num()	= n!*Laguerre(n,k).
+A304980	multraf	1	(self, n) -> self.s(0).+(self.s(1)).*(Z_1(n))	""	new A000182(), new A000364()	a(n) = (-1)^n * (J000182(n) + J000364(n)).
+A308973	holos	0	[0,-1,2,-1,-1,2,-1,-1,2,-1,-1,2,-1]	0, 1, 2, 3, 4, 5, 6, 5, 6, 7, 8, 9, 8, 7, 8, 9, 10, 11, 10, 11, 10, 9, 10, 11, 12, 13, 14, 15, 14, 15, 16, 17, 18, 17, 16, 17, 18, 17, 16, 17, 18, 19, 20, 21, 22, 21, 22, 23, 24, 23, 22, 23, 24, 25, 26, 27, 28, 27, 28, 29, 30, 29, 28, 29, 30	0	0
+A330528	lambdan	1	n -> RD(n, d -> new Q(D000364(d), FA(2*d))).*(FA(2*n)).num()	a(n) = (2*n)! * Sum_{d|n} J000364(d) / (2*d)!.
+A330794	trinv	0	A322942
+A338435	arrlamb	0	0	0	-1	(n, k) -> LaguerrePolynomials.p(0, n, QV(-k*n)).*(FA(n)).num()	Square array T(n,k), n >= 0, k >= 0, read by antidiagonals, where T(n,k) = n!*LaguerreL(n, -k*n).
+A343847	trilambn	0	0	0	(n, k) -> LaguerrePolynomials.p(0, n - k, QV(-k)).*(FA(n - k)).num()	= (n - k)! * L(n - k, -k), where L is the Laguerre polynomial function.
+A343848	lambdan	0	n -> RU(0, n, k -> LaguerrePolynomials.p(0, n - k, QV(-k)).*(FA(n - k))).num()	a(n) = Sum_{k = 0..n} (n - k)! LaguerreL(n - k, -k).
+A343849	lambdan	0	n -> RU(0, n, k -> LaguerrePolynomials.p(0, n, QV(-k)).*(FA(n))).num()	a(n) = Sum_{k = 0..n} n! * LaguerreL(n, -k).
+A344048	arrlamb	0	0	0	1	(n, k) -> LaguerrePolynomials.p(0, n + k, QV(-k)).*(FA(n + k)).num()	A := (n, k) -> (n + k)!*LaguerreL(n + k, -k):
+A344107	lambdan	0	n -> LaguerrePolynomials.p(0, n, QV(-n + 2)).*(FA(n)).num()	a(n) = n! * LaguerreL(n, -n+2).
+A355266	trilambn	0	0	0	(n, k) -> Z_1(n - k).*(Functions.BELL.z(k)).*(S1(n + 1, k + 1))	(-1)^(n-k)*combinat:-bell(k)*Stirling1(n+1, k+1):
+A360033	arrlamb	1	0	0	1	(n, k) -> Z2(k).*(n + 1).-(Functions.JACOBSTHAL.z(k))	Table T(n,k), n >= 1 and k >= 0, T(n,k) = 2^k * n - A001045(k).
+A365269	lambdan	0	n -> RQ(1, n, k -> LaguerrePolynomials.p(0, k, QV(-1)).*(FA(k))).num()	Table[Product[k! * LaguerreL[k,-1], {k,1,n}], {n,0,15}]
+A369431	holos	0	[0,4,-7,5,-1]	1,1,2,6	0	0
+A369626	holos	0	[0,-4,14,-16,7,-1]	1,1,2,6,21	0	0
+A373918	decexp	0	() -> CR.ONE.divide(CR.TWO.multiply(X085984))
+A375025	trinvers	0	new Transpose(new A374439())	. row reversed
+A375383	trinvers	1	new Transpose(new A026820())	. row reversed
+A382101	arrlamb	0	0	0	-1	(n, k) -> (n == 0 ? ZV(1) : LaguerrePolynomials.p((k - 1)*n + 1, n - 1, QV(-1)).*(FA(n - 1)).num())	A(n,k) = (n-1)! * LaguerreL(n-1, (k-1)*n+1, -1) for n > 0.
+A392715	decexp	0	() -> X085984.pow(2).subtract(CR.ONE)
+A395335	holos	0	[[0],[240,-44,2],[-240,55,-3],[-1480,307,-16],[1674,-354,18],[892,-298,22],[-632,256,-20],[-90,136,-18],[-64,-78,14],[-138,-6,8],[116,-7,-9],[18,-11,2],[6,16],[-18,-4],[4]]	1,1,2,2,8,28,152,952,7208,62296,605864,6522952,76951496,986411272	0	0
+A397984	holos	0	[0,1,-3,4,-4,3,-1]	0,2,8,18,31	0	0
+A398047	holos	0	[0,1,-3,4,-4,4,-4,4,-4,3,-1]	0,2,5,11,19,29,42,56,73	0	0
+A398048	holos	0	[0,1,-3,4,-4,4,-4,4,-4,3,-1]	0,1,6,13,23,36,51,70,91	0	0
+A398049	holos	0	[0,1,-3,4,-4,4,-4,4,-4,3,-1]	0,2,7,14,24,37,52,70,91	0	0
+A398050	holos	0	[0,1,-2,1,0,0,-1,2,-1]	0,1,3,7,13,20,28	0	0
+A398051	holos	0	[0,1,-2,1,0,0,-1,2,-1]	0,2,4,8,14,20,29	0	0
+A398052	holos	0	[0,1,-2,1,0,0,-1,2,-1]	0,1,4,9,16,25,35	0	0
+A398053	holos	0	[0,1,-2,1,0,0,-1,2,-1]	0,2,5,10,17,25,36	0	0
+A398054	holos	0	[0,1,-2,1,0,0,-1,2,-1]	0,1,5,11,19,30,42	0	0
+A398055	holos	0	[0,1,-2,1,0,0,-1,2,-1]	0,2,6,12,20,30,43	0	0
+A398137	holos	1	[0,-1,-6,-7,6,-1]	1,6,29,126	0	0
+A398146	holos	1	[0,-1,-10,-23,10,-1]	1,10,77,530	0	0
+A398147	holos	1	[0,-1,10,-27,10,-1]	1,10,73,470	0	0
+A398276	holos	0	[0,-5,10,-5,-24,20,40,7,6,-1]	1,3,47,353,2545,19651,150719,1149593	0	0
+A398277	holos	0	[0,-972,3672,-3240,1836,-2111,-4517,-1073,-1903,-388,858,301,39,11,-1]	1,4,165,2545,35458,538977,8213971,124153394,1877374185,28409150827,429855925112,6503722723505,98402726217973	0	0
+A398363	decexp	1	() -> CR.TWO.log().multiply(Zeta.zeta(2)).add(Zeta.zeta(3).divide(CR.FOUR)).subtract(CR.TWO.log().pow(3).divide(CR.THREE))
+A398385	decexp	0	() -> CR.NINE.multiply(Zeta.zeta(3)).divide(CR.TWO).subtract(CR.FOUR.multiply(CR.TWO.log()).multiply(Zeta.zeta(2)))
+A398387	decexp	2	() -> CR.valueOf(21).multiply(Zeta.zeta(3)).divide(CR.TWO)
+A398394	decexp	2	() -> CR.SIX.multiply(CR.TWO.log()).multiply(Zeta.zeta(2)).add(CR.SEVEN.multiply(Zeta.zeta(3)).divide(CR.TWO))
+A398395	decexp	2	() -> CR.THREE.multiply(CR.TWO.log()).multiply(Zeta.zeta(2)).add(CR.valueOf(35).multiply(Zeta.zeta(3)).divide(CR.FOUR))
+A398407	decexp	1	() -> CR.valueOf(11).multiply(Zeta.zeta(3)).divide(CR.EIGHT)
+A398412	decexp	0	() -> CR.valueOf(25).multiply(Zeta.zeta(5)).divide(CR.valueOf(32)).subtract(Zeta.zeta(2).multiply(Zeta.zeta(3)).divide(CR.EIGHT))
+A398455	decexp	1	() -> CR.valueOf(101).multiply(Zeta.zeta(5)).divide(CR.valueOf(16)).subtract(CR.FIVE.multiply(Zeta.zeta(2)).multiply(Zeta.zeta(3)).divide(CR.FOUR))
+A398532	rambdan	1	n -> RU(1, n, k -> new Q(PHI(n/k), n/k))	Sum_{k=1..n} phi(floor(n/k))/floor(n/k)), where phi is the Euler totient function.	nonn,frac,easy,new	1..10000	nyi	_Amiram Eldar_
+A398533	rambdad	1	A398532
