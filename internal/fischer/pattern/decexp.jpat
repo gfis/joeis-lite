@@ -5,13 +5,12 @@ import irvine.oeis.cons.DecimalExpansionSequence;
 
 /**
  * $(ASEQNO) $(NAME)
- * Formula: $(PARM2)
  * @author $(AUTHOR)
  */
 public class $(ASEQNO) extends DecimalExpansionSequence {
 
   /** Construct the sequence */
   public $(ASEQNO)() {
-    super($(OFFSET), $(PARM1));
+    super($(OFFSET), $(PARM1=crexpr));
   }
 }

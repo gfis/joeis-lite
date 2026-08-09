@@ -1,0 +1,122 @@
+---- 2026-08-08 20:01:08
+A086683	lambdin	0	n -> SD(n, d -> PHI(d).*(ZV(3).^(n*n/d)))./(n)	1	a(n) = if(n<1, n==0, sumdiv(n, d, eulerphi(d)*3^(n^2/d))/n);
+A086686	lambdan	1	n -> SU(1, n, i -> PP(i*n - 1) ? ZV(1) : ZV(0))	a(n) = sum(i=1, n, isprime(i*n-1));
+A086846	count10	0	new A078972()	brilliant numbers
+A091098	count10p	1	new A000040()	p -> p.mod(4) == 1
+A091099	count10p	1	new A000040()	p -> p.mod(4) == 3
+A091115	count10p	1	new A000040()	p -> p.mod(6) == 1
+A091116	count10p	1	new A000040()	p -> p.mod(3) == 2
+A091117	count10p	1	new A000040()	p -> p.mod(5) == 2
+A091119	count10p	1	new A000040()	p -> p.mod( 6) ==  5
+A091120	count10p	1	new A000040()	p -> p.mod( 7) ==  1
+A091121	count10p	1	new A000040()	p -> p.mod( 7) ==  2
+A091122	count10p	1	new A000040()	p -> p.mod( 7) ==  3
+A091123	count10p	1	new A000040()	p -> p.mod( 7) ==  4
+A091124	count10p	1	new A000040()	p -> p.mod( 7) ==  5
+A091125	count10p	1	new A000040()	p -> p.mod( 7) ==  6
+A091126	count10p	1	new A000040()	p -> p.mod( 8) ==  1
+A091127	count10p	1	new A000040()	p -> p.mod( 8) ==  3
+A091128	count10p	1	new A000040()	p -> p.mod( 8) ==  5
+A091129	count10p	1	new A000040()	p -> p.mod( 8) ==  7
+A091161	count10p	1	new A000040()	p -> p.mod(12) ==  1
+A091162	count10p	1	new A000040()	p -> p.mod(12) ==  5
+A091163	count10p	1	new A000040()	p -> p.mod(12) ==  7
+A091164	count10p	1	new A000040()	p -> p.mod(12) == 11
+A091165	count10p	1	new A000040()	p -> p.mod(30) ==  1
+A091166	count10p	1	new A000040()	p -> p.mod(30) ==  7
+A091167	count10p	1	new A000040()	p -> p.mod(30) == 11
+A091168	count10p	1	new A000040()	p -> p.mod(30) == 13
+A091169	count10p	1	new A000040()	p -> p.mod(30) == 17
+A091170	count10p	1	new A000040()	p -> p.mod(30) == 19
+A091171	count10p	1	new A000040()	p -> p.mod(30) == 23
+A091172	count10p	1	new A000040()	p -> p.mod(30) == 29
+A091392	lambdan	1	n -> FSIT(n, ZV(1), (x, p, e) -> x.*(Functions.KRONECKER.z(-2, p).+(1)))
+A091394	lambdan	1	n -> FSIT(n, ZV(1), (x, p, e) -> x.*(Functions.KRONECKER.z(-5, p).+(1)))
+A091395	lambdan	1	n -> FSIT(n, ZV(1), (x, p, e) -> x.*(Functions.KRONECKER.z(-7, p).+(1)))
+A091397	lambdan	1	n -> FSIT(n, ZV(1), (x, p, e) -> x.*(Functions.KRONECKER.z( 3, p).+(1)))
+A091398	lambdan	1	n -> FSIT(n, ZV(1), (x, p, e) -> x.*(Functions.KRONECKER.z( 5, p).+(1)))
+A091399	lambdan	1	n -> FSIT(n, ZV(1), (x, p, e) -> x.*(Functions.KRONECKER.z( 7, p).+(1)))
+A091634	count10p	1	new A000040()	p -> p.toString().indexOf('0') < 0
+A091635	count10p	1	new A000040()	p -> p.toString().indexOf('1') < 0
+A091636	count10p	1	new A000040()	p -> p.toString().indexOf('2') < 0
+A091637	count10p	1	new A000040()	p -> p.toString().indexOf('3') < 0
+A091638	count10p	1	new A000040()	p -> p.toString().indexOf('4') < 0
+A091639	count10p	1	new A000040()	p -> p.toString().indexOf('5') < 0
+A091640	count10p	1	new A000040()	p -> p.toString().indexOf('6') < 0
+A091641	count10p	1	new A000040()	p -> p.toString().indexOf('7') < 0
+A091642	count10p	1	new A000040()	p -> p.toString().indexOf('8') < 0
+A091643	count10p	1	new A000040()	p -> p.toString().indexOf('9') < 0
+A091644	count10p	1	new A000040()	p -> p.toString().indexOf('0') >= 0	nonn,base,more	1..19	nyi	_Enoch Haga_
+A091645	count10p	1	new A000040()	p -> p.toString().indexOf('1') >= 0	more,nonn,base	1..19	nyi	_Enoch Haga_
+A091646	count10p	1	new A000040()	p -> p.toString().indexOf('2') >= 0	nonn,base	1..19	nyi	_Enoch Haga_
+A091647	count10p	1	new A000040()	p -> p.toString().indexOf('3') >= 0	nonn,base	1..19	nyi	_Enoch Haga_
+A091705	count10p	1	new A000040()	p -> p.toString().indexOf('4') >= 0	nonn,base	1..19	nyi	_Enoch Haga_
+A091706	count10p	1	new A000040()	p -> p.toString().indexOf('5') >= 0	nonn,base	1..19	nyi	_Enoch Haga_
+A091707	count10p	1	new A000040()	p -> p.toString().indexOf('6') >= 0	nonn,base	1..19	nyi	_Enoch Haga_
+A091708	count10p	1	new A000040()	p -> p.toString().indexOf('7') >= 0	nonn,base	1..19	nyi	_Enoch Haga_
+A091709	count10p	1	new A000040()	p -> p.toString().indexOf('8') >= 0	nonn,base,more	1..19	nyi	_Enoch Haga_
+A091710	count10p	1	new A000040()	p -> p.toString().indexOf('9') >= 0	nonn,base	1..19	nyi	_Enoch Haga_
+A092901	count10	0	new A000928()
+A097394	count10	1	new A097393()
+A099260	count10	0	new A006988()	Number of decimal digits in (10^n)-th prime number.	nonn,base,nice	0..72	nyi	_Rick L. Shepherd_
+A114453	count10	0	new A014614()	p -> 5-almost primes less than or equal to 10^n.	nonn,more	0..18	nyi	_Robert G. Wilson v_
+A114485	lambdan	0	n -> Functions.DIGIT_LENGTH.z(D000166(ZV(10).^(n)))	nyi F	Number of decimal digits in !(10^n), where !x is the subfactorial.	nonn,base	1..200	nyi	_Eric W. Weisstein_
+A114488	lambdan	0	n -> Functions.DIGIT_LENGTH.z(DF(ZV(10).^(n)))	Number of decimal digits in (10^n)!!.	nonn,base	0..16	nyi	_Eric W. Weisstein_
+A114501	lambdan	0	n -> { final Z z10 = ZV(10).^(n); return Functions.DIGIT_LENGTH.z(BI(z10.*(2), z10)); }	Number of decimal digits in binomial(2*10^n, 10^n).	nonn,base,less	0..17	nyi	_Eric W. Weisstein_
+A120052	count10pe	0	new A069272()	p -> true	1	11-almost primes less than or equal to 10^n.	nonn,more	0..19	nyi	_Robert G. Wilson v_
+A120053	count10pe	0	new A069273()	p -> true	1	12-almost primes less than or equal to 10^n.	nonn,more	0..19	nyi	_Robert G. Wilson v_
+A120764	count10pe	0	new A007632()	v -> true	1	less than or equal to 10^n.	more,nonn,base	0..40	nyi	Charlton Harrison (charlton(AT)bach.dynet.com) and _Robert G. Wi
+A132195	count10p	3	new A002997()	v -> Functions.BIG_OMEGA.i(v) == 3	nyi	Number of four-prime Carmichael numbers less than 10^n.	nonn,more	0..24	nyi	_Michel Lagneau_
+A151993	count10	1	new A033548()	less than 10^n.	hard,nonn,base	1..12	nyi	_T. D. Noe_
+A159687	count10	1	new A051634()	nyi o	Number of strong primes < 10^n.	nonn,more	1..12	nyi	_Cino Hilliard_
+A174612	count10p	0	new A002997()	v -> Functions.BIG_OMEGA.i(v) == 4	nyi	Number of four-prime Carmichael numbers less than 10^n.	nonn,more	0..24	nyi	_Michel Lagneau_
+A174613	count10p	0	new A002997()	v -> Functions.BIG_OMEGA.i(v) == 5	nyi	Number of five-prime Carmichael numbers less than 10^n.	nonn,more	0..24	nyi	_Michel Lagneau_
+A174614	count10p	0	new A002997()	v -> Functions.BIG_OMEGA.i(v) == 6	nyi	Number of six-prime Carmichael numbers less than 10^n.	nonn,more	0..24	nyi	_Michel Lagneau_
+A174615	count10p	0	new A002997()	v -> Functions.BIG_OMEGA.i(v) == 7	nyi	Number of seven-prime Carmichael numbers less than 10^n.	nonn,more	0..24	nyi	_Michel Lagneau_
+A174616	count10p	0	new A002997()	v -> Functions.BIG_OMEGA.i(v) == 8	nyi	Number of eight-prime Carmichael numbers less than 10^n.	nonn,more	0..24	nyi	_Michel Lagneau_
+A174617	count10p	0	new A002997()	v -> Functions.BIG_OMEGA.i(v) == 9	nyi	Number of nine-prime Carmichael numbers less than 10^n.	nonn,more	0..24	nyi	_Michel Lagneau_
+A248760	declamb	0	1	k -> new Q(FA(2*k), FA(3*k))	Decimal expansion of Sum_{n>=1} (2n)!/(3n)!.
+A254248	count10	0	new A006285()	(de Polignac numbers) less than 10^n.	nonn,more	0..11	nyi	_Arkadiusz Wesolowski_
+A254445	declamb	1	0	k -> ComputableReals.SINGLETON.cosh(CV(k)).inverse()	Decimal expansion of Sum_{n>=0} 1/cosh(n).
+A254446	declamb	1	1	k -> ComputableReals.SINGLETON.sinh(CV(k)).inverse()	Decimal expansion of Sum_{n>=1} 1/sinh(n).
+A255816	count10	1	new A065381()	less than 10^n.	nonn,more	1..12	nyi	_Arkadiusz Wesolowski_
+A267757	count10	0	new A072873()
+A275491	count10	0	new A002975()
+A319015	declamb	1	0	k -> new Q(1, Z2(k*k))	Decimal expansion of Sum_{k>=0} 1/2^(k^2).
+A319016	declamb	1	0	k -> new Q(1, Z2(k*(k + 1)))	Decimal expansion of Sum_{k>=0} 1/2^(k*(k+1)).
+A327558	declamb	1	1	k -> new Q(1, FA(FI(k)))	Decimal expansion of Sum_{k>=1} 1/F(k)! where F(k) = F000045(k).
+A329064	declamb	1	1	k -> new Q(1, ZV(3).^(k).-(Z2(k)))	Decimal expansion of Sum_{n>=1} 1/(3^n-2^n).
+A338167	declamb	0	1	k -> new Q(1, ZV(2*k).^(2*k - 1))	Decimal expansion of Sum_{n>=1} 1/(2n)^(2n-1).
+A338168	declamb	1	1	k -> new Q(1, ZV(2*k - 1).^(2*k))	Decimal expansion of Sum_{n>=1} 1/(2n-1)^(2n).
+A338303	declamb	0	0	k -> new Q(1, LU(2*k).+(2))	Decimal expansion of Sum_{k>=0} 1/(L(2*k) + 2), where L(k) is the k-th Lucas number (F000032).
+A338304	declamb	1	0	k -> new Q(1, LU(Z2(k)))	Decimal expansion of Sum_{k>=0} 1/L(2^k), where L(k) is the k-th Lucas number (F000032).
+A338305	declamb	1	0	k -> new Q(1, FI(Z2(k).+(1)))	Decimal expansion of Sum_{k>=0} 1/F(2^k+1), where F(k) is the k-th Fibonacci number (F000045).
+A338612	declamb	0	1	k -> new Q(Z_1(k + 1), LU(k))	Decimal expansion of Sum_{k>=1} (-1)^(k+1)/L(k) where L(k) is the k-th Lucas number (F000032).
+A371498	declamb	-1	0	k -> new Q(Z_1(k), FA(k*k))	Decimal expansion of Sum_{k>=0} (-1)^k / (k^2)!.
+A371499	declamb	0	0	k -> new Q(1, FA(k*k))	Decimal expansion of Sum_{k>=0} 1/(k^2)!.
+A371500	declamb	0	0	k -> new Q(Z_1(k), FA(k*k -k))	Decimal expansion of Sum_{k>=0} (-1)^k / (k^2 - k)!.
+A371501	declamb	1	0	k -> new Q(1, FA(k*k - k))	Decimal expansion of Sum_{k>=0} 1/(k^2 - k)!.
+A371502	declamb	0	0	k -> new Q(Z_1(k), FA(k*k + k + 1))	Decimal expansion of Sum_{k>=0} (-1)^k / (k^2 + k + 1)!.
+A371503	declamb	0	0	k -> new Q(1, FA(k*k +k + 1))	Decimal expansion of Sum_{k>=0} 1/(k^2 + k + 1)!.
+A371504	declamb	0	0	k -> new Q(Z_1(k), FA(k*k - k + 1))	Decimal expansion of Sum_{k>=0} (-1)^k / (k^2 - k + 1)!.
+A371506	declamb	0	0	k -> new Q(Z_1(k), FA(k*k + 1))	Decimal expansion of Sum_{k>=0} (-1)^k / (k^2 + 1)!.
+A371507	declamb	1	0	k -> new Q(1, FA(k*k + 1))	Decimal expansion of Sum_{k>=0} 1/(k^2 + 1)!.
+A371941	declamb	1	0	k -> new Q(FA(k + 1), FA(2*k + 1))	Decimal expansion of Sum_{k>=0} (k+1)! / (2*k+1)!.
+A372390	declamb	1	0	k -> new Q(1, FA(CR.PHI.*(k).floor()))	Decimal expansion of Sum_{k>=0} 1/(floor(k*phi))!, where phi is the golden ratio.
+A372391	declamb	1	0	k -> new Q(1, FA(CR.PHI.^(2).*(k).floor()))	Decimal expansion of Sum_{k>=0} 1 / floor(k*phi^2)!, where phi is the golden ratio.
+A372392	declamb	1	0	k -> new Q(1, FA(k).+(k))	Decimal expansion of Sum_{k>=0} 1 / (k! + k).
+A372393	declamb	0	0	k -> new Q(Z_1(k), FA(k).+(k))	Decimal expansion of Sum_{k>=0} (-1)^k / (k! + k).
+A388357	declamb	1	1	k -> new Q(1, FA(ZV(k).^(3)))	Decimal expansion of Sum_{k>=1} 1/(k^3)!.
+A396709	holos	1	[0,1,-5,10,-10,5,-1]	2,10,42,170,602,1626,3626,7082	0	0
+---- 2026-08-08 20:16:04
+A111291	count10pe	0	new A033950()	v -> true	1	<= 10^n
+A114106	count10pe	0	new A014613()	v -> true	1	4-almost primes less than or equal to 10^n.	nonn	0..19	nyi	_Robert G. Wilson v_
+A120047	count10pe	0	new A046306()	p -> true	1	6-almost primes less than or equal to 10^n.	nonn,more	0..18	nyi	_Robert G. Wilson v_
+A120048	count10pe	0	new A046308()	p -> true	1	7-almost primes less than or equal to 10^n.	nonn	0..18	nyi	_Robert G. Wilson v_
+A120049	count10pe	0	new A046310()	p -> true	1	8-almost primes less than or equal to 10^n.	nonn	0..18	nyi	_Robert G. Wilson v_
+A120050	count10pe	0	new A046312()	p -> true	1	9-almost primes less than or equal to 10^n.	nonn	0..19	nyi	_Robert G. Wilson v_
+A120051	count10pe	0	new A046314()	p -> true	1	10-almost primes less than or equal to 10^n.	nonn,more	0..19	nyi	_Robert G. Wilson v_
+A140866	count10pe	1	new A005349()	v -> true	1
+A160112	count10pe	0	new A004709()	v -> true	1	nyi Fpto	Number of cubefree integers not exceeding 10^n.	easy,nice,nonn	0..31	nyi
+A282783	count10pe	0	new A282430()	v -> true	1	less than or equal to 10^n
+A330900	count10pe	0	new A066038()	v -> true	1	that do not exceed 10^n
