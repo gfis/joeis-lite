@@ -320,6 +320,8 @@ while (<>) { # read inputfile
             $parm =~ s{LVE\(}          {longValueExact\(}g;
             $parm =~ s{MAX\(}          {Functions.MAX.z\(}g;
             $parm =~ s{MIN\(}          {Functions.MIN.z\(}g;
+            $parm =~ s{MAXl\(}         {Functions.MAX.l\(}g;
+            $parm =~ s{MINl\(}         {Functions.MIN.l\(}g;
             $parm =~ s{MU\(}           {Functions.MOEBIUS.z\(}g;
             $parm =~ s{MUi\(}          {Functions.MOEBIUS.i\(}g;
             $parm =~ s{NPM\(}          {Functions.NEXT_PRIME.z\(}g;
