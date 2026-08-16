@@ -12,7 +12,7 @@ public class $(ASEQNO) extends UpperLeftTriangle implements DirectArray {
   private int mN;
 
   /** Construct the sequence. */
-  public $(ASEQNO) () {
+  public $(ASEQNO)() {
     super($(OFFSET), $(PARM1=minn_mink_crease));
     mN = $(OFFSET) - 1;
   }

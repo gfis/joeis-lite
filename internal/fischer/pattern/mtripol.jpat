@@ -18,7 +18,7 @@ public class $(ASEQNO) extends BaseTriangle implements DirectArray {
   protected static final PolynomialRingField<Z> RING = new PolynomialRingField<>(IntegerField.SINGLETON);
 
   /** Construct the sequence. */
-  public $(ASEQNO) () {
+  public $(ASEQNO)() {
     super($(OFFSET), $(PARM1=minn_mink));
     mN = $(OFFSET) - 1;
   }
