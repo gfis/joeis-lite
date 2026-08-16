@@ -320,6 +320,8 @@ while (<>) { # read inputfile
             $parm =~ s{LVE\(}          {longValueExact\(}g;
             $parm =~ s{MAX\(}          {Functions.MAX.z\(}g;
             $parm =~ s{MIN\(}          {Functions.MIN.z\(}g;
+            $parm =~ s{MAXi\(}         {Functions.MAX.i\(}g;
+            $parm =~ s{MINi\(}         {Functions.MIN.i\(}g;
             $parm =~ s{MAXl\(}         {Functions.MAX.l\(}g;
             $parm =~ s{MINl\(}         {Functions.MIN.l\(}g;
             $parm =~ s{MU\(}           {Functions.MOEBIUS.z\(}g;
@@ -597,6 +599,8 @@ sub write_output {
     $copy =~ s{\$\(OFFSET\)}         {$offset}g;
     $copy =~ s{\$\(PACK\)}           {$package}g;
     $copy =~ s{\.(multiply|divide)\(1\)|\.(add|subtract)\(0\)}{}g;
+    #          1        12  2
+    $copy =~ s{([\?\:\>])(\S)}{$1 $2}g;
     my $package = lc(substr($aseqno, 0, 4));
     # print STDERR "==> $maindir/$package/$aseqno.java ?\n";
     if ($clobber == 1 or (! -r "$maindir/$package/$aseqno.$ext")) { # overwrite or does not yet exist
@@ -662,7 +666,7 @@ sub clean_imports { # remove all temporary imports, keep the ones from the patte
     %imports = ();
     foreach my $key (@permkeys) {
         $imports{$key} = $TYPE_PERM;
-    } # foreach
+    } # foreach 
 } # clean_imports
 #--------------------------------
 sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
@@ -724,6 +728,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WLinearRecurrence}             ) { $imports{"irvine.oeis.recur.LinearRecurrence"}            = $itype; }
     if ($line =~ m{\WLongUtils\.}                  ) { $imports{"irvine.math.LongUtils"}                         = $itype; }
     if ($line =~ m{\WMemoryFactorial}              ) { $imports{"irvine.math.factorial.MemoryFactorial"}         = $itype; }
+    if ($line =~ m{\WMemoryFunction(\w+)}          ) { $imports{"irvine.math.MemoryFunction$1"                 } = $itype; }
     if ($line =~ m{\WMemorySequence}               ) { $imports{"irvine.oeis.memory.MemorySequence"            } = $itype; }
     if ($line =~ m{\WMobiusTransformSequence}      ) { $imports{"irvine.oeis.transform.MobiusTransformSequence"} = $itype; }
     if ($line =~ m{\WMobius[\.\(]}                 ) { $imports{"irvine.math.Mobius"}                            = $itype; }
@@ -800,6 +805,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
                 &&   ($class_name !~ m{\AComputableReals\Z})
                 &&   ($class_name !~ m{\AUnaryCRFunction\Z})
                 &&   ($class_name !~ m{\AFunction\Z})
+                &&   ($class_name !~ m{\AMemoryFunction\Z})
                ) {
                 $imports{"irvine.oeis.$class_name"} = $itype;
             }
