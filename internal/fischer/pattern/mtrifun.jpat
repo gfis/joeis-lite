@@ -9,12 +9,9 @@ import irvine.math.z.Z;
  */
 public class $(ASEQNO) extends BaseTriangle implements DirectArray {
 
-  private int mN;
-
   /** Construct the sequence. */
   public $(ASEQNO)() {
     super($(OFFSET), $(PARM1=minn_mink));
-    mN = $(OFFSET) - 1;
   }
 
   final MemoryFunction$(PARM2=int3)<$(PARM3=z)> mB = new MemoryFunction$(PARM2=int3)<>() {
