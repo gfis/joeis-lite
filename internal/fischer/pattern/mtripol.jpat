@@ -29,6 +29,7 @@ $(PARM5=pseudo_lambda1);
     }
   };
 
+  @Override
   public Z triangleElement(final int n, final int k) {
     return $(PARM6=pseudo_lambda2);
   }
