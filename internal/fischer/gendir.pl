@@ -1,14 +1,15 @@
 #!perl
 
-# turn a sequence into a DirectSequence
+# turn a sequence into a DirectSequence|DirectArray
 # @(#) $Id$ 
+# 2026-08-18: -a = DirectArray
 # 2026-03-07: a(long n)
 # 2024-04-26, Georg Fischer: copied from genman.pl
 #
 #:# Usage:
-#:#   perl gendir.pl [-d debug] [-cp aseqno] [[A]seqno]
-#:#   -cp  copy from joeis/src/irvine/eis/a*/aseqno.java
-#:#   -d   debug mode: 0=non, 1=some, 2=more
+#:#   perl gendir.pl [-d debug] [-cp aseqno] [-a] [[A]seqno]
+#:#   -cp  copy from joeis/src/irvine/oeis/a*/aseqno.java
+#:#   -d   debug mode: 0=none, 1=some, 2=more
 #:# Writes ./manual/aseqno.java and starts uedit64 with it.
 #--------------------------------------------------------
 use strict;
@@ -27,10 +28,13 @@ my $debug     = 0;
 my $aseqno    = "A000000";
 my $joeisdir  = "../../../joeis/src/irvine/oeis";
 my $namesfile = "$basedir/names";
+my $tarclass  = "DirectSequence";
 my @pnames    = ();
 while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
     my $opt = shift(@ARGV);
     if (0) {
+    } elsif ($opt  =~ m{\-a}) {
+        $tarclass  = "triangle.DirectArray";
     } elsif ($opt  =~ m{\-d\Z}) {
         $debug     = shift(@ARGV);
     } elsif ($opt  =~ m{\-c}) { # or -cp
@@ -80,15 +84,18 @@ sub copyseq {
         } elsif ($line =~ m{\Apackage}) {
             $line = "package irvine.oeis.$apack;";
         } elsif ($line =~ m{import *irvine\.oeis\.(Abstract)?Sequence}) {
-            $line .= "\nimport irvine.oeis.DirectSequence;";
+            $line .= "\nimport irvine.oeis.$tarclass;";
         } elsif ($line =~ m{ extends }) {
-            $line =~ s{\{}  {implements DirectSequence \{};
+            $line =~ s{\{}  {implements $tarclass \{};
+            $line =~ s{implements triangle\.}{implements };
             $state = 1;
         } elsif ($state == 1 && ($line =~ m{\A( *\* )$cseqno })) {
             $line = "$1$tarname";
             $state ++;
         } elsif ($line =~ m{\A\}}) {
-            print TAR <<"GFis";
+        	if (0) {
+            } elsif ($tarclass =~ m{Sequence}) {
+                print TAR <<"GFis";
 
   \@Override
   public Z a(final Z n) {
@@ -101,6 +108,16 @@ sub copyseq {
   }
 
 GFis
+            } elsif ($tarclass =~ m{Array}) {
+                print TAR <<"GFis";
+
+  \@Override
+  public Z a(final long n, final long k) {
+    return triangleElement((int) n, (int) k);
+  }
+
+GFis
+            }
         } 
         $line =~ s{$cseqno}{$aseqno}g;
         print TAR "$line\n";

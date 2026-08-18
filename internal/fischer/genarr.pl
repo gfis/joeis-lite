@@ -6,7 +6,7 @@
 #
 #:# Usage:
 #:#   perl genarr.pl [-d debug] [-cp aseqno] [[A]seqno]
-#:#   -cp  copy from joeis/src/irvine/eis/a*/aseqno.java
+#:#   -cp  copy from joeis/src/irvine/oeis/a*/aseqno.java
 #:#   -d   debug mode: 0=none, 1=some, 2=more
 #:# Writes ./manual/aseqno.java and starts uedit64 with it.
 #--------------------------------------------------------
@@ -92,8 +92,8 @@ sub copyseq {
             print TAR <<"GFis";
 
   \@Override
-  public Z a(final int n, final int k) {
-    return Z.valueOf(n);
+  public Z a(final long n, final long k) {
+    return get((int) n, (int) k);
   }
 
 GFis
