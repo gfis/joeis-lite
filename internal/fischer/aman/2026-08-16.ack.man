@@ -1,0 +1,182 @@
+---- 2026-08-16 21:46:06
+
+A033935	parmof2	0	A055740	2
+A055733	parmof2	0	A055740	3
+A080337	arronk	1	A305962	1	mN	2
+A091613	mtrifun	1	1, 1	Int3	Z	final int n, final int l, final int k	() -> ~~          ~~(n == 0) ? ZV(1) : SU(1, n, i ->~~(i == l ? ZV(0) : SU(1, MINi(k, n/i), j -> get(n - i*j, i, k))))	() -> mB.get(n, 0, k).-(mB.get(n, 0, k - 1))
+A091614	trinv	1	A091613
+A091615	triprod	1	A091613	A091613
+A091616	treonk	2	A091613	2	mN	2
+A091617	treonk	3	A091613	3	mN	3
+A091618	treonk	4	A091613	4	mN	4
+A091619	treonk	5	A091613	5	mN	5
+A091620	treonk	6	A091613	6	mN	6
+A126024	rowsum	0	new A281871()
+A138265	lambdan	0	n -> T264909(n, 1)
+A144074	arrlamb	0	0	0	-1	(n, k) -> SU(0, k, i  -> BI(k, i).*(T257740(n, k - i)))
+A179965	holos	0	[0,-8640,3744,-588,40,-1]	5040,47622,521606,6231544,76972416,957913824,11902581120,147689145984	0	0
+A179966	holos	0	[0,-20160,7164,-913,50,-1]	40320,479306,6564318,99133496,1572313392,25415753280,412583686272,6690112284672,108370981896192	0	0
+A238349	mtripol	0	0, 0	Int2	Polynomial<Z>	final int n, final int i	() -> ~~          ~~(n == 0) ? RING.one() : RING.sum(1, n, j -> ~~RING.multiply(get(n - j, i + 1), (i == j ? Polynomial.create(0, 1) : RING.one())))	() -> mB.get(n, 1).coeff(k)
+A238351	lambdan	0	n -> T238349(n, 0)
+A240010	mlamfun	1	0	Int3	Z	final int n, final int i, final int t	() -> ~~          ~~(Math.abs(t) > n) ? Z.ZERO : (n == 0 ? ZV(1) : (i < 1 ? Z.ZERO : get(n, i - 1, t).+(i > n ? ZV(0) : get(n - i, i, t + ((i&1) == 0 ? -1 : 1)))))	() -> mB.get(n, n, -1)
+A240011	mlamfun	2	0	Int3	Z	final int n, final int i, final int t	() -> ~~          ~~(Math.abs(t) > n) ? Z.ZERO : (n == 0 ? ZV(1) : (i < 1 ? Z.ZERO : get(n, i - 1, t).+(i > n ? ZV(0) : get(n - i, i, t + ((i&1) == 0 ? -1 : 1)))))	() -> mB.get(n, n, -2)
+A240012	mlamfun	3	0	Int3	Z	final int n, final int i, final int t	() -> ~~          ~~(Math.abs(t) > n) ? Z.ZERO : (n == 0 ? ZV(1) : (i < 1 ? Z.ZERO : get(n, i - 1, t).+(i > n ? ZV(0) : get(n - i, i, t + ((i&1) == 0 ? -1 : 1)))))	() -> mB.get(n, n, -3)
+A240013	mlamfun	4	0	Int3	Z	final int n, final int i, final int t	() -> ~~          ~~(Math.abs(t) > n) ? Z.ZERO : (n == 0 ? ZV(1) : (i < 1 ? Z.ZERO : get(n, i - 1, t).+(i > n ? ZV(0) : get(n - i, i, t + ((i&1) == 0 ? -1 : 1)))))	() -> mB.get(n, n, -4)
+A240014	mlamfun	5	0	Int3	Z	final int n, final int i, final int t	() -> ~~          ~~(Math.abs(t) > n) ? Z.ZERO : (n == 0 ? ZV(1) : (i < 1 ? Z.ZERO : get(n, i - 1, t).+(i > n ? ZV(0) : get(n - i, i, t + ((i&1) == 0 ? -1 : 1)))))	() -> mB.get(n, n, -5)
+A240015	mlamfun	6	0	Int3	Z	final int n, final int i, final int t	() -> ~~          ~~(Math.abs(t) > n) ? Z.ZERO : (n == 0 ? ZV(1) : (i < 1 ? Z.ZERO : get(n, i - 1, t).+(i > n ? ZV(0) : get(n - i, i, t + ((i&1) == 0 ? -1 : 1)))))	() -> mB.get(n, n, -6)
+A240016	mlamfun	7	0	Int3	Z	final int n, final int i, final int t	() -> ~~          ~~(Math.abs(t) > n) ? Z.ZERO : (n == 0 ? ZV(1) : (i < 1 ? Z.ZERO : get(n, i - 1, t).+(i > n ? ZV(0) : get(n - i, i, t + ((i&1) == 0 ? -1 : 1)))))	() -> mB.get(n, n, -7)
+A240017	mlamfun	8	0	Int3	Z	final int n, final int i, final int t	() -> ~~          ~~(Math.abs(t) > n) ? Z.ZERO : (n == 0 ? ZV(1) : (i < 1 ? Z.ZERO : get(n, i - 1, t).+(i > n ? ZV(0) : get(n - i, i, t + ((i&1) == 0 ? -1 : 1)))))	() -> mB.get(n, n, -8)
+A240018	mlamfun	9	0	Int3	Z	final int n, final int i, final int t	() -> ~~          ~~(Math.abs(t) > n) ? Z.ZERO : (n == 0 ? ZV(1) : (i < 1 ? Z.ZERO : get(n, i - 1, t).+(i > n ? ZV(0) : get(n - i, i, t + ((i&1) == 0 ? -1 : 1)))))	() -> mB.get(n, n, -9)
+A240019	mlamfun	10	0	Int3	Z	final int n, final int i, final int t	() -> ~~          ~~(Math.abs(t) > n) ? Z.ZERO : (n == 0 ? ZV(1) : (i < 1 ? Z.ZERO : get(n, i - 1, t).+(i > n ? ZV(0) : get(n - i, i, t + ((i&1) == 0 ? -1 : 1)))))	() -> mB.get(n, n, -10)
+A240736	lambdan	1	n -> T238349(n, 1)
+A240737	lambdan	3	n -> T238349(n, 2)
+A240738	lambdan	6	n -> T238349(n, 3)
+A240739	lambdan	10	n -> T238349(n, 4)
+A240740	lambdan	15	n -> T238349(n, 5)
+A240741	lambdan	21	n -> T238349(n, 6)
+A240742	lambdan	28	n -> T238349(n, 7)
+A240743	lambdan	36	n -> T238349(n, 8)
+A240744	lambdan	45	n -> T238349(n, 9)
+A240745	lambdan	55	n -> T238349(n, 10)
+A245397	marrfun	0	0, 0, -1	Int3	Z	final int n, final int i, final int k	() -> ~~          ~~(n ==0 || i == 1) ? Z.ONE : SU(0, n, j -> get(n - j, i - 1, k).*(BI(n, j).^(k)))	() -> mB.get(n, n, k)
+A245398	lambdan	0	n -> T245397(n, n)
+A245747	mlamfun	4	2	Int4	Z	final int n, final int i, final int t, final int k	() -> ~~          ~~n == 0 ? ZV(1) : (i < 1 ? ZV(0) : ~~SU(0, MINi(t, n/i), j -> BI(get(i - 1, i - 1, k, k), j).*(get(n - i*j, i - 1, t - j, k))))	() -> mB.get(n - 1, n - 1, mColNo, mColNo).-(mB.get(n - 1, n - 1, mColNo - 1, mColNo - 1))
+A245748	parmof2	7	A245747	3
+A245749	parmof2	11	A245747	4
+A245750	parmof2	15	A245747	5
+A245751	parmof2	20	A245747	6
+A245752	parmof2	25	A245747	7
+A245753	parmof2	30	A245747	8
+A245754	parmof2	36	A245747	9
+A245755	parmof2	42	A245747	10
+A246240	parmof2	0	A055740	5
+A246241	parmof2	0	A055740	6
+A246242	parmof2	0	A055740	7
+A246243	parmof2	0	A055740	8
+A246244	parmof2	0	A055740	9
+A246245	parmof2	0	A055740	10
+A247255	mtripol	1	1, 1	Int2	Polynomial<Z>	final int n, final int i	() -> ~~          ~~(i > n) ? RING.zero() : RING.add(n%i == 0 ? RING.pow(Polynomial.create(0, 1), n/i) : RING.zero(), ~~ RING.sum(0, n/i, j -> RING.multiply(get(n - i*j, i + 1), Polynomial.create(j + 1))))	() -> mB.get(n, 1).coeff(k)
+A252654	lambdan	0	n -> T144074(n, n)
+A257740	mtrifun	0	0, 0	Int2	Z	final int n, final int k	() -> ~~          ~~n == 0 ? ZV(1) : SU(1, n, j -> SD(j, d -> ZV(k).^(d).*(d)).*(get(n - j, k)))./(n)	() -> SU(0, k, i -> mB.get(n, k - i).*(BI(k, i)).*(Z_1(i)))
+A257741	rowsum	0	new A257740()
+A257742	lambdan	0	n -> T257740(2*n, n)
+A261043	lambdan	0	n -> T257740(n, 2)
+A263852	lambdan	0	n -> T264909(n, 2)
+A263853	lambdan	0	n -> T264909(n, 3)
+A263854	lambdan	0	n -> T264909(n, 4)
+A264909	marrfun	0	0, 0, -1	Int4	Z	final int n, final int k, final int i, final int t	() -> ~~          ~~n < 1 ? ZV(1) : SU(0, t+ k, j -> (j == i ? ZV(0) : get(n - 1, k, j, t + (j > i ? 1 : 0))))	() -> mB.get(n - 1, k, 0, 0)
+A264910	lambdan	0	n -> T264909(n, 5)
+A264911	lambdan	0	n -> T264909(n, 6)
+A264912	lambdan	0	n -> T264909(n, 7)
+A264913	lambdan	0	n -> T264909(n, 8)
+A264914	lambdan	0	n -> T264909(n, 9)
+A264915	lambdan	0	n -> T264909(n, 10)
+A264916	lambdan	0	n -> T264909(n, n)	Main diagonal gives
+A268172	lambdan	0	n -> T292085(n, 3)
+A272515	mlamfun	6	3	Int3	Z	final int n, final int i, final int t	() -> ~~          ~~t > i || t*(t + 1)/2 > n || t*(2*i + 1 - t)/2 < n ? ZV(0) : ~~(n == 0 ? ZV(1) : get(n, i - 1, t).+(i > n ? ZV(0) : get(n - i, i - 1, t - 1).*(BI(n, i))))	() -> mB.get(n, n, mColNo)
+A272516	parmof2	10	A272515	4	~~seq(a(n), n=10..40);~~
+A272517	parmof2	15	A272515	5	~~seq(a(n), n=15..40);~~
+A272518	parmof2	21	A272515	6	~~seq(a(n), n=21..40);
+A272519	parmof2	28	A272515	7	~~seq(a(n), n=28..40);~~
+A272520	parmof2	36	A272515	8	~~seq(a(n), n=36..45);
+A272521	parmof2	45	A272515	9	~~seq(a(n), n=45..55);
+A272522	parmof2	55	A272515	10	~~seq(a(n), n=55..65);
+A281706	lambdan	0	n -> T281871(n, 3)
+A281864	lambdan	4	n -> T281871(n, 4)
+A281865	lambdan	5	n -> T281871(n, 5)
+A281866	lambdan	6	n -> T281871(n, 6)
+A281867	lambdan	7	n -> T281871(n, 7)
+A281868	lambdan	8	n -> T281871(n, 8)
+A281869	lambdan	9	n -> T281871(n, 9)
+A281870	lambdan	10	n -> T281871(n, 10)
+A281871	mtripol	0	0, 0	Int2	Polynomial<Z>	final int n, final int s	() -> ~~          ~~(n == 0 ? (Predicates.SQUARE.is(s) ? RING.one() : RING.zero()) : RING.add(get(n - 1, s), RING.shift(get(n - 1, s + n), 1)))	() -> mB.get(n, 0).coeff(k)
+A281872	lambdan	0	n -> T281871(2*n, n)
+A281965	lambdan	0	n -> T281871(n + 2, n),
+A281966	lambdan	0	n -> T281871(n + 3, n)
+A281967	lambdan	0	n -> T281871(n + 4, n)
+A281968	lambdan	0	n -> T281871(n + 5, n)
+A281969	lambdan	0	n -> T281871(n + 6, n)
+A281970	lambdan	0	n -> T281871(n + 7, n)
+A281971	lambdan	0	n -> T281871(n + 8, n)
+A281972	lambdan	0	n -> T281871(n + 9, n)
+A281973	lambdan	0	n -> T281871(n + 10, n)
+A287860	lambdan	0	n -> T287822(2*n, n)
+A287966	lambdan	0	n -> T287847(n, 2)
+A287967	lambdan	0	n -> T287847(n, 3)
+A287968	lambdan	0	n -> T287847(n, 4)
+A287969	lambdan	0	n -> T287847(n, 5)
+A287970	lambdan	0	n -> T287847(n, 6)
+A287971	lambdan	0	n -> T287847(n, 7)
+A287972	lambdan	0	n -> T287847(n, 8)
+A287973	lambdan	0	n -> T287847(n, 9)
+A287974	lambdan	0	n -> T287847(n, 10)
+A288743	lambdan	2	n -> T287822(n, 2)
+A288744	lambdan	3	n -> T287822(n, 3)
+A288745	lambdan	4	n -> T287822(n, 4)
+A288746	lambdan	5	n -> T287822(n, 5)
+A288747	lambdan	6	n -> T287822(n, 6)
+A288748	lambdan	7	n -> T287822(n, 7)
+A288749	lambdan	8	n -> T287822(n, 8)
+A288750	lambdan	9	n -> T287822(n, 9)
+A288751	lambdan	10	n -> T287822(n, 10)
+A292210	lambdan	0	n -> T292085(n, 4)
+A292211	lambdan	0	n -> T292085(n, 5)
+A292212	lambdan	0	n -> T292085(n, 6)
+A292213	lambdan	0	n -> T292085(n, 7)
+A292214	lambdan	0	n -> T292085(n, 8)
+A292215	lambdan	0	n -> T292085(n, 9)
+A292216	lambdan	0	n -> T292085(n, 10)
+A292229	lambdan	3	n -> T292086(n, 3)
+A292230	lambdan	4	n -> T292086(n, 4)
+A292231	lambdan	5	n -> T292086(n, 5)
+A292232	lambdan	6	n -> T292086(n, 6)
+A292233	lambdan	7	n -> T292086(n, 7)
+A292234	lambdan	8	n -> T292086(n, 8)
+A292235	lambdan	9	n -> T292086(n, 9)
+A292236	lambdan	10	n -> T292086(n, 10)
+A292804	marrfun	0	0, 0, -1	Int3	Z	final int n, final int i, final int k	() -> ~~          ~~n == 0 ? ZV(1) : (i < 1 ? ZV(0) : SU(0, n/i, j -> get(n - i*j, i - 1, k).*(BI(ZV(k).^(i), j))))	() -> mB.get(n, n, k)
+A292805	lambdan	0	n -> T292804(n, n)
+A320213	lambdan	3	n -> T257740(n, 3)
+A320214	lambdan	4	n -> T257740(n, 4)
+A320215	lambdan	5	n -> T257740(n, 5)
+A320216	lambdan	6	n -> T257740(n, 6)
+A320217	lambdan	7	n -> T257740(n, 7)
+A320218	lambdan	8	n -> T257740(n, 8)
+A320219	lambdan	9	n -> T257740(n, 9)
+A320220	lambdan	10	n -> T257740(n, 10)
+A322875	lambdan	2	n -> T287215(n, 2)
+A322876	lambdan	3	n -> T287215(n, 3)
+A322877	lambdan	4	n -> T287215(n, 4)
+A322878	lambdan	5	n -> T287215(n, 5)
+A322879	lambdan	0	n -> T287215(n, 6) 
+A322880	lambdan	7	n -> T287215(n, 7)
+A322881	lambdan	8	n -> T287215(n, 8)
+A322882	lambdan	9	n -> T287215(n, 9)
+A322883	lambdan	10	n -> T287215(n, 10)
+A322884	lambdan	0	n -> T287215(2*n, n)
+A341423	mlamfun	2	4	Int2	Z	final int n, final int k	() -> ~~          ~~k == 0 ? ZV(1) : (n == 0 ? ZV(0) : SU(1, Functions.SQRT.i(n), j -> (j*j > n ? ZV(0) : get(n - j*j, k - 1))))	() -> mB.get(n*n, mColNo)
+A341424	parmof2	3	A341423	5	~~~~b:= proc(n, k) option remember; `if`(k=0, 1, `if`(n=0, 0,~~add((s->`if`(s>n, 0, b(n-s, k-1)))(j^2), j=1..isqrt(n))))~~end:~~a:= n-> b(n^2, 5):~~seq(a(n), n=3..36); # _Alois P. Heinz_, Feb 11 2021~~
+A341425	parmof2	3	A341423	6	~~~~b:= proc(n, k) option remember; `if`(k=0, 1, `if`(n=0, 0,~~add((s->`if`(s>n, 0, b(n-s, k-1)))(j^2), j=1..isqrt(n))))~~end:~~a:= n-> b(n^2, 6):~~seq(a(n), n=3..33); # _Alois P. Heinz_, Feb 11 2021~~
+A341426	parmof2	3	A341423	7	~~~~b:= proc(n, k) option remember; `if`(k=0, 1, `if`(n=0, 0,~~add((s->`if`(s>n, 0, b(n-s, k-1)))(j^2), j=1..isqrt(n))))~~end:~~a:= n-> b(n^2, 7):~~seq(a(n), n=3..30); # _Alois P. Heinz_, Feb 11 2021~~
+A341427	parmof2	3	A341423	8	~~~~b:= proc(n, k) option remember; `if`(k=0, 1, `if`(n=0, 0,~~add((s->`if`(s>n, 0, b(n-s, k-1)))(j^2), j=1..isqrt(n))))~~end:~~a:= n-> b(n^2, 8):~~seq(a(n), n=3..28); # _Alois P. Heinz_, Feb 11 2021~~
+A341428	parmof2	3	A341423	9	~~~~b:= proc(n, k) option remember; `if`(k=0, 1, `if`(n=0, 0,~~add((s->`if`(s>n, 0, b(n-s, k-1)))(j^2), j=1..isqrt(n))))~~end:~~a:= n-> b(n^2, 9):~~seq(a(n), n=3..27); # _Alois P. Heinz_, Feb 11 2021~~
+A341429	parmof2	4	A341423	10	~~~~b:= proc(n, k) option remember; `if`(k=0, 1, `if`(n=0, 0,~~add((s->`if`(s>n, 0, b(n-s, k-1)))(j^2), j=1..isqrt(n))))~~end:~~a:= n-> b(n^2, 10):~~seq(a(n), n=4..27); # _Alois P. Heinz_, Feb 11 2021~~
+A394954	parmof4	0	A082182	45	4	49	Numbers k such that (45^k + 4^k)/49 is prime.   non
+A397664	parmof4	0	A082182	21	5	26	Numbers k such that (21^k + 5^k)/26 is prime. 
+A398653	holos	0	[0,-1,4,-6,3,3,-6,3,3,-6,4,-1]	0,1,4,10,20,33,51,74,104,140	0	0
+A398676	filnum	1	1	k -> SIGMA(3*k + 2).compareTo(SIGMA(3*k)) > 0	Numbers k such that sigma(3*k+2) > sigma(3*k)
+A398677	filnum	1	0	k -> SIGMA(4*k + 1).compareTo(SIGMA(4*k)) > 0	Numbers k such that sigma(4*k+1) > sigma(4*k)
+A398696	holos	0	[0,-11,1,11,-1]	0,8,90	0	0
+A398697	holos	0	[0,-11,1,11,-1]	0,2,30	0	0
+A398698	rambdan	1	n -> RU(1, n, k -> new Q(SIGMA(n/k), n/k))	numerator(Sum_{k=1..n} sigma(floor(n/k))/floor(n/k)), where sigma(n) = F000203(n) is the sum of divisors of n.	nonn,frac,easy,new	1..10000	nyi	_Amiram Eldar_
+A398699	rambdad	1	A398698	denominator(Sum_{k=1..n} sigma(floor(n/k))/floor(n/k)), where sigma(n) = F000203(n) is the sum of divisors of n.	nonn,frac,easy,new	1..10000	nyi	_Amiram Eldar_
+A398701	rambdan	1	n -> RU(1, n, k -> new Q(F001615(n/k), n/k))	numerator(Sum_{k=1..n} psi(floor(n/k))/floor(n/k)), where psi the Dedekind psi function (F001615).	nonn,frac,easy,new	1..10000	nyi	_Amiram Eldar_
+A398702	rambdad	1	A398701	denominator(Sum_{k=1..n} psi(floor(n/k))/floor(n/k)), where psi the Dedekind psi function (F001615).	nonn,frac,easy,new	1..10000	nyi	_Amiram Eldar_
+A398704	rambdan	1	n -> RU(1, n, k -> new Q(E206369(n/k), n/k))	numerator(Sum_{k=1..n} beta(floor(n/k))/floor(n/k)), where beta(n) = E206369(n) is the alternating sum of divisors of n.	nonn,frac,easy,new	1..10000	nyi	_Amiram Eldar_
+A398705	rambdad	1	A398704	denominator(Sum_{k=1..n} beta(floor(n/k))/floor(n/k)), where beta(n) = E206369(n) is the alternating sum of divisors of n.	nonn,frac,easy,new	1..10000	nyi	_Amiram Eldar_
+A398724	sintrif	0	(term, n) -> term.abs()	""	new A131795()
+A398791	filnum	0	0	k -> PP(DF(k).+(k + 1))	Numbers k such that k!! + k + 1 is prime
+A398803	parmof4	0	A082182	34	5	39	Numbers k such that (34^k + 5^k)/39 is prime.	nonn,hard,more,new	1..6	nyi	_Robert Price_
+A398818	filnum	1	1	k -> Predicates.CUBE.is(D057521(k))		Numbers whose powerful part (D057521) is a cube.	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+A398819	filnum	1	1	k -> Predicates.CUBE.is(D057521(k)) && Predicates.CUBE.is(D057521(k + 1))		Numbers k such that the powerful parts (D057521) of both k and k+1 are cubes.	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+A398914	holos	0	[[0],[0,-4,-10,-4],[-1,-1,1,1]]	0,9	0	0
