@@ -1,8 +1,13 @@
----- 2026-08-19 17:23:06
+---- 2026-08-19 21:52:12
+A093151	sintrif	1	(term, n) -> ZV(25).*(ZV(10).^(n-2)).-(1).-(term)	"1,13"	new A091098()	Forn>1,a(n)=25*10^(n-2)-1-J091098(n)	_	_	_
+A093152	sintrif	1	(term, n) -> ZV(25).*(ZV(10).^(n-2)).-(term)	"0,12"	new A091099()	Forn>1,a(n)=25*10^(n-2)-J091099(n)	_	_	_
 A096446	dead	1	A000003	erro	NotYetImplemented	Erroneous version of A000003.					Erroneous version of A000003.
+A097899	lambdan	0	n -> F000142(n).-(E228614(n))	"0"		a(n)=F000142(n)-E228614(n)	_	_	_
 A102421	filter	0	new A337349()	(k, v) -> ((k & 1) == 1)	\d+)*n+(\d+))	2,1	J
 A104082	filter	0	new A104080()	(k, v) -> ((k & 1) == 0)	2
 A104883	dead	1	A082468	dupl	NotYetImplemented	Duplicate of A082468.					Duplicate of A082468.
+A105937	marrfun	0	0, 0, 1	Int2	Z	final int n, final int k	() -> ~~          ~~(k == 0) ? ZV(1) : (k == 1 ? ZV(n) : (get(n + 1, k - 1).*(n - k + 1).-(get(n + 2, k - 2).*(k - 1).*(n + 1))))	() -> mB.get(n, k)
+A108227	sintrif	1	(term, n) -> term.-(n).+(1)	"3,5"	new A007684()	a(n)=J007684(n)-n+1,forn>1	_	_	_
 A111628	dead	1	A111620	dupl	NotYetImplemented	Duplicate of A111620.					Duplicate of A111620.
 A111690	dead	1		leas	NotYetImplemented	Least integer multiple of 1/n, truncated to n digits after decim					Least integer multiple of 1/n, truncated to n digits after decimal.
 A111860	dead	1	A100871	dupl	NotYetImplemented	Duplicate of A100871.					Duplicate of A100871.
@@ -10,23 +15,47 @@ A113830	dead	2	A396962	erro	NotYetImplemented	Erroneous version of A396962.					
 A113831	dead	2	A396963	erro	NotYetImplemented	Erroneous version of A396963.					Erroneous version of A396963.
 A120229	lambdan	1	n -> T059897(n, 3)
 A120230	lambdan	1	n -> T059897(n, 4)
+A122225	multraf	3	(self, n) -> (self.s(0).-(self.s(1)))./(4)	"1,6"	new A085582(), new A002415()	a(n)=(J085582(n)-J002415(n))/4	_	_	_
 A126085	lambdan	1	n -> T034781(n, 9)	Column h=9 of A034781.
 A126659	filter	2	new A084742()	(k, v) -> ((k & 1) == 1)	\d+)n-(\d+))	2,1	J
+A126962	mlamfun	0	0	Int2	Z	final int n, final int k	() -> ~~          ~~(k == 0) ? ZV(1) : (k == 1 ? ZV(n) : (get(n + 1, k - 1).*(n - k + 1).-(get(n + 2, k - 2).*(k - 1).*(n + 1))))	() -> mB.get(1, n)
+A127067	mlamfun	0	0	Int2	Z	final int n, final int k	() -> ~~          ~~(k == 0) ? ZV(1) : (k == 1 ? ZV(n) : (get(n + 1, k - 1).*(n - k + 1).-(get(n + 2, k - 2).*(k - 1).*(n + 1))))	() -> mB.get(2, n)
+A127068	mlamfun	0	0	Int2	Z	final int n, final int k	() -> ~~          ~~(k == 0) ? ZV(1) : (k == 1 ? ZV(n) : (get(n + 1, k - 1).*(n - k + 1).-(get(n + 2, k - 2).*(k - 1).*(n + 1))))	() -> mB.get(3, n)
+A127070	mlamfun	0	0	Int2	Z	final int n, final int k	() -> ~~          ~~(k == 0) ? ZV(1) : (k == 1 ? ZV(n) : (get(n + 1, k - 1).*(n - k + 1).-(get(n + 2, k - 2).*(k - 1).*(n + 1))))	() -> mB.get(4, n)
 A128152	lambdan	0	n -> RU(0, n, k -> new Q(1, BI(n, k).^(4))).num()	numerator(Sum_{k=(\d+),n}(\d+)/binomial(n,k)^(\d+))	0,1,4
+A128695	multraf	0	(self, n) -> self.s(0).+(self.s(1))	"1,1"	new A091616(), new A003242()	Forn>=2,a(n)=J091616(n)+J003242(n)	_	_	_
 A129758	sintrif	3	(term, n) -> PM(n).-(term)	""	new A078611()
 A133710	lambdan	1	n -> T133709(n, 3)
 A133711	lambdan	1	n -> T133709(n, 4)
 A133712	lambdan	1	n -> T133709(n, 5)
+A142349	filter	1	new MultiTransformSequence(1, (self, n) -> { final Q fr = new Q(ZV(n), self.s(0).-(self.s(1)))./(4); return fr.isInteger() ? fr.num() : ZV(0); }, "", new A002808(), new A141468())	PRIME	isprime(p)
+A142350	filter	1	new MultiTransformSequence(1, (self, n) -> { final Q fr = new Q(ZV(n), self.s(0).-(self.s(1)))./(4); return fr.isInteger() ? fr.num() : ZV(0); }, "", new A002808(), new A141468())	v -> !v.isZero() && !PP(v)	not isprime(p)
+A142351	filter	1	new MultiTransformSequence(1, (self, n) -> { final Q fr = new Q(ZV(n), self.s(0).-(self.s(1)))./(3); return fr.isInteger() ? fr.num() : ZV(0); }, "", new A002808(), new A141468())	PRIME	isprime(p) ~
+A142352	filter	0	new MultiTransformSequence(1, (self, n) -> { final Q fr = new Q(ZV(n), self.s(0).-(self.s(1)))./(2); return fr.isInteger() ? fr.num() : ZV(0); }, "", new A002808(), new A141468())	PRIME	     isprime(p) 
+A142353	filter	1	new MultiTransformSequence(1, (self, n) -> { final Q fr = new Q(ZV(n), self.s(0).-(self.s(1)))     ; return fr.isInteger() ? fr.num() : ZV(0); }, "", new A002808(), new A141468())	PRIME	isprime(p)
 A145512	lambdan	0	n -> T145515(n, 9)	,
 A145513	lambdan	0	n -> T145515(n, 10)
 A145514	lambdan	0	n -> T145515(n, n)	.
 A151922	filter	0	new A079316()	(k, v) -> ((k & 1) == 0)	2
+A152953	sintrif	1	(term, n) -> term.*(term.+(1))./(2)	"6,28"	new A136007()	a(n)=J136007(n)*(J136007(n)+1)/2	_	_	_
+A152961	sintrif	0	(term, n) -> D000523(term.+(1))	"2,3"	new A136007()	a(n)=D000523(J136007(n)+1)	_	_	_
+A157183	filter	1	new A028883()	p -> Functions.NEXT_PRIME.z(p).-(p).equals(ZV(8))	, p=m^2-7, such that following prime is m^2+1.
+A163776	sintrif	1	(term, n) -> ZV(2).*(term)	"4,6"	new A163781()	a(n)=2*J163781(n)	_	_	_
+A165959	multraf	1	(self, n) -> ZV(2).*(self.s(0)).-(self.s(1))	"2,3"	new A168421(), new A104272()	a(n)=2*J168421(n)-J104272(n)	_	_	_
+A168140	multraf	0	(self, n) -> self.s(0).+(self.s(1))	"2,3"	new A085737(), new A085738()	a(n)=J085737(n)+J085738(n)	_	_	_
+A176896	sintrif	1	(term, n) -> ZV(2).*(term).+(1)	"9,21"	new A111153()	a(n)=2*J111153(n)+1	_	_	_
+A179196	sintrif	1	(term, n) -> F000720(term).+(n).-(1)	"1,5"	new A168421()	a(n)=F000720(J168421(n))+n-1	_	_	_
+A179803	sintrif	1	(term, n) -> term.^(2)	"1,25"	new A115761()	a(n)=J115761(n)^2	_	_	_
 A181893	lambdan	1	n -> SU(1, n, k -> E138196(k))
 A192435	lambdan	1	n -> T022818(n, n)
 A195736	lambdan	1	n -> E082157(n - 1).*(n)	n*Annn(n+(\d+))	1	E082157
 A198085	lambdan	0	n -> SU(1, n, k -> BI(n, k).*(E048143(k)))
 A199331	lambdan	1	n -> SU(1, n - 1, k -> D064911(k).*(D064911(n - k)))	*c(n-k),wherec=Annn	1,1	D064911
 A201550	lambdan	0	n -> T077042(13, n)
+A215562	lambdan	0	n -> T215561(4, n)
+A215570	lambdan	0	n -> T215561(5, n)
+A215571	lambdan	0	n -> T215561(6, n)
+A215593	lambdan	0	n -> T215561(7, n)
 A222138	lambdan	1	n -> T222144(n, 2)
 A222139	lambdan	1	n -> T222144(n, 3)
 A222140	lambdan	1	n -> T222144(n, 4)
@@ -36,10 +65,12 @@ A222143	lambdan	0	n -> T222144(n, 7)
 A222276	lambdan	1	n -> T222281(n, 3)
 A222277	lambdan	1	n -> T222281(n, 4)
 A222278	lambdan	1	n -> T222281(n, 5)
+A222279	lambdan	0	n -> T222281(n, 6)	
 A222280	lambdan	0	n -> T222281(n, 7)	
 A222335	lambdan	1	n -> T222340(n, 2)
 A222336	lambdan	1	n -> T222340(n, 3)
 A222337	lambdan	1	n -> T222340(n, 4)
+A222338	lambdan	0	n -> T222340(n, 5)	
 A222339	lambdan	0	n -> T222340(n, 6)	
 A225425	dead	1	A216370	dupl	NotYetImplemented	Duplicate of A216370.					Duplicate of A216370.
 A225779	lambdan	0	n -> T077042(12, n)
@@ -54,6 +85,10 @@ A242657	lambdan	5	n -> T008302(n, 8)
 A245068	lambdan	11	n -> T034781(n, 10)	Column h=10 of A034781.
 A245102	lambdan	0	n -> T034781(2*n, n)	a(n) = A034781(2n,n).
 A245103	lambdin	0	n -> T034781(2*n + 1, n)	1	a(n) = A034781(2n+1,n).
+A247417	lambdan	2	n -> T304942(n, 2)
+A247596	lambdan	3	n -> T304942(n, 3)
+A247597	lambdan	4	n -> T304942(n, 4)
+A247598	lambdan	5	n -> T304942(n, 5)
 A253553	lambdan	1	n -> { final FactorSequence fs = Jaguar.factor(n); final Z lp = fs.largestPrimeFactor(); final int e = fs.getExponent(lp); return n <= 2 ? ZV(1) : ZV(n).divide(lp).multiply(e > 1 ? ZV(1) : Functions.PREV_PRIME.z(lp)); }	If the exponent of the largest prime dividing n is larger than one, subtract one from that exponent. Otherwise, shift that "lonely largest prime" one step towards smaller primes.
 A258466	lambdan	0	n -> SU(0, n, k -> H256130(n, k))
 A258498	lambdan	0	n -> SU(0, n, k -> H256117(n, k))
@@ -77,21 +112,22 @@ A269625	dead	1	A118605	erro	NotYetImplemented	Erroneous version of A118605.					
 A275578	filter	0	new A006571()	(k, v) -> ((k & 1) == 1)	\d+)*n+(\d+))	2,1	J
 A278464	lambdan	0	n -> SU(0, n, k -> H256193(n, k).*(k))	0	H256193
 A281087	filter	1	new A073340()	(k, v) -> ((k & 1) == 1)	\d+)n-(\d+))	2,1	J
-A283478	lambdin	1	n -> E097248(E108951(n))	1
+A291589	lambdan	1	n -> T060244(n, 4)
+A291590	lambdan	1	n -> T060244(n, 5)
+A291596	lambdan	1	n -> T060244(n, 6)
 A299777	sintrif	1	(term, n) -> D071090(term)	"1"	new A071562()
+A305414	filtpos	0	0	new A305412()	PRIME	.
 A307150	lambdan	1	n -> T059897(n, 6)
 A307151	lambdan	1	n -> T059897(n, 5)
 A307266	lambdan	1	n -> T059897(n, 8)
 A307267	lambdan	1	n -> T059897(n, 24)
 A324476	dead	1	A070214	dupl	NotYetImplemented	Duplicate of A070214.					Duplicate of A070214.
 A329021	filter	0	new A077045()	(k, v) -> ((k & 1) == 0)	2
-A329038	lambdin	0	n -> E246277(F276086(n))	0
 A329049	arrlamb	0	0	0	-1	(k, n) -> PM(n + 1).pow(Z2(k))
 A329050	arrlamb	0	0	0	-1	(n, k) -> PM(n + 1).pow(Z2(k))	Square array A(n,k) = prime(n+1)^(2^k), r
 A329332	arrlamb	0	0	0	-1	(n, k) -> D019565(n).^(k)
-A331292	lambdin	1	n -> D007949(E246277(E324886(n)))	0
+A335361	filter	0	new A335233()	PRIME	.
 A336124	lambdan	1	n -> D122111(n).modZ(4)
-A342920	lambdin	1	n -> E342002(E108951(n))	1
 A350957	filter	1	new A282432()	(k, v) -> ((k & 1) == 0)	2
 A350959	filter	0	new A109925()	(k, v) -> ((k & 1) == 1)	\d+)*n+(\d+))	2,1	J
 A356219	dead	1	A001952	erro	NotYetImplemented	Erroneous version of: Intersection of A001952 and A003151.					Erroneous version of: Intersection of A001952 and A003151.
@@ -100,59 +136,6 @@ A369224	lambdan	1	n -> SU(1, n, k -> D064911(k).*(n % k == 0 ? 0 : 1))	ceiling(n
 A369953	filter	0	new A067179().prepend(0)	(k, v) -> (k % 4 == 0)	4
 A373486	lambdan	1	n -> IV[n == 1 || E373148(n).isZero()]	,where[]istheIversonbracket	1,0	E373148
 A377572	lambdan	0	n -> SU(0, n, k -> H281871(n, k).*(k))	0	H281871
-A377868	lambdin	1	n -> D359550(F276085(n))	0
 A383055	rambdan	1	n -> RU(1, n, k -> new Q(1, F034444(k)))	numerator(Sum_{k=(\d+),n}(\d+)/Annn(k))	1,1	F034444
 A383056	rambdad	1	A383055	ominator(Sum_{k=(\d+),n}(\d+)/Annn(k))	1,1	F034444
 A395043	lambdan	1	n -> IV[n > 1 && E395042(n).compareTo(F006530(n)) > 0]	Annn(n)>Annn(n)],where[]istheIversonbracket	1	E395042,F006530
----- 2026-08-19 17:39:56
----- 2026-08-19 17:52:20
-A291589	lambdan	1	n -> T060244(n, 4)
-A291590	lambdan	1	n -> T060244(n, 5)
-A291596	lambdan	1	n -> T060244(n, 6)
-A222279	lambdan	0	n -> T222281(n, 6)	
-A222338	lambdan	0	n -> T222340(n, 5)	
-A335361	filter	0	new A335233()	PRIME	.
-A305414	filtpos	0	0	new A305412()	PRIME	.
----- 2026-08-19 18:20:55
-A157183	filter	1	new A028883()	p -> Functions.NEXT_PRIME.z(p).-(p).equals(ZV(8))	, p=m^2-7, such that following prime is m^2+1.
----- 2026-08-19 18:24:50
-A093151	sintrif	1	(term, n) -> ZV(25).*(ZV(10).^(n-2)).-(1).-(term)	"1,13"	new A091098()	Forn>1,a(n)=25*10^(n-2)-1-J091098(n)	_	_	_
-A093152	sintrif	1	(term, n) -> ZV(25).*(ZV(10).^(n-2)).-(term)	"0,12"	new A091099()	Forn>1,a(n)=25*10^(n-2)-J091099(n)	_	_	_
-A097899	lambdan	0	n -> F000142(n).-(E228614(n))	"0"		a(n)=F000142(n)-E228614(n)	_	_	_
-A108227	sintrif	1	(term, n) -> term.-(n).+(1)	"3,5"	new A007684()	a(n)=J007684(n)-n+1,forn>1	_	_	_
-A128695	multraf	0	(self, n) -> self.s(0).+(self.s(1))	"1,1"	new A091616(), new A003242()	Forn>=2,a(n)=J091616(n)+J003242(n)	_	_	_
-A152961	sintrif	0	(term, n) -> D000523(term.+(1))	"2,3"	new A136007()	a(n)=D000523(J136007(n)+1)	_	_	_
----- 2026-08-19 18:48:05
-A122225	multraf	3	(self, n) -> (self.s(0).-(self.s(1)))./(4)	"1,6"	new A085582(), new A002415()	a(n)=(J085582(n)-J002415(n))/4	_	_	_
-A152953	sintrif	1	(term, n) -> term.*(term.+(1))./(2)	"6,28"	new A136007()	a(n)=J136007(n)*(J136007(n)+1)/2	_	_	_
-A163776	sintrif	1	(term, n) -> ZV(2).*(term)	"4,6"	new A163781()	a(n)=2*J163781(n)	_	_	_
-A165959	multraf	1	(self, n) -> ZV(2).*(self.s(0)).-(self.s(1))	"2,3"	new A168421(), new A104272()	a(n)=2*J168421(n)-J104272(n)	_	_	_
-A168140	multraf	0	(self, n) -> self.s(0).+(self.s(1))	"2,3"	new A085737(), new A085738()	a(n)=J085737(n)+J085738(n)	_	_	_
-A176896	sintrif	1	(term, n) -> ZV(2).*(term).+(1)	"9,21"	new A111153()	a(n)=2*J111153(n)+1	_	_	_
-A179196	sintrif	1	(term, n) -> F000720(term).+(n).-(1)	"1,5"	new A168421()	a(n)=F000720(J168421(n))+n-1	_	_	_
-A179803	sintrif	1	(term, n) -> term.^(2)	"1,25"	new A115761()	a(n)=J115761(n)^2	_	_	_
----- 2026-08-19 19:29:41
-A247417	lambdan	2	n -> T304942(n, 2)
-A247596	lambdan	3	n -> T304942(n, 3)
-A247597	lambdan	4	n -> T304942(n, 4)
-A247598	lambdan	5	n -> T304942(n, 5)
----- 2026-08-19 20:59:30
-A215562	lambdan	0	n -> T215561(4, n)
-A215570	lambdan	0	n -> T215561(5, n)
-A215571	lambdan	0	n -> T215561(6, n)
-A215593	lambdan	0	n -> T215561(7, n)
----- 2026-08-19 21:14:50
-A142349	filter	1	new MultiTransformSequence(1, (self, n) -> { final Q fr = new Q(ZV(n), self.s(0).-(self.s(1)))./(4); return fr.isInteger() ? fr.num() : ZV(0); }, "", new A002808(), new A141468())	PRIME	isprime(p)
-A142351	filter	1	new MultiTransformSequence(1, (self, n) -> { final Q fr = new Q(ZV(n), self.s(0).-(self.s(1)))./(3); return fr.isInteger() ? fr.num() : ZV(0); }, "", new A002808(), new A141468())	PRIME	isprime(p) ~
-A142353	filter	1	new MultiTransformSequence(1, (self, n) -> { final Q fr = new Q(ZV(n), self.s(0).-(self.s(1)))     ; return fr.isInteger() ? fr.num() : ZV(0); }, "", new A002808(), new A141468())	PRIME	isprime(p)
-A142352	filter	0	new MultiTransformSequence(1, (self, n) -> { final Q fr = new Q(ZV(n), self.s(0).-(self.s(1)))./(2); return fr.isInteger() ? fr.num() : ZV(0); }, "", new A002808(), new A141468())	PRIME	     isprime(p) 
----- 2026-08-19 21:18:57
-A142350	filter	1	new MultiTransformSequence(1, (self, n) -> { final Q fr = new Q(ZV(n), self.s(0).-(self.s(1)))./(4); return fr.isInteger() ? fr.num() : ZV(0); }, "", new A002808(), new A141468())	v -> !v.isZero() && !PP(v)	not isprime(p)
----- 2026-08-19 21:34:10
----- 2026-08-19 21:42:28
-A126962	mlamfun	0	0	Int2	Z	final int n, final int k	() -> ~~          ~~(k == 0) ? ZV(1) : (k == 1 ? ZV(n) : (get(n + 1, k - 1).*(n - k + 1).-(get(n + 2, k - 2).*(k - 1).*(n + 1))))	() -> mB.get(1, n)
-A127067	mlamfun	0	0	Int2	Z	final int n, final int k	() -> ~~          ~~(k == 0) ? ZV(1) : (k == 1 ? ZV(n) : (get(n + 1, k - 1).*(n - k + 1).-(get(n + 2, k - 2).*(k - 1).*(n + 1))))	() -> mB.get(2, n)
-A127068	mlamfun	0	0	Int2	Z	final int n, final int k	() -> ~~          ~~(k == 0) ? ZV(1) : (k == 1 ? ZV(n) : (get(n + 1, k - 1).*(n - k + 1).-(get(n + 2, k - 2).*(k - 1).*(n + 1))))	() -> mB.get(3, n)
-A127070	mlamfun	0	0	Int2	Z	final int n, final int k	() -> ~~          ~~(k == 0) ? ZV(1) : (k == 1 ? ZV(n) : (get(n + 1, k - 1).*(n - k + 1).-(get(n + 2, k - 2).*(k - 1).*(n + 1))))	() -> mB.get(4, n)
----- 2026-08-19 21:43:58
-A105937	marrfun	0	0, 0, 1	Int2	Z	final int n, final int k	() -> ~~          ~~(k == 0) ? ZV(1) : (k == 1 ? ZV(n) : (get(n + 1, k - 1).*(n - k + 1).-(get(n + 2, k - 2).*(k - 1).*(n + 1))))	() -> mB.get(n, k)
