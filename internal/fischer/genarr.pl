@@ -93,7 +93,7 @@ sub copyseq {
 
   \@Override
   public Z a(final long n, final long k) {
-    return get((int) n, (int) k);
+    return t((int) n, (int) k);
   }
 
 GFis

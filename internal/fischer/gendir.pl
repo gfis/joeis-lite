@@ -113,7 +113,7 @@ GFis
 
   \@Override
   public Z a(final long n, final long k) {
-    return triangleElement((int) n, (int) k);
+    return t((int) n, (int) k);
   }
 
 GFis
