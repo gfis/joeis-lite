@@ -264,7 +264,7 @@ update:
 	cp -v     ../../../joeis/src/irvine/oeis/EulerTransform.java      ../../src/irvine/oeis || :
 #	cd ../.. ; find src | xargs -l -i{} cp -pv ../../gits/joeis/{} {}
 count:
-	find ../../src -inamrobot3e "A??????.java" | wc -l
+	find ../../src -iname "A??????.java" | wc -l
 list:
 	find ../../src -iname "A??????.java" -ls
 #----

@@ -7,9 +7,10 @@
 # 2023-07-11, Georg Fischer
 #
 #:# Usage:
-#:#   perl queue.pl [-d debug] [-s srcdir] -p listfile > outfile
+#:#   perl queue.pl [-d debug] [-s srcdir] [-y] -p listfile > outfile
 #:#   perl queue.pl [-d debug] {-p|-u[f] infile} > outfile
 #:#       -s  main source directory qualifier: joeis (default) or joeis-lite
+#:#       -y  insert crossrefs from 'y' command
 #:#       -uf force update
 #:#       listfile has tsv fields aseqno, p1, p2, p3 ...
 #--------------------------------------------------------
@@ -22,11 +23,12 @@ if (0 && scalar(@ARGV) == 0) {
     print `grep -E "^#:#" $0 | cut -b3-`;
     exit;
 }
-my $mode = "p"; # pack
-my $debug = 0;
+my $mode      = "p"; # pack
+my $debug     = 0;
 my $separator = "#!queue";
-my $force = 0;
-my $main_src = "joeis";
+my $force     = 0;
+my $main_src  = "joeis";
+my $yref      = 0; # no xrefs
 while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
     my $opt = shift(@ARGV);
     if (0) {
@@ -39,6 +41,8 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
     } elsif ($opt  =~ m{u}) {
         $mode      =   "u"; # unpack
         $force = ($opt =~ m{f}) ? 1 : 0;
+    } elsif ($opt  =~ m{y}) {
+    	$yref = 1;
     } else {
         die "invalid option \"$opt\"\n";
     }
@@ -106,6 +110,12 @@ sub pack1 {
         print STDERR "# +$pack_count: write $aseqno\n";
     }
     print "#----------------------------------------------------------------\n";
+    if ($yref) { # insert crossreferences
+        print join("\n", map {
+                "#$_"
+            } split(/\n/, `y $aseqno`));
+        print "\n";
+    } # with crossreferences
     my $parms = join("\t", @rest);
     $parms =~ s{(computed\:)}{\n\#\t\t\t\t$1};
     print join("\t", $separator, $aseqno, $parms) . "\n";

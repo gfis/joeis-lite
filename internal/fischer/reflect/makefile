@@ -55,7 +55,30 @@ absref1: # MODE= LIST= ; run one reflection for MODE and sequences in LIST
 	| cut -f3 $(MODE).tmp | sort | uniq -c | sort -n \
 	>        $(MODE).txt
 	tail -n64 $(MODE).txt
-#----
+#========
+aph_direct: # try to insert DirectArray into jOEIS programs derived from APH
+	perl queue.pl -p $(COMMON)/../contrib/aph/aph_joeis.tmp \
+	>        $@.pack
+	e        $@.pack 
+aph_direct1:
+	grep -vP "import|final DirectArray" $(COMMON)/../contrib/aph/remember.raw | sort > $@.tmp
+	# delete the implemented ones manually, -> $@.man
+aph_direct2: # merge with the ones from grep "Alois", and pack all
+	cat aph_direct1.man | perl -ne 'm{\/(A\d+)\.java}; print "$$1\n";' > x.tmp
+	sort x.tmp $(COMMON)/../contrib/aph/aph_joeis.tmp | uniq \
+	>        $@.list
+aph_direct3: # restrict the list to "tabl|tabf"
+	cd .. ; make seq LIST=reflect/aph_direct2.list
+	$(DBAT) "SELECT aseqno FROM seq WHERE aseqno IN \
+	    (SELECT aseqno FROM asinfo WHERE keyword LIKE '%tab%') \
+	    ORDER BY 1;" | tr -d "\r" > $@.list
+	head -n4 $@.list
+	wc -l    $@.list
+aph_direct4:
+	perl queue.pl -y -p aph_direct3.list \
+	>        $@.pack
+	e        $@.pack 
+#--------
 dead_joeis: # detect DeadSequence consistency
 	# not dead in OEIS and     dead in jOEIS
 	$(DBAT) -x "SELECT i.aseqno, 'dead', i.offset1, i.keyword, j.superclass \
@@ -559,6 +582,7 @@ offin23a:
 	| perl patch_queue.pl -m $@ \
 	>        $@.pack
 	uedit64  $@.pack
+	
 #--------
 hasoc22a:
 	$(DBAT) -x "SELECT o1.aseqno, o1.shift, o1.superclass, h.parmno, h.parms \
