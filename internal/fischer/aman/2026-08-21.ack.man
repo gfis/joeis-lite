@@ -1,0 +1,11 @@
+---- 2026-08-21 10:42:54
+A180188	trilambn	1	1	0	(n, k) -> BI(n - 1, k).*(n).*(D000166(n - 1 - k))	proc (n, k) n*binomial(n-1, k)*A000166(n-1-k) end proc:
+A214003	lambdan	1	n -> SU(1, n, p -> PP(p) ? T057731(n, p) : ZV(0))	a(n) = Sum_{p prime} J057731(n,p).
+A267436	lambdan	0	n -> T047884(2*n, n)
+A291902	lambdan	0	n -> SU(0, (n == 0 ? 1 : 1 << (n - 1)) - 1, j -> T060351(n, j).^(3))
+A291903	lambdan	0	n -> SU(0, (n == 0 ? 1 : 1 << (n - 1)) - 1, j -> T060351(n, j).^(4))
+A334623	lambdan	0	n -> SU(0, (n == 0 ? 1 : 1 << (n - 1)) - 1, j -> T060351(n, j).^(n))
+A335308	lambdan	0	n -> T060351(n, n)
+A370874	lambdan	0	n -> T050314(4*n, 2*n)
+---- 2026-08-21 11:24:07
+A138158	tablamb	0	0	n -> new Integer[] { 0, n*(n + 1)/2 }	(n, k) -> T047998(k, n)
