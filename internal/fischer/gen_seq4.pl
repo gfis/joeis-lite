@@ -203,6 +203,16 @@ while (<>) { # read inputfile
     # my $im = 0; print STDERR "# " . join("; ", map { "[" . ($im ++) ."]=$_" } @parms) . "\n";
     my $iparm = 0;
     $offset   = $parms[$iparm ++]; # PARM1, PARM2, ... PARM8, NAME follow
+    if ($callcode =~ m{\Am\w+lon\Z}) { 
+        # expand $(PARM2) into $(PARM2=pno);$(PARM3=type);$(PARM4)
+        # = formal parameters of "compute(...)", and prefix $(PARM5) with indentation 
+        shift(@parms); # 0 = offset 
+        my $parm1 = shift(@parms); # colNo, minRow,minCol ...
+        my ($type, $formlist) = split(/\; */, shift(@parms)); # $parms[2]
+        my @forms = split(/\, */, $formlist);
+        unshift(@parms, $offset, $parm1, scalar(@forms), $type, "final Long " . join(", final Long ", @forms));
+        $parms[5] =~ s{\-\> *}{\-\> ~~          ~~};
+    } # expand  m...lon
     $name = $parms[9]; # by convention, in target makefile.select3
     $name =~ s{\&}{\&amp\;}g;
     $name =~ s{\'}{\&apos\;}g;

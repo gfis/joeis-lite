@@ -1,0 +1,26 @@
+---- 2026-08-22 18:43:46
+A105937	marrlon	0	0, 0, 1	Z;n, k	() -> (k == 0) ? ZV(1) : (k == 1 ? ZV(n) : get(n + 1, k - 1).*(n - k + 1).-(get(n + 2, k - 2).*(k - 1).*(n + 1)))	() -> mB.get(n, k)
+A126962	mlamlon	0	1	Z;n, k	() -> (k == 0) ? ZV(1) : (k == 1 ? ZV(n) : get(n + 1, k - 1).*(n - k + 1).-(get(n + 2, k - 2).*(k - 1).*(n + 1)))	() -> mB.get(1L, n)
+A127067	mlamlon	0	2	Z;n, k	() -> (k == 0) ? ZV(1) : (k == 1 ? ZV(n) : get(n + 1, k - 1).*(n - k + 1).-(get(n + 2, k - 2).*(k - 1).*(n + 1)))	() -> mB.get(2L, n)
+A127068	mlamlon	0	3	Z;n, k	() -> (k == 0) ? ZV(1) : (k == 1 ? ZV(n) : get(n + 1, k - 1).*(n - k + 1).-(get(n + 2, k - 2).*(k - 1).*(n + 1)))	() -> mB.get(3L, n)
+A127070	mlamlon	0	4	Z;n, k	() -> (k == 0) ? ZV(1) : (k == 1 ? ZV(n) : get(n + 1, k - 1).*(n - k + 1).-(get(n + 2, k - 2).*(k - 1).*(n + 1)))	() -> mB.get(4L, n)
+A138158	tablamb	0	0	n -> new Integer[] { 0, n*(n + 1)/2 }	(n, k) -> T047998(k, n)
+A180188	trilambn	1	1	0	(n, k) -> BI(n - 1, k).*(n).*(D000166(n - 1 - k))	proc (n, k) n*binomial(n-1, k)*A000166(n-1-k) end proc:
+A212912	filnum	1	3	k -> { final long m = (k - 1)*(k - 1) - 1; return k == 3 || ZV(3).modPow(m + 3, m).equals(ZV(9)); }	Numbers k such that 3^(m+3) == 9 (mod m) where m = (k-1)^2 - 1.	nonn	1..10000	nyi	_Alzhekeyev Ascar M_
+A214003	lambdan	1	n -> SU(1, n, p -> PP(p) ? T057731(n, p) : ZV(0))	a(n) = Sum_{p prime} J057731(n,p).
+A267436	lambdan	0	n -> T047884(2*n, n)
+A291902	lambdan	0	n -> SU(0, (n == 0 ? 1 : 1 << (n - 1)) - 1, j -> T060351(n, j).^(3))
+A291903	lambdan	0	n -> SU(0, (n == 0 ? 1 : 1 << (n - 1)) - 1, j -> T060351(n, j).^(4))
+A334623	lambdan	0	n -> SU(0, (n == 0 ? 1 : 1 << (n - 1)) - 1, j -> T060351(n, j).^(n))
+A335308	lambdan	0	n -> T060351(n, n)
+A370874	lambdan	0	n -> T050314(4*n, 2*n)
+A399027	polyx	0	"[1]"	"x,sinh,x,sinh,^2,+,exp"	0	1
+A399088	sintrif	0	(term, n) -> ZV(Jaguar.factor(term.+(1)).maxExponent())	""	new A005117()
+A399090	sintrif	0	(term, n) -> ZV(Jaguar.factor(term).maxExponent())	""	new A335275()	The maximum exponent in the prime factorization of the numbers whose powerful part is a square (A335275).
+A399091	sintrif	0	(term, n) -> ZV(Jaguar.factor(term).maxExponent())	""	new A340152()
+A399092	sintrif	0	(term, n) -> ZV(Jaguar.factor(term).maxExponent())	""	new A068781()
+A399093	sintrif	0	(term, n) -> ZV(Jaguar.factor(term).maxExponent())	""	new A367695()
+A399146	lambdan	0	n -> SU(1, n, k -> E063775(k).*(F000041(n - k)))
+A399149	lambdan	0	n -> SU(1, n, k -> D046951(k).*(F000009(n - k)))
+A399150	lambdan	0	n -> SU(1, n, k -> D061704(k).*(F000009(n - k)))
+A399151	lambdan	0	n -> SU(1, n, k -> D063775(k).*(F000009(n - k)))
