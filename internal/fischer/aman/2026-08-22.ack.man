@@ -1,9 +1,9 @@
----- 2026-08-22 18:43:46
-A105937	marrlon	0	0, 0, 1	Z;n, k	() -> (k == 0) ? ZV(1) : (k == 1 ? ZV(n) : get(n + 1, k - 1).*(n - k + 1).-(get(n + 2, k - 2).*(k - 1).*(n + 1)))	() -> mB.get(n, k)
-A126962	mlamlon	0	1	Z;n, k	() -> (k == 0) ? ZV(1) : (k == 1 ? ZV(n) : get(n + 1, k - 1).*(n - k + 1).-(get(n + 2, k - 2).*(k - 1).*(n + 1)))	() -> mB.get(1L, n)
-A127067	mlamlon	0	2	Z;n, k	() -> (k == 0) ? ZV(1) : (k == 1 ? ZV(n) : get(n + 1, k - 1).*(n - k + 1).-(get(n + 2, k - 2).*(k - 1).*(n + 1)))	() -> mB.get(2L, n)
-A127068	mlamlon	0	3	Z;n, k	() -> (k == 0) ? ZV(1) : (k == 1 ? ZV(n) : get(n + 1, k - 1).*(n - k + 1).-(get(n + 2, k - 2).*(k - 1).*(n + 1)))	() -> mB.get(3L, n)
-A127070	mlamlon	0	4	Z;n, k	() -> (k == 0) ? ZV(1) : (k == 1 ? ZV(n) : get(n + 1, k - 1).*(n - k + 1).-(get(n + 2, k - 2).*(k - 1).*(n + 1)))	() -> mB.get(4L, n)
+---- 2026-08-22 21:44:48
+A105937	marrlon	0	0, 0, 1	Z	(n, k) -> (k == 0) ? ZV(1) : (k == 1 ? ZV(n) : get(n + 1, k - 1).*(n - k + 1).-(get(n + 2, k - 2).*(k - 1).*(n + 1)))	() -> mB.get(n, k)
+A126962	mlamlon	0	1	Z	(n, k) -> (k == 0) ? ZV(1) : (k == 1 ? ZV(n) : get(n + 1, k - 1).*(n - k + 1).-(get(n + 2, k - 2).*(k - 1).*(n + 1)))	() -> mB.get(1L, n)
+A127067	mlamlon	0	2	Z	(n, k) -> (k == 0) ? ZV(1) : (k == 1 ? ZV(n) : get(n + 1, k - 1).*(n - k + 1).-(get(n + 2, k - 2).*(k - 1).*(n + 1)))	() -> mB.get(2L, n)
+A127068	mlamlon	0	3	Z	(n, k) -> (k == 0) ? ZV(1) : (k == 1 ? ZV(n) : get(n + 1, k - 1).*(n - k + 1).-(get(n + 2, k - 2).*(k - 1).*(n + 1)))	() -> mB.get(3L, n)
+A127070	mlamlon	0	4	Z	(n, k) -> (k == 0) ? ZV(1) : (k == 1 ? ZV(n) : get(n + 1, k - 1).*(n - k + 1).-(get(n + 2, k - 2).*(k - 1).*(n + 1)))	() -> mB.get(4L, n)
 A138158	tablamb	0	0	n -> new Integer[] { 0, n*(n + 1)/2 }	(n, k) -> T047998(k, n)
 A180188	trilambn	1	1	0	(n, k) -> BI(n - 1, k).*(n).*(D000166(n - 1 - k))	proc (n, k) n*binomial(n-1, k)*A000166(n-1-k) end proc:
 A212912	filnum	1	3	k -> { final long m = (k - 1)*(k - 1) - 1; return k == 3 || ZV(3).modPow(m + 3, m).equals(ZV(9)); }	Numbers k such that 3^(m+3) == 9 (mod m) where m = (k-1)^2 - 1.	nonn	1..10000	nyi	_Alzhekeyev Ascar M_
@@ -20,7 +20,10 @@ A399090	sintrif	0	(term, n) -> ZV(Jaguar.factor(term).maxExponent())	""	new A335
 A399091	sintrif	0	(term, n) -> ZV(Jaguar.factor(term).maxExponent())	""	new A340152()
 A399092	sintrif	0	(term, n) -> ZV(Jaguar.factor(term).maxExponent())	""	new A068781()
 A399093	sintrif	0	(term, n) -> ZV(Jaguar.factor(term).maxExponent())	""	new A367695()
+A399142	mtrilon	0	1,0	Z	(n, k) -> (k == 0) ? ZV(n == 1 ? 1 : 0) : SU(k, n - 1, j -> ~~(ZV(j).^(n - j).*(BI(n - 1, j - 1)).*(get(j, k - 1))))	() -> mB.get(n, k)
 A399146	lambdan	0	n -> SU(1, n, k -> E063775(k).*(F000041(n - k)))
 A399149	lambdan	0	n -> SU(1, n, k -> D046951(k).*(F000009(n - k)))
 A399150	lambdan	0	n -> SU(1, n, k -> D061704(k).*(F000009(n - k)))
 A399151	lambdan	0	n -> SU(1, n, k -> D063775(k).*(F000009(n - k)))
+---- 2026-08-22 21:58:52
+A293551	marrlon	0	0,0,1	Z	(n, k) -> (n == 0) ? ZV(1) : SU(1, n, j -> SD(j, d -> BI(d+ k - 2, k - 1).*(d)).*(get(n - j, k)))./(n)	() -> mB.get(k, n)

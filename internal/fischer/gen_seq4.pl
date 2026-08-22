@@ -199,20 +199,28 @@ while (<>) { # read inputfile
     next if length($callcode) == 0; # skip over empty callcodes
     next if $callcode =~ m{\#}; # skip over commented callcodes
     next if $callcode =~ m{\A(nyi|\-\d|\Avoid)};  # skip over callcodes starting with "nyi", "void" or "-2"
+    $do_generate = 1;
     $callcode =~ s{\..*}{}; # remove numbering with ".num"
     # my $im = 0; print STDERR "# " . join("; ", map { "[" . ($im ++) ."]=$_" } @parms) . "\n";
     my $iparm = 0;
     $offset   = $parms[$iparm ++]; # PARM1, PARM2, ... PARM8, NAME follow
-    if ($callcode =~ m{\Am\w+lon\Z}) { 
-        # expand $(PARM2) into $(PARM2=pno);$(PARM3=type);$(PARM4)
-        # = formal parameters of "compute(...)", and prefix $(PARM5) with indentation 
-        shift(@parms); # 0 = offset 
-        my $parm1 = shift(@parms); # colNo, minRow,minCol ...
-        my ($type, $formlist) = split(/\; */, shift(@parms)); # $parms[2]
-        my @forms = split(/\, */, $formlist);
-        unshift(@parms, $offset, $parm1, scalar(@forms), $type, "final Long " . join(", final Long ", @forms));
-        $parms[5] =~ s{\-\> *}{\-\> ~~          ~~};
-    } # expand  m...lon
+    if ($callcode =~ m{\Am\w+lon\Z}) {
+        # expand $(PARM3), insert #fparms
+        shift(@parms); # 0 = offset
+        my $parm1 = shift(@parms); # colNo, minRow,minCol ... 
+        $parm1 =~ s{\. *}{\, }g;
+        my $type  = shift(@parms); # old $parms[2]
+        #                   (1      1 )   ( )
+        if ($parms[0] =~ s{\(([^\)]+)\) *\-\> *}{\(\) \-\> ~~          ~~}) { # old $parms[3] -> new $parms[5] 
+            my $formlist = $1;
+            my @forms = split(/\, */, $formlist);
+            # new $parms    [0]      [1]     [2]             [3]    [4]
+            unshift(@parms, $offset, $parm1, scalar(@forms), $type, "final Long " . join(", final Long ", @forms));
+        } else {
+            $do_generate = 0;
+            print "# $aseqno CC=mxxxlon without proper PARM3=\"(n, k) ->\"\n";
+        }
+    } # expand  mxxxlon
     $name = $parms[9]; # by convention, in target makefile.select3
     $name =~ s{\&}{\&amp\;}g;
     $name =~ s{\'}{\&apos\;}g;
@@ -234,7 +242,6 @@ while (<>) { # read inputfile
     #          1           12     2 3        3
     $copy =~ s{(\$\(PARM\d+)(\=\w+)?([^\)]*\))}{$1$3}g; # remove Java parameter names $2, e.g. $(PARM1=start.L) -> $(PARM1.L)
     %static_dirs = (); # empty
-    $do_generate = 1;
     if ($debug >= 2) {
         print "# scalar(parms)=" . scalar(@parms) . "\n";
     }
@@ -584,7 +591,7 @@ sub write_output {
     foreach my $ano (sort(keys(%static_dirs))) {
         $static_list .= $static_dirs{$ano};
     }
-    if ($static_list ne "") { 
+    if ($static_list ne "") {
       $copy =~ s[public +class([^\{]+)\{]
                 [public class$1\{\n$static_list];
     }
@@ -676,7 +683,7 @@ sub clean_imports { # remove all temporary imports, keep the ones from the patte
     %imports = ();
     foreach my $key (@permkeys) {
         $imports{$key} = $TYPE_PERM;
-    } # foreach 
+    } # foreach
 } # clean_imports
 #--------------------------------
 sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
