@@ -213,9 +213,13 @@ while (<>) { # read inputfile
         #                   (1      1 )   ( )
         if ($parms[0] =~ s{\(([^\)]+)\) *\-\> *}{\(\) \-\> ~~          ~~}) { # old $parms[3] -> new $parms[5] 
             my $formlist = $1;
-            my @forms = split(/\, */, $formlist);
-            # new $parms    [0]      [1]     [2]             [3]    [4]
-            unshift(@parms, $offset, $parm1, scalar(@forms), $type, "final Long " . join(", final Long ", @forms));
+            my @forms = split(/\, */, $formlist); 
+            my $fpno  = scalar(@forms);
+            if ($fpno <=1) {
+                $fpno = "";
+            }
+            # new $parms    [0]      [1]     [2]    [3]    [4]
+            unshift(@parms, $offset, $parm1, $fpno, $type, join(", ", map { "final Long $_" }  @forms));
         } else {
             $do_generate = 0;
             print "# $aseqno CC=mxxxlon without proper PARM3=\"(n, k) ->\"\n";
@@ -745,7 +749,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WLinearRecurrence}             ) { $imports{"irvine.oeis.recur.LinearRecurrence"}            = $itype; }
     if ($line =~ m{\WLongUtils\.}                  ) { $imports{"irvine.math.LongUtils"}                         = $itype; }
     if ($line =~ m{\WMemoryFactorial}              ) { $imports{"irvine.math.factorial.MemoryFactorial"}         = $itype; }
-    if ($line =~ m{\WMemoryFunction(\w+)}          ) { $imports{"irvine.math.MemoryFunction$1"                 } = $itype; }
+    if ($line =~ m{\WMemoryFunction(\w*)}          ) { $imports{"irvine.math.MemoryFunction$1"                 } = $itype; }
     if ($line =~ m{\WMemorySequence}               ) { $imports{"irvine.oeis.memory.MemorySequence"            } = $itype; }
     if ($line =~ m{\WMobiusTransformSequence}      ) { $imports{"irvine.oeis.transform.MobiusTransformSequence"} = $itype; }
     if ($line =~ m{\WMobius[\.\(]}                 ) { $imports{"irvine.math.Mobius"}                            = $itype; }

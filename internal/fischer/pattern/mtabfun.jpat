@@ -36,11 +36,6 @@ $(PARM5=pseudo_lambda1);
     return super.a(pn, pk);
   }
 
-  /**
-   * Return next term, reading the triangle row by row from left to right,
-   * starting with T[mRowMin, mColMin].
-   * @return the next term of the sequence.
-   */
   @Override
   public Z next() {
     if (mFirst) {
