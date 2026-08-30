@@ -621,7 +621,7 @@ sub write_output {
     $copy =~ s{\$\(PACK\)}           {$package}g;
     $copy =~ s{\.(multiply|divide)\(1\)|\.(add|subtract)\(0\)}{}g;
     #          1        12  2
-    $copy =~ s{([\?\:\>])(\S)}{$1 $2}g;
+    $copy =~ s{([\?\:\>])([^= ])}{$1 $2}g;
     my $package = lc(substr($aseqno, 0, 4));
     # print STDERR "==> $maindir/$package/$aseqno.java ?\n";
     if ($clobber == 1 or (! -r "$maindir/$package/$aseqno.$ext")) { # overwrite or does not yet exist
@@ -735,7 +735,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WHankelTransformSequence}      ) { $imports{"irvine.oeis.transform.HankelTransformSequence"} = $itype; }
     if ($line =~ m{\WHolonomicRecurrence}          ) { $imports{"irvine.oeis.recur.HolonomicRecurrence"}         = $itype; }
     if ($line =~ m{\WIllegalArgumentException}     ) { $imports{"java.lang.IllegalArgumentException"}            = $itype; }
-    if ($line =~ m{\WIntegerPartition}             ) { $imports{"irvine.math.partitions.IntegerPartition"}       = $itype; }
+    if ($line =~ m{\WIntegerPartition}             ) { $imports{"irvine.math.partition.IntegerPartition"       } = $itype; }
     if ($line =~ m{\WIntegerUtils\.}               ) { $imports{"irvine.math.IntegerUtils"}                      = $itype; }
     if ($line =~ m{\WIntegers\.}                   ) { $imports{"irvine.math.z.Integers"}                        = $itype; }
     if ($line =~ m{\WIntegersMod\(}                ) { $imports{"irvine.math.group.IntegersMod"                } = $itype; }

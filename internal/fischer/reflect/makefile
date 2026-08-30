@@ -79,6 +79,30 @@ aph_direct4:
 	>        $@.pack
 	e        $@.pack 
 #--------
+lamtab: lamtab0 lamtab1 lamtab2 lamtab4
+lamtab0: # extract relevant A-numbers
+	perl -ne 'm{\/(A\d{6}+)\.}; print "$$1\n";' LambdaTable.occ \
+	| sort | uniq \
+	>        $@.lst
+	head -n4 $@.lst
+	wc -l    $@.lst
+lamtab1: # pack all occurrences of triangle.LambdaTable as grepped on the server
+	perl queue.pl -p lamtab0.lst \
+	>        $@.pack
+lamtab2: # patch them
+	cat lamtab1.pack | sed \
+	-e "s/new Integer/new Long/g" \
+	-e "s/intValueExact/longValueExact/g" \
+	| perl -pe 's{\] *\{ *(\d+)\, *m}{\]\{ $$1L\, \(long) m};' \
+	| perl -pe 's{\] *\{ *(\d+)\, *(\d+)}{\]\{ $$1L\, $$2L};' \
+	| perl -pe 's{\] *\{ *(\d+)\,}{\]\{ $$1L\,}; s{([A-Z0-9])\.i\(}{$$1.l\(};' \
+	>        $@.pack
+	e        $@.pack 
+lamtab4: # unpack them int joeis-lite/src 
+	cd .. ; make purge
+	perl queue.pl -uf lamtab2.pack
+	cd .. ; make CC=cc dist testall log
+#--------
 dead_joeis: # detect DeadSequence consistency
 	# not dead in OEIS and     dead in jOEIS
 	$(DBAT) -x "SELECT i.aseqno, 'dead', i.offset1, i.keyword, j.superclass \
