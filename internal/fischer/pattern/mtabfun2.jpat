@@ -14,7 +14,7 @@ public class $(ASEQNO) extends LambdaTable {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
-    super($(OFFSET), 0, n -> new Integer[] { 0, n }, (n, k) -> Z.ZERO);
+    super($(OFFSET), $(PARM1=range), (n, k) -> Z.ZERO);
     mFirst = true;
   }
 
@@ -30,8 +30,7 @@ $(PARM5=pseudo_lambda1);
   public Z a(final long pn, final long pk) {
     if (mFirst) {
       mFirst = false;
-      mColRange = $(PARM1=rangefun);
-      mLambda = $(PARM6=lambda);
+      mLambda =(int n, int k) -> $(PARM6=lambda);
     }
     return super.a(pn, pk);
   }
