@@ -1,4 +1,4 @@
-# partpred.jpat - lambda with IntegerPartition.count
+# partpre1.jpat - lambda with IntegerPartition.count, a(0) = 1
 # @(#) $Id$
 # 2026-09-01, Georg Fischer; *CH
 package irvine.oeis.$(PACK);
@@ -17,6 +17,6 @@ public class $(ASEQNO) extends LambdaSequence {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
-    super($(OFFSET), n -> (n == 0) ? Z.ZERO : IntegerPartition.count(Math.toIntExact($(PARM1=n)), $(PARM2=predicate)));
+    super($(OFFSET), n -> (n == 0) ? Z.ONE : IntegerPartition.count(Math.toIntExact($(PARM1=n)), $(PARM2=predicate)));
   }
 }
