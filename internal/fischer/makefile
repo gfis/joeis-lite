@@ -171,6 +171,8 @@ prs: # test PolynomialRingSequence
 	$(JAVA) irvine.oeis.PolynomialRingSequence           -n $(NT) -d $(D) -o $(OFFSET) $(BF) -p $(POLYS) -x $(X)
 ptest: # N= show the partitions of N
 	$(JAVA) irvine.math.partition.IntegerPartition $(N)
+putest: # N= show the results of PartitionUtils for the partitions of N
+	$(JAVA) irvine.math.partition.PartitionUtils $(N)
 LOOP=64
 ristest:
 	$(JAVA) irvine.oeis.triangle.RowIndexSequence -d $(D) -n $(NT) -l $(LOOP) -o $(OFFSET) -a $(A)

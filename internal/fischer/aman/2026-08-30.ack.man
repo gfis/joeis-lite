@@ -1,0 +1,90 @@
+---- 2026-08-30 21:53:20
+A087063	lambdan	0	n -> { final CR r = CR.SQRT2.-(1);      long k = 0; Z sum = ZV(0); Z a = r.^(k).*(n).floor(); while (!a.isZero()) { sum = sum.add(a); a = r.^(++k).*(n).floor(); } return sum.+(a); }	Sum{Floor(n*(r^k)): r=sqrt(2)-1, k>=0}.	nonn	0..68
+A087065	lambdan	0	n -> { final CR r = CV(3).sqrt().-(1);  long k = 0; Z sum = ZV(0); Z a = r.^(k).*(n).floor(); while (!a.isZero()) { sum = sum.add(a); a = r.^(++k).*(n).floor(); } return sum.+(a); }	Sum{Floor(n*r^k): r=sqrt(3)-1, k>=0}.	nonn	0..59
+A087066	lambdan	0	n -> { final CR r = CV(5).sqrt().-(2);  long k = 0; Z sum = ZV(0); Z a = r.^(k).*(n).floor(); while (!a.isZero()) { sum = sum.add(a); a = r.^(++k).*(n).floor(); } return sum.+(a); }	Sum_{k>=0} floor(n*(r^k)), where r = sqrt(5)-2.	nonn	0..71
+A087068	lambdan	0	n -> { final CR r = CV(new Q(2, 3));    long k = 0; Z sum = ZV(0); Z a = r.^(k).*(n).floor(); while (!a.isZero()) { sum = sum.add(a); a = r.^(++k).*(n).floor(); } return sum.+(a); }	Sum{Floor = r(n*r^k): r=2/3, k>=0}.	nonn	0..61
+A087070	lambdan	0	n -> { final CR r = CV(new Q(3, 4));    long k = 0; Z sum = ZV(0); Z a = r.^(k).*(n).floor(); while (!a.isZero()) { sum = sum.add(a); a = r.^(++k).*(n).floor(); } return sum.+(a); }	Sum{Floor(n*r^k): r=3/4,0..59
+A233561	filter	1	new A046388()	v -> { final Q q = new Q(v.-(1), 2); return q.isInteger() && PP(q.num()); }	Products p*q of distinct primes such that (p*q - 1)/2 is prime.	nonn,easy	1..1000
+A233562	filter	1	new A046388()	v -> { final Q q = new Q(v.+(1), 2); return q.isInteger() && PP(q.num()); }	Products p*q of distinct primes such that (p*q + 1)/2 is a prime.	nonn,easy	1..50
+A234093	filtraf	1	(self, n) -> { final Q q = new Q(self.s(0).-(1), 2); return q.isInteger()                ? q.num() : null; }	""	new A046388()	Integers of the form (p*q - 1)/2, where p and q are distinct primes.	nonn,easy	1..1000
+A234096	filtraf	1	(self, n) -> { final Q q = new Q(self.s(0).+(1), 2); return q.isInteger()                ? q.num() : null; }	""	new A046388()	Integers of the form (p*q + 1)/2, where p and q are distinct primes.	nonn,easy	1..58
+A234098	filtraf	1	(self, n) -> { final Q q = new Q(self.s(0).+(1), 2); return q.isInteger() && PP(q.num()) ? q.num() : null; }	""	new A046388()	Primes of the form (p*q + 1)/2, where p and q are distinct primes.	nonn,easy	1..10000
+A234100	filter	1	new A046389()	v -> { final Q q = new Q(v.-(1), 2); return q.isInteger() && PP(q.num()); }	Products p*q*r of distinct primes for which (p*q*r - 1)/2 is prime.	nonn,easy	1..274
+A234103	filter	1	new A046389()	v -> { final Q q = new Q(v.+(1), 2); return q.isInteger() && PP(q.num()); }	Products p*q*r of distinct primes for which (p*q*r + 1)/2 is prime.	nonn,easy	1..45
+A234105	filtraf	1	(self, n) -> { final Q q = new Q(self.s(0).-(1), 2); return q.isInteger()                ? q.num() : null; }	""	new A046390()	Integers of the form (p*q*r*s - 1)/2, where p, q, r, s are distinct primes.	nonn,easy	1..44
+A234498	filter	1	new A046390()	v -> { final Q q = new Q(v.-(1), 2); return q.isInteger() && PP(q.num()); }	Products p*q*r*s of distinct primes for which (p*q*r*s - 1)/2 is prime.	nonn,easy	1..39
+A234499	filtraf	1	(self, n) -> { final Q q = new Q(self.s(0).-(1), 2); return q.isInteger() && PP(q.num()) ? q.num() : null; }	""	new A046390()	Primes of the form (p*q*r*s - 1)/2, where p, q, r,s are distinct primes.	nonn,easy	1..100
+A234500	filtraf	1	(self, n) -> { final Q q = new Q(self.s(0).+(1), 2); return q.isInteger()                ? q.num() : null; }	""	new A046390()	Integers of the form (p*q*r*s + 1)/2, where p, q, r, s are distinct primes.	nonn,easy	1..44
+A234501	filter	1	new A046390()	v -> { final Q q = new Q(v.+(1), 2); return q.isInteger() && PP(q.num()); }	Products p*q*r*s of distinct primes for which (p*q*r*s + 1)/2 is prime.	nonn,easy	1..39
+A234502	filtraf	1	(self, n) -> { final Q q = new Q(self.s(0).+(1), 2); return q.isInteger() && PP(q.num()) ? q.num() : null; }	""	new A046390()	Primes of the form (p*q*r*s + 1)/2, where p, q, r, s are distinct primes.	nonn,easy	1..43
+A237751	partit	1	() -> 2*Functions.MAX.i(parts) <  parts.length	(greatest part) <  (number of parts).	nonn,easy	1..1000
+A237752	partit	1	() -> 2*Functions.MAX.i(parts) <= parts.length	(greatest part) <= (number of parts).	nonn,easy	1..1000
+A237753	partit	1	() -> 2*Functions.MAX.i(parts) == parts.length	(greatest part) =  (number of parts).	nonn,easy	1..10000
+A237754	partit	1	() -> 2*Functions.MAX.i(parts) >  parts.length	(greatest part) >  (number of parts).	nonn,easy	1..1000
+A237756	partit	1	() -> 3*Functions.MAX.i(parts) == parts.length	(greatest part) =  (number of parts).	nonn,easy	1..10000
+A237757	partit	1	() -> 2*Functions.MIN.i(parts) == parts.length	(least part)    =  (number of parts).	nonn,easy	1..10000
+A237758	partit	1	() -> 2*Functions.MIN.i(parts) <  parts.length	(least part)    <  number of parts.	nonn,easy	1..47
+A237799	partit	1	() -> 2*Functions.MIN.i(parts) >  parts.length	(least part)    >  number of parts.	nonn,easy	1..55
+A237800	partit	1	() -> 2*Functions.MIN.i(parts) >= parts.length	(least part)    >= number of parts.	nonn,easy	1..54
+A237820	partit	1	() -> 2*Functions.MIN.i(parts) <  Functions.MAX.i(parts)	2*(least part) < greatest part.	nonn,easy	1..200
+A237821	partit	1	() -> 2*Functions.MIN.i(parts) <= Functions.MAX.i(parts)	2*(least part) <= greatest part.	nonn,easy	1..47
+A237822	partit	1	() -> Functions.MIN.i(parts) + Functions.MAX.i(parts) < parts.length	(greatest part) + (least part) < number of parts.	nonn,easy	1..49
+A237823	partit	1	() -> Functions.MIN.i(parts) + Functions.MAX.i(parts) <= parts.length	(greatest part) + (least part) <= number of parts.	nonn,easy	1..49
+A237824	partit	1	() -> 2*Functions.MIN.i(parts) >= Functions.MAX.i(parts)	2*(least part) >= greatest part.	nonn	1..10000
+A237825	partit	1	() -> 3*Functions.MIN.i(parts) == Functions.MAX.i(parts)	3*(least part) = greatest part.	nonn,easy	1..10000
+A237826	partit	1	() -> 4*Functions.MIN.i(parts) == Functions.MAX.i(parts)	4*(least part) = greatest part.	nonn,easy	1..10000
+A237827	partit	1	() -> 5*Functions.MIN.i(parts) == Functions.MAX.i(parts)	5*(least part) = greatest part.	nonn,easy	1..10000
+A237828	partit	1	() -> 2*Functions.MIN.i(parts) + 1 == Functions.MAX.i(parts)	2*(least part) + 1 = greatest part.	nonn,easy	1..10000
+A237829	partit	1	() -> 2*Functions.MIN.i(parts) - 1 == Functions.MAX.i(parts)	2*(least part) - 1 = greatest part.	nonn,easy	1..10000
+A237830	partit	1	() -> Functions.MAX.i(parts) - Functions.MIN.i(parts) <  parts.length	(greatest part) - (least part) < number of parts.	nonn,easy	1..10000
+A237831	partit	1	() -> Functions.MAX.i(parts) - Functions.MIN.i(parts) <= parts.length	(greatest part) - (least part) <= number of parts.	nonn,easy	1..10000
+A237832	partit	1	() -> Functions.MAX.i(parts) - Functions.MIN.i(parts) == parts.length	(greatest part) - (least part) = number of parts.	nonn,easy	1..10000
+A237833	partit	1	() -> Functions.MAX.i(parts) - Functions.MIN.i(parts) >  parts.length	(greatest part) - (least part) > number of parts.	nonn,easy	1..10000
+A237834	partit	1	() -> Functions.MAX.i(parts) - Functions.MIN.i(parts) >= parts.length	(greatest part) - (least part) >= number of parts.	nonn,easy	1..95
+A237869	partit	1	() -> Functions.MAX.i(parts) + Functions.MIN.i(parts) == parts.length	(greatest part) + (least part) = number of parts.	nonn,easy	1..54
+A237870	partit	1	() -> Functions.MAX.i(parts) + Functions.MIN.i(parts) >  parts.length	(greatest part) + (least part) > number of parts.	nonn,easy	1..48
+A237871	partit	1	() -> Functions.MAX.i(parts) + Functions.MIN.i(parts) >= parts.length	(greatest part) + (least part) >= number of parts.	nonn,easy	1..48
+A296448	decexp	0	() -> CR.THREE.divide(CR.TWO).multiply(CR.THREE.pow(CR.TWO.divide(CR.THREE)).subtract(CR.TWO)).pow(CR.ONE_THIRD)
+A397339	holos	1	[0,1,-3,3,-1]	1, 2, 5, 10, 16, 23	0	0
+A397865	decexpr	0	() -> CR.ZERO.subtract(REALS.atan(X197727.subtract(CR.ONE))).negate()
+A397964	holos	1	[0,-1,4,-6,4,-1]	0,136,560,1464	0	0
+A397966	holos	1	[0,1,-4,5,0,-5,4,-1]	0,842,4080,14042,36000,78122	0	0
+A398005	holos	1	[0,-9,-6,6,-1]	3,12,48	0	0
+A398658	holos	0	[0,-1,4,-7,8,-7,4,-1]	0,3,11,27,55,98	0	0
+A398659	holos	0	[0,-1,3,-3,1,0,1,-3,3,-1]	0,2,9,22,46,81,130,196	0	0
+A398660	holos	0	[0,-1,3,-3,1,0,1,-3,3,-1]	0,3,9,23,46,81,131,196	0	0
+A398661	holos	0	[0,-1,4,-7,8,-7,4,-1]	0,1,6,17,35,62	0	0
+A398662	holos	0	[0,-1,4,-7,8,-7,4,-1]	0,2,7,17,35,63	0	0
+A398664	holos	0	[0,-1,4,-7,8,-7,4,-1]	0,3,10,23,45,78	0	0
+A398665	holos	0	[0,-1,4,-7,8,-7,4,-1]	0,2,11,31,65,117	0	0
+A398666	holos	0	[0,-1,4,-7,8,-7,4,-1]	0,3,12,31,65,118	0	0
+A398727	holos	0	[0,-1,4,-7,8,-7,4,-1]	0,3,16,45,95,172	0	0
+A398728	holos	0	[0,-1,4,-7,8,-7,4,-1]	0,4,17,45,95,173	0	0
+A398729	holos	0	[0,-1,4,-7,8,-7,4,-1]	0,-1,-1,1,5,12	0	0
+A398730	holos	0	[0,-1,4,-7,8,-7,4,-1]	0,0,0,1,5,13	0	0
+A398868	holos	0	[0,1,1,0,4,0,-26,-20,0,-89,0,245,115,0,646,0,-1169,-272,0,-2232,0,3186,279,0,4147,0,-5213,-117,0,-4377,0,5213,19,0,2747,0,-3186,-1,0,-1035,0,1169,0,0,225,0,-245,0,0,-25,0,26,0,0,1,0,-1]	1,0,1,0,1,1,1,2,1,3,3,4,7,5,14,30,23,66,33,123,387,199,829,290,1422,4858,2185,10418,3122,17443,60115,26267,129730,37131,216772,741733,325537,1611496,459653,2704467,9152532,4075807,20014921,5774873,33791361,112984938
+A398907	decexp	0	() -> CR.valueOf(17).multiply(Zeta.zeta(5)).divide(CR.EIGHT).subtract(Zeta.zeta(2).multiply(Zeta.zeta(3)).divide(CR.TWO)).add(CR.TWO.multiply(CR.TWO.log().pow(3)).multiply(Zeta.zeta(2))).subtract(CR.TWO.log().pow(2).multiply(Zeta.zeta(3))).subtract(CR.NINE.multiply(CR.TWO.log()).multiply(Zeta.zeta(4)).divide(CR.FOUR))
+A398939	decexp	3	() -> CR.FIVE.multiply(CR.valueOf(338).add(CR.valueOf(146).multiply(CR.FIVE.sqrt())).add(CR.FOUR.multiply(CR.valueOf(13850).add(CR.valueOf(6190).multiply(CR.FIVE.sqrt())).sqrt())).sqrt())
+A398940	decexpr	1	() -> REALS.sin(CR.PI.divide(CR.TEN)).multiply(CR.TWO.multiply(REALS.cos(CR.PI.divide(CR.TEN))).subtract(CR.THREE).multiply(REALS.sec(CR.PI.divide(CR.valueOf(20))).pow(2).subtract(CR.FOUR)).sqrt()).divide(CR.FOUR.multiply(CR.FOUR.subtract(CR.FIVE.multiply(REALS.cos(CR.PI.divide(CR.TEN)))).add(REALS.cos(CR.PI.divide(CR.FIVE)))))
+A398941	decexpr	1	() -> REALS.csc(CR.PI.divide(CR.valueOf(20))).multiply(CR.ONE.add(X188593).sqrt()).divide(CR.FOUR)
+A398942	decexpr	2	() -> X134972.multiply(REALS.csc(CR.PI.divide(CR.valueOf(20))).pow(3)).divide(CR.valueOf(16))
+A398943	decexp	2	() -> CR.ONE.divide(CR.TWO.subtract(X188593))
+A398944	decexpr	0	() -> REALS.acos(CR.TWO.subtract(CR.THREE.multiply(REALS.cos(CR.PI.divide(CR.TEN)).subtract(REALS.cos(CR.PI.divide(CR.FIVE))))).subtract(REALS.cos(CR.THREE.multiply(CR.PI).divide(CR.TEN))))
+A398945	decexpr	0	() -> REALS.acos(CR.HALF.subtract(REALS.cos(CR.PI.divide(CR.TEN))))
+A398946	decexpr	0	() -> REALS.acos(CR.TWO.subtract(CR.THREE.multiply(CR.FIVE.sqrt())).subtract(CR.TWO.multiply(CR.valueOf(125).add(CR.valueOf(38).multiply(CR.FIVE.sqrt())).sqrt())).divide(CR.valueOf(41)))
+A399018	holos	0	[0,1,0,-3,0,3,0,-1]	6,42,72,204,210,486	0	0
+A399019	holos	0	[0,1,0,-3,0,3,0,-1]	0,12,78,90,276,240	0	0
+A399045	holos	0	[0,24,-26,9,-1]	0,3,17	0	0
+A399046	holos	0	[0,160,-92,17,-1]	0,7,75	0	0
+A399047	holos	0	[0,-241920,195504,-64474,11085,-1045,51,-1]	0,15,305,4947,76073,1163715	0	0
+A399185	holos	0	[0,1,4,1,0,0,0,-1]	1, 0, 0, 0, 0, 2, 0, 0, 0, 2	0	0
+A399216	decexp	1	() -> CR.SEVEN.multiply(Zeta.zeta(3)).divide(CR.FOUR)
+A399220	decexp	1	() -> CR.valueOf(11).multiply(Zeta.zeta(3)).divide(CR.FOUR)
+A399221	decexp	1	() -> CR.valueOf(21).multiply(Zeta.zeta(3)).divide(CR.valueOf(16))
+A399225	decexp	1	() -> CR.PI.pow(2).multiply(CR.TWO.log()).divide(CR.FOUR).subtract(CR.SEVEN.multiply(Zeta.zeta(3)).divide(CR.valueOf(16)))
+A399285	decexp	0	() -> CR.PI.multiply(CR.E).divide(CR.TWO.multiply(CR.PI).exp().subtract(CR.ONE)).add(CR.PI.multiply(CR.ZERO.subtract(CR.ONE).exp()).divide(CR.ONE.subtract(CR.ZERO.subtract(CR.TWO.multiply(CR.PI)).exp()))).subtract(CR.ONE).divide(CR.TWO)
+A399352	holos	0	[0,-1,0,1,0,5,0,-1]	1,3,5,15,27,77	0	0
+A399353	holos	0	[0,1,0,-2,0,-25,0,-3,0,12,0,-1]	2,3,15,42,165,497,1894,5759,21857,66560	0	0
+A399354	holos	0	[0,-1,-1,6,8,1,-1]	3,3,15,45,179	0	0
+A399355	holos	0	[0,-1,5,4,-25,-14,27,20,1,-1]	2,7,27,172,863,4907,26262,144655	0	0
+A399357	holos	0	[0,1,-3,-4,12,3,-1]	1,7,21,151,673	0	0

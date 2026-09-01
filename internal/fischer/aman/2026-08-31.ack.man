@@ -1,0 +1,15 @@
+---- 2026-08-31 10:40:15
+A182873	diffs	1	new A104272()
+A190874	diffs	1	new A179196()	, pi(R_(n+1)) - pi(R_n) where R_n is J104272(n).    nonn    1..10000        nyi     _John W. Nicholson_
+A194947	diffs	1	new A036274(), true
+A258863	diffs	0	new A258851()
+A266533	diffs	1	new A266532()
+A308007	diffs	1	new A081145(), true
+A325496	diffs	1	new A077477()
+A325497	diffs	1	new A325422()
+A338359	diffs	1	new A280864()
+---- 2026-08-31 10:40:35
+A399324	lambdan	0	n -> SU(0, n, k -> BI(2*k, k).*(BI(n + 2, k + 1)))./(n + 2)	a(n) = (1/(n + 2)) * Sum_{k=0..n} binomial(2*k, k) * binomial(n+2, k+1). Row sums of A106534.	nonn,easy,new	0..25	nyi	_Peter Luschny_
+A399368	decexp	1	() -> CV(3).log().log().-(CV(2).log().log())./(CV(3).log().-(CV(2).log()))	Decimal expansion of (log(log(3)) - log(log(2)))/(log(3) - log(2)).	nonn,cons,new	1..100	nyi	_Stefano Spezia_
+A399384	lambdan	0	n -> FA(n).^(2).*(2*n + 1)	a(n) = (2*n + 1)*(n!)^2.	nonn,easy,new	0..17	nyi	_Stefano Spezia_
+A399431	lambdan	1	n -> Z2(Functions.PRIME.i(n)).-(2)./(PM(n)).+(2)	a(n) = (2^prime(n) - 2)/prime(n) + 2.	nonn,easy,new	1..23	nyi	_Stefano Spezia_

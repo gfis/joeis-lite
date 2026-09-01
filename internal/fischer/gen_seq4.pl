@@ -365,6 +365,7 @@ while (<>) { # read inputfile
             $parm =~ s{PR\(}           {Integers.SINGLETON.product\(}g;
             $parm =~ s{PSI\(}          {Functions.DEDEKIND_PSI.z\(}g;
             $parm =~ s{PT\(}           {Functions.PARTITIONS.z\(}g;
+            $parm =~ s{PU\.}           {PartitionUtils\.}g;
             $parm =~ s{QV\(}           {new Q\(}g;
             $parm =~ s{RAD\(}          {Functions.RAD.z\(}g;
             $parm =~ s{RD\(}           {Rationals.SINGLETON.sumdiv\(}g;
