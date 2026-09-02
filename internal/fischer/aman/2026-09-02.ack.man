@@ -1,5 +1,5 @@
----- 2026-09-02 15:00:11
 
+---- 2026-09-02 15:00:11
 A090867	partpred	0	n	p -> PU.evenOddCounts(p)[0] == 1	that the set of even parts has only one element.	0..10000	_Vladeta Jovovic_
 A090868	partpred	1	n	p -> PU.evenOddCounts(p)[1] == 1	that the set of odd parts has only one element.	1..14572	_Vladeta Jovovic_
 A096373	partpred	1	n	p -> { final int g = PU.min(p); return PU.count(p, g) == 2; }	least part occurs exactly twice.	1..1000	_Vladeta Jovovic_
@@ -227,19 +227,19 @@ A241550	partpred	0	n	p -> PU.isPart(p, PU.modCount(p, 5, 1))
 A241551	partpred	0	n	p -> PU.isPart(p, PU.modCount(p, 5, 2))
 A241552	partpred	0	n	p -> PU.isPart(p, PU.modCount(p, 5, 3))
 A241553	partpred	0	n	p -> PU.isPart(p, PU.modCount(p, 5, 4))
-A241636	partpred	0	n	p -> { final int[] eoc = PU.evenOddCounts(p); return eoc[0] <  eoc[1]; }	(number of even numbers in p)   <   (number of odd numbers in p).	nonn,easy	0..1000
-A241637	partpred	0	n	p -> { final int[] eoc = PU.evenOddCounts(p); return eoc[0] <= eoc[1]; }	(number of even numbers in p)   <=  (number of odd numbers in p).	nonn,easy	0..1000
-A241638	partpred	0	n	p -> { final int[] eoc = PU.evenOddCounts(p); return eoc[0] == eoc[1]; }	(number of even numbers in p)   =   (number of odd numbers in p).	nonn,easy	0..1000
-A241639	partpred	0	n	p -> { final int[] eoc = PU.evenOddCounts(p); return eoc[0] >= eoc[1]; }	(number of even numbers in p)   >=  (number of odd numbers in p).	nonn,easy	0..1000
-A241640	partpred	0	n	p -> { final int[] eoc = PU.evenOddCounts(p); return eoc[0] >  eoc[1]; }	(number of even numbers in p)   >   (number of odd numbers in p).	nonn,easy	0..1000
-A241641	partpred	0	n	p -> { final int[] eoc = PU.evenOddCounts(p); return eoc[0] <  eoc[1]*2; }	(number of even numbers in p)   <   2*(number of odd numbers in p).	nonn,easy	0..47
-A241642	partpred	0	n	p -> { final int[] eoc = PU.evenOddCounts(p); return eoc[0] <= eoc[1]*2; }	(number of even numbers in p)   <=  2*(number of odd numbers in p).	nonn,easy	0..47
-A241643	partpred	0	n	p -> { final int[] eoc = PU.evenOddCounts(p); return eoc[0] == eoc[1]*2; }	(number of even numbers in p)   =   2*(number of odd numbers in p).	nonn,easy	0..53
-A241644	partpred	0	n	p -> { final int[] eoc = PU.evenOddCounts(p); return eoc[0] >= eoc[1]*2; }	(number of even numbers in p)   >=  2*(number of odd numbers in p).	nonn,easy	0..51
-A241645	partpred	0	n	p -> { final int[] eoc = PU.evenOddCounts(p); return eoc[0] >  eoc[1]*2; }	(number of even numbers in p)   >   2*(number of odd numbers in p).	nonn,easy	0..53
-A241651	partpred	0	n	p -> { final int[] eoc = PU.evenOddCounts(p); return eoc[0]*2 <  eoc[1]; }	2*(number of even numbers in p) <  (number of odd numbers in p).	nonn,easy	0..50
-A241652	partpred	0	n	p -> { final int[] eoc = PU.evenOddCounts(p); return eoc[0]*2 <= eoc[1]; }	2*(number of even numbers in p) <= (number of odd numbers in p).	nonn,easy	0..1000
-A241653	partpred	0	n	p -> { final int[] eoc = PU.evenOddCounts(p); return eoc[0]*2 == eoc[1]; }	2*(number of even numbers in p) == (number of odd numbers in p).	nonn,easy	0..1000
+A241636	partpre1	0	n	p -> { final int[] eoc = PU.evenOddCounts(p); return eoc[0] <  eoc[1]; }	(number of even numbers in p)   <   (number of odd numbers in p).	nonn,easy	0..1000
+A241637	partpre1	0	n	p -> { final int[] eoc = PU.evenOddCounts(p); return eoc[0] <= eoc[1]; }	(number of even numbers in p)   <=  (number of odd numbers in p).	nonn,easy	0..1000
+A241638	partpre1	0	n	p -> { final int[] eoc = PU.evenOddCounts(p); return eoc[0] == eoc[1]; }	(number of even numbers in p)   =   (number of odd numbers in p).	nonn,easy	0..1000
+A241639	partpre1	0	n	p -> { final int[] eoc = PU.evenOddCounts(p); return eoc[0] >= eoc[1]; }	(number of even numbers in p)   >=  (number of odd numbers in p).	nonn,easy	0..1000
+A241640	partpre1	0	n	p -> { final int[] eoc = PU.evenOddCounts(p); return eoc[0] >  eoc[1]; }	(number of even numbers in p)   >   (number of odd numbers in p).	nonn,easy	0..1000
+A241641	partpre1	0	n	p -> { final int[] eoc = PU.evenOddCounts(p); return eoc[0] <  eoc[1]*2; }	(number of even numbers in p)   <   2*(number of odd numbers in p).	nonn,easy	0..47
+A241642	partpre1	0	n	p -> { final int[] eoc = PU.evenOddCounts(p); return eoc[0] <= eoc[1]*2; }	(number of even numbers in p)   <=  2*(number of odd numbers in p).	nonn,easy	0..47
+A241643	partpre1	0	n	p -> { final int[] eoc = PU.evenOddCounts(p); return eoc[0] == eoc[1]*2; }	(number of even numbers in p)   =   2*(number of odd numbers in p).	nonn,easy	0..53
+A241644	partpre1	0	n	p -> { final int[] eoc = PU.evenOddCounts(p); return eoc[0] >= eoc[1]*2; }	(number of even numbers in p)   >=  2*(number of odd numbers in p).	nonn,easy	0..51
+A241645	partpre1	0	n	p -> { final int[] eoc = PU.evenOddCounts(p); return eoc[0] >  eoc[1]*2; }	(number of even numbers in p)   >   2*(number of odd numbers in p).	nonn,easy	0..53
+A241651	partpre1	0	n	p -> { final int[] eoc = PU.evenOddCounts(p); return eoc[0]*2 <  eoc[1]; }	2*(number of even numbers in p) <  (number of odd numbers in p).	nonn,easy	0..50
+A241652	partpre1	0	n	p -> { final int[] eoc = PU.evenOddCounts(p); return eoc[0]*2 <= eoc[1]; }	2*(number of even numbers in p) <= (number of odd numbers in p).	nonn,easy	0..1000
+A241653	partpre1	0	n	p -> { final int[] eoc = PU.evenOddCounts(p); return eoc[0]*2 == eoc[1]; }	2*(number of even numbers in p) == (number of odd numbers in p).	nonn,easy	0..1000
 A241733	partpred	0	n	p -> PU.isPart(p, PU.mean(p).add(Q.HALF).floor().intValueExact())	a part of p; here, round(x) means floor(x + 1/2)	nonn,easy	0..48
 A241734	partpre1	0	n	p -> !PU.isPart(p, PU.mean(p).add(Q.HALF).floor().intValueExact())	is not a part of p; here, round(x) means floor(x + 1/2)	nonn,easy	0..48
 A241737	partpred	0	n	p -> PU.modCount(p, 3, 1) <  PU.modCount(p, 3, 2)	nonn,easy	0..50
@@ -249,6 +249,7 @@ A241740	partpred	0	n	p -> PU.modCount(p, 3, 2) <  PU.modCount(p, 3, 0)	nonn,easy
 A241741	partpre1	0	n	p -> PU.modCount(p, 3, 2) == PU.modCount(p, 3, 0)	nonn,easy	0..49
 A241742	partpred	0	n	p -> PU.modCount(p, 3, 2) >  PU.modCount(p, 3, 0)	nonn,easy	0..49
 A241743	partpred	0	n	p -> PU.modCount(p, 3, 0) <  PU.modCount(p, 3, 1)	nonn,easy	0..1000
+A241744	partpre1	0	n	p -> PU.modCount(p, 3, 0) == PU.modCount(p, 3, 1)	nonn,easy	1..50
 A241744	partpre1	0	n	p -> PU.modCount(p, 3, 0) == PU.modCount(p, 3, 1)	nonn,easy	1..50
 A241745	partpred	0	n	p -> PU.modCount(p, 3, 0) >  PU.modCount(p, 3, 1)	nonn,easy	0..51
 A242682	partpred	0	n	p -> { final int[] eoc = PU.evenOddCounts(p); return eoc[1] - eoc[0] == -10; }	 between the number of odd parts and the number of even parts, both counted without multiplicity.	110..1000	_Alois P. Heinz_
@@ -336,4 +337,3 @@ A394290	partpred	1	n	p -> { final int g = PU.max(p); final int m = PU.count(p, g
 A394291	partpred	1	n	p -> { final int g = PU.min(p); final int m = PU.count(p, g); return PU.isPart(p, m) && m > g; }	multiplicity m of the least part s is a part of the partition and m > s.	1..1000	_Seiichi Manyama_
 A398663	holos	0	[0,-1,4,-7,8,-7,4,-1]	0,2,9,23,45,77	0	0 
 A399384	holos	0	[[0],[0,0,1,2],[1,-2]]	1	0	0
-A241744	partpre1	0	n	p -> PU.modCount(p, 3, 0) == PU.modCount(p, 3, 1)	nonn,easy	1..50
