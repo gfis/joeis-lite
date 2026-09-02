@@ -1,6 +1,39 @@
----- 2026-09-02 00:02:14
+---- 2026-09-02 15:00:11
+
+A090867	partpred	0	n	p -> PU.evenOddCounts(p)[0] == 1	that the set of even parts has only one element.	0..10000	_Vladeta Jovovic_
+A090868	partpred	1	n	p -> PU.evenOddCounts(p)[1] == 1	that the set of odd parts has only one element.	1..14572	_Vladeta Jovovic_
+A096373	partpred	1	n	p -> { final int g = PU.min(p); return PU.count(p, g) == 2; }	least part occurs exactly twice.	1..1000	_Vladeta Jovovic_
+A096374	partpred	1	n	p -> { final int g = PU.min(p); return (PU.count(p, g) & 1) == 0; }	least part occurs with even multiplicity.	1..1000	_Vladeta Jovovic_
+A096375	partpred	1	n	p -> { final int g = PU.min(p); return (PU.count(p, g) & 1) == 1; }	least part occurs with odd multiplicity.	1..1000	_Vladeta Jovovic_
+A097091	partpred	1	n	p -> { final int g = PU.min(p); return PU.count(p, g) == 3; }	least part occurs exactly three times.	1..10000	_Robert G. Wilson v_
+A097092	partpred	1	n	p -> { final int g = PU.min(p); return PU.count(p, g) == 4; }	least part occurs exactly four times.	1..10000	_Robert G. Wilson v_
+A097093	partpred	1	n	p -> { final int g = PU.min(p); return PU.count(p, g) == 5; }	least part occurs exactly five times.	1..10000	_Robert G. Wilson v_
+A100824	partpre1	0	n	p -> PU.allEvenOddCounts(p)[1] <= 1	one odd part.	0..1000	_Vladeta Jovovic_
+A100835	partpre1	0	n	p -> PU.allEvenOddCounts(p)[1] <= 2	odd parts.	0..1000	_Vladeta Jovovic_
+A108711	partpred	1	n	p -> p.length == 2*n/3	) parts.	1..64	_John W. Layman_
+A108949	partpred	0	n	p -> { final int[] eoc = PU.allEvenOddCounts(p); return eoc[0] > eoc[1]; }	more even parts than odd parts.	0..8000	_Len Smiley_
+A108950	partpred	1	n	p -> { final int[] eoc = PU.allEvenOddCounts(p); return eoc[0] < eoc[1]; }	more odd parts than even parts.	1..8000	_Len Smiley_
+A114312	partpre1	0	n	p -> PU.allEvenOddCounts(p)[1] <= 3	odd parts.	0..1000	_Emeric Deutsch_
+A117086	partpred	1	n	p -> PU.max(p) % PU.min(p) == 0	that the largest part is a multiple of the smallest part.	1..1000	_Vladeta Jovovic_
+A117087	partpred	1	n	p -> GCDi(PU.max(p), PU.min(p)) == 1	that the largest part and the smallest part are relatively prime.	1..47	_Vladeta Jovovic_
+A118082	partpre1	0	n	p -> { final int k = PU.max(p); return PU.count(p, k) == k/2; }	) times.	0..56	_Emeric Deutsch_
+A118083	partpre1	0	n	p -> { final int k = PU.max(p); return PU.count(p, k) >= k/2; }	) times.	0..53	_Emeric Deutsch_
+A118084	partpred	1	n	p -> { final int k = PU.max(p); return PU.count(p, k) <= k/2; }	) times.	1..46	_Emeric Deutsch_
+A118096	partpred	1	n	p -> PU.max(p) == 2*PU.min(p)	largest part is twice the smallest part.	1..10000	_Emeric Deutsch_
+A118267	partpred	1	n	p -> { final int k = PU.min(p); return PU.count(p, k) == 1 && PU.count(p, k + 1) == 1; }	that if the smallest part is k, then both k and k+1 occur exactly once.	1..10000	_Emeric Deutsch_
+A168657	partpred	1	n	p -> p.length % PU.min(p) == 0	is divisible by the smallest part.	1..9464	_Vladeta Jovovic_
+A168659	partpred	1	n	p -> p.length % PU.max(p) == 0	is divisible by the greatest part. Also number of partitions of n such that the greatest part is divisible by the number of parts.	1..5000	_Vladeta Jovovic_
+A171966	partpre1	0	n	p -> { final int[] eoc = PU.allEvenOddCounts(p); return eoc[1]   <= eoc[0]; }	no more odd than even parts.	0..8000	_Reinhard Zumkeller_
+A200476	partpred	1	n	p -> { final int mn = PU.min(p); final int mx = PU.max(p); return GCDi(p.length, mn) != 1 && GCDi(p.length, mx) != 1 && GCDi(mn, mx) != 1; }	and the largest part and the smallest part are pairwise not coprime.	1..300	_Alois P. Heinz_
+A200727	partpred	1	n	p -> p.length % PU.max(p) != 0	is not divisible by the greatest part.	1..500	_Alois P. Heinz_
+A200750	partpred	1	n	p -> GCDi(p.length, PU.max(p)) == 1	and the greatest part are coprime.	1..500	_Alois P. Heinz_
+A200792	partpred	1	n	p -> GCDi(p.length, PU.max(p)) != 1	and the greatest part are not coprime.	1..500	_Alois P. Heinz_
+A200928	partpred	1	n	p -> GCDi(p.length, PU.min(p)) == 1	and the smallest part are coprime.	1..400	_Alois P. Heinz_
+A201025	partpred	1	n	p -> GCDi(p.length, PU.min(p)) != 1	and the smallest part are not coprime.	1..400	_Alois P. Heinz_
+A201218	partpred	1	n	p -> { final int mn = PU.min(p); final int mx = PU.max(p); return GCDi(p.length, mn) == 1 && GCDi(p.length, mx) == 1 && GCDi(mn, mx) == 1; }	and the largest part and the smallest part are pairwise coprime.	1..300	_Alois P. Heinz_
 A237363	partpre1	0	n	p -> 2*PU.distinctCount(p) <= p.length	nonn	0..800
 A237365	partpred	0	n	p -> 2*PU.distinctCount(p) > p.length	nonn	0..800
+A237755	partpred	1	n	p -> 2*PU.max(p) >= p.length	1..1000	_Clark Kimberling_
 A237984	partpred	1	n	p -> { final Q q = PU.mean(p); return q.isInteger() && PU.isPart(p, q.num().intValueExact()); }	mean is a part	nonn,easy	1..58
 A238482	partpred	1	n	p ->  PU.isPart(p, (PU.min(p) + PU.max(p))/2)	as a part	nonn,easy	1..49
 A238483	partpred	1	n	p -> !PU.isPart(p, (PU.min(p) + PU.max(p))/2)	as a part	nonn,easy	1..48
@@ -20,22 +53,76 @@ A238590	partpred	1	n	p -> PU.isPart(p, 3*PU.min(p))	a part of p	nonn,easy	1..100
 A238591	partpred	1	n	p -> PU.isPart(p, 4*PU.min(p))	a part of p	nonn,easy	1..10000
 A238594	partpred	1	n	p -> !PU.isPart(p, 2*PU.min(p))	not a part of p	nonn,easy	1..10000
 A238607	partpred	1	2*n	p -> PU.isPart(p, Math.toIntExact(n) - p.length)	a part of p	nonn,easy	1..1000
+A238622	partpred	1	n	p -> { final int fn = Math.toIntExact(n/2); final int cn = Math.toIntExact((n&1) == 0 ? n/2 : (n + 1)/2); return PU.isPart(p, fn) || PU.isPart(p, cn); }	that floor(n/2) or ceiling(n/2) is a part.	1..55	_Clark Kimberling_
+A238623	partpred	1	n	p -> { final int fn = Math.toIntExact(n/2); final int cn = Math.toIntExact((n&1) == 0 ? n/2 : (n + 1)/2); return !PU.isPart(p, fn) && !PU.isPart(p, cn); }	that neither floor(n/2) nor ceiling(n/2) is a part.	1..47	_Clark Kimberling_
+A238624	partpred	1	n	p -> { final int fn = Math.toIntExact(n/2); final int cn = Math.toIntExact((n&1) == 0 ? n/2 : (n + 1)/2); return !(PU.isPart(p, fn) ^ PU.isPart(p, cn)); }	that either both floor(n/2) and ceiling(n/2) are parts or else neither is a part.	1..47	_Clark Kimberling_
 A238626	partpred	1	n	p -> PU.isPart(p, PU.max(p) - 2*PU.min(p))	is a part of p	nonn,easy	1..50
 A238627	partpred	1	n	p -> PU.isPart(p, PU.max(p) - 3*PU.min(p))	is a part of p	nonn,easy	1..50
 A238629	partpred	1	n	p -> PU.isPart(p, Math.toIntExact(n) - 2*p.length)	is a part of p	nonn,easy	1..1000
 A238641	partpred	1	2*n - 1	p -> PU.isPart(p, Math.toIntExact(n) - p.length)	is a part of p	nonn,easy	1..1000
-A239259	partpred	0	n	p -> { final int[] eos = PU.evenOddSums(p); return eos[1] <  eos[0]; }	(sum of odd parts) <  (sum of even parts).	nonn,easy	0..10000
-A239260	partpred	0	n	p -> { final int[] eos = PU.evenOddSums(p); return eos[1] <= eos[0]; }	(sum of odd parts) <= (sum of even parts).	nonn,easy	0..10000
-A239261	partpred	0	n	p -> { final int[] eos = PU.evenOddSums(p); return eos[0] == eos[1]; }	(sum of odd parts) == (sum of even parts).	nonn,easy	0..500
-A239262	partpred	0	n	p -> { final int[] eos = PU.evenOddSums(p); return eos[1] >  eos[0]; }	(sum of odd parts) >  (sum of even parts).	nonn,easy	0..10000
-A239263	partpred	0	n	p -> { final int[] eos = PU.evenOddSums(p); return eos[1] >= eos[0]; }	(sum of odd parts) >= (sum of even parts).	nonn,easy	0..10000
+A239004	partpre1	0	n	p -> { final int[] eoc = PU.allEvenOddCounts(p); return 2*eoc[1] == eoc[0]; }	twice as many even parts as odd.	0..7000	_Clark Kimberling_
+A239259	partpred	0	n	p -> { final long [] eos = PU.allEvenOddSums(p); return eos[1] <  eos[0]; }	(sum of odd parts) <  (sum of even parts).	nonn,easy	0..10000
+A239260	partpred	0	n	p -> { final long [] eos = PU.allEvenOddSums(p); return eos[1] <= eos[0]; }	(sum of odd parts) <= (sum of even parts).	nonn,easy	0..10000
+A239261	partpred	0	n	p -> { final long [] eos = PU.allEvenOddSums(p); return eos[0] == eos[1]; }	(sum of odd parts) == (sum of even parts).	nonn,easy	0..500
+A239262	partpred	0	n	p -> { final long [] eos = PU.allEvenOddSums(p); return eos[1] >  eos[0]; }	(sum of odd parts) >  (sum of even parts).	nonn,easy	0..10000
+A239263	partpred	0	n	p -> { final long [] eos = PU.allEvenOddSums(p); return eos[1] >= eos[0]; }	(sum of odd parts) >= (sum of even parts).	nonn,easy	0..10000
 A239954	partpred	0	n	p -> PU.distinctCount(p) <  PU.max(p) - PU.min(p)	nonn,easy	0..47
 A239956	partpred	0	n	p -> PU.distinctCount(p) == PU.max(p) - PU.min(p)	nonn,easy	0..100
+A239958	partpre1	0	n	p -> PU.distinctCount(p) >= PU.max(p) - PU.min(p)	nonn,easy	0..50
+A239959	partpre1	0	n	p -> 2*PU.distinctCount(p) == p.length	0..1000	_Clark Kimberling_
+A240057	partpred	1	n	p -> PU.max(p) != PU.count(p, PU.max(p))	(multiplicity of greatest part)	nonn,easy	1..1000
+A240076	partpred	0	n	p -> PU.count(p, PU.max(p)) <  PU.count(p, 1)	m(1), where m == multiplicity	nonn,easy	0..48
+A240077	partpre1	0	n	p -> PU.count(p, PU.max(p)) <= PU.count(p, 1)	m(1), where m == multiplicity	nonn,easy	0..47
+A240078	partpre1	0	n	p -> PU.count(p, PU.max(p)) == PU.count(p, 1)	m(1), where m == multiplicity	nonn,easy	0..51
+A240080	partpre1	0	n	p -> PU.count(p, PU.max(p)) >= PU.count(p, 1)	m(1), where m == multiplicity	nonn,easy	0..49
+A240175	partpred	0	n	p -> { final int m = PU.min(p); return m < PU.count(p, m); }	< least part is less than its multiplicity.	0..47	_Clark Kimberling_
+A240176	partpre1	0	n	p -> PU.min(p) >  PU.count(p, PU.min(p))	(multiplicity of least part)	nonn,easy	0..52
+A240177	partpre1	0	n	p -> PU.min(p) >= PU.count(p, PU.min(p))	(multiplicity of least part)	nonn,easy	0..49
+A240178	partpred	0	n	p -> PU.min(p) <  PU.count(p, PU.max(p))	(multiplicity of greatest part)	nonn,easy	0..51
+A240179	partpred	0	n	p -> PU.min(p) <= PU.count(p, PU.max(p))	(multiplicity of greatest part)	nonn,easy	0..47
+A240180	partpred	0	n	p -> PU.min(p) == PU.count(p, PU.max(p))	(multiplicity of greatest part)	nonn,easy	0..47
+A240182	partpre1	0	n	p -> PU.max(p) <= PU.count(p, PU.min(p))	(multiplicity of least part)	nonn,easy	0..50
+A240183	partpred	0	n	p -> PU.max(p) == PU.count(p, PU.min(p))	(multiplicity of least part)	nonn,easy	0..55
+A240184	partpred	0	n	p -> PU.max(p) >  PU.count(p, PU.min(p))	(multiplicity of least part)	nonn,easy	0..47
+A240200	partpred	0	n	p -> PU.mean(p).compareTo(QV(PU.count(p, PU.max(p)))) <  0	nonn,easy	0..54
+A240201	partpred	0	n	p -> PU.mean(p).compareTo(QV(PU.count(p, PU.max(p)))) <= 0	nonn,easy	0..54
+A240202	partpred	0	n	p -> PU.mean(p).compareTo(QV(PU.count(p, PU.max(p)))) >  0	nonn,easy	0..47
+A240203	partpred	0	n	p -> PU.mean(p).compareTo(QV(PU.count(p, PU.min(p)))) <  0	nonn,easy	0..48
+A240204	partpred	0	n	p -> PU.mean(p).compareTo(QV(PU.count(p, PU.min(p)))) <= 0	nonn,easy	0..48
+A240205	partpred	0	n	p -> PU.mean(p).compareTo(QV(PU.count(p, PU.min(p)))) == 0	nonn,easy	0..60
+A240206	partpred	0	n	p -> PU.mean(p).compareTo(QV(PU.count(p, PU.min(p)))) >  0	nonn,easy	0..48
+A240207	partpred	0	n	p -> PU.median(p).compareTo(QV(PU.count(p, PU.max(p)))) <  0	nonn,easy	0..53
+A240208	partpred	0	n	p -> PU.median(p).compareTo(QV(PU.count(p, PU.max(p)))) <= 0	nonn,easy	0..49
+A240209	partpred	0	n	p -> PU.median(p).compareTo(QV(PU.count(p, PU.max(p)))) == 0	nonn,easy	0..50
+A240210	partpred	0	n	p -> PU.median(p).compareTo(QV(PU.count(p, PU.max(p)))) >  0	nonn,easy	0..47
+A240211	partpred	0	n	p -> PU.median(p).compareTo(QV(PU.count(p, PU.max(p)))) >= 0	nonn,easy	0..47
+A240212	partpred	0	n	p -> PU.median(p).compareTo(QV(PU.count(p, PU.min(p)))) <  0	nonn,easy	0..48
+A240213	partpred	0	n	p -> PU.median(p).compareTo(QV(PU.count(p, PU.min(p)))) <= 0	nonn,easy	0..48
+A240214	partpred	0	n	p -> PU.median(p).compareTo(QV(PU.count(p, PU.min(p)))) == 0	nonn,easy	0..53
+A240215	partpred	0	n	p -> PU.median(p).compareTo(QV(PU.count(p, PU.min(p)))) >  0	nonn,easy	0..49
+A240216	partpred	0	n	p -> PU.median(p).compareTo(QV(PU.count(p, PU.min(p)))) >= 0	nonn,easy	0..48
 A240217	partpred	1	n	p -> PU.median(p).compareTo(PU.mean(p))  <  0	median(p) <  mean(p).	nonn,easy	1..47
 A240218	partpred	1	n	p -> PU.median(p).compareTo(PU.mean(p))  <= 0	median(p) <= mean(p).	nonn,easy	1..47
 A240219	partpred	1	n	p -> PU.median(p).compareTo(PU.mean(p))  == 0	median(p) =  mean(p).	nonn,easy	1..57
 A240220	partpred	1	n	p -> PU.median(p).compareTo(PU.mean(p))  >  0	median(p) >  mean(p).	nonn,easy	1..52
 A240221	partpred	1	n	p -> PU.median(p).compareTo(PU.mean(p))  >= 0	median(p) >= mean(p).	nonn,easy	1..51
+A240307	partpred	0	n	p -> { final int g = PU.distinctCount(p); return PU.isPart(p, PU.count(p, g)); }	m(number of distinct parts) is a part, where m = multiplicity.	0..49	_Clark Kimberling_
+A240486	partpred	0	n	p -> PU.isPart(p, PU.count(p, 1))	containing m(1) as a part, where m denotes multiplicity	nonn,easy	0..49
+A240487	partpred	0	n	p -> PU.isPart(p, PU.count(p, 2))	containing m(2) as a part, where m denotes multiplicity	nonn,easy	0..49
+A240488	partpred	0	n	p -> PU.isPart(p, PU.count(p, 3))	containing m(3) as a part, where m denotes multiplicity	nonn,easy	0..49
+A240489	partpred	0	n	p -> PU.isPart(p, PU.count(p, 4))	containing m(4) as a part, where m denotes multiplicity	nonn,easy	0..50
+A240490	partpred	0	n	p -> PU.isPart(p, PU.count(p, 5))	containing m(5) as a part, where m denotes multiplicity	nonn,easy	0..50
+A240493	partpred	0	n	p -> { final int g = PU.min(p); final int m = PU.count(p, g); return PU.isPart(p, m); }	multiplicity of the least part is a part.	0..48	_Clark Kimberling_
+A240494	partpred	0	n	p -> { final int g = PU.max(p); final int m = PU.count(p, g); return PU.isPart(p, m); }	multiplicity of the greatest part is a part.	0..47	_Clark Kimberling_
+A240499	partpred	0	n	p -> { final int g = p.length;  final int m = PU.count(p, g); return PU.isPart(p, m); }	multiplicity of the number of parts is a part.	0..52	_Clark Kimberling_
+A240500	partpred	0	n	p -> { final int g = 2*p.length; final int m = PU.count(p, g); return PU.isPart(p, m); }	multiplicity of 2*(number of parts) is a part.	0..57	_Clark Kimberling_
+A240573	partpred	0	n	p -> { final int[] eoc = PU.allEvenOddCounts(p); return  PU.isPart(p, eoc[0]); }	number of even parts is a part	nonn,easy	0..48
+A240574	partpred	0	n	p -> { final int[] eoc = PU.allEvenOddCounts(p); return  PU.isPart(p, eoc[1]); }	number of odd parts is a part	nonn,easy	0..49
+A240575	partpred	0	n	p -> { final int[] eoc = PU.allEvenOddCounts(p); return  PU.isPart(p, eoc[0]) && PU.isPart(p, eoc[1]); }	number of even parts is a part and the number of odd parts is a part	nonn,easy	0..51
+A240576	partpred	0	n	p -> { final int[] eoc = PU.allEvenOddCounts(p); return  PU.isPart(p, eoc[0]) || PU.isPart(p, eoc[1]); }	number of even parts is a part or the number of odd parts is a part	nonn,easy	0..48
+A240577	partpred	0	n	p -> { final int[] eoc = PU.allEvenOddCounts(p); return  PU.isPart(p, eoc[0]) && !PU.isPart(p, eoc[1]); }	number of even parts is a part and the number of odd parts is not a part	nonn,easy	0..49
+A240578	partpred	0	n	p -> { final int[] eoc = PU.allEvenOddCounts(p); return !PU.isPart(p, eoc[0]) && PU.isPart(p, eoc[1]); }	number of odd parts is a part and the number of even parts is not a part	nonn,easy	0..51
+A240579	partpre1	0	n	p -> { final int[] eoc = PU.allEvenOddCounts(p); return !PU.isPart(p, eoc[0]) && !PU.isPart(p, eoc[1]); }	number of odd parts is not a part and the number of even parts is not a part	nonn,easy	0..49
 A240852	pardpred	0	n	p -> PU.isPart(p, PU.max(p) - PU.min(p))	nonn,easy	0..61
 A240853	pardpred	0	n	p -> PU.isPart(p, 2*PU.min(p))	nonn,easy	0..58
 A240854	pardpred	0	n	p -> !PU.isPart(p, 2*PU.min(p))	nonn,easy	0..55
@@ -111,6 +198,10 @@ A241409	partpred	0	n	p ->  PU.isPart(p, PU.multiCount(p)) &&     PU.isPart(p, PU
 A241410	partpred	0	n	p -> !PU.isPart(p, PU.multiCount(p)) &&     PU.isPart(p, PU.distinctCount(p))	nonn,easy	0..51
 A241411	partpred	0	n	p ->  PU.isPart(p, PU.multiCount(p)) &&    !PU.isPart(p, PU.distinctCount(p))	nonn,easy	0..49
 A241412	partpre1	0	n	p -> !PU.isPart(p, PU.multiCount(p)) &&    !PU.isPart(p, PU.distinctCount(p))	nonn,easy	0..50
+A241413	partpred	0	n	p ->  PU.isPart(p, PU.singleCount(p))	in p is a part of p	nonn,easy	0..48
+A241414	partpred	0	n	p ->  PU.isPart(p, PU.singleCount(p)) && PU.isPart(p, PU.multiCount(p))	is a part	nonn,easy	0..49
+A241415	partpred	0	n	p -> !PU.isPart(p, PU.singleCount(p)) && PU.isPart(p, PU.multiCount(p))	is a part	nonn,easy	0..50
+A241416	partpred	0	n	p ->  PU.isPart(p, PU.singleCount(p)) && !PU.isPart(p, PU.multiCount(p))	is not a part	nonn,easy	0..51
 A241442	partpred	0	n	p ->  PU.isPart(p, PU.singleCount(p)) &&  PU.isPart(p, PU.distinctCount(p))	nonn,easy	0..50
 A241443	partpred	0	n	p -> !PU.isPart(p, PU.singleCount(p)) &&  PU.isPart(p, PU.distinctCount(p))	nonn,easy	0..51
 A241444	partpred	0	n	p ->  PU.isPart(p, PU.singleCount(p)) && !PU.isPart(p, PU.distinctCount(p))	nonn,easy	0..49
@@ -121,6 +212,11 @@ A241448	partpred	0	n	p -> !PU.isPart(p, PU.singleCount(p)) &&  PU.isPart(p, PU.m
 A241449	partpred	0	n	p ->  PU.isPart(p, PU.singleCount(p)) && !PU.isPart(p, PU.max(p) - PU.min(p))	nonn,easy	0..48
 A241450	partpre1	0	n	p -> !PU.isPart(p, PU.singleCount(p)) && !PU.isPart(p, PU.max(p) - PU.min(p))	nonn,easy	0..49
 A241451	partpred	0	n	p ->  PU.isPart(p, PU.singleCount(p)) ||  PU.isPart(p, PU.max(p) - PU.min(p))	nonn,easy	0..47
+A241506	partpred	0	n	p ->  PU.isPart(p, PU.singleCount(p)) &&  PU.isPart(p, PU.count(p, 1))	is a part	nonn,easy	0..50
+A241507	partpred	0	n	p -> !PU.isPart(p, PU.singleCount(p)) &&  PU.isPart(p, PU.count(p, 1))	is a part	nonn,easy	0..51
+A241508	partpred	0	n	p ->  PU.isPart(p, PU.singleCount(p)) && !PU.isPart(p, PU.count(p, 1))	is not a part	nonn,easy	0..49
+A241509	partpre1	0	n	p -> !PU.isPart(p, PU.singleCount(p)) && !PU.isPart(p, PU.count(p, 1))	is not a part	nonn,easy	0..50
+A241510	partpred	0	n	p ->  PU.isPart(p, PU.singleCount(p)) ||  PU.isPart(p, PU.count(p, 1))	is a part	nonn,easy	0..47
 A241544	partpred	0	n	p -> PU.isPart(p, PU.evenOddCounts(p)[0])	a part of p	nonn,easy	0..47
 A241545	partpred	0	n	p -> PU.isPart(p, PU.evenOddCounts(p)[1])	a part of p	nonn,easy	0..48
 A241546	partpred	0	n	p -> PU.isPart(p, PU.modCount(p, 3, 0))
@@ -145,14 +241,45 @@ A241651	partpred	0	n	p -> { final int[] eoc = PU.evenOddCounts(p); return eoc[0]
 A241652	partpred	0	n	p -> { final int[] eoc = PU.evenOddCounts(p); return eoc[0]*2 <= eoc[1]; }	2*(number of even numbers in p) <= (number of odd numbers in p).	nonn,easy	0..1000
 A241653	partpred	0	n	p -> { final int[] eoc = PU.evenOddCounts(p); return eoc[0]*2 == eoc[1]; }	2*(number of even numbers in p) == (number of odd numbers in p).	nonn,easy	0..1000
 A241733	partpred	0	n	p -> PU.isPart(p, PU.mean(p).add(Q.HALF).floor().intValueExact())	a part of p; here, round(x) means floor(x + 1/2)	nonn,easy	0..48
+A241734	partpre1	0	n	p -> !PU.isPart(p, PU.mean(p).add(Q.HALF).floor().intValueExact())	is not a part of p; here, round(x) means floor(x + 1/2)	nonn,easy	0..48
 A241737	partpred	0	n	p -> PU.modCount(p, 3, 1) <  PU.modCount(p, 3, 2)	nonn,easy	0..50
+A241738	partpre1	0	n	p -> PU.modCount(p, 3, 1) == PU.modCount(p, 3, 2)	nonn,easy	0..49
 A241739	partpred	0	n	p -> PU.modCount(p, 3, 1) >  PU.modCount(p, 3, 2)	nonn,easy	0..48
 A241740	partpred	0	n	p -> PU.modCount(p, 3, 2) <  PU.modCount(p, 3, 0)	nonn,easy	0..50
+A241741	partpre1	0	n	p -> PU.modCount(p, 3, 2) == PU.modCount(p, 3, 0)	nonn,easy	0..49
 A241742	partpred	0	n	p -> PU.modCount(p, 3, 2) >  PU.modCount(p, 3, 0)	nonn,easy	0..49
 A241743	partpred	0	n	p -> PU.modCount(p, 3, 0) <  PU.modCount(p, 3, 1)	nonn,easy	0..1000
+A241744	partpre1	0	n	p -> PU.modCount(p, 3, 0) == PU.modCount(p, 3, 1)	nonn,easy	1..50
 A241745	partpred	0	n	p -> PU.modCount(p, 3, 0) >  PU.modCount(p, 3, 1)	nonn,easy	0..51
-A284609	partpred	1	n	p -> PU.evenOddSums(p)[1] == Math.toIntExact(n/2)	nonn,easy	1..60
-A284611	partpred	1	n	p -> PU.evenOddSums(p)[0] == Math.toIntExact(n/2)	nonn,easy	1..60
+A242682	partpred	0	n	p -> { final int[] eoc = PU.evenOddCounts(p); return eoc[1] - eoc[0] == -10; }	 between the number of odd parts and the number of even parts, both counted without multiplicity.	110..1000	_Alois P. Heinz_
+A242683	partpred	0	n	p -> { final int[] eoc = PU.evenOddCounts(p); return eoc[1] - eoc[0] == -9; }	 between the number of odd parts and the number of even parts, both counted without multiplicity.	90..1000	_Alois P. Heinz_
+A242684	partpred	72	n	p -> { final int[] eoc = PU.evenOddCounts(p); return eoc[1] - eoc[0] == -8; }	between the number of odd parts and the number of even parts, both counted without multiplicity.	72..1000	_Alois P. Heinz_
+A242685	partpred	56	n	p -> { final int[] eoc = PU.evenOddCounts(p); return eoc[1] - eoc[0] == -7; }	between the number of odd parts and the number of even parts, both counted without multiplicity.	56..1000	_Alois P. Heinz_
+A242686	partpred	42	n	p -> { final int[] eoc = PU.evenOddCounts(p); return eoc[1] - eoc[0] == -6; }	between the number of odd parts and the number of even parts, both counted without multiplicity.	42..1000	_Alois P. Heinz_
+A242687	partpred	30	n	p -> { final int[] eoc = PU.evenOddCounts(p); return eoc[1] - eoc[0] == -5; }	between the number of odd parts and the number of even parts, both counted without multiplicity.	30..1000	_Alois P. Heinz_
+A242688	partpred	20	n	p -> { final int[] eoc = PU.evenOddCounts(p); return eoc[1] - eoc[0] == -4; }	between the number of odd parts and the number of even parts, both counted without multiplicity.	20..1000	_Alois P. Heinz_
+A242689	partpred	12	n	p -> { final int[] eoc = PU.evenOddCounts(p); return eoc[1] - eoc[0] == -3; }	between the number of odd parts and the number of even parts, both counted without multiplicity.	12..1000	_Alois P. Heinz_
+A242690	partpred	6	n	p -> { final int[] eoc = PU.evenOddCounts(p); return eoc[1] - eoc[0] == -2; }	between the number of odd parts and the number of even parts, both counted without multiplicity.	6..1000	_Alois P. Heinz_
+A242691	partpred	2	n	p -> { final int[] eoc = PU.evenOddCounts(p); return eoc[1] - eoc[0] == -1; }	between the number of odd parts and the number of even parts, both counted without multiplicity.	2..1000	_Alois P. Heinz_
+A242692	partpred	1	n	p -> { final int[] eoc = PU.evenOddCounts(p); return eoc[1] - eoc[0] == 1; }	between the number of odd parts and the number of even parts, both counted without multiplicity.	1..1000	_Alois P. Heinz_
+A242693	partpred	4	n	p -> { final int[] eoc = PU.evenOddCounts(p); return eoc[1] - eoc[0] == 2; }	between the number of odd parts and the number of even parts, both counted without multiplicity.	4..1000	_Alois P. Heinz_
+A242694	partpred	9	n	p -> { final int[] eoc = PU.evenOddCounts(p); return eoc[1] - eoc[0] == 3; }	between the number of odd parts and the number of even parts, both counted without multiplicity.	9..1000	_Alois P. Heinz_
+A242695	partpred	16	n	p -> { final int[] eoc = PU.evenOddCounts(p); return eoc[1] - eoc[0] == 4; }	between the number of odd parts and the number of even parts, both counted without multiplicity.	16..1000	_Alois P. Heinz_
+A242696	partpred	25	n	p -> { final int[] eoc = PU.evenOddCounts(p); return eoc[1] - eoc[0] == 5; }	between the number of odd parts and the number of even parts, both counted without multiplicity.	25..1000	_Alois P. Heinz_
+A242697	partpred	36	n	p -> { final int[] eoc = PU.evenOddCounts(p); return eoc[1] - eoc[0] == 6; }	between the number of odd parts and the number of even parts, both counted without multiplicity.	36..1000	_Alois P. Heinz_
+A242698	partpred	49	n	p -> { final int[] eoc = PU.evenOddCounts(p); return eoc[1] - eoc[0] == 7; }	between the number of odd parts and the number of even parts, both counted without multiplicity.	49..1000	_Alois P. Heinz_
+A242699	partpred	64	n	p -> { final int[] eoc = PU.evenOddCounts(p); return eoc[1] - eoc[0] == 8; }	between the number of odd parts and the number of even parts, both counted without multiplicity.	64..1000	_Alois P. Heinz_
+A242700	partpred	81	n	p -> { final int[] eoc = PU.evenOddCounts(p); return eoc[1] - eoc[0] == 9; }	between the number of odd parts and the number of even parts, both counted without multiplicity.	81..1000	_Alois P. Heinz_
+A242701	partpred	0	n	p -> { final int[] eoc = PU.evenOddCounts(p); return eoc[1] - eoc[0] == 10; }	 between the number of odd parts and the number of even parts, both counted without multiplicity.	100..1000	_Alois P. Heinz_
+A265259	partpred	0	n	p -> { final int mn = PU.min(p); final int mx = PU.max(p); return mn != mx && PU.count(p, mn) == PU.count(p, mx); }	that least and largest parts are distinct and occur the same number of times.	0..1000	_Emeric Deutsch_
+A284608	partpred	1	n	p -> PU.evenOddSums(p)[1] == n/2	1..56	_Clark Kimberling_
+A284609	partpred	1	n	p -> PU.allEvenOddSums(p)[1] == n/2	nonn,easy	1..60
+A284610	partpred	1	n	p -> PU.evenOddSums(p)[0] == n/2	1..60	_Clark Kimberling_
+A284611	partpred	1	n	p -> PU.allEvenOddSums(p)[0] == n/2	nonn,easy	1..60
+A284613	partpred	1	n	p -> PU.evenOddSums(p)[1] <= n/2	1..48	_Clark Kimberling_
+A284614	partpred	1	n	p -> PU.evenOddSums(p)[1] >  n/2	1..51	_Clark Kimberling_
+A284617	partpred	1	n	p -> PU.evenOddSums(p)[0] <= n/2	1..47	_Clark Kimberling_
+A284618	partpred	1	n	p -> PU.evenOddSums(p)[0] >  n/2	1..51	_Clark Kimberling_
 A307683	partpred	1	n	p -> !PU.median(p).isInteger()	having a non-integer median	nonn,easy	1..180
 A325338	partpred	1	n	p -> (PU.min(p) & 1) == 1 && (PU.max(p) & 1) == 1	with odd minimal and maximal parts	nonn,easy	1..49
 A325340	partpred	1	n	p -> PU.min(p) < p.length && p.length < PU.max(p)	nonn,easy	1..49
@@ -165,3 +292,48 @@ A330001	partpred	0	n	p -> PU.singleCount(p) <  PU.multiCount(p)	nonn,easy	0..49
 A330145	partpre1	0	n	p -> PU.singleCount(p) >= PU.multiCount(p)	nonn,easy	0..47
 A330146	partpre1	0	n	p -> PU.singleCount(p) <= PU.multiCount(p)	nonn,easy	0..48
 A330147	partpred	0	n	p -> PU.singleCount(p) != PU.multiCount(p)	nonn,easy	0..47
+A347867	partpred	1	n	p -> 3*PU.max(p) >= p.length	1..50	_Seiichi Manyama_
+A347868	partpred	1	n	p -> 4*PU.max(p) >= p.length	1..50	_Seiichi Manyama_
+A347869	partpred	1	n	p -> 5*PU.max(p) >= p.length	1..50	_Seiichi Manyama_
+A348163	partpred	1	n	p -> 4*PU.max(p) == p.length	1..10000	_Seiichi Manyama_
+A348164	partpred	1	n	p -> 5*PU.max(p) == p.length	1..10000	_Seiichi Manyama_
+A350892	partpred	1	n	p -> 3*PU.min(p) == p.length	1..20000	_Seiichi Manyama_
+A350893	partpred	1	n	p -> PU.min(p) == 2*p.length	1..80	_Seiichi Manyama_
+A350894	partpred	1	n	p -> PU.min(p) == 3*p.length	1..10000	_Seiichi Manyama_
+A350896	partpred	1	n	p -> 4*PU.min(p) == p.length	1..10000	_Seiichi Manyama_
+A350897	partpred	1	n	p -> 5*PU.min(p) == p.length	1..10000	_Seiichi Manyama_
+A350898	partpred	1	n	p -> PU.min(p) == 4*p.length	1..91	_Seiichi Manyama_
+A350899	partpred	1	n	p -> PU.min(p) == 5*p.length	1..93	_Seiichi Manyama_
+A363045	partpre1	0	n	p -> PU.max(p) % 3 == 0	greatest part is a multiple of 3.	0..10000	_Seiichi Manyama_
+A363046	partpre1	0	n	p -> PU.max(p) % 4 == 0	greatest part is a multiple of 4.	0..1000	_Seiichi Manyama_
+A363047	partpre1	0	n	p -> PU.max(p) % 5 == 0	greatest part is a multiple of 5.	0..1000	_Seiichi Manyama_
+A363075	partpred	1	n	p -> 3*PU.min(p) + 1 == PU.max(p)	1..5000	_Seiichi Manyama_
+A363076	partpred	1	n	p -> 4*PU.min(p) + 1 == PU.max(p)	1..61	_Seiichi Manyama_
+A363077	partpred	1	n	p -> 5*PU.min(p) + 1 == PU.max(p)	1..59	_Seiichi Manyama_
+A363094	partpred	1	n	p -> PU.min(p) % 3 == 0	least part is a multiple of 3.	1..10000	_Seiichi Manyama_
+A363095	partpred	1	n	p -> PU.min(p) % 4 == 0	least part is a multiple of 4.	1..10000	_Seiichi Manyama_
+A363096	partpred	1	n	p -> PU.min(p) % 5 == 0	least part is a multiple of 5.	1..10000	_Seiichi Manyama_
+A363211	partpred	1	n	p -> 3*PU.min(p) <= PU.max(p)	1..50	_Seiichi Manyama_
+A363276	partpred	1	n	p -> 4*PU.min(p) <= PU.max(p)	1..52	_Seiichi Manyama_
+A370747	pardpre1	0	n	p -> p.length % 3 == 0	number of parts is a multiples of 3.	0..63	_Seiichi Manyama_
+A372703	pardpre1	0	n	p -> p.length % 4 == 0	number of parts is a multiples of 4.	0..65	_Seiichi Manyama_
+A373067	partpre1	0	n	p -> PU.min(p) >= 2*p.length	0..67	_Seiichi Manyama_
+A373068	partpre1	0	n	p -> PU.min(p) >= 3*p.length	0..75	_Seiichi Manyama_
+A373069	partpre1	0	n	p -> PU.min(p) >= 4*p.length	0..79	_Seiichi Manyama_
+A373070	partpre1	0	n	p -> PU.min(p) >= 5*p.length	0..85	_Seiichi Manyama_
+A373073	partpre1	0	n	p -> PU.min(p) >  2*p.length	0..68	_Seiichi Manyama_
+A373074	partpre1	0	n	p -> PU.min(p) >  3*p.length	0..78	_Seiichi Manyama_
+A373075	partpre1	0	n	p -> PU.min(p) >  4*p.length	0..78	_Seiichi Manyama_
+A373076	partpre1	0	n	p -> PU.min(p) >  5*p.length	0..84	_Seiichi Manyama_
+A373078	pardpre1	0	n	p -> p.length % 5 == 0	number of parts is a multiples of 5.	0..65	_Seiichi Manyama_
+A386360	partpred	1	n	p -> p.length % 3 == 0 && PU.count(p, PU.min(p)) == p.length / 3	least part occurs exactly (1/3)*(number of parts) times.	1..55	_Seiichi Manyama_
+A386361	partpred	1	n	p -> p.length % 4 == 0 && PU.count(p, PU.min(p)) == p.length / 4	least part occurs exactly (1/4)*(number of parts) times.	1..55	_Seiichi Manyama_
+A393510	partpre1	0	n	p -> { final int[] eoc = PU.allEvenOddCounts(p); return 4*eoc[1] == eoc[0]; }	four times as many even parts as odd.	0..1000	_Seiichi Manyama_
+A393511	partpre1	0	n	p -> { final int[] eoc = PU.allEvenOddCounts(p); return 5*eoc[1] == eoc[0]; }	five times as many even parts as odd.	0..1000	_Seiichi Manyama_
+A393513	partpre1	0	n	p -> { final int[] eoc = PU.allEvenOddCounts(p); return 3*eoc[0] == eoc[1]; }	three times as many odd parts as even.	0..57	_Seiichi Manyama_
+A393515	partpre1	0	n	p -> { final int[] eoc = PU.allEvenOddCounts(p); return 5*eoc[0] == eoc[1]; }	five times as many odd parts as even.	0..59	_Seiichi Manyama_
+A394290	partpred	1	n	p -> { final int g = PU.max(p); final int m = PU.count(p, g); return PU.isPart(p, m) && m < g; }	multiplicity m of the greatest part g is a part of the partition and m < g.	1..1000	_Seiichi Manyama_
+A394291	partpred	1	n	p -> { final int g = PU.min(p); final int m = PU.count(p, g); return PU.isPart(p, m) && m > g; }	multiplicity m of the least part s is a part of the partition and m > s.	1..1000	_Seiichi Manyama_
+A398663	holos	0	[0,-1,4,-7,8,-7,4,-1]	0,2,9,23,45,77	0	0 
+A399384	holos	0	[[0],[0,0,1,2],[1,-2]]	1	0	0
+A241744	partpre1	0	n	p -> PU.modCount(p, 3, 0) == PU.modCount(p, 3, 1)	nonn,easy	1..50
