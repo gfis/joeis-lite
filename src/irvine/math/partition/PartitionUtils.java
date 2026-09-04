@@ -3,7 +3,6 @@ package irvine.math.partition;
 import java.util.Arrays;
 
 import irvine.math.q.Q;
-import irvine.math.z.Z;
 
 /**
  * Static utility methods for small integer arrays with descending values (the parts),
@@ -12,13 +11,35 @@ import irvine.math.z.Z;
  */
 public final class PartitionUtils {
 
+  private PartitionUtils() { }
+
+  /**
+   * Compute the integer part of a long fraction.
+   * @param num numerator (may be negative)
+   * @param den denominator
+   * @return floor(num/den)
+   */ 
+  public static int floor(final long num, final long den) { 
+    return Math.toIntExact(num < 0 ? (num - 1) / den : num / den);
+  }
+
+  /**
+   * Compute the integer part of a long fraction.
+   * @param num numerator (may be negative)
+   * @param den denominator
+   * @return ceiling(num/den)
+   */ 
+  public static int ceiling(final long num, final long den) { 
+    return Math.toIntExact(num > 0 ? (num + 1) / den : num / den);
+  }
+
   /**
    * Determine whether a number is a part.
    * @param p partition
    * @param num number to be tested for membership
    * @return true for a part, false otherwise
    */
-  public static boolean isPart(final int[] p, int num) {
+  public static boolean isPart(final int[] p, final int num) {
     final int len = p.length;
     if (len == 0) {
       return false;
@@ -26,7 +47,32 @@ public final class PartitionUtils {
     if (num == 1) {
       return p[len - 1] == num;
     }
-    for(int pi : p) {
+    for (int pi : p) {
+      if (pi < num) {
+        return false;
+      }
+      if (pi == num) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  /**
+   * Determine whether a long number is a part.
+   * @param p partition
+   * @param num number to be tested for membership
+   * @return true for a part, false otherwise
+   */
+  public static boolean isPart(final int[] p, final long num) {
+    final int len = p.length;
+    if (len == 0) {
+      return false;
+    }
+    if (num == 1L) {
+      return p[len - 1] == num;
+    }
+    for (int pi : p) {
       if (pi < num) {
         return false;
       }
@@ -67,17 +113,17 @@ public final class PartitionUtils {
     for (int n : p) {
       if (old != n) {
         old = n;
-        if ((n&1) == 0) {
+        if ((n & 1) == 0) {
           ++evenCount;
         } else {
           ++oddCount;
         }
         if (n == 1) {
-          return new int[] { evenCount, oddCount };
+          return new int[] {evenCount, oddCount};
         }
       } // else old == n: ignore
     }
-    return new int[] { evenCount, oddCount };
+    return new int[] {evenCount, oddCount};
   }
 
   /**
@@ -89,13 +135,13 @@ public final class PartitionUtils {
     int evenCount = 0;
     int oddCount = 0;
     for (int n : p) {
-      if ((n&1) == 0) {
+      if ((n & 1) == 0) {
         ++evenCount;
       } else {
         ++oddCount;
       }
     }
-    return new int[] { evenCount, oddCount };
+    return new int[] {evenCount, oddCount};
   }
 
   /**
@@ -110,17 +156,17 @@ public final class PartitionUtils {
     for (int n : p) {
       if (old != n) {
         old = n;
-        if ((n&1) == 0) {
+        if ((n & 1) == 0) {
           evenSum += n;
         } else {
           oddSum += n;
         }
         if (n == 1) {
-          return new long[] { evenSum, oddSum };
+          return new long[] {evenSum, oddSum};
         }
       } // else old == n: ignore
     }
-    return new long[] { evenSum, oddSum };
+    return new long[] {evenSum, oddSum};
   }
 
   /**
@@ -132,13 +178,13 @@ public final class PartitionUtils {
     long evenSum = 0;
     long oddSum = 0;
     for (int n : p) {
-      if ((n&1) == 0) {
+      if ((n & 1) == 0) {
         evenSum += n;
       } else {
         oddSum += n;
       }
     }
-    return new long[] { evenSum, oddSum };
+    return new long[] {evenSum, oddSum};
   }
 
   /**
@@ -148,7 +194,7 @@ public final class PartitionUtils {
    * @param res required residue
    * @return number of parts in <code>p</code> that fulfill the modulus condition
    */
-  public static int modCount(final int[] p, int base, int res) {
+  public static int modCount(final int[] p, final int base, final int res) {
     int count = 0;
     int old = 0;
     for (int n : p) {
@@ -186,10 +232,10 @@ public final class PartitionUtils {
    */
   public static Q median(final int[] p) {
     final int len = p.length;
-    if ((len&1) == 1) {
-      return new Q(p[len/2]);
+    if ((len & 1) == 1) {
+      return new Q(p[len / 2]);
     }
-    return new Q(p[len/2 - 1] + p[len/2], 2);
+    return new Q(p[len / 2 - 1] + p[len / 2], 2);
   }
 
   /**
@@ -213,6 +259,44 @@ public final class PartitionUtils {
   }
 
   /**
+   * Get the count of parts &gt; 1, without multiplicity.
+   * @param p partition
+   * @return number of distinct parts &gt; 1
+   */
+  public static int gt1Count(final int[] p) {
+    int count = 0;
+    int old = 0;
+    for (int n : p) {
+      if (old != n) {
+        old = n;
+        if (n > 1) {
+           ++count;
+        } else {
+          return count;
+        }
+      } // else old == n: ignore
+    }
+    return count;
+  }
+
+  /**
+   * Get the count of parts &gt; 1, with multiplicity.
+   * @param p partition
+   * @return number of all parts &gt; 1
+   */
+  public static int allGt1Count(final int[] p) {
+    int count = 0;
+    for (int n : p) {
+      if (n > 1) {
+         ++count;
+      } else {
+        return count;
+      }
+    }
+    return count;
+  }
+
+  /**
    * Get the multiplicity of a number.
    * @param p partition
    * @param num number to be counted
@@ -221,7 +305,7 @@ public final class PartitionUtils {
   public static int count(final int[] p, final int num) {
     int count = 0;
     int i = p.length;
-    while(--i >= 0) {
+    while (--i >= 0) {
       if (p[i] == num) {
         ++count;
       } else if (p[i] > num) {
@@ -238,20 +322,20 @@ public final class PartitionUtils {
    */
   public static int minDiff(final int[] p) {
     final int len = p.length;
+    int result = p[0];
     if (len <= 1) {
-      return 0;
+      return result;
     }
     int i = 0;
     int old = p[i++];
-    int diff = old - p[i++];
-    while(i < len) {
-      final int diff2 = old - p[i];
-      if (diff2 < diff) {
-        diff = diff2;
+    while (i < len) {
+      int diff = old - p[i];
+      if (diff < result) {
+        result = diff;
       }
       old = p[i++];
     }
-    return diff;
+    return result;
   }
 
   /**
@@ -261,20 +345,20 @@ public final class PartitionUtils {
    */
   public static int maxDiff(final int[] p) {
     final int len = p.length;
+    int result = 0;
     if (len <= 1) {
-      return 0;
+      return result;
     }
     int i = 0;
     int old = p[i++];
-    int diff = old - p[i++];
-    while(i < len) {
-      final int diff2 = old - p[i];
-      if (diff2 > diff) {
-        diff = diff2;
+    while (i < len) {
+      int diff = old - p[i];
+      if (diff > result) {
+        result = diff;
       }
       old = p[i++];
     }
-    return diff;
+    return result;
   }
 
   /**
@@ -289,7 +373,7 @@ public final class PartitionUtils {
       return 0;
     }
     final int num = p[i - 1];
-    while(--i >= 0) {
+    while (--i >= 0) {
       if (p[i] == num) {
         ++count;
       } else if (p[i] > num) {
@@ -306,7 +390,7 @@ public final class PartitionUtils {
    */
   public static int maxCount(final int[] p) {
     int count = 0;
-    int len = p.length;
+    final int len = p.length;
     if (len == 0) {
       return 0;
     }

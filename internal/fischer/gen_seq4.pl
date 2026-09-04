@@ -298,8 +298,8 @@ while (<>) { # read inputfile
             $parm =~ s{BS\(}           {BernoulliSequence}g;
             $parm =~ s{CAT\(}          {Functions.CATALAN.z\(}g;
             $parm =~ s{CBRT\(}         {Functions.CBRT.z\(}g;
-            #               (1      1  2      2 )
-            $parm =~ s{CEIL\(([^\,]+)\,([^\)]+)\)}  {\($1\%$2 == 0 ? $1\/$2 \: $1\/$2 \+ 1\)}g;
+            $parm =~ s{CEIL(\.[ilz])\(}  {Functions.QUOTIENT_CEILING$1\(}g;
+            $parm =~ s{FLOOR(\.[ilz])\(} {Functions.QUOTIENT_FLOOR$1\(}g;
             $parm =~ s{CESQ\(}         {Functions.CEIL_SQRT.z\(}g;
             $parm =~ s{CML\(}          {Functions.CARMICHAEL_LAMBDA.z\(}g;
             $parm =~ s{CND\(}          {Integers.SINGLETON.countdiv\(}g;
