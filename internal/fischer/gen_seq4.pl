@@ -395,6 +395,7 @@ while (<>) { # read inputfile
             $parm =~ s{SA\(([^\)]+)\)} {Functions.STIRLING1.z\($1\)\.abs\(\)}g;
             $parm =~ s{S2\(}           {Functions.STIRLING2.z\(}g;
             $parm =~ s{TAU\(}          {Functions.TAU.z(}g;
+            $parm =~ s{TAUi\(}         {Functions.TAU.i(}g;
             $parm =~ s{TAUl\(}         {Functions.TAU.l(}g;
             $parm =~ s{TRI\(}          {Functions.TRIANGULAR.z(}g;
             $parm =~ s{VAL\(}          {Functions.VALUATION.i(}g;
