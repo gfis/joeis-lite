@@ -291,6 +291,7 @@ while (<>) { # read inputfile
             $parm =~ s{CV\(}           {CR.valueOf\(}g; $parm =~ s{CR\.valueOf\((\-1|[0-9]|10)\)}{"CR." . $zhash{$1}}eg; # after the previous statement!
             $parm =~ s{ARD\(}          {Functions.ARD.z(}g;
             $parm =~ s{BELL\(}         {Functions.BELL.z\(}g;
+            $parm =~ s{BERN\(}         {Functions.BERNOULLI.q\(}g;
             $parm =~ s{qBI\(}          {Binomial.gaussianBinomial\(}g;
             $parm =~ s{BI\(}           {Binomial.binomial\(}g;
             $parm =~ s{BIN\(}          {Functions.BINOMIAL.z\(}g;
@@ -325,6 +326,7 @@ while (<>) { # read inputfile
             $parm =~ s{GP\(}           {GaussianIntegers.SINGLETON.product\(}g;
             $parm =~ s{GPF\(}          {Functions.GPF.z\(}g;
             $parm =~ s{GU\(}           {GaussianIntegers.SINGLETON.sum\(}g;
+            $parm =~ s{HARM\(}         {Functions.HARMONIC.q\(}g;
             $parm =~ s{HW\(}           {Functions.DIGIT_SUM.i\(}g; # hammingweight -> int!
             $parm =~ s{IPP\(}          {isProbablePrime\(}g;
             $parm =~ s{IV\[([^\]]+)\]} {\($1 \? Z\.ONE \: Z\.ZERO\)}g;
