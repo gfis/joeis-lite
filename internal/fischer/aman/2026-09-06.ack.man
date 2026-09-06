@@ -1,16 +1,24 @@
----- 2026-09-06 15:00:20
+---- 2026-09-06 21:19:22
 A090796	filter	0	new A000040()	p -> BERN(p.-(1)).+(new Q(1, p)).den().equals(ZV(30))	Denominator(Bernoulli(n-1) + 1/n)=30, where n runs through the primes.
 A090797	filter	0	new A000040()	p -> BERN(p.-(1)).+(new Q(1, p)).den().equals(ZV(42))	Denominator(Bernoulli(n-1) + 1/n)=42, where n runs through the primes.
 A090799	filter	0	new A000040()	p -> BERN(p.-(1)).+(new Q(1, p)).den().equals(ZV(66))	Denominator(Bernoulli(n-1) + 1/n)=66, where n runs through the primes.
+A097423	rambdan	1	n -> RQ(1, n, k -> HARM(k))	Numerator of Product_{k=1..n} H(k), where H(k) = Sum_{j=1..k} 1/j, the k-th harmonic number.
+A097424	rambdad	1	A097423	Denominator of Product_{k=1..n} H(k), where H(k) = Sum_{j=1..k} 1/j, the k-th harmonic number.
+A100651	rambdan	0	n -> QV(1).-(RU(1, n, i -> BERN(i).abs()))	Numerator of 1 - Sum_{i=1..n} |Bernoulli(i)|.
+A100652	rambdad	0	A100651	Denominator of 1 - Sum_{i=1..n} |Bernoulli(i)|.
 A103481	lambdan	0	n -> RU(0, n/2, k -> QV(k).^(n - 2*k)).+((n + 1)/2).num()	a(n)=sum{k=0..floor(n/2), k^(n-2k)}+floor((n+1)/2).
 A103930	rambdan	1	n -> HARM(n).^(2)	Numerators of squares of harmonic numbers J001008/J002805.
 A103931	rambdad	1	A103930	Denominators of squares of harmonic numbers J001008/J002805.
+A103932	rambdan	1	n -> (n == 0 ? QV(0) : HARM(n).^(2).-(HARM(n - 1).^(2)))	a(n) = numerator(r(n)), with the rationals r(n) = H(n)^2 - H(n-1)^2 where H(n) = A001008(n)/A002805(n), n >= 1, H(0):=0.
+A103933	rambdad	1	A103932	denominator(r(n)), with the rationals r(n)=H(n)^2-H(n-1)^2 where H(n)= A001008(n)/A002805(n), n>=1, H(0):=0.
 A107029	lambdan	0	n -> SU(0, n/2, k -> ZV(n - 2*k -1).*(BI((n -2*k)*k, k)).-(ZV(n - 2* k - 2).*(SU(0, k, j -> BI((n - 2* k)*k, j)))))
 A110244	lambdin	0	n -> SU(0, n/2, k -> Functions.JACOBI.z(n - k, 2*n - 4*k + 1))	1
 A110323	lambdan	0	n -> RU(0, n/2, k -> QV(FA(n - k)).*(Functions.JACOBSTHAL.z(n - 2*k + 1))./(FA(k))).num()
 A117468	mtrilon	1	1,1	Z	(n, k) -> k < 1 || k > n ? ZV(0) : (n == k ? ZV(1) : get(n - k, k).+(get(n - k, k - 1)))	() -> mB.get(n, k)	~~end:~~seq(seq(T(n,k), k=1..n), n=1..20); # _Alois P. Heinz_, Jul 19 2016~~
 A127243	trinv	0	A127244	Inverse of .
 A127248	trinv	0	A127247	Inverse is ..
+A130894	rambdan	1	n -> RU(1, n, k -> HARM(k).*(HARM(n + 1 - k)))	Numerator of Sum_{k=1..n} H(k)*H(n+1-k), where H(k) is the k-th harmonic number (Sum_{j=1..k} 1/j).
+A130895	rambdad	1	A130894	Denominator of Sum_{k=1..n} H(k)*H(n+1-k), where H(k) is the k-th harmonic number (Sum_{j=1..k} 1/j).
 A133800	trilambn	1	1	1	(n, k) -> S2(n, k).*(D001710(k - 1))
 A139383	lambdan	0	n -> (n == 0) ? ZV(1) : H144150(n, n - 1)	First lower diagonal gives .
 A144569	period	0	"0,0,0,1,1,1,0,1,0,0,2,0,2,2,2,1,2,1,1,2,2,0,0,3,0,3,3,3,2,3,2,2,3,3,1,3,1,1,3,3,0,1,3,2,0,3,2,1,0,3,1,0,2,3,1,2,0,1,2,3,0,2,1,3"
@@ -35,6 +43,10 @@ A235795	prepend	1	new A070165()	1,4,2
 A242379	transpos	0	new A242378()
 A245732	mtrilon	0	0, 0	Z	(n, k)    -> n == 0 ? ZV(1) : SU(k, n, j -> get(n - j, k).*(BI(n, j)))	() -> (k == 0 ? ZV(n).^(n) : (n == 0 ? ZV(0) : mB.get(n, k)))	`if`(k=0, n^n, `if`(n=0, 0, get(n, k))):~~seq(seq(T(n, k), k=0..n), n=0..12);~~
 A247329	lambdan	0	n -> SU(0, n, k -> Z_1(n - k).*(BI(n, k)).*(S1(n + 1, k + 1)))	Sum_{k=0..n} (-1)^(n-k) * C(n,k) * Stirling1(n+1, k+1).
+A249645	rambdan	1	n -> HARM(n).*(2).-(HARM(n*(n+1)))	, a sequence the limit of which is gamma, the Euler-Mascheroni constant, where H(n) is the n-th harmonic number.
+A249646	rambdad	1	A249645	Denominators of 2*H(n)-H(n*(n+1)), a sequence the limit of which is gamma, the Euler-Mascheroni constant, where H(n) is the n-th harmonic number.
+A249699	rambdan	0	n -> (n <= 2 ? ((n&1) == 0 ? QV(0) : QV(1)) : BERN(n - 1).*(n % 4 == 3 ? 1 : -1)./(FA(n).*(n - 1)))	, except the first 3 terms.
+A249700	rambdad	0	A249699	Denominators of BernoulliB(n - 1)/((n - 1)*n!), except the first 3 terms.
 A258219	marrlon	0	0,0,-1	Q	(x, y, t, k) -> y > x || y < 0 ? QV(0) : (x == 0 ? QV(1) : get(x - 1, y - 1, 0L, k).*(t == 1L ? QV(x + k * y)./(y) : QV(1)).+(get(x - 1, y + 1, 1L, k)))	()-> mB.get(2*n, 0L, 0L, k).num()	:~~seq(seq(A(n, d-n), n=0..d), d=0..12);~~
 A258220	mtrilon	0	0,0	Q	(x, y, t, k) -> y > x || y < 0 ? QV(0) : (x == 0 ? QV(1) : get(x - 1, y - 1, 0L, k).*(t == 1L ? QV(x + k * y)./(y) : QV(1)).+(get(x - 1, y + 1, 1L, k)))	()-> RU(0, k, i -> mB.get(2*n, 0L, 0L, i).*(Z_1(k - i)).*(BI(k, i)))./(FA(k)).num()	:~~T:= (n, k)-> add(A(n, i)*(-1)^(k-i)*binomial(k, i), i=0..k)/k!:~~seq(seq(T(n, k), k=0..n), n=0..10);~~
 A258222	marrlon	0	0,0,-1	Q	(x, y, t, k) -> y > x || y < 0 ? QV(0) : (x == 0 ? QV(1) : get(x - 1, y - 1, 0L, k).*(t == 1L ? QV(k * x + y)./(y) : QV(1)).+(get(x - 1, y + 1, 1L, k)))	()-> mB.get(2*n, 0L, 0L, k).num()	:~~seq(seq(A(n, d-n), n=0..d), d=0..12);~~
@@ -61,6 +73,8 @@ A290777	lambdan	0	n -> S290759(n, n)
 A290786	lambdan	0	n -> S290789(n, n)
 A290789	marrlon	0	0,0,-1	Z	(n, k) -> n == 0 ? ZV(1) : SU(0, n - 1, j -> get(j, k).*(get(n - j - 1, k)).*(ZV(-k).^(j)))	() -> mB.get(n, k)	get(j, k)*get(n-j-1, k)*(-k)^j, j=0..n-1))end:seq(seq(get(n, d-n), n=0..d), d=0..12);
 A293024	marrlon	0	0,0,-1	Z	(n, k) -> n == 0 ? ZV(1) : SU(1 + k, n, j -> get(n - j, k).*(BI(n - 1, j - 1)))	() -> mB.get(n, k)	SU(get(n - j, k).*(BI(n - 1, j - 1)), j=1+k..n))end:seq(seq(get(n, d-n), n=0..d), d=0..14); # _Alois P. Heinz_, Sep 28 2017
+A295231	rambdan	0	n -> QV(Z_1(n + 1)).*(FA(2*n)).*(Z2(2*n).+(1))./(BERN(2*n).*(QV(2).pow(4*n - 1)))	Numerators of (-1)^(n+1) * (2*n)! * (2^(2*n)+1)/(B_{2*n} * 2^(4*n-1)), where B_{n} is the Bernoulli number.
+A295232	rambdad	0	A295231	Denominator of (-1)^(n+1) * (2*n)! * (2^(2*n)+1)/(B_{2*n} * 2^(4*n-1)), where B_{n} is the Bernoulli number.
 A297195	rowsum	0	new A371761()	Row sums of triangle (n>=2): , alternating row sums: J226158.
 A299741	marrlon	0	0,0,1	Z	(i, j) -> MINl(i, j) == 0 ? ZV(2) : (j == 1 ? ZV(i + 2) : get(i, j - 1).*(i + 2).-(get(i, j - 2)))	() -> mB.get(n, k)
 A303976	rowsum	1	new A304623()	Row sums are  .
@@ -91,6 +105,8 @@ A371259	mtrilon	3	3,3	Z	(n, k) -> k < 3 || k > n ? ZV(0) : (n == k ? ZV(1) : get
 A371277	mtrilon	2	2,2	Z	(n, k) -> k < 2 || k > n ? ZV(0) : (n == k ? ZV(1) : get(n - 1, k - 1).+(ZV(n + k - 1).^(3).*(get(n - 1, k))))	() -> mB.get(n, k)
 A371488	rowsum	2	new A371081()
 A372208	mtrilon	3	3,3	Z	(n, k) -> k < 3 || k > n ? ZV(0) : (n == k ? ZV(1) : get(n - 1, k - 1).+(ZV(n + k - 1).^(3).*(get(n - 1, k))))	() -> mB.get(n, k)
+A382812	rambdan	1	n -> { final Q hn = HARM(n); return hn.^(2).*(n + 1).-(hn.*(2*n + 1)).+(2*n); }	a(n) = numerator((n+1)*H(n)^2-(2*n+1)*H(n) + 2*n)Numerator of the n-th partial sum of the squares of the harmonic numbers.
+A382813	rambdad	1	A382812	Denominator of the n-th partial sum of the squares of the harmonic numbers.
 A383453	transpos	0	new A243660()	Same table as, transposed. - _Dan Eilers_, May 06 2025
 A393443	arrlamb	0	0	0	-1	(n, k) -> ZV(1 + k).+(2*n*k).+(k*(k - 1)/2).+(n*(n-1))
 A398366	arrlamb	0	0	0	1	(n, k) -> BI(3*n - 1 + k, k)	Array read by ascending antidiagonals: A(n,k) = binomial(3*n-1+k,k).
@@ -109,9 +125,3 @@ A399480	decexp	1	() -> CR.valueOf(13).multiply(CR.PI.pow(8)).divide(CR.valueOf(1
 A399481	decexp	0	() -> Zeta.zeta(3).subtract(Zeta.zeta(2).multiply(CR.TWO.log())).add(CR.TWO.multiply(CR.TWO.log().pow(3)).divide(CR.THREE))
 A399482	decexp	0	() -> X399216.divide(CR.FOUR)
 A399485	decexp	0	() -> CR.THREE.multiply(CR.PI.pow(2)).divide(CR.valueOf(32))
----- 2026-09-06 15:01:53
-A295231	rambdan	0	n -> QV(Z_1(n + 1)).*(FA(2*n)).*(Z2(2*n).+(1))./(BERN(2*n).*(QV(2).pow(4*n - 1)))	Numerators of (-1)^(n+1) * (2*n)! * (2^(2*n)+1)/(B_{2*n} * 2^(4*n-1)), where B_{n} is the Bernoulli number.
-A295232	rambdad	0	A295231	Denominator of (-1)^(n+1) * (2*n)! * (2^(2*n)+1)/(B_{2*n} * 2^(4*n-1)), where B_{n} is the Bernoulli number.
----- 2026-09-06 15:05:34
-A249645	rambdan	1	n -> HARM(n).*(2).-(HARM(n*(n+1)))	, a sequence the limit of which is gamma, the Euler-Mascheroni constant, where H(n) is the n-th harmonic number.
-A249646	rambdad	1	A249645	Denominators of 2*H(n)-H(n*(n+1)), a sequence the limit of which is gamma, the Euler-Mascheroni constant, where H(n) is the n-th harmonic number.
