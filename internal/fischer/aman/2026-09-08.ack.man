@@ -1,0 +1,84 @@
+---- 2026-09-08 23:43:42
+A062329	lambdan	0	n -> Functions.DIGIT_SUM.z(n).-(Functions.DIGIT_PRODUCT.z(n))	a(n) = (sum of digits of n) - (product of digits of n).
+A087689	rambdan	1	n -> RU(1, n, j -> new Q(Z.ONE, Z2(j).-(1)))	Numerators of successive partial sums of sum(1/(2^n-1)). a:= n -> numer(add(1/(2^j-1), j=1..n)): @1
+A087690	rambdad	1	A087689	Denominators of successive partial sums of sum(1/(2^n-1)).
+A089847	lambdan	0	n -> F000108(n).+(E089848(n).*(2))./(3)	a(n)=(1/3*F000108(n))+(2/3*E089848(n))
+A090813	lambdan	3	n -> BERN(PM(n).*(2)).*(ZV(3).^(PM(n)).-(1)).*(3).num()	a(n)=3*(3^prime(n)-1)*B(2*prime(n))
+A090814	lambdan	3	n -> ZV(3).^(PM(n)).-(1).*(3)./(BERN(PM(n).*(2)).den())	=3*(3^prime(n)-1)/denominator(bernfrac(2*prime(n)))
+A091862	charfunc	1	new A268375()	- _Antti Karttunen_, Nov 23 2017
+A100650	lambdan	0	n -> QV(1).-(RU(1, n, i -> BERN(i))).den()	denominator(1 - sum(i=1, n, bernfrac(i))); \\ _Michel Marcus_, Feb 15 2021
+A100821	lambdan	1	n -> ZV(PM(n).+(2).equals(PM(n + 1)) ? 1 : 0)	a(n) = 1 if prime(n) + 2 = prime(n+1), otherwise 0.
+A102613	rambdan	1	n -> { final Z pin = PI(n); return new Q(pin, ZV(n).-(pin)); }	numerator(primepi(n)/(n-primepi(n)))
+A102614	rambdad	1	A102613
+A108635	filter	1	new A001358()	v -> Predicates.DIGIT_NONINCREASING.is(v)	Semiprimes with property that digits are in nonincreasing order.
+A113012	lambdan	0	n -> (n == 0 ? QV(1) : RU(0, n + 1, k -> new Q(Z_1(k), DF(2*k)))).num()	Numerator(Sum_{k=0..n+1} (-1)^k*1/(2k)!!))
+A113947	lambdan	1	n -> SD(n, k -> GCD(2, n/k).*(F000010(n/k).^(2)).*(ZV(n/k).^(k-1)).*(SU(0, k-1, i -> FA(i).*(FA(k-i-1)))))./(n)	1		a(n)=(1/n)*Sum_{k|n}gcd(2,n/k)*phi(n/k)^2*(n/k)^(k-1)*Sum_{i=0..k-1}i!*(k-i-1)!	_	_	_
+A116066	filnum	1	1	k -> Predicates.DIGIT_NONDECREASING.is(k) && Predicates.DIGIT_NONDECREASING.is(PM(k))	Numbers k such that both k and the k-th prime have nondecreasing digits.
+A116067	filnum	1	1	k -> Predicates.DIGIT_NONINCREASING.is(k) && Predicates.DIGIT_NONINCREASING.is(PM(k))	Numbers k such that both k and the k-th prime have nonincreasing digits.
+A116069	filnum	1	1	k -> Predicates.DIGIT_NONINCREASING.is(k) && Predicates.DIGIT_NONDECREASING.is(PM(k))	Numbers k such that k has nonincreasing digits and the k-th prime has nondecreasing digits.
+A120080	rambdan	0	n -> BERN(n).*(3)./(FA(n).*(n + 3))	[Numerator[3*BernoulliB[n]/((n+3)*n!)], {n, 0, 50}]
+A120081	rambdad	0	A120080
+A120084	rambdan	0	n -> BERN(n).*(2*n + 2)./(FA(n + 2))	Table[Numerator[2*(n+1)*BernoulliB[n]/(n+2)!]
+A120085	rambdad	0	A120084
+A120086	rambdan	0	n -> BERN(n).*(4)./(FA(n).*(n + 4))	r[n_]:= 4*BernoulliB[n]/((n+4)*n!);
+A120087	rambdad	0	A120086
+A120784	rambdan	0	n -> Rationals.SINGLETON.sum(0, n, k -> new Q(1, 16).pow(k).multiply(Binomial.binomial(2L * k, k).divide(k + 1)))
+A121503	rambdan	0	n -> QV(4).-(RU(0, n, k -> new Q(F000108(k).*(Z2(k + 1).+(1)), ZV(16).^(k)))./(4))	numerator(r(n)) with r(n) := 4-(Sum_{k=0..n} C(k)*(1+2^(k+1))/16^k)/4, with C(k) = A000108(k)
+A121504	rambdan	0	n -> RU(0, n, k -> new Q(F000108(k).*(Z2(k + 1).+(1)), ZV(16).^(k)))
+A122214	rambdan	1	n -> RQ(1, n, k -> { final Z pw = ZV(k).^(BI(n - 1, k - 1)); return (k&1) == 0 ? QV(pw) : new Q(Z.ONE, pw); })	numerator(Product_{k=1..n} k^((-1)^k*binomial(n-1,k-1))).
+A122215	rambdad	1	A122214
+A128506	rambdan	0	n -> RU(0, n, k -> new Q(ZV((k&2) == 0 ? 1 : -1), ZV(2*k + 1).^(3)))	numerator(r(n)) with the rationals r(n) = Sum_{k=0..n} S(2*k,sqrt(2))/(2*k+1)^3
+A128507	rambdad	0	A128506
+A138320	rambdan	1	n -> RU(1, n, k -> QV(Functions.MOEBIUS.z(k).square(), PHI(k))).-(HARM(n))	Numerator[(Sum_{k=1..n} mu^2(k)/phi(k)) - H_n]
+A138321	rambdad	1	A138320
+A161351	lambdan	1	n -> Functions.DIGIT_SUM.z(n).+(Functions.DIGIT_PRODUCT.z(n)).+(n)
+A169934	lambdan	1	n -> SU(0, (n+2)/2, e -> BI(n, 2*e-2).*(T271697(2*e-2, e)))	1		a(n)=Sum_{e=0..floor((n+2)/2)}binomial(n,2*e-2)*T271697(2*e-2,e)	_	_	_
+A179562	lambdan	1	n -> SU(0, (n+1)/2, e -> BI(n, 2*e-1).*(T271697(2*e-1, e)))	1		a(n)=Sum_{e=0..floor((n+1)/2)}binomial(n,2*e-1)*T271697(2*e-1,e)	_	_	_
+A179564	lambdan	1	n -> SU(0, (n+3)/2, e -> BI(n, 2*e-3).*(T271697(2*e-3, e)))	1		a(n)=Sum_{e=0..floor((n+3)/2)}binomial(n,2*e-3)*T271697(2*e-3,e)	_	_	_
+A179565	lambdan	1	n -> SU(0, (n+4)/2, e -> BI(n, 2*e-4).*(T271697(2*e-4, e)))	1		a(n)=Sum_{e=0..floor((n+4)/2)}binomial(n,2*e-4)*T271697(2*e-4,e)	_	_	_
+A202238	lambdan	1	n -> ZV((!PP(n) && !Predicates.POWER_OF_TWO.is(n)) ? 1 : 0)	positve integers not prime and not a power of 2.
+A208595	lambdan	1	n -> SD(n, d -> PHI(n/d).*(E201550(d)))./(n)	"0,0"		a(n)=(1/n)*Sum_{d|n}totient(n/d)*E201550(d)	_	_
+A216652	filter	1	new A072574()	NONZERO	Same as J072574, with zeros dropped. [_Joerg Arndt_, Oct 20 2012]
+A227149	filtpos	1	0	new A007623()	v -> (Functions.DIGIT_SUM.i(v) & 1) == 1	Numbers k for which the sum of digits is odd when k is written in the factorial base (A007623).
+A227625	lambdin	1	n -> ZV(!PP(n) ? 0 : (n%6 == 1 ? 1 : -1))	"0, -1, 1"	Table[If[!PrimeQ[n], 0, If[Mod[n, 6] == 1, 1, -1]], {n, 4, 100}]]
+A234848	filter	1	new A000217()	v -> Predicates.DIGIT_NONDECREASING.is(v)	Triangular numbers with digits in nondecreasing order.	base,nonn	1..328	nyi	_Zak Seidov_
+A238279	filter	0	new A238130()	NONZERO	, with zeros omitted.
+A238344	filter	0	new A238343()	NONZERO	, with zeros omitted.
+A238350	filter	0	new A238349()	(k, v) -> k <= 1 || !v.isZero()	without the trailing zeros.
+A243677	lambdin	0	n -> SU(1, n, k -> BI(5*n, k - 1).*(BI(n, k)).*(Z2(k-1)))./(n)	1		a(n)=(1/n)*Sum_{k=1..n}binomial(5*n,k-1)*binomial(n,k)*2^(k-1)forn>0	_	_	_
+A273046	filter	1	new A000045()	v -> Predicates.DIGIT_NONINCREASING.is(v)	Fibonacci numbers with digits in nonincreasing order.
+A273165	sintrif	1	(term, n) -> F000005(term)./(2)	"2,2"	new A091236()	a(n)=F000005(J091236(n))/2	_	_	_
+A276793	charfunc	1	new A003144()	.
+A286566	multraf	1	(self, n) -> ZV(2).+((self.s(2).+(self.s(3))).^(2)).-(self.s(2)).-(ZV(3).*(self.s(3)))./(2)	""	new A101296(), new A286565(), new A101296(), new A286565()	a(n)=(1/2)*(2+((J101296(n)+J286565(n))^2)-J101296(n)-3*J286565(n))	_	_	_
+A286683	filnum	1	1	k -> D001227(k).equals(D007814(k))	Even numbers k such that the number of odd divisors of k is equal to the 2-adic valuation of k.
+A293225	multraf	1	(self, n) -> ZV(2).+((self.s(2).+(self.s(3))).^(2)).-(self.s(2)).-(ZV(3).*(self.s(3)))./(2)	""	new A293224(), new A293223(), new A293224(), new A293223()	a(n)=(1/2)*(2+((J293224(n)+J293223(n))^2)-J293224(n)-3*J293223(n))	_	_	_
+A295112	holos	0	[[0],[-6,3],[8,-1],[2,-3],[0,1]]	-1	0	0
+A324536	lambdan	0	n -> E324542(F002110(n))	1,1		a(n)=E324542(F002110(n))	_	_	_
+A343877	lambdan	1	n -> TAU(n).-(3).*(TAU(n))./(2).+(1)	a(n)=(1/2)*tau(n)^2-(3/2)*tau(n)+1
+A353475	charfunc	1	new A138511()	semiprimes where the larger prime factor is greater than the square of the smaller prime factor.
+A353476	charfunc	1	new A251728()
+A353787	charfunc	1	new A084111()
+A354983	charfunc	1	new A354984()
+A356274	lambdan	1	n -> SU(1, n, j -> ZV(n - 1).*(ZV(n + 1).^(D007814(j))).+(1))./(n)	1		a(n)=(1/n)*Sum_{j=1..n}((n-1)*(n+1)^D007814(j)+1)	_	_	_
+A361885	lambdan	0	n -> (n == 0 ? ZV(0) : SU(0, 2*n, k -> ZV(n + 2*k).*(BI(n + k - 1, k).^(3)))./(n))	a(n)=(1/n)*Sum_{k=0..2*n}(n+2*k)*binomial(n+k-1,k)^3	_	_	_
+A362086	lambdan	3	n -> { final Z nn3 = ZV(n).+(1).*(n).-(3); return nn3./(GCD(nn3, D051403(n - 3).*(3).+(D051403(n - 4).*(n)))); }	/gcd(n^2 + n - 3, 3*A051403(n-3) + n*A051403(n-4))
+A364251	charfunc	1	new A335431()
+A365435	lambdan	0	n -> E158341(n).+(1)	1,1		a(n)=E158341(n)+1	_	_	_
+A373110	lambdan	0	n -> ZV(14*n + 21).*(n).+((n&1) == 0 ? 10 : 9)./(2)
+A374136	charfunc	1	new A374137()
+A379485	charfunc	1	new A379486()
+A380202	sintrif	1	(term, n) -> term.+(n)	"4"	new A067278()	a(n)=J067278(n)+n	_	_	_
+A392609	lambdan	1	n -> F001221(n).-(E392608(n))	3,3		a(n)=F001221(n)-E392608(n)	_	_	_
+A398314	lambdan	1	n -> ZV(n).*(F002110(F000720(F006530(n))))	2,3		a(n)=n*F002110(pi(gpf(n)))	_	_	_
+A399435	rambdan	1	n -> QV(1).-(QV(FI(n + 2))./(Z2(n)))	a(n) = numerator(1 - F(n+2)/2^n).
+A399436	rambdad	1	A399435
+A399443	lambdan	0	n -> T399444(3, n)
+A399444	marrlon	0	0, 0, 1	Z	(n, k) -> n < 0 || k < 0 ? ZV(0) : (k == 0 ? ZV(n == 0 ? 1 : 0) : (n == 0 && k == 1 ? ZV(1) : (k == 1 ? SU(1, n, i -> get(n - i, i)) : SU(0, n, i -> get(n - i, k - 1).*(get(i, 1L)).*(BI(n + k, i + 1)).*(BI(n, i))))))	() -> mB.get(n, k)
+A399456	decexp	0	() -> CR.PI.-(CV(3).sqrt()).*(2)./(CV(15).sqrt().+(CV(7).sqrt()).-(CV(3).sqrt().*(2)))	Decimal expansion of 2*(Pi - sqrt(3))/(sqrt(15) + sqrt(7) - 2*sqrt(3)).	nonn,cons,easy,new	0..10000	nyi	_Paolo Xausa_
+A399489	filter	1	new A000040()	v -> Predicates.SQUARE.is(v.-(D062329(v)))	Primes p such that p - J062329(p) is a square.	nonn,base,new	1..10000	nyi	_Robert Israel_
+A399496	filter	1	new A000290()	v -> PP(v.-(D062329(v)))	Squares k such that k - J062329(k) is a prime.	nonn,base,new	1..5000	nyi	_Robert Israel_
+A399569	lambdan	1	n -> PR(1, n, k -> ZV(2*k-1).^(2*k-1))	a(n)=Product_{k=1..n}(2*k-1)^(2*k-1)	_	_	_
+A399570	lambdan	1	n -> PR(1, n, k -> ZV(2*k-1).^(k))	a(n)=Product_{k=1..n}(2*k-1)^k	_	_	_
+A399604	filter	1	new A000290()	v -> PP(D161351(v))	Squares k such that J161351(k) is a prime.	nonn,base,new	1..10000	nyi	_Robert Israel_
+A399606	filter	1	new A000040()	v -> Predicates.SQUARE.is(D161351(v))	Primes p such that J161351(p) is a square.	nonn,base,new	1..1000	nyi	_Robert Israel_
+A399608	filter	1	new A000040()	v -> PP(D161351(v))	Primes p such that J161351(p) is a prime.	nonn,base,new	1..10000	nyi	_Robert Israel_

@@ -1,0 +1,32 @@
+---- 2026-09-09 11:44:39
+=man	A114362	rambdan	0	n -> BERN(4*n).*(-2)./(BERN(2*n).*(BI(4*n, 2*n)))
+=man	A114363	rambdad	0	A114362	a(n)/A114363(n) = -2*B(4*n)/(binomial(4*n,*2n)*B(2*n))
+=man	A398579	rowsum	0	new A399444()	(row sums).
+
+
+?A113013	rambdad	0	A113012
+?DeleteCases?	A127900	distinct	0	new LambdaSequence(0, n -> RU(1, n, k -> new Q(MU(k), ZV(k).^(2))).num())
+?DeleteCases?	A127901	distinct	0	new LambdaSequence(0, n -> RU(1, n, k -> new Q(MU(k), ZV(k).^(2))).den())
+
+?def A197433	charfunc	0	new A176137()
+?def A374468	charfunc	0	new A227149()	 see also J262725.
+?def A246500	charfunc	0	new A the p()	ime numbers mod 9 over the set {2,4,8,1,5,7}.
+nyi	A178333	charfunc	0	new A134941()	mountain numbers.
+nyi	A378442	charfunc	0	new A316476()	 numbers: a(n) = 1 if the distinct prime indices of n are pairwise indivisible, otherwise 0.
+nyi	A378537	charfunc	0	new A180332()	tive Zumkeller numbers.
+nyi	A378539	charfunc	0	new A376880()	rs that have Zumkeller divisors.
+nyi	A383575	charfunc	0	new A383016()	s of the form k = m^e, where m is squarefree and (-1)^omega(k) =  mu(e).
+nyi	A383576	charfunc	0	new A383017()	s of the form k = m^e, where m is squarefree and (-1)^omega(k) = -mu(e).
+
+?form A208772	sintrif	0	(term, n) -> SD(n, d -> PHI(n/d).*(term))./(n)	"0,0"	new A124696()	a(n)=(1/n)*Sum_{d|n}totient(n/d)*J124696(n)	_	_	_
+?form A208773	sintrif	0	(term, n) -> SD(n, d -> PHI(n/d).*(term))./(n)	"0,0"	new A124697()	a(n)=(1/n)*Sum_{d|n}totient(n/d)*J124697(n)	_	_	_
+?form A208774	sintrif	0	(term, n) -> SD(n, d -> PHI(n/d).*(term))./(n)	"0,0"	new A124698()	a(n)=(1/n)*Sum_{d|n}totient(n/d)*J124698(n)	_	_	_
+?form A208775	sintrif	0	(term, n) -> SD(n, d -> PHI(n/d).*(term))./(n)	"0,0"	new A124699()	a(n)=(1/n)*Sum_{d|n}totient(n/d)*J124699(n)	_	_	_
+?form A208776	sintrif	0	(term, n) -> SD(n, d -> PHI(n/d).*(term))./(n)	"0,0"	new A124700()	a(n)=(1/n)*Sum_{d|n}totient(n/d)*J124700(n)	_	_	_
+
+?form A192935	lambdan	0	n -> SU(0, n, k -> S1(n, k).*(E108459(k)))./(FA(n))	"0,0"		a(n)=(1/n!)*Sum_{k=0..n}Stirling1(n,k)*E108459(k)	_	
+=man	A162145 Same as J036378 except for a(1). 
+=man	A174246 Same as J083847 except for a(1) = 0. - _Georg Fischer_, Oct 14 2018
+=man	A087656 Same as J059975 apart from offset. 
+=man	A224852 Same as J054870 except correctly indexed with [a_0; a_1, a_2, ...]
+=man	A295113	lambdan	0	n -> (n == 0 ? ZV(0) : SU(0, n - 1, k -> ZV(8*k + 9).*(E295112(k).^(2)))./(n))	a(n)=(1/n)*Sum_{k=0..n-1}(8*k+9)*E295112(k)^2	_	_	_

@@ -1,0 +1,58 @@
+---- 2026-09-09 23:05:45
+?A298675	marrlon	0	1,0,1	Z	(n, k) -> k == 0 ? ZV(2) : (k == 1 ? ZV(n) : get(n, k - 1).*(n).-(get(n, k - 2)))	() -> mB.get(n, k)
+From a problem in A269254. For detailed theory, see [Hone].
+t[n_, 0] := 2; t[n_, 1] := n; t[n_, k_] := n*t[n, k - 1] - t[n, k - 2]; Table[t[n, k], {n, 10}, {k, 10}] // Grid
+Cf. J285992, A299107, J299109, A088165, J117522, A299100, A299101, J113501, A269253, A269254, A294099, A298675, J298677, A298878, A299045, A299071.
++++++++++++++++
+.A294099	marrlon	0	1,0,1	Z	(n, k) -> k == 0 ? ZV(2) : (k == 1 ? ZV(n + 1) : get(n, k - 1).*(n).-(get(n, k - 2)))	() -> mB.get(n, k)
+This array is used to compute A269254: A269254(n) = least k such that get(n,k) is a prime, or -1 if no such k exists.
+get(n,0) = 1, get(n,1) = n + 1, get(n,k) = n*get(n,k-1) - get(n,k-2), n >= 1, k >= 2.
+++++++++++++++++++
+?A293119	marrlon	0	0,0,-1	Z	(n, k) -> n == 0 ? ZV(1) : SU(1, k + n, j -> get(n-j, k).*(BI(n - 1, j - 1)).*(FA(j))).negate()	() -> mB.get(n, k)	-SU(get(n-j, k)*BI(n-1, j-1).*(FA(j)), j=1+k..n))end:seq(seq(get(n, d-n), n=0..d), d=0..12); # _Alois P. Heinz_, Sep 30 2017
+?A321296	marrlon	0	0,0,-1	Z	(n, k) -> n == 0 ? ZV(1) : SU(1, n, j -> get(n - j, k).*(BI(n - 1, j - 1)).*(BI(k + j - 1, j)))	() -> SU(0, k, i -> mB.get(n, k - i).*(Z_1(i)).*(BI(k, i)))	
+?A293053	marrlon	0	0,0,-1	Z	(n, k) -> n == 0 ? ZV(1) : SU(1, MINi(n, k), j -> get(n - j, k).*(BI(n - 1, j - 1)).*(FA(j)))	() -> mB.get(n, k)	SU(, j=1+k..n))end:seq(seq(get(n,d-n), n=0..d), d=0..12); # _Alois P. Heinz_, Sep 29 2017
+?A293669	marrlon	0	0,0,-1	Z	(n, k) -> n == 0 ? ZV(1) : SU(1, MINi(n, k), j -> get(n - j, k).*(BI(n - 1, j - 1)).*(FA(j)))	() -> mB.get(n, k)	SU(, j=1..min(n, k)))end:seq(seq(get(n, 1+d-n), n=0..d), d=0..12); # _Alois P. Heinz_, Nov 11 2020
+ A181365	mtablon	0	0,0,-1	Z	(n, k) -> n == 0 ? ZV(1) : SU(0, n - 1, j -> )	() -> mB.get(n, k)	SU(`if`(i=0 and j=0, 0, get(n-i-j, k)), i=k..n-j), j=k..n))end:T:= (n, k)-> get(n, k) -get(n, k+1):seq(seq(T(n, k), k=0..n/2), n=1..15); # _Alois P. Heinz_, Mar 16 2014
+?A276922	marrlon	0	0,0,-1	Z	(n, k) -> n == 0 ? ZV(1) : SU(1, MINi(n, k), i -> get(n - i, k).*(BI(n, i)))	() -> mB.get(n, k).-(k == 0 ? ZV(0) : mB.get(n, k - 1))	:seq(seq(T(n, k), k=0..n), n=0..10);
+++++
+?A275422	marrlon	0	0,0,-1	Z	(n, k) -> n == 0 ? ZV(1) : SU(1, k == 0 ? n : TAUi(k), j -> (j > n ? ZV(0) : get(n - j, k).*(BI(n - 1, j - 1))))	() -> mB.get(n, k)	
+A:= proc(n, k) option remember; `if`(n=0, 1, SU(
+      `if`(j>n, 0, A(n-j, k)*BI(n-1, j-1)), j=
+      `if`(k=0, 1..n, numtheory[divisors](k))))
+    end:
+seq(seq(A(n, d-n), n=0..d), d=0..14);
+MATHEMATICA
+A[n_, k_] := A[n, k] = If[n==0, 1, Sum[If[j>n, 0, A[n-j, k]*BI[n-1, j - 1]], {j, If[k==0, Range[n], Divisors[k]]}]]; Table[A[n, d-n], {d, 0, 14}, {n, 0, d}] // Flatten (* Jean-Fran□ois Alcover, Feb 08 2017, translated from Maple *)
+ A275429	lambdan	0	n -> A275422(n, n)
+++++
+?A275204	mtrilon	0	1, 1	Z	(n, k) -> ((k < 1 || k > n) ? ZV(0) : ((n == k || k == 1) ? ZV(1) : SU(1, k, i -> ZV(2*(k - i)+1).*(get(n - k, i)))))	() -> mB.get(n, k)
+ A298668	mtablon	0	0, 0	Z	(n, k) -> k < 2,|| f `(n=0 xor k=0, 0, 1),~~`if`(k>ceil(n/2), 0, SU((k-j)*T(n-1-j, k-j), j=0..1)))~~end:~~seq(seq(T(n, k), k=0..ceil(n/2)), n=0..14);~~
+++++
+ A258307	mtablon	0	0,0 ??? 	Q	(x, y, t, k) -> y > x || y < 0 ? QV(0) : (x == 0 ? QV(1) : get(x - 1, y - 1, 0L, k).*(t == 1L ? QV(x + k * y)./(y) : QV(1)).+(get(x - 1, y ,    0L, k)).+(get(x - 1, y + 1, 1L, k)))	()-> RU(0, k, i -> mB.get(n, 0L, 0L, i).*(Z_1(k - i)).*(BI(k, i)))./(FA(k)).num()
+ A258310	mtablon	0	0,0 ??? 	Q	(x, y, t, k) -> y > x || y < 0 ? QV(0) : (x == 0 ? QV(1) : get(x - 1, y - 1, 0L, k).*(t == 1L ? QV(k * x + y)./(y) : QV(1)).+(get(x - 1, y ,    0L, k)).+(get(x - 1, y + 1, 1L, k)))	()-> RU(0, k, i -> mB.get(n, 0L, 0L, i).*(Z_1(k - i)).*(BI(k, i)))./(FA(k)).num()
+  A258310	(x, y, t, k) `if`(y>x or y<0, 0,~~`if`(x=0, 1, get(x-1, y-1, false, k)*`if`(t, (k*x+y)/y, 1)+get(x-1, y , false, k) +get(x-1, y+1, true, k)))~~end:~~A:= (n, k)-> get(n, 0, false, k):~~T:= proc(n, k) option remember;~~SU(A(n, i)*(-1)^(k-i)*BI(k, i), i=0..k)/k!~~end:~~seq(seq(T(n, k), k=0..n/2), n=0..14);~~
+  A258307	(x, y, t, k) `if`(y>x or y<0, 0,~~`if`(x=0, 1, get(x-1, y-1, false, k)*`if`(t, (x+k*y)/y, 1)+get(x-1, y , false, k) +get(x-1, y+1, true, k)))~~end:~~A:= (n, k)-> get(n, 0, false, k):~~T:= proc(n, k) option remember;~~SU(A(n, i)*(-1)^(k-i)*BI(k, i), i=0..k)/k!~~end:~~seq(seq(T(n, k), k=0..n/2), n=0..13);~~
+++++
+?A298605	mtrilon	0	0, 0    	Z	(n, k)    -> n == 0 ? ZV(1) : (k == 0 ? ZV(0) : SU(0, n - 1, j -> BI(n - 1, j).*(get(j, k)).*(SU(1, n - j, i -> BI(n -j, i).*(Z_1(i)).*(get(n -j - i, k - 1).*(FA(i - 1)))))).negate())	()-> mB.get(n, MINl(k, n)).-(k == 0 ? ZV(0) : mB.get(n, MINl(k - 1, n)))./(FA(k - 1))	:~~seq(seq(T(n, k), k=1..n), n=1..10);~~
+
+ A288387	mtrilon	0	0, 0    	Z	(n, k, j) -> j == n ? ZV(1) : SU(1, n - j, i -> SU(MAXi(k, i - j), i - 1, m -> BI(i, m).*(BI(j - 1, i - 1 - m))).*(get(n - j, k, i)))	A:= proc(n, k) option remember; `if`(n=0, 1,~~SU(get(n, k, j), j=k..n))~~end:~~T:= (n, k)-> `if`(n=k, 1, A(n, k)-A(n, k+1)):~~seq(seq(T(n, k), k=0..n), n=0..14);~~
+?A288386	marrlon	0	0, 0, -1	Z	(n, k, j) -> j == n ? ZV(1) : SU(1, n - j, i -> SU(MAXi(k, i - j), i - 1, m -> BI(i, m).*(BI(j - 1, i - 1 - m))).*(get(n - j, k, i)))	() -> (n == 0 ? ZV(1) : SU(k, n, j -> mB.get(n, k, j)))
+
+?formula?A121263	lambdan	0	n -> T367964(n, 5)	 Columns: F000217, J000124, J152950, J166136, €121263.
+?A338811	lambdan	0	n -> (n < 3 ? ZV(0) : H338805(n, 3))	Column k=1..3 give E318249, E338810, .
+?formula?A344445	lambdan	0	n -> H186366(2*n, n)
+?A369827	lambdan	0	n -> (n == 0) ? ZV(1) : H143543(2*n, n)	1
+
+ A177944 T(n,m) = Gamma(n+m+2)/(Gamma(n+1)*Gamma(m+1)) - n - m = T(m,n).
+%F A177970 T(n,m) = 1/Beta(2*n+1, 2*m+1) - 2*n - 2*m where Beta(a,b) = Gamma(a)*Gamma(b)/Gamma(a+b).
+%F A351583 T(n,k) = 1/(2*Beta(2*k, 2*n - 2*k)) - binomial(n, k)/(2*Beta(k, n - k)), where Beta(x,y) = Gamma(x)*Gamma(y)/Gamma(x+y) is
+?fail A121536	sintrif	0	(term, n) -> CBRT(term.+(ZV(n).^(2)))	""	new A070923()	(n)+n^2)^(1/3).
+?fail A224333	arrlamb	0	1	1	1	(n, k) -> ZV(k + 1).^(n - 1).*(2*n).-(n)	T(n,k) = 2*n*(1+k)^(n-1)-n 
+?fail A266348	lambdin	0	n -> M004001(n+1).-(E072376(n))	"1,1"		a(1)=1;forn>1,a(n)=M004001(n+1)-E072376(n)=M004001(n+1)-2^(D000523(n)-1)	_	_	_
+?fail A283468	lambdin	0	n -> M004001(M004001(n-1)).-(M004001(D080677(n-1)))	"1,1"		a(1)=a(2)=1;forn>2,a(n)=M004001(M004001(n-1))-M004001(D080677(n-1))	_	_	_
+?fail A285709	sintrif	0	(term, n) -> (F000010(n).+(term)).-(n)	"0,0"	new A079277()	Forn>1,a(n)=(F000010(n)+J079277(n))-n=J079277(n)-F051953(n)	_	_	_
+?fail A329030	lambdan	0	n -> E134193(E276087(n))	1,1		a(n)=E329028(F276086(n))=E134193(E276087(n))	_	_	_
+?fail A342920	lambdan	0	n -> E327860(E108951(n))./(E328572(E108951(n)))	1,1		a(n)=E342002(E108951(n))=E327860(E108951(n))/E328572(E108951(n))	_	_	_
+?fail A379568	lambdan	0	n -> F000720(ZV(10).^(ZV(n)./(4))).-(F000720(ZV(10).^(ZV(n-1)./(4))))	0		a(n)=PrimePi(10^(n/4))-PrimePi(10^((n-1)/4))	_	_	_
+?fail A391956	lambdan	0	n -> (PR(1, n, k -> ZV(k).^(k)).^(ZV(4)./(FA(n).^(2*n+1))))	0,0		a(n)=(Product_{k=1..n}k^k)^4/n!^(2*n+1)	_	_	_
+?fail A398144	lambdan	0	n -> SU(1, n,i -> CNT(1, n, j -> (MU(i) == MU(j))))	a(n) = sum(i=1, n, sum(j=1, n, moebius(i)==moebius(j)));

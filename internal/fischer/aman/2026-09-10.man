@@ -1,0 +1,24 @@
+---- 2026-09-10 15:36:52
+ A112659	multia	1	"1"	(self, n) -> { final Z t = ; return CNT(1, n - 1, k -> Predicates..is(self.a(k))); }	divisible by a different number of distinct primes than n
+ A118577	multia	1	"1"  	(self, n) -> CNT(0, n - 1, k -> Predicates..is(self.a(k)))	For m >= 0 and 1 <= k <= 2^m, a(2^m +k)=NET coprime to a(k)
+ A118783	multia	1	"1"  	(self, n) -> CNT(0, n - 1, k -> Predicates..is(self.a(k)))	a(n)=(NET coprime to n)th positive integer not among the earlier terms of the sequence
+ A118784	multia	0	"1"  	(self, n) -> CNT(0, n - 1, k -> Predicates..is(self.a(k)))	a(n)=(NET coprime to n)th positive integer not among the earlier terms of the sequence
+ A118809	multia	1	"1"  	(self, n) -> CNT(0, n - 1, k -> Predicates..is(self.a(k)))	a(n)=(NET divide n)th positive integer not occurring among the earlier terms 
+?fail?	A118982	multia	1	"1,1,2"  	(self, n) -> CNT(1, n - 1, j -> { final long hb = Long.highestOneBit(j); long k = j - hb; if (k == 0) { k = hb / 2; } return GCDi(self.a(j), k) == 1; })	1 <= k <= 2^m, a(2^m +k)=NET coprime to k
+?fail?	A119802	multia	1	"1,1,2"  	(self, n) -> CNT(1, n - 1, j -> { final long hb = Long.highestOneBit(j); long k = j - hb; if (k == 0) { k = hb / 2; } return self.a(j).equals(self.a(k)); })	1 <= k <= 2^m, a(2^m +k)=NET equal a(k)
+?fail?	A119805	multia	1	"1,1,2"  	(self, n) -> CNT(1, n - 1, j -> { final long hb = Long.highestOneBit(j); long k = j - hb; if (k == 0) { k = hb / 2; } return self.a(j).equals(ZV(k)); })	1 <= k <= 2^m, a(2^m + k)= NET equal k
+?fail?	A119803	multia	0	"0,1,1,2"  	(self, n) -> CNT(0, n - 1, j -> { final long k = j - Long.highestOneBit(j); return self.a(j).equals(self.a(k)); })	0 <= k <= 2^m -1, a(2^m +k)=NET equal a(k)
+?fail?	A119804	multia	0	"0,1,1,2"  	(self, n) -> CNT(0, n - 1, j -> { final long k = j - Long.highestOneBit(j); return self.a(j).equals(ZV(k)); })	0 <= k <= 2^m -1, a(2^m +k)=NET equal k
+ A122066	multia	0	"1"	(self, n) -> CNT(0, n - 1, k -> Predicates..is(self.a(k)))	equal to GCD(a(k),n), where a(k) is the largest term among terms a(0) through a(n-1)
+ A124372	multia	1	"1"  	(self, n) -> CNT(0, n - 1, k -> Predicates..is(self.a(k)))	a(n) NET a(k)  a(k)*n is of the form m^j, m=integer >= 0, j=integer >= 2
+ A125296	multia	1	"1"	(self, n) -> { final Z t = ; return CNT(1, n - 1, k -> Predicates..is(self.a(k))); }	noncomposites (1 or primes) and are coprime to n
+ A126214	multia	1	"1"	(self, n) -> { final Z t = ; return CNT(1, n - 1, k -> Predicates..is(self.a(k))); }	, a(k) (for 1<=k<=n-1), where every integer coprime to a(k) and <= a(k) is also coprime to n
+ A126327	multia	1	"1"  	(self, n) -> CNT(0, n - 1, k -> Predicates..is(self.a(k)))	a(n)=smallest positive multiple of (NET in sequence  divide n) which has yet to appear in the sequence
+ A126854	multia	0	"1"	(self, n) -> CNT(0, n - 1, k -> Predicates..is(self.a(k)))	divide the n-th composite positive integer
+ A130024	multia	1	"1"	(self, n) -> { final Z t = ; return CNT(1, n - 1, k -> Predicates..is(self.a(k))); }	dont have 2 or more distinct prime divisors in common with n
+ A130157	multia	1	"1"	(self, n) -> { final Z t = ; return CNT(1, n - 1, k -> Predicates..is(self.a(k))); }	of {a(k)}  coprime to A130158(n-1)
+ A130498	multia	1	"1"	(self, n) -> { final Z t = ; return CNT(1, n - 1, k -> GCDi(t, self.a(k)) == 1); }	coprime to (the number of positive integers which are <=n and missing from first (n-1) terms of sequence)
+ A130499	multia	1	"1"	(self, n) -> { final Z t = ; return CNT(1, n - 1, k -> GCDi(t, self.a(k)) == 1); }	coprime to (the sum of positive integers which are <=n and missing from first (n-1) terms of sequence)
+ A130501	multia	1	"1"  	(self, n) -> CNT(0, n - 1, k -> Predicates..is(self.a(k)))	a(n)=NET divide (the sum of positive integers which are <=n and missing from first (n-1) terms of sequence)
+
+

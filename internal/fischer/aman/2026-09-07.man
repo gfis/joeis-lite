@@ -1,0 +1,8 @@
+---- 2026-09-07 12:11:13
+ A090813	(PARI) a(n)=3*(3^prime(n)-1)*bernfrac(2*prime(n))
+ A090814	(PARI) a(n)=3*(3^prime(n)-1)/denominator(bernfrac(2*prime(n))) 
+ A100650	(PARI) a(n) = denominator(1 - sum(i=1, n, bernfrac(i))); \\ _Michel Marcus_, Feb 15 2021
+A114362	rambdan	0	n -> BERN(4*n).*(-2)./(BERN(2*n).*(BI(4*n, 2*n)))
+A114363	rambdad	0	A114362	a(n)/A114363(n) = -2*B(4*n)/(binomial(4*n,*2n)*B(2*n))
+A399569	lambdan	0	n -> PR(1, n, k -> ZV(2*k-1).^(2*k-1))	"1"		a(n)=Product_{k=1..n}(2*k-1)^(2*k-1)	_	_	_
+A399570	lambdan	0	n -> PR(1, n, k -> ZV(2*k-1).^(k))	"1"		a(n)=Product_{k=1..n}(2*k-1)^k	_	_	_

@@ -1,0 +1,61 @@
+---- 2026-09-04 21:50:16
+C:\Users\drgeo\work\gits\joeis-lite\internal\fischer\aman>sh C:/Users/drgeo/work/gits/OEIS-mat/scripts/endirect 2026-09-02.man
+
+ A239964	partpred	0	n	p -> PU.distinctCount(p) ==  maximal multiplicity of the parts	nonn,easy	0..1000
+ A239966	partpred	0	n	p -> PU.distinctCount(p) ==  minimal multiplicity of the parts	nonn,easy	0..1000
+ A238625	partpred	0	n	p -> PU.isPart(p, 1 + (1/2)*PU.max(p))	 is a part of p	nonn,easy	1..1000
+
+=man	A241760	partpred	0	n	p ->  PU.isPart(p, PU.minDiff(p))	is a part of p	nonn,easy	0..55
+=man	A241761	partpred	0	n	p -> !PU.isPart(p, PU.minDiff(p))	is not a part of p	nonn,easy	0..47
+=man0,0	A241824	partpre0	0	n	p -> PU.minDiff(p) <= PU.distinctCount(p)	nonn,easy	0..46
+=man0,0	A241825	partpre0	0	n	p -> PU.minDiff(p) == PU.distinctCount(p)	nonn,easy	0..62
+=man1,1	A241827	partpre1	0	n	p -> PU.minDiff(p) >  PU.distinctCount(p)	nonn,easy	0..62
+
+
+A(n, k) = Sum_{v=0..k-1} binomial(n*k-1, n*v)*A(n, v)*A(n, k-1-v) for k > 0 and A(n, 0) = 1.
+A(n, 2) = A260876(n, 2) = binomial(2*n - 1, n) + 1 for n >= 0.
+A(n, 3) = A260876(n, 2) + A260876(n, 3) - 1 = (binomial(3*n - 1, 2*n) + 1) * (binomial(2*n - 1, n) + 1) + binomial(3*n - 1, n) for n >= 1.
+EXAMPLE
+Table A(n,k) (with rows n >= 0 and columns k >= 0) begins as follows:
+[0] 1, 1,  2,    5,      14,         42,           132, ...  F000108
+[1] 1, 1,  2,    6,      24,        120,           720, ...  F000142
+[2] 1, 1,  4,   34,     496,      11056,        349504, ...  J002105
+[3] 1, 1, 11,  375,   27897,    3817137,     865874115, ...  M018893
+[4] 1, 1, 36, 6306, 3156336, 3501788976, 7425169747776, ...
+     J260878|
+A := proc(n, k) option remember; if k = 0 then 1 else
+add(binomial(n*k-1, n*v)*A(n, v)*A(n, k-1-v), v=0..k-1) fi end:
+seq(seq(A(n-k, k), k=0..n), n=0..9);
+
+
+
+A:= proc(m, n) option remember; `if`(m=0, combinat[numbpart](n),
+      `if`(n=0, 1, add(binomial(m*n-1, m*k-1)*A(m, n-k), k=1..n)))
+    end:
+seq(seq(A(d-n, n), n=0..d), d=0..10);  # Alois P. Heinz, Aug 14 2019
+
+[m] |  multi-   |  sum of   |  main     |  by       |  comple-  |
+    |  nomials  |  rows     |  diagonal |  size     |  mentary  |
+[0] |  F000012  |  F000041  |  F000012  |  J008284  |  J081362  |
+[1] |  J036040  |  F000110  |  F000012  |  J048993  |  D000587  |
+[2] |  A257490  |  M005046  |  D001147  |  J156289  |  J260884  |
+[3] |  A327003  |  A291973  |  J025035  |  A291451  |  A291974  |
+[4] |  A327004  |  J291975  |  J025036  |  A291452  |  J291976  |
+Cf. A326996 (main diagonal), A260883 (ordered), A260875 (complementary).
+Columns include F000012, J260878, A309725.
+
+
+A399356	holos	0	[0,1,0,-2,0,-25,0,-3,0,12,0,-1]	1,4,15,45,172,523,1985,6044,22925,69827,264815	0	0
+
+
+ A327001 := proc(n, k) option remember; if k = 0 then return 1 fi;
+add(binomial(n*k - 1, n*j) * A327001(n, j), j = 0..k-1) end:
+for n from 0 to 6 do seq(A327001(n, k), k=0..6) od; # row-wise
+ A260876 (variant based on shapes).
+Rows include: D011782, F000110, M005046, A291973, J291975.
+Columns include: J260878, E326998.
+Cf. 
+?A327000	arrlamb	0	0, 3, -1	(n, k) -> T309522(n, k).-(T327001(n, k))
+
+?@8384?? A052509	mtrilon	0	0, 0	Z	(n, k) -> k == 0 || k == n ? Z.ONE : get(n - 1, k).add(get(n - 2, k - 1))	() -> mB.get(n, k)
+cf. A052509	A141905	trilambn	0	0	0	(n, k) -> S052509(n, k).*(BI(n, k))	Triangle read by rows, T(n, k) = binomial(n, k)*A052509(n, k) for 0 <= k <= n.

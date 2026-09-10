@@ -1,0 +1,102 @@
+---- 2026-09-10 15:41:35
+A048163	lambdan	1	n -> SU(1, n, k -> FA(k - 1).^(2).*(S2(n, k).^(2)))	a(n) = Sum_{k=1..n} ((k-1)!)^2*Stirling2(n,k)^2.
+A051068	dead	0	A050294	dupl	PartialSumSequence	Duplicate of A050294.					Duplicate of A050294.
+A080921	dead	0	A053455	dupl	LinearRecurrence	Duplicate of A053455.					Duplicate of A053455.
+A088793	poly	0	"[1],[1,-1]"	"1,A,<1,sub,<2,+,p1,/"
+A088796	filter	1	new A000040()	p -> PP(p.+(1).*(p).*(p).-(1))	nyi pto	Primes p such that p^3 + p^2 - 1 is also prime.	nonn	1..10000	nyi	_Chuck Seggelin_
+A088797	filnum	1	3	n -> new Z(Long.toString(n - 2) + Long.toString(n - 1)).mod(n) == 0	n > 2 such that n divides the concatenation of n-2 and n-1.	base,nonn	1..1285	nyi	_Chuck Seggelin_
+A088798	filnum	1	3	n -> new Z(Long.toString(n - 1) + Long.toString(n - 2) + Long.toString(n - 3)).mod(n) == 0	n that divide the concatenation of n-1, n-2 and n-3.	base,nonn	1..14	nyi	_Chuck Seggelin_
+A088799	filnum	1	3	n -> new Z(Long.toString(n - 3) + Long.toString(n - 2) + Long.toString(n - 1)).mod(n) == 0	are divisors of the number formed by concatenating (n-3), (n-2) and (n-1) in that order.	base,nonn	1..16	nyi	_Chuck Seggelin_
+A088800	filnum	0	5	n -> new Z(Long.toString(n - 1) + Long.toString(n - 2) + Long.toString(n - 3) + Long.toString(n - 4)).mod(n) == 0	are divisors of the number formed by concatenating (n-1), (n-2), (n-3) and (n-4) in that order.	base,nonn	1..20	nyi	_Chuck Seggelin_
+A091863	partsun	1	new A091862()			Partial sums of A091862.
+A095131	multraf	1	(self, n) -> new Q(self.s(0), self.s(1)).num()	""	new A005196(), new A005195()
+A095132	multraf	1	(self, n) -> new Q(self.s(0), self.s(1)).den()	""	new A005196(), new A005195()
+A095159	rambdan	1	n -> (n <= 2 ? QV(n) : new Q(Z_1(n).*(2*n - 1).*(DF(n - 2).^(2)), DF(n - 1).^(2)))	b(n) = (-1)^n (2n-1) ((n-2)!!)^2/((n-1)!!)^2
+A095175	rambdad	1	A095159
+A097477	multia	1	"1"	(self, n) -> { final Z t = self.a(n/2); return CNT(0, n - 1, k -> self.a(k).compareTo(t) > 0); }	a(n)=NET greater than a(floor(n/2)) a(1)=1
+A108839	multia	1	"1"	(self, n) -> CNT(1, n - 1, k -> Predicates.PRIME.is(self.a(k).+(n)))	a(n)=number of previous terms a(k)  a(k) + n is prime
+A113503	multia	1	"1"	(self, n) -> { final long t = Functions.DIGIT_SUM.l(2, n); return CNT(1, n - 1, k -> Functions.DIGIT_SUM.l(2, self.a(k)) == t); }	have the same number of ones in their binary representations as n
+A113504	multia	0	"1"	(self, n) -> { final long t = Functions.DIGIT_SUM.l(2, n); return CNT(0, n - 1, k -> Functions.DIGIT_SUM.l(2, self.a(k)) == t); }	have the same number of ones in their binary representations as n
+A115207	multia	1	"1"	(self, n) -> CNT(1, n - 1, k -> { final Z t = self.a(k).+(n); return t.compareTo(4) >= 0 && !PP(t); })	when added to n produce a composite number
+A115208	multia	1	"0"	(self, n) -> CNT(1, n - 1, k -> { final Z t = self.a(k).+(n); return t.compareTo(Z.FOUR) >= 0 && !Predicates.PRIME.is(t); })	when added to n produce a composite number
+A115209	multia	0	"1"	(self, n) -> CNT(0, n - 1, k -> n >= 2 && !Predicates.PRIME.is(self.a(k).+(n)))	when added to n produce a composite number
+A115210	multia	0	"0"	(self, n) -> CNT(0, n - 1, k -> n >= 2 && !Predicates.PRIME.is(self.a(k).+(n)))	when added to n produce a composite number
+A118176	multia	1	"1"	(self, n) -> { final Z t = TAU(n); return CNT(1, n - 1, k -> !TAU(self.a(k)).equals(t)); }	have a different number of divisors than n
+A119647	dead	1	A092782	dupl	MorphismFixedPointSequence	Duplicate of A092782.					Duplicate of A092782.
+A119655	multia	0	"0,0"	(self, n) -> CNT(0, n - 1, k -> !GCD(ZV(n), self.a(k)).isOne())	a(n)=NET not coprime to n
+A120877	multia	1	"1"	(self, n) -> { final Z t = SU(1, n - 1, k -> self.a(k)); return CNT(1, n - 1, k -> t.mod(self.a(k)).isZero()); }	divide the sum of the earlier terms of the sequence
+A121383	multia	0	"3"	(self, n) -> CNT(0, n - 1, k -> Predicates.SQUARE.is(self.a(k).+(n)))	, each added to n, sum to a square
+A121599	multia	1	"1"	(self, n) -> { final Z t = LPF(n); return CNT(1, n - 1, k -> !self.a(k).mod(t).isZero()); }	a(n)=NET not divisible by the smallest prime dividing n, with a(1)=1
+A121600	multia	1	"1"	(self, n) -> { final Z t = GPF(n); return CNT(1, n - 1, k -> !self.a(k).mod(t).isZero()); }	a(n)=NET not divisible by the largest prime dividing n, with a(1)=1
+A122077	multia	1	"1"	(self, n) -> { final Z t = self.a(n - 1); return t.+(CNT(1, n - 1, k -> t.mod(self.a(k)).isZero())); }	a(n)=a(n-1) + (NET divide a(n-1) (including a(n-1) itself))
+A122168	multia	1	"1"	(self, n) -> CNT(1, n - 1, k -> Predicates.SQUARE_FREE.is(GCD(self.a(k), ZV(n))))	, a(k) (1 <= k <= n-1), where gcd(a(k),n) is squarefree
+A122954	multia	1	"1"	(self, n) -> { final String t = Long.toString(n, 2); return CNT(1, n - 1, k -> t.indexOf(self.a(k).toString(2)) >= 0); }	, when written in binary, are substrings of binary n
+A123396	multia	0	"0,1"	(self, n) -> CNT(0, n - 1, k -> Predicates.TRIANGULAR.is(self.a(k).+(n)))	a(n)=NET each of  , when added to n, give a triangular number
+A123541	multia	0	"2"	(self, n) -> CNT(0, n - 1, k -> Predicates.PRIME.is(self.a(k).+(n)))	when added to n give a prime
+A123755	multia	0	"1"	(self, n) -> { final long t = Functions.DIGIT_SUM.l(2, n); return CNT(0, n - 1, k -> self.a(k).mod(t) == 0); }	divisible by (the number of 1s in the binary representation of n)
+A123756	multia	0	"0"	(self, n) -> { final long t = Functions.DIGIT_SUM.l(2, n); return CNT(0, n - 1, k -> self.a(k).mod(t) == 0); }		divisible by (the number of 1s in the binary representation of n)
+A124371	multia	1	"0,1"	(self, n) -> CNT(1, n - 1, k -> Predicates.SQUARE.is(self.a(k).*(n)))	a(n) NET a(k)  a(k)*n is a square
+A126630	multia	1	"1"	(self, n) -> { final Z t = FI(n); return CNT(1, n - 1, k -> GCDi(t, self.a(k)) == 1); }	coprime to the n-th Fibonacci number
+A126870	multia	1	"1"	(self, n) -> { final Z t = SOPF(n); return CNT(1, n - 1, k -> GCDi(t, self.a(k)) == 1); }	coprime to the sum of distinct prime divisors of n
+A127417	multia	1	"1"	(self, n) -> CNT(1, n - 1, k -> self.a(k).+(n).mod(k) == 0)	(a(k)+n) is divisible by k
+A127418	multia	1	"1"	(self, n) -> CNT(1, n - 1, k -> GCDi(ZV(k), self.a(k).+(n)) == 1)	(a(k)+n) is coprime to k
+A127431	multia	1	"1"	(self, n) -> CNT(1, n - 1, k -> ZV(n + k).mod(self.a(k)).isZero())	(k+n) is divisible by a(k)
+A127432	multia	0	"1"	(self, n) -> CNT(0, n - 1, k -> ZV(n + k).mod(self.a(k)).isZero())	a(k), 0<=k<=n-1,  (k+n) is divisible by a(k)
+A127433	multia	1	"1"	(self, n) -> CNT(1, n - 1, k -> GCDi(ZV(n + k), self.a(k)) == 1)	(k+n) is coprime to a(k)
+A127434	multia	0	"1"	(self, n) -> CNT(0, n - 1, k -> GCDi(ZV(n + k), self.a(k)) == 1)	a(k), 0<=k<=n-1,  (k+n) is coprime to a(k)
+A127460	multia	1	"1"	(self, n) -> CNT(1, n - 1, k -> ZV(n).mod(self.a(k).+(k)).isZero())	(k+a(k)) divides n
+A127461	multia	0	"1"	(self, n) -> CNT(0, n - 1, k ->  ZV(n).mod(self.a(k).+(k)).isZero())	a(k), 0<=k<=n-1,  (k+a(k)) divides n
+A127462	multia	1	"1"	(self, n) -> CNT(1, n - 1, k -> GCDi(ZV(n), self.a(k).+(k)) == 1)	(k+a(k)) is coprime to n
+A127463	multia	0	"1"	(self, n) -> CNT(0, n - 1, k -> GCDi(ZV(n), self.a(k).+(k)) == 1)	a(k), 0<=k<=n-1,  (k+a(k)) is coprime to n
+A127791	multia	1	"1"	(self, n) -> SD(n, k -> CNT(1, n - 1, j -> GCD(self.a(j), ZV(k)).isOne()))	a(n)=Sum_{k|n} (NET coprime to k)
+A127792	multia	0	"1"	(self, n) -> SD(n, k -> CNT(0, n - 1, j -> GCD(self.a(j), ZV(k)).isOne()))	a(n)=Sum_{k|n} (NET coprime to k)
+A128267	multia	0	"1,1,2"	(self, n) -> GCD(CNT(0, n - 1, k -> GCD(self.a(k), ZV(n)).isOne()), SU(0, n - 1, k -> GCD(self.a(k), ZV(n)).isOne() ? self.a(k) : ZV(0)))	a(n)=gcd((NET coprime to n), (sum of the earlier terms which are coprime to n))
+A128268	multia	0	"1,1,2"	(self, n) -> LCM(CNT(0, n - 1, k -> GCD(self.a(k), ZV(n)).isOne()), SU(0, n - 1, k -> GCD(self.a(k), ZV(n)).isOne() ? self.a(k) : ZV(0)))	a(n)=lcm((NET coprime to n), (sum of the earlier terms which are coprime to n))
+A128269	multia	1	"1,1,2"	(self, n) -> LCM(CNT(1, n - 1, k -> GCD(self.a(k), ZV(n)).isOne()), SU(1, n - 1, k -> GCD(self.a(k), ZV(n)).isOne() ? self.a(k) : ZV(0)))	a(n)=lcm((NET coprime to n), (sum of the earlier terms which are coprime to n))
+A129381	multia	1	"1"	(self, n) -> { final Z t = SQRT(n); return CNT(1, n - 1, k -> GCDi(t, self.a(k)) == 1); }	coprime to floor(sqrt(n))
+A129382	multia	0	"1"	(self, n) -> { final Z t = SQRT(n); return CNT(0, n - 1, k -> GCDi(t, self.a(k)) == 1); }	coprime to floor(sqrt(n))
+A130043	multia	1	"1"	(self, n) -> { final Z t = Functions.MAKE_ODD.z(n); return CNT(1, n - 1, k -> GCDi(t, self.a(k)) == 1); }	coprime to the largest odd divisor of n
+A130044	multia	0	"1"	(self, n) -> { final Z t = Functions.MAKE_ODD.z(n); return CNT(0, n - 1, k -> GCDi(t, self.a(k)) == 1); }	coprime to the largest odd divisor of n
+A130120	multia	0	"1"	(self, n) -> { final Z t = TRI(n); return CNT(0, n - 1, k -> t.mod(self.a(k)).isZero()); }		divide n(n+1)/2
+A130121	multia	1	"1"	(self, n) -> { final Z t = TRI(n); return CNT(1, n - 1, k -> t.mod(self.a(k)).isZero()); }	divide n(n+1)/2
+A130122	filter	1	new A000040()	p -> PP(p.*(10).+(Functions.NEXT_PRIME.z(Functions.NEXT_PRIME.z(p))))	Primes prime(n) such that 10*prime(n)+prime(n+2) is prime.	nonn	1..1000	nyi	_Jani Melik_
+A130155	multia	1	"1"	(self, n) -> { final Z t = FI(n); return CNT(1, n - 1, k -> t.mod(self.a(k)).isZero()); }	divide the n-th Fibonacci number
+A130156	multia	0	"1"	(self, n) -> { final Z t = FI(n); return CNT(0, n - 1, k -> t.mod(self.a(k)).isZero()); }		divide the n-th Fibonacci number
+A130163	filnum	1	1	k -> FI(k).*(2).mod(ZV(k).^(2)).isZero()	Numbers k such that k^2 divides 2*Fibonacci(k).	nonn	1..776	nyi	_Alexander Adamchuk_
+A130164	filnum	0	1	k -> FI(k).*(3).mod(ZV(k).^(2)).isZero()	Numbers k such that k^2 divides 3*Fibonacci(k).	nonn	1..289	nyi	_Alexander Adamchuk_
+A130199	filter	1	new A002378()	v -> (Functions.DIGIT_SUM.i(2, v) & 1) == 0	Evil oblong (promic) numbers.
+A130200	filter	1	new A000217()	v -> (Functions.DIGIT_SUM.i(2, v) & 1) == 0	Evil triangular numbers.
+A130411	rambdan	1	n -> RU(1, n, j -> new Q(Z_1(j + 1, ), ZV(j).*(j + 1).*(2*j + 1))).*(3)
+A130412	rambdad	1	A130411
+A130414	rambdad	0	A130413
+A130416	rambdan	1	n -> RU(1, n, k -> new Q(Z.ONE, ZV(k).^(4).*(BI(2*k, k)))).*(2)
+A130417	rambdad	1	A130416
+A130425	rambdan	1	n -> RU(1, n, k -> Q.ONE./(QV(k).^(n + 1 - k)))	a(n) = numerator of Sum_{k=1..n} 1/k^(n+1-k).	frac,nonn	1..14	nyi	_Leroy Quet_
+A135591	multia	1	"1"	(self, n) -> { final Z t = TAU(n).-(1); return CNT(1, n - 1, k -> self.a(k).equals(t)); }	equal to number of proper divisors of n
+A135592	multia	1	"1"	(self, n) -> { final Z t = Functions.OMEGA.z(n); return CNT(1, n - 1, k -> t.equals(self.a(k))); }	equal to number of prime divisors of n
+A177847	arrlamb	1	1	1	-1	(n, m) -> FA(n*m).*(FA(n - 1)).*(FA(m - 1))./(FA(n + m - 1))	Gamma(n)*Gamma(m)/Gamma(n+m).
+A190901	lambdan	0	n -> ((n&1) == 0 ? F006882(2*n) : D001147(n))	= 4^k * Gamma(2*k+3/2) / sqrt(Pi/4).
+A229826	filter	1	new A001969()	v -> v.mod(7) == 0 && v.mod(3) != 0	Evil (A001969) numbers divisible by 7 but not divisible by 3.
+A234037	filnum	1	1	k -> (Functions.DIGIT_SUM.i(2, k) & 1) == 0 && (Functions.DIGIT_SUM.i(2, k*k) & 1) == 1 || (Functions.DIGIT_SUM.i(2, k) & 1) == 1 && (Functions.DIGIT_SUM.i(2, k*k) & 1) == 0
+A245733	mtrilon	0	0, 0	Z	(n, k) -> n == 0 ? ZV(1) : SU(k, n, j -> get(n - j, k).*(BI(n, j)))	() -> (k == 0 ? ZV(n).^(n) : (n == 0 ? ZV(0) : mB.get(n, k))).-((n == 0 ? ZV(0) : mB.get(n, k + 1)))	T:= (n, k)-> g(n, k) -g(n, k+1):~~seq(seq(T(n, k), k=0..n), n=0..12);~~
+A245863	lambdan	10	n -> S245733(n, 10)
+A247500	trilambn	0	0	0	(n, k) -> ZV(k + 1).*(n + 1).*(FA(n).^(2))./(FA(k + 1).^(2).*(FA(n - k + 1)))	. (original name)
+A293899	sintrif	1	(term, n) -> { final long m = n % 3; return m == 0 ? term : (m == 1 ? term.-(1) : term.+(1)); }	"0"	new A002324()	Whenn=3k,a(n)=J002324(n),whenn=3k+1,a(n)=J002324(n)-1,whenn=3k+2,a(n)=J002324(n)+1	_	_	_
+A295276	multia	1	"0,1"	(self, n) -> CNT(1, n - 1, k -> self.a(k).and(ZV(n)).isZero())	a(n)=NET (with multiplicity)  have no common one bit with n in binary representation
+A306635	lambdan	1	n -> PR(1, n, k -> E296607(k))	a(n) = Product_{k=1..n} BarnesG(2*k).
+A307599	convprod	0	-1	new A227682()	Convolution inverse of A227682.
+A331333	trilambn	0	0	0	(n, k) -> Z2(k).*(FA(n)).*(BI(n, k))./(FA(k))
+A332226	filnum	1	1	k -> SIGMA(k).mod(8) == 2	Numbers k such that sigma(k) is congruent to 2 modulo 8.	nonn	1..25000	nyi	_Antti Karttunen_
+A332270	filnum	0	1	k -> SU(1, k, j -> ZV(j).*(k / j)).mod(k + 1) == 0	Numbers k such that Sum_{j=1..k} j*floor(k/j) is divisible by k+1.	nonn,more	1..18	nyi	_Seiichi Manyama_
+A347653	partsun	1	new A235795()			Partial sums of A235795.
+A349728	trilambn	0	0	0	(n, k) -> (n == 0 ? ZV(1) : (k == 0 ? ZV(0) : (k == 1 ? FA(n - 1) : (FA(n - k).*(FA(n + k - 1))./(FA(k - 1).*(FA(n)))))))	T[n_, k_] := If[n == 0, 1, (Gamma[1 - k + n] Gamma[k + n])/(Gamma[k] Gamma[1 + n])]; Table[T[n, k], {n, 0, 9}, {k, 0, n}] // Flatten
+A349767	holos	1	[0,-1,1,0,0,1,-1]	3,14,16,17,23	0	0
+A353575	lambdan	0	n -> E258851(E328835(n))	1,1		a(n)=E353379(F276086(n))=E258851(E328835(n))	_	_	_
+A354796	trilambn	0	0	0	(n, k) -> (n == 0 ? ZV(1) : FA(n + k - 1)./(FA(k)))	Triangle read by rows. T(n, k) = Gamma(k + n) / k! for n >= 1 and 0 <= k <= n, T(0, 0) = 1.
+A355935	dirichinv	1	new A091862()	1	Dirichlet inverse of A091862, characteristic function of numbers for which A267116(n) = bigomega(n), where A267116 is the bitwise-OR of the exponents of primes in the prime factorization of n.
+A396515	lambdan	1	n -> F000005(n).+(E396514(n))	1,1		a(n)=F000005(n)+E396514(n)	_	_	_
+A398983	arrlamb	1	1	1	1	(n, k) -> BI((k + 1)*n, n).*(k)./((k + 1)*n - 1)	Array read by ascending antidiagonals: A(n,k) = k*binomial((k+1)*n, n)/((k + 1)*n - 1)
+A399544	lambdan	0	n -> SU(0, n, k -> SA(n, k).*(D048163(k + 1)))./(FA(n))	(1/n!)*Sum_{k=0..n} |Stirling1(n,k)|*A048163(k+1)
+A399545	lambdan	0	n -> SU(0, n, j -> SU(0, j, p -> SU(0, j, q -> Z_1(p + q).*(BI(j, p)).*(BI(j, q)).*(BI((j + 1 - p)*(j + 1 - q), n)))))
+A399685	lambdan	0	n -> PR(1, n, k -> Functions.SIGMA.z(k,k))	a(n) = Product_{k=1..n} sigma(k,k).	nonn,new	0..11	nyi	_Vaclav Kotesovec_
+A399693	parmof4	0	A082182	43	5	48	Numbers k such that (43^k + 5^k)/48 is prime.	nonn,hard,more,new	1..4	nyi	_Robert Price_

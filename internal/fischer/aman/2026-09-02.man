@@ -1,0 +1,47 @@
+---- 2026-09-03 10:02:14
+A219609	sintrif	0	(term, n) -> term./(2)	""	new DifferenceSequence(1, new A219608())	1..10000
+A325931	sintrif	0	(term, n) -> ZV(term.signum())	""	new DifferenceSequence(1, new A076042())	Signs of first differences of J076042.  easy,sign   
+
+A240851	pardpred	0	n	p -> { final Q m = PU.mean(p); return m.isInteger() && !PU.isPart(p, m.num().intValueExact()); }	nonn,easy	0..55
+A240856	pardpred	0	n	p -> !PU.isPart(p, 2*p.length)	nonn,easy	0..59
+A240861	pardpred	0	n	p -> !PU.isPart(p, p.length)	nonn,easy	0..4000
+A238484	partpred	0	n	p ->  PU.isPart(p, PU.ceiling(PU.min(p) + PU.max(p), 2))	 as a part	nonn,easy	1..49
+A238485	partpred	0	n	p -> !PU.isPart(p, PU.ceiling(PU.min(p) + PU.max(p), 2))	 as a part	nonn,easy	1..48
+A238486	partpred	0	n	p ->  PU.isPart(p, Math.toIntExact(bakersRound(new Q(PU.min(p) + PU.max(p), 2))))	 as a part	nonn,easy	1..49
+A238487	partpred	0	n	p -> !PU.isPart(p, Math.toIntExact(bakersRound(new Q(PU.min(p) + PU.max(p), 2))))	 as a part	nonn,easy	1..48
+ 
+A238480	partpred	0	n	p -> { final int sum = PU.min(p) + PU.max(p); return (sum & 1) == 0 && PU.isPart(p, sum / 2); }	 include (PU.min(p) + PU.max(p))/2 as a part	nonn,easy	1..51
+A238481	partpred	0	n	p -> { final int sum = PU.min(p) + PU.max(p); return (sum & 1) != 0 || !PU.isPart(p, sum / 2); }	 do not include (PU.min(p) + PU.max(p))/2 as a part	nonn,easy	1..47
+
+ A239964	partpred	0	n	p -> PU.distinctCount(p) ==  maximal multiplicity of the parts	nonn,easy	0..1000
+ A239966	partpred	0	n	p -> PU.distinctCount(p) ==  minimal multiplicity of the parts	nonn,easy	0..1000
+
+ A238625	partpred	0	n	p -> PU.isPart(p, 1 + (1/2)*PU.max(p))	 is a part of p	nonn,easy	1..1000
+
+?diff?	A241735	partpred	0	n	p ->  PU.isPart(p, PU.maxDiff(p)) 	is a part of p	nonn,easy	0..49
+?diff?	A241736	partpred	0	n	p -> !PU.isPart(p, PU.maxDiff(p))	 is not a part of p	nonn,easy	0..47
+?diff?	A241760	partpred	0	n	p ->  PU.isPart(p, PU.minDiff(p)) 	is a part of p	nonn,easy	0..55
+?diff?	A241761	partpred	0	n	p -> !PU.isPart(p, PU.minDiff(p))	 is not a part of p	nonn,easy	0..47
+?diff?	A241818	partpred	0	n	p -> PU.maxDiff(p) <  PU.distinctCount(p)	nonn,easy	0..48
+?diff?	A241819	partpred	0	n	p -> PU.maxDiff(p) <= PU.distinctCount(p)	nonn,easy	0..48
+?diff?	A241820	partpred	0	n	p -> PU.maxDiff(p) == PU.distinctCount(p)	nonn,easy	0..51
+?diff?	A241821	partpred	0	n	p -> PU.maxDiff(p) >= PU.distinctCount(p)	nonn,easy	0..48
+?diff?	A241822	partpred	0	n	p -> PU.maxDiff(p) >  PU.distinctCount(p)	nonn,easy	0..49
+?diff?	A241823	partpred	0	n	p -> PU.minDiff(p) <  PU.distinctCount(p)	nonn,easy	0..46
+?diff?	A241824	partpred	0	n	p -> PU.minDiff(p) <= PU.distinctCount(p)	nonn,easy	0..46
+?diff?	A241825	partpred	0	n	p -> PU.minDiff(p) == PU.distinctCount(p)	nonn,easy	0..62
+?diff?	A241826	partpred	0	n	p -> PU.minDiff(p) >= PU.distinctCount(p)	nonn,easy	0..61
+?diff?	A241827	partpred	0	n	p -> PU.minDiff(p) >  PU.distinctCount(p)	nonn,easy	0..62
+?diff?	A241828	partpred	0	n	p -> PU.maxDiff(p) <  p.length	 of p	nonn,easy	0..47
+?diff?	A241829	partpred	0	n	p -> PU.maxDiff(p) <= p.length	 of p	nonn,easy	0..47
+?diff?	A241830	partpred	0	n	p -> PU.maxDiff(p) == p.length	 of p	nonn,easy	0..55
+?diff?	A241831	partpred	0	n	p -> PU.maxDiff(p) >= p.length	 of p	nonn,easy	0..50
+?diff?	A241832	partpred	0	n	p -> PU.maxDiff(p) >  p.length	 of p	nonn,easy	0..50
+
+ A240079	partpred	0	n	p -> PU.count(p, PU.mean(p) >= multiplicity(PU.min(p))	nonn,easy	0..48
+?A241511 ?Number of partitions of n such that (number parts having multiplicity 1) is a part and (number of parts > 1) is a part.
+A241514	partpre1	0	n	p -> !PU.isPart(p, PU.singleCount(p)) && !PU.isPart(p, PU.allGt1Count(p))	 is not a part	nonn,easy	0..49
+
+
+
+
