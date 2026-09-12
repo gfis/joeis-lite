@@ -8,16 +8,9 @@ import irvine.math.z.ZUtils;
 import irvine.oeis.AbstractSequence;
 
 /**
- * A sequence comprising the transform of zero, one or more other sequences.
- * This program is similar to {@link SimpleTransformSequence}, but the terms
- * of the target sequence and of several underlying sequences can be used
- * in the lambda expression.
+ * A sequence where the next elements depends on the existence of values in the previous elements of the sequence.
  * <p />
- * Any initial terms are prepended first. If there is a recurrence, or
- * if a source sequence has a higher offset than the target sequence,
- * a sufficient number of initial terms must be specified.
- * The offsets are handled automatically, that means the indexes n of all involved
- * sequences are aligned.
+ * Any initial terms are prepended first.
  * @author Georg Fischer
  */
 public class MexSequence extends AbstractSequence {
@@ -33,45 +26,66 @@ public class MexSequence extends AbstractSequence {
     Z apply(MexSequence self, Long n);
   }
 
+  @FunctionalInterface
+  public interface MexPredicate<MexSequence, Long, Boolean> {
+    /**
+     * Apply the function.
+     * @param self reference to enclosing class
+     * @param n current index
+     * @return value of <code>a(n)</code>
+     */
+    Boolean apply(MexSequence self, Long n);
+  }
+
   private final MexFunction<MexSequence, Long, Z> mLambda; // maps (self, n) to next term
+  private final MexPredicate<MexSequence, Long, Boolean> mPredicate; // maps (self, n) to next term
   private final ArrayList<Z> mA; // the existing target sequence elements: a(n-1), a(n-k) etc.
+  private Z mMex; // the first non-existing element
   private final TreeSet<Z> mSparse; // the existing target sequence elements that are not members of the contiguous block
   private final Z[] mInits; // initial terms
   private final int mInitNo; // number of initial terms: mInits.length
   private int mIn; // index for mInits
   private long mN; // current index of target sequence a(n)
-  private Z mMex; // the first non-existing element = mBlock + 1
 
   /**
-   * Creates a target sequence from an expression of source sequences.
+   * Creates the sequence from a condition for the new, smallest element not yet in the sequence.
    * @param offset offset of the new sequence
    * @param lambda function mapping (self, n) to the terms of the target sequence
    * @param initTerms initial terms for a(n)
-   * A typical pattern for the call is:
-   * <code>super(1, (self, n) -> f(n, self.s(0), self.s(1), self.s(2)), "1", new A999990(), new A999991(), new A999992())</code>
    * If there are some initial terms for a(n), they are exhausted first, resulting in a target offset n.
-   * <p />
-   * Existing target terms can be accessed with <code>self.a(n-1), self.a(n-2), self.a(n-k)</code> and so on,
-   * thus allowing recurrences and memorized terms.
+   * Existing target terms can be accessed with <code>self.a(n-1), self.a(n-2), self.a(n-k)</code> and so on.
    */
-  public MexSequence(final int offset, final MexFunction<MexSequence, Long, Z> lambda, final String initTerms) {
+  public MexSequence(final int offset, final MexFunction<MexSequence, Long, Z> lambda, final MexPredicate<MexSequence, Long, Boolean> predicate, final String initTerms) {
     super(offset);
+    mLambda = lambda; 
+    mPredicate = predicate;
+    mInits = (initTerms.isEmpty() || "[]".equals(initTerms)) ? new Z[0] : ZUtils.toZ(initTerms);
     mA = new ArrayList<>();
     mSparse = new TreeSet<>();
-    mN = -1;
+    mN = offset - 1;
     while (mN < offset - 1) {
       ++mN;
       mA.add(Z.ZERO); // adjust a(n)
     }
     // now mN = mOffset - 1
     mMex = Z.valueOf(mN + 1);
-    mLambda = lambda;
-    mInits = (initTerms.isEmpty() || "[]".equals(initTerms)) ? new Z[0] : ZUtils.toZ(initTerms);
     mInitNo = mInits.length;
     for (int ix = 0; ix < mInitNo; ++ix) {
       add(mInits[ix]);
     }
     mIn = 0;
+  }
+
+  /**
+   * Creates the sequence from explicit expressions for <code>a(n)</code>.
+   * @param offset offset of the new sequence
+   * @param lambda function mapping (self, n) to the terms of the target sequence
+   * @param initTerms initial terms for a(n)
+   * If there are some initial terms for a(n), they are exhausted first, resulting in a target offset n.
+   * Existing target terms can be accessed with <code>self.a(n-1), self.a(n-2), self.a(n-k)</code> and so on.
+   */
+  public MexSequence(final int offset, final MexFunction<MexSequence, Long, Z> lambda, final String initTerms) {
+    this(offset, lambda, (self, n) -> true, initTerms);
   }
 
   /**
@@ -83,15 +97,16 @@ public class MexSequence extends AbstractSequence {
   private void add(final Z x) {
     mA.add(x);
     final int cmp = x.compareTo(mMex);
-    if (cmp > 0) {
+    if (cmp > 0) { // in the sparse range, no need to adjust mMex
       mSparse.add(x);
-    } else if (cmp == 0) {
+    } else if (cmp == 0) { // x === mMex
       mMex = mMex.add(1);
-      while (mSparse.size() > 0 && mSparse.first().equals(mMex)) {
+      while (!mSparse.isEmpty() && mSparse.first().equals(mMex)) { // try to increase mMex by elements from the head of mSparse
         mMex = mMex.add(1);
         mSparse.pollFirst();
       }
     } // else x < mMex: ignore
+    // System.out.println("# add: mN=" + mN + ", result=" + result + ", mMex=" + mMex + ", first=" + (mSparse.isEmpty() == 0 ? "{}" : mSparse.first().toString()));
   }
 
   /**
@@ -100,6 +115,14 @@ public class MexSequence extends AbstractSequence {
    */
   public Z mex() {
     return mMex;
+  }
+
+  /**
+   * Test whether an element is already in the sequence.
+   * @return true if the element is <code>&lt; mMex</code> or in <code>mSparse</code>
+   */
+  public boolean contains(final Z x) {
+    return x.compareTo(mMex) < 0 || mSparse.contains(x);
   }
 
   /**
@@ -113,8 +136,21 @@ public class MexSequence extends AbstractSequence {
 
   @Override
   public Z next() {
-    final Z result = mIn < mInitNo ? mInits[mIn++] : mLambda.apply(this, ++mN);
-    add(result); // memorize and maintain mMex, mSparse
-    return result;
+    ++mN;
+    final Z result;
+    if (mIn < mInitNo) {
+      result =  mInits[mIn++];
+      add(result);
+      return result;
+    } 
+    if (mPredicate == null) {
+      result = mLambda.apply(this, mN);
+      add(result); // memorize and maintain mMex, mSparse
+      return result;
+    }
+    // iterate through the non-existing elements: mMex and the gaps in mSparse
+      result = mLambda.apply(this, mN);
+      add(result); // memorize and maintain mMex, mSparse
+      return result;
   }
 }

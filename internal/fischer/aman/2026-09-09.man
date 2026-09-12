@@ -60,3 +60,9 @@ A312345	filnum	0	1	k -> Functions.OMEGA.l(k) >= 2 && FSIT(k, 0L, (x, p, e) -> x 
 A312344	filnum	0	1	k -> Functions.OMEGA.l(k) >= 2 && FSIT(k, 0L, (x, p, e) -> x + (!ZV(k + 1).mod(p.+(1)).isZero() ? 1 : 0)) == 0
 A312343	filnum	0	1	k -> Functions.OMEGA.l(k) >= 2 && FSIT(k, 0L, (x, p, e) -> x + (!ZV(k + 2).mod(p.+(2)).isZero() ? 1 : 0)) == 0
 A312342	filnum	0	1	k -> Functions.OMEGA.l(k) >= 2 && FSIT(k, 0L, (x, p, e) -> x + (!ZV(k + 3).mod(p.+(3)).isZero() ? 1 : 0)) == 0
+A312341	filnum	0	1	k -> Functions.OMEGA.l(k) >= 2 && FSIT(k, 0L, (x, p, e) -> x + (!ZV(k + 3).mod(p.+(4)).isZero() ? 1 : 0)) == 0
+A312340	filnum	0	1	k -> Functions.OMEGA.l(k) >= 2 && FSIT(k, 0L, (x, p, e) -> x + (!ZV(k + 3).mod(p.+(5)).isZero() ? 1 : 0)) == 0
+A312339	filnum	0	1	k -> Functions.OMEGA.l(k) >= 2 && FSIT(k, 0L, (x, p, e) -> x + (!ZV(k + 3).mod(p.+(6)).isZero() ? 1 : 0)) == 0
+A312338	filnum	0	1	k -> Functions.OMEGA.l(k) >= 2 && FSIT(k, 0L, (x, p, e) -> x + (!ZV(k + 3).mod(p.+(7)).isZero() ? 1 : 0)) == 0
+A312337	filnum	0	1	k -> Functions.OMEGA.l(k) >= 2 && FSIT(k, 0L, (x, p, e) -> x + (!ZV(k + 3).mod(p.+(8)).isZero() ? 1 : 0)) == 0
+A312336	filnum	0	1	k -> Functions.OMEGA.l(k) >= 2 && FSIT(k, 0L, (x, p, e) -> x + (!ZV(k + 3).mod(p.+(9)).isZero() ? 1 : 0)) == 0

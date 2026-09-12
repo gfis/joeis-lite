@@ -14,6 +14,6 @@ public class $(ASEQNO) extends MexSequence {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
-    super($(OFFSET), $(PARM1=inits), $(PARM2=lambda));
+    super($(OFFSET), $(PARM2=lambda), $(PARM1=inits));
   }
 }
