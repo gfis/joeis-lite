@@ -56,3 +56,7 @@ A[n_, k_] := A[n, k] = If[n==0, 1, Sum[If[j>n, 0, A[n-j, k]*BI[n-1, j - 1]], {j,
 ?fail A379568	lambdan	0	n -> F000720(ZV(10).^(ZV(n)./(4))).-(F000720(ZV(10).^(ZV(n-1)./(4))))	0		a(n)=PrimePi(10^(n/4))-PrimePi(10^((n-1)/4))	_	_	_
 ?fail A391956	lambdan	0	n -> (PR(1, n, k -> ZV(k).^(k)).^(ZV(4)./(FA(n).^(2*n+1))))	0,0		a(n)=(Product_{k=1..n}k^k)^4/n!^(2*n+1)	_	_	_
 ?fail A398144	lambdan	0	n -> SU(1, n,i -> CNT(1, n, j -> (MU(i) == MU(j))))	a(n) = sum(i=1, n, sum(j=1, n, moebius(i)==moebius(j)));
+A312345	filnum	0	1	k -> Functions.OMEGA.l(k) >= 2 && FSIT(k, 0L, (x, p, e) -> x + (!ZV(k + 10).mod(p.+(10)).isZero() ? 1 : 0)) == 0
+A312344	filnum	0	1	k -> Functions.OMEGA.l(k) >= 2 && FSIT(k, 0L, (x, p, e) -> x + (!ZV(k + 1).mod(p.+(1)).isZero() ? 1 : 0)) == 0
+A312343	filnum	0	1	k -> Functions.OMEGA.l(k) >= 2 && FSIT(k, 0L, (x, p, e) -> x + (!ZV(k + 2).mod(p.+(2)).isZero() ? 1 : 0)) == 0
+A312342	filnum	0	1	k -> Functions.OMEGA.l(k) >= 2 && FSIT(k, 0L, (x, p, e) -> x + (!ZV(k + 3).mod(p.+(3)).isZero() ? 1 : 0)) == 0
