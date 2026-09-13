@@ -393,6 +393,7 @@ while (<>) { # read inputfile
             $parm =~ s{SPF\(}          {Functions.LPF.z\(}g;
             $parm =~ s{SQRT\(}         {Functions.SQRT.z\(}g;
             $parm =~ s{SU\(}           {Integers.SINGLETON.sum\(}g;
+            $parm =~ s{SYN\(}          {Functions.SYNDROME.i\(}g;
             $parm =~ s{S1\(}           {Functions.STIRLING1.z\(}g;
             $parm =~ s{SA\(([^\)]+)\)} {Functions.STIRLING1.z\($1\)\.abs\(\)}g;
             $parm =~ s{S2\(}           {Functions.STIRLING2.z\(}g;
