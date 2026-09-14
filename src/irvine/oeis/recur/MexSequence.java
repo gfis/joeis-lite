@@ -118,6 +118,35 @@ public class MexSequence extends AbstractSequence implements DirectSequence {
     }
   }
 
+ /**
+   * Unconditionally retrieve the k-th minimal excluded element.
+   * @param k apply the <code>mex()</code> operation so many times
+   * @return the k-th (first, second, third) minimal element that does not yet exist in the sequence
+   */
+  public Z mex(final int k) {
+    return mex(k, v -> true);
+  }
+
+  /**
+   * Retrieve the minimal excluded element that fulfills a condition.
+   * @param k apply the <code>mex()</code> operation so many times
+   * @param predicate condition for the element
+   * @return the k-th (first, second, third) minimal element that does not yet exist in the sequence and that has the property <code>predicate</code>
+   */
+  public Z mex(int k, final Predicate<Z> predicate) {
+    Z candidate = mMex;
+    while(true) {
+      if (contains(candidate) || !predicate.test(candidate)) {
+        candidate = candidate.add(1);
+      } else {
+      	if (--k <= 0) {
+          return candidate;
+        }
+        candidate = candidate.add(1);
+      }
+    }
+  }
+
   /**
    * Test whether an element is already in the sequence.
    * @return true if the element is <code>&lt; mMex</code> or element of <code>mSparse</code>
@@ -141,7 +170,15 @@ public class MexSequence extends AbstractSequence implements DirectSequence {
    * @return a(n)
    */
   public Z a(final Z n) {
-    return mA.get(n.intValueExact(n));
+    return mA.get(n.intValueExact());
+  }
+
+  /**
+   * Retrieve the last element of the existing sequence
+   * @return <code>a(n - 1)</code>.
+   */
+  public Z previous() {
+    return mA.get(mA.size() - 1);
   }
 
   @Override

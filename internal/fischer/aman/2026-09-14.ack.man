@@ -1,6 +1,8 @@
----- 2026-09-14 05:27:49
+---- 2026-09-14 19:21:39
 A067581	mex	0	"0"	(self, n) -> self.mex(v -> (SYN(10, self.a(n - 1)) & SYN(10, v)) == 0)
 A096048	holos	0	[0,-1296,1800,-553,50,-1]	1,42,1446,51486	0	0
+A100806	mex	1	"1"	(self, n) -> self.mex(Functions.OMEGA.i(n))	F001221(n)-th positive integer not yet in the sequence.	1..30030
+A101212	mex	1	"1"	(self, n) -> self.mex(Functions.BIG_OMEGA.i(n))	F001222(n)th positive integer not yet in the sequence.	1..72
 A132664	mex	1	"1,2"	(self, n) -> (self.mex().compareTo(self.a(n - 1)) > 0) ? self.a(n - 1).+(n) : self.a(n - 1).-(1)	a(n-1) + n if the minimal positive integer not yet in the sequence is greater than a(n-1), else a(n) = a(n-1)-1.	1..10000
 A132665	mex	1	"1,3"	(self, n) -> (self.mex().compareTo(self.a(n - 1)) > 0) ? self.a(n - 1).+(n) : self.a(n - 1).-(1)	a(n-1) + n if the minimal positive integer not yet in the sequence is greater than a(n-1), else a(n) = a(n-1)-1.	1..10000
 A132666	mex	1	"1"	(self, n) -> { final Z an1 = self.a(n - 1); return self.mex().compareTo(an1) > 0 ? an1.*(2) : an1.-(1); }
@@ -15,13 +17,45 @@ A132674	mex	1	"1"	(self, n) -> { final Z an1 = self.a(n - 1); return self.mex().
 A158928	mex	1	"1"	(self, n) -> self.mex(v -> (SYN(3, self.a(n - 1)) & SYN(3, v)) == 0)	integer not yet in the sequence with no common base-3 digit with a(n-1).	1..47
 A158929	mex	1	"1"	(self, n) -> self.mex(v -> (SYN(4, self.a(n - 1)) & SYN(4, v)) == 0)	integer not yet in the sequence with no common base-4 digit with a(n-1).	1..68
 A159193	mex	1	"1"	(self, n) -> self.mex(v -> !GCD(v, ZV(n)).isOne() && !v.equals(ZV(n)))	a(n)_is_the smallest positive integer not yet in the sequence with gcd(n,a(n)) > 1 but a(n) != n; a(1) = 1 by convention.
+A159587	mex	1	"1"	(self, n) -> self.mex(v -> GCD(v, ZV(n)).isOne() && Functions.OMEGA.i(v) == Functions.OMEGA.i(n))	a(n)_is_the smallest number not yet in the sequence with the same number of distinct prime divisors as n, but relatively prime to n.	1..10000
+A159588	mex	1	"1"	(self, n) -> self.mex(v -> GCD(v, ZV(n)).isOne() && Functions.BIG_OMEGA.i(v) == Functions.BIG_OMEGA.i(n))	a(n)_is_the smallest number not yet in the sequence with the same number of prime factors as n (with repetition), but relatively prime to n.	1..5000
+A164378	mex	2	"6"	(self, n) -> self.mex(v -> !GCD(v, ZV(n)).isOne() && !GCD(v, ZV(n + 1)).isOne())	neither coprime to n nor to n+1.
+A165301	parmof2	1	A165300	3	a(n) is the smallest number not already in the sequence, such that the concatenation of all a(n) displays the periodic digit string 1, 2, 3 (and repeat).	easy,base,nonn	1..32	nyi	_Paolo P. Lava_ and _Giorgio Balzarotti_
+A165302	parmof2	1	A165300	4	a(n) is the smallest number not already in the sequence, such that the concatenation of all a(n) displays the periodic digit string 1, 2, 3, 4 (and repeat).	easy,base,nonn	1..36	nyi	_Paolo P. Lava_ and _Giorgio Balzarotti_
+A165303	parmof2	1	A165300	5	a(n) is the smallest number not already in the sequence, such that the concatenation of all a(n) displays the periodic digit string 1, 2, 3, 4, 5 (and repeat).	easy,base,nonn	1..39	nyi	_Paolo P. Lava_ and _Giorgio Balzarotti_
+A165304	parmof2	1	A165300	6	a(n) is the smallest number not already in the sequence, such that the concatenation of all a(n) displays the periodic digit string 1, 2, 3, 4, 5, 6 (and repeat).	easy,nonn,base	1..43	nyi	_Paolo P. Lava_ and _Giorgio Balzarotti_
+A165305	parmof2	1	A165300	7	a(n) is the smallest number not yet in the sequence such that the concatenation of all terms yields a periodic stream of digits 1, 2, 3, ..., 7 (repeat from 1).	easy,base,nonn	1..43	nyi	_Paolo P. Lava_ and _Giorgio Balzarotti_
+A165306	parmof2	1	A165300	8	a(n) is the smallest number not yet in the sequence such that concatenation of all terms yields an infinite periodic stream of digits 1, 2, 3, ..., 8 (repeat from 1).	easy,nonn,base	1..46	nyi	_Paolo P. Lava_ and _Giorgio Balzarotti_
+A165307	parmof2	1	A165300	9	Minimum number n, not already present, that permits the cyclic repetition of the decimal digits 1,2,3,4,5,6,7,8,9 in the sequence.	easy,nonn,base,look	1..500	nyi	_Paolo P. Lava_ and _Giorgio Balzarotti_
+A167151	mex	0	"0,1,2,3"	(self, n) -> ((n & 1) == 1 ? self.a(n - 1).+(self.a(n - 2)) : self.mex())	a(2n+1)_=_a(2n) + a(2n-1), a(2n)=least number not yet in the sequence, a(1)=1.	0..2000
+A171072	mex	1	"3"	(self, n) -> self.mex(v -> { final int sv = SYN(v); return (sv & SYN(n)) == 0 && (sv & SYN(n + 1)) == 0; })	Smallest_positive_integer a(n) not yet in the sequence and sharing no digit with n or (n+1) in its decimal representation.	1..10000
+A171073	mex	1	"3"	(self, n) -> self.mex(v -> { final int sv = SYN(v); return (sv & SYN(n)) == 0 && (sv & SYN(n + 1)) == 0 && (sv & SYN(n - 1)) == 0; })	Smallest_positive_integer a(n) not yet in the sequence and sharing no digit with n, (n-1) or (n+1) in its decimal representation.	1..10000
+A180109	mex	1	"1"	(self, n) -> self.mex(v -> v.^(2).toString().indexOf(self.a(n - 1).toString()) >= 0)	a(1)=1_,_thereafter, a(n) is the smallest integer k not yet in the sequence, such that k^2 contains in consecutive digits the decimal representation of a(n-1).	1..10000
+A180155	mex	1	"1"	(self, n) -> self.mex(v -> v.^(3).toString().indexOf(self.a(n - 1).toString()) >= 0)	a(1)=1;_thereafter,_a(n) is the smallest integer k not yet in the sequence, such that k^3 contains in consecutive digits the decimal representation of a(n-1).
 A182194	mex	1	"2"	(self, n) -> (self.mex(v -> v.compareTo(Z.ONE) > 0).compareTo(self.a(n - 1)) > 0) ? self.a(n - 1).^(2) : self.a(n - 1).-(1)	a(n-1)^2_if the minimal natural number > 1 not yet in the sequence is greater than a(n-1), else a(n)=a(n-1)-1.	1..10200
+A196189	mex	1	"3"	(self, n) -> self.mex(v -> v.compareTo(n + 1) > 0 && GCD(v, ZV(n)).isOne())	Smallest_number_not yet in the sequence greater than n+1 and relatively prime to n.	1..10000
 A222619	holos	0	[0,1,-1,-1,1,-1,1,1,-1]	206,250,232,270,248,292,278	0	0
+A226077	mex	1	"1"	(self, n) -> self.mex(v -> v.and(self.a(n - 1)).bitCount() == 1)	smallest positive integer not yet in the sequence, such that a(n) and a(n-1) have exactly one common 1-bit in their binary representations.	1..10000
+A227082	mex	1	"1"	(self, n) -> self.mex(v -> CND(n, d -> ((long) d != n && GCD(self.a(d), v).isOne())).equals(TAU(n).-(1)))	a(n)_is_the least positive integer not yet in the sequence coprime to a(d) for every proper divisor d of n.
+A228323	mex	1	"1"	(self, n) -> self.mex(v -> { String sa = self.a(n - 1).toString(); String sm = v.toString(); return PP(new Z(sa + sm)) || PP(new Z(sm + sa)); })	a(n) is the smallest number m not yet in the sequence such that at least one of the concatenations a(n-1)||m or m||a(n-1) is prime.	1..10000
+A255582	mex	1	"1,2,3"	(self, n) -> self.mex(v -> { final Z gc2 = GCD(v, self.a(n - 2)); return gc2.compareTo(ZV(1)) > 0 && GCD(v, self.a(n - 1)).compareTo(gc2) <= 0; })	that gcd(a(n), a(n-1)) <= gcd(a(n), a(n-2)) > 1.	1..10000
+A264770	mex	1	"1"	(self, n) -> self.mex(v -> Predicates.SQUARE.is(new Z(self.a(n - 1).toString() + v.toString())))	a(1)_=_1, a(n) = smallest positive number not yet in the sequence such that the concatenation of a(n-1) and a(n) is a square.
 A318698	mex	0	"0"	(self, n) -> self.mex(v ->  v.and(ZV(1)).equals(ZV(n & 1)) && (SYN(self.a(n - 1)) & SYN(v)) != 0)	same parity as n, not yet in the sequence, that shares a digit with a(n-1); a(0)=0.	0..10000
 A318699	mex	0	"1"	(self, n) -> self.mex(v -> !v.and(ZV(1)).equals(ZV(n & 1)) && (SYN(self.a(n - 1)) & SYN(v)) != 0)	site parity to n, not yet in the sequence, that shares a digit with a(n-1); a(0) = 1.	0..99
 A327451	mex	1	"1,2"	(self, n) -> ((SYN(self.a(n - 1)) & SYN(self.a(n - 2))) == 0) ? self.a(n - 1).+(self.a(n - 2)) : self.mex()	if a(n) and a(n+1) do not share a digit, then a(n+2) = a(n) + a(n+1), otherwise a(n+2) is the smallest number not yet in the sequence.	1..10000
 A328225	mex	1	"1"	(self, n) -> { final Z b2 = PM(PM(n)); final Z b1 = self.a(n - 1).-(PM(n - 1)); final Z b3 = b1.-(b2); return b3.compareTo(ZV(0)) > 0 && !self.contains(b3) ? b3 : b1.+(b2); }	a(1)_=_1, a(n) = a(n-1) - prime(prime(n)) - prime(n-1) if this produces a positive integer not yet in the sequence, otherwise a(n) = a(n-1) + prime(prime(n)) - prime(n-1).	1..10000
 A356188	mex	1	"1"	(self, n) -> PP(self.a(n - 1)) ? self.mex() : self.a(n - 1).+(n - 1)	a(1)=1;_for_n > 1, if a(n-1) is prime then a(n) = the smallest number not yet in the sequence. Otherwise a(n) = a(n-1) + n - 1.	1..67
+A357578	mex	1	"1"	(self, n) -> self.mex(v -> Functions.DIGIT_SUM.i(2, v) == Functions.DIGIT_SUM.i(2, self.a(n - 1).xor(self.a(n - 2))))	a(n) is the smallest number not yet in the sequence with a Hamming weight equal to the Hamming weight of the XOR of previous two terms.	1..74
+A357961	mex	1	"1"	(self, n) -> self.mex(Functions.DIGIT_SUM.i(2, self.a(n - 1)))	a(n+1) is the k-th positive number not yet in the sequence, where k is the Hamming weight of a(n).	1..10000
+A359128	mex	0	"0,1"	(self, n) -> ((SYN(self.a(n - 1)) & SYN(self.a(n - 2))) == 0) ? self.a(n - 1).+(self.a(n - 2)) : self.mex()	a(n) = a(n-1)+a(n-2) if a(n-1) and a(n-2) do not share a digit, otherwise a(n) is the smallest number not yet in the sequence.	0..16384
+A367065	mex	1	"2"	(self, n) -> self.mex(v -> SU(1, n - 1, i -> self.a(i)).+(v).mod(n + 2) == 2)	Sum_{i=1..n} a(i) == 2 (mod n+2).	1..70
+A367067	mex	1	"3"	(self, n) -> self.mex(v -> SU(1, n - 1, i -> self.a(i)).+(v).mod(n + 3) == 3)	Sum_{i=1..n} a(i) == 3 (mod n+3).	1..64
+A368071	mex	1	"1"	(self, n) -> ((n & 1) == 0) ? self.a(n/2) : self.mex(v -> GCD(v, self.a(n/2)).isOne() && GCD(v, self.a(n/2 +1)).isOne())	a(2*n) = a(n), a(2*n+1) is the least positive number not yet in the sequence coprime to a(n) and a(n+1).	1..8192
+A375102	mex	0	"1"	(self, n) -> (self.a(n - 1).mod(3) == 0 || PP(self.a(n - 1))) ? self.mex(v -> v.compareTo(0) > 0) : self.a(n - 1).*(10).+(self.a(n - 1).-(1).mod(9) + 1)	a(n+1) = 10*a(n) + (a(n)-1 mod 9) + 1, or the least number not yet in the sequence in case a(n) is a multiple of 3 or a prime.
+A375498	mex	1	"1,0,3"	(self, n) -> self.mex(v -> new Z(self.a(n - 1).toString() + v.toString()).mod(n) == 0)	a(n) is the smallest nonnegative integer not yet in the sequence such that the decimal concatenation a(n-1) || a(n) is divisible by n.	1..10000
+A380739	mex	1	"1"	(self, n) -> Long.bitCount(n) == 1 ? ZV(n) : self.mex(v -> !v.equals(ZV(n)) && Functions.DIGIT_SUM.l(2, v) == Functions.DIGIT_SUM.l(2, n) && GCD(v, ZV(n)).compareTo(ZV(1)) > 0)	having the same binary weight as n and such that gcd(n,a(n)) > 1.
+A380756	mex	1	"1"	(self, n) -> self.mex(v -> GCD(v, ZV(n)).isOne() && Functions.DIGIT_LENGTH.i(2, v) - Functions.DIGIT_SUM.i(2, v) == Functions.DIGIT_LENGTH.i(2, n) - Functions.DIGIT_SUM.i(2, n))	coprime to n and has the same number of 0s in its binary expansion as n.	1..16384
+A396383	mex	1	"1"	(self, n) -> self.mex(v -> { String sn = self.a(n - 1).toString(); String vn = v.toString(); return TAUl(new Z(sn + vn)) == TAUl(new Z(vn + sn)); })	concatenations of a(n) with a(n-1) and a(n-1) with a(n) have the same number of divisors.
 A397988	holos	0	[0,1,-1,-1,0,1,1,-1]	0,0,3,6,11,17	0	0
 A399509	holos	0	[0,-73728,-22712320,1902653184,2928062976,2599700320,-1548613216,-58839934424,-243162284184,-639703904606,-1321078429404,-2114200382464,-2423409429731,-1473234882074,116199322423,5007021168624,8322609050903,8751992562739,5147557344102,-1109698356628,-6740924023288,-8853593965249,-6973803933019,-3050107572451,36677697226,1932857496268,1826229183985,983055168602,227165767866,-119221123260,-137680450013,-52969916330,1883267717,11667785747,5092120169,-234854845,-1585783014,119584665,234402936,-99508848,18286693,258503,236422,-999765,498753,-120909,16780,-1351,58,-1]	1,4,26,181,1304,9614,71791,540004,4079810,30909894,234616282,1783064983,13563073090,103232737026,786078210125,5987516589963,45616323746996,347582553565175,2648742382473339,20186056543821199,153845045179533848,1172543872492934742,8936833807217149466
 A399646	decexp	1	() -> CR.TWO.log().add(CR.PI.divide(CR.TWO)).subtract(CR.THREE.multiply(Zeta.zeta(2)).divide(CR.FOUR))
@@ -31,3 +65,12 @@ A399649	decexp	0	() -> CR.THREE.multiply(Zeta.zeta(2)).divide(CR.FOUR).subtract(
 A399650	decexp	0	() -> CR.TWO.multiply(CR.PI).subtract(CR.TWO.multiply(Zeta.zeta(2))).subtract(CR.FOUR.multiply(CR.TWO.log()))
 A399651	decexp	0	() -> CR.THREE.multiply(Zeta.zeta(3)).subtract(CR.TWO.multiply(Zeta.zeta(2)))
 A399652	decexp	0	() -> CR.THREE.multiply(Zeta.zeta(3)).divide(CR.FOUR).subtract(Zeta.zeta(2)).add(CR.TWO.multiply(CR.TWO.log().pow(2)))
+---- 2026-09-14 19:25:37
+---- 2026-09-14 19:26:49
+---- 2026-09-14 19:28:08
+A108971	mex	1	"1,2,3,4,5,6,7,8,9"	(self, n) -> self.mex(v -> Math.abs(Functions.DIGIT_SUM.l(v) - Functions.DIGIT_SUM.l(self.a(n - 1))) == 1L)	Lexicographically_earliest_sequence such that in decimal representation sums of digits of consecutive terms differ exactly by 1 or -1.	1..10000
+---- 2026-09-14 19:41:45
+---- 2026-09-14 19:43:12
+A143691	mex	1	"1"	(self, n) -> self.mex(v -> (n & 1) != (Functions.BIG_OMEGA.l(v) & 1))	Lexicographically earliest permutation of the natural numbers having alternating even and odd numbers of prime factors.
+---- 2026-09-14 19:44:18
+A159559	mex	2	"3"	(self, n) -> self.mex(v -> v.compareTo(self.a(n - 1)) > 0 && !(PP(v) ^ PP(n)))	Lexicographically_first_strictly increasing sequence starting a(2) = 3 with the property that a(n) is prime if and only if n is prime.6
