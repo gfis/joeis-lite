@@ -1,0 +1,9 @@
+---- 2026-09-12 11:55:32
+A132666	mex	1	"1"	(self, n) -> { final Z an1 = self.a(n - 1); return self.mex().compareTo(an1) > 0 ? an1.*(2) : an1.-(1); }
+A132667	mex	1	"1"	(self, n) -> { final Z an1 = self.a(n - 1); return self.mex().compareTo(an1) > 0 ? an1.*(3) : an1.-(1); }
+A132668	mex	1	"1"	(self, n) -> { final Z an1 = self.a(n - 1); return self.mex().compareTo(an1) > 0 ? an1.*(4) : an1.-(1); }
+A132669	mex	1	"1"	(self, n) -> { final Z an1 = self.a(n - 1); return self.mex().compareTo(an1) > 0 ? an1.*(5) : an1.-(1); }
+A132670	mex	1	"1"	(self, n) -> { final Z an1 = self.a(n - 1); return self.mex().compareTo(an1) > 0 ? an1.*(6) : an1.-(1); }
+A132671	mex	1	"1"	(self, n) -> { final Z an1 = self.a(n - 1); return self.mex().compareTo(an1) > 0 ? an1.*(7) : an1.-(1); }
+A132672	mex	1	"1"	(self, n) -> { final Z an1 = self.a(n - 1); return self.mex().compareTo(an1) > 0 ? an1.*(8) : an1.-(1); }
+A132674	mex	1	"1"	(self, n) -> { final Z an1 = self.a(n - 1); return self.mex().compareTo(an1) > 0 ? an1.*(10) : an1.-(1); }

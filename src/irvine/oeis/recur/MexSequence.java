@@ -7,13 +7,14 @@ import java.util.function.Predicate;
 import irvine.math.z.Z;
 import irvine.math.z.ZUtils;
 import irvine.oeis.AbstractSequence;
+import irvine.oeis.DirectSequence;
 
 /**
  * A sequence where the next elements depends on the existence of values in the previous elements of the sequence.
  * Any initial terms are prepended first.
  * @author Georg Fischer
  */
-public class MexSequence extends AbstractSequence {
+public class MexSequence extends AbstractSequence implements DirectSequence {
 
   @FunctionalInterface
   public interface MexFunction<MexSequence, Long, Z> {
@@ -81,15 +82,15 @@ public class MexSequence extends AbstractSequence {
         mSparse.pollFirst();
       }
     } // else x < mMex: ignore
-    System.out.print("# add: mN=" + mN + ", x=" + x + ", mMex=" + mMex + ", mSparse=");
-    for (Z s : mSparse) {
-      System.out.print(s + " ");
-    }
-    System.out.print(", mA=");
-    for (int i = 0; i < mA.size(); ++i) {
-      System.out.print(mA.get(i) + " ");
-    }
-    System.out.println();
+    //* System.out.print("# add: mN=" + mN + ", x=" + x + ", mMex=" + mMex + ", mSparse=");
+    //* for (Z s : mSparse) {
+    //*   System.out.print(s + " ");
+    //* }
+    //* System.out.print(", mA=");
+    //* for (int i = 0; i < mA.size(); ++i) {
+    //*   System.out.print(mA.get(i) + " ");
+    //* }
+    //* System.out.println();
   }
 
   /**
@@ -97,7 +98,7 @@ public class MexSequence extends AbstractSequence {
    * @return the minimal element that does not yet exist in the sequence
    */
   public Z mex() {
-    System.out.println("# mex0: mN=" + mN + ", mMex=" + mMex);
+    //* System.out.println("# mex0: mN=" + mN + ", mMex=" + mMex);
     return mMex;
   }
 
@@ -107,32 +108,14 @@ public class MexSequence extends AbstractSequence {
    * @return the minimal element that does not yet exist in the sequence and that has the property <code>predicate</code>
    */
   public Z mex(final Predicate<Z> predicate) {
-    if (predicate.test(mMex)) {
-      System.out.println("# mex1: mN=" + mN + ", mMex=" + mMex);
-      return mMex;
-    }
-    Z candidate = mMex.add(1);
-    for (Z obstacle : mSparse) {
-      System.out.println("# mex2: mN=" + mN + ", candidate=" + candidate + ", obstacle=" + obstacle);
-      while (candidate.compareTo(obstacle) < 0) {
-        if (predicate.test(candidate)) {
-          return candidate;
-        }
+    Z candidate = mMex;
+    while(true) {
+      if (contains(candidate) || !predicate.test(candidate)) {
         candidate = candidate.add(1);
-      } 
-      // now candiate == obstacle, skip over it
-      candidate = candidate.add(1);
-    } 
-    candidate = candidate.add(1);
-    int loopCheck = 2048;
-    while (--loopCheck >= 0) { // above all elements of mSparse
-      System.out.println("# mex3: mN=" + mN + ", candidate=" + candidate);
-      if (predicate.test(candidate)) {
+      } else {
         return candidate;
       }
-      candidate = candidate.add(1);
     }
-    throw new IllegalArgumentException();
   }
 
   /**
@@ -152,6 +135,15 @@ public class MexSequence extends AbstractSequence {
     return mA.get((int) n);
   }
 
+  /**
+   * Retrieve an existing target sequence element.
+   * @param n index of target sequence
+   * @return a(n)
+   */
+  public Z a(final Z n) {
+    return mA.get(n.intValueExact(n));
+  }
+
   @Override
   public Z next() {
     ++mN;
@@ -162,7 +154,7 @@ public class MexSequence extends AbstractSequence {
       result = mLambda.apply(this, mN);
       add(result); // memorize and maintain contract for mMex, mSparse
     }
-    System.out.println("# next: mN=" + mN + ", result=" + result + ", mSparse.first()=" + (mSparse.isEmpty() ? "{}" : mSparse.first().toString()) + ", mIn=" + mIn);
+    //* System.out.println("# next: mN=" + mN + ", result=" + result + ", mSparse.first()=" + (mSparse.isEmpty() ? "{}" : mSparse.first().toString()) + ", mIn=" + mIn);
     return result;
   }
 }
