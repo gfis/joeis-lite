@@ -46,7 +46,7 @@ public class MexSequence extends AbstractSequence implements DirectSequence {
    */
   public MexSequence(final int offset, final MexFunction<MexSequence, Long, Z> lambda, final String initTerms) {
     super(offset);
-    mLambda = lambda; 
+    mLambda = lambda;
     mInits = (initTerms.isEmpty() || "[]".equals(initTerms)) ? new Z[0] : ZUtils.toZ(initTerms);
     mA = new ArrayList<>();
     mSparse = new TreeSet<>();
@@ -139,7 +139,7 @@ public class MexSequence extends AbstractSequence implements DirectSequence {
       if (contains(candidate) || !predicate.test(candidate)) {
         candidate = candidate.add(1);
       } else {
-      	if (--k <= 0) {
+        if (--k <= 0) {
           return candidate;
         }
         candidate = candidate.add(1);
@@ -187,7 +187,7 @@ public class MexSequence extends AbstractSequence implements DirectSequence {
     final Z result;
     if (mIn < mInitNo) {
       result = mInits[mIn++];
-    } else { 
+    } else {
       result = mLambda.apply(this, mN);
       add(result); // memorize and maintain contract for mMex, mSparse
     }

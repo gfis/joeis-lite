@@ -3,7 +3,7 @@ package irvine.math.function;
 import irvine.math.z.Z;
 
 /**
- * Return a 10-bit number indicating which digits are present in a number.
+ * Return a <code>base</code>-bit number indicating which digits are present in a number.
  * @author Sean A. Irvine
  */
 class Syndrome extends AbstractFunction2D {
