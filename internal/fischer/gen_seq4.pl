@@ -308,6 +308,8 @@ while (<>) { # read inputfile
             $parm =~ s{CONC\(}         {ZUtils.concatenate\(}g;
             $parm =~ s{CORE\(}         {Functions.CORE.z\(}g;
             $parm =~ s{DIGIT\(}        {ZUtils.iterate\(}g;
+            $parm =~ s{DIVIT\(}        {FactorUtils.iterate\(}g;
+            $parm =~ s{DIVITS\(}       {FactorUtils.iterateSorted\(}g;
             $parm =~ s{DL\(}           {Functions.DIGIT_LENGTH.i\(}g;
             $parm =~ s{\bF\.}          {Functions.}g;
             $parm =~ s{EUL\(}          {S173018\(}g;
@@ -356,6 +358,7 @@ while (<>) { # read inputfile
             $parm =~ s{PPM\(}          {Functions.PREV_PRIME.z\(}g;
             $parm =~ s{PM\(}           {Functions.PRIME.z\(}g;
             $parm =~ s{PMi\(}          {Functions.PRIME.i\(}g;
+            $parm =~ s{PMl\(}          {Functions.PRIME.l\(}g;
             $parm =~ s{PPI\(}          {Functions.PRIME_PI.z\(}g;
             $parm =~ s{PA\(}           {new Pair<Integer, Integer>(\(}g;
             $parm =~ s{PD\(}           {Integers.SINGLETON.productdiv\(}g;

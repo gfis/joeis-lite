@@ -1,0 +1,82 @@
+---- 2026-09-17 19:16:13
+A107131	trilambn	0	0	0	(n, k) -> BI(k + 1, n - k + 1).*(BI(n, k))./(k + 1)
+A107267	arrlamb	0	0	0	-1	(n, k) -> RU(0, k, j -> new Q(ZV(n).^(j).*(BI(k, j)).*(BI(j + 1, k - j + 1)), ZV(j + 1))).num()
+A111273	mex	1	"1"	(self, n) -> DIVITS(TRI(n).*( 1), ZV(0), (x, d) -> !self.contains(d) && x.isZero() ? d : x)	a(n) is the smallest divisor of triangular number T(n) := n(n+1)/2 not already in the sequence.
+A226518	tablamb	1	1	n -> new Long[] {0L, Functions.PRIME.l(n) - 1 }	(n, k)-> { final int p = PMi(n); return SU(0, k, i -> Functions.KRONECKER.z(i, p)); }	Irregular triangle read by rows: T(n,k) = Sum_{i=0..k} Legendre(i,prime(n)).
+A226519	tablamb	1	1	n -> new Long[] {1L, Functions.PRIME.l(n) - 1 }	(n, k)-> { final int p = PMi(n); return SU(0, k, i -> Functions.KRONECKER.z(i, p)); }	Irregular triangle read by rows: T(n,k) = Sum_{i=0..k} Legendre(i,prime(n)).
+A226520	tablamb	1	1	n -> new Long[] {0L, Functions.PRIME.l(n) - 1 }	(n, k)-> Functions.KRONECKER.z(k, PMi(n))	Irregular triangle read by rows: T(n,k) = Legendre(k,prime(n)), for 0 <= k < prime(n).
+A226914	lambdan	1	n -> Functions.JACOBI.z(2, Functions.PRIME.i(n)).+(1)	a(n) = 1 + Legendre(2,prime(n)).
+A226915	lambdan	3	n -> Functions.JACOBI.z(2, Functions.PRIME.i(n)).+(Functions.JACOBI.z(3, PMi(n))).+(1)	a(n) = 1 + Legendre(2,p) + Legendre(3,p) where p = prime(n).
+A277998	mex	1	"1"	(self, n) -> self.mex(v -> v.mod(10) != 0 && Functions.LEADING_DIGIT.l(v) + self.a(n - 1).mod(10) == 10)	(with  no duplicates) where the last digit of a(n) added to the first digit of a(n+1) equals 10.	1..10001
+A280659	mex	1	"1"	(self, n) -> self.mex(v -> Functions.OMEGA.l(v.+(self.a(n - 1))) >= 5)	positive terms such that the sum of two consecutive terms has at least 5 distinct prime factors.	1..10000
+A284038	mex	1	"1"	(self, n) -> self.mex(v -> v.mod(F000196(n)).isZero())	rms such that F000196(n) divides a(n).	1..10000
+A285296	mex	1	"1"	(self, n) -> self.mex(v -> FSIT(v.*(self.a(n - 1)), 0L, (x, p, e) -> x + (e >= 2 ? 1 : 0)) >= 1)	product divisible by p^2 for some prime p.	1..2000
+A285299	mex	1	"1"	(self, n) -> self.mex(v -> FSIT(v.*(self.a(n - 1)), 0L, (x, p, e) -> x + (e >= 3 ? 1 : 0)) >= 1)	product divisible by p^3 for some prime p.	1..10000
+A285386	mex	1	"1"	(self, n) -> self.mex(v -> FSIT(v.*(self.a(n - 1)), 0L, (x, p, e) -> x + (e >= 4 ? 1 : 0)) >= 1)	product divisible by p^4 for some prime p.	1..10000
+A285417	mex	1	"1"	(self, n) -> self.mex(v -> FSIT(v.*(self.a(n - 1)), 0L, (x, p, e) -> x + (e >= 5 ? 1 : 0)) >= 1)	product divisible by p^5 for some prime p.	1..10000
+A285575	mex	1	"1"	(self, n) -> self.mex(v -> FSIT(v.*(self.a(n - 1)), 0L, (x, p, e) -> x + (e >= 2 ? 1 : 0)) >= 2)	product divisible by p^2 for at least two distinct primes p.	1..10000
+A285744	mex	1	"2310"	(self, n) -> self.mex(v -> Functions.OMEGA.i(v.*(n)) >= 5)	positive terms such that, for any n>0, n*a(n) has at least 5 distinct prime factors.	1..25000
+A286890	mex	1	"1"	(self, n) -> self.mex(v -> v.toString().indexOf(Functions.DIGIT_SORT_DESCENDING.z(self.a(n - 1)).toString().substring(0, 1)) >= 0)	that shares its largest digit with that of a(n-1); a(1)=1.	1..5001
+A287639	mex	1	"1,1022"	(self, n) -> self.mex(v -> Functions.DIGIT_SUM.z(2, v.+(self.a(n - 1))).compareTo(ZV(10)) >= 0)	positive terms such that the sum of two consecutive terms has Hamming weight >= 10.	1..8192
+A288139	mex	1	"1,2,3"	(self, n) -> self.mex(v -> Functions.DIGIT_SUM.z(2, v.+(self.a(n - 1))).compareTo(ZV( 4)) <= 0)	positive terms such that the sum of two consecutive terms has Hamming weight <= 4.	1..16384
+A288164	mex	1	"1,2,2310"	(self, n) -> self.mex(v -> Functions.OMEGA.i(v.*(self.a(n - 2))) >= 5)	positive terms such that, for any n > 0, a(n)*a(n+2) has at least 5 distinct prime factors.	1..25000
+A288171	mex	1	"1,2,3,2310"	(self, n) -> self.mex(v -> Functions.OMEGA.i(v.*(self.a(n - 3))) >= 5)	positive terms such that, for any n > 0, a(n)*a(n+3) has at least 5 distinct prime factors.	1..25000
+A288538	mex	1	"2,1"	(self, n) -> self.mex(v -> v.*(n).toString().indexOf('1') < 0)	positive terms such that, for any n > 0, n * a(n) does not contain the digit 1 in decimal base.	1..10000
+A292716	lambdan	0	n -> T107267(n, n)
+A292833	mex	1	"1"	(self, n) -> self.mex(v -> Functions.SYNDROME.i(5, v.+(self.a(n - 1))) == 0b11111)	sum of any two consecutive terms is a pandigital number in base 5.	1..10000
+A294573	polyx	0	"[1],[0,0,2]"	"1,n,1,+,<1,-,1,n,1,-,<1,-,1,n,3,+,<1,-,*,sqrt,-,p1,/"	2	0
+A294734	mex	1	"1"	(self, n) -> self.mex(v -> v.testBit(0) && v.+(self.a(n - 1)).mod(n) == 0)	positive odd numbers such that, for any n > 1, n divides a(n-1) + a(n).	1..10000
+A296616	mex	1	"1"	(self, n) -> self.mex(v -> v.*(self.a(n - 1)).toString(2).startsWith(Long.toString(n - 1, 2)))	of a(n) * a(n + 1) starts with the binary expansion of n.	1..10000
+A297706	mex	1	"1"	(self, n) -> self.mex(v -> Predicates.PRIME.is(v.xor(self.a(n - 1)).xor(self.a(n - 2))))	positive terms such that for any n > 0, a(n) XOR a(n+1) XOR a(n+2) is prime (where XOR denotes the bitwise XOR operator).	1..10000
+A298196	mex	1	"1"	(self, n) -> self.mex(v -> Functions.VALUATION.l(v, 3) == Functions.VALUATION.l(self.a(n - 1), 2))	the 2-adic valuation of a(n) equals the 3-adic valuation of a(n+1).	1..66
+A299441	mex	1	"1,2"	(self, n) -> self.mex(v -> v.mod(PI(LPF(self.a(n - 1)))).isZero())	if prime(k) is the least prime factor of a(n) then k divides a(n+1) (where prime(k) denotes the k-th prime).	1..10000
+A299442	mex	1	"1,2"	(self, n) -> self.mex(v -> v.mod(PI(GPF(self.a(n - 1)))).isZero())	if prime(k) is the greatest prime factor of a(n) then k divides a(n+1) (where prime(k) denotes the k-th prime).	1..10000
+A299957	mex	0	"0,1"	(self, n) -> self.mex(v -> v.+(self.a(n - 1)).toString().indexOf('1') >= 0)	The_sum_a(n) + a(n+1) always has at least one digit "1".	0..10000
+A303294	mex	1	"0,1,2"	(self, n) -> self.mex(v -> { final int sv = SYN(v); return (sv & SYN(self.a(n - 1))) == 0 && ((sv & SYN(self.a(n - 2))) > 0 || (sv & SYN(self.a(n - 3))) > 0); })	shares a digit with either a(n-3) or a(n-2) (or with both), but shares no digit with a(n-1); a(1)=0, a(2)=1, a(3)=2.	1..10000
+A303657	mex	1	"0,1"	(self, n) -> self.mex(v -> (SYN(v) & SYN(self.a(n - 2))) > 0)	shares a digit with a(n-2); a(1)=0, a(2)=1.	1..68
+A303879	mex	1	"1"	(self, n) -> self.mex(v -> (SYN(v) & SYN(self.a(n - 1)) & 0b1010101010101010) > 0)	a(n) shares at least one odd digit with a(n+1).	1..1001
+A303880	mex	1	"2"	(self, n) -> self.mex(v -> (SYN(v) & SYN(self.a(n - 1)) & 0b0101010101010101) > 0)	a(n) shares at least one even digit with a(n+1).	1..1001
+A308334	mex	1	"1"	(self, n) -> self.mex(v -> PP(v.or(self.a(n - 1))))	positive numbers such that for any n > 0, a(n) OR a(n+1) is a prime number (where OR denotes the bitwise OR operator).	1..10000
+A309275	mex	1	"1"	(self, n) -> DIVITS(TRI(n - 1).*( 3), ZV(0), (x, d) -> !self.contains(d) && x.isZero() ? d : x)	a(n)_is_the smallest divisor not yet in the sequence of 3*T(n)= 3*n(n-1)/2, where T(n) are the triangular numbers; n => 1.	1..68
+A309276	mex	1	"1"	(self, n) -> DIVITS(TRI(n - 1).*( 5), ZV(0), (x, d) -> !self.contains(d) && x.isZero() ? d : x)	a(n)_is_the smallest divisor not yet in the sequence of 5*T(n)= 5*n(n-1)/2, where T(n) are the triangular numbers; n => 1.	1..71
+A309387	mex	1	"1"	(self, n) -> DIVITS(TRI(n - 1).*( 7), ZV(0), (x, d) -> !self.contains(d) && x.isZero() ? d : x)	a(n)_is_the smallest positive divisor not yet in the sequence of 7*F000217(n-1); n >= 1.	1..74
+A309389	mex	1	"1"	(self, n) -> DIVITS(TRI(n - 1).*(11), ZV(0), (x, d) -> !self.contains(d) && x.isZero() ? d : x)	a(n)_is_the smallest positive divisor not yet in the sequence of 11*F000217(n-1); n >= 1.	1..75
+A317591	mex	1	"9"	(self, n) -> self.mex(v -> v.compareTo(9) > 0 && v./(10).+(self.a(n - 1)).equals(v))	that erasing the last digit of a(n+1) and adding the resulting integer to a(n) gives back a(n+1).	1..1000
+A317592	mex	1	"99"	(self, n) -> self.mex(v -> v.compareTo(99) > 0 && v./(100).+(self.a(n - 1)).equals(v))	that erasing the last two digits of a(n+1) and adding this new reshaped integer to a(n) gives back a(n+1).	1..1545
+A317594	mex	1	"999"	(self, n) -> self.mex(v -> v.compareTo(999) > 0 && v./(1000).+(self.a(n - 1)).equals(v))	that erasing the last three digits of a(n+1) and adding this new reshaped integer to a(n) gives back a(n+1).	1..10001
+A317687	mex	1	"1"	(self, n) -> self.mex(v -> Predicates.SMOOTH.is(3, v.+(self.a(n - 1))))	terms such that the sum of two consecutive terms is 3-smooth (J003586).	1..10000
+A317788	mex	1	"2"	(self, n) -> self.mex(v -> SU(1, n - 1, k -> self.a(k)).toString(2).indexOf(v.toString(2)) >= 0)	binary representation of a(n) appears as a substring in the binary representation of Sum_{k=1..n-1} a(k).
+A318486	mex	1	"1"	(self, n) -> self.mex(v -> Predicates.PALINDROME.is(self.a(n - 1).-(Functions.LEADING_DIGIT.l(v))))	a(n) - [the first digit of a(n+1)] is a palindrome.	1..10001
+A324694	mex	1	"2"	(self, n) -> self.mex(v -> FSIT(v, 0L, (x, p, e) -> x + (!self.contains(PI(p)) && v.mod(p).isZero() ? 1 : 0)) != 0)	integers divisible by prime(m) for some m not already in the sequence.	1..66
+A324695	mex	1	"1"	(self, n) -> self.mex(v -> FSIT(v, 0L, (x, p, e) -> x + (self.contains(PI(p)) ? 1 : 0)) == 0)	integers whose prime indices are not already in the sequence.	1..59
+A324696	mex	1	"1"	(self, n) -> self.mex(v -> FSIT(v, 0L, (x, p, e) -> x + (!self.contains(PI(p)) ? 1 : 0)) > 0)	1 and all numbers divisible by prime(m) for some m not already in the sequence.	1..65
+A339946	poly	1	"[0,1],[1,-1],[1,1]"	"1,n,p1,p2,/,legendreP,/"
+A344556	poly	0	"[1],[1,-2,-3]"	"2,1,n,2,*,1,-,<1,-,p1,sqrt,+,/"
+A351858	poly	0	"[1],[1,1,1],[1,1]"	"p1,n,3,*,pow,p2,n,2,*,pow,/"
+A364114	poly	0	"[1],[1,-1],[1,1]"	"1,p1,/,n,p2,p1,/,legendreP,3,pow,*"	a(n) = [x^n] 1/(1 - x) * Legendre_P(n, (1 + x)/(1 - x))^3 for n >= 0.
+A364115	poly	0	"[1],[1,-1],[1,1]"	"1,p1,/,n,p2,p1,/,legendreP,4,pow,*"	a(n) = [x^n] 1/(1 - x) * Legendre_P(n, (1 + x)/(1 - x))^4 for n >= 0.
+A364116	poly	0	"[1],[1,-1],[1,1]"	"1,p1,/,n,p2,p1,/,legendreP,n,pow,*"	a(n) = [x^n] 1/(1 - x) * Legendre_P(n, (1 + x)/(1 - x))^n for n >= 0.
+A364117	poly	0	"[1],[1,-1],[1,1]"	"1,p1,/,n,p2,p1,/,legendreP,n,1,+,pow,*"	a(n) = [x^n] 1/(1 - x) * Legendre_P(n, (1 + x)/(1 - x))^(n+1) for n >= 0.
+A364299	poly	0	"[1],[1,-1],[1,1]"	"1,p2,/,n,p1,p2,/,legendreP,/"	a(n) = [x^n] 1/(1 + x) * Legendre_P(n, (1 - x)/(1 + x))^(-1) for n >= 0.
+A364300	poly	0	"[1],[1,-1],[1,1]"	"1,p2,/,n,p1,p2,/,legendreP,2,pow,/"	a(n) = [x^n] 1/(1 + x) * Legendre_P(n, (1 - x)/(1 + x))^(-2) for n >= 0.
+A364301	poly	0	"[1],[1,-1],[1,1]"	"1,p2,/,n,p1,p2,/,legendreP,n,pow,/"	a(n) = [x^n] 1/(1 + x) * Legendre_P(n, (1 - x)/(1 + x))^(-n) for n >= 0.
+A364302	poly	0	"[1],[1,-1],[1,1]"	"1,p2,/,n,p1,p2,/,legendreP,n,1,+,pow,/"	a(n) = [x^n] 1/(1 + x) * Legendre_P(n, (1 - x)/(1 + x))^(-n-1) for n >= 0.
+A364361	trilambn	0	0	0	(n, k) -> SU(0, n - k, j -> BI(k, j).*(k).*(BI(n - j, k)))
+A364634	lambdan	0	n -> S364361(2*n, n)
+A372726	tablamb	0	0	n -> new Long[] { 2L, n + 2 }	(n, k) -> Functions.JACOBI.z(n, Functions.PRIME.l(k))	Legendres triangle read by rows. T(n, k) = L(n / prime(k)) where L(n/p) is the Legendre symbol, for n >= 0 and 2 <= k <= n + 2.
+A373087	filnum	1	1	k -> Predicates.SQUARE.is(k) && Functions.OMEGA.i(k / (1 << Functions.VALUATION.i(k, 2))) == 2	isok(k) = issquare(k) && (omega(k/2^valuation(k, 2)) == 2);
+A373223	trilambn	1	1	1	(n, k) -> { final long p = PMl(n); final long q = PMl(k); return KSz(p, q).*(KSz(q, p)); }	T(n, k) =  my(p=prime(n), q=prime(k)); KP(p, q) * KP(q, p);
+A373224	rowsum	1	new A373223()	(row sums)
+A384162	poly	1	"[1],[1,-1]"	"n,<1,1,p1,n,+,<1,-,/"
+A384915	mulr	1	(p, e) -> S026820(e, p.intValueExact())
+A384916	mulr	1	(p, e) -> S026820(e, p.intValueExact() - 1)
+A387488	poly	0	"[1],[1,-256]"	"1,1,p1,sqrt,agm,/"
+A396699	holos	2	[0,-1,2,1,-4,1,2,-1]	1, 2, 5, 10, 18, 28, 43, 60, 84, 110, 145, 182, 230, 280, 343	0	0
+A398836	holos	0	[0,1,-2,1,-1,2,-1]	0,1,6,14,24	0	0
+A398837	holos	0	[0,1,-2,1,-1,2,-1]	0,2,7,14,25	0	0
+A398838	holos	0	[0,1,-2,1,-1,2,-1]	0,2,9,22,39	0	0
+A398839	holos	0	[0,1,-2,1,-1,2,-1]	0,3,10,22,40	0	0
+A398840	holos	0	[0,1,-3,4,-4,3,-1]	0,2,10,24,43	0	0
+A398841	holos	0	[0,1,-3,4,-4,3,-1]	0,3,11,24,43	0	0
+A398842	holos	0	[0,1,-3,4,-4,3,-1]	0,-1,1,6,13	0	0
+A399564	holos	1	[0,-1,5,-1]	10,46	0	0
