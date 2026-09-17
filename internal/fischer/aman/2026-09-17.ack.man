@@ -1,4 +1,4 @@
----- 2026-09-17 19:16:13
+---- 2026-09-17 23:01:20
 A107131	trilambn	0	0	0	(n, k) -> BI(k + 1, n - k + 1).*(BI(n, k))./(k + 1)
 A107267	arrlamb	0	0	0	-1	(n, k) -> RU(0, k, j -> new Q(ZV(n).^(j).*(BI(k, j)).*(BI(j + 1, k - j + 1)), ZV(j + 1))).num()
 A111273	mex	1	"1"	(self, n) -> DIVITS(TRI(n).*( 1), ZV(0), (x, d) -> !self.contains(d) && x.isZero() ? d : x)	a(n) is the smallest divisor of triangular number T(n) := n(n+1)/2 not already in the sequence.
@@ -67,11 +67,19 @@ A372726	tablamb	0	0	n -> new Long[] { 2L, n + 2 }	(n, k) -> Functions.JACOBI.z(n
 A373087	filnum	1	1	k -> Predicates.SQUARE.is(k) && Functions.OMEGA.i(k / (1 << Functions.VALUATION.i(k, 2))) == 2	isok(k) = issquare(k) && (omega(k/2^valuation(k, 2)) == 2);
 A373223	trilambn	1	1	1	(n, k) -> { final long p = PMl(n); final long q = PMl(k); return KSz(p, q).*(KSz(q, p)); }	T(n, k) =  my(p=prime(n), q=prime(k)); KP(p, q) * KP(q, p);
 A373224	rowsum	1	new A373223()	(row sums)
+A384041	mulr	1	(p, e) -> p.^(2).+(p).-(1).*(p.^(e - 1)).-((e&1) == 1 ? -1 : 1)./(p.+(1))	a(p^e) = ((p^2+p-1)*p^(e-1) - (-1)^e)/(p+1).
 A384162	poly	1	"[1],[1,-1]"	"n,<1,1,p1,n,+,<1,-,/"
+A384250	mulr	1	(p, e) -> (e == 1) ? p.-(1) : ((e&1) == 0) ? p.^(e) : p.^(e).-(p.^(e - 1)).+(p.^(e - D006519(e - 1).longValueExact()))	a(p^e) = p^e if e is even, a(p) = p-1, and a(p^e) = p^e * (1 - 1/p + 1/p^D006519(e-1)) if e is odd >= 3.
+A384251	mulr	1	(p, e) ->  p.testBit(0) ? p.^(e) : Z2(e).-(Z2(e - D006519(e).longValueExact()))	a(2^e) = 2^e * (1 - 1/2^D006519(e)), and a(p^e) = p^e if p is an odd prime.
+A384252	mulr	1	(p, e) -> !p.testBit(0) ? Z2(e) : p.^(e).-(p.^(e - D006519(e).longValueExact()))	a(2^e) = 2^e, and a(p^e) = p^e * (1 - 1/p^D006519(e)) if p is an odd prime.
+A384554	mulr	1	(p, e) -> (e % 4 == 0) ? ZV(1) : (e % 4 == 1 ? p.+(1) : (e % 4 == 2 ? p.^(2).+(1) : p.+(1).*(p).+(1)))	a(p^e) = 1 if e == 0 (mod 4), p + 1 if e == 1 (mod 4), p^2 + 1 if e == 2 (mod 4), and p^2 + p + 1 if e == 3 (mod 4).
+A384555	mulr	1	(p, e) -> (e % 4 == 0) ? ZV(1) : (e % 4 == 1 ? p : p.^(2))	a(p^e) = 1 if e == 0 (mod 4), p if e == 1 (mod 4), p^2 if e == 2 or 3 (mod 4).
+A384556	mulr	1	(p, e) -> ((e & 1) == 1) ? p : p.+(1).*(p)	a(p^e) = p if e is odd, and p+p^2 is e is even.
 A384915	mulr	1	(p, e) -> S026820(e, p.intValueExact())
 A384916	mulr	1	(p, e) -> S026820(e, p.intValueExact() - 1)
 A387488	poly	0	"[1],[1,-256]"	"1,1,p1,sqrt,agm,/"
 A396699	holos	2	[0,-1,2,1,-4,1,2,-1]	1, 2, 5, 10, 18, 28, 43, 60, 84, 110, 145, 182, 230, 280, 343	0	0
+A398637	mulr	1	(p, e) -> p.equals(ZV(2)) ? Z2(2*e) : p.^(2*e - 2).*(p.^(2).-(3))	a(2^e) = 2^(2*e), a(p^e) = p^(2*e-2)*(p^2-3) for odd primes p.
 A398836	holos	0	[0,1,-2,1,-1,2,-1]	0,1,6,14,24	0	0
 A398837	holos	0	[0,1,-2,1,-1,2,-1]	0,2,7,14,25	0	0
 A398838	holos	0	[0,1,-2,1,-1,2,-1]	0,2,9,22,39	0	0
@@ -80,3 +88,17 @@ A398840	holos	0	[0,1,-3,4,-4,3,-1]	0,2,10,24,43	0	0
 A398841	holos	0	[0,1,-3,4,-4,3,-1]	0,3,11,24,43	0	0
 A398842	holos	0	[0,1,-3,4,-4,3,-1]	0,-1,1,6,13	0	0
 A399564	holos	1	[0,-1,5,-1]	10,46	0	0
+A399732	mulr	1	(p, e) -> (e <= 2) ? p.^(e).+(1) : p.^(e)	a(p^e) = p^e + 1 for e <= 2, and a(p^e) = p^e for e >= 3.
+A399733	mulr	1	(p, e) -> (e == 1) ? p : p.^(e).+(1)	a(p) = p, and a(p^e) = p^e + 1 for e >= 2.
+A399734	mulr	1	(p, e) -> (e <= 2) ? p.^(e) : p.^(e).+(1)	a(p^e) = p^e for e <= 2, and a(p^e) = p^e + 1 for e >= 3.
+A399735	mulr	1	(p, e) -> ((e&1) == 1) ? p.^(e) : p.^(e).+(1)	a(p^e) = p^e for e odd, and a(p^e) = p^e + 1 for e even.
+A399736	mulr	1	(p, e) -> ((e&1) == 0) ? p.^(e) : p.^(e).+(1)		a(p^e) = p^e + 1 for e odd, and a(p^e) = p^e for e even.
+A399737	mulr	1	(p, e) -> (e % 3 != 0) ? p.^(e) : p.^(e).+(1)		a(p^e) = p^e + 1 if e is a multiple of 3, and a(p^e) = p^e otherwise.
+A399738	mulr	1	(p, e) -> p.equals(ZV(2)) ? Z2(e) : p.^(e).+(1)	a(2^e) = 2^e, and a(p^e) = p^e + 1 for an odd prime p.
+A399739	mulr	1	(p, e) -> p.equals(ZV(2)) ? Z2(e).+(1) : p.^(e)	a(2^e) = 2^e + 1, and a(p^e) = p^e for an odd prime p.
+---- 2026-09-17 23:07:50
+A375325	mulr	1	(p, e) -> (p.mod(3) == 2) ? ZV(e/2 + 1) : ZV(e + 1)	if p == 2 (mod 3), and a(p^e) = e+1 otherwise. - _Amiram Eldar_, Nov 15 2025
+---- 2026-09-17 23:13:14
+A225546	mulr	1	(p, e) -> D019565(e).^(D000079(PI(p).-(1)))	a(prime(i)^j) = D019565(j)^D000079(i-1).
+A331312	mulr	1	(p, e) -> D019565(e).^(D000225(PI(p).-(1)))	a(prime(i)^j) = D019565(j)^D000225(i-1).
+A331736	mulr	1	(p, e) -> F000265(D019565(e)).^(D000079(PI(p).-(1)))	a(prime(i)^j) = F000265(D019565(j))^D000079(i-1).
