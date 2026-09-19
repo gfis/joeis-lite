@@ -2,9 +2,6 @@
 A107131	trilambn	0	0	0	(n, k) -> BI(k + 1, n - k + 1).*(BI(n, k))./(k + 1)
 A107267	arrlamb	0	0	0	-1	(n, k) -> RU(0, k, j -> new Q(ZV(n).^(j).*(BI(k, j)).*(BI(j + 1, k - j + 1)), ZV(j + 1))).num()
 A111273	mex	1	"1"	(self, n) -> DIVITS(TRI(n).*( 1), ZV(0), (x, d) -> !self.contains(d) && x.isZero() ? d : x)	a(n) is the smallest divisor of triangular number T(n) := n(n+1)/2 not already in the sequence.
-A226518	tablamb	1	1	n -> new Long[] {0L, Functions.PRIME.l(n) - 1 }	(n, k)-> { final int p = PMi(n); return SU(0, k, i -> Functions.KRONECKER.z(i, p)); }	Irregular triangle read by rows: T(n,k) = Sum_{i=0..k} Legendre(i,prime(n)).
-A226519	tablamb	1	1	n -> new Long[] {1L, Functions.PRIME.l(n) - 1 }	(n, k)-> { final int p = PMi(n); return SU(0, k, i -> Functions.KRONECKER.z(i, p)); }	Irregular triangle read by rows: T(n,k) = Sum_{i=0..k} Legendre(i,prime(n)).
-A226520	tablamb	1	1	n -> new Long[] {0L, Functions.PRIME.l(n) - 1 }	(n, k)-> Functions.KRONECKER.z(k, PMi(n))	Irregular triangle read by rows: T(n,k) = Legendre(k,prime(n)), for 0 <= k < prime(n).
 A226914	lambdan	1	n -> Functions.JACOBI.z(2, Functions.PRIME.i(n)).+(1)	a(n) = 1 + Legendre(2,prime(n)).
 A226915	lambdan	3	n -> Functions.JACOBI.z(2, Functions.PRIME.i(n)).+(Functions.JACOBI.z(3, PMi(n))).+(1)	a(n) = 1 + Legendre(2,p) + Legendre(3,p) where p = prime(n).
 A277998	mex	1	"1"	(self, n) -> self.mex(v -> v.mod(10) != 0 && Functions.LEADING_DIGIT.l(v) + self.a(n - 1).mod(10) == 10)	(with  no duplicates) where the last digit of a(n) added to the first digit of a(n+1) equals 10.	1..10001
@@ -63,7 +60,6 @@ A364301	poly	0	"[1],[1,-1],[1,1]"	"1,p2,/,n,p1,p2,/,legendreP,n,pow,/"	a(n) = [x
 A364302	poly	0	"[1],[1,-1],[1,1]"	"1,p2,/,n,p1,p2,/,legendreP,n,1,+,pow,/"	a(n) = [x^n] 1/(1 + x) * Legendre_P(n, (1 - x)/(1 + x))^(-n-1) for n >= 0.
 A364361	trilambn	0	0	0	(n, k) -> SU(0, n - k, j -> BI(k, j).*(k).*(BI(n - j, k)))
 A364634	lambdan	0	n -> S364361(2*n, n)
-A372726	tablamb	0	0	n -> new Long[] { 2L, n + 2 }	(n, k) -> Functions.JACOBI.z(n, Functions.PRIME.l(k))	Legendres triangle read by rows. T(n, k) = L(n / prime(k)) where L(n/p) is the Legendre symbol, for n >= 0 and 2 <= k <= n + 2.
 A373087	filnum	1	1	k -> Predicates.SQUARE.is(k) && Functions.OMEGA.i(k / (1 << Functions.VALUATION.i(k, 2))) == 2	isok(k) = issquare(k) && (omega(k/2^valuation(k, 2)) == 2);
 A373223	trilambn	1	1	1	(n, k) -> { final long p = PMl(n); final long q = PMl(k); return KSz(p, q).*(KSz(q, p)); }	T(n, k) =  my(p=prime(n), q=prime(k)); KP(p, q) * KP(q, p);
 A373224	rowsum	1	new A373223()	(row sums)
@@ -102,3 +98,5 @@ A375325	mulr	1	(p, e) -> (p.mod(3) == 2) ? ZV(e/2 + 1) : ZV(e + 1)	if p == 2 (mo
 A225546	mulr	1	(p, e) -> D019565(e).^(D000079(PI(p).-(1)))	a(prime(i)^j) = D019565(j)^D000079(i-1).
 A331312	mulr	1	(p, e) -> D019565(e).^(D000225(PI(p).-(1)))	a(prime(i)^j) = D019565(j)^D000225(i-1).
 A331736	mulr	1	(p, e) -> F000265(D019565(e)).^(D000079(PI(p).-(1)))	a(prime(i)^j) = F000265(D019565(j))^D000079(i-1).
+
+

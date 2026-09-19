@@ -206,11 +206,14 @@ dirimp: # DirectSequences 'E', inherited from LambdaSequence etc., and 'M', 'X',
 	    WHEN superclass IN \
 	        ( 'BeattySequence' \
 	        , 'CachedSequence' \
+	        , 'HofstadterSequence' \
 	        , 'HypergeometricSequence' \
 	        , 'LambdaSequence' \
 	        , 'MultiplicativeSequence' \
 	        , 'PaddingSequence' \
 	        , 'PeriodicSequence' \
+	        , 'LambdaSequence' \
+	        , 'RationalLambdaSequence' \
 	        )                        THEN 'E' \
 	    WHEN superclass IN \
 	        ( 'FiniteSequence' \
@@ -232,6 +235,7 @@ dirimp: # DirectSequences 'E', inherited from LambdaSequence etc., and 'M', 'X',
 	        )                        THEN 'U' \
 	    WHEN superclass IN \
 	        ( 'LambdaTable' \
+	        ( 'LambdaRows' \
 	        )                        THEN 'S' \
 	    ELSE                              'J' \
 	    END FROM joeis j  ORDER BY 1" \

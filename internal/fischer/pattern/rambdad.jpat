@@ -8,7 +8,7 @@ package irvine.oeis.$(PACK);
  * $(ASEQNO) $(NAME)
  * @author $(AUTHOR)
  */
-public class $(ASEQNO) extends $(PARM1) {
+public class $(ASEQNO) extends $(PARM1) implements DirectSequence {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
