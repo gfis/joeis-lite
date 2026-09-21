@@ -235,7 +235,7 @@ dirimp: # DirectSequences 'E', inherited from LambdaSequence etc., and 'M', 'X',
 	        )                        THEN 'U' \
 	    WHEN superclass IN \
 	        ( 'LambdaTable' \
-	        ( 'LambdaRows' \
+	        , 'LambdaRows'  \
 	        )                        THEN 'S' \
 	    ELSE                              'J' \
 	    END FROM joeis j  ORDER BY 1" \
@@ -354,6 +354,11 @@ pack_nest3: # extract the underlying DirectSequences [DEFK]
 	wc -l    pack_nest*.tmp
 pack_nest4: # grep the broken ones
 	grep -P "v \-\> *\t" pack_nest3.direct.tmp
+#----
+gf_cf:
+	cut -f1 $(COMMON)/gf_cf.txt > $@.tmp
+	perl queue.pl -p $@.tmp > $@.pack
+	e $@.pack
 #----
 hasoc_prep: # DIR= grep all that have a constructor with an isolated offset parameter
 	find src/irvine/oeis -iname "*.java" | xargs -l grep -P "(public|protected) \w+\(final *int *offset" \
