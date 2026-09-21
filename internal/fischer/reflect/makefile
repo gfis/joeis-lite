@@ -174,7 +174,7 @@ diff_joeis_list: # compare with $(COMMON)
 K=
 vector:                 dirimp     dirseq     dirarr     hasram known funct     conjec     # prepare for and create file vector.txt for the classification of all A-numbers
 	grep -h -P "^[A-Z]" dirimp.txt dirseq.txt dirarr.txt              funct.txt conjec.txt \
-	| sort | uniq -c
+	| sort | uniq -c > vector.tmp
 	perl build_vector.pl $(K)
 	cut -b1-1024 vector.txt
 	ls -al       vector.txt
