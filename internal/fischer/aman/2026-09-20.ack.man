@@ -7,7 +7,6 @@ A092330	lambdan	1	n -> { final long p = PMl(n); return FI(p - KS(p, 5))./(p); }	
 A093372	filter	1	new A002808()	v -> { final int jsv5 = JS(v, 5); return jsv5 == 1 && FI(v).-(jsv5).mod(v).isZero(); }	Composite k such that Fibonacci(k) == Legendre(k,5) == 1 (mod k).  Select[ Range[ 2, 100000 ], ! PrimeQ[ # ] && Mod[ Fibonacci[ # ] - JacobiSymbol[ #, 5 ], # ] == 0 && JacobiSymbol[ #, 5 ] == 1 & ]
 A094063	filter	0	new A002808()	v -> { final int jsv5 = JS(v, 5); return jsv5 == -1 && FI(v).-(jsv5).+(v).mod(v).isZero(); }	Composite n such that Fibonacci(n) == Legendre(n,5) == -1 (mod n).
 A098698	lambdan	0	n -> SU(0, n, k -> BI(n, k).*(D000248(2*n - k)))	a(n) = Sum_{k=0..n} C(n, k) * A000248(2n-k).
-A099011	filter	1	new A071904()	(k, v) -> Functions.PELL.z(v).-(KS(2, k)).mod(k) == 0	Pell pseudoprimes: odd composite numbers n such that P(n)-Kronecker(2,n) is divisible by n.
 A110249	lambdan	0	n -> SU(0, n/2, k -> T110247(n - k, k))	a(n)=sum{k=0..floor(n/2), Jacobi(k, 2n-4k+1)}
 A110251	lambdan	0	n -> SU(0, n, k -> ZV(10).^(k).*(JS(k, 2*n - 2*k + 1)))	a(n)=sum{k=0..n, Jacobi(k, 2n-2k+1)*10^k}
 A110252	lambdan	0	n -> SU(0, n, k -> ZV(10).^(k).*(JS(n, 2*n - 2*k + 1)))	a(n)=sum{k=0..n, Jacobi(n, 2n-2k+1)*10^k}
