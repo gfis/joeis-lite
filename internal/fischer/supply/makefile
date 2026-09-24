@@ -73,6 +73,7 @@ joeis_fail4: # check whether they are not recycled
 oeisdata_sha: oeisdata_sha1 
 oeisdata_sha1: 
 	find $(OEISDATA)/files -iname "b??????.txt" \
+	| sort \
 	| perl extract_oeisdata_sha.pl \
 	>        $@.tmp
 	tail -n4 $@.tmp

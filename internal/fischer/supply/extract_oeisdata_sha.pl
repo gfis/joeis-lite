@@ -46,6 +46,13 @@ while (<>) {
     my $size   = "undef";
     my $sha256 = "undef";
     open(INP, "<", $filename) || die "cannot read $filename\n";
+    my ($dev, $ino, $mode, $nlink, $uid, $gid, $rdev, $size, $atime, $mtime, $ctime, $blksize, $blocks) = stat(FIL);
+    my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday) = gmtime ($mtime);
+    my $access = sprintf ("%04d-%02d-%02d %02d:%02d:%02d", $year + 1900, $mon + 1, $mday, $hour, $min, $sec); # in UTC: "2019-01-23 08:07:00"
+    if ($size >= 256) { # no placeholder, real b-file
+        print STDERR join("no placeholder", $filename) . "\n";
+        next;
+    }
     while (<INP>) {
         my $line = $_;
         if (0) {
@@ -61,7 +68,7 @@ while (<>) {
         }
     } # while <INP>
     close(INP);
-    print join("\t", $aseqno, $size, $sha256) . "\n";
+    print join("\t", $aseqno, $size, $sha256, $access) . "\n";
 } # extract_json
 __DATA__
 version https://git-lfs.github.com/spec/v1
