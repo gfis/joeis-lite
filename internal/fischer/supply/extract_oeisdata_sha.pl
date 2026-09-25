@@ -43,12 +43,12 @@ while (<>) {
         $odir = $adir
     }
     my $aseqno = "A$2";
-    my $size   = "undef";
+    my $bfsize = "undef";
     my $sha256 = "undef";
     open(INP, "<", $filename) || die "cannot read $filename\n";
-    my ($dev, $ino, $mode, $nlink, $uid, $gid, $rdev, $size, $atime, $mtime, $ctime, $blksize, $blocks) = stat(FIL);
+    my ($dev, $ino, $mode, $nlink, $uid, $gid, $rdev, $size, $atime, $mtime, $ctime, $blksize, $blocks) = stat(INP);
     my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday) = gmtime ($mtime);
-    my $access = sprintf ("%04d-%02d-%02d %02d:%02d:%02d", $year + 1900, $mon + 1, $mday, $hour, $min, $sec); # in UTC: "2019-01-23 08:07:00"
+    my $date = sprintf ("%04d-%02d-%02d", $year + 1900, $mon + 1, $mday); # in UTC: "2019-01-23"
     if ($size >= 256) { # no placeholder, real b-file
         print STDERR join("no placeholder", $filename) . "\n";
         next;
@@ -58,8 +58,8 @@ while (<>) {
         if (0) {
         } elsif ($line =~ m{\Aoid sha256\:(.+)}) {
             $sha256 = $1;
-        } elsif ($line =~ m{\Asize (\d)}) {
-            $size   = $1;
+        } elsif ($line =~ m{\Asize (\d+)}) {
+            $bfsize = $1;
         } elsif ($line =~ m{\Aversion }) {
             # ignore;
         } else {
@@ -68,7 +68,7 @@ while (<>) {
         }
     } # while <INP>
     close(INP);
-    print join("\t", $aseqno, $size, $sha256, $access) . "\n";
+    print join("\t", $aseqno, $bfsize, $sha256, $date) . "\n";
 } # extract_json
 __DATA__
 version https://git-lfs.github.com/spec/v1

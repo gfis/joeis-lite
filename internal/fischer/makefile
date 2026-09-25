@@ -811,6 +811,9 @@ potential2:
 	make CC=$(TARGET) gener
 potential3:
 	ls -tclr *.gen | tail -n7 | cut -b47- | sed -e "s/\.gen//" | xargs -l -innn make CC=nnn gener
+#----
+ro:
+	ro
 #--------
 robot0:
 	# prelude

@@ -1,6 +1,6 @@
 #!make
 
-# Makefile in gits/joeis-lite/internal/fischer/supply: update the database tables 
+# Makefile in gits/joeis-lite/internal/fischer/supply: update the database tables
 # @(#) $Id$
 # 2026-09-24, Georg Fischer: copied from ../makefile
 #----------------
@@ -48,7 +48,7 @@ killmake:
 #----------------------------------
 # Get the failures from an "ant all-tests" job on the server
 REM=REM_must_be_defined
-joeis_fail: joeis_fail0 joeis_fail1 
+joeis_fail: joeis_fail0 joeis_fail1
 joeis_fail0:
 	scp $(REM):~/work/gits/joeis/all-tests.log all-tests.log
 joeis_fail1:
@@ -60,22 +60,21 @@ joeis_fail1:
 joeis_fail2:
 	ro # refresh b-files of all with comparison failures
 joeis_fail3: # test the failed ones
-	cd .. ; cp -v supply/joeis_fail1.tmp cc.gen ; make CC=cc purge dist test log 	
+	cd .. ; cp -v supply/joeis_fail1.tmp cc.gen ; make CC=cc purge dist test log
 joeis_fail4: # check whether they are not recycled
 	cd .. ; make seq LIST=supply/joeis_fail1.tmp
-	dbat -x "select s.aseqno, j.superclass, COALESCE(substr(n.name, 1, 64), '-> recyled') \
-	    from      seq    s \
-	    left join joeis  j on s.aseqno = j.aseqno \
-	    left join asname n on j.aseqno = n.aseqno" \
+	$(DBAT) -x "SELECT s.aseqno, j.superclass, COALESCE(SUBSTR(n.name, 1, 64), '-> recyled') \
+	    FROM      seq    s \
+	    LEFT JOIN joeis  j ON j.aseqno = s.aseqno \
+	    LEFT JOIN asname n ON n.aseqno = j.aseqno" \
 	| tee    $@.tmp
 #----
 # get the sha256 and size from placeholders for b-files
-oeisdata_sha: oeisdata_sha1 
-oeisdata_sha1: 
+oeisdata_sha: oeisdata_sha1
+oeisdata_sha1:
 	find $(OEISDATA)/files -iname "b??????.txt" \
 	| sort \
 	| perl extract_oeisdata_sha.pl \
 	>        $@.tmp
 	tail -n4 $@.tmp
 	wc -l    $@.tmp
-	
