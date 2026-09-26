@@ -1,0 +1,99 @@
+---- 2026-09-23 21:41:03
+A001147	parmof2	0	A216966	1
+A002421	holos	0	[[0],[-10,4],[0,-1]]	1	0	0
+A058131	rowsums	0	A058142	-2	0	1	Row sums of A058142.
+A091621	rowsums	1	A091615	-2	0	1	Row sums of triangle A091615.
+A096653	rowsums	0	A000293	-1	0	1	Row sums of T form A000293 (solid partitions); row sums of T^2 form A000416(6-D).
+A099011	filtpos	1	0	new A000129()	(k, v) -> (k > 1) && ((k&1) == 1) && v.-(KS(2, k)).mod(k) == 0 && !PP(k)	Pell pseudoprimes: odd composite numbers n such that P(n)-Kronecker(2,n) is divisible by n.
+A117942	rowsums	0	A117941	-1	0	1	Row sums of A117941.
+A118128	filtpos	1	1	new A262044()	v -> Predicates.PALINDROME.is( 2, v)	Numbers n such that the sum of the first n odd composites is palindromic in base 2
+A118129	filtpos	1	1	new A262044()	v -> Predicates.PALINDROME.is( 3, v)	Numbers k such that the sum of the first k odd composites is palindromic in base 3
+A124334	filnum	1	0	k -> !Predicates.PALINDROME.is(10, k) && Predicates.PALINDROME.is(2, k)	Nonpalindromes in base 10 that are palindromes in base 2
+A124404	filnum	1	0	k -> !Predicates.PALINDROME.is(10, k) && !Predicates.PALINDROME.is(2, k)	Nonpalindromes in base 10 that are non-palindromes in base 2
+A154381	rowsums	0	A154380	-1	0	1	Row sums of Bell related number triangle A154380.
+A154828	rowsums	0	A154829	-1	0	1	Row sums of A154829. Might be considered as q-Schroeder numbers for q=2.
+A171450	poly	0	"[1,1],[0,2]"	"1,1,x,1,x,1,x,1,p1,1,p1,1,p1,A,*,-,/,-,/,-,/,-,/,-,/,-,/"
+A171451	lambdan	0	n -> Z2(n*(3*n - 1)/6)	a(n) = 2^(n*(3*n-1)\6);
+A182231	filter	1	new A000040()	p -> Predicates.PALINDROME.is(32, p)	Primes that are palindromic in base 32
+A198486	holos	1	[0,-10,1,10,-1]	1, 2, 3, 4, 5, 6, 7, 8, 9, 90,909	0	0
+A227887	parmof2	0	A216966	4
+A234900	filter	1	new A000040()	p -> PP(PT(p.+(1)))	Primes p with P(p+1) also prime, where P(.) is the partition function (F000041).	nonn	1..60	nyi	_Zhi-Wei Sun_
+A247516	moebiusx	1	A070920	1	new A070920()				1,14,14,50,14,196,14,110	1,15,15,65,15,225,15,175
+A247517	moebiusx	1	A070921	1	new A070921()				1,30,30,180,30,900,30,570	1,31,31,211,31,961,31,781
+A248889	filnum	1	0	k -> Predicates.PALINDROME.is(10, k) && Predicates.PALINDROME.is(18, k)	Palindromic in bases 10 and 18
+A248899	filnum	1	0	k -> Predicates.PALINDROME.is(10, k) && Predicates.PALINDROME.is(19, k)	palindromic in bases 10 and 19
+A249158	filnum	1	0	k -> Predicates.PALINDROME.is( 7, k) && Predicates.PALINDROME.is(29, k)	Palindromic in bases  7 and 29
+A249602	primepos	1	A084937	1	new A084937()				2,3,4,6,9,10,12,13	1,2,3,5,4,7,9,8
+A250408	filnum	1	0	k -> Predicates.PALINDROME.is(10, k) && Predicates.PALINDROME.is(20, k)	Palindromic in bases 10 and 20
+A250409	filnum	1	0	k -> Predicates.PALINDROME.is(10, k) && Predicates.PALINDROME.is(24, k)	Palindromic in bases 10 and 24
+A250410	filnum	1	0	k -> Predicates.PALINDROME.is(10, k) && Predicates.PALINDROME.is(25, k)	Numbers palindromic in bases 10 and 25
+A250411	filnum	1	0	k -> Predicates.PALINDROME.is(10, k) && Predicates.PALINDROME.is(27, k)	Palindromic in bases 10 and 27
+A250412	filnum	1	0	k -> Predicates.PALINDROME.is(10, k) && Predicates.PALINDROME.is(36, k)	Palindromic in bases 10 and 36
+A256529	partsum	1	A255582	1	new A255582()				1,3,6,10,16,24,33,43	1,2,3,4,6,8,9,10
+A262065	filnum	1	0	k -> Predicates.PALINDROME.is(60, k)	palindromes in base- 60 representation
+A263607	filtraf	1	(self, n) -> { final long k = n - 1; final Z k2 = ZV(k).^(2); return Predicates.PALINDROME.is(3, k2) ? new Z(Long.toString(k, 3), 10) : null; }	""		Base 3 numbers whose square is a palindrome in base 3
+A263609	filtraf	1	(self, n) -> { final long k = n - 1; final Z k2 = ZV(k).^(2); return Predicates.PALINDROME.is(4, k2) ? new Z(Long.toString(k, 4), 10) : null; }	""		Base-4 numbers whose square is a palindrome in base 4
+A263610	filtraf	1	(self, n) -> { final long k = n - 1; return Predicates.SQUARE.is(k) && Predicates.PALINDROME.is(4, k) ? new Z(Long.toString(k, 4), 10) : null; }	""			Palindromes in base 4 which are also squares.
+A263612	filtraf	1	(self, n) -> { final long k = n - 1; return Predicates.SQUARE.is(k) && Predicates.PALINDROME.is(5, k) ? new Z(Long.toString(k, 5), 10) : null; }	""			Palindromes in base 5 which are also squares.
+A265022	rowsums	0	A264435	-1	0	1	Row sums of the Bell transform of the complementary Bell numbers (A264435).
+A266533	diffseq	1	A266532	0	new A266532()				1,3,3,9,3,9,9,21	0,1,4,7,16,19,28,37
+A274112	lambdan	0	n -> RU(0, n/4, i -> new Q(BI(n - 2*i, i).*(n - 4*i + 1), ZV(n - 3*i + 1))).num()	add( (n-4*i+1)/(n-3*i+1)*binomial(n-2*i, i), i=0..n/4)
+A291372	diffseq	0	A291577	0	new A291577()				1,2,2,-3,6,3,3,-10	1,2,4,6,3,9,12,15
+A295237	polyx	0	"[1]"	"1,1,x,sin,A,*,-,/"	1	1
+A295257	polyx	0	"[1]"	"1,1,x,tan,A,*,-,/"	1	1
+A295258	polyx	0	"[1]"	"1,1,x,tanh,A,*,-,/"	1	1
+A304965	eulerx	0	A163767	1	new A163767()				1,1,3,6,19,30,96,152	1,2,3,10,5,36,7,120
+A306646	marrlon	0	0, 0, -1	Z	(n, k) -> ((n == 0) ? ZV(k + 1) : RU(1, (k == 0 ? 0 : n/k), j -> new Q(BI(j, n - k*j), ZV(j))).*(n).num())	() -> mB.get(n, k + 1)	A(0,k) = k+1 and A(n,k) = n*Sum_{j=1..floor(n/k)} binomial(j,n-k*j)/j for n > 0.
+A306680	arrlamb	0	0	0	-1	(n, k) -> SU(0, n, j -> BI(n - j, k*j))	Sum_{j=0..n} binomial(n-j,k*j).
+A306713	mtrilon	0	0, 0	Z	(n, k) -> ((n == 0) ? ZV(1) : SU(0, (k == 0 ? 0 : n/k), j -> BI(j, n - k*j)))	() -> mB.get(k, n - k + 1)	T[n_, k_] := Sum[Binomial[j, n-k*j], {j, 0, Floor[n/k]}]; Table[T[k, n - k + 1], {n, 0, 12}, {k, 0, n}] // Flatten
+A308311	filnum	1	2	k -> Predicates.PALINDROME.is(Functions.DIGIT_SUM.i(k), k)	Numbers n which are palindromic in base b, where b = sum of digits of n in base 10
+A308832	filnum	1	0	k -> Predicates.PALINDROME.is( 3, k) && Predicates.PALINDROME.is( 9, k) && Predicates.PALINDROME.is(27, k)	palindromic in bases  3, 9 and 27
+A319583	filnum	1	0	k -> Predicates.PALINDROME.is( 2, k) && Predicates.PALINDROME.is( 4, k) && Predicates.PALINDROME.is(16, k)	palindromic in bases  2,    4  16
+A319585	filnum	1	0	k -> Predicates.PALINDROME.is( 2, k) && Predicates.PALINDROME.is( 8, k) && Predicates.PALINDROME.is(16, k)	palindromic in bases  2,    8  16
+A319595	filnum	1	0	k -> Predicates.PALINDROME.is( 3, k) && Predicates.PALINDROME.is( 7, k) && Predicates.PALINDROME.is(9, k)	palindromic in bases  3,    7  9
+A321375	eulerx	0	A122179	1	new A122179()				1,0,0,0,0,0,0,0	0,0,0,0,0,0,0,1
+A321628	rowsums	0	A321627	-1	0	1	Row sums of A321627.
+A321631	rowsums	0	A321630	-1	0	1	Row sums of A321630.
+A337807	parmof2	0	A216966	5
+A337808	parmof2	0	A216966	6
+A337809	parmof2	0	A216966	7
+A338359	diffseq	1	A280864	1	new A280864()				1,2,-1,3,2,-3,5,2	1,2,4,3,6,8,5,10
+A345757	stirling2	0	A298906	0	new A298906()				1,1,2,8,34,137,614,3754	1,1,1,4,2,1,77,29
+A371489	rowsums	3	A371259	-2	2	1	Row sums of A371259 are the summed (2, 3)-Lah numbers (A371259).
+A371683	rowsums	0	A371637	-1	0	1	a(n) = Sum_{k=0..n} (-2)^(3*k)*binomial(2*n, 2*k)*Euler(2*k, 1/2). Row sums of A371637.
+A371765	rowsums	0	A371994	-1	0	1	Row sums of A371994.
+A373761	rowsums	2	A371277	-2	1	1	Row sums of A371277.
+A373762	rowsums	1	A372208	-2	2	1	Row sums of A372208.
+A377812	moebiusx	1	A274108	1	new A274108()				0,0,1,2,5,4,11,9	0,0,1,2,5,5,11,11
+A382619	multia	1	"2"	(self, n) -> { final Z p = PM(n); return self.a(n - 1).compareTo(p) <= 0 ? self.a(n - 1).*(p) : self.a(n - 1).-(p); }	= a(n-1)*prime(n) if a(n-1)<=prime(n), otherwise a(n) = a(n-1)-prime(n).
+A398829	filnum	0	1	k -> Functions.OMEGA.l(k) >= 2 && FSIT(k, 0L, (x, p, e) -> x + (!ZV(k + 10).mod(p.+(10)).isZero() ? 1 : 0)) == 0
+A398845	holos	0	[0,1,-2,1,-1,2,-1,1,-2,1,-1,2,-1]	0,1,4,7,13,20,28,38,49,62,76	0	0
+A398847	holos	0	[0,1,-2,1,-1,2,-1,1,-2,1,-1,2,-1]	0,1,4,8,15,23,33,45,58,74,91	0	0
+A398848	holos	0	[0,1,-2,1,-1,2,-1,1,-2,1,-1,2,-1]	0,0,1,4,7,12,18,25,34,43,54	0	0
+A398849	holos	0	[0,1,-2,2,-3,3,-2,2,-1]	0,1,2,4,8,13,19	0	0
+A398850	holos	0	[0,1,-2,1,-1,2,-1,1,-2,1,-1,2,-1]	0,-1,0,1,2,4,6,9,12,16,20	0	0
+A398851	holos	0	[0,1,-2,1,-1,2,-1,1,-2,1,-1,2,-1]	0,0,1,1,3,5,7,10,13,17,21	0	0
+A399749	decexpr	0	() -> CR.THREE.pow(CR.ONE_THIRD).exp().divide(CR.THREE).add(CR.TWO.divide(CR.THREE).multiply(CR.ZERO.subtract(CR.THREE.pow(CR.ONE_THIRD).divide(CR.TWO)).exp()).multiply(REALS.cos(CR.THREE.pow(CR.FIVE.divide(CR.SIX)).divide(CR.TWO))))
+A399750	decexpr	1	() -> REALS.cos(CR.SQRT2).add(REALS.cosh(CR.SQRT2)).divide(CR.TWO)
+A399935	multia	0	"1"	(self, n) -> Z_1(n).*(BI(ZV(3).^(n).+(n - 1), n)).-(SU(0, n - 1, k -> Z_1(n - k).*(BI(ZV(3).^(n).+(ZV(3).^(k)).+(n - k - 1), n - k)).*(self.a(k))))	(-1)^n * binomial(3^n+n-1,n) - Sum_{k=0..n-1} (-1)^(n-k) * binomial(3^n+3^k+n-k-1,n-k) * a(k).
+A399936	multia	0	"1"	(self, n) -> Z_1(n).*(BI(ZV(4).^(n).+(n - 1), n)).-(SU(0, n - 1, k -> Z_1(n - k).*(BI(ZV(4).^(n).+(ZV(4).^(k)).+(n - k - 1), n - k)).*(self.a(k))))	(-1)^n * binomial(4^n+n-1,n) - Sum_{k=0..n-1} (-1)^(n-k) * binomial(4^n+4^k+n-k-1,n-k) * a(k).
+A399945	lambdan	1	n -> { final int[] dc = ZUtils.digitCounts(n, 3); return ZV(Math.max(dc[0], Math.max(dc[1], dc[2]))); }	Highest frequency of a digit (0, 1 or 2) in the ternary representation of n.	nonn,easy,base,new	1..29524	nyi	_R. J. Mathar_
+A399949	recval	0	new A399633()		Record high points in E399633.	nonn,more,new	1..24	nyi	_R√©my Sigrist_
+A399950	recpos	0	new A399633()	, 1, false	Indices of record high points in E399633.	nonn,more,new	1..24	nyi	_R√©my Sigrist_
+A400110	lambdan	1	n -> ZV(n - 1).-(E399633(n))	a(n) = n - 1 - E399633(n).	nonn,new	1..10000	nyi	_N. J. A. Sloane_.
+A400151	lambdan	0	n -> E328571(F003415(n))	nonn,easy,new	0..10000	nyi	_Antti Karttunen_
+A400193	parmof4	0	A082182	37	4	41	Numbers k such that (37^k + 4^k)/41 is prime.	nonn,hard,more,new	1..6	nyi	_Robert Price_
+A400226	multia	0	"1"	(self, n) -> SU(1, n, k -> BI(2*n - k, k).*(self.a(n - k)))	a(0) = 1; a(n) = Sum_{k=1..n} binomial(2*n-k,k) * a(n-k).	nonn,new	0..19	nyi	_Ilya Gutkovskiy_
+---- 2026-09-23 22:20:08
+A256080	parmof2	1	A256075	16	Non-palindromic balanced numbers in base 16
+A256082	parmof2	1	A256075	2	Non-palindromic balanced numbers in base  2
+A256083	parmof2	1	A256075	3	Non-palindromic balanced numbers in base  3
+A256084	parmof2	1	A256075	4	Non-palindromic balanced numbers in base  4
+A256085	parmof2	1	A256075	5	Non-palindromic balanced numbers in base  5
+A256086	parmof2	1	A256075	6	Non-palindromic balanced numbers in base  6
+A256087	parmof2	1	A256075	7	Non-palindromic balanced numbers in base  7
+A256088	parmof2	1	A256075	8	Non-palindromic balanced numbers in base  8
+A256089	parmof2	1	A256075	9	Non-palindromic balanced numbers in base  9
+---- 2026-09-23 22:25:43
+A256076	filter	1	new A256075()	PRIME
+A256078	lambdan	0	n -> new Z(Long.toString(n, 2).replaceAll("0","a").replaceAll("1","0").replaceAll("a","1"), 10)	Write n in binary, exchange digits '0' <-> '1'.

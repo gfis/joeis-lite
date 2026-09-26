@@ -1,0 +1,100 @@
+---- 2026-09-25 15:50:42
+
+A129251	lambdan	1	n -> ZV(FSIT(n, 0L, (x, p, e) -> x + (ZV(n).mod(p.^(p)).isZero() ? 1 : 0)))	Number of distinct prime factors p of n such that p^p is a divisor of n.
+A130828	filter	1	new A000040()	p -> PP(Functions.DIGIT_SUM.l(p.^(p)))	Primes p such that the sum of the digits of p^p is a prime.
+A137999	filter	1	new A000040()	p -> PP(p.^(p).-(FA(p))./(p))	Primes p such that (p^p-p!)/p is prime.
+A140497	lambdan	1	n -> { final Z p = PM(n); return p.*(2).-(Functions.DIGIT_LENGTH.z(p.^(p))); }	a(n) = 2p - number of digits of p^p, where p = n-th prime.
+A140499	lambdan	1	n -> { final Z p = PM(n); return p.^(2).-(Functions.DIGIT_SUM.z(p.^(p))); }	v -> P048103(v)	a(n) = p^2 - sum of digits of p^p, where p = prime(n).
+A176905	filter	1	new A000040()	p -> p.^(p).toString().indexOf(p.toString()) >= 0	Primes p such that p^p contains the string 'p' as a substring.
+A177192	filter	1	new A000040()	p -> p.mod(10) != 1 && p.^(p).toString().endsWith(p.toString())	Primes p such that p^p ends in p and p is not congruent to 1 (mod 10).
+A257002	filter	0	new A000040()	p -> p.^(p).+(2).mod(p.+(2)).isZero()	Primes p such that p+2 divides p^p+2.
+A277017	lambdan	0	n -> (n == 1) ? ZV(0) : E129251(D005940(1+n))
+A324049	lambdan	0	n -> D002487(E324051(n))	"0,1,1,3,1,1,2,0,1,4,3,
+A327928	lambdan	0	n -> { if (n <= 1) { return ZV(0); } final Z a = ARD(n); return ZV(FSIT(a, 0L, (x, p, e) -> x + (a.mod(p.^(p)).isZero() ? 1 : 0))); }	Number of distinct primes p such that p^p divides the arithmetic derivative of n.
+A327932	lambdan	1	n -> (n == 1) ? ZV(0) : E129251(F003415(n)).-(E129251(n))
+A328831	lambdan	1	n -> (n == 1) ? ZV(0) : E129251(E276156(n))
+A329570	lambdan	1	n -> Functions.NEXT_PRIME.z(D034699(n).-(1))	"2,2,3,5,5,3,7,11,11,5,
+A356370	lambdan	1	n -> { final Z p = PM(n); final Z pp = p.^(p); return Functions.NEXT_PRIME.z(pp).-(Functions.PREV_PRIME.z(pp)); }
+A368903	filtpos	1	1	new A342001()	(k, v) -> P048103(v) && !P048103(F003415(k))	Numbers k for which there is no prime p such that p^p divides D342001(k).
+A373848	filnum	1	1	k -> { final Z e3 = E373842(k); return P048103(k) && ZV(1).compareTo(e3) < 0 && e3.compareTo(ZV(k)) <= 0; }	Numbers k not divisible by p^p for any prime p, and for which 1 < E373842(k) <= k, where E373842 is the arithmetic derivative of the primorial base log-function.
+A377868	lambdan	1	n -> D359550(F276085(n))	"0,1,1,1,1,1,1,1,0,1,1,
+A377869	filnum	1	2	k -> P048103(F276085(k))	Numbers k such that F276085(k) has no divisors of the form p^p, where F276085 is fully additive with a(p) = p#/p.
+A377871	filnum	1	2	k -> P048103(k) && P048103(F276085(k))	Numbers k such that neither k nor F276085(k) has divisors of the form p^p, where F276085 is fully additive with a(p) = p#/p.
+A377873	filnum	1	1	k -> k == 1 || !P048103(F276085(k))	Numbers k such that F276085(k) has at least one divisor of the form p^p, where F276085 is fully additive with a(p) = p#/p.
+A377875	filnum	1	1	k -> { final Z f2 = F276085(k); return f2.mod(4) != 0 && !P048103(f2); }	Numbers k for which F276085(k) is not a multiple of 4 and has at least one divisor of the form p^p, with p an odd prime, where F276085 is fully additive with a(p) = p#/p.
+A377989	filnum	1	3	k -> P048103(F003415(F276085(k)))	Numbers k such that F003415(F276085(k)) has no p^p-factors, where F003415 is the arithmetic derivative, and F276085 is fully additive with a(p) = p#/p.
+A379965	filnum	1	2	k -> P048103(ZV(k).^(2).-(1))	Numbers k such that (k^2)-1 is not divisible by p^p for any prime p.
+A380468	filtpos	1	1	new A380459()	v -> P048103(v)	Numbers k such that E380459(k) has no divisors of the form p^p, for any prime p.
+A380474	filtpos	1	1	new A380459()	(k, v) -> { final Z f3 = F003415(k); return P048103(v) && (f3.isZero() || !P048103(f3)); }	Numbers k such that E380459(k) has no divisors of the form p^p, while F003415(k) has such a divisor or is 0.
+A380476	filnum	1	1	k -> Functions.BIG_OMEGA.l(k) >= 4 && P048103(E380459(k))	Numbers k with at least 4 prime factors such that E380459(k) is in J048103, i.e., has no divisors of the form p^p.
+A380478	filnum	1	1	k -> !PP(k) && P048103(E380459(k))	Nonprime numbers k such that E380459(k) has no divisors of form p^p.
+A385949	lambdan	0	n -> F055642(E220079(n))	"1,1,2,6,21,102,609,426
+A391863	filnum	1	1	k -> P048103(k) && GCD(F276085(k), ZV(k)).isOne()	Numbers k that are coprime to F276085(k) and that are not divisible by p^p for any prime p, where F276085 is the primorial base log-function.
+A392603	filnum	0	0	k -> P048103(E380459(F276086(k)))	Numbers k such that E380459(F276086(k)) has no divisors of the form p^p, for any prime p.
+A394891	filtpos	1	0	new A143293()	v -> P048103(v)	Numbers k such that J143293(k) has no factor of the form p^p, where J143293 is the partial sums of the primorial numbers.
+A394892	filtpos	1	0	new A143293()	v -> !P048103(v)	Numbers k such that J143293(k) has a factor of the form p^p, where J143293 is the partial sums of the primorial numbers.
+A395569	lambdan	1	n -> SD(n, d -> F008683(ZV(n)./(d)).*(F000005(D079612(2*d))))	""		a(n) = sumdiv(n, d, moebius(n/d) * numdiv(A079612(2*d)))	_	_	_
+A398657	holos	0	[0,-1,4,-7,8,-7,4,-1]	0,2,10,27,55,97,157,238	0	0
+A398807	lambdan	0	n -> SU(0, n, k -> ZV(4).^(k).*(BI(k+2, 2)).*(BI(5*n+7, n-k)))	""		a(n) = sum(k=0, n, 4^k*binomial(k+2, 2)*binomial(5*n+7, n-k))	_	_	_
+A398855	holos	0	[0,1,-2,1,-1,2,-1]	0,2,6,14,26	0	0
+A398856	holos	0	[0,1,-2,1,-1,2,-1]	0,1,7,16,28	0	0
+A398857	holos	0	[0,1,-2,1,-1,2,-1]	0,2,7,16,29	0	0
+A398858	holos	0	[0,1,-2,1,-1,2,-1]	0,2,9,20,35	0	0
+A398859	holos	0	[0,1,-2,1,-1,2,-1]	0,3,9,20,36	0	0
+A399165	polyx	0	"[1],[1,-4]"	"p1,^5/2,<1,rev,x,/"	1	0
+A399168	polyx	0	"[1]"	"1,4,A,^7,<1,*,+,^1/2"	1	0
+A399228	lambdan	0	n -> SU(0, n, k -> Z_1(k).*(FA(n - k)).*(FA(n + k)))	a(n) = Sum_{k=0..n} (-1)^k*(n - k)!*(n + k)!.	sign,easy	0..15	nyi	_Stefano Spezia_
+A399934	holos	1	[0,1,-2,1,-1,2,-1]	6,14,23,35,49	0	0
+A400126	holos	1	[0,-10,10,0,0,0,0,0,0,0,-9,9,0,0,0,0,0,0,0,1,-1]	0,1,2,3,4,5,6,7,8,9,18,27,36,45,54,63,72,81,90	0	0
+A400163	lambdan	1	n -> (n == 1) ? ZV(0) : D071178(E380459(n))	The exponent of the largest prime dividing E380459(n), with a(1) = 0 by convention.	nonn,base,easy,new	1..10000	nyi	_Antti Karttunen_
+A400164	lambdan	1	n -> (n == 1) ? ZV(0) : PI(GPF(E380459(n)))	, with a(1) = 0 by convention.	nonn,easy,new	1..10000	nyi	_Antti Karttunen_
+A400165	lambdan	1	n -> (n == 1) ? ZV(1) : GPF(E380459(n))	, with a(1) = 1 by convention.	nonn,easy,new	1..10000	nyi	_Antti Karttunen_
+A400166	lambdan	1	n -> E235224(n).-(E400164(n))	, where E235224(n) is the length of primorial base representation of n, and A400164(n) = Max_{d|n, d is a prime power} E235224(n/d).	nonn,easy,new	1..32768	nyi	_Antti Karttunen_
+A400167	filnum	1	1	k -> E235224(k).equals(E400164(k))	, where E235224(n) is the length of primorial base representation of n, and A400164(n) = Max_{d|n, d is a prime power} E235224(n/d).	nonn,new	1..10000	nyi	_Antti Karttunen_
+A400168	lambdan	1	n -> E235224(F003415(n)).-(E400164(n))	, where E235224 is the length of primorial base representation, A400164(n) = Max_{d|n, d is a prime power} E235224(n/d), and F003415 is the arithmetic derivative.	nonn,easy,new	1..32768	nyi	_Antti Karttunen_
+A400169	filnum	1	1	k -> E235224(F003415(k)).compareTo(E400164(k)) == 0	, where E235224 is the length of primorial base representation, A400164(n) = Max_{d|n, d is a prime power} E235224(n/d), and F003415 is the arithmetic derivative.	nonn,new	1..10000	nyi	_Antti Karttunen_
+A400170	filnum	1	1	k -> E235224(F003415(k)).compareTo(E400164(k)) >  0	, where E235224 is the length of primorial base representation, A400164(n) = Max_{d|n, d is a prime power} E235224(n/d), and F003415 is the arithmetic derivative.	nonn,new	1..10000	nyi	_Antti Karttunen_
+A400172	filnum	1	1	k -> P048103(k) && F003415(k).compareTo(F276085(k)) >= 0	Numbers k not divisible by any p^p and for which F003415(k) >= F276085(k), where F003415 is the arithmetic derivative and F276085 is the primorial base log-function.
+A400241	poly	0	"[1],[1,-1]"	"1,<2,p1,^3,/,sub,p1,/"
+A400242	poly	0	"[1],[1,-1]"	"1,<3,p1,^4,/,sub,p1,/"
+A400243	poly	0	"[1],[1,-1]"	"1,<2,p1,^3,/,sub,p1,^2,/"
+A400244	poly	0	"[1],[1,-1]"	"1,<3,p1,^4,/,sub,p1,^2,/"
+A400245	poly	0	"[1],[1,-1]"	"1,<2,p1,^3,/,sub,p1,^3,/"
+A400246	poly	0	"[1],[1,-1]"	"1,<3,p1,^4,/,sub,p1,^3,/"
+A400250	arrlamb	1	1	1	-1	(n, k) -> Functions.VALUATION.z(E380459(n), PM(k))	Square array read by falling antidiagonals: A(n,k) = valuation(E380459(n), prime(k)).
+A400252	lambdan	1	n -> Functions.VALUATION.z(E380459(n), 2)	The exponent of the highest power of 2 dividing E380459(n)
+A400253	lambdan	1	n -> Functions.VALUATION.z(E380459(n), 3)	The exponent of the highest power of 3 dividing E380459(n)
+A400269	poly	0	"[1],[1,1]"	"p1,p1,^4,<3,sub,*"
+A400270	poly	0	"[1],[1,1]"	"p1,p1,^5,<3,sub,*"
+A400271	poly	0	"[1],[1,1]"	"p1,p1,<4,sub,*"
+A400272	poly	0	"[1],[1,1]"	"p1,p1,^2,<4,sub,*"
+A400273	poly	0	"[1],[1,1]"	"p1,p1,^3,<4,sub,*"
+A400274	poly	0	"[1],[1,1]"	"p1,p1,^4,<4,sub,*"
+A400312	parmof4	0	A082182	39	4	43	Numbers k such that (39^k + 4^k)/43 is prime.	
+A400313	poly	0	"[1],[1,-1]"	"1,<3,p1,^2,/,sub,p1,/"
+A400314	poly	0	"[1],[1,-1]"	"1,<3,p1,/,sub,p1,^2,/"
+A400315	poly	0	"[1],[1,-1]"	"1,<4,p1,/,sub,p1,^2,/"
+A400316	poly	0	"[1],[1,1]"	"p1,^2,p1,<4,sub,*"
+A400318	poly	0	"[1],[1,1]"	"p1,^3,p1,<4,sub,*"
+A400319	poly	0	"[1],[1,1]"	"p1,^4,p1,<4,sub,*"
+A400328	decexp	1	() -> CR.PI.^(2).*(CV(2).log())./(4).+(CV(2).log().^(3)).+(Zeta.zeta(3).*(new Q(3, 2)))	Pi^2*log(2)/4 +log(2)^3 +3*Zeta(3)/2.
+A400340	parmof4	0	A082182	28	5	33	nyi t	Numbers k such that (28^k + 5^k)/33 is prime.	nonn,hard,more,new	1..11	nyi	_Robert Price_
+A400356	poly	0	"[1]"	"1,4,A,^7/2,<1,*,+"
+---- 2026-09-25 21:52:26
+A282108	parmof3	1	A282107	3	0	Sum_{i=j+1..k}{(i-j)*d_i} = Sum_{i=1..j-1}{(j-i)*d_i}. Case x = 3.
+A282109	parmof3	1	A282107	4	0	Sum_{i=j+1..k}{(i-j)*d_i} = Sum_{i=1..j-1}{(j-i)*d_i}. Case x = 4.
+A282110	parmof3	1	A282107	5	0	Sum_{i=j+1..k}{(i-j)*d_i} = Sum_{i=1..j-1}{(j-i)*d_i}. Case x = 5.
+A282111	parmof3	1	A282107	6	0	Sum_{i=j+1..k}{(i-j)*d_i} = Sum_{i=1..j-1}{(j-i)*d_i}. Case x = 6.
+A282112	parmof3	1	A282107	7	0	Sum_{i=j+1..k}{(i-j)*d_i} = Sum_{i=1..j-1}{(j-i)*d_i}. Case x = 7.
+A282113	parmof3	1	A282107	8	0	Sum_{i=j+1..k}{(i-j)*d_i} = Sum_{i=1..j-1}{(j-i)*d_i}. Case x = 8.
+A282114	parmof3	1	A282107	9	0	Sum_{i=j+1..k}{(i-j)*d_i} = Sum_{i=1..j-1}{(j-i)*d_i}. Case x = 9.
+A282115	parmof3	1	A282107	10	0	Sum_{i=j+1..k} (i-j)*d_i  = Sum_{i=1..j-1} (j-i)*d_i.  Case b = 10
+A282143	parmof3	1	A282107	2	1	Sum_{i=j..k}{(i-j+1)*d_i} = Sum_{i=1..j-1}{(j-i)*d_i}. Case x = 2.
+A282144	parmof3	1	A282107	3	1	Sum_{i=j..k}{(i-j+1)*d_i} = Sum_{i=1..j-1}{(j-i)*d_i}. Case x = 3.
+A282145	parmof3	1	A282107	4	1	Sum_{i=j..k}{(i-j+1)*d_i} = Sum_{i=1..j-1}{(j-i)*d_i}. Case x = 4.
+A282146	parmof3	1	A282107	5	1	Sum_{i=j..k}{(i-j+1)*d_i} = Sum_{i=1..j-1}{(j-i)*d_i}. Case x = 5.
+A282147	parmof3	1	A282107	6	1	Sum_{i=j..k}{(i-j+1)*d_i} = Sum_{i=1..j-1}{(j-i)*d_i}. Case x = 6.
+A282148	parmof3	1	A282107	7	1	Sum_{i=j..k}{(i-j+1)*d_i} = Sum_{i=1..j-1}{(j-i)*d_i}. Case x = 7.
+A282149	parmof3	1	A282107	8	1	Sum_{i=j..k}{(i-j+1)*d_i} = Sum_{i=1..j-1}{(j-i)*d_i}. Case x = 8.
+A282150	parmof3	1	A282107	9	1	Sum_{i=j..k}{(i-j+1)*d_i} = Sum_{i=1..j-1}{(j-i)*d_i}. Case x = 9.
+A282151	parmof3	1	A282107	10	1	Sum_{i=j..k}{(i-j+1)*d_i} = Sum_{i=1..j-1}{(j-i)*d_i}. Case x = 10
