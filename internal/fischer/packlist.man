@@ -684,7 +684,6 @@ src/irvine/math/matrix/LambdaMatrix.java
    
 # 2026-09-13
 src/irvine/oeis/recur/MexSequence.java
-src/irvine/math/function/Syndrome.java
 src/irvine/math/function/Functions.java
 
 # 2026-09-16 iterate(Sorted), legendreP(n, P); *DP=8
@@ -694,6 +693,9 @@ src/irvine/math/function/Functions.java
 # src/irvine/oeis/PolynomialFieldSequence.java
 
 # 2026-09-26
-src/irvine/oeis/FilterSequence.java
-src/irvine/oeis/transform/XorMoebiusTransform.java
-src/irvine/math/z/Integers.java
+# src/irvine/oeis/FilterSequence.java
+# src/irvine/oeis/transform/XorMoebiusTransform.java
+# src/irvine/math/z/Integers.java
+
+src/irvine/math/function/Syndrome.java
+src/irvine/oeis/CountLess10nthSequence.java

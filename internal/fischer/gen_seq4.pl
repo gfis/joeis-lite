@@ -84,9 +84,9 @@ use warnings;
 use English; # PREMATCH
 
 my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime (time);
-my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d", $year + 1900, $mon + 1, $mday, $hour, $min);
-# $timestamp = sprintf ("%04d-%02d-%02d ", $year + 1900, $mon + 1, $mday);
-my $version_id  = "gen_seq4.pl V9.1";
+# my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d", $year + 1900, $mon + 1, $mday, $hour, $min);
+my $timestamp = sprintf ("%04d-%02d-%02d ", $year + 1900, $mon + 1, $mday);
+my $version_id  = "gen_seq4.pl V9.2";
 my $max_term = 16;
 my $max_size = 16;
 my $max_line_len = 120;
@@ -630,7 +630,7 @@ sub write_output {
     $copy =~ s{\$\(PACK\)}           {$package}g;
     $copy =~ s{\.(multiply|divide)\(1\)|\.(add|subtract)\(0\)}{}g;
     #          1        12  2
-    $copy =~ s{([\?\:\>])([^= ])}{$1 $2}g;
+    $copy =~ s{([\?\:\>])([^=\d ])}{$1 $2}g;
     my $package = lc(substr($aseqno, 0, 4));
     # print STDERR "==> $maindir/$package/$aseqno.java ?\n";
     if ($clobber == 1 or (! -r "$maindir/$package/$aseqno.$ext")) { # overwrite or does not yet exist
