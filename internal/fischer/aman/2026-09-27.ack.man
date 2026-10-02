@@ -1,0 +1,114 @@
+---- 2026-09-27 22:14:26
+
+A086692	filter	0	new A055729()	(k, v) -> PP(k)
+A088430	filter	0	new A061558()	(k, v) -> PP(k)
+A088902	filter	1	new A122111()	FIXED_POINT
+A099009	filter	0	new A151949()	FIXED_POINT	(k, v) -> v.equals(ZV(k))	 - _Reinhard Zumkeller_, Mar 23 2015
+A099406	filter	1	new A052039()	(k, v) -> PP(k)
+A099887	trilambn	0	0	0	(n, k) -> SUX(0, k, i -> BI(k, i).and(Z.ONE).*(ZV(3).^(n - i)))	3^i, where SumXOR is the analog of summation under the binary XOR operation and C(k, i)mod 2 = T047999(k, i).
+A099888	lambdan	0	n -> SUX(0, n, k -> BI(n, k).and(Z.ONE).*(ZV(3).^(k)))	3^k, where SumXOR is summation under XOR.
+A099889	trilambn	0	0	0	(n, k) -> SUX(0, k, i -> BI(k, i).and(Z.ONE).*(2*(n - i) + 1))	, where SumXOR is the analog of summation under the binary XOR operation and C(k, i)mod 2 = T047999(k, i). T(2^n, 2^n) = 2^(n+1) for n>=0, with T(0, 0)=1.
+A099891	trilambn	0	0	0	(n, k) -> SUX(0, k, i -> BI(k, i).and(Z.ONE).*(F003188(n - i)))	, where SumXOR is the analog of summation under the binary XOR operation and C(k, i)mod 2 = T047999(k, i). T(2^n, 2^n) = 3*2^(n-1) for n>0, with T(1, 1)=1 and T(k, k)=0 elsewhere.
+A099893	lambdan	0	n -> SUX(0, n, i -> BI(n, i).and(Z.ONE).*(F006068(n - i)))	and SumXOR is summation under XOR.
+A103274	filter	1	new A046926()	(k, v) -> PP(k)
+A106292	filter	1	new A106291()	(k, v) -> PP(k)
+A106302	filter	1	new A046738()	(k, v) -> PP(k)
+A116563	filter	1	new A001617()	(k, v) -> PP(k)
+A117925	filter	1	new A055265()	FIXED_POINT
+A125310	filter	1	new A294886()	FIXED_POINT	(k, v) -> v.equals(ZV(k))	 Cf. also €294900.
+A127308	filter	1	new A000156()	(k, v) -> PP(k)
+A131516	lambdan	0	n -> ZV(n > 2 && PP(n) ? 1 : n)	a(n)=1 if n is an odd prime number, otherwise, a(n)=n.
+A152458	filter	1	new A247379()	FIXED_POINT
+A154521	filter	1	new A129808()	(k, v) -> PP(k)
+A165194	tablamb	1	1	n -> new Integer[] {1, 1 << (n - 1)}	(n, k) -> E165195(k)
+A178910	lambdan	1	n -> DIVIT(n, ZV(0), (x, d) -> x.xor(d))	Binary XOR of divisors of n.
+A185635	filter	1	new A075075()	FIXED_POINT	(k, v) -> v.equals(ZV(k))
+A212485	parmof2	1	A059912	5
+A212486	parmof2	1	A059912	7
+A212906	parmof2	1	A059912	3
+A218336	parmof2	1	A059912	11
+A218337	parmof2	1	A059912	13
+A218338	parmof2	1	A059912	17
+A218339	parmof2	1	A059912	19
+A218340	parmof2	1	A059912	23
+A218341	parmof2	1	A059912	29
+A227320	lambdan	1	n -> DIVIT(n, ZV(0), (x, d) -> (d.compareTo(ZV(n)) < 0 ? x.xor(d) : x))	Binary XOR of proper divisors of n.
+A232547	filnum	0	1	k -> SIGMA(ZV(k).^(2)).mod(SIGMA(k)).equals(ZV(k))	 Numbers n such that sigma(n^2) mod sigma(n) = n.
+A235028	filter	1	new A235027()	FIXED_POINT
+A242414	filter	1	new A069799()	FIXED_POINT
+A245449	filter	1	new A245447()	FIXED_POINT
+A256739	xoetraf	1	new A000027()	umbers, J000027. See ?295901 for a list of some of the properties of this transform. - _Antti Karttunen_, Dec 29 2017
+A258197	trilambn	0	0	0	(n, k) -> ARD(BI(n, k))	=Annn(Annn(n,k)),(\d+)<=k<=n	0	F003415,F007318
+A258317	rowsum	0	new A258197()
+A261279	filter	1	new A065649()	FIXED_POINT
+A263450	filter	1	new A071531()	(k, v) -> PP(k)
+A265402	filter	1	new A265388()	FIXED_POINT
+A275407	filter	1	new A061898()	FIXED_POINT
+A286577	multia	0	"0,1,1,3"	(self, n) -> (n % 3 == 2 ? self.a((n + 1) / 3) : ZV(n))	If n = 3k-1 then a(n) = a(k), otherwise a(n) = n.
+A290254	prepend	1	new FilterSequence(1, new A059894(), (k, v) -> v.equals(ZV(k)))	0	{ 0 } union fixed points of J059894. - _Alois P. Heinz_, Aug 24 2017
+A295901	xoetraf	1	new A000290()	squares
+A296203	xoetraf	1	new A000203()	the sum of divisors.
+A296206	xoetraf	1	new A256739()	twice to natural numbers.
+A296207	xoetraf	1	new A227320()	binary XOR of proper divisors of n.
+A296208	xoetraf	1	new A005187()
+A297106	xoetraf	1	new A156552()
+A297110	xoetraf	1	new A006068()	inverse of the binary Gray code.
+A300957	filter	1	new A300955()	FIXED_POINT
+A306995	filter	1	new A071127()	(k, v) -> PP(k)
+A318501	lambdan	1	n -> DIVIT(n, ZV(0), (x, d) -> x.xor(SIGMA(d).-(d).*(MUi(ZV(n)./(d)) > 0 ? 1 : 0)))	a(n) = SumXOR_{d|n} [moebius(n/d) > 0]*(sigma(d)-d).
+A318502	lambdan	1	n -> DIVIT(n, ZV(0), (x, d) -> x.xor(SIGMA(d).-(d).*(MUi(ZV(n)./(d)) < 0 ? 1 : 0)))	a(n) = SumXOR_{d|n} [moebius(n/d) < 0]*(sigma(d)-d).
+A318503	xoetraf	1	new A001065()	the sum of proper divisors.
+A324107	filter	1	new A324106()	FIXED_POINT
+A324712	xoetraf	1	new A323243()	where D323243(n) = sigma(D156552(n)).
+A324713	lambdan	1	n -> D156552(n).*(2).xor(D323243(n))
+A324714	xoetraf	1	new LambdaSequence(1, n -> D156552(n).xor(D323243(n)))	. See ?295901 for the properties of that transform.
+A324715	xoetraf	1	new A324713()
+A324717	xoetraf	1	new A324716()	where E324716(n) = bitxor(2*D156552(n), bitand(2*D156552(n), D323243(n))).
+A324820	xoetraf	1	new A324815()
+A324821	xoetraf	1	new A324819()	where E324819(n) = bitor(2*D156552(n), D323243(n)), where bitor is J003986.
+A324829	lambdan	1	n -> F000120(E324712(n))	; binary weight of Xor-Moebius transform of D323243.
+A324875	xoetraf	1	new A324865()	where E324865(n) = D323243(n) - D156552(n).
+A324876	xoetraf	1	new A324866()	where E324866(n) = D156552(n) OR (D323243(n) - D156552(n)).
+A324877	xoetraf	1	new A324867()	where E324867(n) = D156552(n) XOR (D323243(n) - D156552(n)).
+A324878	xoetraf	1	new A324398()	where E324398(n) = D156552(n) AND (D323243(n) - D156552(n)).
+A326659	trilambn	0	0	0	(n, k) -> FA(k).*(T271705(n, k))		T271705
+A328110	filter	1	new A327860()	FIXED_POINT
+A332216	filter	1	new A332221()	FIXED_POINT
+A333762	filter	1	new A333692()	FIXED_POINT
+A340016	filter	1	new A109812()	FIXED_POINT
+A341442	filter	1	new A078197()	(k, v) -> PP(k)
+A341943	filter	1	new A341915()	FIXED_POINT	(k, v) -> v.equals(ZV(k))
+A349866	filter	1	new A318996()	FIXED_POINT	(k, v) -> v.equals(ZV(k))	
+A350545	filter	1	new A013646()	(k, v) -> PP(k)
+A351087	filter	1	new A351083()	FIXED_POINT
+A353179	filter	1	new A052038()	(k, v) -> PP(k)
+A361809	filter	1	new A181820()	FIXED_POINT
+A364086	filter	1	new A002326()	FIXED_POINT
+A371163	filter	0	new A048679()	FIXED_POINT	(k, v) -> v.equals(ZV(k))	and D048680.
+A372429	filter	1	new A029931()	(k, v) -> PP(k)
+A376299	filter	1	new A008473()	FIXED_POINT
+A376857	filter	1	new A162742()	FIXED_POINT
+A376858	filter	1	new A071786()	FIXED_POINT
+A378086	filter	1	new A057627()	(k, v) -> PP(k)
+A378226	xoetraf	1	new A318457()	where E318457(n) = n XOR (sigma(n)-n).
+A378227	xoetraf	1	new A318467()	where E318467(n) = 2*n XOR sigma(n).
+A378246	filter	1	new A061510()	FIXED_POINT
+A379234	filter	1	new A318467()	FIXED_POINT	(k, v) -> v.equals(ZV(k))
+A379551	filter	1	new A001156()	(k, v) -> PP(k)
+A383850	filter	1	new A383848()	FIXED_POINT
+A387088	filter	1	new A386482()	FIXED_POINT	(k, v) -> v.equals(ZV(k))	numbers k such that J386482(k) = k.
+A387938	filter	1	new A390052()	FIXED_POINT
+A398860	holos	0	[0,1,-3,4,-4,3,-1]	0,2,9,21,37	0	0
+A398861	holos	0	[0,1,-3,4,-4,3,-1]	0,3,10,21,37	0	0
+A400221	holos	0	[0,1,-5,10,-10,5,-1]	1,48,297,1024,2625	0	0		
+A400367	parmof4	0	A082182	48	5	53	Numbers k such that (48^k + 5^k)/53 is prime.	nonn,hard,more,new	1..4	nyi	_Robert Price_
+A400407	polyx	0	"[1]"	"1,1,A,<1,-,A,^3,<3,pow,/"	0	1
+A400408	polyx	0	"[1]"	"1,1,A,<1,-,A,^4,<4,pow,/"	0	1
+A400409	polyx	0	"[1]"	"1,1,A,^3,<3,-,A,<1,pow,/"	0	1
+A400410	polyx	0	"[1]"	"1,1,A,^4,<4,-,A,<1,pow,/"	0	1
+A400431	poly	0	"[1],[0,2]"	"1,p1,sub,sqrt,<1,2,*,+"
+A400432	poly	0	"[1],[0,3]"	"1,p1,sub,^1/3,<1,3,*,+"
+A400438	poly	0	"[1],[0,0,1]"	"1,p1,sub,<1,+,^2"
+A400439	poly	0	"[1],[0,0,0,1]"	"1,p1,sub,<1,+,^2"
+A400440	poly	0	"[1],[0,0,0,0,1]"	"1,p1,sub,<1,+,^2"
+A400441	poly	0	"[1],[0,0,0,0,0,1]"	"1,p1,sub,<1,+,^2"

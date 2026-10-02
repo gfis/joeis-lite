@@ -1,0 +1,86 @@
+---- 2026-09-30 22:57:30
+A086932	mulr	1	(p, e) -> is2(p) ? ZV(e == 1 ? 2 : 0) : (p.mod(4) == 1 ? p.-(1).*(p.^(e - 1)) : p.+(1).*(p.^(e - 1)))	if p == 1 (mod 4), a(p^e) = (p+1)p^(e-1) if p == 3 (mod 4). - _Vladeta Jovovic_, Sep 24 2003
+A091295	multraf	0	(self, n) -> self.s(0).-(self.s(1))	""	new A091099(), new A091098()	
+A092816	count10	1	new A005384()
+A093153	multraf	0	(self, n) -> self.s(0).-(self.s(1))	"0"	new A093151(), new A093152()	. For n>1, a(n) = A091099(n) - A091098(n) - 1.
+A101805	count10	0	new A039752()	.
+A105456	countn	0	2	new A000928()	Number of irregular primes less than 2^n.
+A105458	countn	0	3	new A000928()	Number of irregular primes less than 3^n.
+A108505	count10	0	new A046328()	.
+A108797	countn	1	2	new A001262()	less than 2^n.
+A113420	count10	1	new A005109()
+A140454	count10p	0	new A000040()	p -> PP(p.^(2).-(2))
+A155148	filnum	0	2	k -> Functions.SYNDROME.z(10, ZV(k).^(4)).bitCount() == 2	k^4 has exactly 2 different decimal digits.
+A155149	filnum	0	2	k -> Functions.SYNDROME.z(10, ZV(k).^(4)).bitCount() == 3	k^4 has exactly 3 different decimal digits.
+A162304	filter	1	new A000217()	v -> Long.bitCount(Functions.SYNDROME.l(v)) == 3	Triangular numbers that contain exactly 3 different decimal digits.
+A178851	countnp	0	3	new A000027()	k -> PP(ZUtils.digitCounts(k, 3)[2])	a(n) is the number of positive integers less than 3^n that when expressed as a ternary numeral contain a prime number of 2s.
+A181671	count10	1	new A104272()	(
+A185084	countn	1	2	new A005935()	< 2^n
+A185191	lambdan	2	n -> { final Z n2 = Z.TWO.^(n); return n2.-(Functions.PREV_PRIME.z(Functions.PREV_PRIME.z(n2))); }	a(n) = 2^n - second largest prime less than 2^n.
+A185201	lambdan	1	n -> { final Z n10 = Z.TEN.^(n); return n10.-(Functions.PREV_PRIME.z(Functions.PREV_PRIME.z(n10))); }	r10^n - second largest prime less than 10^n.
+A186653	count10p	1	new A002377()	(k, v) -> v.compareTo(ZV( 4)) == 0	J002377
+A186657	count10p	1	new A002377()	(k, v) -> v.compareTo(ZV( 6)) == 0	J002377
+A186659	count10p	1	new A002377()	(k, v) -> v.compareTo(ZV( 7)) == 0	J002377
+A186661	count10p	1	new A002377()	(k, v) -> v.compareTo(ZV( 8)) == 0	J002377
+A186663	count10p	1	new A002377()	(k, v) -> v.compareTo(ZV( 9)) == 0	J002377
+A186667	count10p	1	new A002377()	(k, v) -> v.compareTo(ZV(11)) == 0	J002377
+A186669	count10p	1	new A002377()	(k, v) -> v.compareTo(ZV(12)) == 0	J002377
+A186671	count10p	1	new A002377()	(k, v) -> v.compareTo(ZV(13)) == 0	J002377
+A186673	count10p	1	new A002377()	(k, v) -> v.compareTo(ZV(14)) == 0	J002377
+A186675	count10p	1	new A002377()	(k, v) -> v.compareTo(ZV(15)) == 0	J002377
+A186677	count10p	1	new A002377()	(k, v) -> v.compareTo(ZV(16)) == 0	J002377
+A189153	count10p	1	new A013918()	v -> PP(v)	less than 10^n.
+A208276	countn	1	2	new A001567()	less than 2^n.
+A211397	countn	1	2	new A005384()	Sophie Germain primes less than 2^n.
+A216929	count10	0	new A006972()	 (Lucas-Carmichael numbers)..
+A220270	count10	0	new A101550()		) less than 10^n.
+A222056	decexp	0	() -> X059956.multiply(X085548)
+A225005	countn	0	2	new A002997()	 less th
+A232167	count10p	0	new A002808()	v -> v.*(2).-(2).mod(Functions.CARMICHAEL_LAMBDA.z(v)).isZero()	composite integers k less than 10^n such that lambda(k) divides 2k-2, where lambda is the Carmichael lambda function (F002322).
+A235384	lambdan	2	n -> SU(1, n - 1, k -> k*k % n == 1 ? GCD(n, k + 1) : ZV(0))	n-> add(`if`(irem(k^2, n)=1, igcd(n, k+1), 0), k=1..n-1):
+A267574	count10	1	new A246547()
+A267712	multraf	0	(self, n) -> self.s(0).-(1)	""	new A238815()	new A006880(), new A267574()	. a(n) = A238815(n) - 1. - Jon E.
+A281384	lambdan	2	n -> Long.bitCount(n + 1) == 1 ? ZV(n).^(2) : ZV(n)	For any n>1: if n belongs to A000225, then a(n)=n^2, otherwise a(n)=n
+A290219	poly	0	"[1]"	"x,exp,x,n,*,-,1,-,exp,*n!"
+A307121	count10	1	new A002515()
+A329237	countn	1	2	new A047713()	less than 2^n.
+A345325	count10p	0	new A000040()	p -> Predicates.DIGIT_NONDECREASING.is(p)	Number of primes less than 10^n with digits in nondecreasing order.
+A345326	count10p	0	new A000040()	p -> Predicates.DIGIT_NONINCREASING.is(p)	Number of primes less than 10^n with digits in nonincreasing order.
+A356364	count10p	1	new A000040()	p -> Predicates.SQUARE.is(p.-(1)) && PP(p.+(2)) && PP(p.*(2).+(1))	primes p of the form k^2 + 1 less than 10^n such that p+2 and 2p+1 are also primes.
+A358625	lambdan	0	n -> (n > 2 ? Functions.BERNOULLI.q(n)./(n).num() : ZV(1))	1	a(n) = numerator of Bernoulli(n, 1) / n for n >= 1, a(0) = 1.A365671	poly	0	"[1]"	"x,x,exp,1,-,/,sqrt,*n!,4,n,pow,*"
+A362042	countn	0	2	new A046315()		< 2^n 
+A362550	count10	0	new A005277()	
+A368542	mulr	1	(p, e) -> p.+(1).bitCount() == 1 ? ZV(e + 1) : ZV(1)	Multiplicative with a(p^e) = e+1 if p is a Mersenne prime (J000668), and 1 otherwise.
+A368543	mulr	1	(p, e) -> ZV(p.equals(ZV(2)) || p.-(1).bitCount() == 1 ? e + 1 : 1)	a(p^e) = e+1 if p is in J092506 (i.e., p is either 2 or a Fermat prime), and 1 otherwise.
+A368919	count10	0	new A368917()	
+A377702	filter	1	new A001597()	v -> v.bitCount() >= 2	Perfect-powers except for powers of 2. Perfect-powers (A001597)
+A380961	filter	1	new A000040().skip(1)	p -> !(p.+(Functions.NEXT_PRIME.z(p)).mod(p.-(Functions.PREV_PRIME.z(p)))).isZero()	Primes prime(k) such that (prime(k) + prime(k+1)) mod (prime(k) - prime(k-1)) != 0.	nonn,easy	1..10000	nyi	_Najeem Ziauddin_
+A380974	filnum	0	1	k -> Long.bitCount(Functions.SYNDROME.l(k*(k - 1))) == 2	Numbers k such that k*(k-1) is composed of exactly two different decimal digits.	nonn,base	1..117	nyi	_Robert Israel_
+A380984	filter	0	new A000040()	p -> Long.bitCount(Functions.SYNDROME.l(p.*(p.-(1)))) == 2	Primes p such that p*(p-1) consists of exactly two different decimal digits.
+A381279	multia	1	"1"	(self, n) -> !self.a(n - 1).testBit(0) ? self.a(n - 1)./(2) : self.a(n - 1).+(F000005(n - 1))	a(1) = 1, for n > 1, a(n) = a(n - 1) / 2 if a(n - 1) is divisible by 2, otherwise a(n) = a(n - 1) + F000005(n - 1).	nonn	1..70	nyi	_Ctibor O. Zizka_
+A392813	count10	0	new A006935().skip(1)	 without 2)
+A396757	mulr	1	(p, e) -> p.^(4*e).*(p.^(2).+(p).+(1).^(2)).-(p.^(2*e).*(p.^(2).+(1))).+(1)./((p.+(1)).^(2).*(p.^(2).+(1)))
+A396830	mulr	1	(p, e) -> (p.^(4).-(1).*(p.^(2*e).*(p.^(3*e).-(1))./(p.^(3).-(1)).+(p.*(p.^(5*e).-(1))./(p.^(5).-(1)))).+(p.^(2*e + 1)).+(1))./(p.+(1))
+A397498	decexp	11	() -> CR.valueOf(646).add(CR.valueOf(456).multiply(CR.SQRT2)).add(CR.valueOf(462).add(CR.valueOf(322).multiply(CR.SQRT2)).multiply(CR.EIGHT.sqrt().subtract(CR.ONE).sqrt())).pow(3)
+A399159	poly	0	"[1],[0,0,0,1]"	"1,1,p1,sub,^2,<1,-,/"
+A399166	poly	0	"[1],[0,0,0,0,1]"	"1,1,p1,sub,^2,<1,-,/"
+A400155	filnum	1	0	k -> k == 0 || ZV(k).mod(E342002(k)).isZero()	, where E342002(k) = D342001(F276086(k)).	nonn,new	1..1025	nyi	_Antti Karttunen_
+A400248	mulr	1	(p, e) -> ZV(e).mod(p).isZero() ? p.^(e).-(p.^(e - 1)) : (ZV(e - 1).mod(p).isZero() ? p.^(e - 1).-(p.^(e)) : ZV(0))	if e-1 is a multiple of p, and 0 otherwise. - _Amiram Eldar_, Sep 24 2026
+A400249	mulr	1	(p, e) -> ZV(e).mod(p).isZero() ? p.^(e).-(p.^(e - 2)) : (ZV(e - 1).mod(p).isZero() ? ZV(0) : p.^(e - 1).-(p.^(e - 2)))	otherwise. - _Amiram Eldar_, Sep 24 2026
+A400392	mulr	1	(p, e) -> ((e&1) == 1 ? ZV(e + 1) : p.^(e/2).+(e))	if e is odd, and p^(e/2) + e if e is even.
+A400394	mulr	1	(p, e) -> ((e&1) == 1 ? SIGMA(p.^(e)) : SIGMA(p.^(e)).+(p.^(e).-(p.^(e/2))))	+ p^e - p^(e/2) if e is even, where sigma(p^e) = F000203(p^e) = (p^(e+1)-1)/(p-1).
+A400395	mulr	1	(p, e) -> ((e&1) == 1 ? p.^(e).*(e + 1) : p.^(e).*(e).+(p.^(e/2)))	if e is even.
+A400396	mulr	1	(p, e) -> ((e&1) == 1 ? p.^(e + 1).-(1)./(p.-(1)) : p.^(e + 1).-(1)./(p.-(1)).-(p.^(e/2)).+(1))	+ 1 if e is even.
+A400397	mulr	1	(p, e) -> p.^(e + 1).-(1)./(p.-(1)).+(e*(e + 1))
+A400398	mulr	1	(p, e) -> ((e&1) == 1 ? p.^((e + 1)/2).-(1).*(2)./(p.-(1)) : p.^(e/2).-(1).*(2)./(p.-(1)).+(1))	if e is odd, and 2*(p^(e/2)-1)/(p-1) + 1 if e is even.
+A400453	mulr	1	(p, e) -> (e == 1 ? p.+(1): (e == 2 ? p.^(2).+(1) : p.^(2).-(p).+(1).*(p.^(e - 1).-(1)./(p.-(1)))))	a(p) = p + 1, a(p^2) = p^2 + 1, and a(p^e) = (p^2-p+1)*(p^(e-1)-1)/(p-1) for e >= 3.
+A400454	filnum	1	1	k -> PP(Z2(k).-(1).*(Z2(k + 3)).+(1))	Numbers k such that (2^k-1)*2^(k+3)+1 is a prime.	nonn,more,new	1..40	nyi	_Gary Wright_
+A400476	poly	0	"[1],[0,0,1]"	"1,p1,sub,<1,+,^3"
+A400479	poly	0	"[1],[0,0,0,1]"	"1,p1,sub,<1,+,^3"
+A400480	poly	0	"[1],[0,0,1]"	"1,p1,sub,<1,+,^4"
+A400482	parmof4	0	A082182	42	5	47	Numbers k such that (42^k + 5^k)/47 is prime
+A400494	poly	0	"[1],[0,0,0,0,0,1]"	"1,1,p1,sub,^2,<1,-,/"
+A400495	poly	0	"[1],[0,0,1]"	"1,1,p1,sub,<1,-,^2,/"
+A400496	poly	0	"[1],[0,0,0,1]"	"1,1,p1,sub,<1,-,^2,/"
+A400498	poly	0	"[1],[0,0,0,0,0,1]"	"1,1,p1,sub,<1,-,^2,/"
+A400508	decexp	1	() -> Zeta.zeta(3).*(7).-(X352769)
