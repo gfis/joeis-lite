@@ -804,7 +804,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WZ\W}                          ) { $imports{"irvine.math.z.Z"}                               = $itype; }
     if ($line =~ m{\WZeta\.}                       ) { $imports{"irvine.math.cr.Zeta"}                           = $itype; }
     delete($imports{"irvine.oeis.Builder"});
-    delete($imports{"irvine.oeis.Sequence"});
+    # delete($imports{"irvine.oeis.Sequence"});
     delete($imports{"irvine.oeis.StringBuffer"});
     if ($line !~ m{\A\s*(\/\/|\/\*|\*)}) { # no comment line
         my @shields = ();
