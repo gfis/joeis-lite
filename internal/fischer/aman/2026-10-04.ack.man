@@ -1,5 +1,12 @@
----- 2026-10-03 21:57:38
+---- 2026-10-04 22:14:00
 
+A088233	diffs	1	new A025473()	n+1) - J025473(n).
+A088234	diffs	1	new A025474()	n+1) - J025474(n).
+A089919	adjext	0	new A086218()	Functions.PRIME_PI.z(mSeq.next())	n)). - _Amiram Eldar_, Jul 07 2024
+A089920	adjext	0	new A147782()	Functions.PRIME_PI.z(mSeq.next())	n)). - _Amiram Eldar_, Jul 07 2024
+A091283	adjext	1	new A030514()	() -> D007814(mSeq.next().subtract(1))	(n)-1).
+A091284	adjext	1	new A179645()	() -> D007814(mSeq.next().subtract(1))	(n)-1).
+A093502	adjext	0	new A074271()	Functions.PRIME.z(mSeq.next())	), D056239(a(n)) = J074271(n). - _Antti Karttunen_, Nov 02 2024
 A093897	lambdan	1	n -> FA(E093896(n))./(ZV(n).^(n))
 A095652	lambdan	0	n -> S065547(n + 3, 3)
 A095653	lambdan	0	n -> S065547(n + 4, 4)
@@ -9,6 +16,9 @@ A095656	lambdan	0	n -> S065547(n + 7, 7)
 A095657	lambdan	0	n -> S065547(n + 8, 8)
 A095658	lambdan	0	n -> S065547(n + 9, 9)
 A095659	lambdan	0	n -> S065547(n + 10, 10)
+A096501	diffs	1	new A007917().prepend(-2,-2)	.-(F007917(n-1))	1,1	for n > 2. - _Ridouane Oudra_, Oct 05 2024
+A099933	lambdan	0	n -> S007754(n, n)
+A107356	adjext	1	new A005117().skip(1)	() -> D146326(mSeq.next())	1))
 A109163	lambdan	1	n -> D019565(PM(n))
 A110253	lambdan	0	n -> E110251(n).+(E110252(n))
 A110618	lambdan	0	n -> n == 1 ? ZV(0) : S110619(n, 2)
@@ -20,18 +30,30 @@ A112008	lambdan	0	n -> S112007(n + 3, 3)	, n>=0.
 A112485	lambdan	0	n -> S112007(n + 4, 4)	, n>=0.
 A114876	rambdan	1	n -> QV(Z2(n * (n - 1))).*(Functions.BARNES_G.z(2*n + 1))./(QV(BI(2*n, n)).^(2*n - 2).*(Functions.BARNES_G.z(n + 1).^(4)))	d(n) = 2^(n*(n-1)) * BarnesG(2*n+1) / (binomial(2*n,n)^(2*n-2) * BarnesG(n+1)^4). - _Vaclav Kotesovec_, Sep 06 2026
 A114877	rambdad	1	A114876
+A116543	adjext	0	new A130310()	() -> F007953(mSeq.next())	(J). - _Amiram Eldar_, Feb 17 2022
+A119360	lambdan	1	n -> SU(1, n, k -> FA(k).modZ(n))	a(n) = Sum_{k=1..n} (k! mod n).
+A119861	adjext	0	new A038003().skip(1)	Functions.OMEGA.z(mSeq.next())
+A120114	adjust	0	new A051542().prepend(6)	mSeq.next()	.n). - _R. J. Mathar_, May 15 2026 (This follows from the relation with J099996 and the comments of Barry-Fuller in J051538 and the formula in J051542. - _Andrei Zabolotskii_)
 A122853	parmof4	1	A082182	3	5	8	= J074606(k)/8 is a prime.    nonn,more       1..15   nyi     _Alexander Adamchuk_
+A129969	adjext	1	new A061909().skip(1)	Functions.REVERSE.z(mSeq.next())	with digits reversed.
+A129970	adjext	1	new A129967().skip(1)	Functions.REVERSE.z(mSeq.next())
 A132155	adjext	0	new A099009()	mSeq.next().divide(9)
+A134266	adjext	1	new A085500()	Functions.PRIME.z(mSeq.next())	). - _M. F. Hasler_, Apr 26 2014
 A139478	adjext	1	new A001109().skip(1)	new Z(mSeq.next().toString(2), 10)
 A140990	lambdan	1	n -> E167010(n).divide(2)
+A143973	diffs	1	new A066498()	n+1) - J066498(n). - _Jason Yuen_, Aug 15 2026
 A144345	lambdan	0	n -> S004747(n + 2, 2)	, n>=0.
 A144346	lambdan	0	n -> S004747(n + 3, 3)	, n>=0.
 A144347	lambdan	0	n -> S011801(n + 2, 2)	, n>=0.
 A144348	lambdan	0	n -> S011801(n + 3, 3)	, n>=0.
 A144349	lambdan	0	n -> S013988(n + 2, 2)	, n>=0.
 A144350	lambdan	0	n -> S013988(n + 3, 3)	, n>=0.
+A155483	adjext	1	new A043489().skip(1)	Functions.PRIME.z(mSeq.next())	1)).
+A155547	adjext	1	new A084984().skip(1)	Functions.PRIME.z(mSeq.next())	). - _R. J. Mathar_, Jan 25 2009
+A155989	adjext	1	new A092620()	Functions.PRIME.z(mSeq.next())	). - _R. J. Mathar_, May 15 2010
 A156584	trilambn	0	0	0	(n, k) -> Functions.BARNES_G.z(n + 3)./(Functions.BARNES_G.z(k + 3).*(Functions.BARNES_G.z(n - k + 3)))	BarnesG(n+3)/(BarnesG(k+3)*BarnesG(n-k+3)).
 A160014	arrlamb	0	0	0	1	(n, k) -> (n == 0 ? ZV(1) : PD(n, d -> PP(d + k) ? ZV(d + k) : ZV(1)))	T(n, k)=if(n, my(s=1); fordiv(n, d, if(isprime(d+k), s*=d+k)); s, 1)
+A161341	lambdin	1	n -> Long.bitCount(n) == 1 ? E160429(n).-(3*n*(3*n - 1)) : E160429(n)	1	- 3n*(3n - 1) for n>1 and n a power of 2 A161341	lambdan	0	n -> E160429(n) for n>1 and n not a power of 2
 A186654	diffs	1	new A186653().prepend(0)	- J186653(n-1).
 A186656	diffs	1	new A186655()	- J186655(n-1).
 A186658	diffs	1	new A186657().prepend(0)	- J186657(n-1).
@@ -44,62 +66,167 @@ A186672	diffs	1	new A186671().prepend(0)	- J186671(n-1).
 A186674	diffs	1	new A186673().prepend(0)	- J186673(n-1).
 A186676	diffs	1	new A186675().prepend(0)	- J186675(n-1).
 A186678	diffs	1	new A186677().prepend(0)	- J186677(n-1).
+A186698	adjext	1	new A002113().skip(1)	() -> F151800(mSeq.next())	1))
+A190874	diffs	1	new A179196()	n+1) - J179196(n).
+A191475	adjext	1	new A033845()	() -> D007814(mSeq.next())	(n)). - _Amiram Eldar_, Sep 29 2026
+A191476	adjext	1	new A033845()	() -> D007949(mSeq.next())	(J). - _Amiram Eldar_, Sep 29 2026
 A193521	lambdan	0	n -> { final Z bgn2 = Functions.BARNES_G.z(n + 2); return SU(0, n, k -> { final Z bgnk2 = Functions.BARNES_G.z(n - k + 2); return SU(0, k, j -> bgn2./(Functions.BARNES_G.z(j + 2).*(Functions.BARNES_G.z(k - j + 2)).*(bgnk2))); }); }	a(n) = Sum_{k=0..n} Sum_{j=0..k} BarnesG(n+2)/(BarnesG(j+2)*BarnesG(k-j+2 )*BarnesG(n-k+2)).
+A194259	lambdan	0	n -> Functions.OMEGA.z(PR(1, n, k -> F000041(k)))
+A194260	lambdan	0	n -> Functions.OMEGA.z(PR(1, n, k -> F000041(k))).-(n)
 A212197	filnum	0	1	k -> S160014(3*k, 1).mod(k) == 0	divide the 3k-th Clausen number.	nonn,more	1..20	nyi	_Peter Luschny_
 A215800	filnum	1	1	k -> { final Z k21 = Z2(k).+(1); return FSIT(k21, 0L, (x, p, e) -> x + (p.mod(3) == 2 && (e&1) == 1 ? 1 : 0)) == 0; }	/3 can be written in the form a^2 + 3*b^2.   nonn    1..84   nyi     _V. Raman_
+A216650	diffs	1	new A070087().prepend(1)	n)-J070087(n-1) for n >= 2. - _Pontus von Br√∂mssen_, Nov 09 2022
+A220417	arrlamb	1	1	1	-1	(n, k) -> ZV(k).^(n).-(ZV(n).^(k))	= k^n - n^k, n, k > 0,
+A223659	lambdan	0	n -> T071921(n, 4)	was conjectured
+A225010	arrlamb	1	1	1	-1	(n, k) -> Integers.SINGLETON.sum(0, n, j -> Binomial.binomial(k + 2L * j - 1, 2L * j))	T(n,k) = Sum_{j=0..n} C(k+2*j-1,2*j)
+A225906	adjext	0	new A050299().skip(1)	Functions.PRIME_PI.z(mSeq.next())	n+1)).
+A226031	arrlamb	0	0	0	-1	(n, k) -> T071921(n, k*n)
+A227402	lambdan	0	n -> S071921(n, n*n)
+A227406	lambdan	0	n -> S071921(n, 1 << n)
+A232932	adjext	1	new A003657()	() -> E306220(mSeq.next())	)
+A240691	diffs	1	new A240690()	n+1) - J240690(n) for n >= 1.
+A242134	diffs	0	new A066265()	n) - J066265(n-1). - _Jens Kruse Andersen_, Aug 16 2014
+A245061	adjext	1	new A064370().skip(1)	Functions.PRIME.z(mSeq.next())	(J064370(n+1))
+A246777	adjext	1	new A005669()	() -> E246776(mSeq.next())	)
+A246789	adjext	1	new A005669()	() -> E246778(mSeq.next())	)
+A246839	adjext	0	new A002109()	() -> D122840(mSeq.next())	)	, but also,
 A250291	filnum	1	1	k -> { final Z x = Z2(k).+(1); return x.mod(3) == 0 && SEM(x./(3)); }	/3 is a semiprime.   nonn,more       1..41   nyi     _Eric Chen_
+A258845	lambdan	0	n -> E258851(FA(n))	= E258851(F000142(n)).
+A258991	decexp	0	() -> Zeta.zeta(8).divide(CR.valueOf(12))
 A259178	filnum	1	1	k -> { final Z x = Z2(2*k).-(1); return x.mod(3) == 0 && SF(x./(3)); }	/3 is squarefree.  nonn    1..467  nyi     _Omar E. Pol_
+A259409	lambdan	0	n -> E258851(DF(n))	= E258851(F006882(n)).
 A260042	filnum	1	1	k -> { final Z x = Z2(2*k).-(1); return x.mod(3) == 0 && !SF(x./(3)); }	/3 is not squarefree.        nonn    1..169  nyi     _N. J. A. Sloane_
+A262619	lambdan	1	n -> { final Z d = D237271(n); return d.testBit(0) ? d : d.-(1); }
 A263158	lambdan	0	n -> n == 0 ? ZV(1) : Integers.SINGLETON.sum(1, n, k -> Functions.STIRLING2.z(n, k).multiply(Functions.FACTORIAL.z(k).pow(Z.THREE)))
+A266342	lambdan	1	n -> SD(n, d -> IV[d <= (n/d) && D000523(d).equals(D000523(n/d))])
+A266344	lambdan	1	n -> SD(n, d -> IV[d <= (n/d) && D084558(d).equals(D084558(n/d))])
 A268110	filnum	1	1	k -> SEM(Z2(k).-(k - 1).*(Z2(k)).+(1))	(2^k - k + 1)*2^k + 1 is a semiprime.       nonn,more       1..27   nyi     _Vincenzo Librandi_
 A268432	lambdin	0	n -> D001813(n)./(S160014(n, 1))	1,1,2	a(n) = Pochhammer(n+1, n)/Clausen(n, 1) = D001813(n) / A160014(n, 1).	nonn	0..19	nyi	_Peter Luschny_
 A268574	filnum	1	1	k -> SEM(Z2(k).+(1).^(2).-(2))	(2^k + 1)^2 - 2 is a semiprime.     nonn,more,hard  1..47   nyi     _Vincenzo Librandi_
 A269264	filnum	1	1	k -> SEM(Z2(k).-(1).^(2).-(2))	(2^k - 1)^2 - 2 is a semiprime.     nonn,more,hard  1..42   nyi     _Vincenzo Librandi_
 A275575	filnum	0	1	k -> { final Z x = ZV(3).^(k).+(1); final int y = 3 - ((k&1) == 1 ? -1 : 1); return x.mod(y) == 0 && PP(x./(y)); }	/(3 - (-1)^k) is a prime.  nonn,more       1..30   nyi     _Thomas Ordowski_
+A277290	adjext	0	new A123677()	Functions.PRIME.z(mSeq.next())	(J123677(n))
+A278220	adjext	1	new A075158()	() -> D278219(mSeq.next())	1))
+A279172	diffs	0	new A226158().skip(1)	n+2) - J226158(n+1).
 A280083	filnum	0	0	k -> { final Z x = Z2(k).+(1);  final int y = 2 - ((k&1) == 1 ? -1 : 1); return x.mod(y) == 0 && PP(x./(y)); }	/(2 - (-1)^k) is a prime.  nonn    1..46   nyi     _Thomas Ordowski_
 A281066	adjext	1	new A138793()	mSeq.next().modZ(mN)
 A287351	filnum	0	1	k -> { final Z x = ZV(10).^(k).*(361).-(163); return x.mod(9) == 0 && PP(x./(9)); }	/9 is prime (k > 0).        nonn,hard,more  1..13   nyi     _Mikk Heidemaa_
 A287766	filnum	0	1	k -> { final Z x = ZV(10).^(k).*(113).+( 19); return x.mod(3) == 0 && PP(x./(3)); }	/3 is prime. nonn,hard,more  1..10   nyi     _Mikk Heidemaa_
+A289193	adjext	0	new A030078()	() -> E125688(mSeq.next())	)
 A293895	adjext	1	new A001817()	mSeq.next().subtract(mN % 3 == 1 ? 1 : 0)	- [n == 1 (mod 3)].
 A293896	adjext	1	new A001822()	mSeq.next().subtract(mN % 3 == 2 ? 1 : 0)	- [n == 2 (mod 3)].
 A293897	adjext	1	new A078181()	mSeq.next().subtract((mN % 3 == 1 ? 1 : 0) * mN)	- ([n == 1 (mod 3)]*n).
 A293898	adjext	1	new A078182()	mSeq.next().subtract((mN % 3 == 2 ? 1 : 0) * mN)	- ([n == 2 (mod 3)]*n).
+A294194	diffs	0	new A063959()	n+1) - J063959(n). - _Amiram Eldar_, Jun 14 2024
+A294703	holos	0	[[0],[24192,-3520,128],[-304576,48368,-1920],[1053536,-175448,7288],[-1562416,266740,-11216],[919896,-147890,5322],[268608,-97972,7880],[-873936,251550,-18042],[766656,-247236,19884],[-418224,159702,-15186],[154992,-72714,8478],[-37536,22777,-3419],[5296,-4576,964],[-328,508,-180],[0,-18,20],[0,-1,-1]]	1,1,2,6	0	0
+A294876	lambdan	1	n -> PD(n, d -> d <= 1 ? ZV(1) : PM(GCDi(d,n/d)))
 A296059	filnum	0	1	k -> { final Z x = ZV(10).^(k).+(8); return x.mod(72) == 0 && PP(x./(72)); }	(10^k + 8)/72 is prime.
 A296627	lambdan	0	n -> Functions.BARNES_G.z(4*n)	a(n) = BarnesG(4*n).
+A303220	diffs	0	new A267574().prepend(0)	n) - J267574(n-1).
 A303644	lambdan	1	n -> D016754(n - 1).-(D000328(n)).+(4)
 A305005	lambdan	0	n -> E198085(n).-(n - 1)
 A306651	lambdan	1	n -> PR(1, n, k -> Functions.BARNES_G.z(3*k))		a(n) = Product_{k=1..n} BarnesG(3*k).
+A316967	adjext	0	new A316884()	mSeq.next().subtract(1)	n+1)-1.
 A318504	lambdan	1	n -> n == 1 ? ZV(0) : D032742(n).xor(E227320(n))
 A321716	trilambn	0	0	0	(n, k) -> FA(n*k).*(Functions.BARNES_G.z(n + 1)).*(Functions.BARNES_G.z(k + 1))./(Functions.BARNES_G.z(n + k + 1))	, where BarnesG(n) = F000178. - _G. C. Greubel_, May 04 2021
+A324467	adjext	0	new A008977()	() -> D007814(mSeq.next())	(n)). - _Amiram Eldar_, Sep 29 2026
 A324730	lambdan	1	n -> E324829(n).-(E324729(n))
+A325703	lambdan	0	n -> E318574(E325709(n))
+A325704	lambdan	0	n -> E318573(E325709(n))
 A325871	lambdan	0	n -> n == 0 ? ZV(1) : FA(n).*(S160014(n, 1))./(n + 1)
+A327154	lambdan	1	n -> PD(n, d -> d <= 1 ? ZV(1) : D008578(1+VAL(SIGMA(n), d)))
+A327156	lambdan	1	n -> PD(n, d -> d <= 1 ? ZV(1) : D008578(1+VAL(n, SIGMA(d))))
+A329974	lambdan	1	n -> CV(n).*(X060006).floor()	floor(n*x), where x = 1.324717...      is the constant in X060006
+A329977	lambdan	1	n -> CV(n).*(X236229).floor()	floor(n x), where x = 3.8573348...     is the constant in
+A329987	lambdan	1	n -> CV(n).*(X329986).floor()	floor(n x), where x = 1.52980838275... is the constant in
+A329990	lambdan	1	n -> CV(n).*(X329989).floor()	floor(n x), where x = 1.31056994...    is the constant in
+A330002	lambdan	1	n -> CV(n).*(X255249).floor()	floor(n*x), where x = 1.24697960371... is the constant in X255249
+A330063	lambdan	1	n -> CV(n).*(X330062).floor()	floor(n*x), where x = 1.61749989...    is the constant in X330062
+A330066	lambdan	1	n -> CV(n).*(X330065).floor()	floor(n*x), where x = 1.656135560...   is the constant in X330065
+A330547	adjext	1	new A330545()	(mN & 1) == 1 ? mSeq.next() : mSeq.next().subtract(1)	a(n) = J330545(n) if n is odd, a(n) = J330545(n)-1 if n is even;
+A333243	adjext	1	new A262275()	Functions.PRIME.z(mSeq.next())	(J262275(n))
+A334109	lambdan	1	n -> D329697(E225546(n))	= D329697(E331736(n))
+A334865	lambdan	1	n -> D156552(E225546(n))
+A334866	lambdan	0	n -> E225546(D005940(1+n))
+A335185	lambdan	4	n -> F151800(CEIL.i(n, 2) - 1).-(F151799(n/2 + 1))
+A335186	lambdan	4	n -> F151800(CEIL.i(n, 2) - 1).+(F151799(n/2 + 1))
+A335451	lambdan	0	n -> Predicates.CUBE_FREE.is(n) ? Functions.OMEGA.z(FA(n)) : ZV(0)	
+A335913	lambdan	1	n -> E225546(SIGMA(n))
+A336321	lambdan	1	n -> D122111(E225546(n))
+A336322	lambdan	1	n -> E225546(D122111(n))
+A336489	adjext	1	new A018810().adjust(4, 0,2)	mSeq.next().divide2()	n+1) / 2 for n > 2. - _Andrei Zabolotskii_, Jun 23 2026
+A336490	adjext	1	new A018811().adjust(5, 0,0,2)	mSeq.next().divide2()	n+1) / 2 for n > 3. - _Andrei Zabolotskii_, Jun 23 2026
+A336491	adjext	1	new A018812().adjust(6, 0,0,0,2)	mSeq.next().divide2()	n+1) / 2 for n > 4. - _Andrei Zabolotskii_, Jun 23 2026
+A339843	diffs	0	new A029889().prepend(0)	n) - J029889(n-1) for n > 0. - _Andrew Howroyd_, Jan 10 2024
+A342011	adjext	1	new A073751()	Functions.PRIME_PI.z(mSeq.next())	n)), up to the first n where J004490(n)/J004490(n-1) is not a prime.
+A343996	adjext	1	new A011772()	mSeq.next().or(Z.ONE)	.n) if that number is odd, otherwise J011772(n)+1.
 A344516	filnum	1	1	k -> { final Z k2 = Z2(k); return PP(k2.-(5)) && PP(k2.-(3)); }	(2^k-5, 2^k-3) are twin primes.     nonn,more,hard  1..7    nyi     _Amiram Eldar_
 A346465	filnum	1	1	k -> !Predicates.SQUARE_FREE.is(Z2(2*k).-(2).*(Z2(2*k).-(1))./(S160014(2*k, 1)))
+A346635	filnum	1	1	k -> Predicates.SQUARE.is(ZV(k)./(GPF(k)))
+A349191	adjext	1	new A348907()	Functions.PRIME_PI.z(mSeq.next())	n+1)).
+A352447	adjext	1	new A002808().adjust(1, 0,1)	mSeq.next().add(1)	Numbers k such that BarnesG(k) is divisible by Gamma(k).
+A353922	lambdan	0	n -> F000142(n).*(E369192(n))
 A354911	lambdan	1	n -> !Predicates.PRIME_POWER.is(n) ? D000688(n) : ZV(0)	if n is nonprime, otherwise a(n) = 0.
+A355568	adjext	1	new A070993().skip(1)	mSeq.next().add(1)	.n+1) + 1.
+A355569	adjext	1	new A070991().skip(3)	mSeq.next().subtract(1)	.n+2) - 1.
 A356655	lambdan	0	n -> PD(n, d -> PP(d + 1) && 1 < d && d < n ? ZV(d + 1) : ZV(1))	Product_{d | n} (d + 1), where d + 1 is prime and 1 < d < n.
+A357684	adjext	1	new A335275()	() -> F007913(mSeq.next())	(J).
+A358274	adjext	1	new A262275()	() -> F151799(mSeq.next())	)
 A360993	filnum	1	1	k -> SEM(Z2(k).-(1).^(3).+(2))	(2^k - 1)^3 + 2 is a semiprime.     nonn,more,hard  1..25   nyi     _Serge Batalov_
 A360994	filnum	1	0	k -> SEM(Z2(k).+(1).^(3).-(2))	(2^k + 1)^3 - 2 is a semiprime.     nonn,more,hard  1..24   nyi     _Serge Batalov_
+A361373	adjext	1	new A064446()	Functions.BIG_OMEGA.z(mSeq.next())
+A362318	diffs	0	new A362042().prepend(0)	n) - J362042(n-1) for n>=1.
 A363395	lambdan	0	n -> ZV(n).*(S160014(n, 1))./(S160014(n, 0))	a(n) = n * Clausen(n, 1) / Clausen(n, 0).	nonn	0..60	nyi	_Peter Luschny_
 A363402	lambdan	0	n -> ZV(n).*(Z2(2*n).-(Z2(n)))./(S160014(n, 0))	a(n) = n * (4^n - 2^n) / Clausen(n, 0).	nonn	0..25	nyi	_Peter Luschny_
 A363403	lambdin	0	n -> Z2(2*n).-(Z2(n))./(S160014(n, 1))	0	a(n) = (4^n - 2^n) / Clausen(n, 1).	nonn	0..27	nyi	_Peter Luschny_
 A363523	filnum	1	1	k -> S160014(k, 2).mod(S160014(k, 0)).isZero()	k is a term of this sequence if and only if Clausen(k, 0) divides Clausen(k, 2). (Clausen = A160014.)	nonn	1..50	nyi	_Peter Luschny_
+A364163	adjext	0	new A082080()	Functions.PRIME_PI.z(mSeq.next())	n)). - _Michel Marcus_, Jul 12 2023
 A365415	adjext	0	new A152182().skip()	mSeq.next().add(mN - 2)	 + n - 2.
+A365783	adjext	1	new A126706()	() -> F007947(mSeq.next())	(J).
+A367740	adjext	1	new A367593()	() -> E367727(mSeq.next())	)
 A368092	multia	0	"1,3,9"	(self, n) -> S160014(n, 2).*(self.a(n - 1))	a(n) = A160014(m, n) * a(n - 1) for m = 2 and n > 0, a(0) = 1.	nonn	0..20	nyi	_Peter Luschny_
 A368209	lambdan	0	n -> SU(0, n, k -> Functions.BARNES_G.z(k).*(Functions.BARNES_G.z(n - k)))	a(n) = Sum_{k=0..n} BarnesG(k)*BarnesG(n-k).
+A369116	diffs	0	new A368279().prepend(0)	n) - J368279(n-1) where J368279(-1) = 0.
 A372140	lambdan	0	n -> PR(1, n, k -> Functions.BARNES_G.z(k).^(k))	a(n) = Product_{k=1..n} BarnesG(k)^k.
+A373294	diffs	1	new A091644()	n) - J091644(n-1) for n > 1. - _Michael S. Branicky_, May 31 2024
+A374125	lambdan	0	n -> E328845(n).modZ(360)	mod 360, where E328845 is the first Fibonacci-based variant of the arithmetic derivative.
+A376362	adjext	1	new A001694()	() -> E369427(mSeq.next())	)
+A376928	adjext	1	new A276084()	Functions.PRIME.z(mSeq.next())	(J276084(n)) = F000040(J276084(n)) if J276084(n) > 0, and 1 otherwise
 A377870	lambdan	1	n -> D359550(n).*(E377868(n))
 A377877	lambdan	0	n -> F002110(n).modZ(3125)	(5^5).
 A378231	lambdan	1	n -> E377879(D003961(n))
+A379405	adjext	0	new A053024()	() -> F151800(mSeq.next())	1))
+A379567	diffs	0	new A035533().adjust(1, 0,2)	 - J035533(n-1) for n > 2.
 A382185	adjext	1	new A000073().skip(1)	mSeq.next().mod(Functions.PRIME.z(mN))	F000040(n).
+A384797	diffs	1	new A047800()	n) - J047800(n-1).
+A387879	adjext	1	new A290103()	Functions.BIG_OMEGA.z(mSeq.next())
 A389764	adjext	1	new A075109().skip(1)	mSeq.next().subtract(1)
 A389958	adjext	1	new A075109().skip(1)	mSeq.next().add(1)
+A390958	adjext	1	new A072587()	() -> E390957(mSeq.next())	)
+A390962	adjext	1	new A072587()	() -> E390868(mSeq.next())	)
+A391014	adjext	1	new A038618()	Functions.PRIME_PI.z(mSeq.next())	n)).
+A391946	lambdan	1	n -> F276085(n).modZ(2310)	, where F276085 is the primorial base log-function.
 A396591	parmof4	1	A082182	38	5	43	(38^k + 5^k)/43 is prime.   nonn,hard,more  1..7    nyi     _Robert Price_
+A396668	diffs	1	new A394353()	n)-J394353(n-1).
+A396714	adjext	0	new A130518().prepend(0)	() -> E389608(mN).-(mSeq.next().*(3))	3*J130518(n-1)
 A397900	parmof4	1	A082182	39	5	44	(39^k + 5^k)/44 is prime.   nonn,hard,more  1..9    nyi     _Robert Price_
 A398030	parmof4	1	A082182	41	5	46	(41^k + 5^k)/46 is prime.   nonn,hard,more  1..6    nyi     _Robert Price_
 A398045	parmof4	1	A082182	41	4	45	(41^k + 4^k)/45 is prime.   nonn,hard,more,new      1..6    nyi     _Robert Price_
+A398301	adjext	1	new A397500()	() -> E398314(mSeq.next())	)
 A399056	lambdan	1	n -> { final Z n2 = ZV(n).*(n); return n2.-(Functions.PRIME_PI.z(n2).*(2)); }	n^2-(F000720 a(n) = J097454(n^2) = n^2 - 2*F000720(n^2).
+A399372	adjext	0	new A327859()	() -> F020639(mSeq.next())
+A399374	lambdan	0	n -> E276088(F003415(n))
+A399377	adjext	0	new A370117()	() -> F020639(mSeq.next())
 A399439	parmof4	0	A082182	43	4	47	(43^k + 4^k)/47 is prime.   nonn,hard,more,new      1..7    nyi     _Robert Price_
 A399792	parmof4	1	A082182	36	5	41	(36^k + 5^k)/41 is prime.   nonn,hard,more  1..6    nyi     _Robert Price_
+A400258	adjext	0	new A327859()	Functions.OMEGA.z(mSeq.next())
+A400259	adjext	0	new A327859()	Functions.BIG_OMEGA.z(mSeq.next())
+A400261	lambdan	0	n -> E276153(F003415(n))
+A400262	lambdan	0	n -> E235224(F003415(n))
+A400263	lambdan	0	n -> D007949(E327859(n))
+A400523	adjext	1	new A197680()	() -> D007814(mSeq.next())	(n)).
+A400524	adjext	1	new A005117()	() -> D007814(mSeq.next().add(1))	(n)+1).
+A400525	adjext	2	new A005117().skip(1)	() -> D007814(mSeq.next().subtract(1))	(n)-1).
 A400527	polyx	0	"[1],[0,0,1]"	"p1,sub,^2,<1,exp"	0	1
 A400528	polyx	0	"[1],[0,0,0,1]"	"p1,sub,^2,<1,exp"	0	1
 A400529	polyx	0	"[1],[0,0,1]"	"p1,sub,<1,2,*,exp"	0	1
@@ -120,32 +247,3 @@ A400589	polyx	0	"[1]"	"1,1,A,A,<1,pow,<1,-,/"	0	1	1/(1 - x*A(x)^(x*A(x))).	nonn,
 A400590	polyx	0	"[1]"	"1,1,A,A,^2,<1,pow,<1,-,/"	0	1	1/(1 - x*A(x)^(x*A(x)^2)).	nonn,new	0..371	nyi
 A400591	polyx	0	"[1]"	"1,1,A,<1,A,1,-,exp,1,-,*,exp,<1,-,/"	0	1	1/(1 - x*exp( x*A(x)*( exp(A(x)-1)-1 ) ) ).	nonn,new	0..19	nyi
 A400592	polyx	0	"[1]"	"1,1,A,^2,<1,A,1,-,exp,1,-,*,exp,<1,-,/"	0	1	1/(1 - x*exp( x*A(x)^2*( exp(A(x)-1)-1 ) ) ).	nonn,new	0..18	nyi
----- 2026-10-03 22:09:55
----- 2026-10-03 22:10:31
-A352447	adjext	1	new A002808().adjust(1, 0,1)	mSeq.next().add(1)	Numbers k such that BarnesG(k) is divisible by Gamma(k).
----- 2026-10-03 22:54:43
-A088233	diffs	1	new A025473()	n+1) - J025473(n).
-A088234	diffs	1	new A025474()	n+1) - J025474(n).
-A143973	diffs	1	new A066498()	n+1) - J066498(n). - _Jason Yuen_, Aug 15 2026
-A190874	diffs	1	new A179196()	n+1) - J179196(n).
-A240691	diffs	1	new A240690()	n+1) - J240690(n) for n >= 1.
-A373294	diffs	1	new A091644()	n) - J091644(n-1) for n > 1. - _Michael S. Branicky_, May 31 2024
-A384797	diffs	1	new A047800()	n) - J047800(n-1).
----- 2026-10-03 23:13:26
-A099933	lambdan	0	n -> S007754(n, n)
-A227402	lambdan	0	n -> S071921(n, n*n)
-A227406	lambdan	0	n -> S071921(n, 1 << n)
-A262619	lambdan	1	n -> { final Z d = D237271(n); return d.testBit(0) ? d : d.-(1); }
-A316967	adjext	0	new A316884()	mSeq.next().subtract(1)	n+1)-1.
-A335451	lambdan	1	n -> Predicates.CUBE_FREE.is(n) ? FA(F001221(n)) : ZV(0)	!  if n is cubefree, otherwise 0.
-A343996	adjext	1	new A011772()	mSeq.next().or(Z.ONE)	.n) if that number is odd, otherwise J011772(n)+1.
-A353922	lambdan	0	n -> F000142(n).*(E369192(n))
-A374125	lambdan	0	n -> E328845(n).modZ(360)	mod 360, where E328845 is the first Fibonacci-based variant of the arithmetic derivative.
-A396668	diffs	1	new A394353()	n)-J394353(n-1).
-A242134	diffs	0	new A066265()	n) - J066265(n-1). - _Jens Kruse Andersen_, Aug 16 2014
----- 2026-10-03 23:24:23
-A129969	adjext	1	new A061909().skip(1)	Functions.REVERSE.z(mSeq.next())	with digits reversed.
-A129970	adjext	1	new A129967().skip(1)	Functions.REVERSE.z(mSeq.next())
-A279172	diffs	0	new A226158().skip(1)	n+2) - J226158(n+1).
-A355568	adjext	1	new A070993().skip(1)	mSeq.next().add(1)	.n+1) + 1.
-A391946	lambdan	1	n -> F276085(n).modZ(2310)	, where F276085 is the primorial base log-function.

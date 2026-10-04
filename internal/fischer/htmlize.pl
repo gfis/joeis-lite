@@ -2,6 +2,7 @@
 
 # Convert a tsv file with optional headers (DBAT output) into HTML
 # @(#) $Id$
+# 2026-10-04: keep literal "<"
 # 2026-06-04: for Jnnnnnn also
 # 2026-03-26: email address with "dot"s
 # 2026-02-16: gmail
@@ -10,7 +11,7 @@
 #:# usage:
 #:#   perl htmlize.pl [-e] [-s] title.tsv > title.htm
 #:#       -c    remove CAT25 record type/prefix "^[\#\%\?][A-Z] " and insert a tab
-#:#       -e    link to edit in internal format (nyi) 
+#:#       -e    link to edit in internal format (nyi)
 #:#       -s    show the output in browser (nyi Windows only, output must be in *.htm)
 #:#---------------------------------
 use strict;
@@ -25,13 +26,13 @@ if (scalar(@ARGV) == 0) { # print help and exit
 } # print help
 
 my %colors = qw(
-  A salmon 
-  B lavender 
-  D lightgreen 
-  E lightgreen 
-  F lightblue 
-  J yellow 
-  M lightgreen 
+  A salmon
+  B lavender
+  D lightgreen
+  E lightgreen
+  F lightblue
+  J yellow
+  M lightgreen
   X khaki
   ); # starting letters
 my $edit = 0; # no edit link
@@ -75,11 +76,12 @@ while (<INF>) {
         $line =~ s{\s+}{\t}; # only once!
     }
     $count ++;
+    $line =~ s{\<}{\&lt\;}g;
     if ($count == 1 && ($line !~ m{\AA\d+\t})) {
         print "<tr><th class=\"bor\">" . join("</th><th class=\"bor\">", split(/\t/, $line)) . "</th></tr>\n";
     } else {
         my @rest = map {
-            # 1     12       2                       
+            # 1     12       2
             s{([A-Z])(\d\d\d+)}{\<a href\=\"${oeis_url}A$2\" target\=\"_blank\"\><span style=\"background-color:$colors{$1}\">$1</span>$2\<\/a\>}g;
             $_
             } split(/\t/, $line);
