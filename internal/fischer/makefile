@@ -2751,44 +2751,6 @@ deriv:
 	head -n4 $@.gen
 	wc   -l  $@.*
 #--------------------------------
-dex0: dex1 dex2 dex3 dex4
-dex1: # names: Annnnnn Decimal expansion of ... and in jOEIS
-	$(DBAT) "UPDATE asname SET name = 'Decimal expansion of 2*(5-3*exp(1/2))/(2*exp(1/2)-3).' WHERE aseqno = 'A108813'"
-	$(DBAT) -x "SELECT a.aseqno, 'dex', a.offset1, n.name, a.keyword \
-		FROM asinfo a, bfinfo b, asname n\
-		WHERE a.aseqno = n.aseqno \
-		  AND b.aseqno = n.aseqno \
-		  AND n.aseqno NOT IN (SELECT aseqno FROM joeis) \
-		  AND a.keyword    LIKE '%cons%' \
-		  AND b.maxlen <= 2 \
-		ORDER BY 1" \
-	>        $@.tmp
-	head -n4 $@.tmp
-	wc   -l  $@.tmp
-dex2:
-	perl extract_dex.pl dex1.tmp \
-	| sed -e "s/pi log/pi\*log/" \
-	>        $@.tmp
-	head -n4 $@.tmp
-	wc   -l  $@.tmp
-dex3:
-	$(JPREP) -f dex2.tmp \
-	>        $@.tmp
-	head -n4 $@.tmp
-	wc   -l  $@.tmp
-dex4:
-	perl cr_infix.pl -d $(D) dex3.tmp \
-	| grep -vE "^(A114054|A117853|A202955|A248622)" \
-	>        $@.tmp
-	head -n4 $@.tmp
-	wc   -l  $@.tmp
-	grep "#" $@.tmp \
-	>        $@.rest || :
-	head -n4 $@.rest
-	wc   -l  $@.rest
-dex:
-	cp dex4.tmp dex.gen
-#--------------------------------
 # A163241	null	Simple self-inverse permutation: Write n in base 4, then replace each digit '2' with '3' and vice versa, then convert back to decimal.	nonn,base,easy,	0..1023
 # A171013	null	In the sequence of prime numbers, replace all digits '1' with '0' and vice versa.	nonn,base,easy,	1..1000
 # A171014	null	In the sequence of prime numbers, replace all the '2' digits with '0' and vice versa.	nonn,base,easy,	1..1000

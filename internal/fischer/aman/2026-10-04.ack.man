@@ -55,7 +55,6 @@ A156584	trilambn	0	0	0	(n, k) -> Functions.BARNES_G.z(n + 3)./(Functions.BARNES_
 A160014	arrlamb	0	0	0	1	(n, k) -> (n == 0 ? ZV(1) : PD(n, d -> PP(d + k) ? ZV(d + k) : ZV(1)))	T(n, k)=if(n, my(s=1); fordiv(n, d, if(isprime(d+k), s*=d+k)); s, 1)
 A161341	lambdin	1	n -> Long.bitCount(n) == 1 ? E160429(n).-(3*n*(3*n - 1)) : E160429(n)	1	- 3n*(3n - 1) for n>1 and n a power of 2 A161341	lambdan	0	n -> E160429(n) for n>1 and n not a power of 2
 A186654	diffs	1	new A186653().prepend(0)	- J186653(n-1).
-A186656	diffs	1	new A186655()	- J186655(n-1).
 A186658	diffs	1	new A186657().prepend(0)	- J186657(n-1).
 A186660	diffs	1	new A186659().prepend(0)	- J186659(n-1).
 A186662	diffs	1	new A186661().prepend(0)	- J186661(n-1).
@@ -145,12 +144,10 @@ A330063	lambdan	1	n -> CV(n).*(X330062).floor()	floor(n*x), where x = 1.61749989
 A330066	lambdan	1	n -> CV(n).*(X330065).floor()	floor(n*x), where x = 1.656135560...   is the constant in X330065
 A330547	adjext	1	new A330545()	(mN & 1) == 1 ? mSeq.next() : mSeq.next().subtract(1)	a(n) = J330545(n) if n is odd, a(n) = J330545(n)-1 if n is even;
 A333243	adjext	1	new A262275()	Functions.PRIME.z(mSeq.next())	(J262275(n))
-A334109	lambdan	1	n -> D329697(E225546(n))	= D329697(E331736(n))
 A334865	lambdan	1	n -> D156552(E225546(n))
 A334866	lambdan	0	n -> E225546(D005940(1+n))
 A335185	lambdan	4	n -> F151800(CEIL.i(n, 2) - 1).-(F151799(n/2 + 1))
 A335186	lambdan	4	n -> F151800(CEIL.i(n, 2) - 1).+(F151799(n/2 + 1))
-A335451	lambdan	0	n -> Predicates.CUBE_FREE.is(n) ? Functions.OMEGA.z(FA(n)) : ZV(0)	
 A335913	lambdan	1	n -> E225546(SIGMA(n))
 A336321	lambdan	1	n -> D122111(E225546(n))
 A336322	lambdan	1	n -> E225546(D122111(n))
@@ -188,7 +185,6 @@ A368092	multia	0	"1,3,9"	(self, n) -> S160014(n, 2).*(self.a(n - 1))	a(n) = A160
 A368209	lambdan	0	n -> SU(0, n, k -> Functions.BARNES_G.z(k).*(Functions.BARNES_G.z(n - k)))	a(n) = Sum_{k=0..n} BarnesG(k)*BarnesG(n-k).
 A369116	diffs	0	new A368279().prepend(0)	n) - J368279(n-1) where J368279(-1) = 0.
 A372140	lambdan	0	n -> PR(1, n, k -> Functions.BARNES_G.z(k).^(k))	a(n) = Product_{k=1..n} BarnesG(k)^k.
-A373294	diffs	1	new A091644()	n) - J091644(n-1) for n > 1. - _Michael S. Branicky_, May 31 2024
 A374125	lambdan	0	n -> E328845(n).modZ(360)	mod 360, where E328845 is the first Fibonacci-based variant of the arithmetic derivative.
 A376362	adjext	1	new A001694()	() -> E369427(mSeq.next())	)
 A376928	adjext	1	new A276084()	Functions.PRIME.z(mSeq.next())	(J276084(n)) = F000040(J276084(n)) if J276084(n) > 0, and 1 otherwise
