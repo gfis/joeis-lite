@@ -1,0 +1,89 @@
+---- 2026-10-06 21:32:26
+---- 2026-10-06 21:35:39
+A086829	lambdin	1	n -> FA(n*n)./(8)	1	(n^2)!/8, n>1
+A116882	adjextn	1	new A080075().prepend(2)	() -> mSeq.next().-(1)	1	1,2,4,8,12,16,24	1	3,5,9,13,17,25,33	J080075(n-1)-1
+A117581	adjext	0	new A002072()	mSeq.next().add(1)
+A117598	holos	0	[0,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,327,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-57918,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1]	0,1,2,3,4,5,7,9,12,16,21,28,37,49,65,86,151,200,265,351,616,1081,1432,1897,2513,4410,5842,10252,13581,17991,23833,31572,41824,55405,73396,97229,128801,170625,226030,299426,396655,525456,696081,922111,1221537,1618192,2143648,2839729,3761840,4983377,8745217,11584946,15346786,20330163,35676949,62608681,82938844,109870576,145547525,255418101,338356945,593775046,786584466,1042002567,1380359512,1828587033,2422362079,3208946545,4250949112,5631308624,7459895657,9882257736,13091204281,17342153393,22973462017,30433357674,40315615410,53406819691,70748973084,93722435101,124155792775,164471408185,217878227876,288627200960,506505428836,670976837021,888855064897,1177482265857,2066337330754,3626169232672,4803651498529,6363483400447,8429820731201,14793304131648,19596955630177,34390259761825,45557394660801,60350698792449,79947654422626,105908093453250,140298353215075,185855747875876,246206446668325,326154101090951,432062194544201	0	0
+A118339	adjext	0	new A174319().adjust(1, 2)	() -> mSeq.next()./(2)	1	1,3,15,63,267,1107,4623	0	1,6,30,126,534,2214,9246	J174319(n-1)/2	2
+A118492	adjextn	1	new A077766()	() -> mSeq.next().+(n == 1 || (n %4 == 3 && PP(n)) ? 1 : 0)	if n is 1 or a prime = 3 (mod 4), J077766(n) otherwise
+A118966	adjext	1	new A073675().prepend(0)	() -> mSeq.next().+(1)	1	1,3,2,7,9,11,4	1	2,1,6,8,10,3,14	J073675(n-1)+1
+A130664	adjext	1	new A084555()	() -> mSeq.next().+(1)	J084555(n-1)+1
+A133406	adjext	1	new A362046()	() -> mSeq.next().+(1)	J362046(n-1)+1
+A133547	adjext	1	new A024450().skip(1)	() -> mSeq.next().-(4)	1	9,34,83,204,373,662,1023	1	4,13,38,87,208,377,666	J024450(n+1)-4
+A133550	adjext	1	new A122103().skip(1)	() -> mSeq.next().-(32)	1	243,3368,20175,181226,552519,1972376,4448475	1	32,275,3400,20207,181258,552551,1972408	J122103(n+1)-32
+A143299	adjext	1	new A007895()	() -> mSeq.next().+(1)	J007895(n-1)+1
+A160418	adjext	1	new A160407().skip(2)	() -> mSeq.next()./(2)	1	1,1,1,1,2,2,1	1	1,1,2,2,2,2,4	J160407(n+2)/2
+A160718	adjext	0	new A160406().skip(2)	() -> mSeq.next()./(2)	0	1,2,3,4,5,7,9	0	0,1,2,4,6,8,10	J160406(n+2)/2
+A160719	adjext	0	new A160406().skip(2)	() -> mSeq.next()./(2).-(1)	0	0,1,2,3,4,6,8	0	0,1,2,4,6,8,10	J160406(n+2)/2-1
+A163563	adjext	1	new A001462().skip(1)	() -> mSeq.next().-(1)	1	1,1,2,2,3,3,3	1	1,2,2,3,3,4,4	J001462(n+1)-1
+A166460	adjext	1	new A002808().adjust(1, 1,2)	() -> mSeq.next().-(1)	1	0,1,5,7,8,9,11	1	4,6,8,9,10,12,14	J002808(n-1)-1	3
+A169947	adjextn	1	new A143823().skip(2)	() -> mSeq.next().-(n + 2)	1	1,3,8,16,29,49,82	0	1,2,4,7,13,22,36	J143823(n+1)-n-2
+A175965	adjext	1	new A014284().prepend(0)	() -> mSeq.next().+(1)	1	1,2,4,7,12,19,30	1	1,3,6,11,18,29,42	J014284(n-1)+1	2
+A193140	adjext	2	new A086669().skip(1)	() -> mSeq.next().-(1)	2	0,0,0,1,0,0,1	1	1,1,1,1,2,1,1	J086669(n)-1
+A204086	adjext	0	new A078714()	() -> mSeq.next().*(4).-(1)	1	3,15,63,135,567,315,5103	1	1,4,16,34,142,79,1276	4*J078714(n)-1	
+A220516	adjext	0	new A081344()	() -> mSeq.next().-(1)	J081344(n+1)-1
+A225399	adjext	0	new A076982().adjust(1, 2,2)	() -> mSeq.next().-(2)	0	0,0,0,1,0,1,1	1	1,2,3,2,3,3,2	J076982(n)-2	2
+A226323	adjext	0	new A064608().prepend(-1)	() -> mSeq.next().*(4).+(5)	4*J064608(n)+5	for n > 0, a(0)=1
+A232864	mlamlon	0	0	Z	(u, o, t) -> (u + o == 0 ? ZV(1) : (t < 2 ? SU(1, o, j -> get(u + j - 1, o - j, t + 1)) : ZV(0)).+(SU(1, u, j -> get(u - j, o + j - 1, 1L))))	() -> n == 0 ? ZV(1) : mB.get(0L, n - 1, 1L).*(n)
+A234254	adjextn	2	new A000712().skip(2)	() -> mSeq.next().+((n & 1) == 1 ? ZV(0) : PT(n/2).*(3))./(2)	+((n)/2	if n is odd; a(n) = (J000712(n) + 3*F000041(n/2))/2 if n is even
+A240054	adjext	1	new A006094()	() -> ARD(ARD(ARD(ARD(mSeq.next()))))	4th arithmetic derivative of products of 2 successive prime numbers (A006094).
+A244520	adjext	1	new A080715().skip(1)	() -> mSeq.next()./(2)	1	1,3,5,11,15,21,29	1	1,2,6,10,22,30,42	J080715(n+1)/2
+A248671	lambdan	1	n -> SD(FSIT(n, ZV(1), (x, p, e) -> x.*(p)), d -> ZV(d + 1)).-(1)	a(n) = my(f=factor(n)[, 1]); sumdiv(prod(i=1, #f, f[i]), d, d+1 ) - 1; \\ Andrew Howroyd, Jul 02 2018
+A248796	adjext	0	new A248795()	() -> mSeq.next().+(2)	1	3,5,7,17,257,65537,2200696	1	1,3,5,15,255,65535,2200694	J248795(n)+2	
+A249741	adjext	1	new A083221()	() -> mSeq.next().-(1)	J083221(n+1)-1
+A254051	arrlamb	1	1	1	-1	(n, k) -> D000244(n - 1).*(D007310(k)).+(1)./(2)
+A256594	adjext	0	new A080778().skip(1)	() -> mSeq.next()./(2)	1	0,1,259,16708,18655,26304,61999	1	0,1,2,518,33416,37310,52608	J080778(n+1)/2	2
+A262618	lambdan	1	n -> { final Z x = D237271(n); return x.+(x.and(ZV(1)))./(2); }	D237271(n)/2	if D237271(n) is even
+A268534	adjext	0	new A007154()	() -> mSeq.next().+(2)	0	2,6,84,43918	0	0,4,82,43916	J007154(n)+2	
+A276112	adjext	1	new A071562().skip(1)	() -> mSeq.next().-(1)	1	1,3,5,7,8,11,14	1	1,2,4,6,8,9,12	J071562(n+1)-1
+A281022	adjext	1	new A230117().skip(1)	() -> mSeq.next().*(2).+(1)	1	23,47,83,167,263,359,383	1	3,11,23,41,83,131,179	2*J230117(n+1)+1	1
+A281232	adjext	1	new A088797()	() -> mSeq.next().-(2)	J088797(n)-2
+A304986	lambdan	0	n -> E305005(n).+(n)	0	1,2,4,12,115,6834,7783198	0	1,1,2,9,111,6829,7783192	E305005(n)+n	
+A317466	adjext	0	new A317467()	() -> mSeq.next().-(1)	J317467(n+1)-1
+A332101	adjext	0	new A078607().adjust(2, 0,1)	() -> mSeq.next().+(2)	0	2,3,5,6,8,9,11	0	1,2,3,4,6,7,9	J078607(n)+2
+A338543	adjext	1	new A081618().prepend(0)	() -> mSeq.next().+(1)	1	1,2,8,233	1	1,7,232	J081618(n)+1	2
+A339580	adjext	0	new A339581().adjust(1, 0)	() -> mSeq.next().+(1)	1	1,3,90,1122660,19099920,85864770,26089808580	1	1,2,89,1122659,19099919,85864769,26089808579	J339581(n)+1
+A342567	adjext	3	new A056221().skip(1)	() -> mSeq.next()./(2)	3	2,-3,15,-9,21,-15,-11	1	-1,4,-6,30,-18,42,-30	J056221(n-1)/2
+A343018	adjext	0	new A086550()	() -> mSeq.next().-(1)	J086550(n)-1
+A343998	adjext	1	new A343997()	() -> mSeq.next()./(2)	1	1,2,1,4,2,2,3	1	2,4,2,8,4,4,6	J343997(n)/2
+A352318	adjext	1	new A002182().skip(17)	() -> mSeq.next()./(2520)	1	1,2,3,4,6,8,10	1	1,2,4,6,12,24,36	J002182(n+17)/2520
+A360649	adjext	1	new A077468().skip(1)	() -> mSeq.next().-(1)	1	2,8,11,14,16,26,33	1	1,3,9,12,15,17,27	J077468(n+1)-1
+A367520	lambdan	0	n -> BI(D007310(n + 1), n)./(D007310(n + 1))
+A367521	lambdan	0	n -> BI(D007310(n + 1), n + 1)./(D007310(n + 1))	a(n) = binomial(J007310(n+1),n+1)/J007310(n+1)..
+A373947	adjext	1	new A037201().skip(1)	() -> mSeq.next()./(2)	1	1,2,1,2,1,2,3	1	1,2,4,2,4,2,4	J037201(n+1)/2
+A375156	lambdan	0	n -> new Z(Long.toString(n, 2).replaceAll("10", "abaa").replaceAll("1", "ab").replaceAll("0", "ba").replaceAll("a", "0").replaceAll("b", "1"), 2)
+A377206	adjext	2	new A031435().adjust(1, 0)	() -> mSeq.next().+(1)	2	1,3,5,8,10,13,16	1	1,2,4,7,9,12,15	J031435(n-1)+1
+A377282	adjextn	1	new A000015().skip(1)	() -> mSeq.next().-(n)	1	1,1,1,1,2,1,1	1	1,2,3,4,5,7,7	J000015(n)-n+1	2
+A381128	adjextn	1	new A067278()	() -> mSeq.next().+(n)	J067278(n-1)+n
+A381723	adjext	1	new A232773().adjust(3, 2,8)	() -> mSeq.next()./(2)	1	1,4,225,27728,7240350,3439197360,2686774125000	0	1,1,10,450,55456,14480700,6878394720	J232773(n)/2
+A382112	adjext	0	new A382113().prepend(-1)	() -> mSeq.next().+(1)	0	0,1,2,4,7,6,12	0	0,1,3,6,5,11,10	J382113(n-1)+1
+A384561	adjext	5	new A382644().skip(4)	() -> mSeq.next()./(2)	5	1,6,39,284,2337,21474,218179	0	1,0,0,0,2,12,78	J382644(n-1)/2
+A386015	adjext	1	new A085389()	() -> mSeq.next()./(2)	J085389(n)/2	2
+A387027	lambdin	0	n -> D003418(n).*(n + 1)./(n)	1	0	1,2,3,8,15,72,70	0	1,1,2,6,12,60,60	D003418(n)*(n+1)/n	1
+A387799	adjext	1	new A337796().adjust(1, 16)	() -> mSeq.next()./(16)	1	1,1,358	1	1,16,5728	B337796(n)/16	2
+A387805	adjext	1	new A006967().adjust(3, 4,4)	() -> mSeq.next()./(4)	1	1,1,1,1,2,6,8	0	1,1,2,4,4,8,24	J006967(n)/4
+A394169	dex	0	(CR.FOUR).multiply(CR.PI).divide(CR.valueOf(105))	true	10	4*pi/105
+A395019	dex	1	CR.valueOf(105).sqrt().divide(CR.FIVE).subtract(CR.ONE)	true	10	sqrt(105)/5-1
+A395992	dex	1	CR.valueOf(20612).divide(CR.valueOf(6561))	true	10	20612/6561
+A396024	dex	0	(CR.TWO).divide(CR.THREE).add((CR.TWO).multiply((CR.TWO).subtract((CR.THREE).sqrt())).divide(CR.PI))	true	10	2/3+2*(2-sqrt(3))/pi
+A398221	holos	1	[[0],[-13,2],[-21,4],[8,-2],[14,-4],[-1,2],[-1]]	1,0,0,5,47,466	0	0
+A399368	dex	1	(CR.THREE).log().log().subtract((CR.TWO).log().log()).divide((CR.THREE).log().subtract((CR.TWO).log()))	true	10	(log(log(3))-log(log(2)))/(log(3)-log(2))
+A399373	dex	20	(CR.ONE).add((CR.ONE).exp()).add((CR.ONE).add((CR.ONE).exp()).exp()).exp()	true	10	exp(1+exp(1)+exp(1+exp(1)))
+A399814	dex	1	(CR.TWO).add((CR.TWO).multiply((CR.THREE).sqrt())).add((CR.TWO).multiply(CR.valueOf(33).sqrt()).divide(CR.THREE))	true	10	2+2*sqrt(3)+2*sqrt(33)/3
+A399815	dex	2	(CR.FOUR).add((CR.TWO).multiply((CR.THREE).sqrt())).add((CR.FOUR).multiply(CR.valueOf(6).sqrt()).divide(CR.THREE))	true	10	4+2*sqrt(3)+4*sqrt(6)/3
+A399816	decexp	2	() -> CR.FOUR.add(CR.TEN.multiply(X020760)).add(CR.TWO.multiply(X157697))
+A400357	dex	0	CR.valueOf(33).sqrt().subtract(CR.THREE).divide(CR.valueOf(8))	true	10	(sqrt(33)-3)/8
+A400358	decexp	0	() -> X393353.pow(2)
+A400359	dex	0	CR.valueOf(9).subtract((CR.FIVE).multiply((CR.THREE).sqrt())).subtract(CR.valueOf(7).multiply(CR.valueOf(6).sqrt()).divide(CR.TWO)).add(CR.valueOf(6).multiply(CR.SQRT2))	true	10	9-5*sqrt(3)-7*sqrt(6)/2+6*sqrt(2)
+A400360	convprod	0	1,1,3	new A000009(), new A035457(), new A035363()	0
+A400577	multia	0	"1"	(self, n) -> SU(0, n - 1, k -> BI(n - 1, k).*(FA(k)).*(self.a(k)))	nyi Ft	a(0) = 1; a(n) = Sum_{k=0..n-1} binomial(n-1,k) * k! * a(k).	nonn,new	0..14	nyi	_Ilya Gutkovskiy_
+A400604	multia	1	"1"	(self, n) -> SD(n - 1, d -> SD(d, j -> self.a(d).*(self.a((n - 1)/d)).*(self.a(d/j))))	a(1) = 1; a(n+1) = Sum_{d|n} Sum_{j|d} a(d) * a(n/d) * a(d/j).	nonn,new	1..10	nyi	_Ilya Gutkovskiy_
+A400610	lambdan	0	n -> { int k = 1; while (Functions.DIGIT_SUM.l(ARD(k)) != n * Functions.DIGIT_SUM.l(k)) { ++k; }; return ZV(k); }	a(n) is the least positive integer k such that digsum(k') = n * digsum(k), where k' = F003415(k) is the arithmetic derivative of k and digsum(x) = F007953(x) is the sum of decimal digits of x.	nonn,base,new	0..26	nyi	_Robert Israel_
+A400611	filnum	1	0	k -> k == 0 || Functions.DIGIT_SUM.l(ARD(k)) % Functions.DIGIT_SUM.l(k) == 0	Numbers k such that digsum(k') is a multiple of digsum(k), where k' = F003415(k) is the arithmetic derivative of k and digsum(x) = F007953(x) is the sum of decimal digits of x.	nonn,base,new	1..10000	nyi	_Robert Israel_
+A400629	multia	1	"1"	(self, n) -> SD(n - 1, d -> BI(n - 1, d).*(self.a((n - 1)/d)).*(self.a(d)))	a(1) = 1; a(n+1) = Sum_{d|n} binomial(n,d) * a(n/d) * a(d).	nonn,new	1..23	nyi	_Ilya Gutkovskiy_
+A400642	multia	0	"1"	(self, n) -> SU(1, n, k -> Z_1(k + 1).*(BI(4*n - 3*k, k)).*(Z2(k*(n - k))).*(self.a(n- k)))	a(0) = 1; a(n) = Sum_{k=1..n} (-1)^(k+1) * binomial(4*n-3*k,k) * 2^(k*(n-k)) * a(n-k).	nonn,new	0..14	nyi	_Ilya Gutkovskiy_
+A400694	lambdan	0	n -> MU(n*n + 2)	sign,easy,new	0..10000	nyi	_Seiichi Manyama_
+A400695	lambdan	0	n -> MU(n*n + 3)	sign,easy,new	0..10000	nyi	_Seiichi Manyama_
+A400696	lambdan	0	n -> D008966(n*n + 2)	nonn,easy,new	0..10000	nyi	_Seiichi Manyama_
+A400697	lambdan	0	n -> D008966(n*n + 3)	nonn,easy,new	0..10000	nyi	_Seiichi Manyama_
+A400698	lambdan	0	n -> SU(0, n, k -> MU(k*k + 1))	sign,easy,new	0..10000	nyi	_Seiichi Manyama_
