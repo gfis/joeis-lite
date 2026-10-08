@@ -1,0 +1,119 @@
+---- 2026-10-08 17:35:00
+---- 2026-10-08 21:25:20
+A088896	adjext	1	new A009003()	() -> mSeq.next().^(3)
+A090319	convprod	0	2	new A003149()	0
+A090451	lambdan	0	n -> SU(0, n, m -> T090447(n, m).*(Z_1(m)))
+A091041	lambdan	1	n -> SU(1, n, k -> T091039(n, k).*(Z_1(k + 1)))	, k=1..n), n>=1
+A091209	adjext	1	new A091210()	() -> PM(mSeq.next())
+A094083	ratos	1	[[0],[-4,4,-1],[0],[1,-2,1]]	1,1/3	0	0
+A094084	conum	1	A094083
+A094197	adjext	1	new A006339().skip(1)	() -> mSeq.next().^(3)
+A101981	adjextn	0	new A002190()	() -> mSeq.next().*(Z_1(n + 1))	(-1)^(n+1)*A002190(n)
+A103636	lambdan	1	n -> SD(n, d -> d % 3 == 0 ? ZV(d).*(d) : ZV(0))
+A110010	lambdan	1	n -> ZV(n).-(D120613(D120613(D120613(D120613(n)))))	a(n) = n - F(F(F(F(n)))) where F(x)=J120613(x)=floor(phi*floor(x/phi)) and phi=(1+sqrt(5))/2.	nonn,easy	1..105	nyi	_Benoit Cloitre_
+A110011	lambdan	1	n -> ZV(n).-(D120613(D120613(D120613(D120613(D120613(n))))))	a(n) = n - F(F(F(F(F(n))))) = n-F^5(n) where F(x)=J120613(x)=floor(phi*floor(x/phi)) and phi=(1+sqrt(5))/2.	nonn,easy	1..105	nyi	_Benoit Cloitre_
+A110012	lambdan	1	n -> ZV(n).-(CR.SQRT2.*(CV(CR.SQRT2.*(CV(n)./(CR.SQRT2).floor()).floor())./(CR.SQRT2).floor()).floor())	a(n) = n - F(F(n)) where F(x)=floor(sqrt(2)*floor(x/sqrt(2))).	nonn,easy	1..10000	nyi	_Benoit Cloitre_
+A110388	lambdan	1	n -> FI(n).*(FI(n + 1)).modZ(9)	, where F(n) = n-th Fibonacci number
+A111154	lambdan	0	n -> RU(0, n, k -> BERN(k).*(D000629(k)).*(D000629(n - k))).num()	where B_k is the k-th Bernoulli number.
+A113196	lambdan	1	n -> FI(n)./(E113195(n))
+A117692	trilambn	1	1	1	(n, k) -> F034386(n).^(2)./(F034386(k).*(F034386(n - k)))
+A118710	lambdan	0	n -> E087037(F000045(n))					
+A124426	lambdan	0	n -> BELL(n).*(BELL(n + 1))			a(n)=B(n)*B(n+1)
+A129814	lambdan	0	n -> BERN(n).*(FA(n +1)).num()
+A129825	lambdin	0	n -> BERN(n-1).*(FA(n)).num()	"0,1,1"		a(n)=n!*Bernoulli(n-1),n>2;a(0)=0,a(1)=1,a(2)=1
+A134316	holos	2	[[0],[-1,1],[-1],[1,-1],[1]]	2,4,8	0	0
+A140169	dead	0	A124731	erro	NotYetImplemented	Erroneous duplicate of A124731.
+A153003	lambdan	0	n -> (n == 0 ? ZV(0) : E139250(n + 1).-(3).*(3)./(4).+(1))	a(n) = (A139250(n+1)-3)*3/4 + 1, if n >= 1.
+A168136	lambdan	0	n -> BERN(2*n).*(FA(2*n + 1))./(FA(n)).num()
+A174883	adjextn	1	new A060865()	() -> FI(n)./(mSeq.next())	/ J060865(n)
+A175256	adjext	1	new A175255()	() -> Functions.SQRT.z(mSeq.next())
+A177771	lambdan	1	n -> FA(PMi(n) - 1)	a(n) = (prime(n) - 1)!.
+A190359	dead	0	A056208	erro	NotYetImplemented	Erroneous duplicate of A056208.
+A205882	adjextn	0	new A109064()	() -> FI(n).*(mSeq.next()).+(n == 0 ? 1 : 0)	*J109064(n)	for n>=1 with a(0)=1
+A220846	lambdan	1	n -> SD(n, d -> F007955(n)./(d))
+A224851	adjext	0	new A054781()	() -> mSeq.next().-(1)	1	1,0,9,46,3,33,75	1	2,1,10,47,4,34,76	J054781(n)-1	
+A225723	trilambn	1	1	1	(n, k) -> BI(n, k).*(D001865(k)).*(D000312(n - k))
+A242246	dead	0	A229979	erro	NotYetImplemented	Erroneous duplicate of A229979.
+A259437	lambdan	0	n -> SU(0, n, k -> PT(k).^(n))	, where p(k) is the partition function F000041
+A259438	lambdan	0	n -> SU(0, n, k -> PT(k).^(n - k))	, where p(k) is the partition function F000041
+A265095	lambdan	0	n -> SU(0, n, k -> F000009(k).^(k))	q(k)^k, where q(k) = partition numbers into distinct parts (F000009)
+A269547	dex	0	() -> CrFunctions.DIGAMMA.cr(CR.PI)	;psi(;pi;psi)	true	10	psi(pi)	A	B
+A269559	dex	1	() -> CrFunctions.DIGAMMA.cr(CV(2).log()).negate()	;psi(;log(;2;log);psi)	true	10	psi(log(2))	A	B
+A277961	adjext	1	new A277948()	() -> Functions.SQRT.z(mSeq.next())
+A283451	lambdan	1	n -> SU(1, n, k -> Z_1(k).*(E005185(k)))
+A289446	holos	0	[[0],[480,-124,8],[-1632,528,-42],[1008,-518,58],[1716,-410,16],[-3114,1173,-111],[1884,-890,106],[-402,238,-32],[6,9,-9],[0,-5,7],[0,-1,-1]]	1	0	0
+A289449	holos	0	[[0],[168,-104,16],[-396,284,-52],[288,-266,64],[-60,95,-37],[0,-8,10],[0,-1,-1]]	1	0	0
+A289453	holos	0	[[0],[72,-17,1],[-72,17,-1],[-318,95,-7],[-234,88,-8],[0],[42,-40,8],[6,-17,7],[0,1,1],[0,-1,-1]]	1	0	0
+A289600	holos	0	[[0],[1104,-188,8],[-3936,732,-34],[4176,-816,40],[4560,-1440,104],[-11832,3688,-276],[6924,-2442,202],[-1182,509,-51],[108,-84,20],[-30,48,-20],[0,-6,8],[0,-1,-1]]	1	0	0
+A289602	holos	0	[[0],[12000,-2800,160],[-28608,7688,-504],[27480,-8704,668],[-12288,4638,-414],[1872,-723,45],[288,-330,90],[-84,137,-53],[0,-10,12],[0,-1,-1]]	1	0	0
+A289607	holos	0	[[0],[12096,-2160,96],[-63240,12360,-600],[119324,-25212,1312],[-116048,27416,-1584],[70042,-18805,1223],[-23886,6615,-401],[-580,1646,-348],[4176,-3010,526],[-1442,1333,-303],[158,-251,93],[0,13,-15],[0,1,1]]	1	0	0
+A289609	holos	0	[[0],[43680,-7520,320],[-169872,31728,-1456],[246768,-49984,2456],[-177288,39872,-2144],[77232,-20160,1252],[-24768,7500,-532],[3528,-640,-40],[1968,-1598,302],[-1020,964,-224],[132,-211,79],[0,12,-14],[0,1,1]]	1	0	0
+A289610	holos	0	[[0],[10032,-1968,96],[-40872,8824,-472],[53280,-12284,688],[-23100,5444,-284],[-1128,509,-61],[768,344,-116],[2088,-1653,307],[-1020,964,-224],[132,-211,79],[0,12,-14],[0,1,1]]	1	0	0
+A289611	holos	0	[[0],[43680,-7520,320],[-189936,35664,-1648],[335856,-69312,3496],[-325440,75328,-4232],[197280,-52384,3352],[-76356,23438,-1702],[15240,-4964,326],[696,-1002,242],[-972,932,-220],[132,-211,79],[0,12,-14],[0,1,1]]	1	0	0
+A289612	holos	0	[[0],[1680,-816,96],[-2280,1544,-248],[864,-964,232],[-36,212,-104],[-18,1,23],[0,-4,-2]]	1	0	0
+A289614	holos	0	[[0],[9576,-1692,72],[-30168,5850,-270],[34596,-7449,375],[-18552,4566,-258],[6948,-2105,149],[-2400,804,-58],[-240,116,-16],[72,-18,-6],[24,-43,19],[0,6,-8],[0,1,1]]	1	0	0
+A290044	lambdan	0	n -> SU(0, n, k -> Z_1(k).*(DF(2*k))).abs()	|Sum_{k=0..n} (-1)^k*(2k)!!|
+A290046	lambdan	0	n -> SU(0, n, k -> Z_1(k).*(DF(3*k))).abs()	|Sum_{k=0..n} (-1)^k*(3k)!!|
+A290444	lambdan	0	n -> BELL(n).*(D001006(n))	*Motzkin(n)
+A290445	lambdan	1	n -> BELL(n - 1).*(D001006(n))	*Motzkin(n)
+A290446	lambdan	1	n -> BELL(n).*(D001006(n - 1))	*Motzkin(n-1)
+A293901	lambdan	1	n -> SD(n, d -> d < n ? ZV((d % 4 == 1 ? 1 : 0) * d) : ZV(0))
+A293903	lambdan	1	n -> SD(n, d -> d < n ? ZV((d % 4 == 3 ? 1 : 0) * d) : ZV(0))
+A294097	lambdan	1	n -> SU(1, n, k -> ZV(D008966(k).equals(D008966(2*n - k)) ? 1 : 0))	], where [] is the Iverson bracket
+A295008	adjext	1	new A295018()	() -> Functions.SQRT.z(mSeq.next())
+A295227	lambdan	0	n -> SU(0, n/2, k -> S1(n - k, k).^(2))	sum_{k=0,...,[n/2]} s(n-k,k)^2, s = J048994, Stirling numbers of the first kind
+A295228	lambdan	0	n -> SU(0, n/2, k -> SA(n - k, k).^(3))	sum_{k=0,...,[n/2]} |s(n-k,k)|^3, s = J048994, Stirling numbers of the first kind
+A296548	trilambn	0	0	0	(n, k) -> D002884(n)./(D002884(k).*(D002884(n - k)))	= J022166(n,k)*2^(k(n-k)).
+A302346	trilambn	0	0	0	(n, k) -> D002884(k).*(D002884(n - k)).*(Z2(k*(n - k)))
+A322408	adjextn	0	new A278039()	() -> mSeq.next().+(2*n + 3)	a(n) = B(n) + 2*n + 3, where B(n) = J278039(n)
+A326478	lambdan	1	n -> { final Q b = BERN(n - 1); return ZV(n)./(GCD(b.num().*(n), b.den())); }	n/gcd(n*N(n-1),D(n-1)),withN(k)/D(k)=B(k)thek-thBernoullinumber
+A326577	lambdan	1	n -> { final Q b = BERN(2*n - 2); return GCD(b.num().*(2*n-1), b.den()); }	*N(2*n-2),D(2*n-2)),withN(k)/D(k)=B(k)thek-thBernoullinumber
+A326578	lambdan	1	n -> { final Q b = BERN(n - 1); return ZV(n).*(n)./(GCD(b.num().*(n), b.den())); }	,withN(k)/D(k)=B(k)thek-thBernoullinumber
+A327169	lambdan	1	n -> SU(1, n, k -> ZV(F000005(k).*(F000010(k)).equals(ZV(n)) ? 1 : 0))	== n], where [ ] is the Iverson bracket
+A327915	dead	0	A131687	erro	FiniteSequence	Erroneous duplicate of A131687.
+A329037	lambdan	1	n -> PD(n, d -> d <= 1 ? ZV(1) : D008578(1+VAL(F276086(n), d)))
+A329042	lambdan	1	n -> PD(n, d -> d <= 1 ? ZV(1) : D008578(1+VAL(D122111(n), d)))
+A331518	lambdin	0	n -> SU(0, n, k -> S008289(n, k).*(D000166(k)))	1	!k, where q(n,k) = number of partitions of n into k distinct parts and !k = subfactorial of k
+A342621	lambdan	1	n -> FSIT(n, ZV(0), (x, p, e) -> x.+(PT(p).*(e)))	Sum_{k=1..F001222(n)} F000041(J027746(n,k))
+A344498	lambdan	0	n -> SA(n, n/2).*(FA(n/2))
+A344577	lambdan	2	n -> SD(n, d -> d < n ? PHI(n - d) : ZV(0))	phi(n-d) for n >= 2
+A344611	convprod	0	1,1	new A000041(), new A344650()	0
+A347425	lambdan	0	n -> BERN(2*n).*(PP(2*n + 1) ? FA(2*n + 1) : FA(2*n)).num()	* (2*n+1)! if 2*n+1 is a prime, otherwise a(n) = Bernoulli(2*n) * (2*n)!
+A349229	lambdan	1	n -> SU(1, n, k -> (F001222(k).testBit(0) ? Z.NEG_ONE : Z.ONE).*(F001222(k + 1).testBit(0) ? Z.NEG_ONE : Z.ONE))
+A364878	trilambn	0	0	0	(n, k) -> F002110(n).*(F002110(n - k))
+A367482	lambdan	1	n -> SD(n, d -> d > 1 && GCD(ZV(n), ARD(d)).isOne() ? ZV(1) : ZV(0))
+A367483	lambdan	1	n -> SD(n, d -> d > 1 && GCD(ZV(n), ARD(d)).isOne() ? ARD(d): ZV(0))
+A367633	lambdan	1	n -> SD(n, d -> d > 1 && GCD(ZV(n), ARD(d)).isOne() ? ZV(d) : ZV(0))
+A368819	lambdan	1	n -> SU(1, n, k -> D351114(k).*(k).*(n % k == 0 ? 0 : 1))	ceiling(n/k) - floor(n/k)), where c = D351114
+A369225	lambdan	1	n -> SU(1, n, k -> D064911(k).*(k).*(n % k == 0 ? 0 : 1))	ceiling(n/k) - floor(n/k)), where c = D064911
+A375531	adjextn	1	new A375532()	() -> mSeq.next().*(FA(n)).+(1)	a(n)=n!*J375532(n-1)+1
+A378651	adjext	1	new A083206()	() -> IV[mSeq.next().equals(ZV(2))]	, where [ ] is the Iverson bracket
+A378941	holos	0	[[0],[-138996,34911,-2916,81],[-274428,76329,-7047,216],[-181764,55728,-5643,189],[-98280,32328,-3510,126],[-23328,12717,-2016,99],[68184,-25251,3195,-138],[30576,-15246,2625,-153],[-4320,936,180,-36],[4020,-3119,828,-73],[-540,715,-225,20],[-1164,1324,-489,59],[72,-96,18,6],[0,-13,24,-11],[0,-1,-3,-2],[0,2,3,1]]	1	0	0
+A379117	lambdan	0	n -> IV[E328845(n).mod(5) == 0]	(mod 5)])	, where [ ] is the Iverson bracket
+A379452	adjextn	0	new A006585()	() -> mSeq.next().*(FA(n))	a(n)=n!*J006585(n)
+A380336	trilambn	0	0	0	(n, k) -> BI(n, k).*(M003024(k)).*(M003024(n - k)).*(Z2(k*(n - k)))
+A381033	lambdan	0	n -> IV[E381032(n).compareTo(ZV(1)) > 0 && ZV(n).mod(E381032(n)).isZero()]	, where [ ] is the Iverson bracket
+A385625	lambdan	1	n -> SD(n, d -> PI(d).and(ZV(1)).*(d))	d * (pi(d) mod 2)
+A393996	polya	0	"[1]"	"x,B,x,C,*"	new A000041(), new A343941()
+A396090	polya	0	"[1]"	"x,B,x,C,*"	new A000041(), new A395257()
+A396091	polya	0	"[1]"	"x,B,x,C,*"	new A000041(), new A396075()
+A399619	lambdan	1	n -> { final Z n2 = Z2(n); return n2.-(1).^(n).-(n2.-(2).^(n)); }	(2^n - 1)^n - (2^n - 2)^n
+A400512	holos	0	[0,-20,-15,9,-1]	0,1,8	0	0
+A400537	holos	0	[0,1,-5,10,-10,5,-1]	1,33,257,1025,2881	0	0		
+A400539	holos	0	[0,-1,4,-6,4,-1]	1,131,885,2839	0	0
+A400730	filnum	1	1	k -> P268335(k*k + 1)	Numbers k such that k^2 + 1 is an exponentially odd number (J268335).	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+A400731	filnum	1	2	k -> P268335(k*k - 1)	Numbers k such that k^2 - 1 is an exponentially odd number (J268335).	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+A400732	filnum	1	2	k -> P268335(k*k + 1) && P268335(k*k - 1)	Numbers k such that k^2 - 1 and k^2 + 1 are both exponentially odd numbers (J268335).	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+A400735	filnum	1	980	k -> { if ((k&1) == 0) { return false; } long j = k; final long lim = j + 34; boolean result = P268335(j++); ++j; while (result && j < lim) { result = P268335(j++); ++j; } return result; }	Numbers that start a run of 17 consecutive odd numbers that are all exponentially odd numbers (J268335).	nonn,cons,new	1..10000	nyi	_Amiram Eldar_
+A400739	parmof4	0	A082182	49	4	53	Numbers k such that (49^k + 4^k)/53 is prime.	nonn,hard,more,new	1..5	nyi	_Robert Price_
+A400744	poly	0	"[1],[0,2],[1,-1],[1,-2]"	"1,p1,p2,/,sub,p3,/,<1,+"
+A400746	poly	0	"[1],[0,2],[1,-1],[1,-2]"	"1,p1,p3,/,sub,p2,^2,/,<1,+"
+A400748	poly	0	"[1],[0,2],[1,-1],[1,-2]"	"1,p1,p2,^2,/,sub,p3,/,<1,+"
+A400749	poly	0	"[1],[0,2],[1,-1],[1,-2]"	"1,p1,p3,^2,/,sub,p2,^2,/,<1,+"
+A400750	poly	0	"[1],[0,1],[1,-1],[1,-2]"	"1,p1,p2,/,sub,p3,^2,/,<1,+"
+A400751	poly	0	"[1],[0,1],[1,-1],[1,-2]"	"1,p1,p2,^2,/,sub,p3,^2,/,<1,+"
+A400755	trilambn	1	1	1	(n, k) -> new Q(n, n + k).den()	Triangle read by rows: T(n,k) = denominator(n/(n + k)), with 1 <= k <= n.	nonn,easy,frac,tabl,new	1..11325	nyi	_Stefano Spezia_
+A400759	decexprb	1	() -> CV(3).sqrt()		16	NumbersHexadecimal expansion of the square root of 3.	nonn,base,cons,new	1..10000	nyi	_Adam Reichert_
+A400769	lambdan	0	n -> MU(n*(n + 1) + 1)	.	sign,easy,new	0..10000	nyi	_Seiichi Manyama_
+A400770	lambdan	0	n -> SU(0, n, k -> MU(k*(k + 1) + 1))	Sum_{k=0..n} mu(k^2 + k + 1).	sign,new	0..10000	nyi	_Seiichi Manyama_
+---- 2026-10-08 21:32:27
