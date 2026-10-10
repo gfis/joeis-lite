@@ -1,7 +1,8 @@
 #!perl
 
 # dirarr.pl - extract for table 'dirarr'
-# @(#) $Id$
+# @(#) $Id$ 
+# 2026-10-09: 1st column = xseqno may start with[A-Z]
 # 2024-03-25, Georg Fischer
 
 use strict;
@@ -10,10 +11,11 @@ use warnings;
 
 while (<>) {
     my ($aseqno, $superclass, $name, $keyword, $range, @rest) = split(/\t/); 
-    next if ($aseqno !~ m{\AA\d+\Z});
-    $range =~ s{\.\..*}{};
-	if ($keyword =~ m{tab[lf]}) { 
-		print join("\t", $aseqno, $range, $superclass) ."\n";
+    next if ($aseqno !~ m{\A[A-Z]\d{6}\Z});
+    $range =~ s{\.\..*}{};  
+    $aseqno =~ s{\A[A-Z]}{A};
+    if ($keyword =~ m{tab[lf]}) { 
+        print join("\t", $aseqno, $range, $superclass) ."\n";
     }
 } # while <>
 __DATA__
