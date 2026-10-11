@@ -1,0 +1,92 @@
+---- 2026-10-10 22:28:39
+A102217	adjext	1	new A289142().skip(1)	() -> mSeq.next().*(3)	*J289142(n+1)			a(n)=3*J289142(1+n)
+A107318	adjextn	0	new A065577().adjust(1, 3)	() -> mSeq.next().*(n <= 1 ? 1 : 2)	(n)	n>=2		a(n)=2*J065577(n)forn>=2
+A108612	lambdan	1	n -> CV(n).*(CV(n)./(CV(1).sin()).floor()).floor()	floor(n*floor(n/sin(1)))
+A111161	lambdan	1	n -> RU(0, n - 1, k -> BERN(k).*(D000364(n - k)).*(BI(n, k))).num()	where B_k is the k-th Bernoulli number
+A111162	lambdan	1	n -> RU(0, n - 1, k -> BERN(k).*(D000364(k)).*(BI(n, k))).num()	where B_k is the k-th Bernoulli number
+A112681	filter	1	new A000040().skip(1)	p -> Functions.PREV_PRIME.z(p).+(Functions.NEXT_PRIME.z(p)).mod( 3) == 0
+A112731	filter	1	new A000040()	p -> Functions.PREV_PRIME.z(p).+(Functions.NEXT_PRIME.z(p)).mod( 7) == 0
+A112789	filter	1	new A000040()	p -> Functions.PREV_PRIME.z(p).+(Functions.NEXT_PRIME.z(p)).mod(11) == 0	a(n) = F000040(i) is in this sequence iff F000040(i-1)+F000040(i+1) = 0 mod 11
+A112794	filter	1	new A000040()	p -> Functions.PREV_PRIME.z(p).+(Functions.NEXT_PRIME.z(p)).mod( 5) == 0	a(n) = F000040(i) is in this sequence iff F000040(i-1)+F000040(i+1) = 0 mod 5
+A112795	filter	1	new A000040()	p -> Functions.PREV_PRIME.z(p).+(Functions.NEXT_PRIME.z(p)).mod(13) == 0	a(n) = F000040(i) is in this sequence iff F000040(i-1)+F000040(i+1) = 0 mod 13
+A112796	filter	1	new A000040()	p -> Functions.PREV_PRIME.z(p).+(Functions.NEXT_PRIME.z(p)).mod(17) == 0	a(n) = F000040(i) is in this sequence iff F000040(i-1)+F000040(i+1) = 0 mod 17
+A112804	filter	1	new A000040()	p -> Functions.PREV_PRIME.z(p).+(Functions.NEXT_PRIME.z(p)).mod(19) == 0	a(n) = F000040(i) is in this sequence iff F000040(i-1)+F000040(i+1) = 0 mod 19
+A112847	filter	1	new A000040()	p -> Functions.PREV_PRIME.z(p).+(Functions.NEXT_PRIME.z(p)).mod(23) == 0
+A112859	filter	1	new A000040()	p -> Functions.PREV_PRIME.z(p).+(Functions.NEXT_PRIME.z(p)).mod(29) == 0	a(n) = F000040(i) is in this sequence iff F000040(i-1)+F000040(i+1) = 0 mod 29
+A113155	filter	1	new A000040()	p -> Functions.PREV_PRIME.z(p).+(Functions.NEXT_PRIME.z(p)).mod(31) == 0	a(n) = F000040(i) is in this sequence iff F000040(i-1)+F000040(i+1) = 0 mod 31
+A113156	filter	1	new A000040()	p -> Functions.PREV_PRIME.z(p).+(Functions.NEXT_PRIME.z(p)).mod(37) == 0	a(n) = F000040(i) is in this sequence iff F000040(i-1)+F000040(i+1) = 0 mod 37
+A113157	filter	1	new A000040()	p -> Functions.PREV_PRIME.z(p).+(Functions.NEXT_PRIME.z(p)).mod(41) == 0	a(n) = F000040(i) is in this sequence iff F000040(i-1)+F000040(i+1) = 0 mod 41
+A113158	filter	1	new A000040()	p -> Functions.PREV_PRIME.z(p).+(Functions.NEXT_PRIME.z(p)).mod(43) == 0	a(n) = F000040(i) is in this sequence iff F000040(i-1)+F000040(i+1) = 0 mod 43
+A122057	adjext	1	new A001711().prepend(0)	() -> mSeq.next().*(2)	(n-2)	n>=2		a(n)=2*J001711(n-2)forn>=2
+A124936	filnum	1	1	k -> SEM(k - 1) && SEM(k + 1)	a(n)=J092207(n)+1;atn>=2,a(n)=2*J082130(n-1)
+A125889	lambdan	0	n -> RU(1, n, k -> new Q(F000045(k), F000032(k))).den()
+A142878	multia	0	"0,1"	(self, n) -> PP(self.a(n - 1)) ? ZV(1) : self.a(n - 1).+(self.a(n-2))	"0,1"		a(n)=1ifa(n-1)isprime,otherwisea(n-1)+a(n-2),witha(0)=0anda(1)=1
+A142884	multia	0	"0,1,1"	(self, n) -> PP(self.a(n - 1)) ? ZV(1) : self.a(n - 2).+(self.a(n-3))	"0,1,1"		(n)=1ifa(n-1)isprime,elsea(n)=a(n-2)+a(n-3);startingwitha(0)=0,a(1)=a(2)=1
+A144043	lambdan	1	n -> { final long n2 = n/2; return (n&1) == 0 ? PM(n2).+(PM(n2 + 1)) : PM(n2 + 1).*(2); }	a(n)=2*J063934(n-1)forn>2
+A155902	lambdan	0	n -> CV(13).sqrt().+(5).*(n)./(6).floor()	floor(n*(sqrt(13)-1)/6) + n = floor(n*(sqrt(13)+5)/6)
+A156736	adjextn	0	new A001467().skip(1)	() -> mSeq.next().*(n <= 0 ? 1 : 2)	(n+1)			a(n)=2*J001467(n+1)
+A172489	adjext	0	new A042950().prepend(0, 1)	() -> ZV(6).^(mSeq.next())	^J042950(n-2)	"1,6"		a(0)=1,a(1)=6;forn>=2,a(n)=6^J042950(n-2)
+A173260	adjext	0	new A042950().prepend(0, 1)	() -> ZV(5).^(mSeq.next())	^J042950(n-2)	"1,5"		a(0)=1,a(1)=5;forn>=2,a(n)=5^J042950(n-2)
+A180122	lambdan	1	n -> CV(n).*(CV(1).+(CV(3).sqrt())).floor().-(1)	floor(n*(1+sqrt(3))) - 1
+A183149	adjextn	0	new A183061().adjust(1, 0,1)	() -> mSeq.next().*(n <= 1 ? 1 : 3)	*J183061(n-1)	n>=2		a(n)=3*J183061(n-1),forn>=2
+A209899	lambdan	1	n -> CV(n).*(CV(1).-(CV(new Q(1, n))).^(2*n)).floor()	floor(n*(1-1/n)^(2n))
+A209900	lambdan	1	n -> CV(n).*(CV(1).-(CV(1).-(CV(new Q(1, n))).^(2*n))).floor()	floor(n*(1-(1-1/n)^(2*n)))
+A210519	lambdan	0	n -> CR.HALF.*(CR.PI.^(2)).*(ZV(n).^(4)).floor()	floor(1/2*Pi^2*n^4)
+A212293	lambdan	1	n -> CV(n).*(CV(n).log().^(2)).floor()	floor(n*log(n)^2)
+A214657	lambdan	0	n -> CV(n).*(CR.PI.*(2)./(CR.PI.^(2).+(CR.PHI.log().*(2).^(2)).sqrt())).floor()	2*Pi/sqrt(Pi^2 + (2*log(phi))^2)
+A216957	adjext	1	new A007148().prepend(1)	() -> mSeq.next().*(2)	(n-1)	n>=2		a(n)=2*J007148(n-1)forn>1
+A239740	lambdan	1	n -> GCD(SU(1, n, k -> FI(k)), PR(1, n, j -> FI(j)))	, where F(k) is the k-th Fibonacci number
+A239799	lambdan	1	n -> GCD(SU(1, n, k -> LU(k)), PR(1, n, j -> LU(j)))	, where L(k) is the k-th Lucas number
+A242594	filnum	1	0	k -> Functions.LEADING_DIGIT.l(Z2(2*k)) == 4
+A249025	filnum	1	1	k -> !SF(ZV(3).^(k).-(1))	Numbers k such that 3^k - 1 is not squarefree
+A253301	lambdan	1	n -> { final CR spp = CR.PI.*(CR.PHI).sqrt(); return spp.*(n)./(spp.-(1)).floor(); }	floor(n*sqrt(Pi*phi)/(sqrt(Pi*phi)-1)), where phi is the golden ratio
+A260484	lambdan	1	n -> { final CR ep = CR.E.^(CV(1)./(CR.PI)); return CV(n).*(ep)./(ep.-(1)).floor(); }	floor(n*e^(1/Pi)/(e^(1/Pi)-1))
+A260695	lambdan	0	n -> ((n&1) == 0 ? FA(n).*(2)./(n + 2) : Functions.HARMONIC.q(n + 1).*(FA(n)).*(2)./(n + 2).num())
+A263827	adjext	1	new A327096()	() -> mSeq.next().*(2)	(n)			a(n)=2*Sum_{ddividesn,n/dodd}sigma(d)=2*J327096(n)
+A267654	adjext	0	new A086520().skip(2)	() -> mSeq.next().*(2)	(n+2)			a(n)=2*J086520(n+2)
+A268914	adjext	5	new A078611().skip(2)	() -> mSeq.next().*(2)	(n+2)			a(n)=2*J078611(n+2)
+A276383	lambdan	1	n -> { final CR t = X058265; return CV(n).*(t./(t.-(1))).floor(); }	tau_prime), with tau_prime = tau/(tau - 1), wheresant X058265
+A276799	adjextn	1	new A003145()	() -> CV(n).*(X058265.^(2)).floor().-(mSeq.next())	t^2) - J003145(n), where t = 1.8392867... is the trib X058265
+A277721	adjextn	1	new A003146()	() -> CV(n).*(X058265.^(3)).floor().-(mSeq.next())	t^3) - J003146(n), where t = 1.8392867... is the trib X058265
+A277722	lambdan	0	n -> { final CR t = X058265; return CV(n).*(t.^(2)).floor(); }	t^2) where tau is the tribonac           ci constant (X058265)
+A291598	adjext	1	new A281130()	() -> Functions.VALUATION.z(mSeq.next(), 2)	a(n) = log_2(E281130(n)).
+A293414	lambdan	0	n -> CR.HALF.+(CR.E.*(n).*(n)).floor()	floor(1/2 + (n^2)*e)
+A293420	lambdan	0	n -> CR.HALF.+(CR.SQRT2.*(FI(n))).floor()	floor(1/2 + FI(n)*sqrt(2))
+A293504	lambdan	0	n -> CR.HALF.+(CR.SQRT2.*(n).*(n)).floor()	floor(1/2 + (n^2)*sqrt(2))
+A293676	lambdan	0	n -> CR.HALF.+(CR.E.*(FI(n))).floor()	floor(1/2 + e*FI(n))
+A293679	lambdan	0	n -> CR.HALF.+(CR.PI.*(FI(n))).floor()	floor(1/2 + Pi*FI(n))
+A300696	adjextn	0	new A083355()	() -> mSeq.next().*(n <= 0 ? 1 : 2)	(n)	forn>0	"1"		a(0)=1,a(n)=2*J083355(n)forn>0
+A321193	adjext	1	new A070776().prepend(1)	() -> mSeq.next().*(2)	(n-1)	n>=2		a(n)=2*J070776(n-1)forn>1
+A325104	lambdan	0	n -> E080572(n + 1).-(n)./(2)	0	0,0,0,2,2,5,9	0	0,0,1,2,7,8,15	2*E080572(n-2)+n
+A329938	lambdan	1	n -> { final CR x = X329937; return CV(n).*(REALS.sinh(x)).floor(); }	sinh(x)), where x = 1.390148...    is the constant in X329937; a(n) first differs from E329831(n) at n = 77
+A329939	lambdan	1	n -> { final CR x = X329937; return CV(n).*(REALS.cosh(x)).floor(); }	cosh(x)), where x = 1.390148... is t   he constant in X329937; a(n) first differs from E329832(n) at n = 68
+A329961	lambdan	1	n -> { final CR x = X329960; return CV(n).*(x.sin().+(2)).floor(); }	(2 + sin x)), where x = 2.058943... i the constant in X329960
+A329962	lambdan	1	n -> { final CR x = X329960; return CV(n).*(x.cos().+(2)).floor(); }	(2 + cos x)), where x = 2.058943... i the constant in X329960
+A329975	lambdan	1	n -> { final CR x = X060006; return CV(n).*(x.*(x.+(1)).+(1)).floor(); }	(1+x+x^2)), where x = 1.324717... is the           in X060006
+A329994	lambdan	1	n -> { final CR x = X329992; return CV(n).*(CV(2).^(x)).floor(); }	2^x), where x = 1.298192... is the constant in        X329992
+A329997	lambdan	1	n -> { final CR x = X329995; return CV(n).*(CV(3).^(x)).floor(); }	3^x), where x = 1.12177497... is the co     nstant in X329995
+A330064	lambdan	1	n -> { final CR x = X330062; return CV(n).*(REALS.cosh(x)).floor(); }	cosh(x)), where x = 1.61749989... i s the constant in X330062
+A330067	lambdan	1	n -> { final CR x = X330065; return CV(n).*(REALS.sinh(x)).floor(); }	sinh(x)), where x = 1.656135560... is the constant in X330065
+A330094	lambdan	1	n -> { final CR x = X330093; return CV(n).*(CV(2).^(x)).floor(); }	2^x), where x = 1.4243198392... is the const   ant in X330093
+A330095	lambdan	1	n -> { final CR x = X330093; return CV(n).*(CV(3).^(x.-(1))).floor(); }	3^(x-1)), where x = 1.4243198392... is the cnstant in X330093
+A330112	lambdan	1	n -> { final CR x = X330111; return CV(n).*(CR.E.^(x)).floor(); }	e^x), where x = 1.01859181977... is the const  ant in X330111
+A330113	lambdan	1	n -> { final CR x = X330111; return CV(n).*(REALS.cosh(x)).floor(); }	cosh(x)), where x = 1.01859181977..is the constant in X330111
+A330115	lambdan	1	n -> { final CR x = X330114; return CV(n).*(CR.E.^(x)).floor(); }	e^x), where x = 1.1676157... is the constant in       X330114
+A330116	lambdan	1	n -> { final CR x = X330114; return CV(n).*(REALS.sinh(x)).floor(); }	sinh(x)), where x = 1.1676157...   is the constant in X330114
+A330117	lambdan	1	n -> { final CR x = X075778; return CV(n).*(x.+(1)).floor(); }	(1+x)), where x = 0.7548776662... is the constant in  X075778
+A330118	lambdan	1	n -> { final CR x = X075778; return CV(n).*(x.*(x.+(1)).+(1)).floor(); }	(1+x+x^2)), where x = 0.7548776662... is the constant X075778
+A330143	lambdan	1	n -> { final CR x = X330142; return CV(n).*(CV(new Q(3, 2)).^(x)).floor(); }	(3/2)^x), where x = 1.108702608375893 the constant in X330142
+A330144	lambdan	1	n -> { final CR x = X330142; return CV(n).*(CV(new Q(5, 2)).^(x)).floor(); }	(5/2)^x), where x = 1.108702608375893 the constant in X330142
+A336404	lambdan	2	n -> CV(n).*(CV(PM(n))./(PI(n)).frac()).floor()	floor(n*frac(prime(n)/pi(n))), where frac denotes the fractional part
+A337581	adjextn	2	new A000682().adjust(1, 1,2)	() -> mSeq.next().*(n <= 3 ? 1 : 4)	*J000682(n-2)	n>=4		Forn>=4:a(n)=4*J000682(n-2)
+A348418	adjextn	0	new A078586().prepend(1,3,8)	() -> mSeq.next().*(n <= 2 ? 1 : 8)	*J078586(n-2)	n>=3		a(n)=8*J078586(n-2)=8*(Product_{k=1..n-2}J002145(k))forn>2
+A352227	adjext	1	new A006165().prepend(0)	() -> mSeq.next().*(2)	(n-1)	n>=2		Forn>=2,a(n)=2*M006165(n-1)
+A357905	lambdan	1	n -> Functions.VALUATION.z(E060839(n), 3)
+A358684	adjextn	0	new A093179()	() -> Z2(n).-(Functions.DIGIT_LENGTH.i(2, mSeq.next()) - 1)	 a(n) = 2^n-floor(log_2(J093179(n))). - _Lorenzo Sauras Altuzarra_, Jan 11 2026
+A364999	adjext	1	new A039956().skip(1)	() -> mSeq.next().*(2)	(n+1)			a(n)=2*J039956(n+1)
+A369151	adjextn	1	new A002182().prepend(1,2)	() -> mSeq.next().*(n <= 2 ? 1 : 4)	*J002182(n-2)			Ifn>2,a(n)=2*J181808(n-2)=4*J002182(n-2)
+A374328	adjext	1	new A374327()	() -> ZV(VAL(mSeq.next(), 2))
+A375272	adjext	1	new A331109()	() -> Functions.VALUATION.z(mSeq.next(), 2)	a(n) = log_2(E331109(n)).
+A380265	lambdan	1	n -> new Q(SU(1, n, k -> D051903(k)), n).den()
+A380267	lambdan	1	n -> new Q(SU(1, n, k -> D051904(k)), n).den()
+A381901	adjextn	1	new A006992().adjust(3, 1,2,4,8)	() -> mSeq.next().*(n <= 4 ? 1 : 2)	(n-1)	n>=5		a(n)=2*J006992(n-1)forn>=5

@@ -133,7 +133,7 @@ dirarr_reflect: # extract all sequences with keywords "tabl|tabf" that implement
 	wc -l    dirarr.tmp
 dirarr_load:
 	$(DBAT) -f $(COMMON)/dirarr.create.sql
-	grep -E "^A[0-9]+" dirarr.tmp \
+	grep -E "^A[0-9]+" dirarr.tmp dirarr.man \
 	| perl -ne 'my ($$aseqno, $$offset1, $$superclass) = split(/\t/); print join("\t", $$aseqno, "dirarr", $$offset1, "", "") . "\n";'\
 	| $(DBAT) -r dirarr
 	# $(DBAT) "INSERT INTO dirarr values('A006942', 0, 'dirarr', '', '');"
