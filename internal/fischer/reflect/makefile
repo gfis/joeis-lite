@@ -480,13 +480,21 @@ offin_eval4: # select those with all subclasses needing the same offset patch, o
 	| tee    $@.tmp
 	wc -l    $@.tmp
 
-#----
+#======== 
+# to do: describe the offset patching process:
+# make offpack
+# copy to dated version
+# make offpatch
+# make refresh_synth
+# rerun
+# how to gether the successfully patche ones?
+#
 offpack: # pack all jOEIS sources that have wrong offsets - edit them
 	perl queue.pl -p offin.tmp > $@.pack
 	e $@.pack
 offunpack: # unpack the edited sources into joeis-lite/src
 	perl queue.pl -uf offpack.pack
-#========
+#----
 offpatch: offpatch1 offpatch2 # CC= ; needs offin.tmp; patch wrong offsets listed in offin.tmp
 offpatch1:
 	cd .. ; make purge
@@ -498,7 +506,7 @@ offpatch1:
 	make offpatchi MODE=setoffset
 	make offpatchi MODE=basuper
 	make offpatchi MODE=sesuper
-	make offpatchi MODE=noxtend   # must be the last MODE
+	# make offpatchi MODE=noxtend   # must be the last MODE
 offpatch2: # compile and test
 	cd .. ; make dist testall evaluate log GU=16
 offpatchi: # MODE=

@@ -2,7 +2,8 @@
 
 # Read a *.pack file and patch all members
 # @(#) $Id$
-# 2026-03-03: .m noxtend|manual
+# 2026-10-16: wrong "*/** Construct ..." in noxtend
+# 2026-03-03: -m noxtend|manual
 # 2026-02-16, Georg Fischer: copied from patch_queue.pl; *WP=80
 #
 #:# Usage:
@@ -128,7 +129,7 @@ GFis
 GFis
             if ($block =~           m{\n *\/\*\* Construct the sequence}) {
                 $block =~           s{\n  \/\*\* Construct the sequence}
-                                {$mseq\n *\/\*\* Construct the sequence}m;
+                                {$mseq\n  \/\*\* Construct the sequence}m;
             } else {
                 $block =~           s[\n *\@Override\n *public Z next]
                     [$mseq$constructor\n  \@Override\n  public Z next]m;
