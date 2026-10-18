@@ -1,6 +1,7 @@
 package irvine.test;
 /*  Reads a subset of OEIS 'stripped', calls joeis sequences and compares the results
  *  @(#) $Id$
+ *  2026-10-17: V4.6: AbstractSequence mSeq
  *  2026-03-09: V4.5: direct.a((long) n)
  *  2025-08-29: V4.4: respect offset in parameter testNext.index
  *  2023-10-18: V4.2: optionally try DirectSequence a-methods
@@ -40,6 +41,7 @@ import java.util.ArrayList;
 import java.util.concurrent.TimeoutException;
 
 import irvine.math.z.Z;
+import irvine.oeis.AbstractSequence;
 import irvine.oeis.DirectSequence;
 import irvine.oeis.Sequence;
 import irvine.oeis.SequenceFactory;
@@ -56,6 +58,9 @@ public class BatchTest {
 
   /** A-number of sequence currently tested */
   private String  aseqno;
+
+  /** Current sequence with A-number aseqno */
+  private AbstractSequence mSeq;
 
   /** Directory where b-files can be found */
   private String  bFilePath;
@@ -200,7 +205,8 @@ public class BatchTest {
         + "\t" + (status.equals("FAIL") ? mDiff : mCount)
         + "\t" + status
         + "\t" + expected
-        + "\t" + computed
+        + "\t" + computed 
+        + "\t" + mSeq.getOffset()
         );
   } // printLog
   
@@ -458,6 +464,7 @@ public class BatchTest {
               }
               // construction failed: irvine.oeis.a332.A332993
               if (seq != null) { // could be constructed
+                mSeq = (AbstractSequence) seq;
                 mIsDirect  = seq instanceof  DirectSequence;
                 mDirectSeq = mIsDirect    ? (DirectSequence) seq : null;
                 mOffset    = seq.getOffset();
