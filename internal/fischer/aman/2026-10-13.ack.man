@@ -1,0 +1,147 @@
+---- 2026-10-13 21:14:35
+A075656	dead	0	erro
+A090228	bnbn1	0	new A090206()	() -> mB.*(mB1)	J090206(n)*J090206(n+1). - _David Wasserman_, Oct 13 2005
+A090967	adjext	1	new A046315().prepend(4)	() -> F003415(mSeq.next())	n>=2		a(n)=F003415(J046315(n-1))forn>=2
+A092667	diffs	1	new A038034().prepend(0)
+A094215	lambdan	1	n -> E093878(n).-(CV(n)./(CR.PHI).floor())	a(n)=E093878(n)-floor(n/phi)
+A094661	lambdan	0	n -> RU(1, n, k -> QV(PM(k + 1))./(PM(k))).num()			a(n)=numerator(Sum_{k=1..n}prime(k+1)../((prime(k))
+A095222	bnbn1	1	new A053067()	() -> mB.mod(mB1)	J053067(n+1) mod J053067(n). - _Hagen von Eitzen_, Jun 17 2009
+A095716	anan1	0	1	() -> CR.PI.*(mA1).round()	integer nearest Pi*a(n-1), where a(0) = 1.
+A096217	multia	1	"1"	(self, n) -> SU(1, n - 1, k -> GCD(self.a(k), ZV(n)).isOne() ? self.a(k) : ZV(0))	sum of terms of {a(1),a(2),a(3),...a(n-1)} which are coprime to n.
+A098206	anan1	1	1	() -> mA1.+(PM(n)).*(PM(n))	+prime(n))*prime(n), a(1)=1.
+A100475	anan1	0	1	() -> REV(PM(mA1))	reversal(a(n-1)th prime).
+A101992	lambdan	2	n -> RU(2, n, i -> new Q(Z_1(i), F000010(i).*(i))).num()			a(n)=numerator(Sum_{i=2..n}(-1)^i./((i*phi(i)))
+A103297	diffs	0	new A004137().prepend(-1)
+A104854	bnbn1	1	new A000111()	() -> mB.*(2).-(mB1)	2*J000111(n+1)-J000111(n) [Berry et al., 2013] (but compare J231895). - _N. J. A. Sloane_, Nov 18 2013
+A107290	adjext	2	new A000668().skip(1)	() -> mSeq.next().+(2)./(3)	(J000668(n) + 2)/3
+A108585	anan1	1	2	() -> mA1.+(E005185(n+1).*(2))	, with a(1) = 2.
+A112953	lambdan	1	n -> (n == 1 ? ZV(0) : PI(n).^(PI(n)))	forn>1	"0"		a(1)=0;a(n)=pi(n)^pi(n)forn>1
+A115071	lambdan	1	n -> RU(1, n, i -> QV(i).^(n)./(n + 1 - i)).num()			a(n)=numerator(Sum_{i=1..n}i^n./((n+1-i))
+A117849	adjext	0	new A001359()	() -> mSeq.next().^(2).-(1)./(4)	(J001359[n]^2-1)/2
+A119686	lambdan	1	n -> RU(1, n, k -> QV(1)./(PM(k).-(1).^(2))).num()			a(n)=numerator(Sum_{k=1..n}1../(((Prime(k)-1)^2)
+A119758	lambdan	1	n -> RU(1, n, k -> QV(k).^(n)./(ZV(n).^(k))).num()			a(n)=numerator(Sum_{k=1..n}k^n./(n^k)
+A119783	lambdan	1	n -> RU(1, n, i -> QV(i).^(3)./(n-i+1)).num()			a(n)=numerator(Sum_{i=1..n}i^3./((n-i+1))
+A119787	lambdan	1	n -> RU(1, n, k -> QV(((k + 1)&1) == 1 ? -n : n)./(k)).num()			a(n)=numerator(Sum_{k=1..n}(-1)^(k+1)*n./(k)
+A120271	lambdan	1	n -> RU(1, n, k -> QV(1)./(PM(k).-(1))).num()			a(n)=numerator(Sum_{k=1..n}1./((prime(k)-1))
+A120272	lambdan	0	n -> D258851(F002110(n))			a(n)=D258851(F002110(n))
+A120285	lambdan	1	n -> RU(1, PMi(n) - 1, k -> new Q(1, k)).num()			a(n)=numerator(Sum_{k=1..prime(n)-1}1./(k)
+A121290	lambdan	2	n -> Z.TWO.pow(PM(n)).-(8)./(24)	(2^prime(n) - 8)/24	for n>=2
+A123899	bnbn1	0	new A093101()	() -> FA(n + 1)./(mB.*(mB1))	(n+1)!/(J093101(n)*J093101(n+1)) where J093101(n)=gcd(n!,1+n+n(n-1)+...+n!).
+A125888	lambdan	0	n -> RU(1, n, i -> QV(FI(i))./(LU(i))).num()			a(n)=numerator(SUM[i=1..n]F(i)./(L(i))=numerator(SUM[i=1..n]F000045(i)./(F000032(i))
+A126558	bnbn1	1	new A126557()	() -> mB.+(mB1)./(2)	(J126557(n)+J126557(n+1))/2.
+A127720	adjext	1	new A024450().skip(1)	() -> Functions.SQRT.z(mSeq.next().-(4))	024450(n+1)-4)			a(n)=F000196(J024450(n+1)-4)
+A128647	lambdan	1	n -> RU(1, n, k -> new Q(Z_1(k + 1), PM(k).-(1))).num()			a(n)=numerator(Sum_{k=1..n}(-1)^(k+1)./((prime(k)-1))
+A128972	lambdan	2	n -> FSIT(ZV(n).^(3).-(1), ZV(1), (x, p, e) -> x.*(p.^(e % 3)))	mul(f[1]^(f[2] mod 3)
+A129547	anan1	0	0	() -> FA(n + 1).-(DF(n)).-(mA1)	n! - (n-1)!! - a(n-1), with a(1)=1!-0!!=0.
+A130174	anan1	1	0	() -> mA1.+(1).+(F055642(mA1))	for n>1.
+A131354	bnbn1	0	new A000073()	() -> PI(mB.-(1)).-(PI(mB1))	(n+1)-1)-F000720(J000073(n))	n>=3		a(n)=F000720(J000073(n+1)-1)-F000720(J000073(n))forn>=3
+A131644	anan1	1	0	() -> Z.TWO.modPow(mA1, ZV(n))	2^(a(n-1)) mod n, a(1) = 0
+A131954	anan1	1	1	() -> Functions.DIGIT_SUM.z(FA(n).+(mA1))	sum of digits of (n! + a(n-1)), with a(1)=1.
+A131955	anan1	1	1	() -> Functions.DIGIT_SUM.z(DF(n).+(mA1))	sum of digits of (n!! + a(n-1)).
+A135207	anan1	0	1	() -> Functions.DIGIT_SUM.z(ZV(n).^(Functions.DIGIT_SUM.l(mA1)))	Sum_digits{n^Sum_digits[a(n-1)]}, with a(0)=1.
+A135208	anan1	0	1	() -> Functions.DIGIT_SUM.z(BI(ZV(n), Functions.DIGIT_SUM.z(mA1)))	Sum_digits{C(n,Sum_digits[a(n-1)])}, with a(0)=1.
+A139083	bnbn1	1	new A034684()	() -> mB.+(mB1)	J034684(n) + J034684(n+1). [_Franklin T. Adams-Watters_, Apr 09 2009]
+A139537	adjext	0	new A005478()	() -> F007953(mSeq.next())	a(n)			a(n)=F007953(J005478(n))anda(n)=J004090(J001605(n))
+A139762	anan1	0	0	() -> Functions.DIGIT_SUM.z(mA1).+(Functions.DIGIT_SUM.z(n))	Sum_digits_of_a(n-1)+Sum_digits_of(n).
+A140365	lambdan	1	n -> ZV(6*n - 5).*(PP(6*n - 5) ? 1 : 0).+(ZV(6*n - 1).*(PP(6*n - 1) ? 1 : 0))	(6n-5)*isprime(6n-5) + (6n-1)*isprime(6n-1)	where isprime = D010051
+A143140	multia	0	""	(self, n) -> F000110(n).+(SU(2, n-1, k -> BI(n,k).*(F000110(n - k)).*(self.a(k))))	a(n)=Bell(n)+Sum_{k=2..n-1}C(n,k)*Bell(n-k)*a(k)withBell=F000110
+A143265	lambdan	1	n -> E137795(n).*(QV(n)./(E137795(n)).ceiling())			a(n)=E137795(n)*Ceiling(n/E137795(n))
+A146211	lambdan	3	n -> { final Z p = PM(n); return ZV(3).^(p.-(1)).-(1)./(p); }	(3^(p-1)-1)/p	where p=F000040(n)
+A153003	lambdan	0	n -> E139250(n + 1).-(3).*(3)./(4).+(1)
+A156256	bnbn1	1	new A078649()	() -> mB.-(mB1).-(2)	J078649(n+1)-J078649(n)-2.
+A157891	adjext	0	new DifferenceSequence(0, new A000043())	() -> mSeq.next().-(1) 
+A160276	bnbn1	0	new A160275()	() -> mB./(mB1)	J160275(n+1) / J160275(n)
+A161846	bnbn1	1	new A011757()	() -> new Q(mB.-(mB1), PM(n)).num()	numerator((J011757(n+1) - J011757(n))/F000040(n)). - _Petros Hadjicostas_, May 13 2020
+A164266	bnbn1	0	new A000396()	() -> PI(mB).-(PI(mB1))	(n+1))-F000720(J000396(n))			a(n)=F000720(J000396(n+1))-F000720(J000396(n))
+A165886	bnbn1	0	new A165641()	() -> mB./(mB1)	J165641(n+1)/J165641(n).
+A174009	adjext	1	new A078917().prepend(2)	() -> PI(mSeq.next())	n>=2		Forn>1,a(n)=F000720(J078917(n-1))
+A176559	bnbn1	0	new A059305()	() -> mB.-(mB1).-(1)	J059305(n+1) - J059305(n) - 1. - _Amiram Eldar_, May 14 2023
+A177961	bnbn1	1	new A090368()	() -> mB.+(mB1)./(2)	(J090368(n)+J090368(n+1))/2. [_R. J. Mathar_, May 31 2010]
+A179478	bnbn1	0	new A073609()	() -> Functions.SQRT.z(mB.-(mB1))	sqrt(J073609(n+1)-J073609(n)).
+A180492	lambdan	1	n -> E173392(F000040(n))			a(n)=E173392(F000040(n))=J180491(F000040(n))
+A181822	adjextn	1	new A181820()	() -> E108951(mSeq.next())			IfJ025487(n)=Productp(i)^e(i),thena(n)=ProductF002110(e(i)).I.e.,a(n)=E108951(D181819(J025487(n))).a(n)alsoequalsE108951(J181820(n))
+A182046	bnbn1	1	new A182045()	() -> mB.+(mB1)	J182045(n+1)+J182045(n).
+A182393	adjext	0	new A022011()	() -> mSeq.next().-(11)./(210)	(J022011(n) - 11)/210	
+A186656	diffs	1	new A186655().prepend(0)	- J186655(n-1)
+A187564	adjextn	1	new A147562()	() -> E187220(n).-(mSeq.next())			a(n)=E187220(n)-J147562(n-1)
+A188541	bnbn1	0	new A079500()	() -> mB1.*(2).-(mB)	2 * J079500(n) - J079500(n+1).
+A192363	bnbn1	1	new A053664()	() -> mB.-(mB1)./(F002110(n))	(J053664(n+1)-J053664(n)) / F002110(n).
+A192457	lambdan	0	n -> Z2(n).*(FA(n + 1)).-(DF(2*n - 1)).*(2)./(3)	(2/3)*(2^n(n+1)! - (2n-1)!!)
+A194795	bnbn1	1	new A240690()	() -> mB.-(mB1).*(Z_1(n + 1)).-(1)	(-1)^(n+1) * (J240690(n+1) - J240690(n)) - 1. - _Vaclav Kotesovec_, Nov 11 2015
+A202297	bnbn1	0	new A109724()	() -> mB.*(mB1)	J109724(n)*J109724(n+1).
+A209901	lambdan	1	n -> E204768(n).-(1)			a(n)=J016169(F000040(n))-2=E204768(n)-1=J000420(F000040(n))-J000400(F000040(n))-2
+A211395	bnbn1	0	new A211397().adjust(1, 0,1)	() -> mB.-(mB1)	J211397(n+1) - J211397(n). - _Michel Marcus_, Sep 22 2014
+A212196	lambdan	0	n -> RU(0, n, k -> BERN(n + k).*(BI(n, k))).num()			a(n)=numerator(Sum_{k=0..n}C(n,k)*BERN(n+k))
+A215456	lambdan	1	n -> DF(4*n - 1).modZ(2*n)	(4n-1)!! modulo 2n, n=1,2,..
+A221132	anan1	1	1	() -> LCM(mA1, ZV(n).*(n + 1).+(1))	for n > 1 with a(1) = 1.
+A226932	lambdan	0	n -> RU(0, n, k -> new Q(FA(k).*(S1(n, k)), FA(n))).num()		a(n)=numerator(Sum_{k=0..n}(k!*Stirling1(n,k))./(n!)
+A228926	lambdan	1	n -> SU(1, n - 1, m -> ZV(m).modPow(n + 1, n)).modZ(n)	Sum(m^(n+1), m=1...n-1) modulo n.
+A234431	bnbn1	1	new A001969()	() -> mB.+(mB1)	J001969(n) + J001969(n + 1).
+A235138	lambdan	1	n -> E235137(n).modZ(n)	a(n)=E235137(n)(modn)
+A239479	adjext	0	new A054377()	() -> mSeq.next()./(2).^(2)	(J054377(n)/2)^2	
+A244445	bnbn1	1	new A002386()	() -> new Q(mB, mB1).ceiling()	ceiling(J002386(n+1)/J002386(n)).
+A259849	bnbn1	1	new A000396()	() -> mB.+(mB1)./(2)	(J000396(n)+J000396(n+1))/2, assuming there are no odd perfect numbers.
+A259876	trilambn	0	0	0	(n, k) -> D005329(n)./(D005329(k)).*(Z_1(k))	= qfactorial(n)/qfactorial(k)*(-1)^(k), n>=k
+A263455	bnbn1	1	new A084697()	() -> mB.-(mB1)./(n)	(J084697(n+1) - J084697(n))/n.
+A268567	adjextn	0	new A054993().skip(1)	() -> mSeq.next().*(FA(n - 1))./(2)	n)*(n-1)!/2 [proof: in a long curve, label the first (leftmost) crossing by #1 and the rest by whatever, in (n-1)! ways; then each labeled oriented spherical closed curve corresponds to precisely 2 such labeled long curves, depending on which of the 2 edges going into vertex #1 is chosen to be "long"]. - _Andrey Zabolotskiy_, Jan 14 2025
+A269723	adjextn	0	new A341389()	() -> F010060(n).xor(mSeq.next())			a(n)=F010060(n)XORJ341389(n)
+A283311	adjext	0	new A054377().skip(1)	() -> mSeq.next().-(6)./(36)		(J054377(n) - 6)/36	
+A283793	anan1	0	4	() -> TRI(mA1).+(4)	4 + T(a(n-1)) where T(m) is the m-th triangular number.
+A286292	bnbn1	1	new A286290()	() -> mB.-(mB1).-(2)	J286290(n+1) - J286290(n) - 2. - _M. F. Hasler_, May 23 2017
+A286682	bnbn1	0	new A059784()	() -> mB.-(mB1.^(2))	J059784(n+1) - J059784(n)^2.
+A289383	lambdan	0	n -> SU(1, n, k -> S022166(n, k).*(Z2(k).-(1)))	a(n) = Sum_{k=1..n} A022166(n,k)*(2^k - 1).
+A290304	adjext	1	new A287055()	() -> F047994(mSeq.next())			a(n)=F047994(J287055(n))
+A291933	anan1	1	2	() -> PM(n).+(mA1.mod(10))	prime(n) + a(n-1) mod 10, where a(0) = 0.
+A293046	lambdan	0	n -> n == 0 ? ZV(0) : (D000295(n).+((n&1) == 0 ? n - 1 : - n + 1))./(2)
+A293047	lambdan	0	n -> n == 0 ? ZV(0) : (D000295(n).+((n&1) != 0 ? n - 1 : - n + 1))./(2)
+A295391	bnbn1	1	new A275611()	() -> mB./(mB1)	J275611(n)/J275611(n-1). - _N. J. A. Sloane_, Sep 03 2024
+A296506	lambdan	1	n -> { final Z n3 = ZV(3).^(n); return FA(n3)./(ZV(6).^(n3.-(1)./(2))); }	(3^n)!/6^((3^n-1)/2)
+A309321	bnbn1	1	new A075807()	() -> mB.-(mB1).-(1)	J075807(n+1) - J075807(n) - 1. - _Jinyuan Wang_, Jul 24 2019
+A309989	bnbn1	0	new A286877()	() -> mB.-(mB1)./(ZV(17).^(n))	(J286877(n+1) - J286877(n))/17^n.
+A309990	bnbn1	0	new A286878()	() -> mB.-(mB1)./(ZV(17).^(n))	(J286878(n+1) - J286878(n))/17^n.
+A320302	bnbn1	1	new A320300()	() -> mB.-(mB1).-(1)	J320300(n+1) - J320300(n) - 1 = J320301(n) - 1 (this is about Pi/4, but they are essentially the same).
+A324861	adjext	1	new A324876()	() -> F070939(mSeq.next())	"0"		a(1)=0;forn>1,a(n)=F070939(J324876(n))=1+D000523(J324876(n))
+A324862	adjext	1	new A324878()	() -> F070939(mSeq.next())			IfJ324878(n)=0,a(n)=0,otherwisea(n)=F070939(J324878(n))=1+D000523(J324878(n))
+A328097	lambdan	1	n -> E327928(n).isZero() ? F003415(n) : E327859(n)	=F276086(F003415(n))
+A330718	lambdan	1	n -> RU(1, n, k -> new Q(Z2(k).-(2), k)).num()			a(n)=numerator(Sum_{k=1..n}(2^k-2)../((k)
+A330804	multia	0	""	(self, n) -> F000110(n).+(SU(1, n-1, i -> S2(n, i).*(self.a(i))))	a(n)=Bell(n)+Sum_{i=1..n-1}Stirling2(n,i)*a(i)
+A331733	lambdan	1	n -> F000203(E225546(n))			a(n)=sigma(E225546(n))
+A331735	lambdan	0	n -> GCD(E225546(n), F000203(E225546(n)))			a(n)=D009194(E225546(n))=gcd(E225546(n),sigma(E225546(n)))
+A338530	anan1	1	1	() -> PM(n).+(mA1).mod(PM(n - 1))	(prime(n) + a(n-1)) mod prime(n-1), a(1) = 1.
+A339448	anan1	0	0	() -> PM(n).-(mA1).modZ(3)	(prime(n) - a(n-1)) mod 3; a(0)=0.
+A346463	lambdan	0	n -> { final Z n4 = Z2(2*n); return n == 0 ? ZV(0) : n4.-(2).*(n4.-(1))./(U160014(2*n, 1)); }	(4^n - 2)*(4^n - 1)/Clausen(2*n, 1)	where Clausen(n, k) = U160014(n, k)
+A346469	lambdan	0	n -> GCD(E327860(n), E329029(n))			a(n)=J340070(F276086(n))=gcd(E327860(n),E329029(n))
+A346716	lambdan	0	n -> RU(1, 2*n, k -> BERN(k + 1)./(ZV(k + 1).*(ZV(k).^(k + 1)))).num()			a(n)=numerator(Sum_{k=1..2*n}BERN(1+k)./(((1+k)*k^(1+k)))
+A348708	adjextn	0	new A071172()	() -> mSeq.next().-(E084237(n))./(2)	(J071172(n) - E084237(n)) / 2	
+A349597	anan1	0	3	() -> Functions.DIGIT_SUM.z(FA(mA1))	sumdigits(a(n-1)!) for n > 1.
+A351775	anan1	0	2	() -> Functions.SIGMA.z(n, mA1)	sigma_n( a(n-1) ) for n >= 1, a(0) = 2.
+A356082	anan1	0	1	() -> PM(mA1).^(2)	prime(a(n-1))^2, for n>=2.
+A356083	anan1	0	1	() -> PM(mA1).^(3)	prime(a(n-1))^3, for n>=2.
+A361823	adjext	1	new A134266()	() -> F007918(mSeq.next())			a(n)=nextprime(J134266(n))
+A363150	lambdan	0	n -> RU(0, n, j -> BERN(j).*(BERN(n - j))).*(Z_1(n)).num()			a(n)=numerator(Sum_{j=0..n}BERN(j,1)*BERN(n-j,1))
+A363153	lambdan	0	n -> RU(0, 2*n, j -> BERN(j).*(BERN(2*n - j))).num()			a(n)=numerator(Sum_{j=0..2*n}BERN(j,1)*BERN(2*n-j,1))
+A368238	adjext	1	new A085778()	() -> F004086(mSeq.next())			a(n)=F004086(J085778(n))
+A368823	multia	1	"1"	(self, n) -> E055231(self.a(n - 1).*(n))	"1"		a(1)=1;forn>1,a(n)=E055231(a(n-1)*n)
+A368825	multia	1	"1"	(self, n) -> E055231(self.a(n - 1).+(n))	"1"		a(1)=1;forn>1,a(n)=E055231(a(n-1)+n)
+A371441	anan1	0	1	() -> mA1.*(ZV(3).^(n)).+(1)	3^n + 1 where a(0)=1.
+A371668	holos	0	[[0],[-56,8],[116,-20],[-110,26],[77,-23],[-46,15],[22,-10],[-5,5],[0,-1]]	0,1,1,1,5,11	0	0
+A371704	lambdan	1	n -> ZV(n).*(50).+(50).*(n).+(23).-(Z_1(n).*(23).*(2*n + 1))./(16)	(50*n^2 + 50*n + 23 - 23*(-1)^n*(1+2*n)) / 16
+A373294	bnbn1	1	new A091644().prepend(0)	() -> mB.-(mB1)	J091644(n) - J091644(n-1) for n > 1. - _Michael S. Branicky_, May 31 2024
+A375530	anan1	0	1	() -> PM(n).*(mA1.^(2)).+(mA1)	prime(n)*a(n-1)^2 + a(n-1), with a(0) = 1.
+A376132	lambdan	1	n -> D000295(E376116(n + 1).-(E376116(n)).+(1))
+A376419	bnbn1	1	new A024451()	() -> mB1.*(PM(n + 1)).-(mB)	prime(1+n)*J024451(n-1) - J024451(n), where J024451(n) is the numerator of Sum_{i = 1..n} 1/prime(i).
+A378899	bnbn1	0	new A286708().prepend(0)	() -> n == 0 ? ZV(11) : PI(mB).-(PI(mB1))	(n+1))-F000720(J286708(n))	n>=1		Forn>0,a(n)=pi(J286708(n+1))-pi(J286708(n))
+A379034	bnbn1	0	new A151483()	() -> mB.*(mB1)./(Z2(2*n))	J151483(n) * J151483(n+1) / 4^n. - _Mark van Hoeij_, Dec 27 2025
+A379115	lambdan	0	n -> E328845(n).modZ(5)			a(n)=E328845(n)mod5
+A381503	bnbn1	1	new A033192().skip(1)	() -> mB.*(mB1)	J033192(n) * J033192(n+1).
+A382905	adjextn	1	new A046100()	() -> E055231(mSeq.next())			a(n)=E055231(J046100(n))
+A385434	trilambn	0	0	0	(n, k) -> S022166(n, k).modZ(3)
+A392014	adjextn	1	new A138302()	() -> E278908(mSeq.next())			a(n)=E278908(J138302(n))
+A392016	adjextn	1	new A138302()	() -> E322857(mSeq.next())			a(n)=E322857(J138302(n))
+A393141	lambdan	0	n -> RU(0, n, k -> new Q(FA(n), FA(n - k).*(ZV(n + 1).^(k)))).num()			a(n)=numerator(Sum_{k=0..n}n!./(((n-k)!*(n+1)^k))
+A394434	adjext	1	new A094028().skip(1)	() -> F020639(mSeq.next())		a(n)=F020639(J094028(n))
+A396571	bnbn1	1	new A071904()	() -> mB.+(mB1)./(2)	(J071904(n) + J071904(n+1))/2.
+A398463	lambdan	1	n -> E360969(n).*(n)			a(n)=E360969(n)*n=D005361(n)^2*n
+A400538	holos	0	[0,-1,4,-6,4,-1]	1,99,621,1935	0	0
+A400896	rambdan	1	n -> QV(1).-(new Q(n*(n - 1) + 2, Z2(n)))	a(n) = numerator(1 - (n^2 - n + 2)/2^n).	nonn,frac,new	1..36	nyi	_Stefano Spezia_
+A400897	rambdad	1	A400896	a(n) = denominator(1 - (n^2 - n + 2)/2^n).	nonn,frac,new	1..36	nyi	_Stefano Spezia_

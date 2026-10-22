@@ -1,0 +1,47 @@
+---- 2026-10-21 16:56:57
+A088648	holos	1	[0,1,-2,1]	1,5,11,15,19,25,35,45,55,65	0	0
+A221701	lambdan	2	n -> { final long s = 2; return Z2(2*n - 1).+(ZV(2*s*n - s - 3*n + 1).*(BI(2*n - 2, n - 1))).-(BI(2*n, n - 2).*(4)./(n)); }
+A221703	lambdan	2	n -> { final long s = 3; return Z2(2*n - 1).+(ZV(2*s*n - s - 3*n + 1).*(BI(2*n - 2, n - 1))).-(BI(2*n, n - 2).*(4)./(n)); }
+A221704	lambdan	2	n -> { final long s = 4; return Z2(2*n - 1).+(ZV(2*s*n - s - 3*n + 1).*(BI(2*n - 2, n - 1))).-(BI(2*n, n - 2).*(4)./(n)); }
+A224333	arrlamb	1	1	1	-1	(n, k) -> ZV(1 + k).^(n - 1).*(2*n).-(n)
+A243495	filfix	0	new A057511()	Indices in J014486  for the oriented trees that stay the same when "deep-rotated": fixed points of J057511/J057512.
+A255411	filfix	0	new A257080()	Positions of ones in J257079, fixed points of J257080, positions of zeros in J257511, ?257081 and ?257261.
+A255884	polyxa	0	"[1]"	"x,B,>1,/n,1,-,exp"	1	0	new A002438()
+A257142	trilambn	1	1	1	(n, m) -> n == 1 ? ZV(1) : SU(0, n, k -> BI(k - 1, m - 1).*(BI(k, m - 1)).*(BI(n + k - 1, n - k))./(m))
+A260936	filfix	1	new A260933()	J260933(a(n)) = a(n): fixed points of J260933.
+A262137	lambdan	0	n -> new Q(1500, n + 5).bankersRound()	a(n) = round(1500/(n + 5)).	nonn,easy	0..59	nyi	_Lekraj Beedassy_
+A279619	holos	0	[[0],[60,-81,27],[15,-39,26],[0,0,-1]]	1,2,22	0	0
+A294331	polyxa	0	"[1]"	"x,B,/n,exp"	1	0	new A294330()
+A294332	polyxa	0	"[1]"	"x,B,/n,exp"	1	0	new A180563()
+A296204	filfix	1	new A295666()	Numbers k such that Product_{d|k, gcd(d,k/d) is prime} gcd(d,k/d) = k; the fixed points of E295666.
+A306639	filnum	1	1	k -> RD(k, d -> new Q(SIGMA(d), TAU(d))).isInteger()	Numbers m such that Sum_{d|m} (sigma(d)/tau(d)) is an integer h where sigma(k) = the sum of the divisors of k (F000203) and tau(k) = the number of divisors of k (F000005).	nonn	1..64	nyi	_Jaroslav Krizek_
+A307419	trilambn	0	0	0	(n, k) -> RU(0, n - k, i -> new Q(BI(k + i - 1, i).*(SA(n - i, k)), FA(n - i))).*(FA(n)).num()
+A318769	polyxa	0	"[1]"	"x,B,/n,exp"	1	1	new A288417()
+A319511	trilambn	0	0	0	(n, k) -> Z.TWO.^(BI(n, k)).-(1).*(Z.TWO.^(SU(0, k - 1, i -> BI(n, i))))
+A323412	multraf	1	(self, n) -> self.s(0).+(self.s(1))	""	new A064664(), new A323411()
+A348018	inverse	1	1L	new A306458()	1L	1
+A348539	trilambn	0	0	0	(n, m) -> BI(n + 2, m).*(BI(n + 2, n - m))
+A348593	tablamb	0	0	n -> new Integer[] { 0, n == 0 ? 0 : n - 1 }	(n, m) -> RU(0, Functions.MIN.l(m, n - m), j -> new Q(BI(2*j, j).*(BI(n - 2*j - 1, m - j)).*(BI(n - m, j)), j + 1)).num()
+A370397	lambdan	0	n -> new Q(PR(1, n, k -> ZV(4*k + 1)), ZV(4).^(n)).floor()	(Maxima) makelist(floor(product(4*k+1, k, 1, n)/(4^n)), n, 0, 50);
+A376869	polyxa	0	"[1]"	"x,B,1,-,/n,exp"	1	0	new A061163()
+A391552	trilambn	0	0	0	(n, k) -> SU(0, k, j -> Z_1(k - j).*(BI(k, j)).*(ZV(3 + j).^(n)))	Sum_{j=0..k} (-1)^(k-j) * binomial(k,j) * (3+j)^n.
+A395911	holos	1	[0,1,-1,0,1,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-1,1,0,-1,1,0,0,0,0,-1,1,0,-1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,-1,0,1,-1]	1,3,6,9,14,17,26,33,42,51,62,65,86,99,99,129,146,149,182,201,216,243,266,269,314,339,366,393,422,409,482,513,546,579,614,617,686,723,762,801,842,839,926,969,999,1059,1106,1109,1202,1251,1302,1353,1406,1409,1514,1569	0	0
+A398867	parmof4	0	A082182	23	+22	45
+A400753	holos	0	[0,27,-27,10,-1]	1,4,22	0	0
+A400754	holos	0	[0,27,-27,10,-1]	1,7,43	0	0
+A400845	decexp	1	() -> CR.FOUR.log()./(CR.TWO.+(CR.SQRT2).log())	Decimal expansion of log(4)/log(2 + sqrt(2)).	nonn,cons,new	1..100	nyi	_Stefano Spezia_
+A400967	holos	1	[0,-1,4,-6,4,-1]	4,9,16,23	0	0
+A400968	holos	1	[0,-1,4,-6,4,-1]	5,11,13,3	0	0
+A400996	holos	0	[0,2,-8,6,-1]	1,1,3	0	0
+A401016	holos	0	[0,1,0,0,0,-1]	1,3,2,4	0	0
+A401104	parmof4	1	A082182	33	+5	38					Numbers k such that (33^k + 5^k)/38 is prime.
+A401127	parmof4	1	A082182	22	+21	43
+A401139	period	0	"1,6,5,4,3,2"
+A401199	parmof4	1	A082182	21	+20	41					Numbers k such that (21^k + 20^k)/41 is prime.
+A401200	parmof4	1	A082182	24	+23	47					Numbers k such that (24^k + 23^k)/47 is prime.
+A401288	parmof4	0	A082182	46	+5	51
+---- 2026-10-21 17:29:40
+A401189	filnum	1	1	k -> E400873(k).mod(k) == 0 && !SF(k)	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+A401235	adjext	1	new A005235()	() -> F276086(mSeq.next())	J005235(n)), where F276086 is the primorial base exp-function, and J005235 lists fortunate numbers.	nonn,base,new	1..5300	nyi	_Antti Karttunen_
+A401236	adjext	0	new A035345()	() -> F276086(mSeq.next())	J035345(n)), where F276086 is the primorial base exp-function, and J035345 is the smallest prime > 1 + (prime(1)*prime(2)*...*prime(n)).	nonn,base,new	0..5300	nyi	_Antti Karttunen_
+A401188	filnum	0	1	k -> E400874(k).mod(k) == 0

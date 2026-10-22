@@ -1,0 +1,115 @@
+---- 2026-10-16 14:55:00
+A089929	lambdan	2	n -> F000010(ZV(n)./(GCD(n, 2)))	0,0,0		a(n)=F000010(n/gcd(n,2))
+A090818	filnum	1	1	k -> !PP(k) && BERN(2*k).*(3).*(ZV(3).^(k).-(1)).den().isOne()	denominator(3*(3^k-1)*bernfrac(2*k)) == 1
+A090823	lambdan	3	n -> { final Z p = PM(n); return BERN(p.*(2)).*(ZV(3).^(p).+(1)).*(p.*(2).+(1)).*(new Q(3, 2))./(p).num(); }	3/2/prime(n)*(2*prime(n)+1)*(3^prime(n)+1)*bernfrac(2*prime(n))
+A096442	lambdan	1	n -> n < 1 ? ZV(0) : BERN(2*n).*(new Q(2*n + 1, 2)).den()	{a(n) = if(n<1, 0, denominator(bernfrac(2*n)*(n+1/2)))}; /* _Michael Somos_, Sep 05 2020 */
+A103341	filnum	1	1	k -> CR.SQRT2.*(k).floor().bitCount() == 1	Numbers k such that floor(k*sqrt(2)) is a power of 2.
+A108230	lambdan	1	n -> F000720(E088387(n))	0		a(n)=F000720(E088387(n))
+A117693	lambdan	1	n -> SU(1, n, k -> T117692(n, k))	1		a(n)=Sum_{k=1..n}T117692(n,k)
+A118872	filnum	1	0	k -> { final Z sd = Functions.DIGIT_SUM.z(ZV(3).^(k)); if (sd.isOne()) { return true; } return ZV(3).pow(VAL(sd, 3)).equals(sd); }	Numbers k such that digit sum of 3^k is a power of 3.
+A119656	lambdan	1	n -> BERN(PM(n).*(4)).den()./(30)
+A129493	filter	1	new A002808()	k -> { final Z mp = ZV(3).modPow(k, k); return !mp.isOne() && ZV(3).pow(VAL(mp, 3)).equals(mp); }	3.
+A129494	filter	1	new A002808()	k -> { final Z mp = ZV(4).modPow(k, k); return !mp.isOne() && ZV(4).pow(VAL(mp, 4)).equals(mp); }	4 greater than 1.
+A129495	filter	1	new A002808()	k -> { final Z mp = ZV(5).modPow(k, k); return !mp.isOne() && ZV(5).pow(VAL(mp, 5)).equals(mp); }	5 greater than 1.
+A129496	filter	1	new A002808()	k -> { final Z mp = ZV(6).modPow(k, k); return !mp.isOne() && ZV(6).pow(VAL(mp, 6)).equals(mp); }	6 greater than 1.
+A129497	filter	1	new A002808()	k -> { final Z mp = ZV(7).modPow(k, k); return !mp.isOne() && ZV(7).pow(VAL(mp, 7)).equals(mp); }	7 greater than 1.
+A129716	lambdan	0	n -> RU(0, n - 1, j -> BERN(j)).+(1).*(FA(n)).num()
+A131980	tablamb	0	0	n -> new Integer[] { 0, n/2 }	(n, k) -> BI(n + 1, 2*k + 1).*(FA(n))
+A140351	lambdan	1	n -> RU(0, n - 1, i -> BERN(i).*(i + 1).*(BI(n - 1, i))).num()	a(n) = numerator(sum(i=0, n, binomial(n, i)*(i+1)*bernfrac(i)));
+A160727	lambdan	1	n -> Long.bitCount(n + 1) != 1 ? E048883(n) : E048883(n).-((n+1)/2)	if n is a power of 2 minus 1. - _Omar E. Pol_, Jan 06 2014
+A161415	lambdin	1	n -> Long.bitCount(n) != 1 ? E048883(n - 1).*(4) : E048883(n - 1).*(4).-(2*n)	1	For n > 1, a(n) = 4*E048883(n-1), except a(n) = 4*E048883(n-1) - 2n if n is a power of 2. - _N. J. A. Sloane_, Jul 13 2009
+A178056	lambdan	1	n -> E177771(n + 6)./(1728000)	0,0,0		a(n)=E177771(n+6)/1728000
+A181130	lambdan	1	n -> RU(0, n, k -> BERN(n + k).*(BI(n, k))).num().*(Z_1(n))	a(n)=(-1)^n*sum(k=0,n,binomial(n,k)*bernfrac(n+k)) \\ _Charles R Greathouse IV_, Jun 03 2015
+A181360	lambdan	0	n -> T033185(2*n, n)	1		a(n)=T033185(2n,n)
+A192458	lambdan	0	n -> E192457(n)./(2)	0,0,0		a(n)=E192457(n)/2
+A195017	addr	1	(p, e) -> PI(p).+(1).testBit(0) ? ZV(-e) : ZV(e)	a(p^e) = e * (-1)^(1+PrimePi(p)), where PrimePi(n) = F000720(n). - _Antti Karttunen_, Oct 03 2018A195017	Totally additive with a(p^e) = e * (-1)^(1+PrimePi(p)), where PrimePi(n) = F000720(n). - _Antti Karttunen_, Oct 03 2018
+A214300	lambdan	1	n -> E088551(n).*(n)	2,3		a(n)=n*E088551(n)
+A221860	filnum	0	1	k -> PM(k).-(k).bitCount() == 1	 Indices k such that prime(k) - k is a power of 2.
+A223563	lambdan	1	n -> ZV(n*(n + 1)/2 + 1).*(PR(1, n-1, i -> ZV(i*(i + 1)/2 + 1).^(2)))	1,2		a(n)=(1+(n*(n+1)/2))*Product_{i=1..n-
+A228774	filnum	0	1	k -> Long.toString(k, 16).toLowerCase().matches("[a-f]+")	Numbers n such that the digits of n, once written in base 16, are only the hexadecimal digits A to F.
+A228830	filter	1	new A000040()	p -> PP(p.*(2).+(PM(Functions.PRIME_PI.l(p) * 2)))	Primes p(n) such that 2*p(n) + p(2n) is prime.	nonn	1..10000	nyi	_Irina Gerasimova_
+A228837	lambdan	0	n -> SU(0, n/2, k -> BI((n - k)*(n - k), k*(n - 2*k)))	Sum_{k=0..[n/2]} binomial((n-k)^2, (n-2*k)*k).	nonn	0..86	nyi	_Paul D. Hanna_
+A228955	tablamb	0	0	n -> new Integer[] { 0, (n + 1)/2 }	(n, k) -> BI(n + 1, 2*k).*(FA(n))
+A249134	filnum	0	1	k -> BERN(k).den().equals(ZV(2730)) 
+A255308	multia	0	""	(self, n) -> { if (n == 0) { return ZV(0); } final int e = VAL(n, 2); return n == (1 << e) ? self.a(e).+(1) : ZV(0); }
+A255309	multia	0	"0"	(self, n) -> { final int e = VAL(n, 2); return n > 1 && Long.bitCount(n) == 1 ? self.a(e).+(1) : ZV(0); }	a(n) = 1 + a(log_2(n)) if n is a power of 2 except 1, 0 otherwise.
+A255506	lambdan	0	n -> BERN(2*n)./(FA(n).*(2)).den()	denominator(bernfrac(2*n)/(2*n!)); \\ _Michel Marcus_, Feb 24 2015
+A255684	filnum	0	1	k -> BERN(k).den().equals(ZV(354))	; \\ _Michel Marcus_, Apr 22 2016 
+A256018	lambdan	1	n -> RU(1, n, k -> BERN(k - 1).*(k*k).*(BI(2*n - 1, k)).*(S2(2*n - k, n))).num()	sum(k=1, n, k^2*bernfrac(k-1)*binomial(2*n-1,k)*stirling(2*n-k,n,2)); \\ _Michel Marcus_, Jun 01 2015
+A257538	mulr	0	(self, p, e) -> PM(PM(self.a(PI(p)))).^(e)	a(prime(n)) = prime(prime(a(n))). - _Antti Karttunen_, Mar 09 2017
+A259174	filnum	1	3	k -> { final Z ab = SIGMA(k).-(2*k); return ab.compareTo(0) > 0 && ab.bitCount() == 1; }	Numbers whose abundance is a power of 2.
+A263445	lambdan	0	n -> BERN(2*n).*(FA(n + 1)).*(2*n + 1).num()	(2n+1)*(n+1)!*Bernoulli(2n).
+A265752	addr	1	(p, e) -> FI(PI(p).-(2)).*(e)	a(prime(k)) = F(k-2), where F(k) denotes the k-th Fibonacci number, F000045(k) for k >= 0, or J039834(-k) for k <= 0. - _Peter Munn_, Apr 05 2021, incorporating comment by _Antti Karttunen_, Dec 15 2015
+A265753	addr	1	(p, e) -> FI(PI(p).-(1)).*(e)	a(prime(k)) = F(k-1), where F(k) denotes the k-th Fibonacci number, F000045(k). - _Peter Munn_, Mar 29 2021, incorporating comment by _Antti Karttunen_, Dec 15 2015
+A276595	lambdan	1	n -> BERN(2*n)./(FA(2*n).*(2)).den()	denominator(bernfrac(2*n)/(2*(2*n)!)); \\ _Michel Marcus_, Jul 05 2018
+A277087	lambdan	0	n -> new Q(BERN(2*n).den(), 3).ceiling()	ceil(denominator(bernfrac(2*n))/3) \\ _
+A284203	addr	1	(p, e) -> PP(p.+(2)) || PP(p.-(2)) ? ZV(1) : ZV(0)	Additive with a(p^e) = 1 if p is in J001097 [twin primes], and 0 otherwise. - _Amiram Eldar_, May 15 2025
+A284233	addr	1	(p, e) -> is2(p) ? ZV(0) : p.^(e + 1).-(1)./(p.-(1)).-(1)	Additive with a(2^e) = 0, and a(p^e) = (p^(e+1)-1)/(p-1) - 1 for an odd prime p. - _Amiram Eldar_, Jul 24 2024
+A285864	trilambn	0	0	0	(n, m) -> BERN(n - m).*(Z2(n - m)).*(BI(n, m)).num()	erator(binomial(n, m)*2^(n - m)*bernfrac(n - m));
+A285865	trilambn	0	0	0	(n, m) -> BERN(n - m).*(Z2(n - m)).*(BI(n, m)).den()	ominator(binomial(n, m)*2^(n - m)*bernfrac(n - m));
+A287703	trilambn	1	1	0	(n, k) -> BERN(k + n)./(k + n).*(BI(n - 1, k)).*(Z_1(n)).num()	erator((-1)^n*binomial(n-1,k)*bernfrac(k+n)/(k+n));
+A287704	trilambn	1	1	0	(n, k) -> BERN(k + n)./(k + n).*(BI(n - 1, k)).*(Z_1(n)).den()	ominator((-1)^n*binomial(n-1,k)*bernfrac(k+n)/(k+n));
+A289506	addr	1	(p, e) -> PI(p).^(2).*(e)	k^2: ,
+A293308	lambdan	1	n -> BI(E056576(n).-(1), n - 1)	1		a(n)=binomial(E056576(n)-1,n-1)=binomial(floor(n*log_2(3))-1,n-1)
+A293447	addr	1	(p, e) -> Z.TWO.pow(PI(p)).-(1).*(e)	.2^k-1:
+A302242	addr	1	(p, e) -> Functions.BIG_OMEGA.z(PI(p)).*(e)	a(prime(n)) = Omega(n)
+A305053	adjextn	1	new A305054()	() -> mSeq.next().-(F001221(n))
+A309132	lambdan	1	n ->{ final Q b = BERN(n - 1); return new Q(b.num(), n).+(new Q(b.den(), n*n)).den(); }	denominator(numerator(bernfrac(n-1))/n + denominator(bernfrac(n-1))/n^2); \\ _Michel Marcus_, Jul 14 2019
+A309895	lambdan	0	n -> T309865(n, (n/2))	1		a(n)=T309858(n,floor(n/2))=T309865(n,floor(n/2))
+A316315	filnum	1	1	k -> { final Z pd = Functions.DIGIT_PRODUCT.z(k); if (pd.isOne()) { return true; } return ZV(12).pow(VAL(pd, 12)).equals(pd); }	product of digits of k is a power of 12.	base,nonn	1..64235	nyi	_Isaac Weiss_ and _Henry Potts-Rubin_
+A324049	lambdan	2	n -> D002487(E324051(n))
+A326579	lambdan	0	n -> n == 0 ? ZV(0) : BERN(n - 1).*(n).den().*(n)	if (n, n*denominator(n*bernfrac(n-1)), 0); \\ _Michel Marcus_, Jul 19 2019
+A326580	lambdan	0	n -> BERN(2*n).*(2*n + 1).den().*(2*n + 1)	(2*n+1)*denominator((2*n+1)*bernfrac(2*n)); \\ _Michel Marcus_, Jul 19 2019
+A326584	lambdan	1	n -> { final Q b = BERN(n - 1); return GCD(b.num().*(n), b.den()); }	my(b=bernfrac(n-1)); gcd(n*numerator(b), denominator(b)); \\ _Michel Marcus_, Jul 19 2019
+A327033	lambdan	1	n ->  { final Z p = PM(n); final Q b = BERN(p.-(1)); return new Q(b.num(), p).+(new Q(b.den(), p.*(p))).num(); }	\\ _Michel Marcus_, Aug 16 2019
+A329398	lambdan	1	n -> F000041(n).*(2).-(F000005(n))	1		a(n)=2*F000041(n)-F000005(n)
+A331287	lambdan	1	n -> GCD(n, E225546(n))	0		a(n)=gcd(n,E225546(n))
+A334097	addr	1	(self, p, e) -> is2(p) ? ZV(e) : self.a(p.+(1)).*(e)	a(2) = 1, a(p) = a(p+1) for odd primes
+A334109	addr	1	(p, e) -> D000079(PI(p).-(1)).*(D329697(D019565(e)))	Additive with a(prime(i)^j) = D000079(i-1) * D329697(D019565(j)), a(m*n) = a(m)+a(n) if gcd(m,n) = 1
+A334200	addr	1	(self, p, e) -> (p.compareTo(ZV(3)) <= 0 ? p.-(1) : self.a(D048673(p)).+(1)).*(e)	Fully additive with a(n) = n-1 for n <= 3, and a(p) = 1 + a(D048673(p)) when p is prime > 3 and a(n*m) = a(n) + a(m) when m,n > 1
+A334861	adjextn	1	new A331410()	() -> D329697(n).+(mSeq.next())
+A335875	multraf	1	(self, n) -> self.s(0).min(self.s(1))	""	new A329697(), new A331410()
+A335877	adjextn	1	new A329697()	() -> D331410(n).-(mSeq.next())
+A335881	multraf	1	(self, n) -> self.s(0).max(self.s(1))	""	new A329697(), new A331410()
+A335885	addr	1	(self, p, e) -> is2(p) ? ZV(0) : MIN(self.a(p.-(1)), self.a(p.+(1))).+(1).*(e)	a(p) = 1+min(a(p-1), a(p+1)), for odd primes p
+A336118	adjextn	1	new A335904()	() -> mSeq.next().-(E087436(n))
+A336921	adjextn	1	new A331410()	() -> mSeq.next().-(E087436(n))
+A339207	trilambn	0	0	0	(n, k) -> RU(0, n - k, h -> BERN(h).*(BI(k + h - 1, h)).*(SA(n, h + k)).*(ZV(n).^(h))).num()	T(n, k) = sum(h=0, n-k, bernfrac(h)*binomial(k+h-1, h)*abs(stirling(n, h+k, 1))*n^h);
+A339208	trilambn	1	1	1	(n, k) -> RU(0, n - k, h -> BERN(h).*(BI(n, h)).*(S2(n - h, k)).*(ZV(k).^(h))).num()
+A339209	trinv	1	A339207	trilambn	0	0	0	(n, k) -> RU(0, n - k, h -> BERN(h).*(BI(k + h - 1, h)).*(SA(n, h + k)).*(ZV(n).^(h))).num()
+A340243	lambdan	0	n -> n == 0 ? ZV(2) : BERN(2*n)./(FA(2*n)).*(2*n - 1).*(Z2(2*n - 1)).den()	denominator((2*n-1)*2^(2*n-1)*bernfrac(2*n)/(2*n)!); \\ _Michel Marcus_, Jun 15 2022
+A341885	addr	1	(p, e) -> p.*(p.+(1))./(2).*(e)	(with a(p)=p*(p+1)/2),
+A344443	addr	1	(self, p, e) -> is2(p) ? ZV( 5*e) : new Q(self.a(p.-(1)).+(self.a(p.+(1))), 2).ceiling().*(e)	a(2)=5; for odd prime p, a(p) = ceiling((a(p-1) + a(p+1))/2)
+A344444	addr	1	(self, p, e) -> is2(p) ? ZV(12*e) : (is3(p) ? ZV(19) : new Q(self.a(p.-(1)).+(self.a(p.+(1))), 2).ceiling()).*(e)	a(2) = 12, a(3) = 19; for prime p > 3, a(p) = ceiling((a(p-1) + a(p+1))/2)
+A345930	lambdan	1	n -> E327860(n)./(GCD(E327860(n), E329029(n)))	0,0,0		a(n)=E327860(n)/E346469(n)=E327860(n)/gcd(E327860(n),E329029(n))
+A347550	lambdan	0	n -> SU(0, 2, k -> T219180(n, k))	1		a(n)=Sum_{k=0..2}T219180(n,k)
+A354200	lambdan	1	n -> { if (n == 1) { return ZV(5); } final Z p = PM(n); final long m13 = p.mod(4); Z q = Functions.NEXT_PRIME.z(p); while (q.mod(4) != m13) { q = Functions.NEXT_PRIME.z(q); } return q; }	""	new A000040()	Prime map that sends 2 to 5, and each 4k+1 and 4k+3 prime to the next larger prime of the same type.
+A354201	lambdan	1	n -> { if (n <= 3) { return ZV((n + 1)/2); } final long m = PM(n).mod(4); for (long i = n - 1; i >= 0; --i) { final Z p = PM(i); if (p.mod(4) == m) { return p; } } return ZV(0); }	my(m=prime(n)%4); forstep(i=n-1, 0, -1, if(m==(prime(i)%4), return(prime(i)))));
+A354202	mulr	1	(p, e) -> D354200(PI(p)).^(e)	Fully multiplicative with a(p^e) = A354200(A000720(p))^e.
+A354203	mulr	1	(p, e) -> D354201(PI(p)).^(e)		Fully multiplicative with a(p^e) = ?354201(F000720(p))^e.
+A358011	lambdan	0	n -> SU(0, 6, k -> T219180(n, k))	1		a(n)=Sum_{k=0..6}T219180(n,k)
+A367197	mulr	1	(p, e) -> SIGMA(p.^(e)).*(p.^(e).+(p.^(2*(e/2) + 1)))./(p.^(e).*(p.+(1)))
+A373382	multraf	1	(self, n) -> self.s(0).gcd(self.s(1))	""	new A329697(), new A331410()
+A376885	addr	1	(p, e) -> D034968(e)
+A377868	lambdan	1	n -> D359550(F276085(n))
+A377983	lambdan	0	n -> SU(1, n, i -> E377870(i))	1		a(n)=Sum_{i=1..n}E377870(i)=Sum_{i=1..n}D359550(i)*D359550(F276085(i))
+A379227	adjext	1	new A113177()	() -> mSeq.next().mod(5) == 0 ? ZV(1) : ZV(0)	a(n) = 1 if J113177(n) is a multiple of 5, otherwise 0, where J113177 is fully additive with a(p) = Fibonacci(p)
+A383288	filtpos	1	1	new A276075()	v -> v.mod(4) == 0	is a multiple of 4
+A385628	lambdan	1	n -> F000203(n).-(E385625(n))	0		a(n)=F000203(n)-E385625(n)
+A386638	lambdin	0	n -> F000041(n - 1).-(E110618(n - 1))	0		Forn>=1,a(n)=F000041(n-1)-E110618(n-1)
+A393048	filter	1	new A002808()	v -> v.compareTo(F276085(F003415(v))) >= 0	Composite numbers k such that k is >= F276085(F003415(k)), where F003415 is the arithmetic derivative and F276085 is fully additive with a(p) = p#/p
+A393049	filter	1	new A002808()	v -> v.mod(F276085(F003415(v))).isZero()	Composite numbers k such that k is a multiple of F276085(F003415(k)), where F003415 is the arithmetic derivative and F276085 is fully additive with a(p) = p#/p
+A395054	filnum	1	1	k -> GPF(F276085(k)).compareTo(GPF(k)) > 0	is larger than the greatest prime dividing k, where F276085 is fully additive with a(p) = p#/p
+A395055	filnum	1	2	k -> GPF(F276085(k)).compareTo(GPF(k)) <= 0	is not larger than the greatest prime dividing k, where F276085 is fully additive with a(p) = p#/p
+A397740	partsun	1	new A399633()			Partial sums of A399633.
+A398844	lingf	0	0,0,3,1,1,-1,0,1,2,2	1,-2,1,-1,2,-1,1,-2,1,-1,2,-1					0
+A398852	lingf	0	0,1,3,1,2	1,-3,4,-4,3,-1					0
+A398853	lingf	0	0,2,1,2,2	1,-3,4,-4,3,-1					0
+A398854	lingf	0	0,1,4,3,2	1,-2,1,-1,2,-1					0
+A400213	lingf	3	0,0,0,1,0,0,0,0,0,0,0,-2,-1,1,1,0,-2,0,2,1,-1,-1,1,0,-1,1,1,-1,-1,-1,-1,2,4,-3,-4,0,5,1,1,-4,-3,3,4,2,-5,0,0,2,0,-1,-1,-1,1,0,3,-3,-3,1,3,3,-3,0,-6,6,6,-2,-7,-5,7,0,1,-3,-1,1,2,2,-2	1,-1,-1,0,1,1,-1,0,-2,2,2,0,-2,-2,2,0,1,-1,-1,0,1,1,-1,0,-1,1,1,0,-1,-1,0,1,3,-2,-3,-1,3,2,0,-2,-3,1,3,2,-3,-1,0,1,1,0,-1,-1,1,0,1,-1,-1,0,1,1,-1,0,-2,2,2,0,-2,-2,2,0,1,-1,-1,0,1,1,-1					0
+A400564	lingf	1	0,2,-1,-6,3,3,1,0,-3,3,-1,-1,-1,-4,4,4,-1,-2,-1,1	1,-2,-1,3,0,1,-3,0,2,-3,3,-2,0,3,-1,0,-3,1,2,-1					0
+A400801	filnum	1	1	k -> !SF(k) && !ZV(k).mod(LPF(k).^(2)).isZero()	Nonsquarefree numbers that are not divisible by the square of their least prime factor.
+A400810	holos	1	[0,1,15,3,-1]	1,7,37	0	0
+A400811	holos	1	[0,1,15,3,-1]	2,10,60	0	0
+A400991	poly	0	"[1],[1,1],[0,3]"	"1,p2,p1,/,sub,<1,p1,/,+"
+A400992	poly	0	"[1],[1,1],[0,4]"	"1,p2,p1,/,sub,<1,p1,/,+"

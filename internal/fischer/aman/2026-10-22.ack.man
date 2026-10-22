@@ -1,0 +1,52 @@
+---- 2026-10-22 23:08:50
+A114212	lambdan	0	n -> n == 0 ? ZV(1) : E001316(n).+(E001316((n - 2)/2).*(Z_1(n).+(1))./(2))	a(n) = E001316(n) + E001316(floor((n-2)/2))*(1 + (-1)^n)/2 for n >= 1.
+A115986	filter	0	new A000040()	p -> Predicates.BASE_POWER.is(3, p.+(Functions.NEXT_PRIME.z(p))./(2))	Primes p such that the average of p and nextprime(p) is a power of 3.
+A115989	filnum	0	1	k -> { final Z p = PM(k); return Predicates.BASE_POWER.is(3, p.+(Functions.NEXT_PRIME.z(p))./(2)); }	Numbers k such that the average of primes p(k) and p(k+1) is a power of 3.
+A131602	decexpb	1	() -> CR.PHI	16	Hexadecimal expansion of golden ratio phi = (1 + sqrt 5) /
+A143070	filnum	1	1	k -> Long.bitCount(Functions.DIGIT_LENGTH.l(2, k) - Functions.DIGIT_SUM.l(2, k)) == 1	number of 0s in the binary representation of n is a power of 2 (including being possibly 1).
+A143071	filnum	1	1	k -> Long.bitCount(Functions.DIGIT_SUM.l(2, k)) == 1	number of 1s in the binary representation of n is a power of 2 (including being possibly 1).
+A174569	filnum	1	0	k -> DIGIT(k, 10, ZV(0), (x, d, e) -> x.+(FA(d))).bitCount() == 1	Numbers n such that sum of factorials of digits of n is a power of 2.
+A174570	filnum	1	0	k -> DIGIT(k, 10, ZV(0), (x, d, e) -> x.+(FA(d).^(2))).bitCount() == 1	Numbers k such that sum of squares of factorials of digits of k is a power of 2.
+A174980	multia	0	"0"	(self, n) -> (n&1) == 1 ? self.a(n/2) : self.a(n/2 - 1).+(self.a(n/2)).+(Long.bitCount(n) == 1 ? 1 : 0)	a(2n + 1) = a(n) and a(2n) = a(n - 1) + a(n) + [n = 2^k] for n = 1, a(0) = 0. [n = 2^k] is 1 if n is a power of 2, 0 otherwise.
+A178330	filnum	0	0	k -> { final long lk = Functions.DIGIT_LENGTH.l(k); return DIGIT(k, 10, ZV(0), (x, d, e) -> x.+(ZV(d).^(lk - e))).bitCount() == 1; }	Numbers n such that d(1)^1 + d(2)^2 +... + d(p)^p is a power of 2, where d(i), i=1..p, are the decimal digits of n.
+A178332	filnum	0	0	k -> DIGIT(k, 10, ZV(0), (x, d, e) -> x.+(ZV(d).^(e + 1))).bitCount() == 1	Numbers n such that d(1)^p + d(2)^p-1 +... + d(p)^1 is a power of 2, where d(i), i=1..p, are the digits of n.
+A213210	parmof2	1	A221211	8	;	return are prime and there is a power of two in the interval (n,n+8).
+A213677	parmof2	1	A221211	12	;	return are prime and there is a power of two in the interval (n,n+12).
+A220951	parmof2	1	A221211	6	;	return (10), A213677 (12), A222424 (14), A222227 (16), A222219 (18).
+A222219	parmof2	1	A221211	18	;	return are prime and there is a power of two in the interval (n,n+18).
+A222227	parmof2	1	A221211	16	;	return are prime and there is a power of two in the interval (n,n+16).
+A222424	parmof2	1	A221211	14	;	return are prime and there is a power of two in the interval (n,n+14).
+A235710	filter	1	new A002808()	v -> Predicates.BASE_POWER.is(10, SIGMA(v).-(v))	Composite numbers k such that sum of the proper divisors of k is a power of 10.
+A279731	filter	0	new A002808()	v -> SIGMA(v).-(v).bitCount() == 1	Composite numbers whose sum of proper divisors is a power of 2.
+A284295	filnum	1	0	k -> Predicates.BASE_POWER.is(9, Functions.DIGIT_PRODUCT.l(k))	Numbers k such that product of digits of k is a power of 9.
+A284323	filnum	0	0	k -> Predicates.BASE_POWER.is(4, Functions.DIGIT_PRODUCT.l(k))	Numbers k such that product of digits of k is a power of 4.
+A284324	filnum	1	0	k -> Predicates.BASE_POWER.is(8, Functions.DIGIT_PRODUCT.l(k))	Numbers k such that product of digits of k is a power of 8.
+A284375	filnum	1	0	k -> Functions.DIGIT_PRODUCT.l(k) <= 1	Numbers whose product of digits is a power of 0.
+A303435	filnum	1	1	k -> Predicates.BASE_POWER.is(Functions.USIGMA0.l(k), Functions.UPHI.z(k))	Numbers n such that uphi(n) (the unitary totient function A047994) is a power of the number of unitary divisors of n (A034444).
+A316315	filnum	1	0	k -> Predicates.BASE_POWER.is(12, Functions.DIGIT_PRODUCT.l(k))		Numbers k such that the product of digits of k is a power of 12.
+A319838	filnum	1	1	k -> Predicates.BASE_POWER.is(6, D319100(k))	Numbers k such that A319100(k) is a power of 6.
+A328560	filnum	1	0	k -> Predicates.BASE_POWER.is(10, Functions.DIGIT_PRODUCT.l(k))		Numbers whose product of digits is a power of 10.
+A352683	lambdan	0	n -> n == 0 ? ZV(1) : M040027(n - 1).*(3).+(BELL(n))	a(n) = 3*Gould(n - 1) + Bell(n) for n >= 1.
+A352684	lambdan	0	n -> n == 0 ? ZV(1) : M040027(n - 1).*(n - 1).+(BELL(n))	a(n) = (n-1)*Gould(n-1) + Bell(n) for n >= 1.
+A352686	trilambn	0	0	0	(n, k) -> k == 0 ? ZV(1) : M040027(k - 1).*(n - 1).+(BELL(k))	Triangle read by rows. T(n, k) = (n-1)*Gould(k-1) + Bell(k) for n >= 0 and k >= 1, T(n, 0) = 1.
+A371176	sintrif	1	(term, n) -> term.*(E001316(term))./(2)	""	new A048679()	n ->  a(n) = b(n)*E001316(b(n))/2 where b(n) = J048679(n).
+A385457	lambdan	0	n -> E001316(n/3).*(n % 3 + 1)	a(n) = (1 + (n mod 3)) * A001316([n/3]).
+A396648	holos	0	[[0],[68367089664,-84168916992,688660475904,-3333515461632,2795197165056,6985916769024,-12049810708608,-753607148544,13176465740928,-8185374894240,-2122690199904,4367587525056,-1670707695168,-37977036192,216194872608,-69687838080,9669179520,-518918400],[38767776768,-37792479744,341423304768,-1667366481024,1256154165936,3526768363488,-5312984931720,-1337222923908,6597603734160,-3331932097680,-1564122162468,2196477002892,-726109060104,-59524843224,107007464580,-30821303520,3854650800,-180180000],[-7683683328,23931728640,-114290035776,574235889264,-867945908400,-745495318000,3038831665908,-1753751489471,-2178597726671,3203841878949,-797964935779,-997527845153,815565913119,-165633407449,-58080241213,37522287180,-7498711220,539939400],[0,808724736,1148457312,-8937826488,-23826670596,99124555554,-19598722837,-199055897095,122500363077,213195468565,-248204949545,-10892459817,129692904259,-61155157115,-788633310,7999651100,-2195993800,186186000],[0,-205804800,738345888,-1543602888,-4718535804,14253726830,12856418861,-39405695253,-7500671903,45005124787,-6880653813,-21558387131,7437998815,3792336411,-1928316028,-138037060,173453280,-21621600],[0,-99278784,-1423852560,342666432,7995019680,483578616,-17913666323,-1735700351,20417856183,1097085665,-12328517371,205826415,3870808853,-305755981,-593337030,76930420,35035000,-6006000],[0,-51451200,120719376,126777744,-3037247328,2149760984,6310838671,-4950226882,-5076470942,3785709890,1986287584,-1335202838,-402076366,234188110,40184153,-19502840,-1581580,600600]]	1,1,10	0	0
+A398222	holos	1	[[0],[-757350,7863255,-35798226,94609400,-162057724,190145648,-157224848,92601856,-38666048,11190272,-2135296,241664,-12288],[55404,-533493,2214702,-5223348,7766060,-7626608,5024176,-2197952,612416,-98304,6912],[-2790,24409,-88478,172784,-198452,137488,-56272,12480,-1152],[0,-1107,3042,-3300,1764,-464,48]]	1,54,6675	0	0
+A398688	holos	0	[[0],[-154962460800,962087928480,-1658016875424,1336265645792,-598280552352,160381731104,-26353562592,2599655072,-141232224,3245760],[0],[-216508950000,1368553663260,-2421282422052,2036454748100,-966299947044,278182529084,-49651988364,5373977804,-323204412,8288280],[0],[-60923178000,400122413910,-733681069437,652992990160,-334728027981,105850125040,-21017451663,2554357240,-173662359,5057010],[0],[-5170354200,34118388414,-62458603179,53610076784,-25082779383,6631243796,-939883761,54459536,1139883,-188370],[0],[-114247800,671366754,-588407115,-727727104,1430285301,-926539096,305039031,-54633784,5052183,-188370],[0],[0,63535230,-60029145,-51040676,64016355,-14539352,-3689979,2030308,-297231,14490]]	1,1,2,4,10,24,64,168,466,1286	0	0
+A399405	holos	0	[0,10,6,-1]	1,3	0	0
+A401232	filnum	1	1	k -> k == 1 || F276085(k).mod(F006530(k)).isZero()	[the largest prime dividing k, 1 if k is 1] divides F276085(k), where F276085 is fully additive with a(p) = p#/p.	nonn,new	1..66	nyi	_Antti Karttunen_
+A401234	filnum	1	1	k -> k == 1 || F276085(k).mod(F006530(k)).isZero() && SF(k)	Squarefree numbers k such that F006530(k) [the largest prime dividing k, 1 if k is 1] divides F276085(k), where F276085 is fully additive with a(p) = p#/p.	nonn,new	1..55	nyi	_Antti Karttunen_
+A401237	filnum	1	0	k -> k == 0 || ZV(k).mod(PM(E235224(k))).isZero()	divides k. Here we assume that prime(0) = 1, thus the initial term is 0.	nonn,base,new	1..10000	nyi	_Antti Karttunen_
+A401238	lambdan	0	n -> ZV(n).mod(D008578(E235224(n).+(1)))
+A401247	decexpb	1	() -> CR.FIVE.sqrt()	16	Hexadecimal expansion of square root of 5.	base,cons,nonn,new	1..10000	nyi	_Adam Reichert_
+A401252	lambdan	1	n -> SU(1, n - 2, i -> SU(i + 1, n - 1, j -> GCDl(i, j) != 1 ? ZV(0) : (Functions.SIGMA.l(i) == Functions.SIGMA.l(j) ? ZV(1) : ZV(0))))	a(n) = sum(i=1, n-2, sum(j=i+1, n-1, gcd(i, j)==1 && sigma(i)==sigma(j)));
+A401270	filnum	1	0	k -> PP(ZV(10).^(2*k + 4).+(ZV(10).^(k + 1).*(777)).+(1))	Numbers k such that 10^(2*k+4) + 777*10^(k+1) + 1 is prime.	nonn,hard,more,new
+A401330	polyx	0	"[1],[1,-1],[0,-1]"	"p1,p2,exp,1,-,pow"	0	1
+A401342	holos	0	[0,-2,-1,3,-1]	0,1,1,3,5	0	0
+A401347	decexpr	1	() -> CR.PI.^(6).*(REALS.csch(CR.PI./(2))).*(REALS.sech(CR.THREE.sqrt().*(CR.PI./(2))))./(REALS.cosh(CR.PI./(2)).-(REALS.cos(CR.THREE.sqrt().*(CR.PI./(2)))).*(16))	Pi^6 * csch(Pi/2) * sech(sqrt(3)*Pi/2) / (16*(cosh(Pi/2) - cos(sqrt(3)*Pi/2)))
+---- 2026-10-22 23:19:52
+A087060	lambdan	1	n -> MIN(E087056(n), E087059(n))	= min [2*n^2 - (floor[n*sqrt(2)])^2, (1 + floor[n*sqrt(2)])^2 - 2*n^2]
+---- 2026-10-22 23:20:50
+A120865	lambdan	1	n -> CV(3).sqrt().*(n).+(1).floor().^(2).-(ZV(n).*(3*n))	a(n) = -3*n^2 + floor(1 + n*sqrt(3))^2.
+A120867	lambdan	1	n -> CV(5).sqrt().*(n).+(1).floor().^(2).-(ZV(n).*(5*n))	a(n) = -5*n^2 + floor(1 + n*sqrt(5))^2.

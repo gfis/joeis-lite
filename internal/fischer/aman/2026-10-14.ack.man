@@ -1,0 +1,105 @@
+---- 2026-10-14 23:27:44
+A003963	mulr	1	(p, e) -> PI(p).^(e)
+A096932	adjext	0	new A001358()	() -> D005179(mSeq.next())
+A098793	trilambn	1	1	1	(n, k) -> D005179(F000005(n).+(F000005(k)))
+A099315	adjext	1	new A005179()	() -> D065331(mSeq.next())
+A106492	addr	1	(self, p, e) -> p.+(self.a(e))
+A113177	addr	1	(p, e) -> FI(p).*(e)
+A113222	addr	1	(p, e) -> F000045(p.^(e))
+A122812	filnum	0	1	k -> !D046523(D005179(k)).equals(D046523(D038547(k)))
+A125072	addr	1	(p, e) -> ZV(Predicates.TRIANGULAR.is(e) ? 1 : 0)
+A140635	lambdan	1	n -> D005179(F000005(n))
+A153334	lambdin	1	n -> ZV(n + 1).*(Z2(n - 2)).-((n & 1) == 0 ? ZV(2*n - 2).*(BI(n - 2, (n - 2)/2)) : ZV(n-1).*(BI(n - 1, (n - 1)/2)))	1	for n odd					0
+A153335	lambdin	1	n -> ZV(n + 1).*(Z2(n - 2)).-((n & 1) == 0 ? ZV(2*n - 2).*(BI(n - 2, (n - 2)/2)) : ZV(n  ).*(BI(n - 1, (n - 1)/2)))	0	for n odd					0
+A160996	lambdan	1	n -> D005179(D006218(n))
+A172442	adjext	1	new A002808()	() -> D005179(mSeq.next())./(6)
+A175300	anan1	1	1	() -> D005179(TAU(mA1)).+(mA1)	+ a(n-1), where d(n) = the number of divisors of n, and J005179(n) is the smallest positive integer with exactly n divisors.
+A185445	adjext	1	new A014612()	() -> D005179(mSeq.next())
+A187678	adjext	1	new A018252()	() -> D005179(mSeq.next())
+A227184	lambdan	0	n -> D003963(D243353(n))
+A243353	lambdan	0	n -> D005940(D003188(n).+(1))
+A257991	addr	1	(p, e) -> PI(p).testBit(0) ? ZV(e) : ZV(0)	a(p) = 1 if primepi(p) is odd, and 0 otherwise
+A257992	addr	1	(p, e) -> !PI(p).testBit(0) ? ZV(e) : ZV(0)	a(p) = 1 if primepi(p) is even, and 0 otherwise
+A257994	addr	1	(p, e) -> PP(PI(p)) ? ZV(e) : ZV(0)	Additive with a(p^e) = e if primepi(p) is prime, and 0 otherwise. - _Amiram Eldar_, Nov 03 2023
+A305054	addr	1	(p, e) -> Functions.OMEGA.z(PI(p)).*(e)	Totally additive with a(prime(n)) = omega(n)
+A318994	addr	1	(p, e) -> PI(p).+(1).*(e)	Totally additive with a(prime(n)) = n + 1
+A318995	addr	1	(p, e) -> PI(p).-(1).*(e)	Totally additive with a(prime(n)) = n - 1
+A319443	addr	1	(p, e) -> p.mod(3) == 1 ? ZV(2) : ZV(1)	Additive with a(p^e) = 2 if p == 1 (mod 3), 1 otherwise
+A319444	addr	1	(p, e) -> (p.mod(3) <= 1 ? ZV(2) : ZV(1)).*(e)	Completely additive with a(p) = 2 if p = 3 or p == 1 (mod 3) and a(p) = 1 if p == 2 (mod 3)
+A324850	filnum	1	1	k -> ZV(k).mod(D003963(k)).isZero()	= ?324933(n)/?324934(n)
+A324966	addr	1	(p, e) -> ZV(PI(p).testBit(0) ? 1 : 0)	1 if primepi(p) is odd and 0 otherwise. - _Amiram Eldar_, Oct 06 2023
+A324967	addr	1	(p, e) -> ZV(!PI(p).testBit(0) ? 1 : 0)	1 if primepi(p) is even and 0 otherwise. - _Amiram Eldar_, Oct 06 2023
+A325032	mulr	1	(p, e) -> D003963(PI(p)).^(e)
+A325033	addr	1	(p, e) -> D056239(PI(p)).*(e)
+A325034	addr	1	(p, e) -> D003963(PI(p)).*(e)	Totally additive with a(prime(n)) = J003963(n)
+A325120	addr	1	(p, e) -> F070939(PI(p)).*(e)
+A325121	addr	1	(p, e) -> F000120(PI(p)).*(e)
+A325122	addr	1	(p, e) -> D048881(PI(p).-(1)).*(e)
+A325699	addr	1	(p, e) -> ZV(PI(p).testBit(0) ? -1 : 1)	(-1)^primepi(p). - _Amiram Eldar_, Jun 17 2024
+A330944	addr	1	(p, e) -> ZV(PP(PI(p)) ? 0 : e)	e if primepi(p) is nonprime, and 0 otherwise. - _Amiram Eldar_, Nov 03 2023
+A331410	addr	1	(self, p, e) -> (is2(p) ? ZV(0) : self.a(p.+(1)).+(1)).*(e)	additive with a(2) = 0 and a(p) = 1 + a(p+1) for odd primes
+A331740	addr	1	(p, e) -> F000120(e).*(Z.TWO.pow(PI(p).-(1)))	, where PrimePi(n) = F000720(n)
+A334206	addr	1	(self, p, e) -> self.a(D014682(p)).+(1).*(e)	p.compareTo	Fully additive with a(p) = 1 + a(D014682(p)) when p is prime and a(n*m) = a(n) + a(m) when m,n > 1
+A335884	addr	1	(self, p, e) -> is2(p) ? ZV(0) : MAX(self.a(p.-(1)), self.a(p.+(1))).+(1).*(e)	a(p) = 1+max(a(p-1), a(p+1)), for odd primes p
+A335904	addr	1	(self, p, e) -> is2(p) ? ZV(0) : self.a(p.-(1)).+(self.a(p.+(1))).+(1).*(e)	a(p) = 1+a(p-1)+a(p+1), for odd primes p
+A336695	lambdan	1	n -> D331410(SIGMA(n).+(1))	, where ?331410 is totally additive with a(2) = 0 and a(p) = 1 + a(p+1) for odd primes
+A336929	addr	1	(p, e) -> D331410(SIGMA(p.^(e)))	= ?331410(1+ p + p^2 + ... + p^e)
+A339361	adjext	1	new A006881()	() -> D003963(mSeq.next())
+A340901	addr	1	(p, e) -> p.negate().^(e)	a(p^e) = (-p)^e
+A343938	addr	1	(p, e) -> ZV(2).-(PI(p)).*(e)	a(prime(k)) = 2 - k
+A349258	addr	1	(p, e) -> Z2(Long.bitCount(e)).-(1)	2^F000120(e) - 1
+A349281	addr	1	(p, e) -> F000005(e)
+A353570	lambdan	1	n -> D003963(D122111(n)).equals(D003963(n)) ? ZV(1) : ZV(0)	, and 0 otherwise
+A360435	lambdan	1	n -> D038547(ZV(3).^(n))
+A366073	addr	1	(p, e) -> D000523(e)
+A366074	addr	1	(p, e) -> D209229(e)
+A366388	addr	1	(self, p, e) -> (is2(p) ? ZV(0) : self.a(PI(p)).+(1)).*(e)	a(2) = 0, and for n > 1, a(prime(n)) = 1 + a(n)
+A366725	addr	1	(p, e) -> { final Z pi = PI(p); return pi.testBit(0) ? pi : Z.ZERO; }	if pi(p) is odd, and 0 otherwise
+A366784	addr	1	(p, e) -> { final Z pi = PI(p); return !pi.testBit(0) ? pi./(2) : Z.ZERO; }	pi(p)/2 if pi(p) is even, and 0 otherwise
+A366988	addr	1	(p, e) -> F000720(e)
+A366989	addr	1	(p, e) -> F000720(e).+(1)
+A369426	addr	1	(p, e) -> p.equals(ZV(e)) ? Z.ONE : Z.ZERO	1 if p = e, and 0 otherwise
+A369428	addr	1	(p, e) -> D010052(e)
+A370515	lambdan	0	n -> D005179(ZV(10).^(n))	 <= J037019(10^n).
+A371090	addr	1	(self, p, e) -> e == 1 ? ZV(1) : self.a(F276086(e))	for e > 1, where F276086 is the primorial base exp-function
+A372503	addr	1	(p, e) -> M048967(e)
+A373149	addr	1	(p, e) -> (is2(p) ? ZV(1) : Functions.PREV_PRIME.z(p)).*(e)	a(2) = 1 and a(p) = prevprime(p) for odd primes p
+A373585	lambdan	1	n -> ZV(!D373149(n).testBit(0) ? 1 : 0)	is even, otherwise 0, where ?373149 is fully additive with a(2) = 1 and a(p) = prevprime(p) for odd primes p
+A373586	filnum	1	1	k -> !D113177(k).testBit(0)	is even, where ?113177 is fully additive with
+A373587	filnum	1	1	k -> D373149(k).testBit(0)	is odd, where ?373149 is fully additive with a(2) = 1 and a(p) = prevprime(p) for odd primes p
+A373851	lambdan	1	n -> n == 1 ? ZV(1) : ZV(F276085(n).mod(Functions.BIG_OMEGA.l(n)) == 0 ? 1 : 0)	a(n) = 1 if F276085(n) is a multiple of bigomega(n), otherwise 0, where bigomega (F001222) and F276085 are fully additive with a(p) = 1 and a(p) = p#/p respectively
+A373852	filnum	1	1	k -> k == 1 || F276085(k).mod(Functions.BIG_OMEGA.l(k)) == 0	is a multiple of bigomega(k), where bigomega (F001222) and F276085 are fully additive with a(p) = 1 and a(p) = p#/p respectively
+A374051	lambdan	1	n -> ZV(D113177(n).mod(3) == 0 ? 1 : 0)	is a multiple of 3, otherwise 0, where ?113177 is fully additive with a(p) = Fibonacci(p)
+A374052	filnum	1	1	k -> D113177(k).mod(3) == 0	is a multiple of 3, where ?113177 is fully additive with a(p) = Fibonacci(p)
+A374106	lambdan	1	n -> GCD(D113177(n), E328845(n))	, where  ?113177 is fully additive with a(p) = Fibonacci(p) and E328845 is the first Fibonacci-based variant of the arithmetic derivative
+A374107	lambdan	1	n -> ZV(!D113177(n).testBit(0) && !E328845(n).testBit(0) ? 1 : 0)	are both even, otherwise 0, where ?113177 is fully additive with a(p) = Fibonacci(p) and E328845 is the first Fibonacci-based variant of the arithmetic derivative
+A374108	filnum	1	1	k -> !D113177(k).testBit(0) && !E328845(k).testBit(0)	both even, where ?113177 is fully additive with a(p) = Fibonacci(p) and E328845 is the first Fibonacci-based variant of the arithmetic derivative
+A374109	filnum	1	1	k -> D113177(k).testBit(0) || E328845(k).testBit(0)	not both even, where ?113177 is fully additive with a(p) = Fibonacci(p) and E328845 is the first Fibonacci-based variant of the arithmetic derivative
+A374110	lambdan	1	n -> ZV(D113177(n).mod(3) == 0 && E328845(n).mod(3) == 0 ? 1 : 0)	are both multiples of 3, otherwise 0, where ?113177 is fully additive with a(p) = Fibonacci(p) and E328845 is the first Fibonacci-based variant of the arithmetic derivative
+A374111	filnum	1	1	k -> D113177(k).mod(3) == 0 && E328845(k).mod(3) == 0	both multiples of 3, where ?113177 is fully additive with a(p) = Fibonacci(p) and E328845 is the first Fibonacci-based variant of the arithmetic derivative
+A374112	lambdan	1	n -> GCD(D113177(n), F276085(n))	, where ?113177 and F276085 are fully additive with a(p) = Fibonacci(p) and a(p) = p#/p, respectively
+A374113	lambdan	1	n -> ZV(!D113177(n).testBit(0) && !F276085(n).testBit(0) ? 1 : 0)	are both even, otherwise 0, where ?113177 and F276085 are fully additive with a(p) = Fibonacci(p) and a(p) = p#/p, respectively
+A374114	filnum	1	1	k -> !D113177(k).testBit(0) && !F276085(k).testBit(0)	both even, where ?113177 and F276085 are fully additive with a(p) = Fibonacci(p) and a(p) = p#/p, respectively
+A374115	filnum	1	1	k -> D113177(k).testBit(0) || F276085(k).testBit(0)	not both even, where ?113177 and F276085 are fully additive with a(p) = Fibonacci(p) and a(p) = p#/p, respectively
+A374119	lambdan	1	n -> ZV(D113177(n).mod(3) == 0 && F276085(n).mod(3) == 0 ? 1 : 0)	are both multiples of 3, otherwise 0, where ?113177 and F276085 are fully additive with a(p) = Fibonacci(p) and a(p) = p#/p, respectively
+A374120	filnum	1	1	k -> D113177(k).mod(3) == 0 && F276085(k).mod(3) == 0	both multiples of 3, where ?113177 and F276085 are fully additive with a(p) = Fibonacci(p) and a(p) = p#/p, respectively
+A374124	adjext	1	new A113177()	() -> mSeq.next().modZ(360)	mod 360, where ?113177 is fully additive with a(p) = Fibonacci(p)
+A374206	adjext	2	new A113177().skip(1)	() -> Functions.VALUATION.z(mSeq.next(), 2)	The 2-adic valuation of ?113177(n), where ?113177 is fully additive with a(p) = Fibonacci(p).
+A374207	adjext	2	new A113177().skip(1)	() -> Functions.VALUATION.z(mSeq.next(), 3)	The 3-adic valuation of ?113177(n), where ?113177 is fully additive with a(p) = Fibonacci(p).
+A374208	adjext	2	new A113177().skip(1)	() -> Functions.VALUATION.z(mSeq.next(), 5)	The 5-adic valuation of ?113177(n), where ?113177 is fully additive with a(p) = Fibonacci(p).
+A379225	lambdan	1	n -> D113177(n).modZ(5)	, where ?113177 is fully additive with a(p) = Fibonacci(p)
+A379226	filtpos	1	1	new A113177()	(k, v) -> v.mod(5) == 0	Numbers k for which ?113177(k) is a multiple of 5, where ?113177 is fully additive with a(p) = Fibonacci(p)
+A379300	addr	1	(p, e) -> { final Z pi = PI(p); return !pi.isOne() && !PP(pi) ? ZV(e) : ZV(0); }	charfun(composite)
+A379306	addr	1	(p, e) -> D008966(PI(p)).*(e)
+A379310	addr	1	(p, e) -> ZV(1).-(D008966(PI(p))).*(e)	a(prime(k)) = J107078(k) = 1 - D008966(k)
+A379311	addr	1	(p, e) -> { final Z pi = PI(p); return pi.isOne() || PP(pi) ? ZV(e) : ZV(0); }	charfun(1 U prime)
+A379721	filnum	1	1	k -> D056239(k).compareTo(D003963(k)) <= 0
+A383959	addr	1	(p, e) -> F034444(e)
+A383960	addr	1	(p, e) -> D037445(e)
+A384420	addr	1	(p, e) -> D070321(e)
+A384421	addr	1	(p, e) -> D008966(e)
+A384422	addr	1	(p, e) -> F000010(e)
+A384423	addr	1	(p, e) -> F047994(e)
+A385378	addr	1	(p, e) -> D003056(e)
+A385379	addr	1	(p, e) -> D052146(e + 1)
+A392814	addr	1	(p, e) -> p.modZ(e)
