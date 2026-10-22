@@ -323,6 +323,7 @@ while (<>) { # read inputfile
             $parm =~ s{FI\(}           {Functions.FIBONACCI.z\(}g;
             $parm =~ s{FSIT\(}         {FactorUtils.iterate\(}g;
             $parm =~ s{GCDi\(}         {Functions.GCD.i\(}g;
+            $parm =~ s{GCDl\(}         {Functions.GCD.l\(}g;
             $parm =~ s{GCD\(}          {Functions.GCD.z\(}g;
             $parm =~ s{GD\(}           {GaussianIntegers.SINGLETON.sumdiv\(}g;
             $parm =~ s{GP\(}           {GaussianIntegers.SINGLETON.product\(}g;
