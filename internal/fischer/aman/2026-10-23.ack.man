@@ -127,3 +127,4 @@ A401342	holos	0	[0,-2,-1,3,-1]	0,1,1,3,5	0	0
 A401343	decexpr	1	() -> CR.PI.^(2).*(REALS.csch(CR.PI./(2)))./(4)	Decimal expansion of Pi^2*csch(Pi/2)/4.	nonn,cons,new	1..100	nyi	_Stefano Spezia_
 A401344	decexpr	1	() -> CR.PI.^(3).*(REALS.sech(CR.PI./(2).*(CV(3).sqrt())))./(4)	Decimal expansion of Pi^3*sech(sqrt(3)*Pi/2)/4.	nonn,cons,new	1..100	nyi	_Stefano Spezia_
 A401347	decexpr	1	() -> CR.PI.^(6).*(REALS.csch(CR.PI./(2))).*(REALS.sech(CR.THREE.sqrt().*(CR.PI./(2))))./(REALS.cosh(CR.PI./(2)).-(REALS.cos(CR.THREE.sqrt().*(CR.PI./(2)))).*(16))	Pi^6 * csch(Pi/2) * sech(sqrt(3)*Pi/2) / (16*(cosh(Pi/2) - cos(sqrt(3)*Pi/2)))
+
