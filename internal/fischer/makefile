@@ -300,7 +300,7 @@ pack3: # check for existence
 #----
 spot:
 	cd ../.. ; ant spot 
-	grep -P "A\d{6}\.java" spotbugs.txt
+	grep -P "A\d{6}\.java" spotbugs.txt || :
 #----
 DIR=joeis-lite
 packfail:
