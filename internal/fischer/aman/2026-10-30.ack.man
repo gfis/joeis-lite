@@ -100,3 +100,8 @@ A401546	diffs	1	new A018900()	First differences of J018900.	nonn,new	1..73	nyi	_
 A401572	holos	1	[0,-1000000,990100,9901,-1]	885,8221845,82277815845	0	0
 A401573	holos	1	[0,-1000000,990100,9901,-1]	588,5481228,54851877228	0	0
 A401574	adjext	0	new A101703()	() -> REV(mSeq.next())
+---- 2026-10-30 18:57:37
+---- 2026-10-30 18:58:38
+---- 2026-10-30 19:03:19
+---- 2026-10-30 19:51:37
+A385186	filter	1	new A002378().skip(1)	v -> DIVIT(v, 0L, (x, d) -> { final Z other = v./(d); return x + (d.+(1).equals(other) ? ((!PP(d) && !PP(other)) ? 1 : 0) : 0); } ) == 0L	x + { Oblong numbers of the form k*(k + 1) such that at least one of k and k + 1 is prime.
