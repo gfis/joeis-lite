@@ -1,0 +1,102 @@
+---- 2026-10-28 17:44:16
+A090137	rambdan	1	n -> new Q(Z2(n - 1).-(n).*(n - 2), FA(n))	numerator((n-2)*(2^(n-1)-n)/n!)
+A090138	rambdad	1	A090137
+A090585	rambdan	1	n -> new Q(n + 1, FA(n - 1).*(2))	seq(denom((n+1)/(2*(n-1)!)), n=1..25);
+A090586	rambdad	1	A090585
+A091259	rambdan	1	n -> new Q(Functions.SIGMA.z(3, n), SIGMA(n))	Numerator of sigma_3(n)/sigma(n).
+A091260	rambdad	1	A298754	Denominator of sigma_3(n)/sigma_2(n).
+A093158	lambdan	0	n -> HARM(n + 1).*(n + 2).+(1).*(3).*(QV(2).pow(3 - n))./(ZV(n + 1).*(ZV(n + 2).^(3)).*(ZV(n + 3).^(2))).num()
+A096952	rambdan	0	n -> new Q(6, 5)./(2*n + 1).*(new Q(ZV(1), Z2(2*n + 1)).+(new Q(ZV(1), ZV(3).^(2*n + 1))))	Z2(2*n + 1)seq((6/5)*(1/2^(2*n+1) + 1/3^(2*n+1))/(2*n+1),n=0..20);
+A096953	rambdad	0	A096952
+A100630	arrlamb	1	1	1	-1	(m, n) -> SU(1, m, i -> FA(n - 1 + i).*(i))	Array read by antidiagonals: T(m,n) = Sum_{i=1..m} i*(n-1+i)!.
+A103304	rambdan	1	n -> RU(0, n, k -> new Q(BI(n, k), ZV(2*k + 1).*(2*k + 2).*(2*n - 2*k + 1).*(2*n - 2*k + 2))).*(4)
+A103305	rambdad	1	A103304
+A103307	rambdan	2	n -> new Q(Z2(n + 3).+(Z_1(n).*(6*n + 10)), ZV(3).^(n + 2).*(n + 1).*(n + 2))	a(n) = numerator((2^(n+3)+(-1)^n*2*(3*n+5))/((n+1)*(n+2)*3^(n+2))).
+A103308	rambdad	2	A103307
+A103990	rambdan	1	n -> new Q(2, 3).*(ZV(n - 1).*(n).+(2).*(n).+(1))./(2*n + 1)
+A107928	multia	1	"2,3"	(self, n) -> new Q(self.a(n - 1).*(self.a(n - 2)).*(2), self.a(n - 1).+(self.a(n - 2))).num()
+A109074	lambdan	0	n -> new Q(BI(6*n - 2, 2*n), BI(4*n - 1, 2*n).*(2)).num()
+A111130	lambdan	0	n -> new Q(ZV(n + 2).^(n + 2), ZV(n + 1).^(n + 1)).-(new Q(ZV(n + 1).^(n + 1), ZV(n).^(n))).num()	Numerator of (n+2)^(n+2)/(n+1)^(n+1) - (n+1)^(n+1)/n^n.
+A112548	filnum	1	1	k -> PP(BERN(k)./(k).num().abs())	Numbers k such that the numerator of Bernoulli(k)/k is (apart from sign) prime.
+A114467	lambdan	0	n -> Functions.DIGIT_LENGTH.z(HARM(ZV(10).^(n)).num())	Number of decimal digits in the numerator of the 10^n-th harmonic number.
+A114468	lambdan	0	n -> Functions.DIGIT_LENGTH.z(HARM(ZV(10).^(n)).den())	Number of decimal digits in the denominator of the 10^n-th harmonic number.
+A114471	lambdan	0	n -> Functions.DIGIT_LENGTH.z(BERN(ZV(10).^(n)).den())	Number of decimal digits in the denominator of the 10^n-th Bernoulli number.
+A115075	mulr	1	(p, e) -> p.^(e).*(p.^(e).+(p.^(e - 1)).-(p.^(CEIL.i(e, 2) - 1)))
+A115107	lambdan	0	n -> HARM(n).*(2*n + 2).-(4*n).num()	Numerator of q_n = -4*n + 2*(1+n)*HarmonicNumber(n).
+A117731	rambdan	1	n -> RU(1, n, k -> new Q(1, n + k)).*(n)	Numerator of the fraction n*Sum_{k=1..n} 1/(n+k).
+A120269	rambdan	1	n -> RU(1, n, k -> new Q(Z.ONE, Z.valueOf(2L * k - 1).pow(4)))
+A128438	lambdan	1	n -> HARM(n).den()./(n)	a(n) = floor((denominator of H(n))/n), where H(n) = Sum_{k=1..n} 1/k, the n-th harmonic number.
+A128493	rambdad	1	A120269
+A128500	rambdan	0	n -> RU(0, n, k -> new Q(k % 3 == 2 ? 0 : (k % 6 < 3 ? 1 : -1)*((k&1) == 1 ? -1 : 1), k + 1))	r(n):=Sum_{k=0..n} ((-1)^k)*S(k,1)/(k+1), S(k,1)=[1,1,0,-1,-1,0] periodic sequence with period 6. See A010892.
+A128501	lambdan	0	n -> n == 0 ? ZV(1) : RU(0, n - 1, k -> new Q(k % 3 == 2 ? 0 : (k % 6 < 3 ? 1 : -1)*((k&1) == 1 ? -1 : 1), k + 1)).den()
+A144830	parmof2	0	A144230	4
+A157301	rambdan	0	n -> { final Z n2 = Z2(n); return new Q(PI(n2.*(2)), PI(n2)); }	Reduced numerators of the ratios of Pi(2^(n+1))/Pi(2^(n)).A000000	poly	0	"[1],[1/2]"	"x,2,/,sin,2,*,1,x,2,/,cos,2,*,+,/,cot"
+A160046	rambdan	1	n -> HARM((n - 1)/2).*(n).+(1).-(n & 1)	[Table[1 - Mod[n, 2] + n HarmonicNumber[Floor[(n - 1)/2]], {n, 20}]]
+A160047	rambdad	1	A160046
+A160110	lambdan	0	n -> BERN(2*n).*(D001316(2*n)).num().abs()	Numerators of |Bernoulli(n)*Gould(n)| for even n, (Gould A001316).
+A161621	rambdan	1	n -> { final Z bn = PI(n*n); return new Q(PI((n + 1)*(n + 1)).-(bn), PI((n + 2)*(n + 2)).-(bn)); }	Numerator of (b(n+1) - b(n))/(b(n+2) - b(n)), where b(n) = A038107(n) is the number of primes up to n^2.
+A161622	rambdad	1	A161621
+A173299	ratos	1	[[0],[1],[2],[-2]]	1,2	0	0
+A173300	conum	1	A173299
+A174341	rambdan	0	n -> (n != 1 ? BERN(n) : BERN(n).negate()).+(new Q(1, n + 1))	a(n) = Numerator of Bernoulli(n, 1) + 1/(n+1).
+A174342	rambdad	0	A174341	(PARI)	B(n)=if(n!=1, bernfrac(n), -bernfrac(n));	a(n)=numerator(B(n) + 1/(n + 1));
+A174680	lambdan	0	n -> n == 0 ? ZV(-1) : new Q(1, 16).-(new Q(1, n*n)).num()	Numerator of 1/16 - 1/n^2, using -1 at the pole where n=0.
+A175385	rambdan	1	n -> RU(1, n, i -> new Q(BI(2*n - i - 1, i - 1), i))	a(n) = numerator of Sum_{i=1..n} binomial(2n-i-1,i-1)/i.
+A175386	rambdad	1	A175385
+A181759	lambdan	-3	n -> n == 0 ? ZV(0) : new Q(1, 9).-(new Q(1, n*n)).den()
+A182853	union2	1	new A120944()	new A303606()
+A187745	lambdan	0	n -> n <= 2 ? ZV(1) : BERN(Z2(n - 1)).num()	Numerators of Bernoulli numbers B(2^n).
+A187894	polya	0	"[1]"	"x,B,sqrt,<1"	new A000957().skip(3)
+A231961	filter	0	new A231948()	(k, v) -> k%3 == 0
+A235043	partsun	0	new PrependSequence(0, new CharacteristicFunction(1, new A091209()), 0)	Partial sums of the characteristic function of J091209.
+A239231	holos	0	[0,1,-2,1,0,0,0,-1,2,-1]	0,1,1,4,5,9,12,17,21,27,33,41	0	0
+A261829	decexp	0	() -> X084448.divide(CR.TWO)
+A279371	polya	1	"[1]"	"x,B,4,x,^2,B,*,+,8,x,^4,B,*,+"	new A006571()
+A296519	rambdad	1	A117731
+A298754	rambdan	1	n -> new Q(Functions.SIGMA.z(3, n), Functions.SIGMA.z(2, n))
+A304876	lambdan	1	n -> SD(n, d -> Predicates.TRIANGULAR.is(d) ? Z_1(n/d + 1).*(d) : ZV(0))	a(n) = Sum_{d|n} (-1)^(n/d+1)*A010054(d)*d.
+A304906	lambdan	1	n -> SD(n, d -> Predicates.CUBE.is(d) ? Z_1(n/d + 1).*(d) : ZV(0))	a(n) = Sum_{d|n} (-1)^(n/d+1)*A010057(d)*d.
+A324995	decexp	0	() -> X006752.divide(CR.FOUR.multiply(CR.PI)).add(X074962.log().divide(CR.EIGHT)).subtract(CR.ONE.divide(CR.valueOf(96)))
+A335006	decexp	1	() -> X001620.add(X073002.divide(X013661))
+A335007	decexp	1	() -> CR.TWO.multiply(X001620).add(CR.TWO.multiply(X073002).divide(X013661)).subtract(CR.ONE)
+A354353	charfun	1	A182853	1 if n is either a squarefree composite or a power of squarefree composite, otherwise 0.
+A367842	decexp	0	() -> X010767.multiply(X092040).divide(X074962)
+A373589	filnum	1	1	k -> Functions.BIG_OMEGA.l(k) % 3 == 0 && FSIT(k, 0L, (x, p, e) -> x + (p.mod(3) != 2 ? 1 : 0)) == 0	? ZV(1) : ZV(0)	a(n) = 1 if the number of prime factors (with multiplicity) of n is a multiple of 3, and all of them are of the type 3m-1 (in A003627), otherwise 0.
+A378589	decexp	0	() -> CR.ONE.add(CR.TWO.multiply(CR.PI.pow(2).subtract(CR.SIX.multiply(CR.TWO.log()).multiply(CR.valueOf(24).multiply(X074962.log()).add(CR.TWO.multiply(CR.GAMMA)).add(CR.TWO.log()).subtract(CR.TWO.multiply(CR.PI.log())).subtract(CR.THREE)))).divide(CR.PI.pow(2))).divide(CR.FOUR)
+A379425	decexp	0	() -> X001620.divide(CR.THREE).subtract(CR.TWO.multiply(X000796).log().divide(CR.TWO)).add(CR.TWO.multiply(X074962.log())).add(CR.HALF)
+A387592	decexp	0	() -> CR.ZERO.subtract(X084448).exp()
+A395218	decexp	0	() -> CR.valueOf(24).multiply(X074962.log()).subtract(CR.TWO.multiply(X001620)).subtract(CR.valueOf(24).log())
+A397182	holos	0	[0,1,-2,0,2,-1]	1,3,13,30	0	0
+A400251	filtpos	1	1	new A400249()	NONZERO	Numbers k for which E400249(k) is not zero, where E400249 is M‚ąö‚ąābius transform of E085731, with E085731(n) = gcd(n,n'), and n' the arithmetic derivative of n.	nonn	1..10000	nyi	_Antti Karttunen_
+A400376	polyx	0	"[1],[1,-1]"	"1,1,p1,log,x,sin,*,+,/"	0	1
+A400377	polyx	0	"[1],[1,-1]"	"1,1,p1,log,x,cos,*,+,/"	0	1
+A400445	holos	0	[[0],[-15,15],[-2,2],[-1,-1]]	1,0	0	0
+A400448	decexp	0	() -> CV(new Q(5, 2)).*(CV(new Q(5, 3)).^(new Q(1, 5))).*(CV(new Q(2000, 161967)).^(new Q(3, 5)))	Decimal expansion of (5/2)*(5/3)^(1/5)*(2000/161967)^(3/5).	nonn,cons,easy	0..99	nyi	_Stefano Spezia_
+A400484	parmof4	1	A082182	37	+5	42
+A400587	filtpos	1	1	new A400531()	ONE	= 1; k such that chi_{k,-1}(-1) = 1, where chi_{k,-1} is the Dirichlet character modulo k with label -1 in the Conrey labeling system.	nonn,easy	1..10041	nyi	_Jianing Song_
+A400588	filtpos	1	1	new A400531()	v -> v.equals(Z.NEG_ONE)	= -1; k such that chi_{k,-1}(-1) = -1, where chi_{k,-1} is the Dirichlet character modulo k with label -1 in the Conrey labeling system.	nonn,easy	1..9959	nyi	_Jianing Song_
+A400602	multia	1	"1"	(self, n) -> SU(1, n - 1, k -> { final long gnk = Functions.GCD.l(n, k); return self.a(gnk).*(self.a(k/gnk)); })	a(1) = 1; a(n) = Sum_{k=1..n-1} a(gcd(n,k)) * a(k/gcd(n,k)).	nonn	1..38	nyi	_Ilya Gutkovskiy_
+A400603	multia	1	"1"	(self, n) -> SU(1, n - 1, k -> { final long gnk = Functions.GCD.l(n - 1, k); return self.a((n - 1)/gnk).*(self.a(k/gnk)); })	a(1) = 1; a(n+1) = Sum_{k=1..n} a(n/gcd(n,k)) * a(k/gcd(n,k)).	nonn	1..13	nyi	_Ilya Gutkovskiy_
+A400612	lambdan	1	k -> { final long fk = Functions.LEADING_DIGIT.l(k); return ZV(DIVIT(k, 0L, (x, d) -> x + (d.mod(10) == fk ? 1 : 0))); }	a(n) is the number of divisors d of n such that the last digit of d is equal to the first digit of n.	nonn,base,easy	1..94	nyi	_Bernard Schott_
+A400661	multia	0	"1"	(self, n) -> SU(1, n, k -> Z_1(k + 1).*(BI(3*n - 2*k, k)).*(ZV(n - k + 1).^(k)).*(self.a(n - k)))	; a(n) = Sum_{k=1..n} (-1)^(k+1) * binomial(3*n-2*k,k) * (n-k+1)^k * a(n-k).	nonn	0..17	nyi	_Ilya Gutkovskiy_
+A400662	multia	0	"1"	(self, n) -> SU(1, n, k -> Z_1(k + 1).*(BI(4*n - 3*k, k)).*(ZV(n - k + 1).^(k)).*(self.a(n - k)))	; a(n) = Sum_{k=1..n} (-1)^(k+1) * binomial(4*n-3*k,k) * (n-k+1)^k * a(n-k).	nonn	0..17	nyi	_Ilya Gutkovskiy_
+A400671	trilambn	0	0	0	(n, k) -> BI(k, 2).+(n)	Triangle read by rows: T(n, k) = n + binomial(k, 2)
+A400716	poly	0	"[1],[1,-2],[1,-1]"	"1,2,<1,p1,/,sub,<1,p2,/,+"
+A400717	poly	0	"[1],[1,-2],[1,-1]"	"1,2,<1,p1,^2,/,sub,<1,p2,/,+"
+A400825	filnum	0	1	k -> PP(Z2(k).-(1).*(Z2(k + 4)).+(1))	Numbers k such that (2^k-1)*2^(k+4)+1 is prime
+A400835	filnum	0	0	k -> k == 0 || ZV(k).mod(F007947(E327860(k))).isZero()	After the initial 0, numbers k such that k is a multiple of F007947(E327860(k)).	
+A401049	holos	0	[0,1,0,0,0,-1]	1,4,3,2	0	0
+A401223	holos	1	[0,-1728,-3456,-576,-800,-1104,2640,-1136,144,972,-1512,1188,-702,317,-93,15,-1]	1,12,53,224,892,3420,12704,45864,161992,562912,1930312,6545496,21988784,73296272,242715784,799199592,2618729664,8544429216	0	0
+A401276	holos	0	[0,-261324,278472,-17393,246,-1]	0,0,2,369	0	0
+A401326	holos	0	[0,10,10,-1]	1,5	0	0
+A401345	decexpr	1	() -> CR.PI.pow(4).multiply(REALS.csch(CR.PI.divide(CR.TWO))).divide(CR.EIGHT.multiply(REALS.cosh(CR.PI.divide(CR.SQRT2)).subtract(REALS.cos(CR.PI.divide(CR.SQRT2)))))
+A401363	parmof4	0	A082182	28	+27	55
+A401364	parmof4	0	A082182	29	+28	57
+A401408	partsun	0	new A209661().prepend(0)	_Leandro Hector Gallego_ and _Jianing Song_
+A401421	mulr	1	(p, e) -> e == 1 ? p : p.*(p.+(1))	a(p) = p and a(p^e) = p + p^2 for e >= 2.
+A401422	mulr	1	(p, e) -> D001511(e).+(1)	a(p^e) = D001511(e) + 1 = D007814(e) + 2.
+A401423	mulr	1	(p, e) -> D006519(e)
+A401424	mulr	1	(p, e) -> p.^(D006519(e).+(1)).-(1)./(p.-(1)).-(1)
+A401425	mulr	1	(p, e) -> p.^(Z2(Functions.VALUATION.i(e + 1, 2)).-(1))
+A401426	mulr	1	(p, e) -> SU(0, Functions.VALUATION.i(e + 1, 2), k -> p.^(Z2(k).-(1)))	a(p^e) = Sum_{k=0..D007814(e+1)} p^(2^k-1).
+A401437	partsun	0	new A401409()

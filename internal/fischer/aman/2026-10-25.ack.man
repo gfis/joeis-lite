@@ -1,0 +1,67 @@
+---- 2026-10-25 21:09:57
+A105661	lambdan	1	n -> PP(n) ? ZV(1) : ((n&1) == 0 && SEM(n) ? ZV(2) : ZV(0))	n is a prime, 2 if n is an even semiprime, otherwise 0.
+A106667	lambdan	1	n -> { final Z p2 = PM(n).+(2); return PP(p2) ? ZV(1) : (SEM(p2) ? ZV(-1) : ZV(0)); }	prime(n) + 2 is a prime, a(n) = -1 if prime(n) + 2 is a semiprime, otherwise 0.
+A115591	filter	1	new A000040()	p -> Functions.ORDER.z(p, 2).equals(p.-(1)./(2))	Primes p such that the multiplicative order of 2 modulo p is (p-1)/2.
+A122094	filter	1	new A000040()	p -> PP(Functions.ORDER.z(p, 2))	Prime divisors of Mersenne numbers. Primes p such that the multiplicative order of 2 modulo p is prime.
+A139791	filnum	1	1	k -> ZV(2*k).mod(D002326(k)).isZero()	Numbers n for which 2n is a multiple of D002326(n)
+A145784	filnum	1	1	k -> Functions.BIG_OMEGA.l(k) % 3 == 0	Numbers with property that their number of prime factors counted with multiplicity is a multiple of 3.
+A152478	partsun	1	new LambdaSequence(0, n -> n == 0 ? ZV(0) : F000009(F000045(n)))
+A174240	adjext	1	new A046388()	() -> Functions.ORDER.z(mSeq.next(), 2)	The multiplicative order of 2 mod n, where n an odd squarefree semiprime (J046388).
+A175820	partsun	0	new A074962()
+A191609	filter	1	new A000040().skip(2)	p -> Functions.ORDER.z(p, 2).equals(Functions.ORDER.z(p, 3))	Primes modulo which the multiplicative orders of 2 and 3 are equal.
+A194080	filter	1	new PartialSumSequence(0, new A005117())	v -> Predicates.TRIANGULAR.is(v)	Partial sums of the squarefree integers that are triangular.
+A232748	partsun	1	new CharacteristicFunction(1, new A030124())	Partial sums of the characteristic function of Hofstadters J030124.
+A250211	arrlamb	1	1	1	1	(n, k) -> GCDi(n, k) != 1 ? ZV(0) : Functions.ORDER.z(k, n)	Square array read by antidiagonals: A(m,n) = multiplicative order of m mod n, or 0 if m and n are not coprime.
+A277048	filter	1	new A000040()	p -> PP(Functions.ORDER.z(p, 3))	Primes p such that the multiplicative order of 3 modulo p is prime.
+A277049	filter	1	new A000040()	p -> PP(Functions.ORDER.z(p, 5))	Primes p such that the multiplicative order of 5 modulo p is prime.
+A291745	filnum	1	1	k -> !PP(k) && k % 3 == 1	Nonprimes of the form 3*k + 1.
+A296243	filnum	1	0	k -> (k&1) == 1 && !Functions.ORDER.z(k, 2).testBit(0)	Numbers k such that the multiplicative order of 2 modulo k is even.
+A297362	filnum	1	0	k -> (k&1) == 1 && PP(ZV(2).^(Functions.ORDER.z(k, 2)).-(1)./(k))	Numbers k such that (2^ord(2, k) - 1)/k is prime, where ord(2, k) is the multiplicative order of 2 (mod k).
+A297363	filnum	0	1	k -> GCDi(k, 3) == 1 && PP(ZV(3).^(Functions.ORDER.z(k, 3)).-(1)./(k))	 Numbers k such that (3^ord(3, k) - 1)/k is prime, where ord(3, k) is the multiplicative order of 3 (mod k).
+A305332	adjext	0	new A123692()	() -> Functions.ORDER.z(mSeq.next().^(2), 5)	Multiplicative order of 5 (mod J123692(n)^2).
+A305333	sintrif	0	(term, n) -> term.-(1)./(Functions.ORDER.z(term.^(2), 5))	""	new A123692()	() -> p -> Let p be the n-th base-5 Wieferich prime (J123692). a(n) is the value of p-1 divided by the multiplicative order of 5 (mod p^2).
+A308510	filter	1	new A000040()	p -> { final Z np = Functions.NEXT_PRIME.z(p); return Functions.ORDER.z(np, p).equals(np.-(1)); }	Prime(k) such that the multiplicative order of prime(k) (mod prime(k+1)) = prime(k+1)-1.
+A319009	filnum	1	1	k -> (k&1) == 1 && Functions.ORDER.z(k, 2).equals(F002322(k))	k such that the multiplicative order of 2 modulo k is psi(k), psi = F002322.
+A323376	arrlamb	1	1	1	1	(n, k) -> n == k ? ZV(0) : Functions.ORDER.z(PM(k), PM(n))	T(n,k) is the multiplicative order of the n-th prime modulo the k-th prime, or 0 if n = k, n >= 1, k >= 1.
+A325989	mulr	1	(p, e) -> E002033(e)	= J074206(e+1).
+A333743	filnum	1	1	k -> (k&1) == 1 && Functions.ORDER.z(k, 2).equals(Functions.ORDER.z(k + 2, 2))	Odd numbers k such that the multiplicative orders of 2 modulo k and modulo k+2 are equal.
+A333992	lambdan	0	n -> { final Z q = PM(n); return Functions.ORDER.z(Functions.PRIMORIAL.z(q.-(1)), q); } 	a(n) is the multiplicative order of the n-th prime number q modulo (q-1)#.
+A337714	lambdan	1	n -> { final long nn = (3*n - 1)/2; return PHI(nn)./(Functions.ORDER.z(nn, 3)); }	Euler totient function phi(N) divided by the multiplicative order of 3 modulo N, with N = N(n) = floor((3*n-1)/2), for n >= 1.
+A342005	lambdan	0	n -> n == 0 ? ZV(1) : E328391(n).compareTo(D328114(n)) < 0 ? ZV(1) : ZV(0)	, otherwise 0.
+A348751	filnum	1	1	k -> E348750(k).compareTo(ZV(k)) < 0	nonn	1..81	nyi	_Antti Karttunen_
+A348752	filnum	1	1	k -> E348750(k).compareTo(ZV(k)) > 0	nonn	1..67	nyi	_Antti Karttunen_
+A353687	lambdan	1	n -> E098987(n).isOne() ? ZV(1) : ZV(0)	== 1, otherwise 0.
+A353832	mulr	1	(p, e) -> PM(PI(p).*(e))	prime(e * PrimePi(p)), where PrimePi = F000720. - _Amiram Eldar_, Oct 23 2026
+A354206	mulr	0	(p, e) -> { final Z q = E354200(F000720(p)); return E354203((q.^(e + 1).-(1))./(q.-(1))); }	
+A362971	partsun	1	new A036966()
+A367230	filter	1	new A001567()	v -> Functions.ORDER.z(v, 2).testBit(0)	Base-2 Fermat pseudoprimes A001567 k such that the multiplicative order of 2 modulo k is odd.
+A367648	filter	1	new A000040()	p -> !p.equals(ZV(3)) && Predicates.BASE_POWER.is(3, Functions.ORDER.z(p, 3))	Primes p such that the multiplicative order of 3 modulo p is a power of 3.
+A367649	filter	0	new A000040()	p -> { final Z ord = Functions.ORDER.z(p, 3); return !ord.testBit(0) && Predicates.BASE_POWER.is(3, ord./(2)); }	Primes p such that the multiplicative order of 3 modulo p is 2 times a power of 3. 
+A369665	lambdan	0	n -> n > 1 && F276085(F003415(n)).mod(4) == n % 4 ? ZV(1) : ZV(0)	== n (mod 4), otherwise 0, where F003415 is the arithmetic derivative, and F276085 is the primorial base log-function.
+A371531	lambdan	1	n -> Functions.ORDER.z(n, D053669(n))
+A373588	lambdan	1	k -> Functions.BIG_OMEGA.l(k) % 3 == 0 && FSIT(k, 0L, (x, p, e) -> x + (p.mod(3) != 2 ? 1 : 0)) == 0 ? ZV(1) : ZV(0)	a(n) = 1 if the number of prime factors (with multiplicity) of n is a multiple of 3, and all of them are of the type 3m-1 (in A003627), otherwise 0.
+A373589	filnum	1	1	k -> Functions.BIG_OMEGA.l(k) % 3 == 0 && FSIT(k, 0L, (x, p, e) -> x + (p.mod(3) != 2 ? 1 : 0)) == 0	multiple of 3, and all of them are of the type 3m-1 (in A003627).
+A373590	filnum	1	1	k -> Functions.BIG_OMEGA.l(k) % 3 == 0 && FSIT(k, 0L, (x, p, e) -> x + (p.mod(3) != 1 ? 1 : 0)) == 0	multiple of 3, and all of them are of the type 3m+1 (in A002476).
+A374037	filnum	1	0	k -> !E328845(k).testBit(0) && !E328846(k).testBit(0)	are both even,
+A374046	filnum	1	0	k -> !E328845(k).testBit(0)	is even
+A374049	filnum	1	0	k -> !E328846(k).testBit(0)	is even
+A374118	filnum	1	0	k -> E328768(k).mod(3) == 0 && E328845(k).mod(3) == 0	are both multiples of 3
+A374122	filnum	1	0	k -> E328845(k).mod(3) == 0	is a multiple of 3,
+A379116	filnum	1	0	k -> E328845(k).mod(5) == 0	is a multiple of 5,
+A379161	filter	1	new A000040()	p -> PP(Functions.ORDER.z(p, 7))	Primes p such that the multiplicative order of 7 modulo p is prime.
+A379229	filtraf	1	(self, k) -> { final Z d = D003961(k); return  GCD(ZV(k), d).isOne() ? d.-(2*k) : null; }	""		k for which k and D003961(k) are relatively prime, where D003961 is fully multiplicative with a(prime(i)) = prime(i+1).
+A379230	filtraf	1	(self, k) -> { final Z d = D003961(k); return !GCD(ZV(k), d).isOne() ? d.-(2*k) : null; }	""		k for which gcd(k,D003961(k)) > 1, where D003961 is fully multiplicative with a(prime(i)) = prime(i+1).
+A382788	mulr	1	(p, e) -> SU(0, Functions.DIGIT_LENGTH.i(2, e + 1) - 1, k -> p.^(Z2(k).-(1)))	Sum_{k = 0..floor(log_2(e+1))} p^(2^k-1).
+A383298	lambdan	0	n -> F276086(n).mod(F276086(F003415(n))).isZero() ? ZV(1) : ZV(0)	, otherwise 0, where F003415 is the arithmetic derivative, and F276086 is the primorial base exp-function.
+A385139	mulr	1	(p, e) -> p.^(e).+(SU(0, Functions.DIGIT_LENGTH.i(2, e) - 1, k -> p.^(ZV(e).-(Z2(k)))))	Z.TWO.pow(k).-(1))) + Sum_{k=0..floor(log_2(e))} p^(e-2^k).
+A394255	mulr	1	(p, e) -> ZV(1).+(DIGIT(e, 2, ZV(0), (x, d, ee) -> x.+(d == 0 ? ZV(0) : p.^(Z2(ee)))))	(1 + Sum_{k>=0} p^(2^k)), where e = Sum_{k>=0} e_k * 2^k, i.e., e_k is k-th bit of e.
+A400531	mulr	1	(p, e) -> is2(p) ? ZV(e == 1 ? 1 : -1) : (p.mod(4) == 1 ? ZV(1) : ZV(-1))	for primes p == 1 (mod 4); a(p^e) = -1 for primes p == 3 (mod 4); a(2) = 1, a(2^e) = -1 for e >= 2.
+A400743	filter	1	new A000040()	p -> !Functions.ORDER.z(p, 16).testBit(0)	Primes p such that the multiplicative order of 16 modulo p is even.
+A401083	mulr	1	(p, e) -> BI((e + 1)/2 + 2, 2)
+A401084	mulr	1	(p, e) -> { final int h = (e - 1)/2; return p.^(2*h + 4).-(p.^(2).*(h + 2)).+(h + 1).*(p)./(p.^(2).-(1).^(2)).+(h + 2); }	p * (p^(2*h+4) - (h+2)*p^2 + h + 1)/(p^2-1)^2 + h + 2, where h = floor((e-1)/2).
+A401085	mulr	1	(p, e) -> { final int h = e/2; return p.^(2*h + 4).-(p.^(2).*(h + 2)).+(h + 1)./(p.^(2).-(1).^(2)); }	, where h = floor(e/2).
+A401086	mulr	1	(p, e) -> (e&1) == 1 ? ZV((e + 3)*(e + 5))./(8) : ZV(e*e + 10*e +8)./(8)	/8 if e is even.
+A401087	mulr	1	(p, e) -> (e&1) == 1 ? ZV(e*e + 4*e + 19)./(8) : ZV(e*(e + 2))./(8)	if e is even.
+A401142	mulr	1	(p, e) -> (e&1) == 1 ? ZV(e*e + 4*e + 19)./(8) : ZV(0)	if e is even.
+A401407	mulr	1	(p, e) -> is2(p) ? ZV(0) : (p.mod(4) == 1 ? ZV(-1) : ZV(1)).^(e)	multiplicative with a(2) = 0, a(p) = -1 for prime p == 1 (mod 4) and a(p) = 1 for p == 3 (mod 4).
+A401409	partsun	0	new A209615().prepend(0)	_Leandro Hector Gallego_ and _Jianing Song_

@@ -1,0 +1,86 @@
+---- 2026-10-30 00:09:08
+A087106	filtraf	1	(self, k) -> { final Z p = PM(k).+(1).*(PM(k + 2).-(1)).+(1); return PP(p) ? p : null; }	""			(prime(k-1)+1)*(prime(k+1)-1) + 1, k>1.	1..100
+A090997	filnum	0	1	k -> (k&1) == 0 && !SF(BERN(k).num())	Numbers m such that the numerator of the Bernoulli number B(m) is divisible by a square.
+A100858	filtraf	1	(self, k) -> { final Z p = FA(self.s(0).-(1)).+(self.s(0)); return PP(p) ? p : null; }	""	new A000040()		(p - 1)! + p, p prime.	1.
+A110704	filtraf	1	(self, n) -> { final Z p = new Z(Z.TEN.pow(n - 1).subtract(1).divide(9).toString().replaceAll("1", "42") + "43"); return PP(p) ? p : null; }	""	new A002275()			Primes of form "n 42's followed by 43".
+A117764	filter	0	new A000204()	v -> !v.equals(ZV(11)) && Predicates.LUCAS.is(Functions.DIGIT_SUM.z(v))	Lucas numbers for which the sum of the digits is also a Lucas number.	base,nonn	0..16	nyi	Luc Stevens (lms022(AT)yahoo.com)
+A117765	filter	1	new A000032().skip(1)	v -> Predicates.FIBONACCI.is(Functions.DIGIT_SUM.z(v))	Lucas numbers for which the sum of the digits is a Fibonacci number.	base,nonn	1..13	nyi	Luc Stevens (lms022(AT)yahoo.com)
+A117766	filter	0	new A000045().skip(2)	v -> !v.equals(ZV(2)) && Predicates.LUCAS.is(Functions.DIGIT_SUM.z(v))	Fibonacci numbers for which the sum of the digits is a Lucas number.	base,nonn	0..10	nyi	Luc Stevens (lms022(AT)yahoo.com)
+A123705	filtraf	1	(self, k) -> { final Z p = ZV(5).^(self.s(0)).-(ZV(3).^(self.s(0)))./(2); return PP(p) ? p : null; }	""	new A000040()			(5^p-3^p)/2, where pr
+A124081	filtraf	1	(self, k) -> { final Z p = FI(k + 1).*(2).+(1); return PP(p) ? p : null; }	""			2*F(k) + 1.	1..40	_Giov
+A126329	filtraf	1	(self, k) -> { final Z p = self.s(0).*(6).+(5); return PP(p) ? p : null; }	""	new A000040()		6p+5 where p is a prime
+A138665	filtraf	1	(self, k) -> { final Z p = PM(k).*(2).+(PM(k + 1).*(3)).+(PM(k + 2).*(4)); return PP(p) ? p : null; }	""			2*p(k)+3*p(k+1)+4*p(k+2)
+A144427	filtraf	1	(self, k) -> { final Z p = PM(k).+((k&1L) == 1L ? -3L : 3L)./(2); return PP(p) ? p : null; }	""			(prime(k) + (-1)^k*3)/2.	1..56	_Juri-Step
+A144566	filnum	1	1	k -> Functions.BIG_OMEGA.z(k).compareTo(GPF(k)) > 0	Numbers with more prime factors (including multiplicity) than their greatest prime factor.
+A165635	filtraf	1	(self, k) -> { final Z p = self.s(0).^(2).-(3)./(2); return PP(p) ? p : null; }	""	new A000040()		(p^2 - 3)/2 where p is also prime.	1..1000	_Vincenzo Librandi_
+A165946	filtraf	1	(self, k) -> { final Z p = self.s(0).+(self.s(0).-(1).^(3)); return PP(p) ? p : null; }	""	new A000040()		p + (p-1)^3, where p is also prime.	1..1000	_Claudio Meller_
+A171771	filtraf	1	(self, k) -> { final Z p = ZV(k).^(6).-(ZV(k + 1).^(5)); return PP(p) ? p : null; }	""		n^6-(n+1)^5.	1..1000	Ulrich Krug (leuchtfeuer37(AT)gmx.de)
+A177094	filtraf	0	(self, n) -> { final Z p = ZV(3).^(2*n).-(8); return PP(p) ? p : null; }	""			3^(2n) - 8.	1..10	_Vincenzo Librandi_
+A180469	filtraf	1	(self, k) -> { final Z p = self.s(0).*(100).+(1); return PP(p) ? p : null; }	""	new A000040()		100p + 1, where p is prime.
+A185632	filtraf	1	(self, k) -> { final Z p = ZV(k).*(k).+(k + 1); return !PP(k) && PP(p) ? p : null; }	""			n^2 + n + 1 where n is nonprime.	1..1000	_Bernard Schott_
+A187602	filtraf	1	(self, k) -> { final Z p = ZV(k + 1).^(k - 1).+(k); return PP(p) ? p : null; }	""		(k+1)^(k-1) + k.
+A188665	filtraf	1	(self, k) -> { final Z p = ZV(k).*(k).+(TAU(k*k)); return PP(p) ? p : null; }	""			n^2+number of divisors of n^2.	1..10000	_Juri-Stepan Gerasimov_
+A193144	filtraf	1	(self, k) -> { final Z p = ZV(k).*(k).+(k + 1); return SEM(k) && PP(p) ? p : null; }	""			n^2 + n + 1, where n is semiprime.	1..37	_Jonathan Vos Post_
+A214305	filter	1	new A001567()	p -> Functions.BIG_OMEGA.i(p) == 2	Fermat pseudoprimes to base 2 with two prime factors.
+A215434	filtraf	1	(self, k) -> { final Z p = ZV(2).^(k).+(ZV(k).^(2)).-(1); return PP(p) ? p : null; }	""		Primes of form 2^k + k^2 - 1.	nonn,easy	1..11	nyi	_Vincenzo Librandi_
+A215435	filtraf	1	(self, k) -> { final Z p = ZV(3).^(k).+(ZV(k).^(3)).-(1); return PP(p) ? p : null; }	""		Primes of form 3^k + k^3 - 1.	nonn	1..11	nyi	_Vincenzo Librandi_
+A215436	filtraf	1	(self, k) -> { final Z p = ZV(3).^(k - 1).+(ZV(k - 1).^(3)).+(1); return PP(p) ? p : null; }	""		Primes of form 3^k + k^3 + 1.	nonn	1..9	nyi	_Vincenzo Librandi_
+A215437	filtraf	1	(self, k) -> { final Z p = ZV(5).^(k).+(ZV(k).^(5)).-(1); return PP(p) ? p : null; }	""		Primes of form 5^k + k^5 - 1.	nonn	1..7	nyi	_Vincenzo Librandi_
+A215438	filtraf	1	(self, k) -> { final Z p = ZV(5).^(k - 1).+(ZV(k - 1).^(5)).+(1); return PP(p) ? p : null; }	""		Primes of form 5^k + k^5 + 1.	nonn	1..6	nyi	_Vincenzo Librandi_
+A215563	tablamb	1	1	n -> new Integer[] {1, PMi(n) - 1}	(n, k) -> { final Z p = PM(n); return BI(p, k)./(p); }	C(p,k)/p for primes p and k=1,...,p-1.	nonn	1..69	nyi	_M. F. Hasler_
+A215564	tablamb	1	1	n -> new Integer[] {1, PMi(n)/2}	(n, k) -> { final Z p = PM(n); return BI(p, k)./(p); }	C(p,k)/p for primes p and 0 < k <= p/2.	nonn	1..36	nyi	_M. F. Hasler_
+A215629	polyx	0	"[1],[1,1]"	"p1,p1,p1,p1,pow,p1,pow,pow,pow"	0	1
+A215672	filter	1	new A001567()	p -> Functions.BIG_OMEGA.i(p) == 3	Fermat pseudoprimes to base 2 with three prime factors.
+A215697	filter	1	new A000040().skip(1)	p -> { final Z x = p.-(1)./(2); return PP(x.*(x.+(1)).+(41)); }	Primes p = 2x + 1 such that x^2 + x + 41 is prime.	nonn	1..10000	nyi	_Pierre CAMI_
+A215714	filter	1	new A005384()	x -> PP(x.*(x.+(1)).+(41))	Sophie Germain primes q such that q^2 + q + 41 is prime.
+A215725	filnum	1	1	x -> PP(2*x + 1) && PP(2*x + 3) && PP(x*(x + 1) + 41) && PP((x + 3)*x + 43)	Numbers x such that 2*x+1 is prime as is 2*x+3 and x^2+x+41 and (x+1)^2+(x+1)+41.	nonn	1..1300	nyi	_Pierre CAMI_
+A215738	filnum	0	1	k -> (k&1) == 1 && ZV(5).^(2*k - 1).-(ZV(3).^(2*k - 1)).mod(2*k) == 0L	Odd numbers k which satisfy the congruence 5^(2k-1) == 3^(2k-1) (mod 2k).	nonn	1..31	nyi	_R. J. Mathar_
+A215761	filnum	1	0	k -> PP(36*k + 11)	Numbers m with property that 36m+11 is prime.	nonn	1..10000	nyi	_Zak Seidov_
+A215830	filnum	1	88	k -> { final int[] dc = ZUtils.digitCounts(Z2(k)); boolean result = true; int i = 10; while(result && --i >= 0) { result = dc[i] >= 2; } return result; }	Numbers k such that 2^k contains each decimal digit at least twice.	nonn,base	1..53	nyi	_M. F. Hasler_
+A226534	lambdan	1	n -> { final Z p = PM(n); final Z p1 = Functions.NEXT_PRIME.z(p); return p1.+(p).-(1).mod(p1.-(p).+(1)); }	(p(n+1) + p(n) - 1) mod (p(n+1) - p(n) + 1) where p(n) is the n-th prime.	nonn,easy	1..1000	nyi	_Juri-Stepan Gerasimov_
+A226932	poly	0	"[1],[1,1]"	"1,1,p1,log,-,/"
+A226933	polyx	0	"[1],[1,1]"	"1,1,p1,log,-,/"	0	4
+A226934	filnum	1	1	k -> SIGMA(2*k).mod(TAU(2*k)).isZero()	Numbers k such that tau(2k) | sigma(2k).	nonn	1..1000	nyi	_Wesley Ivan Hurt_
+A228865	filtraf	1	(self, k) -> { final Z p = ZV(k).*(k).+(PI(k)); return PP(p) ? p : null; }	""			n^2 + pi(n).	1..2000	_K. D. Bajpai_
+A230061	filtraf	1	(self, n) -> { final Z p = Functions.CATALAN.z(n).+(1); return PP(p) ? p : null; }	""		Catalan(n)+1.	1..25	_K. D. Bajpai_
+A234572	filtraf	1	(self, k) -> { final Z p = PT(self.s(0).-(1)); return PP(p) ? p : null; }	""	new A000040()		P(p-1), where p is a prime and P(.) is the partition function (F000041).
+A236245	filtraf	1	(self, n) -> { final Z p = BI(2*n, n).+(PM(n)); return PP(p) ? p : null; }	""		C(2*m, m) + prime(m), where C(2*m, m) = (2*m)!/(m!)^2.	1..25	_Zhi-Wei Sun_
+A236249	filtraf	1	(self, n) -> { final Z p = BI(2*n, n).-(PM(n)); return PP(p) ? p : null; }	""		C(2*m, m) - prime(m), where C(2*m, m) = (2*m)!/(m!)^2.	1..12	_Zhi-Wei Sun_
+A238574	filter	1	new A187731()	v -> Predicates.COMPOSITE.is(v)	k-Lehmer numbers: composite integers n such that phi(n) | (n-1)^k.
+A238575	filter	1	new A238574()	v -> Functions.BIG_OMEGA.i(v) == 2	k-Lehmer numbers with two prime factors.
+A242051	decexp	0	() -> X013661.multiply(X335006)
+A243114	filtraf	1	(self, k) -> { final Z p = ZV(6).^(k).-(ZV(k).^(6)); return PP(p) ? p : null; }	""			6^x-x^6.	1..6	_M. F. Hasler_
+A264771	filtraf	1	(self, k) -> { final Z p = ZV(k).*(k).+(PHI(k)); return PP(p) ? p : null; }	""			n^2 + phi(n).	1..41	_Vincenzo Librandi_
+A282400	filtraf	1	(self, k) -> { final Z p = ZV(k).*(k).*(Z2(k)).+(1); return PP(p) ? p : null; }	""			n^2*2^n + 1.	1..15	_Abhiram R Devesh_
+A289413	filtraf	1	(self, n) -> { final long p = 3 + (n - 1)*10; return PP(p) && PP(p + 4) ? ZV(p) : null; }	""		Primes p such that (p,p+4) is a pair of cousin primes and p == 3 (mod 10).
+A303738	filtraf	1	(self, k) -> { final Z p = FA(2*k).+(FA(k)).-(1); return PP(p) ? p : null; }	""		(2*k)! + k! - 1.
+A322839	filnum	1	1	k -> Functions.BIG_OMEGA.i(k) > Functions.BIG_OMEGA.i(k + 1)	Numbers n with more prime factors (counted with multiplicity) than n+1.
+A322840	filnum	1	1	k -> Functions.BIG_OMEGA.i(k) < Functions.BIG_OMEGA.i(k + 1)	Positive integers n with fewer prime factors (counted with multiplicity) than n + 1.
+A324992	decexp	0	() -> X261829.subtract(CR.TWO.log().divide(CR.valueOf(24)))
+A375368	decexp	0	() -> X367842.log()
+A386618	filtraf	0	(self, k) -> { final Z p = Z2(k - 1).+(ZV(13).^(k - 1)); return PP(p) ? p : null; }	""			2^k + 13^k.	1..4
+A401332	filnum	1	0	k -> ZV(k).^(3).mod(100)/10L == (k*3L) % 10L	Numbers k such that the units digit of 3*k equals the tens digit of k^3.	nonn,base,easy,new	1..56	nyi	_Yu-Wen Wang_ and Gwo-Haur Hwang
+A401353	period	0	"1, 5, 3, 6, 2, 4"
+A401365	partsun	0	new A401407().prepend(0)
+A401468	partsun	1	new A046801()	a(n) = Sum_{k=1..n} J046801(k)
+A401523	decexpr	0	() -> CR.NINE.add(CR.valueOf(360).multiply(CR.ONE.subtract(REALS.cos(CR.THREE)))).sqrt().subtract(CR.valueOf(480).multiply(CR.ONE.subtract(REALS.cos(CR.ONE))).add(CR.ONE).sqrt()).subtract(CR.valueOf(312).multiply(CR.ONE.subtract(REALS.cos(CR.ONE))).add(CR.ONE).sqrt())
+A401546	diffs	1	new A018900()	First differences of J018900.	nonn,new	1..73	nyi	_Chai Wah Wu_
+---- 2026-10-30 00:19:30
+A103319	filtraf	1	(self, k) -> { final Z p = FA(self.s(0)).+(1); return PP(p) ? p : null; }	""	new A000040()		p! + 1 where p is prime.
+A201688	filtraf	1	(self, k) -> { final Z p = self.s(0).^(2).+(18); return PP(p) ? p : null; }	""	new A000040()			p^2 + 18, where p is prime.	1..5000	_Zak Seidov_
+A272571	filtraf	1	(self, k) -> { final Z p = ZV(k).^(4).+(k + 1); return PP(p) ? p : null; }	""		n^4 + n + 1 with n positive.	1..1000	_Vincenzo Librandi_
+A321890	filtraf	1	(self, k) -> { final Z p = self.s(0).^(2).+(16); return PP(p) ? p : null; }	""	new A000040()			p^2 + 16 where p is prime.	1..36	_Pierandrea Formusa_
+---- 2026-10-30 00:24:02
+A164580	filtraf	1	(self, k) -> { final Z p = self.s(0).^(2).+(self.s(0).+(1)./(2)); return PP(p) ? p : null; }	""	new A000040().skip(1)		p^2 + (p + 1)/2 where p is also prime.	1..10
+---- 2026-10-30 12:02:56
+A401572	holos	1	[0,-1000000,990100,9901,-1]	885,8221845,82277815845	0	0
+---- 2026-10-30 12:06:37
+A401319	holos	0	[0,-3,4,3,-1]	1,1,3,11	0	0
+A063148	dead	0	A063128	dupl	GeneratingFunctionSequence	Duplicate of A063128.
+A063234	dead	0	A063220	dupl	GeneratingFunctionSequence	Duplicate of A063220.
+A152434	dead	0	A143810	erro	NotYetImplemented	Incorrect version of A143810.
+A186508	dead	0	A186951	erro	NotYetImplemented	Incorrect version of A186951.
+---- 2026-10-30 12:22:09
+---- 2026-10-30 12:26:41
+A306627	filtraf	1	(self, k) -> { final Z c = self.s(0); final Z p = c.+(PM(c))./(2); return PP(p) ? p : null; }	""	new A000040().skip(1)	(p + prime(p))/2 with prime p.
+A401573	holos	1	[0,-1000000,990100,9901,-1]	588,5481228,54851877228	0	0

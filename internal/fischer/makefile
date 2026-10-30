@@ -298,6 +298,10 @@ pack3: # check for existence
 	| tee    $@.tmp
 	wc -l    $@.tmp
 #----
+spot:
+	cd ../.. ; ant spot 
+	grep -P "A\d{6}\.java" spotbugs.txt
+#----
 DIR=joeis-lite
 packfail:
 	cd reflect ; grep -P "FAIL|FATAL" ../$(CC).fail.log | perl queue.pl -s $(DIR) -p > ../$(CC).fail.pack

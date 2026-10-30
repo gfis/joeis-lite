@@ -2,6 +2,7 @@
 <!--
     ant-buildfile for commandline, web application and web service
     @(#) $Id: 08b49ddc73ef271c7054bb70acb278bcff247562 $
+    2026-10-30: spotbugs
     2025-03-05: source="1.10"
     2023-10-18: depends compile,compile-internal
     2022-08-14: compile internal/irvine also; CK=65
@@ -98,6 +99,21 @@
         </fileset>
     </path>
 
+    <!-- ==== spotbugs ==== -->
+    <taskdef
+        resource="edu/umd/cs/findbugs/anttask/tasks.properties"
+        classpath="${lib.home}/spotbugs-ant.jar"
+    />
+    <property name="spotbugs.home" value="../spotbugs/spotbugs-4.10.5" />
+
+    <target name="spot" >
+        <spotbugs home="${spotbugs.home}" output="text" outputFile="internal/fischer/spotbugs.txt" >
+            <auxClasspath path="../joeis/build.tmp/joeis.jar" />
+            <auxClasspath path="${tomcat.home}/lib" />
+            <sourcePath path="src" />
+            <class location="${dist.home}/joeis-lite.jar" />
+        </spotbugs>
+    </target>
     <!-- ============= all ==============================================
     -->
     <target name="all" depends="clean,prepare,generate,javadoc,dist,directories,deploy,test"/>
@@ -239,7 +255,7 @@
                 source="1.10"
                 encoding="utf8"
                 includeantruntime="false"
-                
+
                 debug="${javac.debug}" debuglevel="${javac.debuglevel}">
             <compilerarg line="-Xlint:unchecked -Xlint:deprecation -Xmaxwarns 16384 -Xmaxerrs 32768 -Xdiags:verbose" />
             <classpath>
@@ -262,7 +278,7 @@
         <javac  srcdir="${internal.home}" destdir="${build.classes}" listfiles="yes"
                 encoding="utf8"
                 includeantruntime="false"
-                
+
                 debug="${javac.debug}" debuglevel="${javac.debuglevel}">
             <compilerarg line="-Xlint:unchecked -Xlint:deprecation -Xmaxwarns 4096 -Xmaxerrs 4096 -Xdiags:verbose" />
             <classpath>
@@ -282,7 +298,7 @@
       <compilerarg value="-Xlint:unchecked" />
     </javac>
   </target>
-  
+
 
     <!-- ============= manifest =========================================
     -->
@@ -292,10 +308,10 @@
         <manifest file="${etc.home}/META-INF/MANIFEST.MF">
             <attribute name="Built-By" value="${user.name}"/>
             <attribute name="Main-Class" value="${app.main-class}"/>
-            <!--Caution, the following are read by ../web/MetaInfPage.getVersionString, 
+            <!--Caution, the following are read by ../web/MetaInfPage.getVersionString,
                 be careful with changing!
                 for appl-core.jar, the property ${core} must be set to "-core"
-                for appl.jar     , the property ${core} must be set to ""      
+                for appl.jar     , the property ${core} must be set to ""
             -->
             <section name="${ant.project.name}">
                 <attribute name="Specification-Title"       value="${ant.project.name}${core}"/>
@@ -335,7 +351,7 @@
                 >
             <fileset dir="${build.expand}" />
         </jar>
-        <!-- without libraries, with web files 
+        <!-- without libraries, with web files
                 excludes="**/web.xml,dependencies.txt"
         -->
         <war destfile="${dist.home}/${war.name}.war"
