@@ -105,3 +105,5 @@ A401574	adjext	0	new A101703()	() -> REV(mSeq.next())
 ---- 2026-10-30 19:03:19
 ---- 2026-10-30 19:51:37
 A385186	filter	1	new A002378().skip(1)	v -> DIVIT(v, 0L, (x, d) -> { final Z other = v./(d); return x + (d.+(1).equals(other) ? ((!PP(d) && !PP(other)) ? 1 : 0) : 0); } ) == 0L	x + { Oblong numbers of the form k*(k + 1) such that at least one of k and k + 1 is prime.
+A137168	filter	1	new A000959()	v -> v.mod(4) == 1	nyi	Lucky numbers (J000959) which are congruent to 1 mod 4.	nonn	1..10000	nyi	_N. J. A. Sloane_
+A137165	filter	1	new A000959()	v -> v.mod(3) == 1	nyi	Lucky numbers (J000959) which are congruent to 1 mod 3.	nonn	1..10000	nyi	_N. J. A. Sloane_
