@@ -1,10 +1,14 @@
 package irvine.oeis;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
+import java.io.InputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.channels.Channels;
+import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 
 import irvine.oeis.base.MorphismFixedPointSequence;
 import irvine.oeis.base.MorphismTransform;
@@ -63,6 +67,7 @@ public final class AbstractInspector {
           + "    mode = morphism  : return the parameters of morphism related sequences\n"
           + "    mode = noabstract: which sequences do not extend AbstractSequence\n"
           + "    mode = offinspect: check getOffset against OEIS offsets\n"
+          + "    mode = used      : print the A-numbers mentioned in the classfiles for sequences listed in the input \n"
           + "    (only the first 5 letters of the mode are relevant)\n"
           + "    file contains tab-separated tuples: A-number, offset, superclass\n"
           );
@@ -74,134 +79,170 @@ public final class AbstractInspector {
     int pass = 0;
     int fail = 0;
     int miss = 0;
-    System.out.println("# Starting report at " + Date.now());
+    System.out.println("# Starting report at " + Date.now().trim() + ", Version 3.4");
     try {
       try (final BufferedReader lineReader = fileName.length() <= 0 || fileName.equals("-")
         ? new BufferedReader(new InputStreamReader(System.in, srcEncoding))
         : new BufferedReader(Channels.newReader(new FileInputStream(fileName).getChannel(), srcEncoding))) {
-        while ((line = lineReader.readLine()) != null) { // read and process lines
-          if (!line.matches("\\s*#.*")) { // is not a comment
-            ++total;
-            if (total % 8192 == 0) { // progress
-               System.err.println("# " + String.format("+%5d: ", total) + line);
-            }
-            final String[] parms = line.split("\\s+");
-            final String aNumber = parms[0];
-            try {
-              final int parm1 = Integer.parseInt(parms[1]);
-              final String superClass = parms.length > 2 ? parms[2] : "";
-              // System.err.println("# instantiate " + aNumber);
-              final Sequence seq = SequenceFactory.sequence(aNumber);
-              if (false) {
-
-              } else if (mode.startsWith("dirarr")) {
-                if (seq instanceof DirectArray) {
-                  final AbstractSequence seq2 = (AbstractSequence) seq;
-                  final int seqOffset = seq2.getOffset();
-                  ++pass;
-                  System.out.println(aNumber + "\t" + seqOffset + "\t" + superClass);
-                } else {
-                  ++fail;
-                }
-
-              } else if (mode.startsWith("direct")) {
-                if (seq instanceof DirectSequence) {
-                  final AbstractSequence seq2 = (AbstractSequence) seq;
-                  final int seqOffset = seq2.getOffset();
-                  ++pass;
-                  System.out.println(aNumber + "\t" + seqOffset + "\t" + superClass);
-                } else {
-                  ++fail;
-                }
-
-              } else if (mode.startsWith("finit")) {
-                if (seq instanceof FiniteSequence) {
-                  final FiniteSequence seq2 = (FiniteSequence) seq;
-                  final int noTerms = seq2.size();
-                  if (noTerms == parm1) {
-                    ++pass;
-                  } else {
-                    ++fail;
-                    System.out.println(aNumber + "\t" + noTerms + " -> " + parm1 + "\t" + superClass);
+        if (mode.startsWith("use")) {
+          final ClassLoader cloader = AbstractInspector.class.getClassLoader();
+          while ((line = lineReader.readLine()) != null) { // read and process lines
+            if (!line.matches("\\s*#.*")) { // is not a comment
+              final String[] parms = line.split("\\s+");
+              final String aNumber = parms[0];
+              String name = "irvine/oeis/" + aNumber.substring(0, 4).toLowerCase() + "/" + aNumber + ".class";
+              final InputStream instr = cloader.getResourceAsStream(name);
+              if (instr != null) {
+                final BufferedInputStream byteReader = new BufferedInputStream(instr);
+                byte[] buffer = new byte[65536];
+                int len = byteReader.read(buffer, 0, buffer.length);
+                byteReader.close();
+                // System.out.println("# " + aNumber + ".class read with " + len + " bytes"); 
+                String str = new String(Arrays.copyOf(buffer, len),  StandardCharsets.ISO_8859_1);
+                int pos = str.indexOf("irvine/oeis/a");
+                //      0123456789012345678901234
+                // eg. "irvine/oeis/a353/A353835"
+                StringBuffer list = new StringBuffer();
+                while (pos >= 0) {
+                  String rNumber = str.substring(pos + 17, pos + 24);
+                  if (!rNumber.equals(aNumber)) {
+                    list.append(str.substring(pos + 17, pos + 24));
+                    list.append(" ");
                   }
-                } else {
-                  ++miss;
+                  pos =  str.indexOf("irvine/oeis/a", pos + 24);
                 }
-
-              } else if (mode.startsWith("hasram")) {
-                if (seq instanceof Triangle) {
-                  final Triangle seq2 = (Triangle) seq;
-                  if (seq2.hasRAM()) {
-                    ++pass;
-                    String method = "get";
-                    if (seq instanceof BaseTriangle) {
-                      method = "triangleElement";
-                    } else if (seq instanceof UpperLeftTriangle) {
-                      method = "matrixElement";
-                    } else {
-                    }
-                    System.out.println(aNumber + "\t" + method + "(\t" + superClass);
-                  }
-                } else {
-                  ++fail;
-                }
-
-              } else if (mode.startsWith("morph")) {
-                if (seq instanceof MorphismTransform) { // must be tested first because it is a subclass of MorphismFixedPointSequence
-                  final MorphismTransform seq2 = (MorphismTransform) seq;
-                  System.out.println(aNumber + "\tmortra\t" + seq2.getOffset() 
-                      + "\tnew " + seq2.getSequenceName() + "()"
-                      + "\t" + seq2.getStart() 
-                      + "\t" + seq2.getAnchor()
-                      + "\t" + seq2.getMappings()
-                      );
-                      ++pass;
-                } else if (seq instanceof MorphismFixedPointSequence) {
-                  final MorphismFixedPointSequence seq2 = (MorphismFixedPointSequence) seq;
-                  System.out.println(aNumber + "\tmorfps\t" + seq2.getOffset() 
-                      + "\t" + seq2.getStart() 
-                      + "\t" + seq2.getAnchor()
-                      + "\t" + seq2.getMappings()
-                      );
-                      ++pass;
-                }
-
-              } else if (mode.startsWith("noabs")) {
-                if (!(seq instanceof AbstractSequence)) {
-                  System.out.println(aNumber + "\t" + parm1 + "\t" + superClass);
-                  ++fail;
-                } else {
-                  ++pass;
-                }
-
-              } else if (mode.startsWith("offin")) {
-                if (seq instanceof AbstractSequence) {
-                  final AbstractSequence seq2 = (AbstractSequence) seq;
-                  final int seqOffset = seq2.getOffset();
-                  if (seqOffset == parm1 || (seq2 instanceof DeadSequence)) {
-                    ++pass;
-                  } else {
-                    ++fail;
-                    System.out.println(aNumber + "\t" + seqOffset + " -> " + parm1 + "\t" + superClass);
-                  }
-                } else {
-                  ++miss;
-                }
-
+                System.out.println(aNumber + "\t" + list);
+                // System.out.println(aNumber + "\t" + str);
               } else {
-                System.err.println("invalid mode " + mode);
-                System.exit(1);
+                System.err.println("ClassLoader did not find " + name);
               }
-
-            } catch (final NumberFormatException e) {
-              System.out.println(aNumber + " skipped because parm1 " + parms[1] + " is out of range");
-            } catch (final UnimplementedException exc) {
-              //System.out.println("# " + aNumber + " nyi");
-            } catch (final RuntimeException exc) {
-              System.out.println("#?? " + aNumber + ": " + exc.getMessage());
             }
-          } // is not a comment
-        } // while ! eof
+          }
+        } else {
+          while ((line = lineReader.readLine()) != null) { // read and process lines
+            if (!line.matches("\\s*#.*")) { // is not a comment
+              ++total;
+              if (total % 8192 == 0) { // progress
+                 System.err.println("# " + String.format("+%5d: ", total) + line);
+              }
+              final String[] parms = line.split("\\s+");
+              final String aNumber = parms[0];
+              try {
+                final int parm1 = Integer.parseInt(parms[1]);
+                final String superClass = parms.length > 2 ? parms[2] : "";
+                // System.err.println("# instantiate " + aNumber);
+                final Sequence seq = SequenceFactory.sequence(aNumber);
+                if (false) {
+
+                } else if (mode.startsWith("dirarr")) {
+                  if (seq instanceof DirectArray) {
+                    final AbstractSequence seq2 = (AbstractSequence) seq;
+                    final int seqOffset = seq2.getOffset();
+                    ++pass;
+                    System.out.println(aNumber + "\t" + seqOffset + "\t" + superClass);
+                  } else {
+                    ++fail;
+                  }
+
+                } else if (mode.startsWith("direct")) {
+                  if (seq instanceof DirectSequence) {
+                    final AbstractSequence seq2 = (AbstractSequence) seq;
+                    final int seqOffset = seq2.getOffset();
+                    ++pass;
+                    System.out.println(aNumber + "\t" + seqOffset + "\t" + superClass);
+                  } else {
+                    ++fail;
+                  }
+
+                } else if (mode.startsWith("finit")) {
+                  if (seq instanceof FiniteSequence) {
+                    final FiniteSequence seq2 = (FiniteSequence) seq;
+                    final int noTerms = seq2.size();
+                    if (noTerms == parm1) {
+                      ++pass;
+                    } else {
+                      ++fail;
+                      System.out.println(aNumber + "\t" + noTerms + " -> " + parm1 + "\t" + superClass);
+                    }
+                  } else {
+                    ++miss;
+                  }
+
+                } else if (mode.startsWith("hasram")) {
+                  if (seq instanceof Triangle) {
+                    final Triangle seq2 = (Triangle) seq;
+                    if (seq2.hasRAM()) {
+                      ++pass;
+                      String method = "get";
+                      if (seq instanceof BaseTriangle) {
+                        method = "triangleElement";
+                      } else if (seq instanceof UpperLeftTriangle) {
+                        method = "matrixElement";
+                      } else {
+                      }
+                      System.out.println(aNumber + "\t" + method + "(\t" + superClass);
+                    }
+                  } else {
+                    ++fail;
+                  }
+
+                } else if (mode.startsWith("morph")) {
+                  if (seq instanceof MorphismTransform) { // must be tested first because it is a subclass of MorphismFixedPointSequence
+                    final MorphismTransform seq2 = (MorphismTransform) seq;
+                    System.out.println(aNumber + "\tmortra\t" + seq2.getOffset()
+                        + "\tnew " + seq2.getSequenceName() + "()"
+                        + "\t" + seq2.getStart()
+                        + "\t" + seq2.getAnchor()
+                        + "\t" + seq2.getMappings()
+                        );
+                        ++pass;
+                  } else if (seq instanceof MorphismFixedPointSequence) {
+                    final MorphismFixedPointSequence seq2 = (MorphismFixedPointSequence) seq;
+                    System.out.println(aNumber + "\tmorfps\t" + seq2.getOffset()
+                        + "\t" + seq2.getStart()
+                        + "\t" + seq2.getAnchor()
+                        + "\t" + seq2.getMappings()
+                        );
+                        ++pass;
+                  }
+
+                } else if (mode.startsWith("noabs")) {
+                  if (!(seq instanceof AbstractSequence)) {
+                    System.out.println(aNumber + "\t" + parm1 + "\t" + superClass);
+                    ++fail;
+                  } else {
+                    ++pass;
+                  }
+
+                } else if (mode.startsWith("offin")) {
+                  if (seq instanceof AbstractSequence) {
+                    final AbstractSequence seq2 = (AbstractSequence) seq;
+                    final int seqOffset = seq2.getOffset();
+                    if (seqOffset == parm1 || (seq2 instanceof DeadSequence)) {
+                      ++pass;
+                    } else {
+                      ++fail;
+                      System.out.println(aNumber + "\t" + seqOffset + " -> " + parm1 + "\t" + superClass);
+                    }
+                  } else {
+                    ++miss;
+                  }
+
+                } else {
+                  System.err.println("invalid mode \"" + mode + "\"");
+                  System.exit(1);
+                }
+
+              } catch (final NumberFormatException e) {
+                System.out.println(aNumber + " skipped because parm1 " + parms[1] + " is out of range");
+              } catch (final UnimplementedException exc) {
+                //System.out.println("# " + aNumber + " nyi");
+              } catch (final RuntimeException exc) {
+                System.out.println("#?? " + aNumber + ": " + exc.getMessage());
+              }
+            } // is not a comment
+          } // while ! eof
+        } // not "use"
       }
     } catch (final RuntimeException | IOException exc) {
       System.out.println("# " + exc.getMessage());
@@ -229,6 +270,8 @@ public final class AbstractInspector {
     } else if (mode.startsWith("offin")) {
       total -= miss;
       subset = " with defined, but wrong offset";
+    } else if (mode.startsWith("use"  )) {
+      // ignore
     } else {
       System.err.println("invalid mode " + mode);
     }

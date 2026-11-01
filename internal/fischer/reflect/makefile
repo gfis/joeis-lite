@@ -55,6 +55,10 @@ absref1: # MODE= LIST= ; run one reflection for MODE and sequences in LIST
 	| cut -f3 $(MODE).tmp | sort | uniq -c | sort -n \
 	>        $(MODE).txt
 	tail -n64 $(MODE).txt
+absuse:
+	cut -b2-8 ../today.txt > $@.tmp
+	$(ABSINSPECT) use $@.tmp
+
 #========
 aph_direct: # try to insert DirectArray into jOEIS programs derived from APH
 	perl queue.pl -p $(COMMON)/../contrib/aph/aph_joeis.tmp \
