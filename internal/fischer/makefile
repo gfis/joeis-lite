@@ -778,6 +778,14 @@ reverse:
 	# ---- $@ CC=$(CC)
 	perl -e 'print "\n\"[" . join(",",0,reverse($(SIG)),-1) . "]\"\n";'
 #-------
+frequent:
+	$(DBAT) "SELECT COUNT(superclass), superclass FROM joeis \
+	  WHERE superclass NOT LIKE 'A______' \
+	    AND superclass NOT IN ('Sequence0', 'Sequence1', 'Sequence2', 'Sequence3', 'AbstractSequence', 'PrependSequence') \
+	  GROUP BY superclass \
+	  ORDER BY 1 DESC FETCH FIRST 128 ROWS ONLY" \
+	| tee $@.tmp
+#-------
 overwrite: # SRC= TAR= inserts or replaces all records in TAR by the ones in SRC, key is aseqno
 	# ---- $@ SRC="(SRC) TAR=$(TAR)
 	grep -E "^A[0-9]" $(SRC) | cut -b1-7 > $@.sa.tmp
