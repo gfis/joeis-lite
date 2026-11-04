@@ -676,8 +676,6 @@
 # 2026-09-03
 # src/irvine/math/partition/PartitionUtils.java
 # src/irvine/math/function/Functions.java
-# src/irvine/math/function/QuotientCeiling.java
-# src/irvine/math/function/QuotientFloor.java
 
 # 2026-09-08: longValueExact
 # src/irvine/oeis/RationalLambdaSequence.java
@@ -717,6 +715,13 @@
 # src/irvine/math/predicate/Pandigital.java
 # src/irvine/math/predicate/Oblong.java
 
-# 2026-10-31: offset changes
-src/irvine/oeis/EngelExpansionSequence.java
-src/irvine/oeis/triangle/LambdaTable.java
+# 2026-11-02: offset changes
+# src/irvine/oeis/EngelExpansionSequence.java
+# src/irvine/oeis/triangle/LambdaTable.java
+
+# 2026-11-04
+src/irvine/math/function/QuotientCeiling.java
+src/irvine/math/function/QuotientFloor.java
+src/irvine/math/function/CeilingLog2.java
+src/irvine/math/function/FloorLog2.java
+src/irvine/math/function/Functions.java

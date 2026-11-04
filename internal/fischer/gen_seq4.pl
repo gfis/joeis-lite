@@ -310,6 +310,7 @@ while (<>) { # read inputfile
             $parm =~ s{DIGIT\(}        {ZUtils.iterate\(}g;
             $parm =~ s{DIVIT\(}        {FactorUtils.iterate\(}g;
             $parm =~ s{DIVITS\(}       {FactorUtils.iterateSorted\(}g;
+            $parm =~ s{DR\(}           {Functions.DIGIT_SUM_ROOT.z\(}g;
             $parm =~ s{DL\(}           {Functions.DIGIT_LENGTH.i\(}g;
             $parm =~ s{\bF\.}          {Functions.}g;
             $parm =~ s{EUL\(}          {S173018\(}g;
