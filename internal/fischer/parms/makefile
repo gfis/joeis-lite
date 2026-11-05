@@ -24,17 +24,16 @@ endif
 JAVA=java $(JOPT) -cp "$(LITE)/dist/joeis-lite.jar$(CPS)$(JOEIS)/build.tmp/joeis.jar"
 PAREFL=irvine.oeis.ParameterReflector
 D=0
-#--------
+#========
+# rebuild all lists
 all: \
 	clean     \
-	holperiod \
 	padding   \
 	periodic  \
+	recperiod \
 	#
 	wc -l    *.txt
-help:
-	grep -E "^[a-z]" makefile | sort
-#----
+#========
 clean:
 	rm *.tmp || :
 cofrsqrt: cofrsqrt1 cofrsqrt2 # get the parameters for the period of sqrt(x), from ContinuedFractionOfSqrtSequence
@@ -88,9 +87,23 @@ periodic2:
 	2>       $@.rest.tmp \
 	| tr -d "\r" \
 	>        $@.tmp
-periodic9: # pack all sources
-	perl $(REFLECT)/queue.pl -p periodic1.tmp > $@.pack
-#----:
+#----
+recperiod: recperiod1 recperiod2 # extract the periodic linear recurrences and convert them to padding
+	echo "# $@.txt: (aseqno, offset1, inits, padright, inits_len, padright_len); `date +%Y-%m-%d.%H`" > $@.txt
+	cat recperiod2.tmp >> $@.txt
+	head -n4 $@.txt
+	wc -l    $@.txt
+recperiod1:
+	# 	A247387	holos	2	[0,1,0,0,0,0,0,0,-1]
+	grep -P "holos\t\d+\t\[0\,1\,(0\,)+\-1\]"  $(FISCHER)/holref.txt \
+	| grep -vP "\t(perio|pad|conti)" \
+	>        $@.tmp
+	tail -n4 $@.tmp
+	wc -l    $@.tmp
+recperiod2:
+	perl recperiod.pl recperiod1.tmp \
+	>        $@.tmp
+#======== various targets ====
 frequent:
 	$(DBAT) "SELECT COUNT(superclass), superclass FROM joeis \
 	  WHERE superclass NOT LIKE 'A______' \
@@ -99,19 +112,11 @@ frequent:
 	  ORDER BY 1 DESC FETCH FIRST 128 ROWS ONLY" \
 	| tee $@.tmp
 #----
-holperiod: holperiod1 holperiod2 # extract the periodic linear recurrences and convert them to padding
-	echo "# $@.txt: (aseqno, offset1, inits, padright, inits_len, padright_len); `date +%Y-%m-%d.%H`" > $@.txt
-	cat holperiod2.tmp >> $@.txt
-	head -n4 $@.txt
-	wc -l    $@.txt
-holperiod1:
-	# 	A247387	holos	2	[0,1,0,0,0,0,0,0,-1]
-	grep -P "holos\t\d+\t\[0\,1\,(0\,)+\-1\]"  $(FISCHER)/holref.txt \
-	| grep -vP "\t(perio|pad|conti)" \
-	>        $@.tmp
-	tail -n4 $@.tmp
-	wc -l    $@.tmp
-holperiod2:
-	perl holperiod.pl holperiod1.tmp \
-	>        $@.tmp
+help:
+	grep -E "^[a-z]" makefile | sort
 #----
+lrindx_period:
+	grep period $(COMMON)/../lrindex/lrindx.raw \
+	| grep -vP "\.\.\." | grep -vP "^\:\(\)\," \
+	| tee    $@.tmp
+	wc -l    $@.tmp

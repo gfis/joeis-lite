@@ -664,7 +664,10 @@ ditel:                          dist test    log
 geditel:              gener     dist test    log
 maditel:                    man dist test    log
 madital:                    man dist testall log
-tel:                                 test    log
+tel:                                 test    log 
+partel:
+	cp parms/$(CC).txt $(CC).gen
+	make EX=xx purge select2 select3 gener ditel
 #--
 batest: # parameter: CC
 	# ---- $@ CC=$(CC)
