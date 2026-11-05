@@ -101,7 +101,7 @@ recperiod1:
 	tail -n4 $@.tmp
 	wc -l    $@.tmp
 recperiod2:
-	perl recperiod.pl recperiod1.tmp \
+	perl recperiod.pl  -d $(D) recperiod1.tmp \
 	>        $@.tmp
 #======== various targets ====
 frequent:
@@ -115,8 +115,16 @@ frequent:
 help:
 	grep -E "^[a-z]" makefile | sort
 #----
-lrindx_period:
-	grep period $(COMMON)/../lrindex/lrindx.raw \
-	| grep -vP "\.\.\." | grep -vP "^\:\(\)\," \
-	| tee    $@.tmp
+sigperiod: sigperiod1 sigperiod2 # special signatures generating periodic sequences, not from (1-x^k)
+sigperiod1:
+	perl sigperiod.pl  -d $(D) $(COMMON)/../lrindex/lrindx.raw \
+	>        $@.tmp
+	head -n4 $@.tmp
 	wc -l    $@.tmp
+sigperiod2: # prepare the hashmap for recperiod.pl
+	cut -f4,5 sigperiod1.tmp | uniq \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+	
+

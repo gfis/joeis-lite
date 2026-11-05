@@ -78,7 +78,8 @@ INSPECTOR=$(JAVA) irvine.oeis.AbstractInspector
 INIT="1"
 START=`grep -E "^A" batch.log | tail -n1 | cut -b1-7`
 REMOTE=gfis@atair:~/work/gits/joeis-lite/internal/fischer
-OFFSET=0
+OFFSET=0 
+AUTHOR=Georg Fischer
 
 # Pattern rule: make Ammmmmmm Annnnnn ... from A*.man
 %: aman/%.man
@@ -617,7 +618,7 @@ prune: purge # parameter: CC; dist.log from previous dist is stripped off $(CC).
 gener: # parameter: CC, MANY, NC; test sequences in $(CC).gen - generate for java (default)
 	# ---- $@ CC=$(CC)
 	head -n$(MANY) $(CC).gen      > ghead.tmp
-	perl gen_seq4.pl -d $(D) -cc $(CC) $(NC) ghead.tmp
+	perl gen_seq4.pl -d $(D) -a "$(AUTHOR)" -cc $(CC) $(NC) ghead.tmp
 	# make -i $(CC).patch || :
 purge: # remove all oeis/annn directories
 	# ---- $@ CC=$(CC)
@@ -667,7 +668,7 @@ madital:                    man dist testall log
 tel:                                 test    log 
 partel:
 	cp parms/$(CC).txt $(CC).gen
-	make EX=xx purge select2 select3 gener ditel
+	make EX=xx AUTHOR="Teherba Kalina" purge select2 select3 gener ditel
 #--
 batest: # parameter: CC
 	# ---- $@ CC=$(CC)
