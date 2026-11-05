@@ -2,12 +2,13 @@
 
 # special signatures generating periodic sequences, not from (1-x^k)
 # @(#) $Id$
-# 2026-11-05, Georg Fischer; *KR
+# 2026-11-05, Georg Fischer; *KR=83
 #
 #:# Usage:
 #:#     # download lrindx.raw from https://oeis.org/wiki/Index_to_OEIS:_Section_Rec
-#:#     perl sigperiod.pl [-d mode] lrindex/lrindx.raw > output.seq4
+#:#     perl sigperiod.pl [-a add] [-d mode] lrindex/lrindx.raw > output.seq4
 #:#         -d mode 0=none, 1=some, 2= most
+#:#         -a additional terms (default 0)
 #--------------------------------------------------------
 use strict;
 use integer;
@@ -15,10 +16,13 @@ use warnings;
 my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime (time);
 my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d", $year + 1900, $mon + 1, $mday, $hour, $min);
 
+my $add   = 0;
 my $debug = 0;
 while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
     my $opt = shift(@ARGV);
     if (0) {
+    } elsif ($opt  =~ m{a}) {
+        $add       = shift(@ARGV);
     } elsif ($opt  =~ m{d}) {
         $debug     = shift(@ARGV);
     } else {
@@ -45,9 +49,12 @@ while (<>) {
             my $perlen = $1;
             my $arest  = $2;
             $arest =~ s{\s}{}g;
-            my @anos = split(/\,/, $arest);
+            my @anos = map {
+                s{\A(A\d+).*}{$1};
+                $_
+                } split(/\,/, $arest);
             foreach my $aseqno (@anos) {
-                print join("\t", $aseqno, "sigperiod", 0, "[" . join("\,", @signat) . "]", $perlen) . "\n";
+                print join("\t", $aseqno, "sigperiod", 0, "[" . join("\,", @signat) . "]", $perlen + $add, $perlen, $perlen + $add) . "\n";
             } # foreach
         }
     }

@@ -95,13 +95,15 @@ recperiod: recperiod1 recperiod2 # extract the periodic linear recurrences and c
 	wc -l    $@.txt
 recperiod1:
 	# 	A247387	holos	2	[0,1,0,0,0,0,0,0,-1]
+	# cat $(FISCHER)/holref.txt 
+	cat sigperiod3.tmp > $@.tmp
 	grep -P "holos\t\d+\t\[0\,1\,(0\,)+\-1\]"  $(FISCHER)/holref.txt \
 	| grep -vP "\t(perio|pad|conti)" \
-	>        $@.tmp
+	>>       $@.tmp
 	tail -n4 $@.tmp
 	wc -l    $@.tmp
 recperiod2:
-	perl recperiod.pl  -d $(D) recperiod1.tmp \
+	perl recperiod.pl  -d $(D) -f sigperiod1.tmp recperiod1.tmp \
 	>        $@.tmp
 #======== various targets ====
 frequent:
@@ -115,15 +117,19 @@ frequent:
 help:
 	grep -E "^[a-z]" makefile | sort
 #----
-sigperiod: sigperiod1 sigperiod2 # special signatures generating periodic sequences, not from (1-x^k)
+sigperiod: sigperiod1 sigperiod2 sigperiod3 # special signatures generating periodic sequences, not from (1-x^k)
 sigperiod1:
-	perl sigperiod.pl  -d $(D) $(COMMON)/../lrindex/lrindx.raw \
+	perl sigperiod.pl -a 8 -d $(D) $(COMMON)/../lrindex/lrindx.raw \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 sigperiod2: # prepare the hashmap for recperiod.pl
 	cut -f4,5 sigperiod1.tmp | uniq \
 	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+sigperiod3: # expand the inits
+	getinits -s sigperiod1.tmp > $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 	

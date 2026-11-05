@@ -2,7 +2,7 @@
 
 # Convert records from holref.txt to padding parameters
 # @(#) $Id$
-# 2026-11-05, Georg Fischer; *KR
+# 2026-11-05, Georg Fischer; *KR=83
 #
 #:# Usage:
 #:#     perl recperiod.pl [-d mode] [-f sigperiod_file] input.seq4 > output.seq4
@@ -16,24 +16,28 @@ my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime (ti
 my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d", $year + 1900, $mon + 1, $mday, $hour, $min);
 
 my $debug = 0;
-my $sigperiod_file = "sigperiod2.tmp";
+my $sigperiod_file = "sigperiod3.tmp";
 while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
     my $opt = shift(@ARGV);
     if (0) {
     } elsif ($opt  =~ m{d}) {
         $debug     = shift(@ARGV);
+    } elsif ($opt  =~ m{f}) {
+        $sigperiod_file = shift(@ARGV);
     } else {
         die "invalid option \"$opt\"\n";
     }
-} # while $opt 
+} # while $opt
+
+my ($aseqno, $callcode, $offset1, $matrix, $inits, $perlen, @rest);
 my %hash;
 open(SIG, "<", $sigperiod_file) || die "canot read \"$sigperiod_file\"\n";
 my $count = 0;
 while (<SIG>) {
     s/\s+\Z//; # chompr
-    my ($sig, $perlen) = split(/\s+/);
-    $hash{$sig} = $perlen;
-    print STDERR "# special $sig length $perlen\n" if $debug >= 2;
+    ($aseqno, $callcode, $offset1, $matrix, $inits, $perlen, @rest) = split(/\s+/);
+    $hash{$matrix} = $perlen;
+    print STDERR "# special $matrix length $perlen\n" if $debug >= 2;
     $count ++;
 } # while <SIG>
 close(SIG);
@@ -46,10 +50,9 @@ while (<>) {
     s/\s+\Z//; # chompr
     my $line = $_;
     my $nok = "ack";
-    my $perlen;
-    my ($aseqno, $callcode, $offset1, $matrix, $inits, @rest) = split(/\t/, $line);
+    ($aseqno, $callcode, $offset1, $matrix, $inits, $perlen, @rest) = split(/\t/, $line);
     if (0) {
-    #                          12   2 1
+    #                               12   2 1
     } elsif ($matrix =~ m{\A\[0\,1\,((0\,)+)\-1\]}) { 
         my $temp = $1 . "0";
         $perlen = scalar(split(/\,/, $temp));
@@ -62,7 +65,7 @@ while (<>) {
         $inits =~ s{[\[\]]}{}g; # remove brackets
         my @terms = split(/\,/, $inits);
         my $terlen = scalar(@terms);
-        my $oldcode = $rest[2];
+        my $oldcode = $rest[1];
         if ($perlen == $terlen) { # pure periodic
             $callcode = "periodic";
             print join("\t", $aseqno, $callcode, $offset1, "[$inits]", $terlen, $oldcode) . "\n";
