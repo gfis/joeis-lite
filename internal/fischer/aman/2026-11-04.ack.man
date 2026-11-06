@@ -1,0 +1,96 @@
+---- 2026-11-04 19:28:06
+A089361	lambdan	1	n -> SU(2, Functions.FLOOR_LOG2.l(n), j -> CV(n).^(new Q(1, j)).floor().-(1))	floor(n^(1/j) - 1). - _Robert Israel_, Jun 24 2015
+A107680	lambdan	0	n -> D003462(D000523(n + 1))
+A114617	filter	1	new A036898()	(k, v) -> (k&1) == 1	Numbers k such that k and k+1 are both refactorable numbers.
+A117732	filnum	1	1	k -> Functions.DIGIT_SUM.z(k).^(Functions.DIGIT_SUM_ROOT.i(k)).mod(k) == 0L	Numbers k that divide s(k)^w(k), where s(k) is the sum of the digits of k and w(k) is the digital root of k.
+A125959	tablamb	1	1	j -> new Integer[] {1, 9}	(j, k) -> DR(j*k)	for j >= 1, 1 <= k <= 9.
+A133147	multia	1	"1"	(self, n) -> self.a(n - 1).+(SU(0, Functions.FLOOR_LOG2.l(n - 1),  k -> self.a(1 << k)))	, a(1) = 1.
+A139337	lambdin	0	n -> { final int[] dc = ZUtils.digitCounts(n); return new Z(DIGIT(n, "", (x, d, e) -> String.valueOf(dc[Math.toIntExact(d)]) + x)); }	1	Replace each digit with its number of occurrences in decimal representation of n.
+A152423	lambdan	1	n -> ZV(2*n).-(Z2(Functions.CEILING_LOG2.l(n)))
+A161915	sintrif	1	(term, n) -> DR(term)	""	new A104272()
+A163632	multia	1	"1"	(self, n) -> REV(self.a(n - 1).*(3))	Triple and reverse digits.
+A171885	lambdin	0	n -> { final long l = Functions.FLOOR_LOG2.l(n); return Z2(2*l).*(2).-(Z2(l).*(3)).+(n); }	0,1	n + 2*4^L - 3*2^L with L = Functions.FLOOR_LOG2.l(n)), for n > 1
+A178753	lambdan	2	n -> ZV(n ^ (Functions.FLOOR_LOG2.l(n) + 1))
+A178754	lambdan	1	n -> ZV(n ^ Functions.FLOOR_LOG2.l(n))
+A181497	lambdan	0	n -> SU(1, n, k -> Z2(Functions.CEILING_LOG2.l(k)))
+A185456	lambdin	1	n -> Z2(1 + Functions.FLOOR_LOG2.l(n - 2)).+(n)	1,3,5	for n >= 3. (End)
+A193259	lambdan	1	n -> D011371(n).+(n).+(Functions.FLOOR_LOG2.l(n))	floor(log_2(n)) + D011371(n) for n>=1
+A193532	lambdan	1	n -> D011371(n + 1).+(n).+(Functions.FLOOR_LOG2.l(n + 1))	+ floor(log_2(n+1)) + D011371(n+1) for n>=1
+A209191	filnum	1	2	k -> DR(k).equals(LPF(k))	Numbers k such that digital root of k equals smallest prime factor of k.
+A209192	filnum	1	2	k -> DR(k).equals(GPF(k))	Numbers k such that digital root of k equals largest prime factor of k.
+A211821	filnum	1	1	k -> DIVIT(k, 0L, (x, d) -> x + (DR(d).isOne() ? 0 : 1)) == 0L	Numbers with all divisors with additive digital root of 1.
+A217871	lambdan	0	n -> Z2(Functions.QUOTIENT_CEILING.l(D029837(n + 1), 2))
+A241523	lambdin	0	n -> { final long b = Functions.FLOOR_LOG2.l(n); final Z c = ZV(n + 1).-(Z2(b)); return Z2(4*b).+(Z2(2*b).*(10).*(c.^(2)).+(c.^(4).*(5))); }	1	*c^2 + 5*c^4; }
+A255683	lambdan	1	n -> F000120(n).*(D000918(D000523(n).+(1)).+(1))
+A275282	rowsum	0	new A275281()
+A275283	lambdan	0	n -> S275281(2*n, n)
+A275290	lambdan	5	n -> S275281(n, 5)	, 5
+A275291	lambdan	7	n -> S275281(n, 7)	, 7
+A275292	lambdan	9	n -> S275281(n, 9)	. 9
+A275294	lambdan	3	n -> S275281(2*n, 6)	, 6
+A275295	lambdan	4	n -> S275281(2*n, 8)	, 8
+A275296	lambdan	5	n -> S275281(2*n, 10)	. 10
+A292620	multia	1	"1"	(self, n) -> self.a(n - 1).+(self.a(Functions.FLOOR_LOG2.l(n)))	, with a(1) = 1.
+A295513	lambdan	0	n -> { final long bil = Functions.DIGIT_LENGTH.l(2, n); return ZV(n*bil).-(Z2(bil)); }	- 2^bil(n) where bil(0) = 0 and bil(n) = Functions.FLOOR_LOG2.l(n)) + 1 for n>0.
+A305197	lambdan	0	n -> S275281(n, n/4 + CEIL.l(n, 4))
+A305198	lambdan	0	n -> S275281(2*n + 1, D109613(n).longValueExact())
+A308710	lambdan	1	n ->{ final Z p = PM(n + 1); return Z2(Functions.FLOOR_LOG2.l(p)).*(p); }	2^floor(log_2(prime(n+1))) * prime(n+1).
+A329193	lambdan	1	n -> Functions.FLOOR_LOG2.z(ZV(n).^(3))
+A329202	lambdan	1	n -> Functions.FLOOR_LOG2.z((long) n*n)
+A332063	multia	1	"1"	(self, n) -> self.a(n - 1).+(SU(1, n - 1, k -> Functions.DIGIT_LENGTH.z(2, self.a(k))))	add total number of bits of the terms so far.
+A332064	multia	1	"1"	(self, n) -> self.a(n - 1).-((self.a(n - 1).testBit(0) ? Z.NEG_ONE : Z.ONE).*(SU(1, n - 1, k -> Functions.DIGIT_LENGTH.z(2, self.a(k).abs()))))	depending on parity of a(n), add or subtract the total number of bits of (absolute values of) the terms so far.
+A336922	multraf	1	(self, n) -> self.s(0).-(self.s(1))	"0"	new A331410(), new A005087()	a(n)=J331410(n)-J005087(n)	_	_	_
+A337803	filnum	1	1	k -> { if ((k&1) == 0 || k % 5 == 0) { return false; } final long dr = Functions.DIGIT_SUM_ROOT.l(k); return  (k + 1) % dr == 0 || (k - 1) % dr == 0; }	Odd integers k not divisible by 5, such that dr(k) divides k-1 or k+1, where dr(k) is the additive digital root of k (F010888).
+A339023	lambdin	0	n -> new Z(DIGIT(n, "", (x, d, e) -> String.valueOf(DR(n*d)) + x))	0	Replace each digit d in the decimal representation of n with the digital root of n*d.
+A340298	multia	0	"0,1"	(self, n) -> self.a(n/2).+(self.a(CEIL.l(n, 2))).+(n * Functions.FLOOR_LOG2.l(n))	for n >= 2, a(n) = n for n <= 1.
+A341767	lambdan	1	n -> new Z(DIGIT(n, "", (x, d, e) -> String.valueOf(DR(ZV(n).^(d))) + x))	Replace each digit d in the decimal representation of n with the digital root of n^d.
+A341953	lambdan	1	n -> new Z(DIGIT(n, "", (x, d, e) -> String.valueOf(DR(ZV(d).^(n))) + x))	Replace each digit d in the decimal representation of n with the digital root of d^n.
+A353109	arrlamb	0	0	0	-1	(n, k) -> DR(n*k)	Array read by antidiagonals: A(n, k) is the digital root of n*k with n >= 0 and k >= 0.
+A353835	lambdan	1	n -> F001221(E353832(n))	"3,3"		a(n)=F001221(E353832(n))	_	_	_
+A368572	lambdan	1	n -> SU(1, n, k -> !P033950(k) ? ZV(0) : ZV(CEIL.l(n, k) - FLOOR.l(n, k)))	a(n) = Sum_{k=1..n} c(k) * (ceiling(n/k) - floor(n/k)), where c = J336040.
+A368817	lambdan	1	n -> SU(1, n, k -> !P033950(k) ? ZV(0) : ZV(k * (CEIL.l(n, k) - FLOOR.l(n, k))))	Sum_{k=1..n} k * c(k) * (ceiling(n/k) - floor(n/k)), where c = J336040
+A369901	lambdan	1	n -> { final long m = Functions.FLOOR_LOG2.l(2*n + 1); final Z m2 = Z2(m); return ZV(2*n + 1).-(m2).*(m2).+(1); }	2^m+1 = (2n+1)*2^m-4^m+1, where . - _Thomas Ordowski_, Aug 11 2025
+A371123	filnum	1	0	k -> k == 0 || String.valueOf(k).indexOf(String.valueOf(DR(Functions.DIGIT_PRODUCT.z(k)))) >= 0	Numbers whose decimal representation contains the digital root of the product of their digits.
+A372328	mulr	1	(p, e) -> p.^(Z2(Functions.CEILING_LOG2.i(e + 1)).-(e + 1))
+A372329	mulr	1	(p, e) -> p.^(Z2(Functions.CEILING_LOG2.i(e + 1)).-(1))
+A372330	mulr	1	(p, e) -> Z2(Functions.CEILING_LOG2.i(e + 1))
+A384197	lambdan	1	n -> new Q(Z2((Functions.FLOOR_LOG2.l(n) + 1)*2), n).floor()	floor(4^k / n) where k = Functions.FLOOR_LOG2.l(n))+1.
+A386912	multia	1	"1"	(self, n) -> { final long b = 1L << Functions.FLOOR_LOG2.l(n - 1); final long f = Functions.MIN.l(b, n - b/2); return ZV(n).*(self.a(f)).*(self.a(n - f)); }	n*a(f)*a(n-f) with f = min(b,n-b/2) and b = 2^Functions.FLOOR_LOG2.l(n-1)) for n>1, a(1) = 1. - _Alois P. Heinz_, Aug 18 2025
+A395328	lambdan	3	n -> Functions.CEILING_LOG2.z(n - 1).+(1).+(Functions.CEILING_LOG2.l(n))	for n >= 3.
+A398598	holos	0	[0,-2,2,6,1,-1]	3,6,22,64	0	0
+A400813	holos	0	[0,-1,5,28,-44,13,-1]	0,0,0,18,236	0	0
+A400814	holos	0	[0,-1,5,28,-44,13,-1]	0,0,0,10,136	0	0
+A401204	holos	1	[0,-1,58,-1131,8700,-29493,43734,-29493,8700,-1131,58,-1]	12,384,12321,371712,10634460,292771602,7840133364,205687578624,5312055930723,135495271297920	0	0
+A401379	lambdan	1	n -> Functions.OMEGA.z(E401375(n))	v -> Number of distinct prime factors in the largest divisor of sigma(n) coprime with n, where sigma is the s
+A401380	lambdan	1	n -> Functions.OMEGA.z(E401375((long) n*n))	v -> Number of distinct prime factors in the largest divisor of sigma(n^2) that are coprime with n^2, where s
+A401381	filtpos	1	1	new A401375()	v -> Predicates.PRIME_POWER.is(v)	Numbers k such that {the largest divisor of sigma(k) coprime with k} is a prime power > 1, where sigma i
+A401382	filtpos	1	1	new A401375()	v -> Predicates.PRIME.is(v)	Numbers k such that {the largest divisor of sigma(k) coprime with k} is a prime, where sigma is the sum
+A401385	filnum	1	1	k -> Predicates.PRIME_POWER.is(E401375(ZV(k).*(k)))	Numbers k for which {the largest divisor of sigma(k^2) that is coprime with k^2} is a prime power.	nonn
+A401389	filtpos	1	1	new A401375()	v -> v.compareTo(ZV(2)) > 0 && v.bitCount() == 1	Numbers k such that {the largest divisor of sigma(k) coprime with k} is a power of 2 larger than 1.	nonn
+A401453	filter	1	new A399741()	PRIME
+A401505	lambdan	1	n -> ZV(E307848(n).bitLength() - 1)
+A401570	parmof4	0	A082182	34	+33	67
+A401630	lambdan	1	n -> FA(n - 1).*(2).*(BI(n + 1, 3).+(BI(n, 3)))	2*(n - 1)!*(binomial(n+1, 3) + binomial(n, 3)).	nonn,new	1..21	nyi	_Stefano Spezia_
+A401631	lambdan	1	n -> ZV(n).^(n - 1).*(2).*(BI(n + 1, 3).+(BI(n, 3)))	2*n^(n-1)*(binomial(n+1, 3) + binomial(n, 3)).	nonn,new	1..19	nyi	_Stefano Spezia_
+A401632	lambdan	1	n -> ZV(n).^(n - 1).-(FA(n - 1)).*(2).*(BI(n + 1, 3).+(BI(n, 3)))	2*(n^(n-1) - (n-1)!)*(binomial(n+1,3) + binomial(n,3)).	nonn,new	1..19	nyi	_Stefano Spezia_
+A401633	lambdan	1	n -> RU(0, n - 2, m -> new Q(BI(n - 2, m).*(FA(n - 1)), FA(n - m - 2))).*(BI(n + 1, 3).+(BI(n, 3)).*(2)).num()	2*(binomial(n+1, 3) + binomial(n, 3))*Sum_{m=0..n-2} binomial(n-2, m)*(n - 1)!/(n - m - 2)!.	nonn,new	1..20	nyi	_Stefano Spezia_
+A401634	lambdan	1	n -> ZV(2).*(SU(1, n - 1, i -> SU(1, n - 1, j -> SU(j + 1, n, k -> ZV(i - k).abs().*(BI(i + j - 2, i - 1)).*(BI(2*n - i - k - 1, n - i -1))))))	abs(i-k)*binomial(i+j-2, i-1)*binomial(2*n-i-k-1, n-i-1).	nonn,new	1..26	nyi	_Stefano Spezia_
+A401645	multia	0	"1"	(self, n) -> SU(0, n - 1, k -> self.a(k).*(BI(n - 1, k)).*(BI(n + k - 1, k)))
+A401653	multia	0	"1"	(self, n) -> SU(1, n, k -> self.a(n - k).*(BI(2*n + k - 2, k)))
+A401654	multia	0	"1"	(self, n) -> SU(1, n, k -> self.a(n - k).*(BI(2*n + k - 1, k)))
+A401655	multia	0	"1"	(self, n) -> SU(1, n, k -> self.a(n - k).*(BI(2*n + k + 1, k)))
+A401656	multia	0	"1"	(self, n) -> SU(1, n, k -> self.a(n - k).*(BI(3*n + k - 3, k)))
+A401657	multia	0	"1"	(self, n) -> SU(1, n, k -> self.a(n - k).*(BI(3*n + k - 2, k)))
+A401658	multia	0	"1"	(self, n) -> SU(1, n, k -> self.a(n - k).*(BI(3*n + k - 1, k)))
+A401659	multia	0	"1"	(self, n) -> SU(1, n, k -> self.a(n - k).*(BI(3*n + k + 1, k)))
+A401660	multia	0	"1"	(self, n) -> SU(1, n, k -> self.a(n - k).*(BI(4*n + k - 1, k)))
+A401661	multia	0	"1"	(self, n) -> SU(0, n - 1, k -> self.a(k).*(BI(n + k - 1, k).^(2)))
+A401662	multia	0	"1"	(self, n) -> SU(0, n - 1, k -> self.a(k).*(BI(n + k - 1, k)))
+A401677	multia	0	"1"	(self, n) -> SU(1, n, k -> self.a(n - k).*(Z2(k - 1)).*(BI(n + k, k)))
+A401678	multia	0	"1"	(self, n) -> SU(1, n, k -> self.a(n - k).*(Z2(k - 1)).*(BI(2*n + k, k)))
+A401679	multia	0	"1"	(self, n) -> SU(1, n, k -> self.a(n - k).*(Z2(k - 1)).*(BI(3*n + k, k)))
+A401681	multia	0	"1"	(self, n) -> SU(1, n, k -> self.a(n - k).*(BI(2*n, k)))	Sum_{k=1..n} binomial(2*n,k) * a(n-k).	nonn,new	0..18	nyi	_Seiichi Manyama_
+A401682	multia	0	"1"	(self, n) -> SU(1, n, k -> self.a(n - k).*(BI(3*n, k)))	Sum_{k=1..n} binomial(3*n,k) * a(n-k).	nonn,new	0..17	nyi	_Seiichi Manyama_
+A401683	multia	0	"1"	(self, n) -> SU(1, n, k -> self.a(n - k).*(BI(4*n, k)))	Sum_{k=1..n} binomial(4*n,k) * a(n-k).	nonn,new	0..17	nyi	_Seiichi Manyama_
+A401689	poly	0	"[1],[1,-1]"	"x,<3,p1,^2,/,sub,p1,/"
+A401690	poly	0	"[1],[1,-1]"	"x,<3,p1,^3,/,sub,p1,/"

@@ -1,0 +1,103 @@
+A001789	holos	3	[[0],[0,-2],[-3,1]]	1	0	0					a(n) = binomial(n,3)*2^(n-3).
+A001815	holos	0	[[0],[0,-2],[-2,1]]	0,0,2	0	0					a(n) = binomial(n,2) * 2^(n-1).
+A002057	holos	0	[[0],[-6,-10,-4],[0,4,1]]	1	0	0					Fourth convolution of Catalan numbers: a(n) = 4*binomial(2*n+3,n)/(n+4).
+A004001	hofstadt	1	a(a(n-1)) + a(n-a(n-1))	1,1							Hofstadter-Conway $10000 sequence: a(n) = a(a(n-1)) + a(n-a(n-1)) with a(1) = a(2) = 1.
+A005185	hofstadt	1	a(n-a(n-1)) + a(n-a(n-2))	1,1	for n > 2.						Hofstadter Q-sequence: a(1) = a(2) = 1; a(n) = a(n-a(n-1)) + a(n-a(n-2)) for n > 2.
+A005721	holos	0	[[0],[384,-3328,8576,-8192,2560],[-240,2088,-5768,6264,-2320],[0,-36,192,-297,135]]	1	0	0					Central quadrinomial coefficients.
+A026019	holos	0	[[0],[-36,42,216,147,-540,-189],[36,-18,-70,50,94,28]]	1	0	0					a(n) = binomial(3*n,n) - binomial(3*n,n-3).
+A026020	holos	0	[[0],[144,-312,-1784,960,9376,-4608,-6656],[36,168,33,-645,-411,837,702]]	1	0	0					a(n) = binomial(4n, n) - binomial(4n, n - 3).
+A036914	holos	0	[[0],[-1296,23328,-180792,787320,-2106081,3542940,-3661038,2125764,-531441],[0,0,0,0,0,-8,48,-96,64]]	1	0	0					a(n) = binomial(2*n,n)*binomial(3*n,2*n)^4.
+A046646	holos	1	[[0],[-60,81,-27],[2,-6,4]]	1,2	0	0					a(n) = 2*binomial(3*n-3, n-1)/(2*n-1) for n >= 2, and a(1) = 1.
+A087701	lambdan	1	n -> D025586(Z2(n).-(1))	1,1		a(n)=D025586(2^n-1)	_	_	_		Maximal term in Collatz-iteration started at -1+2^n.
+A087740	lambdan	1	n -> D004001(D005185(n)).-(D005185(D004001(n))).abs().+(1)								a(n) = 1 + abs(A004001(A005185(n)) - A005185(A004001(n))).
+A087741	lambdan	1	n -> F000040(D004001(n)).-(D004001(F000040(n))).abs().+(1)								a(n) = 1+Abs[A000040[A004001[n]]-A004001[A000040[n]]].
+A087910	lambdan	1	n -> D007814(E108866(n))			a(n)=D007814(E108866(n))					Exponent of the greatest power of 2 dividing the numerator of 2^1/1 + 2^2/2 + 2^3/3 + ... + 2^n/n.
+A087971	lambdan	1	n -> D025586(ZV(3).^(n).-(1))	1,1		a(n)=D025586(3^n-1)	_	_	_		Maximal term in Collatz-iteration started at 3^n-1.
+A087972	lambdan	0	n -> D025586(ZV(3).^(n).+(1))	1,1		a(n)=D025586(3^n+1)	_	_	_		Maximal term in Collatz-iteration started at 3^n+1.
+A088523	multia	1	"2"	(self, n) -> self.a(n - 1).+(PM(n)).modZ(n)	"2"		a(1)=2;forn>1,a(n)=(a(n-1)+prime(n))modn				a(1) = 2; for n > 1, a(n) = (a(n-1) + prime(n)) mod n.
+A093791	lambdan	1	n -> FA(12)./(B003876(78  -n))								Hook products of all partitions of 12.
+A093792	lambdan	1	n -> FA(13)./(B003877(102 -n))								Hook products of all partitions of 13.
+A097496	multia	0	"1,1,2,5"	(self, n) -> self.a(n - 1).*(self.a(n - 3)).+(self.a(n-2).^(2).*(8))./(self.a(n - 4))	a(0)=a(1)=1,a(2)=2,a(3)=5;a(n)=(a(n-1)*a(n-3)+8*a(n-2)^2)/a(n-4)						Subsequence of terms of odd index of the Somos-5 sequence.
+A099890	lambdin	0	n -> D048298(n).*(2)	"1"		a(n)=2*D048298(n)forn>=1					XOR BINOMIAL transform of the odd numbers; also the main diagonal of the XOR difference triangle A099889.
+A104589	multia	1	"1"	(self, n) -> PP(self.a(n - 1)) ? self.a(n - 1).*(3).-(self.a(n - 2)) : self.a(n - 1).*(2).-(self.a(n - 2))	n>=4		a(n)=3*a(n-1)-a(n-2)ifa(n-1)isprime,elsea(n)=2*a(n-1)-a(n-2)forn>3				a(1)=1. a(n) = a(n-1) + (sum of terms, from among terms a(1) through a(n-1), which are prime or 1).
+A107915	holos	0	[[0],[-120,-74,-15,-1],[0,2,3,1]]	1	0	0					a(n) = binomial(n+4,4)*binomial(n+5,4)*binomial(n+6,4)/75.
+A109903	sintrif	1	(term, n) -> { final Z p = PM(n); return BI(MAX(term, p), MIN(term, p)); }	""	new A002808()		Let c = composite(n) & p = prime(n); a(n) = binomial( max(c,p), min(c,p) ).	easy,nonn	1..19	nyi	Let c = composite(n) & p = prime(n); a(n) = binomial( max(c,p), min(c,p) ).
+A111150	lambdan	1	n -> F000005(2*n).*(2).-(2)								a(n) is the number of integers of the form (n+k)/|(n-k)| for k>0.
+A116533	multia	1	"1,2"	(self, n) -> PP(self.a(n - 1)) ? self.a(n-1).*(2) : self.a(n - 1).-(1)	2*a(n-1),otherwisea(n)=a(n-1)-1						a(1)=1, a(2)=2, for n > 2 if a(n-1) is prime, then a(n) = 2*a(n-1), otherwise a(n) = a(n-1) - 1.
+A120475	lambdan	1	n -> SU(1, n, m -> F000045(m).*(D004001(m + 1).-(D004001(m).*(2)).+(D004001(m-1))))	""		a(n) = Sum_{m=1..n} F000045(m)*(D004001(m+1) - 2*D004001(m) + D004001(m-1))	_	_	_		a(n) = Sum_{m=1..n} A000045(m)*(A004001(m+1) - 2*A004001(m) + A004001(m-1)).
+A123274	multia	0	"1,1,1"	(self, n) -> self.a(n - 1).+(self.a(n - 2))./(GCD(self.a(n - 1).+(self.a(n - 2)), self.a(n - 3)))	,forn>	"1,1,1"		(a(n-1)+a(n-2))/GCD(a(n-1)+a(n-2),a(n-3)),forn>=3			a(0)=a(1)=a(2) = 1. a(n) = (a(n-1) +a(n-2)) /GCD(a(n-1)+a(n-2),a(n-3)), for n >= 3.
+A128474	lambdan	3	n -> D007814(n).+(D011371(n - 3))			a(n)=D007814(n)+D011371(n-3)					Largest number k such that 2^k divides n*(n-3)!.
+A128812	lambdan	0	n -> CR.TWO.^(new Q(1, 3)).+(1).^(n).round()	1,2		a(n)=(1+2^(1/3))^n	_	_	_		a(n)=(1+2^(1/3))^n.
+A133638	lambdin	1	n -> PM(n).*(2).+(PM(n -1)).-(3*n)	"1"		a(n)=2prime(n)+prime(n-1)-3*n					a(n) = 2prime(n) + prime(n-1) - 3*n.
+A134288	holos	0	[[0],[-42,-13,-1],[0,1,1]]	1	0	0					a(n) = binomial(n+7,7)*binomial(n+7,6)/(n+7).
+A147982	rpt	0	f(-1).g(k -> E147952(D004001(k)).negate())	Expansion of Product_{k > 0} (1 + f(k)*x^k), where f(k) = E147952(D004001(k)).  non							Expansion of Product_{k > 0} (1 + f(k)*x^k), where f(k) = A147952(A004001(k)).
+A151566
+A160217	lambdan	1	n -> !D007814(n).testBit(0) ? ZV(2*n + 1) : ZV(2*n + 2)	a(n)=2n+1,ifD007814(n)iseven.a(n)=2n+2,ifD007814(n)isodd							Minimal increasing sequence with a(1)=3 and the property that a(n) and n are both in or both not in A003159.
+A163747	polyx	0	"[1],[0,2]"	"2,x,exp,*,1,x,exp,-,*,1,p1,exp,+,/"	0	1					Expansion of e.g.f. 2*exp(x)*(1-exp(x))/(1+exp(2*x)).
+A180633	multia	0	"0"	(self, n) -> ZV(1).+(self.a(F000010(n).-(1).longValueExact()))	"0"		a(0)=0;forn>=1,a(n)=1+a(F000010(n)-1)				a(n) is the number of iterations of function f(x) = phi(x)-1 needed before zero is reached, when starting from the initial value x = n.
+A182542	lambdan	3	n -> ZV(4).^(n - 1).-(F000108(n).*(n))	- n CatalanNumber[n]							Second diagonal of triangle in A145879.
+A202823	filnum	1	1	k -> D004001(k).equals(D005185(k))							Numbers n such that A004001(n) = A005185(n), where A004001 = Hofstadter-Conway $10000 sequence and A005185 = Hofstadter Q-sequence.
+A208591	lambdan	1	n -> SD(n, d -> F000010(ZV(n)./(d)).*(D005191(d)))./(n)	""		a(n)=(1/n)*Sum_{d|n}totient(n/d)*D005191(d)					Number of n-bead necklaces labeled with numbers -2..2 not allowing reversal, with sum zero.
+A208592	lambdan	1	n -> SD(n, d -> F000010(ZV(n)./(d)).*(D025012(d)))./(n)	""		a(n)=(1/n)*Sum_{d|n}totient(n/d)*D025012(d)					Number of n-bead necklaces labeled with numbers -3..3 not allowing reversal, with sum zero.
+A208772	lambdan	1	n -> SD(n, d -> F000010(n/d).*(DirectSequence.create(new A124696()).a(d)))./(n)	""	new A124696()	a(n)=(1/n)*Sum_{d|n}totient(n/d)*J124696(n)					Number of n-bead necklaces labeled with numbers 1..3 not allowing reversal, with no adjacent beads differing by more than 1.
+A208773	lambdan	1	n -> SD(n, d -> F000010(n/d).*(DirectSequence.create(new A124697()).a(d)))./(n)	""	new A124697()	a(n)=(1/n)*Sum_{d|n}totient(n/d)*J124697(n)					Number of n-bead necklaces labeled with numbers 1..4 not allowing reversal, with no adjacent beads differing by more than 1.
+A208774	lambdan	1	n -> SD(n, d -> F000010(n/d).*(DirectSequence.create(new A124698()).a(d)))./(n)	""	new A124698()	a(n)=(1/n)*Sum_{d|n}totient(n/d)*J124698(n)					Number of n-bead necklaces labeled with numbers 1..5 not allowing reversal, with no adjacent beads differing by more than 1.
+A208775	lambdan	1	n -> SD(n, d -> F000010(n/d).*(DirectSequence.create(new A124699()).a(d)))./(n)	""	new A124699()	a(n)=(1/n)*Sum_{d|n}totient(n/d)*J124699(n)					Number of n-bead necklaces labeled with numbers 1..6 not allowing reversal, with no adjacent beads differing by more than 1.
+A208776	lambdan	1	n -> SD(n, d -> F000010(n/d).*(DirectSequence.create(new A124700()).a(d)))./(n)	""	new A124700()	a(n)=(1/n)*Sum_{d|n}totient(n/d)*J124700(n)					Number of n-bead necklaces labeled with numbers 1..7 not allowing reversal, with no adjacent beads differing by more than 1.
+A220182	lambdan	1	n -> D006667(n).*(2).+(1 - (n&1))	)+1-(nmod2)			a(n)=2*D006667(n)+1-(nmod2)				Number of changes of parity in the Collatz trajectory of n.
+A222464	lambdan	6	n -> ZV(n + 6)./(GCD(n * 6, n + 6))	,n>			a(n)=(n+6)/gcd(n*6,n+6),n>=6				a(n) = (n+6)/gcd(n*6,n+6), n >= 6.
+A225580	multia	1	"1"	(self, n) -> ZV(11).*(self.a(n/10)).-(self.a(n/100).*(10)).+(F055642(n).*(n % 10))			a(n)=11*a(floor(n/10))-10*a(floor(n/100))+(nmod10)*F055642(n)				The sum of all substrings of n (including n).
+A227108	lambdan	0	n -> ZV(n + 5)./(GCD(n + 5, 50))	,n>			a(n)=(n+m)/gcd(n+5,10*n)=(n+5)/gcd(n+5,50),n>=0				Denominators of harmonic mean H(n,5), n >= 0.
+A243035	lambdin	1	n -> ZV(9).*(ZV(10).^(F000120(n).-(1)))	10		a(n)=9*10^(F000120(n)-1)	_	_	_		Number of entries of length n in A240601.
+A244214	sintrif	1	(term, n) -> BI(term.*(2).-(1), term.-(1)).mod(term.^(3))	""	new A002808()	a(n) = binomial(2*c-1, c-1) (mod c^3), where c is the n-th composite.					a(n) = binomial(2*c-1, c-1) (mod c^3), where c is the n-th composite.
+A245087	lambdan	0	n -> D011371(F000142(n))			a(n)=D011371(F000142(n))					Largest number such that 2^a(n) is a divisor of (n!)!.
+A253409	lambdin	0	n -> SU(1, CEIL.l(n, 2), k -> BI(n - 1, 2*k - 1).*(F000110(k).^(2)).+(BI(n - 1, 2*k - 2).*(F000110(k)).*(F000110(k - 1)))).*(2)	"1"	Table[2 * Sum[Binomial[n-1, 2k-1] * BellB[k]^2 + Binomial[n-1, 2k-2] * BellB[k] * BellB[k-1], {k, 1, Ceiling[n/2]}], {n, 1, 30}]						The number of ways to write an n-bit binary string and then define each run of ones as an element in an equivalence relation, and each run of zeros as an element in a second equivalence relation.
+A257507	sintrif	1	(term, n) ->  D011371(term)	""	new A055938()						Row 2 of A257264: a(n) = A011371(A055938(n)).
+A261492	lambdin	0	n -> SU(0, n/2, j -> BI(n, 2*j).*(F000110(j))).*(2)	"1"		a(n)=2*Sum_{j=0..floor(n/2)}C(n,2*j)*F000110(j)forn>0,a(0)=1					Number of partitions of subsets of {1,...,n}, where consecutive integers are required to be in the same part and the elements of {1, n} are required to be in the same part if they are both members of a subset.
+A266348	lambdan	1	n -> (n == 1) ? ZV(1) : D004001(n + 1).-(E072376(n))								a(1) = 1; for n > 1, a(n) = A004001(n+1) - A072376(n).
+A267110	sintrif	1	(term, n) -> term.isOne() ? D004001(n).-(1) : ZV(n).-(D004001(n))	""	new A051135()						If A051135(n) = 1, then a(n) = A004001(n) - 1, otherwise a(n) = n - A004001(n).
+A269343	multia	0	"2"	(self, n) -> self.a(n - 1).*(self.a(n - 1).-(1))./(2).*(SU(0, n-1, k -> self.a(k)).+(1))	"2"		a(n)=(a(n-1)*(a(n-1)-1)/2)*(1+(Sum_{k=0..n-1}a(k))),a(0)=2				Sequence that describes an infinite directed graph representing all of the combinations of a two-input logic gate from two starting inputs.
+A281552	lambdin	1	n -> D049501(E171885(n))	0		a(n)=D049501(E171885(n))forn>=1	_	_	_		Write n in the Elias gamma code and sum the positions where there is a '1' followed immediately to the right by a '0', counting the leftmost digit as position 1.
+A282708	lambdan	0	n -> BI(2*n, n).-(new Q(Z2(2*n), n + 1).ceiling())	- ceiling(2^(2*n)/(n+1)).	nonn	0..1000	nyi	_N. J. A. Sloane_			a(n) = binomial(2*n,n) - ceiling(2^(2*n)/(n+1)).
+A282710	lambdan	1	n -> BI(2*n, n).-(CV(Z2(2*n))./(CV(n).sqrt().*(2)).ceil())	- ceiling(4^n/(2*sqrt(n))).	nonn	1..1000	nyi	_N. J. A. Sloane_			a(n) = binomial(2*n,n) - ceiling(4^n/(2*sqrt(n))).
+A282891	lambdan	1	n -> SU(1, n, k -> D004001(k)).modZ(n)			a(n)=(Sum_{k=1..n}M004001(k))modn					Remainder when sum of first n terms of A004001 is divided by n.
+A282894	lambdan	1	n -> SU(1, n, k -> D004001(k)).mod(D004001(n))			a(n)=(Sum_{k=1..n}M004001(k))modM004001(n)					Remainder when sum of first n terms of A004001 is divided by A004001(n).
+A283501	lambdan	1	n -> SU(1, n, k -> D004001(k)).modZ(2*n)			a(n)=(Sum_{k=1..n}M004001(k))mod(2*n)					Remainder when sum of first n terms of A004001 is divided by 2*n.
+A283525	lambdan	1	n -> SU(1, n, k -> D004001(k)).modZ(3*n)			a(n)=(Sum_{k=1..n}M004001(k))mod(3*n)					Remainder when sum of first n terms of A004001 is divided by 3*n.
+A285097	lambdan	0	n -> Long.bitCount(n) < 2L ? ZV(0) : D007814(E129760(n)).-(D007814(n))	IfF000120(n)<2,a(n)=0,otherwisea(n)=E285099(n)-D007814(n)=D007814(E129760(n))-D007814(n)							a(n) = difference between the positions of two least significant 1-bits in base-2 representation of n, or 0 if there are less than two 1-bits in n (when n is either zero or a power of 2).
+A286541	lambdin	1	n -> { final Z dn1 = D004001(D004001(n - 1)); return ZV(2).+((dn1.+(D004001(ZV(n).-(D004001(n - 1))))).^(2)).-(dn1).-(ZV(3).*(D004001(ZV(n).-(D004001(n-1)))))./(2); }	"0,0"							Compound filter (the left & right summand of Hofstadter-Conway $10000 sequence): a(n) = P(A004001(A004001(n-1)), A004001(n-A004001(n-1))), where P(n,k) is sequence A000027 used as a pairing function, with a(1) = a(2) = 0.
+A293656	holos	1	[[0],[0,-1,-1],[0],[-2,1]]	1,3	0	0					a(n) = binomial(n+1,2)*n!/n!!.
+A294103	lambdan	1	n -> SU(1, n, i -> ZV(n - i).*(D008966(i).equals(D008966(2*n - i)) ? 1 : 0)).*(2)			a(n)=2*Sum_{i=1..n}(n-i)*[D008966(i)=D008966(2n-i)]					Sum of the differences of the larger and smaller parts in the partitions of 2n into two squarefree parts or two nonsquarefree parts.
+A298946	sintrif	1	(term, n) -> BI(term.*(2).-(1), term.-(1)).mod(term.^(4))	""	new A002808()	, where c is the n-th composite number.	nonn	1..10000	nyi	_Felix Fr‚ÄöńÖ√∂‚ÄöńÖńĀhlich_	a(n) = binomial(2*c-1, c-1) (mod c^4), where c is the n-th composite number.
+A300058	holos	0	[[0],[-1296000,13413600,-16329600,5248800],[-2760,27108,-47196,22356],[0,0,10,-9]]	1	0	0					a(n) = binomial(3*n,n)/(2*Pi)*Integral_{x=0..2*Pi} (12*cos^2(x)*sin(x) + 20*sin^3(x))^(2*n) dx.
+A301892	sintrif	1	(term, n) ->  D010846(term)	""	new A002182()						a(n) = A010846(A002182(n)).
+A317648	hofstamx	1	0	() -> a(D004001(n).intValueExact()) + a(n-D004001(n).intValueExact())	1,1		where t = D004001				a(1) = a(2) = 1; for n >= 3, a(n) = a(t(n)) + a(n-t(n)) where t = A004001.
+A323014	multia	1	"0"	(self, n) -> PP(n) ? ZV(1) : ZV(1).+(self.a(D181819(n).longValueExact()))	"0"		a(1)=0;a(prime)=1;otherwisea(n)=1+a(D181819(n))				a(1) = 0; a(prime) = 1; otherwise a(n) = 1 + a(A181819(n)).
+A327562	multia	0	"1,1"	(self, n) -> !GCD(self.a(n-1), self.a(n-2)).isOne() ? self.a(n - 1).+(self.a(n - 2))./(GCD(self.a(n - 1), self.a(n - 2))) : self.a(n - 1).+(self.a(n - 2)).+(1)	ifGCD(a(n-1),a(n-2))>1,otherwisea(n)	"1,1"		a(0)=a(1)=1;forn>1,a(n)=(a(n-1)+a(n-2))/gcd(a(n-1),a(n-2))ifgcd(a(n-1),a(n-2))>1,otherwisea(n)=a(n-1)+a(n-2)+1			a(0) = a(1) = 1; for n > 1, a(n) = (a(n-1) + a(n-2)) / gcd(a(n-1), a(n-2)) if a(n-1) and a(n-2) are not coprime, otherwise a(n) = a(n-1) + a(n-2) + 1.
+A329259	multia	0	"0"	(self, n) -> D010052(n).+(SU(1, n-1, k -> BI(n, k).*(D010052(n - k)).*(k).*(self.a(k)))./(n))	"0"		a(0)=0;a(n)=D010052(n)+(1/n)*Sum_{k=1..n-1}binomial(n,k)*D010052(n-k)*k*a(k)				Expansion of e.g.f. -log(1 - Sum_{k>=1} x^(k^2) / (k^2)!).
+A329261	multia	0	"0"	(self, n) -> D010051(n).+(SU(1, n-1, k -> BI(n, k).*(D010051(n - k)).*(k).*(self.a(k)))./(n))	"0"		a(0)=0;a(n)=D010051(n)+(1/n)*Sum_{k=1..n-1}binomial(n,k)*D010051(n-k)*k*a(k)				Expansion of e.g.f. -log(1 - Sum_{k>=1} x^prime(k) / prime(k)!).
+A330786	multia	1	"0"	(self, n) -> ZV(1).+(self.a(E206369(n).longValueExact()))	"0"		a(1)=0;forn>1,a(n)=1+a(E206369(n))				Number of steps to reach 1 by iterating the absolute alternating sum-of-divisors function (A206369).
+A331734	lambdan	1	n -> D033879(E225546(n))	=2*E225546(n)-E331733(n)	_	_	_			0	a(n) = A033879(A225546(n)).
+A331957	sintrif	0	(term, n) -> n <= 1 ? ZV(1) : term.*(2)	""	new A005121().prepend(1)	a(n) = 2 * A005121(n) for n >= 2					Number of rooted chains in set partitions of {1, 2, ..., n}.
+A341680	lambdan	0	n -> SU(0, n + Functions.FLOOR_LOG2.l(n), k -> FA(k)).mod(ZV(2).^(n))	n>=1		Forn>0,a(n)=(Sum_{k=0..m}k!)mod2^n					Successive approximations up to 2^n for the 2-adic integer Sum_{k>=0} k!.
+A343846	sintrif	0	(term, n) -> BI(2*n, n).*(term).*(((n*(n + 1)/2)&1) == 1 ? -1 : 1)	""	new A163747()	a(n) = (-1)^binomial(n, 2) * binomial(2*n, n) * A163747(n).					a(n) = binomial(2*n, n)*2^n*|Euler(n, 1/2) - Euler(n, 0)|.
+A343935	lambdan	1	n -> BI(Functions.SIGMA0.l(n) + n - 1, n)	1		a(n)=((sigma(n),n))=binomial(sigma(n)+n-1,n)	_	_	_		Number of ways to choose a multiset of n divisors of n.
+A343936	lambdan	1	n -> BI(Functions.SIGMA0.l(n) + n - 2, n - 1)	1		a(n)=((sigma(n-1),n))=binomial(sigma(n-1)+n-1,n)	_	_	_		Number of ways to choose a multiset of n divisors of n - 1.
+A344903	multia	3	"4,2,2"	(self, n) -> self.a(n - 1).*(2).-(Z_1(n).*(self.a(n/2+1)))	forn>		a(3)=4,a(4)=a(5)=2,a(n)=2*a(n-1)-(-1)^n*a(Floor(n/2)+1)forn>=6				a(n) is the number of optimal strategies for Player I in the Penney-Ante game with strings of length n.
+A365771	holos	0	[[0],[-6,27,-27],[0,1,1]]	[1,2]	0	0					a(n) = binomial(2*n+1, n)/(2*n+1) * binomial(3*n-1, n) for n >= 0.
+A365791	sintrif	1	(term, n) ->  D008479(term)	""	new A126706()						a(n) = number of k <= b(n) such that rad(k) = rad(b(n)), where rad(n) = A007947(n) and b(n) = A126706(n).
+A365793	sintrif	1	(term, n) ->  D008479(term)	""	new A286708()						a(n) = number of k <= b(n) such that rad(k) = rad(b(n)), where rad(n) = A007947(n) and b(n) = A286708(n).
+A374566	polyx	1	"[0,1],[0,0,1],[2,2]"	"p1,p2,A,^3,*,+,sub,sqrt"	3	0					Expansion of g.f. A(x) satisfying A(x)^2 = A( x^2 + 2*(1+x)*A(x)^3 ).
+A374567	polyx	1	"[0,1],[0,0,1]"	"p1,A,^2,2,*,<1,+,2,A,^3,*,+,sub,sqrt"	3	0					Expansion of g.f. A(x) satisfying A(x)^2 = A( x^2 + 2*x*A(x)^2 + 2*A(x)^3 ).
+A384468	multia	0	"1"	(self, n) -> !self.a(n - 1).testBit(0) ? self.a(n - 1)./(2) : self.a(n - 1).*(2).+(n)							a(0) = 1; for n >= 1, a(n) = a(n-1)/2 if a(n-1) is even, otherwise a(n) = 2*a(n-1) + n.
+A385908	polyx	1	"[0,1,1]"	"x,<1,sub,x,<2,sub,x,<1,neg,sub,/,-"	3	0					G.f. satisfies A(x) = A(x^2) - A(x^3)/A(-x^2).
+A393167	sintrif	1	(term, n) ->  D008479(term)	""	new A025487()						Number of m <= s(n) with the same squarefree kernel as s(n), where s = A025487.
+A394270	holos	0	[[0],[-20,0,625,0,-3125],[0,-8,-16,128,256]]	1	0	0					a(n) = binomial(5*n+2,n).
+A394565	holos	0	[[0],[30,125,-625,-3125,-3125],[0,24,176,384,256]]	1	0	0					a(n) = binomial(5*n+3,n).
+A396561	sintrif	1	(term, n) ->  D008479(term)	""	new A280864()						a(n) = A008479(A280864(n)).
+A398312	multia	0	"1,1,3"	(self, n) -> self.a(n - 1).*(2).-(self.a(n - 2)).+(SU(1, n-1, k -> BI(n - 2, k - 1).*(Z2(n - k - 1)).*(self.a(k))))	forn>)			a(0)=a(1)=1,a(2)=3;a(n)=2*a(n-1)-a(n-2)+Sum_{k=1..n-1}binomial(n-2,k-1)*2^(n-k-1)*a(k)forn>=3			G.f. A(x) satisfies: A(x) = 1 + x * A(x/(1 - 2*x)) / (1 - x)^2.
+A398313	multia	0	"1,1"	(self, n) -> self.a(n - 1).*(2).+(SU(1, n - 1, k -> BI(n + k - 2, n - k - 1).*(self.a(k))))	"1,1"		a(0)=a(1)=1;a(n)=2*a(n-1)+Sum_{k=1..n-1}binomial(n+k-2,n-k-1)*a(k)forn>=2				G.f. A(x) satisfies: A(x) = 1 + x * A(x/(1 - x)^2) / (1 - 2*x).
+A398427	lambdan	0	n -> BI(new Q(5*n + 1, 2), n)./(n + 1).*(ZV(4).^(n)).num()	1,1		a(n)=4^n*binomial(5*n/2+1/2,n)/(n+1)	_	_	_		Expansion of (1/x) * Series_Reversion( x * (1-4*x)^(3/2) ).
+A398448	holos	3	[0,64,192,192,160,144,0,0,0,-36,20,-12,6,-1]	43,168,620,2220,7736,26208,86824,282976,909712,2888832,9076736,28261568	0	0			0		Number of largest sets S of points of the 3 X n grid as in A401223 that contain the top and bottom points of some column.
+A399376	lambdan	0	n -> D028233(E327859(n))	1,1		a(n)=D028233(E327859(n))	_	_	_		a(n) = A028233(A327859(n)).
+A401054	lambdan	0	n -> F002110(n).*(2).mod(F000040(n + 1))			a(n)=2*F002110(n)modF000040(1+n)					a(n) = 2*(product of first n primes) modulo prime(n+1).

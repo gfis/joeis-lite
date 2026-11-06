@@ -1,0 +1,94 @@
+---- 2026-11-02 16:18:20
+A090996	sintrif	0	(term, n) -> F070939(n).-(term)	"0"	new A063250()	a(n)=F070939(n)-J063250(n),forn>0	_	_	_
+A108866	rambdan	0	n -> RU(1, n, k -> new Q(Z2(k), k))	Numerator of Sum_{k=1..n} 2^k/k.
+A111142	sintrif	1	(term, n) -> GCD(n, term)	"1"	new A113222()	a(n)=gcd(n,J113222(n))	_	_	_
+A115077	lambdan	1	n -> ZV(n).^(3).-(E115075(n))	1,2		a(n)=n^3-E115075(n)	_	_	_
+A116569	sintrif	1	(term, n) -> (term.^(3).-(term))./(6)	"0,0"	new A116563()	a(n)=(J116563(n)^3-J116563(n))/6	_	_	_
+A119788	sintrif	1	(term, n) -> E119787(n)./(term)	"1,1"	new A058313()	a(n)=E119787(n)/J058313(n)	_	_	_
+A134406	sintrif	1	(term, n) -> ZV(1).+(term.^(2))	""	new A134407()	a(n)=1+J134407(n)^2	_	_	_
+A134737	lambdan	1	n -> T026820(Functions.PARTITIONS.l(n), n)	1		a(n)=T026820(T026820(n,n),n)=T026820(F000041(n),n)	_	_	_
+A135212	sintrif	1	(term, n) -> term./(E120271(n))	"1,1,2"	new A078456()	a(n)=J078456(n)/E120271(n)	_	_	_
+A137182	filter	1	new A000959()	v -> v.mod(7) == 0	mod .	nonn	1..10000	nyi	_N. J. A. Sloane_
+A137183	filter	1	new A000959()	v -> v.mod(7) == 1	mod .	nonn	1..10000	nyi	_N. J. A. Sloane_
+A137184	filter	1	new A000959()	v -> v.mod(7) == 2	mod .	nonn	1..10000	nyi	_N. J. A. Sloane_
+A137185	filter	1	new A000959()	v -> v.mod(7) == 3	mod .	nonn	1..10000	nyi	_N. J. A. Sloane_
+A137186	filter	1	new A000959()	v -> v.mod(7) == 4	mod .	nonn	1..10000	nyi	_N. J. A. Sloane_
+A137187	filter	1	new A000959()	v -> v.mod(7) == 5	mod .	nonn	1..10000	nyi	_N. J. A. Sloane_
+A137188	filter	1	new A000959()	v -> v.mod(7) == 6	mod .	nonn	1..10000	nyi	_N. J. A. Sloane_
+A137190	filter	1	new A000959()	v -> v.mod(8) == 1	mod .	nonn	1..10000	nyi	_N. J. A. Sloane_
+A137192	filter	1	new A000959()	v -> v.mod(8) == 3	mod .	nonn	1..10000	nyi	_N. J. A. Sloane_
+A137194	filter	1	new A000959()	v -> v.mod(8) == 5	mod .	nonn	1..10000	nyi	_N. J. A. Sloane_
+A137196	filter	1	new A000959()	v -> v.mod(8) == 7	mod .	nonn	1..10000	nyi	_N. J. A. Sloane_
+A137230	filter	1	new A002808()	v -> v.mod(Functions.BIG_OMEGA.z(v)).isZero()	Composite numbers that are divisible by the number of their prime factors (counted with multiplicity).	nonn	1..10000	nyi	_William A. Tedeschi_
+A137238	filter	1	new A000040()	p -> { final int[] dc = ZUtils.digitCounts(p); return dc[1] > 0 || dc[2] > 0; }	Primes which contain the digit 1 or the digit 2.	nonn,base,easy	1..54	nyi	_Parthasarathy Nambi_
+A137254	filnum	1	1	k -> { final Q q = new Q(Functions.DIGIT_SUM.l(2, k) * 3, 2); return q.isInteger() && q.num().equals(Functions.DIGIT_LENGTH.z(2, k)); }	knyi to	Numbers k for which r(k) = 3 * S(k)/2, where r(k) = number of digits of k and S(k) = sum of digits of k; k in binary notation.	easy,nonn,base,changed	1..10000	nyi	_Ctibor O. Zizka_
+A137258	filter	1	new A000040()	p -> { final Z p21 = p.*(2).+(1); return SIGMA(p21).mod(PHI(p)).compareTo(SIGMA(p21).mod(p)) < 0; }	nonn,more	1..14	nyi	Juan Lopez Gonzalez (juan.lopezg(AT)estudiante.uam.es)
+A137264	adjext	1	new A001223()	() -> mSeq.next().modZ(3)
+A137268	trilambn	1	1	1	(n, k) -> FA(k).*(ZV(k + 1).^(n - k))	, read by rows.	nonn,tabl,easy	1..50	nyi	_Roger L. Bagula_
+A137287	lambdin	1	n -> new Z(StringUtils.rep('2', (PMi(n) - 1)/2) + "1")	"2"	a(n) is the number 2 written (prime(n)-1)/2 times followed by the digit 1; a(1)=2.	easy,nonn,base	1..17	nyi	_Ctibor O. Zizka_
+A137289	trilambn	1	0	0	(n, k) -> Z_1(n - k).*(BI(k + n - 1, n - k).-(BI(k + n - 1, n - k - 1).*(2)))	for n>=0 and 0<=k<=n.	sign,tabl	1..66	nyi	_Roger L. Bagula_
+A137305	lambdan	0	n -> new Z(new StringBuffer(Long.toString(n, 3).replaceAll("1", "x").replaceAll("2", "1").replaceAll("x", "2")).reverse(), 3)	Write n in base 3, change twos in ones and ones in twos, reverse.	base,easy,nonn	0..6561	nyi	_Jonathan Vos Post_
+A137332	sintrif	1	(term, n) -> D002326((term.-(1))./(2))	"2,3"	new A122094()	a(n)=D007733(J122094(n))=D002326((J122094(n)-1)/2)	_	_	_
+A221952	lambdan	1	n -> F000005(n).+(SD(n, d -> GCD(d, 5)))	0,0,0		a(n)=F000005(n)+Sum_{d|n}gcd(d,5)	_	_	_
+A253315	lambdan	0	n -> DIGIT(n, 2L, Z.ZERO, (x, d, e) -> (d != 1L ? x : x.xor(ZV(e))))	(a(n) = bitwise XOR of all the bit numbers for the bits that are set in n.
+A269663	sintrif	1	(term, n) -> ZV(2).*(term)	"14,34"	new A086870()	a(n)=2*J086870(n)	_	_	_
+A270954	lambdan	0	n -> S270953(n,  0)
+A270955	lambdan	3	n -> S270953(n,  1)
+A270956	lambdan	5	n -> S270953(n,  2)
+A270957	lambdan	6	n -> S270953(n,  3)
+A270958	lambdan	8	n -> S270953(n,  4)
+A270959	lambdan	9	n -> S270953(n,  5)
+A270960	lambdan	10	n -> S270953(n,  6)
+A270961	lambdan	12	n -> S270953(n,  7)
+A270962	lambdan	13	n -> S270953(n,  8)
+A270963	lambdan	14	n -> S270953(n,  9)
+A270964	lambdan	15	n -> S270953(n, 10)
+A270965	lambdan	0	n -> S270953(2*n, n)
+A271467	lambdan	1	n -> S271466(2*n, n)
+A271607	lambdan	0	n -> S271466(2*n + 1, n + 1)
+A271728	filtpos	1	0	new A076478()	v -> v.equals(ZV(1))	Numbers n such that J076478(n)=1.	nonn	1..3000	nyi	_Gabriel Conant_
+A271752	lambdan	1	n -> S271466(n + 1, n)
+A271753	lambdan	1	n -> S271466(n + 2, n)
+A271754	lambdan	1	n -> S271466(n + 3, n)
+A271755	lambdan	1	n -> S271466(n + 4, n)
+A271756	lambdan	1	n -> S271466(n + 5, n)
+A271757	lambdan	1	n -> S271466(n + 6, n)
+A271758	lambdan	1	n -> S271466(n + 7, n)
+A271759	lambdan	1	n -> S271466(n + 8, n)
+A271760	lambdan	1	n -> S271466(n + 9, n)
+A271761	lambdan	1	n -> S271466(n +10, n)
+A271788	lambdan	1	n -> S185982(n,  1)
+A271789	lambdan	2	n -> S185982(n,  2)
+A271790	lambdan	3	n -> S185982(n,  3)
+A271791	lambdan	4	n -> S185982(n,  4)
+A271792	lambdan	5	n -> S185982(n,  5)
+A271793	lambdan	6	n -> S185982(n,  6)
+A271794	lambdan	7	n -> S185982(n,  7)
+A271795	lambdan	8	n -> S185982(n,  8)
+A271796	lambdan	9	n -> S185982(n,  9)
+A271797	lambdan	10	n -> S185982(n, 10)
+A271841	lambdan	0	n -> S185982(2*n, n)	. T(2n,n) gives
+A273878	lambdan	0	n -> ZV(n + 1).*(D090586(n+1))	nodd,a(n)=((n-1		a(n)=(n+1)*D090586(n+1)	_	_	_
+A293668	sintrif	0	(term, n) -> term.+(1)	"1"	new A255308()	a(n)=J255308(n)+1	_	_	_
+A298952	sintrif	0	(term, n) -> ZV(1).-(term)	"1"	new A059448().prepend(0)	a(n)=1-J059448(n),forn>=1	_	_	_
+A331317	sintrif	0	(term, n) -> term.-(F000009(n))	"0"	new A219554()	a(n)=J219554(n)-F000009(n)	_	_	_
+A334098	multraf	1	(self, n) -> self.s(0).-(self.s(1))	"0"	new A334097(), new A331410()	a(n)=J334097(n)-J331410(n)	_	_	_
+A334862	multraf	1	(self, n) -> self.s(0).-(self.s(1))	"0"	new A334097(), new A064415()	a(n)=J334097(n)-J064415(n)	_	_	_
+A334871	lambdin	1	n -> F070939(E334865(n))	"0,1"		Forn>1,a(n)=F070939(E334859(n))=F070939(E334865(n))	_	_	_
+A343117	sintrif	1	(term, n) -> (E343116(n).-(term)).abs()	"3,16"	new A060305()	a(n)=abs(E343116(n)-J060305(n))=abs(D001175(D001248(n))-D001175(F000040(n)))	_	_	_
+A401212	lambdin	1	n -> SU(3, n, k -> BI(n, k).*(FA(k-1)).*(Z2(BI(n, 2).-(k).-(1))))	"0,0,1"		a(n)=Sum_{k=3..n}binomial(n,k)*(k-1)!*2^(binomial(n,2)-k-1)	_	_	_
+A401375	lambdan	1	n -> { final Z s = SIGMA(n); return DIVIT(s, ZV(0), (x, d) -> GCD(d, ZV(n)).isOne() ? (d.compareTo(x) > 0 ? d : x) : x); }	Largest divisor of sigma(n) coprime with n, where sigma is the sum of divisors function.	n
+A401484	filnum	1	1	k -> FSIT(k, 0L, (x, p, e) -> x + (e % 4 == 2 ? 1 : 0)) == 0L	Numbers whose prime factorization exponents are not congruent to 2 (mod 4) (i.e., they are terms in A042965).
+A401485	filnum	1	1	k -> FSIT(k, 0L, (x, p, e) -> x + (e <= 1 || e % 4 == 2 ? 1 : 0)) == 0L	Numbers whose prime factorization exponents are larger than 1 and not congruent to 2 (mod 4) (i.e., they are terms in A042965 \ {1}).
+A401486	filnum	1	1	k -> FSIT(k, 0L, (x, p, e) -> x + (e <= 1 || e % 4 >= 2 ? 1 : 0)) == 0L	Numbers whose prime factorization exponents are larger than 1 and of the form 4*k or 4*k+1 with k >= 1.
+A401509	filnum	1	1	k -> FSIT(k, 0L, (x, p, e) -> x + (e % 6 == 1 || e % 6 == 5 ? 1 : 0)) == 0L	Numbers whose prime factorization exponents are all congruent to {0, 2, 3, 4} mod 6 (A047229).
+A401561	poly	0	"[1],[1,-1]"	"x,A,sub,<1,p1,/,+"
+A401615	multia	0	"1"	(self, n) -> SU(0, n - 1, k -> self.a(k).*(BI(2*n - k, k)))
+A401616	decexp	0	() -> CR.PI./(6).-(CR.TWO.log().*(2)./(CR.PI))	Decimal expansion of Pi/6 - 2*log(2)/Pi.	nonn,cons,easy,new	0..86	nyi	_Eric W. Weisstein_
+A401622	multia	0	"1"	(self, n) -> SU(0, n - 1, k -> self.a(k).*(BI(n + k, k)))
+A401623	multia	0	"1"	(self, n) -> SU(0, n - 1, k -> self.a(k).*(BI(3*n - k, k)))
+A401626	multia	0	"1"	(self, n) -> SU(1, n, k -> self.a(n - k).*(BI(n + k, k)))
+A401627	multia	0	"1"	(self, n) -> SU(1, n, k -> self.a(n - k).*(BI(n + k + 1, k)))
+A401628	multia	0	"1"	(self, n) -> SU(1, n, k -> self.a(n - k).*(BI(n + k + 2, k)))
+A401629	lambdan	0	n -> PR(0, n, k -> BI(3*n - k, k))
+A401635	lambdan	0	n -> PR(0, n, k -> BI(4*n - k, k))
