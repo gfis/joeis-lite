@@ -31,7 +31,6 @@ A128812	lambdan	0	n -> CR.TWO.^(new Q(1, 3)).+(1).^(n).round()	1,2		a(n)=(1+2^(1
 A133638	lambdin	1	n -> PM(n).*(2).+(PM(n -1)).-(3*n)	"1"		a(n)=2prime(n)+prime(n-1)-3*n					a(n) = 2prime(n) + prime(n-1) - 3*n.
 A134288	holos	0	[[0],[-42,-13,-1],[0,1,1]]	1	0	0					a(n) = binomial(n+7,7)*binomial(n+7,6)/(n+7).
 A147982	rpt	0	f(-1).g(k -> E147952(D004001(k)).negate())	Expansion of Product_{k > 0} (1 + f(k)*x^k), where f(k) = E147952(D004001(k)).  non							Expansion of Product_{k > 0} (1 + f(k)*x^k), where f(k) = A147952(A004001(k)).
-A151566
 A160217	lambdan	1	n -> !D007814(n).testBit(0) ? ZV(2*n + 1) : ZV(2*n + 2)	a(n)=2n+1,ifD007814(n)iseven.a(n)=2n+2,ifD007814(n)isodd							Minimal increasing sequence with a(1)=3 and the property that a(n) and n are both in or both not in A003159.
 A163747	polyx	0	"[1],[0,2]"	"2,x,exp,*,1,x,exp,-,*,1,p1,exp,+,/"	0	1					Expansion of e.g.f. 2*exp(x)*(1-exp(x))/(1+exp(2*x)).
 A180633	multia	0	"0"	(self, n) -> ZV(1).+(self.a(F000010(n).-(1).longValueExact()))	"0"		a(0)=0;forn>=1,a(n)=1+a(F000010(n)-1)				a(n) is the number of iterations of function f(x) = phi(x)-1 needed before zero is reached, when starting from the initial value x = n.
