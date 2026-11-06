@@ -117,20 +117,24 @@ frequent:
 help:
 	grep -E "^[a-z]" makefile | sort
 #----
-sigperiod: sigperiod1 sigperiod2 sigperiod3 # special signatures generating periodic sequences, not from (1-x^k)
-sigperiod1:
-	perl sigperiod.pl -a 8 -d $(D) $(COMMON)/../lrindex/lrindx.raw \
+sigperiod: sigextract1 sigperiod2 sigperiod3 sigperiod4 # special signatures generating periodic sequences, not from (1-x^k)
+sigextract1:
+	perl sigextract.pl -a 16 -d $(D) $(COMMON)/../lrindex/lrindx.raw \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 sigperiod2: # prepare the hashmap for recperiod.pl
-	cut -f4,5 sigperiod1.tmp | uniq \
+	cut -f4,5 sigextract1.tmp | uniq \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 sigperiod3: # expand the inits
-	getinits -s sigperiod1.tmp > $@.tmp
+	getinits -s sigextract1.tmp > $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
-	
+sigperiod4: # convert to padding or periodic
+	perl sigperiod.pl sigperiod3.tmp > $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+#----
 
