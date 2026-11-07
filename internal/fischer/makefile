@@ -668,7 +668,7 @@ madital:                    man dist testall log
 tel:                                 test    log 
 partel:
 	cp parms/$(CC).txt $(CC).gen
-	make EX=xx AUTHOR="Teherba Kalina" purge select2 select3 gener ditel
+	make EX=xx AUTHOR="Teherba Rabochaya" purge select2 select3 gener ditel
 #--
 batest: # parameter: CC
 	# ---- $@ CC=$(CC)

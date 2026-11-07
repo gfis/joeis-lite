@@ -35,11 +35,8 @@ while (<>) {
 # while (<DATA>) {
     s/\s+\Z//; # chompr
     my $line = $_;
-    print "#1: $line\n" if $debug >= 1;
     next if $line =~ m{\.\.\.|^\:\(\)\,|differences are|(\d\d\d|\D[7-9]\d|\D6[5-9])\-periodic}; # no ellipsis, differences, or longer than 64
-    print "#2: $line\n" if $debug >= 1;
     next if $line =~ m{\A\:\((0\,)+1\)}; # ordinary (1-x^k)
-    print "#3: $line\n" if $debug >= 1;
     #                   (1      2        2 1 )
     if ($line =~ m{\A\:\((\-?\d+(\,\-?\d+)*)\)}) {
         my @signat = (0, reverse(split(/\, */, $1)), -1); # reversed signature (holos convention, prefixed with constant=0)
