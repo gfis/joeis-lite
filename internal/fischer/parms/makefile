@@ -57,6 +57,8 @@ cofrsqrt2: # extract padding parameters by reflection of ContinuedFractionOfSqrt
 	2>       $@.rest.tmp \
 	| tr -d "\r" \
 	>        $@.tmp
+	tail -n2 $@.tmp
+	wc -l    $@*tmp
 cofrsqrt3: # rotate the padding by one to the right
 	perl rotate.pl -r 1 -p 2 cofrsqrt2.tmp \
 	2>       $@.rest.tmp \

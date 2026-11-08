@@ -1,19 +1,15 @@
 #!perl
 
-# cut the padding out of the inits and align them properly, reduce the inits
+# Rotate a parameter list to the right or to the left
 # @(#) $Id$
-# 2026-11-06, Georg Fischer: copied from sigextract.pl
+# 2026-11-07, Georg Fischer: copied from sigperiod.pl
 #
 #:# Usage:
-#:#     perl sigperiod.pl sigperiod3.tmp > output.seq4
+#:#     perl rotate.pl -p [parmno] [-r right|-l left] cofrsqrt2.seq4 > output.seq4
 #:#         -d mode 0=none, 1=some, 2= most 
-#
-# from A130772: perlen = 6
-#  +0  1  2  3  4  5  0  1  2  3  4  5| 0  1  2  3  4  5| 0  1  2  3
-# [ 2, 2, 0,-2,-2, 0, 2, 2, 0,-2,-2, 0| 2, 2, 0,-2,-2, 0, 2, 2, 0,-2]	6	22	
-# , 2, 2, 0,-2,-2, 0, 2, 2, 0,-2,-2, 0, 2, 2, 0,-2,-2, 0, 2, 2, 0,-2,-2, 0
-# [ 2, 2, 0,-2,-2, 0] -> padding
-# [] -> inits
+#:#         -l rotate left by this number of places
+#:#         -p parameter number in seq4 format: 1 = $(PARM1), 2 = $(PARM2) ...
+#:#         -r rotate right by this number of places
 #--------------------------------------------------------
 use strict;
 use integer;
@@ -21,12 +17,20 @@ use warnings;
 my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime (time);
 my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d", $year + 1900, $mon + 1, $mday, $hour, $min);
 
-my $debug = 0;
+my $debug  = 0;
+my $parmno = 1; # $(PARM1)
+my $rotar  = 1;
 while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
     my $opt = shift(@ARGV);
     if (0) {
     } elsif ($opt  =~ m{d}) {
         $debug     = shift(@ARGV);
+    } elsif ($opt  =~ m{l}) {
+        $rotar     = - shift(@ARGV);
+    } elsif ($opt  =~ m{p}) {
+        $parmno    = shift(@ARGV);
+    } elsif ($opt  =~ m{r}) {
+        $rotar    = shift(@ARGV);
     } else {
         die "invalid option \"$opt\"\n";
     }
@@ -38,42 +42,21 @@ while (<>) {
     s/\s+\Z//; # chompr
     next if !m{\AA\d+\t};
     my $line = $_;
-    my ($aseqno, $callcode, $offset1, $sigstr, $inistr, $perlen, $inilen, @rest) = split(/\t/, $line);
-    $inistr    =~ s{[\[\] ]}{}g;
-    my @inits  = split(/\,/, $inistr);
-    $inilen    = scalar(@inits);
-    my $inimod = ($inilen / $perlen) * $perlen; # truncate to multiple of $perlen 
-    splice(@inits, $inimod);
-    my @period = splice(@inits, - $perlen);
-    my @compar = (); # build a block of successive periods
-    while (scalar(@compar) < $inimod) {
-        push(@compar, @period);
-    }
+    my ($aseqno, $callcode, @parms) = split(/\t/, $line);
+    my $parmstr = $parms[$parmno];
+    $parmstr    =~ s{[\[\] ]}{}g;
+    my @terms   = split(/\,/, $parmstr);
+    my @parts   = splice(@terms, -$rotar); # cut $rotar terms from the end 
     if ($debug >= 1) {
-        print "# $aseqno: inilen=$inilen, perlen=$perlen, inimod=$inimod\n"
-            . "#   inits = ["  . join(",", map { sprintf("%3d", $_) } @inits ) . "]\n"
-            . "#   period= ["  . join(",", map { sprintf("%3d", $_) } @period) . "]\n"
-            . "#   compar= ["  . join(",", map { sprintf("%3d", $_) } @compar) . "]\n" 
+        print "----\n"
+            . "# $line\n"
+            . "#   $aseqno: rotar=$rotar, parmstr=$parmstr\n"
+            . "#   parts= ["  . join(",", map { sprintf("%3d", $_) } @parts) . "]\n"
+            . "#   terms= ["  . join(",", map { sprintf("%3d", $_) } @terms) . "]\n"
             ;
     }
-    my $ix = scalar(@inits) - 1;
-    my $busy = 1;
-    while ($busy == 1 && $ix >= 0) { # compare downwards until a difference
-        if ($inits[$ix] == $compar[$ix]) {
-            $ix --;
-        } else {
-            $busy = 0;
-        }
-    } # while busy 
-    # $ix  = index of first differing, or -1
-    my @newini = splice(@inits, 0, $ix + 1);
-    $inistr    = join(",", @newini);
-    my $perstr = join(",", @period);
-    if ($ix < 0) {
-        print join("\t", $aseqno, "periodic", $offset1,              "[$perstr]",          $perlen, $sigstr) . "\n";
-    } else {
-        print join("\t", $aseqno, "padding",  $offset1, "[$inistr]", "[$perstr]", $ix + 1, $perlen, $sigstr) . "\n";
-    }
+    $parms[$parmno] = "[" . join("\,", @parts, @terms) . "]";
+    print join("\t", $aseqno, $callcode, @parms) . "\n";
 } # while <>
 __DATA__
 A167373	sigperiod	0	[0,-1,-1,-1]	[1,3,-1,-2,3,-1,-2,3,-1,-2,3,-1,-2,3,-1,-2,3,-1,-2]	3	19			0
