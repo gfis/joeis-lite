@@ -30,11 +30,12 @@ D=0
 all: \
 	clean     \
 	cofrsqrt  \
+	cofrsnum  \
 	padding   \
 	periodic  \
 	recperiod \
 	sigperiod \
-	#
+	# Caution: the ordering above matters!
 	wc -l    *.txt
 #========
 clean:
@@ -122,6 +123,12 @@ cofrsnum7: # fill the inits
 	>        $@.tmp
 	tail -n4 $@.tmp
 	wc -l    $@.tmp
+cofrsnum8:
+	echo "# $@.txt: (aseqno, offset1, callcode, matrix, inits, perlen, sort); `date +%Y-%m-%d.%H`" > cofrsnum.txt
+	sort cofrsnum7.tmp \
+	| sed -e "s/linearec/holos/" -e "s/\[/\[0,/" >> cofrsnum.txt
+	head -n4 cofrsnum.txt
+	wc -l    cofrsnum.txt
 #----
 # get the parameters of PaddingSequence
 padding: padding1 padding2 
