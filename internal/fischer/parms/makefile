@@ -13,7 +13,8 @@ JOEIS=$(GITS)/joeis
 HERE=../../joeis-lite/internal/fischer/parms
 DBAT=java -jar $(GITS)/dbat/dist/dbat-lite.jar -e UTF-8 -c worddb
 ROBOT=$(GITS)/OEIS-mat/robot
-SRC=src/irvine/oeis
+SRC=src/irvine/oeis 
+MANY=29061947
 # JOPT=-Ddebug=$(D) -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=$(VERBOSE) -Doeis.priority="java,gp" -Doeis.timeout=$(TO)
 JOPT=-Ddebug=$(D) -Xmx2800m -Xss800m -Duser.language=en -Dprog.root=./prog -Doeis.verbose=$(VERBOSE) -Doeis.priority="java,gp" -Doeis.timeout=$(TO)
 ifeq ($(OS),Windows_NT)
@@ -46,7 +47,7 @@ cofrsqrt: cofrsqrt1 cofrsqrt2 cofrsqrt3
 	head -n4 $@.txt
 	wc -l    $@.txt
 cofrsqrt1: # determine subclasses of ContinuedFractionOfSqrtSequence
-	$(DBAT) "SELECT j.aseqno, 'cofrsqrt', i.offset1, substr(n.name, 1, 64) FROM joeis j, asinfo i, asname n \
+	$(DBAT) -x "SELECT j.aseqno, 'cofrsqrt', i.offset1, substr(n.name, 1, 64) FROM joeis j, asinfo i, asname n \
 	  WHERE j.aseqno = i.aseqno AND i.aseqno = n.aseqno \
 	  AND j.superclass LIKE   'ContinuedFractionOfSqrtSequence%' ORDER BY 1" \
 	>        $@.tmp
@@ -65,6 +66,63 @@ cofrsqrt3: # rotate the padding by one to the right
 	| tr -d "\r" \
 	>        $@.tmp
 #----
+# get the parameters for the convergents of sqrt(x), from A006702 resp. ContinuedFractionOfSqrtSequence
+cofrsnum: cofrsnum1 cofrsnum2 cofrsnum3 cofrsnum4 cofrsnum5 cofrsnum6 cofrsnum7
+	echo "# $@.txt: (aseqno, offset1, callcode, matrix, inits, perlen, sort); `date +%Y-%m-%d.%H`" > $@.txt
+	sort cofrsnum7.tmp >> $@.txt
+	head -n4 $@.txt
+	wc -l    $@.txt
+cofrsnum1: # extract the period lengths per square
+	grep -P "^A\d+" cofrsqrt.txt \
+	| gawk -e '{ print $$9 "\t" $$7 }' \
+	| head -n$(MANY) \
+	>        $@.tmp
+	tail -n4 $@.tmp
+	wc -l    $@.tmp
+cofrsnum2: # load (square, perlen) into seq2
+	$(DBAT) -f $(COMMON)/seq2.create.sql 
+	$(DBAT) -r seq2 cofrsnum1.tmp
+	$(DBAT) -n seq2
+	$(DBAT) -4 seq2
+cofrsnum3: # extract the (numer|denomin)ator sequences and their squares
+	# J042849	ContinuedFractionOfSqrtSequence	Denominators of continued fraction convergents to sqrt(955).	nonn,frac,easy	0..200	cfsqden	_N. J. A. Sloane_ 
+	# J042925	Denominators of continued fraction convergents to sqrt(994)
+	grep -h -P "(Numer|Denomin)ators of continued fraction convergents to sqrt\(\d+\)\." $(COMMON)/joeis_names.txt \
+	| cut -f1,3 \
+	| perl -ne 'm{\A[A-Z](\d+)\t(Numer|Denomin)ators of continued fraction convergents to sqrt\((\d+)\)};'\
+	' my ($$aseqno, $$numden, $$square) = ("A$$1", lc(substr($$2, 0, 3)), $$3);'\
+	' print join("\t", $$aseqno, $$numden, $$square) . "\n"; '\
+	>        $@.tmp
+	tail -n4 $@.tmp
+	wc -l    $@.tmp
+cofrsnum4: # load (aseqno, num|den, square) into seq3
+	cd $(COMMON); make seq3 LIST=$(HERE)/cofrsnum3.tmp
+cofrsnum5: # join with the period lengths ins seq2
+	$(DBAT) -x "SELECT s3.aseqno, s3.pattern, '0', 'matrix', CAST(s2.info AS INT) * 2, s2.info, s3.info  \
+	    , substr(CAST(100000000 + s3.info AS INT), 2, 8) || '.' || s3.pattern \
+	    FROM seq3 s3, seq2 s2 \
+	    WHERE s2.aseqno = s3.info \
+	    ORDER BY 8 DESC" \
+	| head -n$(MANY) \
+	>        $@.tmp
+	tail -n4 $@.tmp
+	wc -l    $@.tmp
+#	| sort -k8 \
+#
+cofrsnum6: # fill the inits
+	cat cofrsnum5.tmp \
+	| head -n$(MANY) \
+	| getinits -p 2 -sq \
+	>        $@.tmp
+	tail -n4 $@.tmp
+	wc -l    $@.tmp
+cofrsnum7: # fill the inits
+	cat cofrsnum6.tmp \
+	| perl cofrsnum.pl \
+	>        $@.tmp
+	tail -n4 $@.tmp
+	wc -l    $@.tmp
+#----
 # get the parameters of PaddingSequence
 padding: padding1 padding2 
 	echo "# $@.txt: (aseqno, offset1, inits, padright, inits_len, padright_len); `date +%Y-%m-%d.%H`" > $@.txt
@@ -72,7 +130,7 @@ padding: padding1 padding2
 	head -n4 $@.txt
 	wc -l    $@.txt
 padding1:
-	$(DBAT) "SELECT j.aseqno, 'padding', i.offset1 FROM joeis j, asinfo i WHERE j.aseqno = i.aseqno \
+	$(DBAT) -x "SELECT j.aseqno, 'padding', i.offset1 FROM joeis j, asinfo i WHERE j.aseqno = i.aseqno \
 	  AND j.superclass LIKE   'PaddingSequence%' ORDER BY 1" \
 	>        $@.tmp
 	tail -n2 $@.tmp
@@ -102,7 +160,7 @@ periodic2:
 	>        $@.tmp
 #----
 # extract the periodic linear recurrences and convert them to padding
-recperiod: recperiod1 recperiod2 
+recperiod: sigperiod recperiod1 recperiod2 
 	echo "# $@.txt: (aseqno, offset1, inits, padright, inits_len, padright_len); `date +%Y-%m-%d.%H`" > $@.txt
 	cat recperiod2.tmp >> $@.txt
 	head -n4 $@.txt
@@ -121,23 +179,23 @@ recperiod2:
 	>        $@.tmp
 #----
 # grep special signatures (not from (1-x^k)) generating periodic sequences from the OEIS index, 
-sigperiod: sigextract1 sigperiod2 sigperiod3 sigperiod4 
+sigperiod: sigperiod1 sigperiod2 sigperiod3 sigperiod4 
 	echo "# $@.txt: (aseqno, offset1, inits, padright, inits_len, padright_len); `date +%Y-%m-%d.%H`" > $@.txt
 	cat sigperiod4.tmp >> $@.txt
 	head -n4 $@.txt
 	wc -l    $@.txt
-sigextract1:
+sigperiod1:
 	perl sigextract.pl -a 16 -d $(D) $(COMMON)/../lrindex/lrindx.raw \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 sigperiod2: # prepare the hashmap for recperiod.pl
-	cut -f4,5 sigextract1.tmp | uniq \
+	cut -f4,5 sigperiod.tmp | uniq \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 sigperiod3: # expand the inits
-	getinits -s sigextract1.tmp > $@.tmp
+	getinits -sq sigperiod1.tmp > $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 sigperiod4: # convert to padding or periodic

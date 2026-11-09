@@ -70,7 +70,7 @@ while (<>) {
     $inistr    = join(",", @newini);
     my $perstr = join(",", @period);
     if ($ix < 0) {
-        print join("\t", $aseqno, "periodic", $offset1,              "[$perstr]",          $perlen, $sigstr) . "\n";
+        print join("\t", $aseqno, "periodic", $offset1, "[]",        "[$perstr]", 0,       $perlen, $sigstr) . "\n";
     } else {
         print join("\t", $aseqno, "padding",  $offset1, "[$inistr]", "[$perstr]", $ix + 1, $perlen, $sigstr) . "\n";
     }

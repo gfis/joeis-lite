@@ -68,7 +68,7 @@ while (<>) {
         my $oldcode = $rest[1];
         if ($perlen == $terlen) { # pure periodic
             $callcode = "periodic";
-            print join("\t", $aseqno, $callcode, $offset1, "[$inits]", $terlen, $oldcode) . "\n";
+            print join("\t", $aseqno, $callcode, $offset1, "[]", "[$inits]", 0, $terlen, $oldcode) . "\n";
         } else {
             $callcode = "padding";
             my @prefix = splice(@terms, 0, $terlen - $perlen); # @terms now has $perlen elements
