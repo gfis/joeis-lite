@@ -11,7 +11,16 @@ import irvine.oeis.AbstractSequence;
  */
 public class AliquotSequence extends AbstractSequence {
 
+  private final static int DEFOFF = 0;
   private Z mA;
+
+  /**
+   * Construct a new aliquot sequence.
+   * @param start starting value
+   */
+  public AliquotSequence(final long start) {
+    this(DEFOFF, start); 
+  }
 
   /**
    * Construct a new aliquot sequence.
