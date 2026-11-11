@@ -601,7 +601,7 @@
 # src/irvine/oeis/producer/Header.java
 # src/irvine/oeis/producer/MetaProducer.java
 # src/irvine/oeis/producer/PariProducer.java
-# src/irvine/oeis/producer/PariSequence.java   
+# src/irvine/oeis/producer/PariSequence.java
 
 # 2026-01-08
 # src/irvine/math/function/Functions.java
@@ -619,7 +619,7 @@
 # src/irvine/oeis/triangle/RowProductSequence.java
 #~src/irvine/oeis/FilterSequence.java
 # src/irvine/oeis/transform/FilterTransformSequence.java
-  
+
 # 2026-03-30
 # src/irvine/oeis/transform/RationalInverseEulerTransform.java
 
@@ -643,7 +643,7 @@
 
 # 2026-07-03 iterate(digits)
 # src/irvine/math/z/ZUtils.java
- 
+
 # 2026-07-14; *CKZ=74
 
 # 2026-07-18: with mLimit active, implements DirectSequence
@@ -669,7 +669,7 @@
 # 2026-08-30 back from Brixen/M ; tableElement; iterate
 # later src/irvine/oeis/triangle/LambdaTable.java
 # src/irvine/oeis/transform/FilterTransformSequence.java
-# 
+#
 # 2026-09-02
 # src/irvine/math/partition/IntegerPartition.java
 # src/irvine/math/partition/DistinctPartsPartition.java
@@ -679,7 +679,7 @@
 
 # 2026-09-08: longValueExact
 # src/irvine/oeis/RationalLambdaSequence.java
-   
+
 # 2026-09-13
 # src/irvine/oeis/recur/MexSequence.java
 # src/irvine/math/function/Functions.java
@@ -702,7 +702,7 @@
 # 2026-10-03; *D=37
 # src/irvine/math/function/Functions.java
 # src/irvine/math/function/BarnesG.java
- 
+
 # 2026-10-14
 # src/irvine/oeis/AdditiveSequence.java
 # src/irvine/oeis/MultiplicativeSequence.java
@@ -730,7 +730,8 @@
 # src/irvine/oeis/recur/HofstadterSequence.java
 
 # 2026-11-11
-src/irvine/oeis/AliquotSequence 
-src/irvine/oeis/recur/PaddingSequence 
-src/irvine/oeis/recur/CoxeterGroupSequence 
-src/irvine/oeis/cons/BaseFractionSequence#~src/irvine/oeis/AliquotSequence.java
+src/irvine/oeis/AliquotSequence.java
+src/irvine/oeis/recur/PaddingSequence.java
+# src/irvine/oeis/recur/CoxeterGroupSequence.java
+# src/irvine/oeis/cons/BaseFractionSequence.java
+
