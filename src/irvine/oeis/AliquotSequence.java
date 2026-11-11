@@ -18,8 +18,17 @@ public class AliquotSequence extends AbstractSequence {
    * Construct a new aliquot sequence.
    * @param start starting value
    */
+  public AliquotSequence(final Z start) {
+    super(DEFOFF);
+    mA = start;
+  }
+
+  /**
+   * Construct a new aliquot sequence.
+   * @param start starting value
+   */
   public AliquotSequence(final long start) {
-    this(DEFOFF, start); 
+    this(Z.valueOf(start)); 
   }
 
   /**
@@ -28,7 +37,7 @@ public class AliquotSequence extends AbstractSequence {
    * @param start starting value
    */
   public AliquotSequence(final int offset, final long start) {
-    super(offset); 
+    super(offset);
     mA = Z.valueOf(start);
   }
 
