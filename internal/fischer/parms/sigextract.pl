@@ -1,6 +1,6 @@
 #!perl
 
-# special signatures generating periodic sequences, not from (1-x^k)
+# Extract special signatures generating periodic sequences, not from (1-x^k)
 # @(#) $Id$
 # 2026-11-06, Georg Fischer: moved from sigperiod.pl
 #

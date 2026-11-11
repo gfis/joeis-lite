@@ -668,7 +668,7 @@ madital:                    man dist testall log
 tel:                                 test    log 
 partel:
 	cp parms/$(CC).txt $(CC).gen
-	make EX=xx AUTHOR="Teherba Rabochaya" purge select2 select3 gener ditel
+	make EX=xx AUTHOR="Teherba Rabochaya" purge select2 select3 gener man ditel
 #--
 batest: # parameter: CC
 	# ---- $@ CC=$(CC)
@@ -2909,7 +2909,7 @@ etlen2:
 #----
 etper: etper1 etper2
 etper1:
-	grep -E "Euler transform of period" $(COMMON)/jcat25.txt \
+	grep -E "Euler transform of period" $(COMMON)/jcat25.txt | grep -P "^%[NFC]" \
 	| cut -b4- \
 	       > $@.tmp
 	head -n4 $@.tmp
@@ -3031,16 +3031,51 @@ fiboluca:
 	wc   -l  $@.gen
 #--------------------------------
 finifull: # finite and full
-	$(DBAT) -x "SELECT i.aseqno, '$@', i.offset1, d.data \
-		FROM asinfo i, bfinfo b, bfdata d \
-		WHERE i.aseqno = b.aseqno \
-		  AND b.aseqno = d.aseqno \
-		  AND b.bfimax - b.bfimin  + 1 <= d.termno \
-		  AND i.keyword like '%full%' \
-		ORDER BY 1 " \
+	$(DBAT) -x "SELECT i.aseqno, '$@', i.offset1, d.data, substr(n.name, 1, 64) \
+	    FROM asinfo i, bfinfo b, bfdata d, asname n \
+	    WHERE i.aseqno = b.aseqno \
+	      AND b.aseqno = d.aseqno \
+	      AND d.aseqno = n.aseqno \
+	      AND b.bfimax - b.bfimin  + 1 <= d.termno \
+	      AND i.keyword like '%full%' \
+	    ORDER BY 1 " \
+	| endirect | sort \
 	>        $@.tmp
+	tail -n4 $@.tmp
 	wc -l    $@.tmp
-	make finalize
+	# make finalize
+fullfini0: # finite and full
+	make seq2 LIST=aman/fullfini.input.man
+	$(DBAT) -x "SELECT i.aseqno, '$@', i.offset1, UPPER(s.info), '[' || d.data || ']', substr(n.name, 1, 64) \
+	    FROM asinfo i, bfinfo b, bfdata d, asname n, seq2 s \
+	    WHERE i.aseqno = b.aseqno \
+	      AND b.aseqno = d.aseqno \
+	      AND d.aseqno = n.aseqno \
+	      AND n.aseqno = s.aseqno \
+	      AND b.bfimax - b.bfimin  + 1 <= d.termno \
+	      AND i.keyword like '%full%' \
+	    ORDER BY 1 " \
+	| endirect | sort \
+	| sed -e "s/FULLFINI/FINITE/" \
+	>        $@.tmp
+	tail -n4 $@.tmp
+	wc -l    $@.tmp
+	# make finalize
+#----
+briefseq0: # bref
+	$(DBAT) -x "SELECT i.aseqno, 'briefseq', i.offset1, 'BRIEF', '[' || d.data || ']', substr(n.name, 1, 64) \
+	    FROM asinfo i, bfinfo b, bfdata d, asname n \
+	    WHERE i.aseqno = b.aseqno \
+	      AND b.aseqno = d.aseqno \
+	      AND d.aseqno = n.aseqno \
+	      AND b.bfimax - b.bfimin  + 1 <= d.termno \
+	      AND i.keyword like '%bref%' \
+	      AND i.aseqno NOT IN (SELECT aseqno FROM joeis) \
+	    ORDER BY 1 " \
+	>        aman/briefseq.man
+	tail -n4 aman/briefseq.man
+	wc -l    aman/briefseq.man
+	# make finalize
 #--
 finifuma: # finite and full - manual
 	grep -E "^A[0-9]" finifull.man > $@.gen
@@ -3106,6 +3141,7 @@ bref:
 finalize: # CC= ; insert "L" and "new Z(...)" if necessary
 	#---- finalize CC=$(CC)
 	perl finifull.pl $(CC).tmp \
+	| endirect \
 	>        $(CC).gen
 	head -n4 $(CC).gen
 	wc -l    $(CC).gen
