@@ -22,7 +22,7 @@ if (0 && scalar(@ARGV) == 0) {
 }
 my $debug      = 0;
 my $main_src   = "joeis";
-my $cc         = "callcode";
+my $cc         = "";
 my $cut_offset = 0;
 while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
     my $opt = shift(@ARGV);
@@ -45,6 +45,7 @@ my $pack_count = 0;
 my $aseqno = "";
 my $offset = 0;
 my @rest;
+my $callcode = "";
 
 while (<>) { # read inputfile
     s{\s+\Z}{}; # chompr
@@ -69,19 +70,32 @@ sub pack1 {
     $pack_count ++;
     if ($pack_count % 256 == 0) {
         print STDERR "# +$pack_count: write $aseqno\n";
+    }
+    $callcode = "";
+    #                                           1      1
+    if ($buffer =~ m{enerated by gen_seq4\.pl\s+([^\n]+)\n}) {
+        my @words = split(/\s+/, $1); 
+        if ($words[0] =~ m{\AV}) {
+            shift(@words);
+        }
+        $callcode = shift(@words);
     } 
-    #                        (1      1  2  2
-    if ($buffer =~ m{super *\(([^\n]+)\n(.*)}) {
-        my ($parm1, $parm2) = ($1, $2);
-        $parm1 =~ s{\)\;\s*\Z}{};
+    $buffer =~ s{\n\s*\/\/[^\n]*}{}mg;
+    $buffer =~ s{\n}{}mg;
+    #                        (1  1
+    if ($buffer =~ m{super *\((.*)}) {
+        my $parm1 = $1; 
+        print "$parm1\n" if ($debug >= 1);
+        $parm1 =~ s{\s\s+}{ }g; # reduce all whitespace to a single space
+        $parm1 =~ s{\)\s*\;}{\t};
+        # $parm1 =~ s{\s*\}\s*}{}g;
         $offset = 0;
         if ($cut_offset == 1) {
             if ($parm1 =~ s{\A(\-?\d+)\, *}{}) { 
                 $offset = $1;
             }
         }
-        $parm2 =~ s{\}\s*\Z}{};
-        print join("\t", $aseqno, $cc, $offset, $parm1, $parm2) . "\n";
+        print join("\t", $aseqno, $cc, $offset, $parm1, "", $callcode) . "\n";
     }
 } # pack1
 __DATA__

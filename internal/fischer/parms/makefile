@@ -55,6 +55,17 @@ a007273:
 	tail -n4 $@.txt
 	wc -l    $@.txt
 #----
+# get the parameters for recur.AliquotSequence (all finite)
+aliquot: aliquot1
+	cp -v aliquot1.tmp $@.txt
+aliquot1: # get Aliquot sequence names
+	# A362440	nyi t	Aliquot sequence starting at 841.	nonn,fini,full	1..17	nyi	_N. J. A. Sloane_
+	grep -P "Aliquot sequence starting at \d+\." $(COMMON)/names \
+	| perl -ne 'm{^(A\d+)\D+(\d+)}; print "$$1\taliquot\t0\t$$2\n"' \
+	| sort > $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+#----
 # get the parameters for cons.BaseFractionSequence
 basefract: basefract1 # apply the corrections
 	grep -vP "^A256460" basefract1.tmp \
@@ -70,6 +81,43 @@ basefract1: # extract "expansion of 17/29." from jcat25
 	tail -n4 $@.tmp
 	cat      $@.rest.tmp
 	wc -l    $@*.tmp
+#----
+briefseq: briefseq1 briefseq2 # BriefSequence
+	cp -v briefseq2.tmp briefseq.txt
+	wc -l    $@*
+briefseq1: # get all calls
+	grep -P "\tBriefSequence" $(COMMON)/joeis_list.txt | cut -f1 \
+	>        $@.grep.tmp
+	perl extract_super.pl -d $(D) -cc briefseq $@.grep.tmp \
+	| perl -pe 'if (!m{\t\-?\d+\, *BRIEF}) { s{briefseq\t0\t}{briefseq\t0\t0, BRIEF, }; } '\
+	' s{\t0}{}; s{\,}{\t};'\
+	>        $@.tmp
+	head -n4 $@.tmp
+briefseq2: # 
+	grep -vP "^A276972" briefseq1.tmp \
+	| perl -pe 's{BRIEF\,}{BRIEF\t}; s{ }{}g; s[\}\}][]g;' \
+	| perl repl_zlist.pl -p 2 \
+	| perl -pe 's{\"}{}g; s{\[\[}{\[}g; s{\]\]}{\]}g; ' \
+	>        $@.tmp
+	head -n4 $@.tmp
+#----
+noncomputable: noncomputable1 noncomputable2 # NoncomputableSequence
+	cp -v noncomputable2.tmp noncomputable.txt
+	wc -l    $@*
+noncomputable1: # get all calls
+	grep -P "\tNoncomputableSequence" $(COMMON)/joeis_list.txt | cut -f1 \
+	>        $@.grep.tmp
+	perl extract_super.pl -d $(D) -cc noncomputable $@.grep.tmp \
+	| perl -pe 'if (!m{\t\-?\d+\, *NONCOMPUTABLE}) { s{noncomputable\t0\t}{noncomputable\t0\t0, NONCOMPUTABLE, }; } '\
+	' s{\t0}{}; s{\,}{\t}; s{\"\[|\]\"}{}g; ' \
+	>        $@.tmp
+	head -n4 $@.tmp
+noncomputable2: # 
+	cat noncomputable1.tmp \
+	| perl -pe 's{NONCOMPUTABLE\,}{NONCOMPUTABLE\t}; s{ }{}g; s[\}\}][]g;' \
+	| perl repl_zlist.pl -p 2 \
+	>        $@.tmp
+	head -n4 $@.tmp
 #----
 # get the parameters for the period of sqrt(x), from ContinuedFractionOfSqrtSequence
 cofrsqrt: cofrsqrt1 cofrsqrt2 cofrsqrt3
@@ -160,42 +208,51 @@ cofrsnum8:
 	head -n4 cofrsnum.txt
 	wc -l    cofrsnum.txt
 #----
-# get the parameters for recur.AliquotSequence (all finite)
-aliquot: aliquot1
-	cp -v aliquot1.tmp $@.txt
-aliquot1: # get Aliquot sequence names
-	# A362440	nyi t	Aliquot sequence starting at 841.	nonn,fini,full	1..17	nyi	_N. J. A. Sloane_
-	grep -P "Aliquot sequence starting at \d+\." $(COMMON)/names \
-	| perl -ne 'm{^(A\d+)\D+(\d+)}; print "$$1\taliquot\t0\t$$2\n"' \
-	| sort > $@.tmp
+cellauto1D: cellauto1D1 cellauto1D2 # one-dimensional celluar automata
+	cp -v cellauto1D2.tmp cellauto1D.txt
+	wc -l    $@*
+cellauto1D1: # get all calls
+	grep -P "\tCellular1DAutomaton" $(COMMON)/joeis_list.txt | cut -f1 \
+	| perl extract_super.pl -cc ca1 \
+	>        $@.tmp
 	head -n4 $@.tmp
-	wc -l    $@.tmp
+cellauto1D2: # separate into standard/non-standard
+	grep -v "/" cellauto1D1.tmp > $@.rest.tmp
+	grep    "/" cellauto1D1.tmp \
+	| perl -pe 'm{\/(\w+)}; my $$cc = $$1; s/\t\w+/\t$$cc/;' \
+	>        $@.tmp
+	head -n4 $@.tmp
 #----
-partsums:
-	grep PartialSumSequence $(COMMON)/joeis_list.txt | cut -f1 \
-	| perl extract_super.pl -of -cc $@ \
-	| perl repl_adjust.pl \
-	| tee    $@.txt
-xxx:
-	| perl -pe "s/^\s*publ\s*//; s/\(new/\(0, new/; s/\)\;//; s/super\(//;" \
-	| perl -ne 'if (m{\A\s*public\s*(A\d+)\s*super\s*\(([^\)]+)\)}) { my ($$aseqno, $$listr) = ($$1, $$2); '\
-	' my @list = split(/\, */, $$listr); my $$prime = shift(@list); my $$start = shift(@list); '\
-	' print join("\t", $$aseqno, "$@", 0, $$prime, $$start, join(",", @list)) ."\n"; } else { print; }'\
-	| sort > $@.txt
-	head -n4 $@.txt
-	wc -l    $@.txt
+cellauto2D: cellauto2D1 cellauto2D2 # two-dimensional celluar automata
+	cp -v cellauto2D2.tmp cellauto2D.txt
+	wc -l    $@*
+cellauto2D1: # get all calls
+	grep -P "\tFiveNeighbor2DAutomaton" $(COMMON)/joeis_list.txt | cut -f1 \
+	| perl extract_super.pl -of -cc ca2on \
+	| perl -pe 's/\, */\t/g; ' \
+	>        $@.tmp
+	head -n4 $@.tmp
+cellauto2D2: # separate into standard/non-standard
+	grep -v "/" cellauto2D1.tmp > $@.rest.tmp
+	grep    "/" cellauto2D1.tmp \
+	| perl -pe 'm{\/(\w+)}; my $$cc = $$1; s/\t\w+/\t$$cc/;' \
+	>        $@.tmp
+	head -n4 $@.tmp
 #----
-pricongr:
-	grep CongruenceForm $(COMMON)/joeis_list.txt | cut -f1 > $@.tmp
-	perl $(REFLECT)/queue.pl -p $@.tmp \
-	| perl -pe 's{\(\) \{\r?\n}{};' \
-	| grep "super(" \
-	| perl -ne 'if (m{\A\s*public\s*(A\d+)\s*super\s*\(([^\)]+)\)}) { my ($$aseqno, $$listr) = ($$1, $$2); '\
-	' my @list = split(/\, */, $$listr); my $$prime = shift(@list); my $$start = shift(@list); '\
-	' print join("\t", $$aseqno, "$@", 0, $$prime, $$start, join(",", @list)) ."\n"; } else { print; }'\
-	| sort > $@.txt
-	head -n4 $@.txt
-	wc -l    $@.txt
+coordination: coordination1 coordination2 # CoordinationSequence
+	cp -v coordination2.tmp coordination.txt
+	wc -l    $@*
+coordination1: # get all calls
+	grep -P "\tCoordinationSequence" $(COMMON)/joeis_list.txt | cut -f1 \
+	>        $@.grep.tmp
+	perl extract_super.pl -d $(D) -cc coordination $@.grep.tmp \
+	>        $@.tmp
+	head -n4 $@.tmp
+coordination2: # separate nominator/denominator
+	cat coordination1.tmp \
+	| perl -pe 's{\,\s*new}{\tnew}; s{ }{}g; s{new}{new }g; s[\}\}][]g;' \
+	>        $@.tmp
+	head -n4 $@.tmp
 #----
 # get the parameters for recur.CoxeterGroupSequence
 coxeter: coxeter1
@@ -220,6 +277,29 @@ dead: # dead sequences
 	>        $@.txt
 	tail -n4 $@.txt
 	wc -l    $@.txt
+#----
+diffseq1: # first differences of a squence
+	grep -P "\tDifferenceSequence" $(COMMON)/joeis_list.txt | cut -f1 \
+	| perl extract_super.pl -of -cc $@ \
+	| perl repl_adjust.pl \
+	>        $@.txt
+	head -n4 $@.txt
+	wc -l    $@.txt
+#----
+euler: euler1 euler2 # EulerTransform
+	cp -v euler2.tmp euler.txt
+	wc -l    $@*
+euler1: # get all calls
+	grep -P "\tEulerTransform" $(COMMON)/joeis_list.txt | cut -f1 \
+	>        $@.grep.tmp
+	perl extract_super.pl -d $(D) -of -cc euler $@.grep.tmp \
+	>        $@.tmp
+	head -n4 $@.tmp
+euler2: # 
+	cat euler1.tmp \
+	| perl -pe 's{\,\s*new}{\tnew}; s{ }{}g; s{new}{new }g; s[\}\}][]g;' \
+	>        $@.tmp
+	head -n4 $@.tmp
 #----
 fullfini: fullfini1 # finite and full
 fullfini1:
@@ -286,6 +366,29 @@ periodic2:
 	| tr -d "\r" \
 	>        $@.tmp
 #----
+partsums:
+	grep PartialSumSequence $(COMMON)/joeis_list.txt | cut -f1 \
+	| perl extract_super.pl -of -cc $@ \
+	| perl repl_adjust.pl \
+	>        $@.txt
+	head -n4 $@.txt
+	wc -l    $@.txt
+#----
+primecongruence: primecongruence1 primecongruence2 # 
+	cp -v primecongruence2.tmp primecongruence.txt
+	wc -l    $@*
+primecongruence1: # get all calls
+	grep -P "\tCongruenceForm" $(COMMON)/joeis_list.txt | cut -f1 \
+	>        $@.grep.tmp
+	perl extract_super.pl -d $(D) -cc pricongr $@.grep.tmp \
+	>        $@.tmp
+	head -n4 $@.tmp
+primecongruence2: # 
+	cat primecongruence1.tmp \
+	| perl -pe 's{\,\s*new}{\tnew}; s{ }{}g; s{new}{new }g; s[\}\}][]g;' \
+	>        $@.tmp
+	head -n4 $@.tmp
+#----
 # extract the periodic linear recurrences and convert them to padding
 recperiod: sigperiod recperiod1 recperiod2
 	echo "# $@.txt: (aseqno, offset1, inits, padright, inits_len, padright_len); `date +%Y-%m-%d.%H`" > $@.txt
@@ -304,6 +407,23 @@ recperiod1:
 recperiod2:
 	perl recperiod.pl  -d $(D) -f sigperiod1.tmp recperiod1.tmp \
 	>        $@.tmp
+#----
+runsbase: runsbase1 runsbase2 # RunsBaseSequence
+	cp -v runsbase2.tmp runsbase.txt
+	wc -l    $@*
+runsbase1: # get all calls
+	grep -P "\tRunsBaseSequence" $(COMMON)/joeis_list.txt | cut -f1 \
+	| perl extract_super.pl -of -cc runsbase \
+	>        $@.tmp
+	head -n4 $@.tmp
+#	| perl -pe 's/\, */\t/g; ' \
+#
+runsbase2: # separate into standard/non-standard
+	grep -vP "\t(bas|jux)" runsbase1.tmp > $@.rest.tmp
+	grep -P  "\t(bas|jux)" runsbase1.tmp \
+	| perl -pe 'm{\t((bas|jux)\w+)}; my $$cc = $$1; s/\t\w+/\t$$cc/; s/\)[^\t]*//;' \
+	>        $@.tmp
+	head -n4 $@.tmp
 #----
 # grep special signatures (not from (1-x^k)) generating periodic sequences from the OEIS index,
 sigperiod: sigperiod1 sigperiod2 sigperiod3 sigperiod4
@@ -330,6 +450,28 @@ sigperiod4: # convert to padding or periodic
 	perl sigperiod.pl sigperiod3.tmp > $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
+#----
+squaredigits: squaredigits1 squaredigits2 # one-dimensional celluar automata
+	cp -v squaredigits2.tmp squaredigits.txt
+	wc -l    $@*
+squaredigits1: # get all calls
+	grep -P "\tSquareDigitsSequence" $(COMMON)/joeis_list.txt | cut -f1 \
+	| perl extract_super.pl -of -cc squaredig4 \
+	>        $@.tmp
+	head -n4 $@.tmp
+squaredigits2: # separate into standard/non-standard
+	cat squaredigits1.tmp \
+	| perl -pe 's{ }{}g; s{\,\"}{\t\"}; s{\,}{\t}; s[\}\}][];' \
+	>        $@.tmp
+	head -n4 $@.tmp
+#----
+walk23: # Walk through squares and cubes
+	grep -P "\tWalkCubeSequence" $(COMMON)/joeis_list.txt | cut -f1 \
+	| perl extract_super.pl -of -cc walk23 \
+	| perl -pe 's/\, */\t/g; ' \
+	>        $@.txt
+	head -n4 $@.txt
+	wc -l    $@.txt
 #======== various targets ====
 cyclo_use: # where are inverse cyclotomic used; needs a007273.txt being loaded in seq4
 	$(DBAT) -x "SELECT x.aseqno, x.rseqno, substr(n.name, 1, 64) FROM asxref x, asname n \
