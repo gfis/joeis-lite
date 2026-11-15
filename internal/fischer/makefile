@@ -3165,6 +3165,10 @@ sciconst:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+#----
+implements:
+	$(DBAT) "select implements, count(implements) from joeis group by implements order by 2 desc" \
+	| tee    $@.tmp
 #--------------------------------
 # old targets
 noncomp0: # non-computable sequences, pseudo-finite/full

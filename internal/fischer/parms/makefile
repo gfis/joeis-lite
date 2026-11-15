@@ -12,6 +12,7 @@ REFLECT=$(FISCHER)/reflect
 JOEIS=$(GITS)/joeis
 HERE=../../joeis-lite/internal/fischer/parms
 DBAT=java -jar $(GITS)/dbat/dist/dbat-lite.jar -e UTF-8 -c worddb
+HOLREC=$(GITS)/OEIS-mat/holrec
 ROBOT=$(GITS)/OEIS-mat/robot
 SRC=src/irvine/oeis
 MANY=29061947
@@ -170,6 +171,32 @@ aliquot1: # get Aliquot sequence names
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 #----
+partsums:
+	grep PartialSumSequence $(COMMON)/joeis_list.txt | cut -f1 \
+	| perl extract_super.pl -of -cc $@ \
+	| perl repl_adjust.pl \
+	| tee    $@.txt
+xxx:
+	| perl -pe "s/^\s*publ\s*//; s/\(new/\(0, new/; s/\)\;//; s/super\(//;" \
+	| perl -ne 'if (m{\A\s*public\s*(A\d+)\s*super\s*\(([^\)]+)\)}) { my ($$aseqno, $$listr) = ($$1, $$2); '\
+	' my @list = split(/\, */, $$listr); my $$prime = shift(@list); my $$start = shift(@list); '\
+	' print join("\t", $$aseqno, "$@", 0, $$prime, $$start, join(",", @list)) ."\n"; } else { print; }'\
+	| sort > $@.txt
+	head -n4 $@.txt
+	wc -l    $@.txt
+#----
+pricongr:
+	grep CongruenceForm $(COMMON)/joeis_list.txt | cut -f1 > $@.tmp
+	perl $(REFLECT)/queue.pl -p $@.tmp \
+	| perl -pe 's{\(\) \{\r?\n}{};' \
+	| grep "super(" \
+	| perl -ne 'if (m{\A\s*public\s*(A\d+)\s*super\s*\(([^\)]+)\)}) { my ($$aseqno, $$listr) = ($$1, $$2); '\
+	' my @list = split(/\, */, $$listr); my $$prime = shift(@list); my $$start = shift(@list); '\
+	' print join("\t", $$aseqno, "$@", 0, $$prime, $$start, join(",", @list)) ."\n"; } else { print; }'\
+	| sort > $@.txt
+	head -n4 $@.txt
+	wc -l    $@.txt
+#----
 # get the parameters for recur.CoxeterGroupSequence
 coxeter: coxeter1
 	cp -v coxeter1.tmp $@.txt
@@ -182,6 +209,17 @@ coxeter1: # get Coxeter sequence names
 coxeter2: # get coxG calls from 'names' subset
 	cat coxeter1.tmp \
 	$(PFRACT) -n 24 -f $@.tmp > $@.txt
+#----
+dead: # dead sequences
+	$(DBAT) -x "SELECT j.aseqno, '$@', i.offset1, substr(n.name, 1, 128) \
+		FROM joeis j, asinfo i, asname n \
+		WHERE j.aseqno = i.aseqno \
+		  AND i.aseqno = n.aseqno \
+		  AND j.superclass = 'DeadSequence' \
+		ORDER BY 1 " \
+	>        $@.txt
+	tail -n4 $@.txt
+	wc -l    $@.txt
 #----
 fullfini: fullfini1 # finite and full
 fullfini1:
@@ -302,14 +340,30 @@ cyclo_use: # where are inverse cyclotomic used; needs a007273.txt being loaded i
 	>        $@.tmp
 	tail -n8 $@.tmp
 	wc -l    $@.tmp
-frequent:
-	$(DBAT) "SELECT COUNT(superclass), superclass FROM joeis \
-	  WHERE superclass NOT IN ('Sequence0', 'Sequence1', 'Sequence2', 'Sequence3', 'AbstractSequence', 'PrependSequence') \
-	  GROUP BY superclass \
-	  ORDER BY 1 DESC FETCH FIRST 256 ROWS ONLY" \
-	| tee $@.tmp
+MANY=128
+frequencies:
+	$(DBAT) -m html "\
+	  SELECT superclass, frequence FROM ( \
+	      SELECT superclass, COUNT(superclass) as frequence FROM joeis \
+	        WHERE superclass NOT IN ('Sequence0', 'Sequence1', 'Sequence2', 'Sequence3', 'AbstractSequence', 'PrependSequence') \
+	        GROUP BY superclass \
+	    ) as A \
+	    WHERE frequence >= $(MANY) ORDER BY 2 DESC \
+	  " \
+	| tee $@.html
+	#  FETCH FIRST $(MANY) ROWS ONLY" \
+	#
+	chmod 755 $@.html
+	cmd /c start $@.html
 #----
 help:
 	grep -E "^[a-z]" makefile | sort
 #----
+hol_to_linrec:
+	grep holon $(FISCHER)/holref.txt \
+	| perl $(HOLREC)/$@.pl -d $(D) -1  \
+	2>       $@.rest.tmp \
+	| tee    $@.tmp
+	tail -n4 $@.tmp
+	wc -l    $@.*tmp
 
