@@ -29,16 +29,29 @@ D=0
 #========
 # rebuild all lists
 all: \
-	clean     \
-	a007273   \
-	basefract \
-	cofrsqrt  \
-	cofrsnum  \
-	coxeter   \
-	padding   \
-	periodic  \
-	recperiod \
-	sigperiod \
+	clean \
+	a007273         \
+	aliquot         \
+	basefract       \
+	briefseq        \
+	cellauto1D      \
+	cellauto2D      \
+	cofrsqrt        \
+	cofrsnum        \
+	coordination    \
+	coxeter         \
+	dead            \
+	diffseq         \
+	noncomputable   \
+	padding         \
+	partsums        \
+	periodic        \
+	primecongruence \
+	recperiod       \
+	runsbase        \
+	sigperiod       \
+	squaredigits    \
+	walk23          \
 	# Caution: the ordering above matters!
 	wc -l    *.txt
 #========
@@ -473,6 +486,8 @@ walk23: # Walk through squares and cubes
 	head -n4 $@.txt
 	wc -l    $@.txt
 #======== various targets ====
+counts:
+	wc -l    *.txt
 cyclo_use: # where are inverse cyclotomic used; needs a007273.txt being loaded in seq4
 	$(DBAT) -x "SELECT x.aseqno, x.rseqno, substr(n.name, 1, 64) FROM asxref x, asname n \
 	  WHERE x.rseqno = n.aseqno \

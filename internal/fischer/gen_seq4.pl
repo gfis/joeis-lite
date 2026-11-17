@@ -397,7 +397,7 @@ while (<>) { # read inputfile
             $parm =~ s{SOPF\(}         {Functions.SOPF.z\(}g;
             $parm =~ s{SP\(}           {Predicates.SEMIPRIME.is\(}g;
             $parm =~ s{SPF\(}          {Functions.LPF.z\(}g;
-            $parm =~ s{SQRT\(}         {Functions.SQRT.z\(}g;
+            $parm =~ s{([^_])SQRT\(}   {$1 . "Functions.SQRT.z\("}eg;
             $parm =~ s{SU\(}           {Integers.SINGLETON.sum\(}g;
             $parm =~ s{SUX\(}          {Integers.SINGLETON.sumXor\(}g;
             $parm =~ s{SYN\(}          {Functions.SYNDROME.i\(}g;
