@@ -1,0 +1,120 @@
+---- 2026-11-17 17:48:09
+A401869	arrlamb	0	0	0	-1	(n, r) -> SU(0, n, j -> BI(n, j).^(r).*(BI(n + j, j).^(r)))
+A049068	complen	1	Z.ONE	new A002620()	Complement of quarter-squares (D002620).
+A062419	dead	1	A061052	dupl	Sequence1	Duplicate of A061052.					Duplicate of A061052.
+A351829	decexp	0	() -> CR.FOUR.divide(CR.THREE).multiply(X000796).multiply(X078434)
+A245772	decexp	0	() -> CR.HALF.multiply(X224273.log())
+A145432	decexp	0	() -> CR.ONE.add(CR.TWO.add(CR.THREE.sqrt()).log().divide(CR.THREE.sqrt())).divide(CR.THREE)
+A244858	decexp	0	() -> CR.PI.pow(2).divide(CR.valueOf(16)).multiply(CR.TWO.log()).subtract(CR.SEVEN.divide(CR.EIGHT).multiply(Zeta.zeta(3))).negate()
+A241993	decexp	0	() -> CR.SEVEN.multiply(Zeta.zeta(3)).divide(CR.FOUR.multiply(CR.PI.pow(2))).subtract(CR.ONE.divide(CR.FOUR)).exp()
+A242001	decexp	0	() -> CR.TWO.multiply(CR.PI).divide(CR.NINE).multiply(CR.TWO.multiply(CR.THREE.sqrt().subtract(CR.ONE)).log())
+A251992	decexp	0	() -> CR.ZERO.subtract(CR.PI.multiply(CR.PI.subtract(CR.TWO.log())).divide(CR.valueOf(16))).negate()
+A240947	decexp	0	() -> CR.ZERO.subtract(CR.valueOf(17).multiply(CR.PI.pow(4)).divide(CR.valueOf(6480))).negate()
+A402086	decexp	0	() -> CV(2).cos().negate()	negated.	nonn,cons,easy,new	0..10000	nyi	_Jianing Song_
+A402081	decexp	0	() -> CV(2).sin()	nonn,cons,easy,new	0..10000	nyi	_Jianing Song_
+A402087	decexp	0	() -> CV(3).cos().negate()	negated.	nonn,cons,easy,new	0..10000	nyi	_Jianing Song_
+A402082	decexp	0	() -> CV(3).sin()	nonn,cons,easy,new	0..10000	nyi	_Jianing Song_
+A402092	decexp	0	() -> CV(3).tan().negate()	negated.	nonn,cons,easy,new	0..10000	nyi	_Jianing Song_
+A402088	decexp	0	() -> CV(4).cos().negate()	negated.	nonn,cons,easy,new	0..10000	nyi	_Jianing Song_
+A402083	decexp	0	() -> CV(4).sin().negate()	negated.	nonn,cons,easy,new	0..10000	nyi	_Jianing Song_
+A402089	decexp	0	() -> CV(5).cos()	nonn,cons,easy,new	0..10000	nyi	_Jianing Song_
+A402084	decexp	0	() -> CV(5).sin().negate()	negated.	nonn,cons,easy,new	0..10000	nyi	_Jianing Song_
+A402090	decexp	0	() -> CV(6).cos()	nonn,cons,easy,new	0..10000	nyi	_Jianing Song_
+A402085	decexp	0	() -> CV(6).sin().negate()	negated.	nonn,cons,easy,new	0..10000	nyi	_Jianing Song_
+A402095	decexp	0	() -> CV(6).tan().negate()	negated.	nonn,cons,easy,new	0..10000	nyi	_Jianing Song_
+A211113	decexp	0	() -> X078434.divide(CR.TEN.multiply(X019694))
+A145422	decexp	0	() -> X093602.add(X002391).divide(CR.THREE)
+A380547	decexp	0	() -> X268682.multiply(X059750)
+A402011	decexp	1	() -> CR.PI.*(2).log().+(CR.GAMMA)	Decimal expansion of log(2*Pi) + gamma, where gamma = X001620.	nonn,cons,easy,new	1..10000	nyi	_Jianing Song_
+A145430	decexp	1	() -> CR.TWO.divide(CR.valueOf(81)).multiply(CR.valueOf(54).add(CR.FIVE.multiply(CR.PI).multiply(CR.THREE.sqrt())))
+A402154	decexp	1	() -> CV(17).-(CV(145).sqrt())./(3).sqrt()	sqrt((17 - sqrt(145))/3).	nonn,cons,easy,new	1..100	nyi	_Stefano Spezia_
+A402091	decexp	1	() -> CV(2).tan().negate()	negated.	nonn,cons,easy,new	1..10000	nyi	_Jianing Song_
+A402093	decexp	1	() -> CV(4).tan()	nonn,cons,easy,new	1..10000	nyi	_Jianing Song_
+A402094	decexp	1	() -> CV(5).tan().negate()	negated.	nonn,cons,easy,new	1..10000	nyi	_Jianing Song_
+A371356	decexp	1	() -> X019704.multiply(X078434)
+A381456	decexp	1	() -> X306016.exp()
+A402156	decexpr	0	() -> CV(1)./(CV(1).-(REALS.acos(CV(1).-(X357471)./(2))./(CR.PI)).*(2))	1/(2*(1 - arccos((1 - r)/2)/Pi)), where r = X357471.	nonn,cons,easy,new	0..99	nyi	_Stefano Spezia_
+A263133	filnum	1	0	k -> BI(4*k + 3, k).testBit(0)	Numbers m such that binomial(4*m + 3, m) is odd.
+A108513	filnum	1	1	n -> ZV(n).equals(ZV(2).^(VAL(n, 2)).*(ZV(5).^(VAL(n, 5))).*(ZV(7).^(VAL(n, 7))))	isok(n) = (n/(2^valuation(n, 2)*5^valuation(n, 5)*7^valuation(n, 7)) == 1);_	_	_
+A352438	filnum	1	10	k -> Long.toString(k).startsWith(Long.toString(k % 10 + (k/10) % 10))	Numbers k whose decimal expansion starts with the sum of the last two digits of k.
+A352440	filnum	1	100	k -> Long.toString(k).startsWith(Long.toString(k % 10 + (k/10) % 10 + (k/100) % 10))	Numbers k whose decimal expansion starts with the sum of the last three digits of k.
+A117756	filter	0	new A000290()	v -> Predicates.SQUARE.is(REV(Functions.DIGIT_SUM.z(v)))	Squares for which the reversed sum of the digits is also a square.	base,nonn	0..46
+A232238	filter	1	new A000040()	p -> PP(p.+(2)) && PP(new Z(p.toString(2) + p.+(2).toString(2), 2))	Primes p such that p+2 and q are primes, where q is concatenation of binary representations of p and p+2: q = p * 2^L + p+2, where L is the length of binary representation of p+2: L=F070939(p+2).	nonn,base,less	1..43	nyi	_Alex Ratushnyak_
+A232237	filter	1	new A000040()	p -> PP(p.-(2)) && PP(new Z(p.toString(2) + p.-(2).toString(2), 2))	Primes p such that p-2 and q are primes, where q is concatenation of binary representations of p and p-2: q = p * 2^L + p-2, where L is the length of binary representation of p-2: L=F070939(p-2).	nonn,base,less	1..1000	nyi	_Alex Ratushnyak_
+A101758	filter	1	new A000073()	v -> Predicates.SEMIPRIME.is(v)	Semiprime tribonacci numbers.
+A117769	filter	1	new A000204()	v -> Predicates.FIBONACCI.is(Functions.DIGIT_PRODUCT.z(v))	Lucas numbers for which the product of the digits is a Fibonacci number.
+A117790	filter	1	new A000204()	v -> v.equals(ZV(1)) || PP(Functions.DIGIT_SUM.z(v))	Lucas numbers for which the sum of the digits is a prime.
+A117801	filter	1	new A000217()	v -> PP(Functions.DIGIT_PRODUCT.z(v))	Triangular numbers for which the product of the digits is a prime number.	more,nonn,base	1..5	nyi	Luc Stevens (lms022(AT)yahoo.com)
+A117803	filter	1	new A000217()	v -> Predicates.CUBE.is(Functions.DIGIT_SUM.z(v))		Triangular numbers for which the sum of the digits is a cube.	nonn,base	1..1000	nyi	Luc Stevens (lms022(AT)yahoo.com)
+A117755	filter	1	new A000290()	v -> Predicates.SQUARE.is(DIGIT(v, ZV(0), (x, d, e) -> { /* System.out.println(v + "," + x); */ return x.+(Z.TEN.^(e).*((d + 1) % 10)); } ))	Squares which remain squares when each digit is replaced by the next digit.	base,nonn
+A401867	holos	0	[0,-1,0,0,0,4,0,0,0,-6,0,0,0,4,0,0,0,-1]	4,0,2,6,4,10,18,14,4,60,50,22,4,182,98,30	0	0			0
+A154639	holos	0	[0,-12,6,3,-1]	1,5,20,80	0	0			0
+A361525	holos	0	[0,-18207,35241,-5151,-30253,20304,2056,-5778,1534,171,-137,21,-1]	1,3,17,54,892,8159,80021,791821,7906439,79069308	0	0			0
+A401953	holos	0	[0,24,15,-1]	1,2,48	0	0
+A173314	holos	0	[[0],[-2,1],[1,-2],[2,1],[-1]]	7,7,13	0	0
+A368791	holos	0	[[0],[-4,3],[0,-3],[1]]	1	0	0
+A368790	holos	0	[[0],[-5,3],[1,-3],[1]]	1	0	0
+A401989	holos	1	[0,-1,48,-624,1154,-624,48,-1]	0,100,4128,136620,4097236,116117760	0	0			0
+A401537	holos	1	[0,-1,48,-624,1154,-624,48,-1]	4,155,5280,160885,4604156,126603840	0	0			0
+A183890	holos	1	[0,-36864,360960,-1626880,4476704,-8411344,11434032,-11623512,9007050,-5372641,2473076,-874756,235008,-46950,6732,-652,38,-1]	16,492,57614,1172880,13388190,122033732,1030189438,8431580544,68127437030,547474985956,4389023189750,35147929076368,281325633652942,2251182017398052,18011828552749070,144104466144893120,1152876719585684182,9223184954221784580,73786195221027336646,590292552389403547408,4722352908719492710910,37778875375746294017412,302231220130450620728094,2417850664658459489360000	0	0			0
+A401652	holos	1	[0,1,-1,-2,2,1,-1]	1,3,6,5,10,9	0	0			0
+A401964	holos	1	[0,1,-1,-2,2,1,-1]	1,4,2,7,4	0	0			0
+A398924	holos	1	[0,1,-2,0,2,-1]	0,4,14,31,53	0	0			0
+A183883	holos	1	[0,1492992,-15966720,79484544,-244727136,522286512,-820652960,984272144,-921914966,684189787,-405790525,193094629,-73702161,22465422,-5418690,1018634,-145736,15287,-1105,49,-1]	1,31,1761,75451,1598395,23327655,275846173,2895194179,28388585391,267809160367,2472279047473,22552186971627,204400652073763,1846262280059767,16646854130219781,149959684159252819,1350255472911319639,12155046999114728703,109407549622914484633,984721151145580497019,8862722609630327781195,79765512831968538926407	0	0			0
+A341684	lambdan	0	n -> (E341680(n+1).-(E341680(n)))./(Z2(n))	0		a(n)=(E341680(n+1)-E341680(n))/2^n	_	_	_
+A174991	lambdan	0	n -> D005606(D005606(n))
+A168222	lambdan	0	n -> D006369(D006369(n))
+A354330	lambdan	0	n -> D053616(F000292(n))	1,1		a(n)=D053616(F000292(n))	_	_	_
+A183205	lambdan	0	n -> E183204(n)./(n+1)	0,0,0		a(n)=E183204(n)/(n+1)	_	_	_
+A402273	lambdan	0	n -> F007913(2*n + 1)
+A276972	lambdan	0	n -> ZV(n).pow(ZV(n).^(4).*(4).+(2))	a(n) = n^(2*(2*n^4+1))
+A175032	lambdan	0	n -> { final Z t = Functions.TRIANGULAR.z(n); return Functions.CEIL_SQRT.z(t).^(2).-(t); }	a(n) = (ceiling(sqrt(n*(n+1)/2)))^2 - n*(n+1)/2
+A165938	lambdan	1	n -> CR.SQRT2.+(1).^(n*n).+(CV(1).-(CR.SQRT2).^(n*n)).round()	n^2) + (1-sqrt(2))^(n^2).	a(n)=(1+sqrt(2))^(n^2)+(1-sqrt(2))^(n^2)	_	_	_
+A232637	lambdan	1	n -> D000069(D000069(n))
+A092909	lambdan	1	n -> D051022(F000040(n))	1,1		a(n)=D051022(F000040(n))	_	_	_
+A122647	lambdan	1	n -> D113583(n)./(Z2(n - 1))
+A064558	lambdan	1	n -> E064553(E064553(n))
+A275272	lambdan	1	n -> E187874(n).-(F000142(n))	0,0,0		a(n)=E187874(n)-F000142(n)	_	_	_
+A093429	lambdan	1	n -> F001221(PR(1, n, k -> PM(k)).+(PR(n + 1, 2*n, k -> PM(k))))	(a(n) = omega(prod(k=1, n, prime(k)) + prod(k=n+1, 2*n, prime(k)))	a(n)=F001221(F002110(n)+F002110(2*n)/F002110(n))	_	_	_
+A056528	lambdan	1	n -> Functions.DIGIT_SUM.z(Functions.DIGIT_SUM.z(n*n).^(2))	Sum of digits of square of sum of digits of square.     base,easy,nonn  1..81   nest    _Henry Bottomley_
+A113583	lambdan	1	n -> RU(1, 2*n, m -> new Q(SU(0, 2*n - 2*m, k -> BI(k + m - 1, m - 1).*(FA(k + m)).*(Z_1(k)).*(Z2(2*n - 2*m - k)).*(S2(2*n - m, k + m))), FA(2*n - m))).*(FA(2*n - 1)).num()
+A301797	lambdan	1	n -> ZV(4).^(PM(n)).-(1)./(3)	a(n) = (4^prime(n) - 1)/3.
+A219428	lambdan	1	n -> ZV(n - 1).-(PHI(n))	a(n) = n - 1 - phi(n).
+A084686	lambdan	1	n -> { final Z p = PM(n); return Functions.DIGIT_SORT_DESCENDING.z(p).-(p)./(9); }	Take n-th prime p(n), rewrite it with digits in decreasing order to get b(n), then a(n)=(b(n)-p(n))/9.  easy,nonn,base,look     1..10000        nest    _Zak Seidov_
+A051674	lambdan	1	n -> { final Z p = PM(n); return p.^(p); }	a(n) = prime(n)^prime(n).
+A098913	lambdan	2	n -> SD(2*n, d -> F000010(2*n/d).*(ZV(2).^(d)))./(2*n).-(1).-(Z2(n))	0,0		a(n)=(Sum_{d|2*n}phi(2*n/d)*2^d)/(2*n)-1-2^n	_	_	_
+A228038	lambdan	2	n -> Z2(n).-(2)	a(n) = 2^n - 2 for n = 2, 3, 4, 5, 6, 7.
+A119750	lambdin	1	n -> { final long k = (n - 1)*(n - 2)/2; return FA(k).*(n).*(n - 1)./(FA(k - n + 1)); }	0,0,0	a(n) = n*(n-1)*k!/(k-n+1)! for n >= 4, with a(1)=a(2)=a(3)=0.
+A402250	multia	0	""	(self, n) -> SU(1, n, k -> BI(2*n - 1, k).*(self.a(n - k))).+(1)
+A402253	multia	0	""	(self, n) -> SU(1, n, k -> BI(2*n, k).*(self.a(n - k))).+(1)
+A402251	multia	0	""	(self, n) -> SU(1, n, k -> BI(3*n - 1, k).*(self.a(n - k))).+(1)
+A402254	multia	0	""	(self, n) -> SU(1, n, k -> BI(3*n, k).*(self.a(n - k))).+(1)
+A402252	multia	0	""	(self, n) -> SU(1, n, k -> BI(4*n - 1, k).*(self.a(n - k))).+(1)
+A402255	multia	0	""	(self, n) -> SU(1, n, k -> BI(4*n, k).*(self.a(n - k))).+(1)
+A402260	multia	0	""	(self, n) -> SU(1, n, k -> BI(n + k , k).*(self.a(n - k))).+(1)
+A402261	multia	0	""	(self, n) -> SU(1, n, k -> BI(n + k - 1, k).*(self.a(n - k))).+(1)
+A129785	multia	0	"1"	(self, n) -> PR(0, n - 1, k -> BI(n - 1, k).*(self.a(k)).+(1))	a(n) = Product_{k=0..n-1} (1 + binomial(n,k)*a(k)), with a(0) = 1.
+A268669	multia	1	""	(self, n) -> { final long gray = Functions.GRAY_DECODE.l(n); return (gray & 1) == 1 ? ZV(n) : self.a(gray / 2); }	If A006068(n) is odd, then a(n) = n, otherwise a(n) = a(A006068(n)/2).
+A340090	multia	1	"-1"	(self, n) -> SD(n, d -> (d < n ? E219428(n/d).*(self.a(d)) : ZV(0)))	a(1) = -1, for n > 1, a(n) = Sum_{d|n, d<n} A219428(n/d) * a(d).
+A347325	multia	1	"1"	(self, n) -> ZV(n/2 + 1).-(self.a(n/2)).*(2)	a(n) = 2 * (floor(n/2) + 1 - a(floor(n/2))) for n > 1.
+A122063	multia	1	"17,8"	(self, n) -> self.a(n - 1).+(Functions.DIGIT_SUM.l(self.a(n - 1)))	a(1) = 17, a(n) = sum of digits of all previous terms.
+A277901	multraf	1	(self, n) -> (Long.bitCount(n) & 1) == 1 ? D065621(self.s(0)) : D048724(self.a(n/2))	""	new A115384()	a(n) = D065621(J115384(n)), otherwise a(n) = D048724(a(floor(n/2))).
+A232242	parmof2	1	A232191	new A001113()	A walk based on the digits of E = exp(1) (X001113).     nonn,easy,base  1..87   nyi     _Philippe Del‚ąö¬©ham_at the suggestion of _N. J. A. Sloane_
+A232240	parmof2	1	A232191	new A001622()	A walk based on the digits of the golden ratio phi = (1+sqrt(5))/2 (X001622).   nonn,easy,base  1..1000 nyi     _Philippe Del‚ąö¬©ham_at the suggestion of _N. J. A. Sloane_
+A232244	parmof2	1	A232191	new A002193()	A walk based on the digits of sqrt(2) (J002193).        nonn,easy,base  1..10000        nyi     _Philippe Del‚ąö¬©ham_at the suggestion of _N. J. A. Sloane_
+A401904	parmof4	0	A082182	33	+32	65
+A402210	parmof4	0	A082182	36	+35	71
+A402182	parmof4	1	A082182	42	+41	83
+A232360	prepend	1	new A232191(1, new A033307())	0	A walk based on the digits of Champernowne constant C (J033307).
+A277812	sintrif	0	(term, n) -> D000069(term)	""	new A277813()	a(n) = D000069(J277813(n)).
+A011792	sintrif	0	(term, n) -> term	""	new A295537().skip(1)	[] F	Number of directed animals on a certain lattice.	nonn,more,unkn,obsc	0..7	nyi
+A268670	sintrif	1	(term, n) -> Functions.GRAY_DECODE.z(term)	""	new A268669()
+A268671	sintrif	1	(term, n) -> term.+(1)./(2)	""	new A268670()	a(n) = (A268670(n)+1) / 2.
+A305747	sintrif	1	(term, n) -> { final Z s = Functions.CEIL_SQRT.z(term); return DIVIT(term, term, (x, d) -> (d.compareTo(x) < 0 && d.compareTo(s) >= 0 ? d : x)); }	""	new A002808()	a(n) is the smallest divisor of c such that a(n) >= sqrt(c).
+A052384	sintrif	2	(term, n) -> D005589(term)	""	new A000796()	Number of letters in the n-th decimal digit of Pi (in English). base,easy,nonn,word
+A176159	trilambn	0	0	0	(n, m) -> BI(n, m).+(1).^(n)	(1 + binomial(n, m))^n, n>=0, 0<=m<=n.
+A174790	trilambn	0	0	0	(n, m) -> BI(n, m).-(1).*(FA(n).^(2))./(FA(m).*(FA(n - m))).+(1)	Triangle read by rows: T(n,m) = 1 + ((-1 + binomial(n, m))*(n!)^2)/(m!*(n - m)!).
+A117875	trilambn	0	0	0	(n, m) -> F000045(m).modZ(3).+(F000045(n).mod(7))
+A365904	trilambn	1	1	0	(n, k) -> ZV(n).*(n).-(BI(k + 1, 2))	Triangle read by rows T(n,k) = n^2 - binomial(k+1,2), n>=1, k<n.
+A116647	trilambn	1	1	1	(n, k) -> BI(n, k).^(2).-(BI(n - 1, k).^(2))	T(n,k) = binomial(n,k)^2 - binomial(n-1,k)^2.
+A117878	trilambn	1	1	1	(n, k) -> F034386(n).*(D049614(k)).-(1)

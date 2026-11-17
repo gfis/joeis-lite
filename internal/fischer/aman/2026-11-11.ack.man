@@ -1,0 +1,227 @@
+---- 2026-11-11 15:24:12
+A122986	parmof3	1	A122987	1000	k -> (k*k) % 1000	Possible last three digits of n^2 (leading zeros omitted).
+A144082	trilambn	0	0	0	(n, k) -> E010892(n - k).multiply(k == 0 ? 1 : k)
+A187126	parmof3	1	A122987	1000	k -> (k*(k + 1)/2) % 1000	Possible last three digits of triangular numbers k*(k+1)/2 (leading zeros omitted).
+A187127	parmof3	1	A122987	100	k -> (k*(k + 1)/2) % 100	Possible last two digits of triangular numbers k*(k+1)/2  (leading zeros omitted).
+A281861	polya	0	"[0,1],[0,0,1]"	"p1,B,p1,B,<1,C,*"	new A000108(), new A000045()
+A306016	decexp	0	() -> CR.ONE.add(CR.valueOf(12).multiply(X084448)).subtract(X001620).subtract(X061444)
+A342129	arrlamb	0	0	0	-1	(n, k) -> Z_1(n).*(SU(0, n/2, j -> ZV(-k).^(n - j).*(BI(n - j, j))))
+A400624	holos	0	[0,1,2,4,3,3,0,0,-1]	1,0,0,3,3,4,11	0	0			0
+A401285	holos	1	[0,16,-16,-17,17,1,-1]	1,3,22,60,367	0	0			0
+A401286	holos	2	[0,16,-16,-17,17,1,-1]	3,9,60,162,981	0	0			0
+A401287	holos	0	[0,1,-1,-2,2,1,-1]	3,5,11,27,43	0	0			0
+A401794	holos	1	[0,-4,12,-17,18,-10,-6,20,-30,31,-24,11,6,-16,18,-14,6,-1]	1,15,94,293,742,1642,3463,7095,14515,29813,61768,128786,269852,566863,1191945,2505501	0	0			0
+A401809	holos	1	[0,-729,75168,-1227636,2103696,-1206414,281152,-26020,784,-1]	6,3742,2757494,2066642062,1549540169190,1161836242010494,871138300267908950,653174617280994823534	0	0			0
+A401810	holos	1	[0,1,-19,19,-1]	1,2,23	0	0			0
+A401853	holos	0	[[0],[17280,-47376,52044,-30772,10969,-2464,346,-28,1],[17280,-44736,45176,-23784,7250,-1314,134,-6],[-4800,16984,-24022,17743,-7589,1966,-308,27,-1],[-10560,29632,-32866,18959,-6245,1203,-129,6],[-5328,13954,-13867,6761,-1743,237,-14],[-1424,3594,-3193,1220,-213,16],[-240,582,-429,96,-9],[0,64,-18,2]]	1	0	0
+A401885	decexp	0	() -> CR.PI.*(3).*(CR.PHI.*(5).-(4)).-(CR.PI./(5).sin().*(20))./(CR.PHI.^(3).*(10))	(3*Pi*(5*phi-4)-20*sin(Pi/5))/(10*phi^3)
+---- 2026-11-11 17:41:23
+A103850	fullfini	1	BRIEFSEQ	[2,3,5,7,11,89]	Primes with digits not in all previous terms.
+A112262	fullfini	1	NONCOMPUT	[1,4,9,24,58,171,340,1097,2673,5467,13353,35957,128823,451488,494198,499871]	A good sequence of gaps for Shellsort, found by genetic programm
+A112263	fullfini	1	NONCOMPUT	[1,4,13,23,61,177,444,1325,3716,8186,18168,62025,275360,461299,498201]	A good sequence of gaps for Shellsort, found by genetic programm
+A112542	fullfini	1	FINITE	[312,312,104,312,312,104,312,312,1]	Lengths of the loop of the sequences "Sum of last ten digits" be
+A122736	fullfini	0	FINITE	[2,4,21,44,103,232,480,577,460]	Number of benzenoids with 21 hexagons, C_(3h) symmetry and conta
+A123044	fullfini	21	FINITE	[1,2,8,21,58,149,234,512,767,755]	Number of benzenoids with 22 hexagons, C_(3h) symmetry and conta
+A123104	fullfini	31	FINITE	[1,3,3,6,16,19,24,30,30,50,90,62,163,37,81]	Number of benzenoids with 22 hexagons, D_(2h) symmetry and conta
+A123105	fullfini	31	FINITE	[2,32,138,510,1627,4641,12646,31360,70888,144276,261789,409747,524600,462848,232842]	Number of benzenoids with 22 hexagons, C_(2h) symmetry and conta
+A123106	fullfini	62	FINITE	[4,8,56,54,211,178,770,493,2349,1193,6479,2788,16960,5908,40657,11169,89378,19138,176325,27984,311332,36524,478536,35025,599661,20387,517568,0,251310]	Number of benzenoids with 22 hexagons, C_(2v) symmetry and conta
+A123140	fullfini	32	FINITE	[1,3,3,6,13,19,24,35,45,79,70,108,70,169,0,103]	Number of benzenoids with 23 hexagons, D_(2h) symmetry and conta
+A123141	fullfini	33	FINITE	[6,45,145,510,1706,4697,12446,32297,73731,147440,274532,454304,594505,514849,245895]	Number of benzenoids with 23 hexagons, C_(2h) symmetry and conta
+A123205	fullfini	0	FINITE	[1,6,16,40,133,283,630,1279,2283,2471,1727]	Number of polyhexes with 24 hexagons, C_(3h) symmetry and contai
+A123209	fullfini	33	FINITE	[1,2,2,7,12,23,30,23,53,52,105,124,206,135,307,42,113]	Number of polyhexes with 24 hexagons, D_(2h) symmetry and contai
+A123277	fullfini	34	FINITE	[18,107,427,1490,4590,13298,35971,90268,209337,443940,846043,1440863,2105423,2482288,2018188,931601]	Number of polyhexes with 24 hexagons, C_(2h) symmetry and contai
+A123285	fullfini	21	FINITE	[1,2,8,21,60,160,281,655,1003,1102]	Number of fusenes with 22 hexagons, C_(3h) symmetry and containi
+A123286	fullfini	31	FINITE	[1,3,3,6,17,19,26,32,40,54,131,70,277,51,188]	Number of fusenes with 22 hexagons, D_(2h) symmetry and containi
+A123287	fullfini	31	FINITE	[2,32,138,510,1630,4757,13276,34345,81379,173257,332556,549920,737676,683310,375524]	Number of fusenes with 22 hexagons, C_(2h) symmetry and containi
+A123288	fullfini	62	FINITE	[4,8,56,54,212,187,783,533,2535,1352,7484,3391,21245,8067,55794,16692,135190,31411,291344,52815,574364,76282,971115,76761,1342969,51319,1274425,0,751033]	Number of fusenes with 22 hexagons, C_(2v) symmetry and containi
+A123289	fullfini	32	FINITE	[1,3,3,6,13,19,28,37,55,92,91,139,114,256,0,188]	Number of fusenes with 23 hexagons, D_(2h) symmetry and containi
+A123595	fullfini	34	FINITE	[18,107,427,1490,4649,13793,38582,100944,246047,548966,1103167,1994983,3083825,3819606,3274338,1664015]	Number of fusenes with 24 hexagons, C_(2h) symmetry and containi
+A123600	fullfini	36	FINITE	[1,5,9,8,13,32,45,91,92,145,163,275,258,766,292]	Number of fusenes with 26 hexagons, D_(2h) symmetry and containi
+A123602	fullfini	23	FINITE	[1,2,1,1,1,8,3,18,0,38]	Number of fusenes with 25 hexagons, D_(3h) symmetry and containi
+A123604	fullfini	33	FINITE	[1,2,2,7,12,23,36,23,62,58,151,160,336,193,478,51,188]	Number of fusenes with 24 hexagons, D_(2h) symmetry and containi
+A123605	fullfini	24	FINITE	[1,8,25,48,177,419,972,1769,3688,4933]	Number of fusenes with 25 hexagons, C_(3h) symmetry and containi
+A123606	fullfini	67	FINITE	[2,34,37,173,159,666,511,2296,1478,7214,3895,21797,9910,61343,23747,163459,53104,404174,104341,919206,187655,1873536,299207,3472005,399364,5482884,370173,6989479,223977,6140178,0,3328030]	Number of fusenes with 24 hexagons, C_(2v) symmetry and containi
+A123607	fullfini	0	FINITE	[1,6,16,40,135,303,701,1508,2859,3087,2219]	Number of fusenes with 24 hexagons, C_(3h) symmetry and containi
+A123645	fullfini	35	FINITE	[2,5,6,10,19,31,47,62,91,97,196,226,264,355,349,274]	Number of fusenes with 25 hexagons, D_(2h) symmetry and containi
+A123660	fullfini	35	FINITE	[4,25,132,473,1469,4894,14744,39776,105267,265094,591209,1185497,2215965,3569692,4408744,3597040]	Number of fusenes with 25 hexagons, C_(2h) symmetry and containi
+A123661	fullfini	36	FINITE	[8,75,346,1284,4408,13534,40148,113583,299614,744570,1718108,3628442,6915782,11810625,17106283]	Number of fusenes with 26 hexagons, C_(2h) symmetry and containi
+A365328	fullfini	1	FINITE	[1,136,5,4,26,7,1,33,5,7]	Numerators of a FRACTRAN program that produces the iterates of t
+A365329	fullfini	1	FINITE	[11,15,17,5,21,13,7,4,2,1]	Denominators of a FRACTRAN program that produces the iterates of
+A366650	fullfini	1	FINITE	[5,44,195,552,1186,1804,1917,1363,629,166,26,3]	Number of Calabi-Yau threefolds that are a complete intersection
+A366678	fullfini	1	FINITE	[5,50,183,446,852,1277,1487,1387,1051,646,319,131,42,11,3]	Number of Calabi-Yau threefolds that are a complete intersection
+A367463	fullfini	1	FINITE	[1,2,3,4,5,6,8,9,10,12,16,18,20,24,32,36,40,48,60,64,72,96,120,128,144,192,240,288,384,576,1152]	The orders, without repetition, of the subquotients of finite gr
+A367501	fullfini	1	FINITE	[1,2,3,4,5,6,8,9,10,12,16,18,20,24,32,36,40,48,60,64,72,80,96,120,128,144,160,192,240,256,320,360,384,640,720,768,960,1440,1920,3840]	The orders, without repetition, of the subquotients of finite gr
+A379179	fullfini	1	NONCOMPUT	[8288641,16492609,4515625,5992609,9765625,13538641,15015625,3038641,11242609]	The Anti-Parker Square, read by rows.
+A381001	fullfini	1	NONCOMPUT	[56,34,8,57,18,47,9,31,33,20,54,48,7,29,59,10,26,43,13,23,64,38,4,49,19,5,35,30,53,12,46,60,15,25,63,2,41,24,50,40,6,55,17,11,36,58,32,45,61,16,42,52,27,1,39,22,44,62,28,37,14,51,21,3]	Georges Pfeffermann''s 1890 bimagic square of order 8, read by r
+A381151	fullfini	1	NONCOMPUT	[1,11,4,6,2,12,13,8,3,5,7,9,10]	The order of the 13 cards of one suit such that after Down-Spell
+A382149	fullfini	1	FINITE	[67,73,103,107,167,191]	Primes p such that the elliptic curve X_0^{+}(p) has genus 2.
+A382150	fullfini	1	FINITE	[97,109,113,127,139,149,151,179,239]	Primes p such that the elliptic curve X_0^{+}(p) has genus 3.
+A382151	fullfini	1	FINITE	[2,3,5,7,11,13,17,19,37,43,67,163]	Primes p such that some  elliptic curve over Q admits a Q-ration
+A382152	fullfini	1	FINITE	[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,21,25,27,37,43,67,163]	Numbers k such that there is an elliptic curve defined over Q wi
+A382153	fullfini	1	FINITE	[73,91,103,125,137,191,311]	Numbers k such that there is an exceptional k-isogeny arising fr
+A383490	fullfini	0	FINITE	[1,1,1,3,4,12,24,65,156,422,1057,2708,6574,15399,33438,66787,118242,180602,227896,226652,169294,97224,44324,16416,5005,1247,261,46,8,1,1]	Number of polyforms with n cells on the faces of a rhombic triac
+A383492	fullfini	0	FINITE	[1,1,2,2,4,4,10,13,29,47,99,175,358,669,1346,2600,5191,10137,20093,39320,77437,151314,295745,574011,1110144,2130239,4059919,7662738,14316799,26413683,48057066,86015788,151180505,260256043,437720722,716963561,1139830037,1751982279,2592522277,3675000350,4961498275,6333402970,7574725550,8388521306,8471716041,7648201737,6013304714,3982620811,2139618086,902106113,294884704,76105285,15867923,2709415,381177,43690,4115,300,23,1,1]	Number of polyforms with n cells on the faces of a triakis icosa
+A383493	fullfini	0	FINITE	[1,1,2,3,5,7,15,24,49,91,182,344,688,1328,2641,5182,10288,20240,40014,78577,154562,302511,590930,1147805,2219309,4260085,8118169,15324786,28630807,52826179,96109611,172029602,302353990,520508934,875430977,1433922264,2279645080,3503957379,5185024139,7349990612,9922970473,12666792660,15149420373,16777026653,16943399440,15296386505,12026578925,7965226401,4279212498,1804201445,589755813,152205053,31730817,5417052,761269,87084,8097,574,37,1,1]	Number of polyforms with n cells on the faces of a triakis icosa
+A383691	fullfini	1	FINITE	[169,256,361,3249,16384,18496,36481,81796,237169,729316,2537649,3481956,5184729,36517849,81432576,254817369,361874529,529874361]	Square numbers with distinct digits from 1-9 that have an initia
+A383800	fullfini	0	FINITE	[1,1,2,2,4,4,10,13,28,42,81,130,239,369,587,817,1072,1170,1054,594,217,46,11,1,1]	Number of polyforms with n cells on the faces of a triakis octah
+A383801	fullfini	0	FINITE	[1,1,2,3,5,7,15,24,48,81,149,255,458,730,1148,1623,2112,2325,2075,1175,410,84,16,1,1]	Number of polyforms with n cells on the faces of a triakis octah
+A383802	fullfini	0	FINITE	[1,1,2,2,6,8,21,36,84,164,356,691,1361,2342,3707,4830,5082,3843,2128,798,248,50,12,1,1]	Number of polyforms with n cells on the faces of a tetrakis hexa
+A383803	fullfini	0	FINITE	[1,1,2,3,8,14,35,68,154,318,683,1362,2668,4645,7326,9594,10048,7605,4145,1539,445,86,16,1,1]	Number of polyforms with n cells on the faces of a tetrakis hexa
+A383804	fullfini	0	FINITE	[1,1,2,4,10,23,65,166,453,1157,2849,6252,11894,18183,21614,19139,12966,6691,2813,901,253,49,11,1,1]	Number of polyforms with n cells on the faces of a deltoidal ico
+A383805	fullfini	0	FINITE	[1,1,2,6,16,41,119,321,880,2286,5640,12443,23668,36260,43038,38135,25727,13262,5506,1751,468,87,16,1,1]	Number of polyforms with n cells on the faces of a deltoidal ico
+A383806	fullfini	0	FINITE	[1,1,3,3,9,14,38,74,184,406,981,2262,5398,12589,29700,69289,161727,373879,858884,1948493,4358729,9560977,20489431,42663444,85863997,165915428,305531365,531313203,863339197,1294513104,1765472012,2153407639,2304457468,2119172241,1641722694,1054595234,556919783,241694857,86764581,25968235,6520764,1371508,241166,34631,4117,362,33,1,1]	Number of polyforms with n cells on the faces of a disdyakis dod
+A383807	fullfini	0	FINITE	[1,2,3,6,13,28,66,148,348,812,1921,4524,10708,25178,59211,138578,323063,747758,1716982,3896986,8715931,19121954,40976038,85326888,171723106,331830856,611054918,1062626406,1726666853,2589026208,3530928400,4306815278,4608896060,4238344482,3283426342,2109190468,1113824623,483389714,173520821,51936470,13038406,2743016,481591,69262,8120,724,56,2,1]	Number of polyforms with n cells on the faces of a disdyakis dod
+A383808	fullfini	0	FINITE	[1,1,3,8,25,72,234,701,2119,5872,14772,31331,53512,68794,66816,49714,29706,14235,5679,1770,469,87,16,1,1]	Number of polyforms with n cells on the faces of a pentagonal ic
+A383825	fullfini	0	FINITE	[1,1,2,2,4,4,9,9,14,10,5,1,1]	Number of polyforms with n cells on the faces of a triakis tetra
+A383826	fullfini	0	FINITE	[1,1,2,3,5,7,14,16,23,18,7,1,1]	Number of polyforms with n cells on the faces of a triakis tetra
+A383827	fullfini	0	FINITE	[1,1,3,3,9,14,37,68,156,318,685,1362,2664,4645,7306,9594,10016,7605,4130,1539,444,86,16,1,1]	Number of polyforms with n cells on the faces of a tetrakis hexa
+A383938	fullfini	0	FINITE	[2,5,21,129,69,1,51,23991,171,1371,3,322141431,1431357020859]	a(n) is the least positive integer k such that b(2*j) is prime f
+A383974	fullfini	0	FINITE	[1,1,2,8,27,126,557,2503,10270,37542,114926,283958,552542,866843,1129291,1250835,1195298,993613,720889,456329,251444,119989,49269,17238,5113,1257,262,46,8,1,1]	Number of connected subsets of n edges of the icosahedron up to
+A383981	fullfini	0	FINITE	[1,1,3,5,16,39,127,357,1067,2861,7071,14827,25638,33730,33189,24838,14954,7188,2905,912,254,49,11,1,1]	Number of connected subsets of n edges of the rhombic dodecahedr
+A383982	fullfini	0	FINITE	[1,1,3,7,24,74,269,876,2788,7639,17828,32326,44375,46456,39213,26865,15470,7278,2917,913,254,49,11,1,1]	Number of connected subsets of n edges of the cuboctahedron up t
+A384067	fullfini	0	FINITE	[1,2,1,3,5,11,19,36,50,48,34,15,7,2,1]	Number of edge-connected components of n faces of the cuboctahed
+A384068	fullfini	0	FINITE	[1,2,2,6,14,28,49,64,68,53,35,15,7,2,1]	Number of connected components of n faces of the truncated cube
+A384069	fullfini	0	FINITE	[1,2,2,5,12,26,52,76,83,61,39,16,7,2,1]	Number of connected components of n faces of the truncated octah
+A384070	fullfini	0	FINITE	[1,3,2,6,11,32,72,207,530,1434,3575,8475,17814,32643,49583,60964,58922,44513,26397,12494,4791,1493,390,83,17,3,1]	Number of connected components of n faces of the rhombicuboctahe
+A384071	fullfini	0	FINITE	[1,3,3,11,28,100,319,1114,3538,10313,25470,52474,88257,121329,136282,125885,95956,60675,31943,14009,5123,1549,398,84,17,3,1]	Number of connected components of n faces of the truncated cuboc
+A384072	fullfini	0	FINITE	[1,3,3,6,16,39,101,263,694,1839,4884,12840,33508,86227,218284,538796,1284335,2919365,6249499,12411396,22483152,36410533,51641029,62911551,64827047,55869657,40009946,23732630,11668877,4763611,1619236,456756,106602,20157,3101,358,37,3,1]	Number of connected components of n faces of the snub cube up to
+A384104	fullfini	0	FINITE	[1,2,2,4,7,5,4,2,1]	Number of edge-connected components of n faces of the truncated
+A384107	fullfini	0	FINITE	[1,2,1,3,7,18,49,140,400,1173,3398,9647,26437,67979,159964,334197,602603,910750,1134215,1153652,963091,664159,382949,185074,75612,25829,7472,1766,370,61,12,2,1]	Number of connected components of n faces of the icosidodecahedr
+A384108	fullfini	0	FINITE	[1,2,2,7,25,92,380,1466,5418,17823,52118,132555,294285,566632,950083,1384788,1760028,1948075,1881390,1581334,1157179,733548,402440,189297,76312,25916,7481,1767,370,61,12,2,1]	Number of connected components of n faces of the truncated dodec
+A384109	fullfini	0	FINITE	[1,2,2,5,14,41,135,461,1610,5564,18769,59513,173692,448720,993666,1820321,2700927,3225519,3146565,2555112,1761447,1041034,531851,234072,88977,28779,7997,1837,378,62,12,2,1]	Number of connected components of n faces of the truncated icosa
+---- 2026-11-11 17:50:45
+A074025	briefseq	1	BRIEF	[1,4,8,16]	Numbers k such that a triplewhist tournament TWh(k) exists.
+A094268	briefseq	1	BRIEF	[12,5775,171078830]	Starting term of smallest consecutive n-tuples of abundant numbe
+A096621	briefseq	1	BRIEF	[1,1,3,29]	Numbers of distinct minimal toss sequences modulo rotation and c
+A109741	briefseq	0	BRIEF	[1,1,2,5472730538]	Number of inequivalent (completed) n^2 X n^2 sudokus (or Sudokus
+A127081	briefseq	1	BRIEF	[1,4,9,18]	One-sided kissing number for spheres in n-dimensional Euclidean
+A135946	briefseq	1	BRIEF	[143,2753,415639,36573197,4566059881]	Number of primes with 3n digits made of adjacent primes with 3 d
+A174270	briefseq	1	BRIEF	[11,127,149,25679]	Primes p such that 17^p - 16 is also prime.
+A226954	briefseq	1	BRIEF	[12671122464000,50684489856000,114040102176000,202737959424000,316778061600000,456160408704000,620885000736000,810951837696000,1026360919584000,1267112246400000,1533205818144000]	Numbers m such that there are at least 7 distinct triples (k, k+
+A245206	briefseq	1	BRIEF	[1019]	Odd primes p with E_{p-3}(1/4) == 0 (mod p), where E_n(x) denote
+A269836	briefseq	1	BRIEF	[2,17,65537]	Primes p of the form k^(2*k) + 1.
+A279883	briefseq	1	BRIEF	[2,17,185302018885184100000000000000000000000000000001]	Primes of the form (prime(j)-1)^(prime(j)+1) + 1.
+A299733	briefseq	1	BRIEF	[19,97,33751]	Prime numbers represented in more than one way by cyclotomic bin
+A306657	briefseq	3	BRIEF	[1729,10606681,4872420815346001]	Least primary Carmichael number (A324316) with n prime factors,
+A306828	briefseq	1	BRIEF	[7816642561,49413980161,32713826587115521]	Carmichael numbers whose index is a power of 2 (see A174590).
+A326747	briefseq	1	BRIEF	[0,0,0,2592,33120,164160,0]	Number of graceful labelings of the n-crown graph.
+A344669	briefseq	1	BRIEF	[1,2,1092,144,507254400]	a(n) is the number of preference profiles in the stable marriage
+A347504	briefseq	1	BRIEF	[1,183,64289327]	Number of dominating sets in the n X n X n grid graph.
+A347507	briefseq	1	BRIEF	[1,7,653]	Number of dominating sets in the odd graph O_n.
+A347511	briefseq	1	BRIEF	[4,8,55]	Number of minimal dominating sets in the n-Apollonian network.
+A347613	briefseq	3	BRIEF	[48,322,18690]	Number of maximal irredundant sets in the torus grid graph C_n s
+A347670	briefseq	1	BRIEF	[5,18,1011]	Number of irredundant sets in the n-Apollonian network.
+A348335	briefseq	1	BRIEF	[14,1,591357]	a(n) = smallest k such that the sum of the divisors of the n num
+A349764	briefseq	1	BRIEF	[2,410,8627527,199898912404]	a(n) is the smallest number which can be represented as the sum
+A350430	briefseq	1	BRIEF	[1,625,157464]	a(n) is the smallest n-th power which can be represented as the
+A352586	briefseq	2	BRIEF	[12601,1656517]	a(n) is the largest prime that is not the sum of n-th powers of
+A352600	briefseq	1	BRIEF	[3,2438,483370]	Number of positive integers that are not the sum of n-th powers
+A353175	briefseq	1	BRIEF	[35,65,1729]	Base-99 Wieferich pseudoprimes, i.e., composites c such that 99^
+A353409	briefseq	2	BRIEF	[2047,13421773,14073748835533]	Smallest overpseudoprime to base 2 (A141232) with n distinct pri
+A354567	briefseq	1	BRIEF	[1,8,6859,11859210]	a(n) is the least number k such that P(k)^n | k and P(k+1)^n | (
+A355626	briefseq	1	BRIEF	[0,3,80,15222]	a(n) is the number of tuples (t_1, ..., t_n) with integers 2 <=
+A355629	briefseq	1	BRIEF	[0,2,50,9291]	a(n) is the number of tuples (t_1, ..., t_n) with integers 2 <=
+A355903	briefseq	1	BRIEF	[1,27,41,67]	Variant of Stepping Stones problem: here the stone you place onl
+A355959	briefseq	1	BRIEF	[5,45827]	Primes p such that (p+2)^(p-1) == 1 (mod p^2).
+A355960	briefseq	1	BRIEF	[3,23,1574773]	Primes p such that (p+5)^(p-1) == 1 (mod p^2).
+A355963	briefseq	1	BRIEF	[1531,7445287]	Primes p such that (p+8)^(p-1) == 1 (mod p^2).
+A356516	briefseq	0	BRIEF	[0,1,3,31,9007199254740991]	a(n) is the least k such that A356515(k) = n.
+A356683	briefseq	1	BRIEF	[2,39,1279786,8377774397163159586]	a(n) is the smallest positive k such that the count of squarefre
+A357678	briefseq	1	BRIEF	[8,17,107]	Numbers k equal to the integer log of the sum of k and its digit
+A358412	briefseq	1	BRIEF	[1,5391411025,5164037398437051798923642083026622326955987448536772329145127064375,18394692637543239052519638849677604601758633155529609530480505084151353491685470438888161445393115024726789540508890068653947416969170761962711551727825907250196303251377141717220839805506641223563351666426331545459145691024712162725504368925632612858056906372466405393682660098075602290372975735844191836234339549436719650689780402252099274696399596492244097377802378125]	Least number k coprime to 2 and 3 such that sigma(k)/k >= n.
+A358413	briefseq	0	BRIEF	[180,1018976683725,5164037398437051798923642083026622326955987448536772329145127064375,254562243979514975089159879971399544682111659523667644693080143246694829172900670915161346155769582669853564033880728103088106063046434341964575558830912132138918075217693121087787577391093604776697265029263545110958761871221683315147723623,39951535757650585018798348748891225120965976692064984269547036859311795820378436730438324393629693789218456454524047777496886202537740761247892093202226615959919889328604006304525711854734313189882419013173295566624676981142862763791512321048919883665611437471124417343945236230140586765330038170434112114508444269462673477181556170301227602287453091616825266900493170886638560243892018568352876524088439066357418348310788992726947975262240836563801939172566062676555492237550192620684590064723744670904222590087287911545739301404067505976402704939539693320017453037122942900328468750504177996229136229960785461836406094432925413088270589768652997628321943072631840070188270080291847756349]	Smallest 3-abundant number (sigma(x) > 3x) which is not divisibl
+A358414	briefseq	0	BRIEF	[27720,1853070540093840001956842537745897243375,18394692637543239052519638849677604601758633155529609530480505084151353491685470438888161445393115024726789540508890068653947416969170761962711551727825907250196303251377141717220839805506641223563351666426331545459145691024712162725504368925632612858056906372466405393682660098075602290372975735844191836234339549436719650689780402252099274696399596492244097377802378125]	Smallest 4-abundant number (sigma(x) > 4x) which is not divisibl
+A358418	briefseq	1	BRIEF	[1,20169691981106018776756331,254562243979514975089159879971399544682111659523667644693080143246694829172900670915161346155769582669853564033880728103088106063046434341964575558830912132138918075217693121087787577391093604776697265029263545110958761871221683315147723623]	Least number k coprime to 2, 3, and 5 such that sigma(k)/k >= n.
+A358419	briefseq	1	BRIEF	[1,49061132957714428902152118459264865645885092682687973,39951535757650585018798348748891225120965976692064984269547036859311795820378436730438324393629693789218456454524047777496886202537740761247892093202226615959919889328604006304525711854734313189882419013173295566624676981142862763791512321048919883665611437471124417343945236230140586765330038170434112114508444269462673477181556170301227602287453091616825266900493170886638560243892018568352876524088439066357418348310788992726947975262240836563801939172566062676555492237550192620684590064723744670904222590087287911545739301404067505976402704939539693320017453037122942900328468750504177996229136229960785461836406094432925413088270589768652997628321943072631840070188270080291847756349]	Least number k coprime to 2, 3, 5, and 7 such that sigma(k)/k >=
+A358784	briefseq	1	BRIEF	[2,16,440]	Size of largest semigroup generated by three n X n boolean matri
+A359148	briefseq	1	BRIEF	[1,10,2446]	1, together with numbers k such that A173426(k) is prime.
+A359296	briefseq	1	BRIEF	[4973316,5073691]	Absolute discriminants of imaginary quadratic fields with elemen
+A360221	briefseq	1	BRIEF	[0,0,0,12,0,0,0,2,0]	Minimum number of intercalates in an orthogonal diagonal Latin s
+A360836	briefseq	2	BRIEF	[12880,18896570]	a(n) is the least n-gonal pyramidal number that is the sum of tw
+A361370	briefseq	4	BRIEF	[42,3270,879508]	Number of weakly 3-connected simple digraphs with n unlabeled no
+A362428	briefseq	1	BRIEF	[1,25,441]	a(n) is the least positive integer that can be expressed as the
+A363253	briefseq	3	BRIEF	[28,121,210]	a(n) is the smallest n-gonal number which can be represented as
+A363836	briefseq	2	BRIEF	[39,587,124499]	a(n) = smallest number m such that digitsum(m^n) < digitsum(m),
+A364227	briefseq	1	BRIEF	[1,24,362664]	a(n) is the number of n X n nonsingular matrices using all the f
+A364441	briefseq	4	BRIEF	[3,52,90262]	Number of facets of the balanced minimum evolution polytope on n
+A364948	briefseq	1	BRIEF	[4,121,2548735225]	Perfect powers that are equal to the sum of the first k perfect
+A365019	briefseq	1	BRIEF	[0,1,159284476]	Triangular numbers that for some k >= 0 are also the sum of the
+A365098	briefseq	1	BRIEF	[2,11,971]	Primes p such that Sum_{k=1..p-1} q^2_p(k) == 0 (mod p), with q_
+A365926	briefseq	0	BRIEF	[1,1,6,513,2875405]	Number of distinct characteristic polynomials for n X n matrices
+A366476	briefseq	0	BRIEF	[1,25,625]	Number of possible chmess games at the end of the n-th ply.
+A366518	briefseq	1	BRIEF	[18,6212,1814624809158]	Number of independent vertex sets in the n-middle layer graph.
+A368480	briefseq	1	BRIEF	[1,2,2187]	Orders k such that there exists a group of order k with automorp
+A368939	briefseq	1	BRIEF	[0,1,182380,444992]	Numbers k such that the sum of the digits times the sum of the f
+A370312	briefseq	1	BRIEF	[1,152,39160668]	Number of chordless cycles in the n-middle layer graph.
+A370314	briefseq	1	BRIEF	[0,0,22,11364]	Number of chordless cycles in the n-odd graph.
+A370963	briefseq	1	BRIEF	[2,104,126164]	a(n) = number of "lonesum" n X n X n tensors.
+A370965	briefseq	1	BRIEF	[2,254,112589750]	a(n) = number of "weakly lonesum" n X n X n tensors.
+A371821	briefseq	1	BRIEF	[85329,177904587,333577497]	Composite numbers which divide the concatenation of their ascend
+A372277	briefseq	1	BRIEF	[87339,332403,9813039]	Composite numbers that divide the concatenation of the reverse o
+A372548	briefseq	1	BRIEF	[12,24,28]	Largest order of a torsion subgroup of an elliptic curve over a
+A372549	briefseq	1	BRIEF	[12,24,28,36]	Largest infinitely often occurring order of a torsion subgroup o
+A374168	briefseq	1	BRIEF	[2,60,9692375]	a(n) is the smallest number which can be represented as the sum
+A374193	briefseq	1	BRIEF	[2,1471,269406]	a(n) is the smallest number which can be represented as the sum
+A374194	briefseq	1	BRIEF	[2,5972,5170425]	a(n) is the smallest number which can be represented as the sum
+A374418	briefseq	1	BRIEF	[7,325,87539319]	a(n) is the smallest number which can be represented as the sum
+A374803	briefseq	1	BRIEF	[1300,4062500,1479604544]	a(n) is the smallest number which can be represented as the sum
+A374804	briefseq	1	BRIEF	[4890,160426515,1885800643779]	a(n) is the smallest number which can be represented as the sum
+A374944	briefseq	1	BRIEF	[0,0,0,0,3,8]	a(n) is the maximum over the minimum crossing numbers of all Leg
+A375605	briefseq	0	BRIEF	[0,0,0,0,0,0,2,1,5]	Number of composite knots with n crossings.
+A376166	briefseq	1	BRIEF	[459756,80312850756]	Integers m whose decimal representation can be split into intege
+A376896	briefseq	1	BRIEF	[23,3842760169,41975417117]	Wieferich prime to base 3/2: primes p such that p^2 divides 3^(p
+A377736	briefseq	1	BRIEF	[154,282674,3003599678]	Numbers k such that k, k+1 and k+2 are all terms in A377732.
+A377755	briefseq	3	BRIEF	[4,122,589556]	Number of edge cuts in the n-diagonal intersection graph.
+A377768	briefseq	1	BRIEF	[1,27,241917]	Number of edge cuts in the n-Pell graph.
+A379454	briefseq	1	BRIEF	[727974361,2204693643,2643690625]	Numbers that decrease three times in succession when they are it
+A380991	briefseq	1	BRIEF	[1,4,15,48]	a(n) = largest number of cells of a polyomino with at most n col
+A381776	briefseq	3	BRIEF	[3,5,10,30]	Empty polygon numbers: a(n) is the smallest number of points in
+A381797	briefseq	1	BRIEF	[1,115,22463410]	Number of connected dominating sets in the n X n X n grid graph.
+A381969	briefseq	1	BRIEF	[3701,65442077,8410957371097]	Primes p with the property that PreviousPrime(p) is a substring
+A382346	briefseq	1	BRIEF	[3,12,2247]	Number of antichains in the Bruhat order on B_n.
+A382510	briefseq	1	BRIEF	[1,13,622,22640]	a(n) is the number of solutions to the "sum equals product" ridd
+A386225	briefseq	1	BRIEF	[24,240,600]	Numbers x such that there exist four integers 0<x<=y, z>0, t>0 a
+A387837	briefseq	3	BRIEF	[894,69843,8793888]	Number of fundamentally different graceful labelings of the n-we
+A387860	briefseq	1	BRIEF	[1,8,210497]	Number of fundamentally different graceful labelings of the n-Pe
+A388415	briefseq	2	BRIEF	[27,3471,1025535]	Number of fundamentally different graceful labelings of the 2n-c
+---- 2026-11-11 19:30:40
+A008885	aliquot	0	30
+A008886	aliquot	0	42
+A008887	aliquot	0	60
+A008888	aliquot	0	138
+A008889	aliquot	0	150
+A008890	aliquot	0	168
+A008891	aliquot	0	180
+A008892	aliquot	0	276
+A014360	aliquot	0	552
+A014361	aliquot	0	564
+A014362	aliquot	0	660
+A014363	aliquot	0	966
+A014364	aliquot	0	1074
+A014365	aliquot	0	1134
+A074906	aliquot	0	1521
+A074907	aliquot	0	570
+A143090	aliquot	0	12
+A143645	aliquot	0	24
+A143721	aliquot	0	38
+A143722	aliquot	0	48
+A143723	aliquot	0	52
+A143733	aliquot	0	62
+A143737	aliquot	0	68
+A143741	aliquot	0	72
+A143754	aliquot	0	75
+A143755	aliquot	0	80
+A143756	aliquot	0	81
+A143757	aliquot	0	82
+A143758	aliquot	0	84
+A143759	aliquot	0	86
+A143767	aliquot	0	87
+A143846	aliquot	0	88
+A143847	aliquot	0	96
+A143919	aliquot	0	100
+A143930	aliquot	0	3630
+A171103	aliquot	0	46758
+A203777	aliquot	0	220
+A269542	aliquot	0	702
+A358148	aliquot	0	326
+A362440	aliquot	1	841
