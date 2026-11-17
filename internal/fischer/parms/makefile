@@ -114,24 +114,6 @@ briefseq2: #
 	>        $@.tmp
 	head -n4 $@.tmp
 #----
-noncomputable: noncomputable1 noncomputable2 # NoncomputableSequence
-	cp -v noncomputable2.tmp noncomputable.txt
-	wc -l    $@*
-noncomputable1: # get all calls
-	grep -P "\tNoncomputableSequence" $(COMMON)/joeis_list.txt | cut -f1 \
-	>        $@.grep.tmp
-	perl extract_super.pl -d $(D) -cc noncomputable $@.grep.tmp \
-	| perl -pe 'if (!m{\t\-?\d+\, *NONCOMPUTABLE}) { s{noncomputable\t0\t}{noncomputable\t0\t0, NONCOMPUTABLE, }; } '\
-	' s{\t0}{}; s{\,}{\t}; s{\"\[|\]\"}{}g; ' \
-	>        $@.tmp
-	head -n4 $@.tmp
-noncomputable2: # 
-	cat noncomputable1.tmp \
-	| perl -pe 's{NONCOMPUTABLE\,}{NONCOMPUTABLE\t}; s{ }{}g; s[\}\}][]g;' \
-	| perl repl_zlist.pl -p 2 \
-	>        $@.tmp
-	head -n4 $@.tmp
-#----
 # get the parameters for the period of sqrt(x), from ContinuedFractionOfSqrtSequence
 cofrsqrt: cofrsqrt1 cofrsqrt2 cofrsqrt3
 	echo "# $@.txt: (aseqno, offset1, inits, padright, inits_len, padright_len); `date +%Y-%m-%d.%H`" > $@.txt
@@ -314,6 +296,33 @@ euler2: #
 	>        $@.tmp
 	head -n4 $@.tmp
 #----
+finiseq: finiseq1 finiseq2 # FiniteSequence
+	grep -vP "\[[^\-0-9]" finiseq2.tmp \
+	>        $@.txt
+	tail -n2 $@.txt
+	wc -l    $@*
+finiseq1: # get all calls
+	grep -P "\tFiniteSequence" $(COMMON)/joeis_list.txt | cut -f1 \
+	>        $@.grep.tmp
+	perl extract_super.pl -d $(D) -cc finiseq $@.grep.tmp \
+	| perl -pe 'if (!m{\t\-?\d+\, *FINITE}) { s{finiseq\t0\t}{finiseq\t0\t0, FINITE, }; } '\
+	' s{\t0}{}; s{\,}{\t}; s{\"\[|\]\"}{}g; ' \
+	>        $@.tmp
+	head -n4 $@.tmp
+finiseq2: # 
+	cat finiseq1.tmp \
+	| perl -pe 's{FINITE\,}{FINITE\t}; s{ }{}g; s[\}\}][]g;' \
+	| perl repl_zlist.pl -p 2 \
+	| cut -f1-3,5- \
+	>        $@.tmp
+	head -n4 $@.tmp
+divisors: divisors1 divisors2 # extract the sequences of ordered divisors 
+divisors1:
+	# A018283	finiseq	1	FINITE	[Jaguar.factor(100).divisorsSorted()]
+	grep -P "divisorsSorted" finiseq2.tmp \
+	| perl -ne 'if (m{factor\.\((\d+)\).divisorsSorted}) {divisorsSorted
+divisors2:
+#----
 fullfini: fullfini1 # finite and full
 fullfini1:
 	$(DBAT) -x "SELECT i.aseqno, '$@', i.offset1, d.termno, d.data, substr(n.name, 1, 128) \
@@ -329,7 +338,7 @@ fullfini1:
 	tail -n4 $@.tmp
 	wc -l    $@.tmp
 fullfini2:
-	cut -f1,$(DBAT) -x "SELECT i.aseqno, '$@', i.offset1, d.termno, d.data, substr(n.name, 1, 128) \
+	$(DBAT) -x "SELECT i.aseqno, '$@', i.offset1, d.termno, d.data, substr(n.name, 1, 128) \
 		FROM asinfo i, bfinfo b, bfdata d, asname n \
 		WHERE i.aseqno = b.aseqno \
 		  AND b.aseqno = d.aseqno \
@@ -341,7 +350,24 @@ fullfini2:
 	>        $@.tmp
 	tail -n4 $@.tmp
 	wc -l    $@.tmp
-
+#----
+noncomputable: noncomputable1 noncomputable2 # NoncomputableSequence
+	cp -v noncomputable2.tmp noncomputable.txt
+	wc -l    $@*
+noncomputable1: # get all calls
+	grep -P "\tNoncomputableSequence" $(COMMON)/joeis_list.txt | cut -f1 \
+	>        $@.grep.tmp
+	perl extract_super.pl -d $(D) -cc noncomputable $@.grep.tmp \
+	| perl -pe 'if (!m{\t\-?\d+\, *NONCOMPUTABLE}) { s{noncomputable\t0\t}{noncomputable\t0\t0, NONCOMPUTABLE, }; } '\
+	' s{\t0}{}; s{\,}{\t}; s{\"\[|\]\"}{}g; ' \
+	>        $@.tmp
+	head -n4 $@.tmp
+noncomputable2: # 
+	cat noncomputable1.tmp \
+	| perl -pe 's{NONCOMPUTABLE\,}{NONCOMPUTABLE\t}; s{ }{}g; s[\}\}][]g;' \
+	| perl repl_zlist.pl -p 2 \
+	>        $@.tmp
+	head -n4 $@.tmp
 #----
 # get the parameters of PaddingSequence
 padding: padding1 padding2
@@ -361,6 +387,14 @@ padding2:
 	| tr -d "\r" \
 	>        $@.tmp
 #----
+partsums:
+	grep PartialSumSequence $(COMMON)/joeis_list.txt | cut -f1 \
+	| perl extract_super.pl -of -cc $@ \
+	| perl repl_adjust.pl \
+	>        $@.txt
+	head -n4 $@.txt
+	wc -l    $@.txt
+#----
 # get the parameters of PeriodicSequence
 periodic: periodic1 periodic2
 	echo "# $@.txt: (aseqno, offset1, period, period_len); `date +%Y-%m-%d.%H`" > $@.txt
@@ -378,14 +412,6 @@ periodic2:
 	2>       $@.rest.tmp \
 	| tr -d "\r" \
 	>        $@.tmp
-#----
-partsums:
-	grep PartialSumSequence $(COMMON)/joeis_list.txt | cut -f1 \
-	| perl extract_super.pl -of -cc $@ \
-	| perl repl_adjust.pl \
-	>        $@.txt
-	head -n4 $@.txt
-	wc -l    $@.txt
 #----
 primecongruence: primecongruence1 primecongruence2 # 
 	cp -v primecongruence2.tmp primecongruence.txt

@@ -49,7 +49,6 @@ A117803	filter	1	new A000217()	v -> Predicates.CUBE.is(Functions.DIGIT_SUM.z(v))
 A117755	filter	1	new A000290()	v -> Predicates.SQUARE.is(DIGIT(v, ZV(0), (x, d, e) -> { /* System.out.println(v + "," + x); */ return x.+(Z.TEN.^(e).*((d + 1) % 10)); } ))	Squares which remain squares when each digit is replaced by the next digit.	base,nonn
 A401867	holos	0	[0,-1,0,0,0,4,0,0,0,-6,0,0,0,4,0,0,0,-1]	4,0,2,6,4,10,18,14,4,60,50,22,4,182,98,30	0	0			0
 A154639	holos	0	[0,-12,6,3,-1]	1,5,20,80	0	0			0
-A361525	holos	0	[0,-18207,35241,-5151,-30253,20304,2056,-5778,1534,171,-137,21,-1]	1,3,17,54,892,8159,80021,791821,7906439,79069308	0	0			0
 A401953	holos	0	[0,24,15,-1]	1,2,48	0	0
 A173314	holos	0	[[0],[-2,1],[1,-2],[2,1],[-1]]	7,7,13	0	0
 A368791	holos	0	[[0],[-4,3],[0,-3],[1]]	1	0	0
