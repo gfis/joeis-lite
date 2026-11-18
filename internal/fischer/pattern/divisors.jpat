@@ -15,6 +15,6 @@ public class $(ASEQNO) extends DivisorsSequence {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
-    super($(OFFSET), Z.valueOf($(PARM1=longorz)));
+    super($(OFFSET), $(PARM1=longorz));
   }
 }

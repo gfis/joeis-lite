@@ -28,31 +28,34 @@ PAREFL=irvine.oeis.ParameterReflector
 D=0
 #========
 # rebuild all lists
+# Caution: the ordering below matters!
 all: \
 	clean \
 	a007273         \
 	aliquot         \
 	basefract       \
-	briefseq        \
 	cellauto1D      \
 	cellauto2D      \
 	cofrsqrt        \
-	cofrsnum        \
+	  cofrsnum        \
 	coordination    \
 	coxeter         \
 	dead            \
 	diffseq         \
-	noncomputable   \
+	finite
+	  briefseq        \
+	  noncomputable   \
+	  divisors        \
 	padding         \
 	partsums        \
 	periodic        \
+	  recperiod       \
+	  sigperiod       \
 	primecongruence \
-	recperiod       \
 	runsbase        \
-	sigperiod       \
 	squaredigits    \
 	walk23          \
-	# Caution: the ordering above matters!
+	#
 	wc -l    *.txt
 #========
 clean:
@@ -281,6 +284,25 @@ diffseq1: # first differences of a squence
 	head -n4 $@.txt
 	wc -l    $@.txt
 #----
+divisors: divisors1 divisors2 # extract the finite sequences of ordered divisors
+	# Caution, depends on target finite
+	uniq -c  $@.txt | grep -v " 1 " || :
+	tail -n4 $@.txt
+	wc -l    $@.txt
+divisors1:
+	# A018283	finite	1	FINITE	[Jaguar.factor(100).divisorsSorted()]
+	grep -P "divisorsSorted" finite2.tmp \
+	| perl -ne 'if (m{Jaguar.factor\((\d+)}) { my $$num = $$1; '\
+	' s{\t.*}{\tdivisors\t1\t$$num}; print; }; ' \
+	>        $@.tmp
+	tail -n4 $@.tmp
+	wc -l    $@.tmp
+divisors2:
+	cut -f1 divisors3.man > $@.grep.tmp
+	grep -vf $@.grep.tmp divisors1.tmp > $@.tmp 
+	sort $@.tmp divisors3.man > divisors.txt
+	wc -l    divisors.txt
+#----
 euler: euler1 euler2 # EulerTransform
 	cp -v euler2.tmp euler.txt
 	wc -l    $@*
@@ -296,32 +318,26 @@ euler2: #
 	>        $@.tmp
 	head -n4 $@.tmp
 #----
-finiseq: finiseq1 finiseq2 # FiniteSequence
-	grep -vP "\[[^\-0-9]" finiseq2.tmp \
+finite: finite1 finite2 # FiniteSequence
+	grep -vP "\[[^\-0-9]" finite2.tmp \
 	>        $@.txt
 	tail -n2 $@.txt
 	wc -l    $@*
-finiseq1: # get all calls
+finite1: # get all calls
 	grep -P "\tFiniteSequence" $(COMMON)/joeis_list.txt | cut -f1 \
 	>        $@.grep.tmp
-	perl extract_super.pl -d $(D) -cc finiseq $@.grep.tmp \
-	| perl -pe 'if (!m{\t\-?\d+\, *FINITE}) { s{finiseq\t0\t}{finiseq\t0\t0, FINITE, }; } '\
+	perl extract_super.pl -d $(D) -cc finite $@.grep.tmp \
+	| perl -pe 'if (!m{\t\-?\d+\, *FINITE}) { s{finite\t0\t}{finite\t0\t0, FINITE, }; } '\
 	' s{\t0}{}; s{\,}{\t}; s{\"\[|\]\"}{}g; ' \
 	>        $@.tmp
 	head -n4 $@.tmp
-finiseq2: # 
-	cat finiseq1.tmp \
+finite2: # 
+	cat finite1.tmp \
 	| perl -pe 's{FINITE\,}{FINITE\t}; s{ }{}g; s[\}\}][]g;' \
 	| perl repl_zlist.pl -p 2 \
 	| cut -f1-3,5- \
 	>        $@.tmp
 	head -n4 $@.tmp
-divisors: divisors1 divisors2 # extract the sequences of ordered divisors 
-divisors1:
-	# A018283	finiseq	1	FINITE	[Jaguar.factor(100).divisorsSorted()]
-	grep -P "divisorsSorted" finiseq2.tmp \
-	| perl -ne 'if (m{factor\.\((\d+)\).divisorsSorted}) {divisorsSorted
-divisors2:
 #----
 fullfini: fullfini1 # finite and full
 fullfini1:
