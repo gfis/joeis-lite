@@ -35,7 +35,7 @@ A008960	periodic	0	[]	[0,1,8,7,4,5,6,3,2,9]	0	10
 A079979	periodic	0	[]	[1,0,0,0,0,0]	0	6
 A079978	periodic	0	[]	[1,0,0]	0	3
 A010716	periodic	0	[]	[5]	0	1
-A102626	finite	0	FINITE	[1,10,11,20,31,52,121,200,314,512,851,1228]	The explanation for this puzzle sequence was sent by Jonathan Vos Post, Feb 02 2005.
+A102626	finite	0	[1,10,11,20,31,52,121,200,314,512,851,1228]	The explanation for this puzzle sequence was sent by Jonathan Vos Post, Feb 02 2005.
 ---- 2026-11-18 13:45:46
 A154700	filter	1	new A003543()	PRIME	prime terms in (Divisors of 2^36 - 1).
 A171425	filter	1	new A035303()	v -> !ZV(60).mod(v).isZero()	Divisors of 60^2 that are not divisors of 60
