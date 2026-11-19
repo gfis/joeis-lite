@@ -117,6 +117,37 @@ briefseq2: #
 	>        $@.tmp
 	head -n4 $@.tmp
 #----
+cellauto1D: cellauto1D1 cellauto1D2 # one-dimensional celluar automata
+	cp -v cellauto1D2.tmp cellauto1D.txt
+	wc -l    $@*
+cellauto1D1: # get all calls
+	grep -P "\tCellular1DAutomaton" $(COMMON)/joeis_list.txt | cut -f1 \
+	| perl extract_super.pl -cc ca1 \
+	>        $@.tmp
+	head -n4 $@.tmp
+cellauto1D2: # separate into standard/non-standard
+	grep -v "/" cellauto1D1.tmp > $@.rest.tmp
+	grep    "/" cellauto1D1.tmp \
+	| perl -pe 'm{\/(\w+)}; my $$cc = $$1; s/\t\w+/\t$$cc/;' \
+	>        $@.tmp
+	head -n4 $@.tmp
+#----
+cellauto2D: cellauto2D1 cellauto2D2 # two-dimensional celluar automata
+	cp -v cellauto2D2.tmp cellauto2D.txt
+	wc -l    $@*
+cellauto2D1: # get all calls
+	grep -P "\tFiveNeighbor2DAutomaton" $(COMMON)/joeis_list.txt | cut -f1 \
+	| perl extract_super.pl -of -cc ca2on \
+	| perl -pe 's/\, */\t/g; ' \
+	>        $@.tmp
+	head -n4 $@.tmp
+cellauto2D2: # separate into standard/non-standard
+	grep -v "/" cellauto2D1.tmp > $@.rest.tmp
+	grep    "/" cellauto2D1.tmp \
+	| perl -pe 'm{\/(\w+)}; my $$cc = $$1; s/\t\w+/\t$$cc/;' \
+	>        $@.tmp
+	head -n4 $@.tmp
+#----
 # get the parameters for the period of sqrt(x), from ContinuedFractionOfSqrtSequence
 cofrsqrt: cofrsqrt1 cofrsqrt2 cofrsqrt3
 	echo "# $@.txt: (aseqno, offset1, inits, padright, inits_len, padright_len); `date +%Y-%m-%d.%H`" > $@.txt
@@ -206,36 +237,21 @@ cofrsnum8:
 	head -n4 cofrsnum.txt
 	wc -l    cofrsnum.txt
 #----
-cellauto1D: cellauto1D1 cellauto1D2 # one-dimensional celluar automata
-	cp -v cellauto1D2.tmp cellauto1D.txt
-	wc -l    $@*
-cellauto1D1: # get all calls
-	grep -P "\tCellular1DAutomaton" $(COMMON)/joeis_list.txt | cut -f1 \
-	| perl extract_super.pl -cc ca1 \
+complement: complement1 complement2 complement3 # ComplementSequence
+complement1: # get all calls
+	grep -P "\tComplementSequence" $(COMMON)/joeis_list.txt | cut -f1 \
+	>        $@.grep.tmp
+	perl extract_super.pl -d $(D) -cc complement $@.grep.tmp \
 	>        $@.tmp
 	head -n4 $@.tmp
-cellauto1D2: # separate into standard/non-standard
-	grep -v "/" cellauto1D1.tmp > $@.rest.tmp
-	grep    "/" cellauto1D1.tmp \
-	| perl -pe 'm{\/(\w+)}; my $$cc = $$1; s/\t\w+/\t$$cc/;' \
+complement2: # separate nominator/denominator
+	perl complement.pl complement1.tmp \
+	2>       $@.rest.tmp \
 	>        $@.tmp
 	head -n4 $@.tmp
-#----
-cellauto2D: cellauto2D1 cellauto2D2 # two-dimensional celluar automata
-	cp -v cellauto2D2.tmp cellauto2D.txt
-	wc -l    $@*
-cellauto2D1: # get all calls
-	grep -P "\tFiveNeighbor2DAutomaton" $(COMMON)/joeis_list.txt | cut -f1 \
-	| perl extract_super.pl -of -cc ca2on \
-	| perl -pe 's/\, */\t/g; ' \
-	>        $@.tmp
-	head -n4 $@.tmp
-cellauto2D2: # separate into standard/non-standard
-	grep -v "/" cellauto2D1.tmp > $@.rest.tmp
-	grep    "/" cellauto2D1.tmp \
-	| perl -pe 'm{\/(\w+)}; my $$cc = $$1; s/\t\w+/\t$$cc/;' \
-	>        $@.tmp
-	head -n4 $@.tmp
+complement3: 
+	grep -vP "A057716|A061310|A183868|A243956" complement2.tmp > complement.txt
+	wc -l    complement*
 #----
 coordination: coordination1 coordination2 # CoordinationSequence
 	cp -v coordination2.tmp coordination.txt
@@ -276,7 +292,7 @@ dead: # dead sequences
 	tail -n4 $@.txt
 	wc -l    $@.txt
 #----
-diffseq1: # first differences of a squence
+diffseq: # first differences of a squence
 	grep -P "\tDifferenceSequence" $(COMMON)/joeis_list.txt | cut -f1 \
 	| perl extract_super.pl -of -cc $@ \
 	| perl repl_adjust.pl \
