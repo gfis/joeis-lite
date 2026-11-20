@@ -253,6 +253,60 @@ complement3:
 	grep -vP "A057716|A061310|A183868|A243956" complement2.tmp > complement.txt
 	wc -l    complement*
 #----
+intersect: intersect1 intersect2 intersect3 # IntersectionSequence
+intersect1: # get all calls
+	grep -P "\tIntersectionSequence" $(COMMON)/joeis_list.txt | cut -f1 \
+	>        $@.grep.tmp
+	perl extract_super.pl -d $(D) -cc intersect $@.grep.tmp \
+	>        $@.tmp
+	head -n4 $@.tmp
+intersect2: # separate nominator/denominator
+	perl complement.pl intersect1.tmp \
+	2>       $@.rest.tmp \
+	>        $@.tmp
+	head -n4 $@.tmp
+intersect3: 
+	grep -vP "A057716" intersect2.tmp \
+	| sed -e "s/\tcomplement/\tintersect/" \
+	>        intersect.txt
+	wc -l    intersect*
+#----
+setdifference: setdifference1 setdifference2 setdifference3 # SetDifferenceSequence
+setdifference1: # get all calls
+	grep -P "\tSetDifferenceSequence" $(COMMON)/joeis_list.txt | cut -f1 \
+	>        $@.grep.tmp
+	perl extract_super.pl -d $(D) -cc setdifference $@.grep.tmp \
+	>        $@.tmp
+	head -n4 $@.tmp
+setdifference2: 
+	perl complement.pl setdifference1.tmp \
+	2>       $@.rest.tmp \
+	>        $@.tmp
+	head -n4 $@.tmp
+setdifference3: 
+	grep -vP "A057716" setdifference2.tmp \
+	| sed -e "s/\tcomplement/\tsetdifference/" \
+	>        setdifference.txt
+	wc -l    setdifference*
+#----
+union: union1 union2 union3 # UnionSequence
+union1: # get all calls
+	grep -P "\tUnionSequence" $(COMMON)/joeis_list.txt | cut -f1 \
+	>        $@.grep.tmp
+	perl extract_super.pl -d $(D) -cc union $@.grep.tmp \
+	>        $@.tmp
+	head -n4 $@.tmp
+union2: 
+	perl complement.pl union1.tmp \
+	2>       $@.rest.tmp \
+	>        $@.tmp
+	head -n4 $@.tmp
+union3: 
+	grep -vP "A057716" union2.tmp \
+	| sed -e "s/\tcomplement/\tunion/" \
+	>        union.txt
+	wc -l    union*
+#----
 coordination: coordination1 coordination2 # CoordinationSequence
 	cp -v coordination2.tmp coordination.txt
 	wc -l    $@*
