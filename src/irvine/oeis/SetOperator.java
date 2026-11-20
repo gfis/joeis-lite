@@ -11,80 +11,92 @@ import irvine.math.z.Z;
  * <li>complement of A with respect to B</li>
  * </ul>
  * All involved sequences must be monotone (weakly increasing).
- * Often that condition is violeted only be a few leading terms, in which case
+ * Often that condition is violated only be a few leading terms, in which case
  * the monotony can be achieved with the <code>.skip(), .prepend(), .adjust()</code> suffixes.
  * @author Georg Fischer
  */
 public class SetOperator extends AbstractSequence {
 
-  private static final int DEFOFF = 1;
-  private final Sequence mSeq;
-  private Z mN;
-  private Z mCurrent;
-
-  /**
-   * Complement of a sequence.
-   * @param start start value
-   * @param seq sequence to complement
-   */
-  public SetOperator(final Z start, final Sequence seq) {
-    this(DEFOFF, start, seq);
-  }
-
-  /**
-   * Complement of a sequence starting at 0.
-   * @param seq sequence to complement
-   */
-  public SetOperator(final Sequence seq) {
-    this(DEFOFF, Z.ZERO, seq);
-  }
+  private final Sequence mSeqA;
+  private final Sequence mSeqB;
+  private Z mA;
+  private Z mB;
+  private int mOperation;
+  /** Intersection of two sets */
+  public static final int INTERSECT = 1;
+  /** Set difference */
+  public static final int MINUS = 2;
+  /** Union of two sets */
+  public static final int UNION = 3;
 
   /**
    * Complement of a sequence.
    * @param offset first index of target sequence
-   * @param start start value
-   * @param seq sequence to complement
+   * @param operation one of INTERSECT, MINUS, UNION
+   * @param seqA first sequence
+   * @param seqB second sequence
    */
-  public SetOperator(final int offset, final Z start, final Sequence seq) {
+  public SetOperator(final int offset, final int operation, final Sequence seqA, final Sequence seqB) {
     super(offset);
-    mSeq = seq;
-    mN = start;
-    mCurrent = mSeq.next();
-  }
-
-  /**
-   * Complement of a sequence.
-   * @param offset first index of target sequence
-   * @param start start value
-   * @param seq sequence to complement
-   */
-  public SetOperator(final int offset, final long start, final Sequence seq) {
-    this(offset, Z.valueOf(start), seq);
-  }
-
-  /**
-   * Complement of a sequence starting at 0.
-   * @param offset first index of target sequence
-   * @param seq sequence to complement
-   */
-  public SetOperator(final int offset, final Sequence seq) {
-    this(offset, Z.ZERO, seq);
+    mOperation = operation;
+    mSeqA = seqA;
+    mA = mSeqA.next();
+    mSeqB = seqB;
+    mB = mSeqB.next();
   }
 
   @Override
   public Z next() {
+    Z result = null;
     while (true) {
-      while (mCurrent != null && mCurrent.compareTo(mN) < 0) {
-        final Z t = mSeq.next();
-        if (t != null && mCurrent.compareTo(t) > 0) {
-          throw new UnsupportedOperationException("Underlying sequence is not monotonic increasing");
-        }
-        mCurrent = t;
-      }
-      final Z t = mN;
-      mN = mN.add(1);
-      if (!t.equals(mCurrent)) {
-        return t;
+      int cmp = mA.compareTo(mB);
+      switch (mOperation) {
+        case INTERSECT:
+          switch (cmp) {
+            default:
+            case -1:
+              mA = mSeqA.next();
+              break;
+            case 0:
+              result = mA;
+              mA = mSeqA.next();
+              return mA;
+            case 1:
+              mB = mSeqB.next();
+              break;
+          }
+          break;
+        default:
+        case MINUS:
+          switch (cmp) {
+            default:
+            case -1:
+              mA = mSeqA.next();
+              break;
+            case 0:
+              result = mA;
+              mA = mSeqA.next();
+              return mA;
+            case 1:
+              mB = mSeqB.next();
+              break;
+          }
+          break;
+        case UNION:
+          switch (cmp) {
+            default:
+            case -1:
+              mA = mSeqA.next();
+              break;
+            case 0:
+              result = mA;
+              mA = mSeqA.next();
+              return mA;
+            case 1:
+              mB = mSeqB.next();
+              break;
+          }
+          break;
       }
     }
   }
