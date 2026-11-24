@@ -250,7 +250,10 @@ complement2: # separate nominator/denominator
 	>        $@.tmp
 	head -n4 $@.tmp
 complement3: 
-	grep -vP "A057716|A061310|A183868|A243956" complement2.tmp > complement.txt
+	grep -vP "A057716|A061310|A183868|A243956" complement2.tmp \
+	| perl -pe 's/\tcomplement/\tsetOperator/;'\
+	' s{(\d+)\tnew ([^\t]+)}{"B \/ C\tnew " . ($$1 == 0 ? "A001477" : "A000027") . "\(\)\, new $$2"}e;' \
+	>        complement.txt
 	wc -l    complement*
 #----
 intersect: intersect1 intersect2 intersect3 # IntersectionSequence
@@ -266,8 +269,8 @@ intersect2: # separate nominator/denominator
 	>        $@.tmp
 	head -n4 $@.tmp
 intersect3: 
-	grep -vP "A057716" intersect2.tmp \
-	| sed -e "s/\tcomplement/\tintersect/" \
+	grep -vP "^A00054[89]" intersect2.tmp \
+	| perl -pe 's/\tcomplement/\tsetOperator/; s/\d+\tnew/B x C\tnew/' \
 	>        intersect.txt
 	wc -l    intersect*
 #----
@@ -284,8 +287,8 @@ setdifference2:
 	>        $@.tmp
 	head -n4 $@.tmp
 setdifference3: 
-	grep -vP "A057716" setdifference2.tmp \
-	| sed -e "s/\tcomplement/\tsetdifference/" \
+	grep -vP "^A057716|^A057609" setdifference2.tmp \
+	| perl -pe 's/\tcomplement/\tsetOperator/; s/\d+\tnew/B - C\tnew/' \
 	>        setdifference.txt
 	wc -l    setdifference*
 #----
@@ -302,8 +305,8 @@ union2:
 	>        $@.tmp
 	head -n4 $@.tmp
 union3: 
-	grep -vP "A057716" union2.tmp \
-	| sed -e "s/\tcomplement/\tunion/" \
+	grep -vP "^A057716|^A398556|MySequence|Z14\:" union2.tmp \
+	| perl -pe 's/\: +\:/\:\:/; s/\tcomplement/\tsetOperator/; s/\d+\tnew/B u C\tnew/' \
 	>        union.txt
 	wc -l    union*
 #----

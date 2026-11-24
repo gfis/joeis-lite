@@ -5,15 +5,16 @@ import irvine.oeis.a000.A000027;
 import irvine.oeis.a001.A001477;
 
 /**
- * Set operations on sequences: 
+ * Operate on two or more sequences as sets 
+ * and return the result of the set operation as the target sequence.
  * <ul>
- * <li>A union B</li>
- * <li>A intersection B</li>
- * <li>A minus B, set difference</li>, complement of B with respect to A</li>
+ * <li>A = B u C = B union C</li>
+ * <li>A = B x C = B intersection C</li>
+ * <li>A = B - C = B minus C (set difference, complement of C with respect to B)</li>
  * </ul>
  * All involved sequences must be monotone (weakly increasing).
  * Often that condition is violated only be a few leading terms, in which case
- * the monotony can be achieved with the <code>.skip(), .prepend(), .adjust()</code> suffixes.
+ * the monotony can be achieved with the <code>.skip(), .prepend(), .adjust()</code> method suffixes.
  * @author Georg Fischer
  */
 public class SetOperator extends AbstractSequence {
@@ -21,29 +22,24 @@ public class SetOperator extends AbstractSequence {
   private final Sequence[] mSeqs;
   private Z[] mTerms;
   private int mOperation;
-  /** Intersection of two sets */
+  /** Code for the intersection of two sets */
   public static final int INTERSECT = 1;
-  /** Set difference */
+  /** Code for the set difference */
   public static final int MINUS = 2;
-  /** Union of two sets */
+  /** Code for the union of two sets */
   public static final int UNION = 3;
 
-  /** natural numbers: 1, 2, 3 etc. */
-  public static final Sequence N = new A000027();
-  /** nonegative numbers: 0, 1, 2, 3 etc. */
-  public static final Sequence N0 = new A001477();
-
   /**
-   * Complement of a sequence.
+   * Perform one set operation.
    * @param offset first index of target sequence
-   * @param setExpression "B-C" = "B/C", "B+C", "B*C" and so on.
+   * @param setExpression Strings "B-C" = "B/C", "B+C", "B*C" and so on.
    * @param seqList list of sequences
    */
   public SetOperator(final int offset, final String setExpression, final Sequence... seqList) {
     super(offset);
-    switch (setExpression) {
+    switch (setExpression.replaceAll(" ", "").toUpperCase()) {
       case "B*C":
-      case "BxC":
+      case "BXC":
         mOperation = INTERSECT;
         break;
       default:
@@ -52,7 +48,7 @@ public class SetOperator extends AbstractSequence {
         mOperation = MINUS;
         break;
       case "B+C":
-      case "BuC":
+      case "BUC":
         mOperation = UNION;
         break;
     }
@@ -68,43 +64,47 @@ public class SetOperator extends AbstractSequence {
   /**
    * Computes the next element of the target set.
    * @param operation operation to be performed: INTERSECT, MINUS, UNION.
-   * @param ia index of first sequence
-   * @param ib index of second sequence
+   * @param ib index of first sequence
+   * @param ic index of second sequence
    * @return next element in target sequence
    */
-  private Z step(final int operation, final int ia, final int ib) {
+  private Z step(final int operation, final int ib, final int ic) {
     Z result = null;
     while (true) {
-      int cmp = mTerms[ia].compareTo(mTerms[ib]);
+      int cmp = mTerms[ib].compareTo(mTerms[ic]);
       switch (operation) {
         case INTERSECT:
           switch (cmp) {
             default:
             case -1:
-              mTerms[ia] = mSeqs[ia].next();
+              mTerms[ib] = mSeqs[ib].next();
               break;
             case 0:
-              result = mTerms[ia];
-              mTerms[ia] = mSeqs[ia].next();
-              return mTerms[ia];
-            case 1:
+              result = mTerms[ib];
               mTerms[ib] = mSeqs[ib].next();
+              return result;
+            case 1:
+              mTerms[ic] = mSeqs[ic].next();
               break;
           }
           break;
         default:
         case MINUS:
+          // System.out.println("cmp=" + cmp + ", B=mTerms[" + ib + "]=" + mTerms[ib] + ", C=mTerms[" + ic + "]=" + mTerms[ic]);
           switch (cmp) {
             default:
             case -1:
-              mTerms[ia] = mSeqs[ia].next();
-              break;
+              result = mTerms[ib];
+              do {
+                mTerms[ib] = mSeqs[ib].next();
+              } while (mTerms[ib].equals(result));
+              return result;
             case 0:
-              result = mTerms[ia];
-              mTerms[ia] = mSeqs[ia].next();
-              return mTerms[ia];
-            case 1:
               mTerms[ib] = mSeqs[ib].next();
+              mTerms[ic] = mSeqs[ic].next();
+              break;
+            case 1:
+              mTerms[ic] = mSeqs[ic].next();
               break;
           }
           break;
@@ -112,23 +112,25 @@ public class SetOperator extends AbstractSequence {
           switch (cmp) {
             default:
             case -1:
-              mTerms[ia] = mSeqs[ia].next();
-              break;
-            case 0:
-              result = mTerms[ia];
-              mTerms[ia] = mSeqs[ia].next();
-              return mTerms[ia];
-            case 1:
+              result = mTerms[ib];
               mTerms[ib] = mSeqs[ib].next();
-              break;
+              return result;
+            case 0:
+              result = mTerms[ib];
+              mTerms[ib] = mSeqs[ib].next();
+              mTerms[ic] = mSeqs[ic].next();
+              return result;
+            case 1:
+              result = mTerms[ic];
+              mTerms[ic] = mSeqs[ic].next();
+              return result;
           }
-          break;
       }
     }
   }
 
   @Override
   public Z next() {
-  	return step(mOperation, 0, 1);
+    return step(mOperation, 0, 1);
   }
 }

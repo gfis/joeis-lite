@@ -667,7 +667,7 @@ maditel:                    man dist test    log
 madital:                    man dist testall log
 tel:                                 test    log 
 partel:
-	cp parms/$(CC).txt $(CC).gen
+	grep -vf today.txt parms/$(CC).txt > $(CC).gen
 	make EX=xx AUTHOR="Teherba Rabochaya" purge select2 select3 gener man ditel
 #--
 batest: # parameter: CC

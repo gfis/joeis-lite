@@ -1,0 +1,91 @@
+---- 2026-11-22 21:19:06
+A089175	lambdan	1	n -> SQRT(PM(n).*(PI(n)))	a(n) = floor(sqrt(prime(n)*primepi(n))).
+A089186	lambdan	1	n -> Functions.TENS_COMPLEMENT.z(n)	a(n) is the 10s complement of n. -
+A089189	filter	1	new A000040()	p -> Predicates.CUBE_FREE.is(p.-(1))	Primes p such that p-1 is cubefree.	easy,nonn	1..10000	nyi	_Cino Hilliard_and _Reinhard Zumkeller_, Aug 11 2004
+A089190	lambdan	1	n -> PM(n).+(PI(n))./(2)	Floor[(Prime[n]+PrimePi[n])/2].	nonn	1..64	nyi	_Roger L. Bagula_
+A089191	filter	1	new A000040()	p -> Predicates.CUBE_FREE.is(p.+(1))	Primes p such that p+1 is cubefree.	easy,nonn	1..10000	nyi	_Cino Hilliard_
+A089194	filter	1	new A000040()	p -> Predicates.CUBE_FREE.is(p.-(1)) && Predicates.CUBE_FREE.is(p.+(1))	Primes p such that p-1 and p+1 are cube- or higher power-free.	easy,nonn	1..10000	nyi	_Cino Hilliard_
+A089195	filter	1	new A000040()	v -> FSIT(v.-(1), 0L, (x, p, e) -> x + (e != 2 ? 1 : 0)) == 0L	Primes p such that all prime factors of p-1 have exponent 2.	easy,nonn	1..10000	nyi	_Cino Hilliard_
+A089199	filter	1	new A000040()	p -> !Predicates.CUBE_FREE.is(p.+(1))	Primes p such that p+1 is divisible by a cube.	easy,nonn	1..10000	nyi	_Cino Hilliard_
+A089200	filter	1	new A000040()	p -> !Predicates.CUBE_FREE.is(p.-(1))	Primes p such that p-1 is divisible by a cube.	easy,nonn	1..10000	nyi	_Cino Hilliard_
+A089201	filter	1	new A000040()	p -> !Predicates.CUBE_FREE.is(p.-(3)) && !Predicates.CUBE_FREE.is(p.+(3))	Primes p such that p-3 and p+3 are divisible by a cube.	easy,nonn	1..10000	nyi	_Cino Hilliard_
+A089202	filter	1	new A000040()	p -> !Predicates.CUBE_FREE.is(p.-(2)) && !Predicates.CUBE_FREE.is(p.+(2))	Primes p such that p-2 and p+2 are divisible by a cube.	easy,nonn	1..10000	nyi	_Cino Hilliard_
+A089203	filter	1	new A000040()	v -> FSIT(v.-(2), 0L, (x, p, e) -> x + (e >= 4 ? 1 : 0)) > 0L && FSIT(v.+(2), 0L, (x, p, e) -> x + (e >= 4 ? 1 : 0)) > 0L	rimes p such that p-2 and p+2 are divisible by a fourth power.	easy,nonn	1..10000	nyi	_Cino Hilliard_
+A089204	trilambn	1	2	2	(n, k) -> QV(1).-(new Q(FA(n), FA(n - k).*(ZV(n).^(k)))).num()	numerator of P(n, k) = 1 - n!/(n^k*(n-k)!).	frac,nonn,tabl	1..45	nyi	Artemario Tadeu Medeiros da Silva (artemario(AT)uol.com.br)
+A092088	holos	1	[0,-34504704,-782880768,-334385280,49284576,990168,6288,-1]	1320,8872800,57159820320,368270723329920,2372720981421121920,15287133546258050856960,98493019073706019959014400	0	0			0
+A098751	multia	0	"0,10"	(self, n) -> self.a(n - 1).+(DIGIT(self.a(n - 1), 0L, (x, d, e) -> x + (10 - d)))	a(n+1) = a(n) + 10s complement of each of the digits of a(n); a(0) = 0.
+A102609	lambdan	0	n -> ZV(PP(n*(n - 1) + 41) ? 1 : 0)	a(n) = 1 iff n^2-n+41 is prime (else 0).
+A106701	sintrif	1	(term, n) -> { final int w = Functions.DIGIT_LENGTH.i(2, term); return ZV(term.testBit(w - 2) ? 1 : 0); }	""	new A002808()	a(n) = next-to-most-significant binary digit of n-th composite positive integer.
+A108614	filter	1	new A001358()	v -> v.toString().matches("[0123578]+")	Semiprimes with non-semiprimes digits (no digits 4,6,9 in semiprimes).
+A108631	filter	1	new A001358()	v -> v.toString().matches("[014689]+")	Semiprimes with nonprime digits (no digits 2,3,5,7 in semiprimes).
+A108632	filter	1	new A001358()	v -> v.toString().matches("[2357]+")	Semiprimes with prime digits (only digits 2,3,5,7 in semiprimes).
+A109863	filtraf	1	(self, n) -> { final Z v = Functions.TENS_COMPLEMENT.z(self.s(0)); return PP(v) ? v : null; }	""	new A109862()	Primes arising as the 10s complement of J109862(n).
+A110395	multia	1	"1"	(self, n) -> Functions.TENS_COMPLEMENT.z(self.a(n - 1)).*(n)	a(1) = 1. a(n) = n times (10s complement of a(n-1)).
+A111748	sintrif	1	(term, n) -> ZV(SF(term) ? 1 : 0)	""	new A002808()	a(n) = 1 if n-th composite number is squarefree, otherwise a(n) = 0.
+A112416	sintrif	1	(term, n) -> { final int w = Functions.DIGIT_LENGTH.i(2, term); return ZV(term.testBit(w - 2) ? 1 : 0); }	""	new A000040()	Next-to-most-significant binary digit of the n-th prime.
+A114213	trilambn	0	0	0	(n, k) -> SU(0, n - k, j -> BI(k, j).*(BI(n - k, j)).*((j&1) == 0 ? 1 : 0)).and(ZV(1))	*(1+(-1)^j)/2) mod 2.
+A127196	decexp	0	() -> CR.PI.multiply(CR.ONE.subtract(CR.GAMMA).add(CR.TWO.multiply(CR.PI).log())).divide(CR.EIGHT)
+A129686	trilambn	1	1	1	(n, k) -> ZV(k.equals(n) || k.equals(n - 2) ? 1 : 0)	T[n_, k_] := If[k == n || k == n-2, 1, 0];
+A131695	lambdan	1	n -> ZV(PM(n + 1).*(2).equals(PM(n).+(PM(n + 2))) ? 0 : 1)	a(n) = 0 iff 2*prime(n+1) = prime(n) + prime(n+2), otherwise a(n) = 1.
+A131929	lambdan	1	n -> { final String s = String.valueOf(n); return FSIT(n, ZV(0), (x, p, e) -> x.+(s.indexOf(p.toString()) >= 0 ? 1 : 0)); }	Number of prime factors of n that are contained in decimal representation
+A132184	filnum	0	1	k -> Functions.BERNOULLI.q(2*k).num().toString().endsWith("691")	Numbers k such that the numerator of the Bernoulli number B(2k) ends with the digits 691.	base,nonn	1..42	nyi	_Alexander Adamchuk_
+A136442	multia	0	"1"	(self, n) -> { final long n3 = n % 3; return n3 == 0 ? ZV(1) : (n3 == 2 ? ZV(0) : self.a(n/3)); }	(a(3n) = 1, a(3n-1) = 0 and a(3n+1) = a(n).
+A141687	trilambn	1	2	2	(n, m) -> ZV(1).-(PM(n).-(PM(m))./(2).and(ZV(1)))	t(n,m) = 1 - ((prime(n) - prime(m))/2 mod 2).
+A156297	trilambn	1	1	1	(n, k) -> n.equals(k*k) ? ZV(1) : ZV(0)	Triangle T(n,k) read by rows. If n = k^2 then 1 else 0.
+A174923	trilambn	0	0	0	(n, m) -> FA(m).*(FA(n + m +1)).-(FA(n).*(FA(2*n + 1))).+(FA(2*n - m + 1).*(FA(n - m)))./(FA(n + 1))
+A183868	lambdan	1	n -> CV(n + 1).sqrt().*(2).floor().+(n)	a(n) = n + floor(2*sqrt(n+1));
+A253084	trilambn	0	0	0	(n, k) -> BI(n + k, n - k).*(BI(n,k)).and(ZV(1))	Triangle read by rows: T(n,k) = {binomial(n+k,n-k)*binomial(n,k)} mod 2, 0 <= k <= n.
+A277610	polya	0	"[1]"	"1,1,x,B,1,-,-,/"	new A000312()
+A324290	lambdan	1	n -> ZV(FSIT(n, 0L, (x, p, e) -> x + (!ZV(n - 1).mod(p.-(1)).isZero() ? 1 : 0)) == 0L ? 1 : 0)	a(n) = 1 if for every prime divisor p of n, p-1 divides n-1, 0 otherwise; characteristic function of J087441.
+A327861	lambdan	1	n -> ZV(DIVIT(n, 0L, (x, d) -> x + (ARD(d).*(d).equals(ZV(n)) ? 1 : 0)))	Number of divisors d of n for which F003415(d)*d is equal to n, where F003415(x) gives the arithmetic derivative of x.
+A336834	lambdan	0	n -> ZV(Predicates.DEFICIENT.is(D005940(n + 1)) ? 1 : 0)	is deficient, 0 otherwise.
+A338614	holos	0	[0,1,-1,-3,4,-1,-1,1,4,-2,-6,4,1,-1,-2,3,-1]	1,1,2,6,24,72,124,210,394,810,1652,3168,5816,10640,19794,37292,70298,131618,245146,456430,851670,1592008	0	0			0
+A344347	filnum	1	2	k -> SIGMA(k).^(2).mod(k - 1) == 0	Numbers k such that sigma(k)^2 is divisible by k-1.	nonn	1..45	nyi	_Zdenek Cervenka_
+A344360	filter	0	new A000040()	p -> { final Z p2 = Z.TWO.^(p).-(2); return p2.mod(p).isZero() && PP(p2./(p).+(1)); }	Primes p such that (2^p - 2)/p + 1 is prime.	nonn,more	1..14	nyi	_Jorge Coveiro_
+A344361	filter	0	new A000040()	p -> { final Z p2 = Z.TWO.^(p).-(2); return p2.mod(p).isZero() && PP(p2./(p).-(1)); }	Primes p such that (2^p - 2)/p - 1 is prime.	nonn,more	1..5	nyi	_Jorge Coveiro_
+A344366	filnum	1	10	k -> PP(Functions.DIGIT_SUM_SQUARES.z(k)) && PP(Functions.DIGIT_SUM_SQUARES.z(k - 1))	Integers k such that the sum of squares of digits of both k and k-1 are prime.
+A344381	trilambn	0	0	0	(n, k) -> n.compareTo(k) < 0 ? ZV(0) : (n.equals(k) ? ZV(1) : ZV(n + 2).*(SU(k, n, i -> FA(i))./(FA(k).*(k + 2))))	* (Sum_{i=k..n} i!) / ((k+2) * k!) for 0 <= k <= n with T(i,j) = 0 if j < 0 or i < j.
+A344393	tablamb	0	0	n -> new Integer[] { 0, n/2 }	(n, k) -> Functions.EULERIAN1.z(n - k, k)	T(n, k) = Eulerian1(n - k, k), for n >= 0 and 0 <= k <= floor(n/2).
+A344457	lambdan	1	n -> SD(n, d -> Functions.BIG_OMEGA.z(d).*(d))	a(n) = Sum_{d|n} d * Omega(d).
+A357298	trilambn	1	1	1	(n, k) -> ZV((n&1) == 0 ? 1 : (k&1) ^ 1)
+A370702	lambdan	0	n -> CV(n + 1)./(CV(3).sqrt()).+(new Q(1, 3)).floor().-(CV(n)./(CV(3).sqrt()).+(new Q(1, 3)).floor())	a(n) = h(n + 1) - h(n) where h(n) = floor(n/sqrt(k) + 1/k) and k = 3.
+A371690	lambdan	1	n -> U347283(n, n)	: parity of the n-th term in the trajectory of n under the F006370 map.
+A378454	charfun	1	A267124
+A384709	lambdan	1	n -> IV[n > 1 && E076479(n).equals(MU(D067029(n)).negate())]	, where [.] is the Iverson bracket.
+A391747	sintrif	1	(term, n) -> term.abs().compareTo(ZV(1)) <= 0 ? ZV(1) : ZV(0)	""	new A195017()	a(n) = 1 if -1 <= J195017(n) <= 1, otherwise 0,
+A397581	holos	2	[0,-2,7,-9,5,-1]	0,2,7,19,46,104,225,473,973,1983,4015,8093,16265	0	0			0
+A401322	holos	0	[0,1,-4,21,1,6,-1]	1,1,17,114,723,4805	0	0			0
+A401714	lambdan	1	n -> ZV(D003557(n).compareTo(D053669(n)) < 0 ? 1 : 0)	, otherwise 0
+A401716	lambdan	1	n -> ZV(D003557(n).compareTo(D053669(n)) < 0 && !SF(n) && !Predicates.PRIME_POWER.is(n) ? 1 : 0)	and n is neither squarefree nor prime power, otherwise 0, where D003557(n) is n divided by its squarefree kernel, and D053669(n) is the smallest prime not dividing n.
+A401717	lambdan	1	n -> ZV(D003557(n).compareTo(D053669(n)) > 0 && !SF(n) && !Predicates.PRIME_POWER.is(n) ? 1 : 0)	and n is neither squarefree nor prime power, otherwise 0, where D003557(n) is n divided by its squarefree kernel, and D053669(n) is the smallest prime not dividing n.
+A401791	lambdan	1	n -> ZV(n == 1 || PP(n) || !SF(n) ? 1 : 0)	a(n) = 1 if n is 1, a prime or n is not squarefree, otherwise 0.
+A401793	holos	1	[0,1,-5,10,-10,5,-1]	1,15,95,349,941	0	0			0
+A401882	holos	1	[0,6,0,-1,2,-1]	1,2,2,2	0	0			0
+A401883	holos	1	[0,6,0,-1,2,-1]	0,0,1,3	0	0			0
+A401917	sintrif	1	(term, n) -> term.testBit(0) ? ZV(0) : ZV(1)	""	new A347395()	a(n) = 1 if J347395(n) is even, and 0 if it is odd
+A401936	lambdan	1	n -> D341526(2*n)
+A401937	lambdan	1	n -> D341527(2*n)
+A401941	holos	2	[0,-2,7,-9,5,-1]	0,2,6,17,42,97,214,457,954,1960,3988,8062,16228,32581,65315,130814,261846	0	0			0
+A401942	holos	2	[0,-2,5,-4,3,-5,4,-1]	0,1,5,15,38,91,206,447,939,1938,3956,8018,16172,32514,65237,130723,261741	0	0			0
+A402245	sintrif	1	(term, n) -> Functions.VALUATION.z(term, 2)	""	new A122132()	Exponent of highest power of 2 dividing J122132(n).	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+A402333	polyx	0	"[1],[1,-1,-1/2]"	"p1,2,x,exp,-,/,dif,dif,dif"	3	1
+A402334	polyx	0	"[1],[1,-1,-1/2,-1/6]"	"p1,2,x,exp,-,/,dif,dif,dif,dif"	4	1
+A402380	holos	0	[0,2,-6,6,-1]	1,4,19	0	0			0
+A402381	holos	0	[0,-2,8,-12,8,-1]	1,5,31,195	0	0			0
+A402382	holos	0	[0,2,-10,20,-20,10,-1]	1,6,46,356,2751	0	0			0
+A402389	polya	0	"[1],[1,-1]"	"1,p1,1,x,B,1,-,-,*,/"	new A000312()
+A402394	sintrif	1	(term, n) -> ZV(Jaguar.factor(term).minExponent())	""	new A025487()	a(n) = minimal exponent in the prime factorization of J025487(n).	nonn,new	1..10000	nyi	_Zhicheng Wei_
+A402397	holos	0	[0,1,-2,4,-1]	1,2,7	0	0			0
+A402398	holos	0	[0,-1,5,-2,5,-1]	1,2,11,55	0	0			0
+A402399	holos	0	[0,1,-4,21,1,6,-1]	1,2,19,133,856	0	0			0
+A402400	holos	0	[0,-1,7,11,86,11,7,-1]	1,2,35,343,2974,27629	0	0			0
+A402401	holos	0	[0,-1,7,11,86,11,7,-1]	1,1,33,308,2631,24655,228384,2099777	0	0			0
+A402428	filter	0	new A000040()	p -> PP(Functions.PRIMORIAL.z(p).*(4).+(Functions.NEXT_PRIME.z(p)))	Primes p such that 4*p# + p' is prime, where p' is the next prime > p.	nonn,more,new	1..23	nyi	_Jianing Song_
+A402429	filter	0	new A000040()	p -> PP(Functions.PRIMORIAL.z(p).*(4).-(Functions.NEXT_PRIME.z(p)))	Primes p such that 4*p# - p' is prime, where p' is the next prime > p.	nonn,more,new	1..21	nyi	_Jianing Song_
+A402449	multia	0	"1"	(self, n) -> SU(1, n, k -> BI(2*n + k, k).*(self.a(n - k))).+(1)	a(n) = 1 + Sum_{k=1..n} binomial(3*n+k,k) * a(n-k).
+A402450	multia	0	"1"	(self, n) -> SU(1, n, k -> BI(3*n + k, k).*(self.a(n - k))).+(1)	a(n) = 1 + Sum_{k=1..n} binomial(3*n+k,k) * a(n-k).
+A402455	multia	0	"1"	(self, n) -> SU(1, n, k -> ZV(k).^(n).*(self.a(n - k))).+(1)	a(n) = 1 + Sum_{k=1..n} k^n * a(n-k).	nonn,new	0..110	nyi	_Seiichi Manyama_
+A402531	filter	1	new A001597()	v -> Functions.OMEGA.l(v) == 2
+A402532	decexp	1	() -> CR.SQRT2.*(2).+(2).sqrt().+(CR.SQRT2).+(1)	Decimal expansion of 1 + sqrt(2) + sqrt(2 + 2*sqrt(2)).	nonn,cons,easy,new	1..100	nyi	_Stefano Spezia_
+A402586	lambdan	1	n -> D341526(D003961(2*n))
+A402587	lambdan	1	n -> D341527(D003961(2*n))

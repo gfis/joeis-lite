@@ -633,7 +633,7 @@ sub write_output {
     $copy =~ s{\$\(PACK\)}           {$package}g;
     $copy =~ s{\.(multiply|divide)\(1\)|\.(add|subtract)\(0\)}{}g;
     #          1        12  2
-    $copy =~ s{([\?\:\>])([^=\d ])}{$1 $2}g;
+    $copy =~ s{([\?\>])([^=\d ])}{$1 $2}g;
     my $package = lc(substr($aseqno, 0, 4));
     # print STDERR "==> $maindir/$package/$aseqno.java ?\n";
     if ($clobber == 1 or (! -r "$maindir/$package/$aseqno.$ext")) { # overwrite or does not yet exist
