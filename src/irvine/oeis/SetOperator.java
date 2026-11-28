@@ -64,9 +64,9 @@ public class SetOperator extends AbstractSequence {
   /**
    * Computes the next element of the target set.
    * @param operation operation to be performed: INTERSECT, MINUS, UNION.
-   * @param ib index of first sequence
-   * @param ic index of second sequence
-   * @return next element in target sequence
+   * @param ib index of first set / sequence 
+   * @param ic index of second set / sequence
+   * @return next element in target set / sequence
    */
   private Z step(final int operation, final int ib, final int ic) {
     Z result = null;

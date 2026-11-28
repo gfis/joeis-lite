@@ -332,6 +332,9 @@ while (<>) { # read inputfile
             $parm =~ s{GU\(}           {GaussianIntegers.SINGLETON.sum\(}g;
             $parm =~ s{HARM\(}         {Functions.HARMONIC.q\(}g;
             $parm =~ s{HW\(}           {Functions.DIGIT_SUM.i\(}g; # hammingweight -> int!
+            $parm =~ s{IVP\(}          {Predicates.PRIME.iverson\(}g;
+            $parm =~ s{IVS\(}          {Predicates.SQUARE.iverson\(}g;
+            $parm =~ s{IVT\(}          {Predicates.TRIANGULAR.iverson\(}g;
             $parm =~ s{IPP\(}          {isProbablePrime\(}g;
             $parm =~ s{IV\[([^\]]+)\]} {\($1 \? Z\.ONE \: Z\.ZERO\)}g;
             $parm =~ s{IVE\(}          {intValueExact\(}g;
